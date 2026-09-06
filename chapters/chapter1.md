@@ -82,7 +82,109 @@ Sabremos que OsoSense tiene éxito cuando los productores consulten el estado de
 
 #### 1.2.2.2. Lean UX Assumptions
 
+Los assumptions se organizaron siguiendo las cinco categorías solicitadas en el enunciado del proyecto. Cada enunciado expresa una creencia que deberá validarse durante las entrevistas, el diseño de prototipos y las pruebas de uso del producto.
+
+**Business Assumptions**
+
+1. Creemos que existe en el Perú un mercado desatendido de monitoreo de suelo orientado al pequeño y mediano productor agrícola.
+2. Creemos que la oferta actual de agricultura de precisión resulta costosa o compleja para productores que administran parcelas pequeñas.
+3. Creemos que OsoSense puede diferenciarse mediante una solución IoT de bajo costo enfocada en salinidad, humedad y temperatura del suelo.
+4. Creemos que el modelo de negocio puede combinar la venta o instalación del dispositivo con una suscripción accesible por parcela monitoreada.
+5. Creemos que los asesores técnicos, cooperativas y programas de asistencia agrícola pueden funcionar como canales de adopción del producto.
+6. Creemos que los datos históricos y georreferenciados del suelo pueden aportar valor para futuras decisiones agrícolas e investigaciones sobre salinidad.
+
+**Business Outcome Assumptions**
+
+1. Creemos que el éxito inicial se reflejará en una tasa de conversión de visitantes del Landing Page a usuarios registrados.
+2. Creemos que la retención mensual aumentará si el productor percibe que las alertas ayudan a prevenir pérdidas en su campaña.
+3. Creemos que el costo de adquisición será menor cuando la recomendación provenga de asesores técnicos o redes agrícolas de confianza.
+4. Creemos que cada asesor técnico incorporado puede facilitar la llegada de OsoSense a varios productores.
+5. Creemos que demostrar ahorro frente a diagnósticos frecuentes de laboratorio fortalecerá la disposición de pago por la solución.
+
+**User Assumptions**
+
+1. Creemos que el usuario principal es el pequeño o mediano productor agrícola de la costa peruana, especialmente de zonas expuestas a salinización.
+2. Creemos que este usuario utiliza principalmente el teléfono móvil para consultar información digital.
+3. Creemos que muchos productores no interpretan fácilmente valores técnicos como conductividad eléctrica en dS/m.
+4. Creemos que el asesor técnico o ingeniero agrónomo requiere datos más detallados para sustentar sus recomendaciones.
+5. Creemos que la confianza en un dispositivo de bajo costo será una barrera inicial de adopción.
+6. Creemos que ambos segmentos valoran información histórica que permita observar tendencias y no solo mediciones aisladas.
+
+**User Outcome and Benefit Assumptions**
+
+1. Creemos que el productor busca evitar pérdidas de rendimiento mediante alertas tempranas sobre el estado del suelo.
+2. Creemos que el productor obtiene valor al recibir recomendaciones claras para ajustar riego, lavado de sales o seguimiento de la parcela.
+3. Creemos que el productor busca reducir decisiones basadas únicamente en intuición o síntomas visibles del cultivo.
+4. Creemos que el asesor técnico busca supervisar varias parcelas sin desplazarse físicamente a cada una con la misma frecuencia.
+5. Creemos que el asesor técnico obtiene valor al contar con reportes históricos que respalden sus recomendaciones ante el productor.
+6. Creemos que ambos segmentos se benefician al diferenciar entre un problema de salinidad y otros problemas agrícolas como fertilización o plagas.
+
+**Feature Assumptions**
+
+1. Creemos que un dispositivo IoT de campo que mida conductividad eléctrica, humedad y temperatura permite monitorear el suelo de forma continua.
+2. Creemos que un motor de umbrales por cultivo permite generar alertas más pertinentes que un umbral único para todos los casos.
+3. Creemos que las notificaciones móviles con niveles de severidad facilitan que el productor reaccione oportunamente.
+4. Creemos que un tablero con histórico y tendencia por parcela ayuda a comprender la evolución del problema.
+5. Creemos que un módulo de gestión de fincas, parcelas y cultivos es necesario para contextualizar cada lectura.
+6. Creemos que un tablero multiparcela permite que el asesor técnico supervise a varios productores de manera ordenada.
+7. Creemos que los reportes exportables permiten sustentar decisiones y recomendaciones técnicas.
+8. Creemos que un servicio de borde con almacenamiento local y sincronización diferida reduce la pérdida de datos ante conectividad intermitente.
+9. Creemos que un módulo de calibración contra referencias de laboratorio incrementa la confianza en las mediciones.
+10. Creemos que integrar información meteorológica externa mejora la interpretación de cambios en el suelo.
+11. Creemos que un Landing Page con mensajes diferenciados para productores y asesores mejora la conversión de usuarios.
+12. Creemos que un plan gratuito limitado reduce la barrera de entrada para pequeños productores.
+
 #### 1.2.2.3. Lean UX Hypothesis Statements
+
+De acuerdo con las instrucciones del statement, se formula un Hypothesis Statement por cada Feature Assumption. Cada hipótesis conecta un resultado de negocio esperado, una persona o segmento, un beneficio de usuario y una característica concreta de la solución.
+
+**HS-01 - Dispositivo IoT de campo**
+
+Creemos que lograremos aumentar la adopción inicial de OsoSense si los productores agrícolas y asesores técnicos obtienen información continua del suelo con un dispositivo IoT de campo que mide conductividad eléctrica, humedad y temperatura.
+
+**HS-02 - Motor de umbrales por cultivo**
+
+Creemos que lograremos reducir alertas poco pertinentes si los productores y asesores reciben evaluaciones adaptadas al cultivo registrado en cada parcela con un motor de umbrales configurables.
+
+**HS-03 - Notificaciones móviles**
+
+Creemos que lograremos una respuesta más rápida ante niveles críticos de salinidad si los productores reciben avisos oportunos en su teléfono con un sistema de notificaciones móviles por severidad.
+
+**HS-04 - Tablero con histórico y tendencia**
+
+Creemos que lograremos una mayor frecuencia de consulta de la plataforma si los usuarios comprenden la evolución de la salinidad mediante un tablero con histórico y tendencia por parcela.
+
+**HS-05 - Gestión de fincas, parcelas y cultivos**
+
+Creemos que lograremos una interpretación más precisa de las mediciones si el productor registra el contexto agrícola de cada punto de medición con un módulo de gestión de fincas, parcelas y cultivos.
+
+**HS-06 - Tablero multiparcela**
+
+Creemos que lograremos que los asesores técnicos supervisen más parcelas desde la plataforma si pueden comparar el estado de varios clientes mediante un tablero multiparcela.
+
+**HS-07 - Reportes exportables**
+
+Creemos que lograremos fortalecer la utilidad percibida por asesores técnicos si pueden sustentar sus recomendaciones ante productores con reportes exportables por parcela y periodo.
+
+**HS-08 - Servicio de borde con sincronización diferida**
+
+Creemos que lograremos reducir la pérdida de lecturas en campo si los productores ubicados en zonas con conectividad intermitente conservan el registro de datos mediante un servicio de borde con almacenamiento local.
+
+**HS-09 - Calibración y validación**
+
+Creemos que lograremos aumentar la confianza en el dispositivo si productores y asesores pueden contrastar las mediciones de OsoSense con referencias de laboratorio mediante un módulo de calibración.
+
+**HS-10 - Integración meteorológica externa**
+
+Creemos que lograremos mejorar la interpretación del diagnóstico si los usuarios relacionan las variaciones del suelo con lluvia y condiciones ambientales mediante una integración meteorológica externa.
+
+**HS-11 - Landing Page segmentado**
+
+Creemos que lograremos incrementar el registro de usuarios si productores y asesores encuentran mensajes orientados a sus necesidades mediante un Landing Page con contenido diferenciado por segmento.
+
+**HS-12 - Plan gratuito limitado**
+
+Creemos que lograremos reducir la barrera de entrada si pequeños productores pueden probar la solución en una parcela mediante un esquema de suscripción con plan gratuito limitado.
 
 #### 1.2.2.4. Lean UX Canvas
 
