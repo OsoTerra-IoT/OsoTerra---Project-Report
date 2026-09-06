@@ -28,7 +28,7 @@
 <h4 style="margin: 5px 0;"><strong>Oso Terra</strong></h4>
 
 <p style="margin: 5px 0;">Producto</p>
-<h4 style="margin: 5px 0;"><strong>Clair</strong></h4>
+<h4 style="margin: 5px 0;"><strong>OsoSense</strong></h4>
 
 <h4 style="margin: 5px 0;"><strong>Integrantes</strong></h4>
 
