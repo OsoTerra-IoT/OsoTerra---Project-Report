@@ -131,6 +131,44 @@ Dado que solo el 8 % de los productores accede a crédito formal, la vía de ado
 
 ### 2.2.1. Diseño de entrevistas
 
+Las entrevistas buscan conocer, con palabras sencillas, cómo los participantes cuidan el suelo en la actualidad, qué problemas encuentran, qué productos o métodos emplean para prevenirlos y cómo toman sus decisiones. También permiten conocer su relación con la tecnología y evaluar si una herramienta de monitoreo y alertas sería comprensible y útil para ellos.
+
+Se preparó una guía diferente para cada uno de los dos segmentos definidos en el Capítulo I. Primero se pregunta por experiencias y acciones reales. La propuesta de OsoTerra IoT se presenta recién al final para no influir en las respuestas. Las preguntas complementarias solo se utilizarán cuando sea necesario profundizar en alguna respuesta.
+
+#### Guía de entrevista — Segmento 1: Pequeños y medianos productores agropecuarios
+
+**Objetivo.** Conocer cómo el productor cuida su suelo, si ha tenido problemas de salinidad, qué soluciones utiliza actualmente y qué necesitaría para adoptar una herramienta de prevención.
+
+**Preguntas:**
+
+1. ¿Cuál es su nombre y en qué zona tiene su parcela?
+2. ¿Qué cultiva actualmente?
+3. ¿Qué hace para cuidar su suelo antes de que aparezcan problemas?
+4. ¿Usa algún producto, abono o método para mejorar o proteger el suelo? ¿Cuál?
+5. ¿Quién le recomendó ese producto o método?
+6. ¿Le ha funcionado bien? ¿Por qué?
+7. ¿Ha visto tierra blanca, salitrosa o plantas que crecen poco en alguna parte de su terreno?
+8. Cuando nota un problema en el suelo, ¿a quién le pide ayuda?
+9. ¿Alguna vez ha hecho un análisis de suelo? ¿Fue fácil o difícil?
+10. Si un dispositivo le avisara antes de que la sal dañe su cultivo, ¿lo usaría? ¿Qué necesitaría para confiar?
+
+#### Guía de entrevista — Segmento 2: Ingenieros agrónomos y asesores técnicos
+
+**Objetivo.** Conocer cómo el asesor detecta y previene problemas del suelo en las parcelas de sus clientes, qué herramientas recomienda y qué información necesita para tomar decisiones.
+
+**Preguntas:**
+
+1. ¿Cuál es su nombre y desde cuándo asesora agricultores?
+2. ¿En qué zonas trabaja normalmente?
+3. ¿Qué problemas del suelo ve con más frecuencia?
+4. ¿Qué recomienda para prevenir esos problemas?
+5. ¿Recomienda productos, abonos o tratamientos para cuidar el suelo? ¿Cuáles?
+6. ¿Cómo sabe si esas recomendaciones están funcionando?
+7. ¿Ha visto casos de salinidad en suelos? ¿Cómo los identifica?
+8. ¿Usa análisis de suelo, sensores o alguna herramienta de medición?
+9. ¿Qué dificultad tiene para revisar varias parcelas o atender a varios productores?
+10. Si recibiera alertas sobre salinidad en una parcela, ¿le servirían? ¿Qué información deberían mostrar?
+
 ### 2.2.2. Registro de entrevistas
 
 ### 2.2.3. Análisis de entrevistas
@@ -163,3 +201,41 @@ La figura muestra los actores principales del dominio, como el productor agropec
 Como resultado del análisis se identificaron puntos de dolor relacionados con la conectividad en campo, la interpretación de lecturas técnicas y la confianza en el dispositivo. Asimismo, se identificaron oportunidades como el uso de alertas simples, el historial de salinidad, los reportes para asesores y la validación con laboratorio.
 
 ## 2.5. Ubiquitous Language
+
+El siguiente glosario recoge los términos y conceptos del dominio del negocio empleados de manera consistente por todos los miembros del equipo y los stakeholders. Los términos se expresan en inglés, con su equivalente en español entre paréntesis cuando corresponde. Se incluyen únicamente términos del dominio agronómico y del negocio; no se incluyen términos técnicos del área de ingeniería de software.
+
+| Término (inglés) | Equivalente en español | Definición |
+|---|---|---|
+| **Electrical Conductivity (EC)** | Conductividad eléctrica | Capacidad de un medio para conducir corriente eléctrica. En el suelo es proporcional a la concentración de sales disueltas, por lo que constituye el indicador estándar de salinidad. Se expresa en decisiemens por metro (dS/m). |
+| **Saturated Paste Extract EC (ECe)** | Conductividad eléctrica del extracto de saturación | Medición de la conductividad eléctrica realizada sobre el extracto de una pasta de suelo saturada con agua destilada. Es el método de referencia de laboratorio y la base sobre la que se definen los umbrales de tolerancia de los cultivos. |
+| **Saline Soil** | Suelo salino | Suelo cuya conductividad eléctrica del extracto de saturación es igual o superior a 4 dS/m, condición a partir de la cual las sales disueltas dificultan la absorción de agua y nutrientes por la raíz. |
+| **Soil Salinization** | Salinización del suelo | Proceso de acumulación progresiva de sales solubles en el perfil del suelo, que reduce su productividad agrícola y puede llegar a inutilizarlo. |
+| **Salinity Threshold** | Umbral de salinidad | Valor de conductividad eléctrica a partir del cual un cultivo determinado comienza a experimentar reducción de rendimiento. Varía por especie según el modelo de Maas y Hoffman. |
+| **Salt Tolerance** | Tolerancia a la sal | Capacidad de un cultivo para mantener su rendimiento bajo condiciones de salinidad creciente. Los cultivos se clasifican como sensibles, moderadamente sensibles, moderadamente tolerantes o tolerantes. |
+| **Salt Leaching** | Lavado de sales | Práctica de manejo consistente en aplicar una lámina de riego superior a la demanda del cultivo con el fin de desplazar las sales acumuladas por debajo de la zona radicular. |
+| **Leaching Requirement** | Requerimiento de lavado | Fracción adicional de la lámina de riego necesaria para mantener la salinidad de la zona radicular por debajo del umbral tolerable del cultivo. |
+| **Soil Moisture** | Humedad del suelo | Contenido de agua presente en el suelo. Afecta directamente la lectura de conductividad eléctrica, ya que la corriente circula a través de la solución del suelo. |
+| **Soil Temperature** | Temperatura del suelo | Temperatura del perfil edáfico. Influye sobre la conductividad eléctrica medida, por lo que toda lectura requiere compensación térmica para ser comparable. |
+| **Temperature Compensation** | Compensación por temperatura | Ajuste matemático aplicado a una lectura de conductividad eléctrica para expresarla en su valor equivalente a una temperatura de referencia, convencionalmente 25 °C. |
+| **Total Dissolved Solids (TDS)** | Sólidos disueltos totales | Concentración total de sustancias disueltas en una solución, expresada en mg/L. Para valores de conductividad eléctrica inferiores a 5 dS/m se relaciona aproximadamente como 1 dS/m ≈ 640 mg/L. |
+| **Water Table** | Napa freática | Nivel superior del agua subterránea. Cuando asciende hacia la superficie favorece el ascenso capilar de sales y agrava la salinización. |
+| **Capillary Rise** | Ascenso capilar | Movimiento ascendente del agua del suelo por capilaridad, que transporta sales disueltas hacia la superficie donde se concentran al evaporarse el agua. |
+| **Drainage** | Drenaje | Capacidad del suelo y de la infraestructura asociada para evacuar el exceso de agua. Su deficiencia es una de las causas principales de la salinización en los valles de la costa peruana. |
+| **Irrigation Water Quality** | Calidad del agua de riego | Conjunto de características químicas del agua empleada para regar, en particular su contenido de sodio, cloruros, sulfatos y boro, que determinan su potencial salinizante. |
+| **Gravity Irrigation** | Riego por gravedad | Sistema de riego en el que el agua se distribuye por escurrimiento superficial. Es el sistema predominante entre los pequeños productores peruanos y el de menor eficiencia en el uso del agua. |
+| **Technified Irrigation** | Riego tecnificado | Sistemas de riego presurizado, principalmente goteo y aspersión, que permiten un control preciso de la lámina aplicada. |
+| **Farm** | Finca / fundo | Unidad agropecuaria conducida por un productor, que puede comprender una o varias parcelas. |
+| **Plot** | Parcela | Superficie delimitada dentro de una finca, con un cultivo y un manejo homogéneos. Es la unidad mínima de monitoreo de la solución. |
+| **Crop** | Cultivo | Especie vegetal sembrada en una parcela. Determina el umbral de salinidad aplicable para la generación de alertas. |
+| **Growing Season** | Campaña agrícola | Ciclo productivo que abarca desde la siembra hasta la cosecha de un cultivo. En el Perú se contabiliza oficialmente de agosto a julio. |
+| **Yield** | Rendimiento | Producción obtenida por unidad de superficie, habitualmente expresada en toneladas por hectárea. |
+| **Agricultural Producer** | Productor agropecuario | Persona que conduce una unidad agropecuaria y toma las decisiones sobre su manejo. Es el usuario principal de la solución. |
+| **Smallholder** | Pequeño productor | Productor agropecuario que conduce una unidad menor a cinco hectáreas. Representa el 81,9 % de los productores del Perú. |
+| **Agronomist Advisor** | Asesor agronómico | Ingeniero agrónomo que presta servicios de asesoría técnica a uno o varios productores. Es el segundo segmento objetivo de la solución. |
+| **Technical Assistance** | Asistencia técnica | Servicio de acompañamiento profesional al productor en las decisiones de manejo del cultivo. |
+| **Soil Analysis** | Análisis de suelo | Determinación en laboratorio de las propiedades físicas y químicas de una muestra de suelo. Constituye la alternativa vigente y el referente de precisión frente al cual se valida la solución. |
+| **Soil Reading** | Lectura de suelo | Conjunto de valores de conductividad eléctrica, humedad y temperatura capturados simultáneamente por el dispositivo en un instante determinado. |
+| **Salinity Alert** | Alerta de salinidad | Notificación generada cuando la conductividad eléctrica compensada de una parcela supera el umbral de tolerancia del cultivo que aloja. |
+| **Salinity Trend** | Tendencia de salinidad | Dirección y magnitud del cambio de la conductividad eléctrica de una parcela a lo largo de un periodo. Es el indicador relevante para la detección temprana, por encima del valor puntual. |
+| **Corrective Action** | Acción correctiva | Intervención de manejo ejecutada en respuesta a una alerta, como un lavado de sales, un ajuste de la lámina de riego o una corrección del drenaje. |
+| **Calibration** | Calibración | Proceso de ajuste de las lecturas del dispositivo tomando como referencia un análisis de laboratorio acreditado sobre la misma parcela. |
