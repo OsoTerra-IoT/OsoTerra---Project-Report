@@ -147,4 +147,19 @@ Dado que solo el 8 % de los productores accede a crédito formal, la vía de ado
 
 ## 2.4. Big Picture EventStorming
 
+El equipo realizó un Big Picture EventStorming para entender el dominio general de OsoTerra IoT y representar visualmente los eventos principales del negocio. La sesión permitió ordenar el flujo desde el registro de la parcela hasta la generación de alertas, el registro de acciones correctivas y la validación del dispositivo con resultados de laboratorio.
+
+Durante la sesión se usaron post-its diferenciados por tipo: usuarios, comandos, eventos, riesgos, información y sistemas de negocio. Los eventos se organizaron de izquierda a derecha siguiendo la secuencia temporal del proceso.
+
+**URL del board:** [Event storming - Copia](https://www.figma.com/board/rOz6aC8xPFPeAZt5nTztdW/Event-storming--Copia-?node-id=0-1&t=jHZC7lXyvDzyzoJK-1)
+
+<div align="center">
+<img src="../assets/eventstorming/Event-Storming-IoT.jpeg" alt="Big Picture EventStorming de OsoTerra IoT en FigJam" width="900"/>
+<p><em>Figura 11. Big Picture EventStorming de OsoTerra IoT elaborado en FigJam.</em></p>
+</div>
+
+La figura muestra los actores principales del dominio, como el productor agropecuario, el asesor técnico, el dispositivo IoT, la plataforma OsoTerra y el laboratorio de suelo. También presenta eventos clave como `PlotRegistered`, `DeviceInstalledInPlot`, `SoilReadingCaptured`, `SalinityAlertGenerated`, `CorrectiveActionRegistered` y `DeviceCalibrated`.
+
+Como resultado del análisis se identificaron puntos de dolor relacionados con la conectividad en campo, la interpretación de lecturas técnicas y la confianza en el dispositivo. Asimismo, se identificaron oportunidades como el uso de alertas simples, el historial de salinidad, los reportes para asesores y la validación con laboratorio.
+
 ## 2.5. Ubiquitous Language
