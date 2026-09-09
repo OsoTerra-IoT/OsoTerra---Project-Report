@@ -12,5 +12,9 @@
 | 0.0.8 | 06/09/2026 | Iker Gabriel Barturen Panez | Redacción de los Segmentos objetivo con sustento estadístico (INEI, MIDAGRI, OSIPTEL, CIP, INIA). |
 | 0.0.9 | 06/09/2026 | Iker Gabriel Barturen Panez | Incorporación de la figura del Lean UX Canvas del proyecto OsoSense en el Capítulo I. |
 | 0.0.10 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo de la sección de competidores, análisis competitivo y estrategias frente a competidores en el Capítulo II. |
+| 0.0.11 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo del Big Picture EventStorming del Capítulo II, incluyendo actores, eventos de dominio, eventos pivotales, puntos de dolor y oportunidades. |
+| 0.0.12 | 08/09/2026 | Iker Gabriel Barturen Panez | Incorporación de la evidencia visual y enlace del board de FigJam para el Big Picture EventStorming del Capítulo II. |
+| 0.0.13 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo del Ubiquitous Language del Capítulo II con términos del dominio agronómico y del negocio de OsoTerra IoT. |
+| 0.0.14 | 08/09/2026 | Iker Gabriel Barturen Panez | Restauración del diseño de entrevistas para los dos segmentos objetivo en el Capítulo II. |
 
 # Project Report Collaboration Insights
