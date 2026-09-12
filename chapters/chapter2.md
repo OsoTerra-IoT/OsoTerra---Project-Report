@@ -35,10 +35,10 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
     <tr>
       <th></th>
       <th></th>
-      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoTerra IoT)</em></th>
-      <th>Competidor 1<br><strong>CropX</strong></th>
-      <th>Competidor 2<br><strong>WiseConn</strong><br><em>(DropControl)</em></th>
-      <th>Competidor 3<br><strong>Teralytic</strong></th>
+      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoTerra IoT)</em><br><img src="../assets/competitors/OsoTerra.png" alt="Logo OsoTerra" width="100"></th>
+      <th>Competidor 1<br><strong>CropX</strong><br><img src="../assets/competitors/CropX.png" alt="Logo CropX" width="100"></th>
+      <th>Competidor 2<br><strong>WiseConn</strong><br><em>(DropControl)</em><br><img src="../assets/competitors/WiseConn.png" alt="Logo WiseConn" width="100"></th>
+      <th>Competidor 3<br><strong>Teralytic</strong><br><img src="../assets/competitors/Teralytic.png" alt="Logo Teralytic" width="100"></th>
     </tr>
   </thead>
   <tbody>
