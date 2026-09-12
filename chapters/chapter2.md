@@ -18,84 +18,219 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
 
 #### Competitive Analysis Landscape
 
-| **¿Por qué llevar a cabo este análisis?** | Determinar si existe un espacio de mercado no atendido en el monitoreo de salinidad de suelos para el pequeño y mediano productor peruano, e identificar en qué dimensiones —precio, complejidad, especificidad del caso de uso y canal— la oferta actual deja una brecha aprovechable para una solución de bajo costo. |
-|---|---|
+<table>
+  <tbody>
+    <tr>
+      <th colspan="2">Competitive Analysis Landscape</th>
+    </tr>
+    <tr>
+      <td><strong>¿Por qué llevar a cabo este análisis?</strong></td>
+      <td>Determinar si existe un espacio de mercado no atendido en el monitoreo de salinidad de suelos para el pequeño y mediano productor peruano, e identificar en qué dimensiones —precio, complejidad, especificidad del caso de uso y canal— la oferta actual deja una brecha aprovechable para una solución de bajo costo.</td>
+    </tr>
+  </tbody>
+</table>
 
-| | **OsoTerra**<br>*(OsoTerra IoT)* | **CropX** | **WiseConn**<br>*(DropControl)* | **Teralytic** |
-|---|---|---|---|---|
-| **PERFIL** | | | | |
-| **Overview** | Startup peruana fundada en 2026. Solución IoT de bajo costo para monitoreo continuo y detección temprana de salinización, orientada específicamente a la pequeña y mediana agricultura de la costa peruana. | Empresa fundada en 2013 con operación global. Plataforma de agricultura de precisión basada en sondas de suelo multiprofundidad integradas a un sistema de recomendación agronómica. | Empresa chilena fundada en 2006, especializada en automatización y telemetría de riego. Opera con más de 15 000 equipos en más de 2 500 campos en Chile, **Perú**, México, Estados Unidos, España, Italia y Australia, con cerca de 200 000 hectáreas automatizadas. | Empresa estadounidense que lanzó en 2019 la primera sonda inalámbrica de suelo con medición de NPK. Integra 26 sensores en tres profundidades. |
-| **Ventaja competitiva**<br>*(¿Qué valor ofrece a los clientes?)* | Precio de acceso al menos un orden de magnitud inferior al de las sondas comerciales, especialización en el caso de uso de salinización, y traducción del dato técnico a lenguaje accionable para un usuario de baja alfabetización digital. Umbrales contextualizados por cultivo. | Precisión y madurez del algoritmo agronómico. Integración directa con sistemas de riego. Cobertura de un sensor por cada 40 acres aproximadamente, lo que reduce la densidad de dispositivos necesaria. | Presencia y soporte técnico local en el Perú. Control efectivo del riego, no solo monitoreo. Robustez probada en operaciones agroexportadoras de gran escala. | Amplitud de variables medidas en un solo dispositivo: humedad, salinidad, temperatura, pH, NPK, aireación y respiración del suelo, en tres profundidades simultáneas. |
-| **PERFIL DE MARKETING** | | | | |
-| **Mercado objetivo** | Pequeños y medianos productores de la costa norte peruana con unidades menores a 10 ha, e ingenieros agrónomos y asesores técnicos independientes que los atienden. | Agricultura comercial de mediana y gran escala a nivel global. Agroexportación. | Agroexportación y agricultura de gran escala en Latinoamérica, Estados Unidos y Europa. Fundos con riego tecnificado. | Agricultura comercial de gran escala, principalmente en Estados Unidos. Investigación agronómica. |
-| **Estrategias de marketing** | Marketing de contenido educativo sobre salinización dirigido al productor. Canal B2B2C mediante asesores técnicos y cooperativas. Articulación con programas estatales de asistencia técnica (AGROIDEAS, AGRO RURAL). Demostración de correspondencia con laboratorio acreditado como argumento de confianza. | Presencia en ferias internacionales de agtech. Alianzas con distribuidores de insumos y con fabricantes de sistemas de riego. Casos de estudio con grandes productores. | Fuerza de ventas directa con presencia local. Participación en medios especializados del sector, como Redagrícola. Demostraciones en campo con fundos de referencia. | Comunicación centrada en la innovación tecnológica —primera sonda NPK inalámbrica del mundo—. Prensa especializada en agricultura de precisión. |
-| **PERFIL DE PRODUCTO** | | | | |
-| **Productos y servicios** | Dispositivo IoT de campo basado en ESP32 (CE, humedad, temperatura). Edge Service con sincronización diferida. Plataforma web y aplicación móvil. Motor de alertas por cultivo. Reportes exportables. Landing Page informativo. | Sondas de suelo Apex y Vertex. Plataforma en la nube con aplicación móvil. Recomendaciones de riego y fertilización. Integración con equipos de riego. | Nodos de campo, estaciones meteorológicas, sensores de humedad, pH y CE. Plataforma DropControl. Control automatizado de riego y fertirriego. Gestión de pozos. | Sonda de suelo con 26 sensores. Red LoRa con gateway. Plataforma de análisis. Servicio de reemplazo de componentes incluido en la suscripción. |
-| **Precios y costos** | Modelo objetivo: dispositivo a precio de acceso significativamente inferior al rango comercial internacional, más suscripción mensual por parcela, con un plan gratuito limitado a una parcela. *(Estructura de precios en definición.)* | Sensores entre **USD 600 y USD 899** por unidad, más **USD 275 anuales por sensor** de suscripción. El modelo Vertex V4 alcanza aproximadamente **USD 2 398**. El modelo Apex requiere telemetría adquirida por separado. | Precio bajo cotización. No publica tarifario. Proyecto llave en mano dimensionado por hectárea y por complejidad del sistema de riego. | Paquete inicial de 10 sondas por **USD 5 000**; **USD 500** por sonda adicional. Modelo de suscripción que incluye el reemplazo de piezas. |
-| **Canales de distribución**<br>*(Web y/o Móvil)* | Landing Page con call-to-action diferenciado por segmento, aplicación web responsive y aplicación móvil nativa. Canal indirecto mediante asesores técnicos y organizaciones de productores. | Tienda en línea propia, aplicación web y móvil. Red de distribuidores e integradores. | Venta directa con oficinas y soporte en los países donde opera, incluido el Perú. Plataforma web y móvil. | Venta directa en línea. Plataforma web. |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoTerra IoT)</em></th>
+      <th>Competidor 1<br><strong>CropX</strong></th>
+      <th>Competidor 2<br><strong>WiseConn</strong><br><em>(DropControl)</em></th>
+      <th>Competidor 3<br><strong>Teralytic</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><strong>Perfil</strong></td>
+      <td><strong>Overview</strong></td>
+      <td>Startup peruana fundada en 2026. Solución IoT de bajo costo para monitoreo continuo y detección temprana de salinización, orientada específicamente a la pequeña y mediana agricultura de la costa peruana.</td>
+      <td>Empresa fundada en 2013 con operación global. Plataforma de agricultura de precisión basada en sondas de suelo multiprofundidad integradas a un sistema de recomendación agronómica.</td>
+      <td>Empresa chilena fundada en 2006, especializada en automatización y telemetría de riego. Opera con más de 15 000 equipos en más de 2 500 campos en Chile, <strong>Perú</strong>, México, Estados Unidos, España, Italia y Australia, con cerca de 200 000 hectáreas automatizadas.</td>
+      <td>Empresa estadounidense que lanzó en 2019 la primera sonda inalámbrica de suelo con medición de NPK. Integra 26 sensores en tres profundidades.</td>
+    </tr>
+    <tr>
+      <td><strong>Ventaja competitiva</strong><br>¿Qué valor ofrece a los clientes?</td>
+      <td>Precio de acceso al menos un orden de magnitud inferior al de las sondas comerciales, especialización en el caso de uso de salinización, y traducción del dato técnico a lenguaje accionable para un usuario de baja alfabetización digital. Umbrales contextualizados por cultivo.</td>
+      <td>Precisión y madurez del algoritmo agronómico. Integración directa con sistemas de riego. Cobertura de un sensor por cada 40 acres aproximadamente, lo que reduce la densidad de dispositivos necesaria.</td>
+      <td>Presencia y soporte técnico local en el Perú. Control efectivo del riego, no solo monitoreo. Robustez probada en operaciones agroexportadoras de gran escala.</td>
+      <td>Amplitud de variables medidas en un solo dispositivo: humedad, salinidad, temperatura, pH, NPK, aireación y respiración del suelo, en tres profundidades simultáneas.</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Perfil de Marketing</strong></td>
+      <td><strong>Mercado objetivo</strong></td>
+      <td>Pequeños y medianos productores de la costa norte peruana con unidades menores a 10 ha, e ingenieros agrónomos y asesores técnicos independientes que los atienden.</td>
+      <td>Agricultura comercial de mediana y gran escala a nivel global. Agroexportación.</td>
+      <td>Agroexportación y agricultura de gran escala en Latinoamérica, Estados Unidos y Europa. Fundos con riego tecnificado.</td>
+      <td>Agricultura comercial de gran escala, principalmente en Estados Unidos. Investigación agronómica.</td>
+    </tr>
+    <tr>
+      <td><strong>Estrategias de marketing</strong></td>
+      <td>Marketing de contenido educativo sobre salinización dirigido al productor. Canal B2B2C mediante asesores técnicos y cooperativas. Articulación con programas estatales de asistencia técnica (AGROIDEAS, AGRO RURAL). Demostración de correspondencia con laboratorio acreditado como argumento de confianza.</td>
+      <td>Presencia en ferias internacionales de agtech. Alianzas con distribuidores de insumos y con fabricantes de sistemas de riego. Casos de estudio con grandes productores.</td>
+      <td>Fuerza de ventas directa con presencia local. Participación en medios especializados del sector, como Redagrícola. Demostraciones en campo con fundos de referencia.</td>
+      <td>Comunicación centrada en la innovación tecnológica —primera sonda NPK inalámbrica del mundo—. Prensa especializada en agricultura de precisión.</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Perfil de Producto</strong></td>
+      <td><strong>Productos &amp; Servicios</strong></td>
+      <td>Dispositivo IoT de campo basado en ESP32 (CE, humedad, temperatura). Edge Service con sincronización diferida. Plataforma web y aplicación móvil. Motor de alertas por cultivo. Reportes exportables. Landing Page informativo.</td>
+      <td>Sondas de suelo Apex y Vertex. Plataforma en la nube con aplicación móvil. Recomendaciones de riego y fertilización. Integración con equipos de riego.</td>
+      <td>Nodos de campo, estaciones meteorológicas, sensores de humedad, pH y CE. Plataforma DropControl. Control automatizado de riego y fertirriego. Gestión de pozos.</td>
+      <td>Sonda de suelo con 26 sensores. Red LoRa con gateway. Plataforma de análisis. Servicio de reemplazo de componentes incluido en la suscripción.</td>
+    </tr>
+    <tr>
+      <td><strong>Precios &amp; Costos</strong></td>
+      <td>Modelo objetivo: dispositivo a precio de acceso significativamente inferior al rango comercial internacional, más suscripción mensual por parcela, con un plan gratuito limitado a una parcela. <em>(Estructura de precios en definición.)</em></td>
+      <td>Sensores entre <strong>USD 600 y USD 899</strong> por unidad, más <strong>USD 275 anuales por sensor</strong> de suscripción. El modelo Vertex V4 alcanza aproximadamente <strong>USD 2 398</strong>. El modelo Apex requiere telemetría adquirida por separado.</td>
+      <td>Precio bajo cotización. No publica tarifario. Proyecto llave en mano dimensionado por hectárea y por complejidad del sistema de riego.</td>
+      <td>Paquete inicial de 10 sondas por <strong>USD 5 000</strong>; <strong>USD 500</strong> por sonda adicional. Modelo de suscripción que incluye el reemplazo de piezas.</td>
+    </tr>
+    <tr>
+      <td><strong>Canales de distribución</strong><br>(Web y/o Móvil)</td>
+      <td>Landing Page con call-to-action diferenciado por segmento, aplicación web responsive y aplicación móvil nativa. Canal indirecto mediante asesores técnicos y organizaciones de productores.</td>
+      <td>Tienda en línea propia, aplicación web y móvil. Red de distribuidores e integradores.</td>
+      <td>Venta directa con oficinas y soporte en los países donde opera, incluido el Perú. Plataforma web y móvil.</td>
+      <td>Venta directa en línea. Plataforma web.</td>
+    </tr>
+    <tr>
+      <td rowspan="4"><strong>Análisis SWOT</strong></td>
+      <td><strong>Fortalezas</strong></td>
+      <td>
+        <ul>
+          <li>Especialización en un caso de uso concreto —la salinización— que ningún competidor aborda como propuesta central.</li>
+          <li>Estructura de costos que permite un precio de acceso incompatible con el modelo de los competidores internacionales.</li>
+          <li>Conocimiento del contexto local: perfil demográfico, restricciones de conectividad y capacidad de pago del productor peruano.</li>
+          <li>Diseño explícitamente inclusivo, calibrado para un usuario de 55 años con educación primaria.</li>
+          <li>Contextualización de alertas por cultivo, apoyada en umbrales agronómicos reconocidos.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Madurez tecnológica y precisión validada del algoritmo agronómico.</li>
+          <li>Marca consolidada internacionalmente y ecosistema de integraciones.</li>
+          <li>Cobertura amplia por sensor, que reduce la densidad de dispositivos requerida.</li>
+          <li>Modelo de negocio recurrente y probado.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Presencia comercial y soporte técnico verificados en el Perú.</li>
+          <li>Trayectoria desde 2006 y escala probada: más de 15 000 equipos y cerca de 200 000 hectáreas.</li>
+          <li>Capacidad de control efectivo del riego, no solo de monitoreo.</li>
+          <li>Conocimiento del contexto agrícola latinoamericano.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Amplitud de variables medidas sin equivalente en el mercado: 26 sensores en tres profundidades.</li>
+          <li>Modelo de suscripción con reemplazo de piezas incluido, que reduce el riesgo del cliente.</li>
+          <li>Posicionamiento como referente de innovación en agricultura de precisión.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Debilidades</strong></td>
+      <td>
+        <ul>
+          <li>Marca inexistente y ausencia total de historial comercial o casos de referencia.</li>
+          <li>Precisión del sensor de bajo costo inferior a la de las sondas comerciales y a la del laboratorio acreditado.</li>
+          <li>Ausencia de red de soporte técnico en campo y de capacidad logística de distribución.</li>
+          <li>Equipo sin experiencia previa en manufactura ni en certificación de hardware.</li>
+          <li>Dependencia de la validación contra laboratorio para construir confianza, lo que introduce un costo y un plazo.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Precio prohibitivo para el pequeño productor: USD 600 a 899 por sensor más USD 275 anuales.</li>
+          <li>Ausencia de foco específico en salinización; la CE es una variable más dentro de un conjunto.</li>
+          <li>Interfaz y comunicación diseñadas para un usuario técnico, no para un agricultor de baja alfabetización digital.</li>
+          <li>Sin presencia comercial ni soporte local dedicado en el Perú.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Propuesta dimensionada para fundos con riego tecnificado, del que solo dispone el 14,9 % de los pequeños y medianos productores.</li>
+          <li>Precio bajo cotización, sin transparencia, lo que dificulta el acceso del pequeño productor.</li>
+          <li>Complejidad de instalación y de operación que exige personal técnico.</li>
+          <li>La salinidad es una función secundaria dentro de una plataforma de gestión de riego.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Barrera de entrada muy alta: paquete inicial de USD 5 000 por diez sondas.</li>
+          <li>Requiere infraestructura de red LoRa con gateway propio.</li>
+          <li>Orientación al mercado estadounidense, sin presencia ni soporte en el Perú.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Oportunidades</strong></td>
+      <td>
+        <ul>
+          <li>Brecha de diagnóstico masiva: solo el 2,5 % de los pequeños y medianos productores realiza análisis de suelo.</li>
+          <li>Crecimiento acelerado de la conectividad móvil rural: del 41,5 % en 2019 al 85,8 % en 2025.</li>
+          <li>Ausencia de un inventario nacional reciente de salinidad, que otorga valor a los datos agregados de la plataforma.</li>
+          <li>Existencia de programas estatales que cofinancian asistencia técnica y activos productivos (AGROIDEAS, AGRO RURAL).</li>
+          <li>Cobertura insuficiente de los servicios públicos de extensión agraria, reconocida por el propio INIA.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Expansión hacia mercados emergentes con líneas de producto de menor costo.</li>
+          <li>Integración con sistemas de riego de terceros.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Expansión hacia la mediana agricultura peruana mediante productos simplificados.</li>
+          <li>Aprovechamiento de proyectos de irrigación estatales en ejecución.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Aplicación en investigación agronómica y en agricultura regenerativa.</li>
+          <li>Valorización de los datos agregados de suelo.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Amenazas</strong></td>
+      <td>
+        <ul>
+          <li>Baja capacidad de pago del segmento principal: pobreza del 49,3 % en hogares agropecuarios y acceso a crédito formal de solo el 8 %.</li>
+          <li>Envejecimiento del productor —edad promedio 54,5 años— y baja alfabetización digital como barreras de adopción.</li>
+          <li>Medidores portátiles de conductividad eléctrica importados a bajo precio que compiten por costo, aunque no por continuidad.</li>
+          <li>Entrada de un competidor establecido, como WiseConn, con una línea económica dirigida al mismo segmento.</li>
+          <li>Conectividad móvil variable en campo, que puede degradar la experiencia de uso.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Erosión de su mercado medio por soluciones locales de bajo costo.</li>
+          <li>Presión regulatoria y arancelaria sobre hardware importado.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Concentración de su cartera en agroexportación, vulnerable a ciclos del mercado externo.</li>
+          <li>Entrada de competidores de bajo costo en el segmento medio.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Complejidad del dispositivo como factor de fragilidad en campo.</li>
+          <li>Competencia de soluciones especializadas y más simples por caso de uso.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-#### Análisis SWOT
+#### Análisis SWOT — competidores indirectos
 
-**OsoTerra (OsoTerra IoT)**
-
-| Fortalezas | Debilidades |
-|---|---|
-| Especialización en un caso de uso concreto —la salinización— que ningún competidor aborda como propuesta central. | Marca inexistente y ausencia total de historial comercial o casos de referencia. |
-| Estructura de costos que permite un precio de acceso incompatible con el modelo de los competidores internacionales. | Precisión del sensor de bajo costo inferior a la de las sondas comerciales y a la del laboratorio acreditado. |
-| Conocimiento del contexto local: perfil demográfico, restricciones de conectividad y capacidad de pago del productor peruano. | Ausencia de red de soporte técnico en campo y de capacidad logística de distribución. |
-| Diseño explícitamente inclusivo, calibrado para un usuario de 55 años con educación primaria. | Equipo sin experiencia previa en manufactura ni en certificación de hardware. |
-| Contextualización de alertas por cultivo, apoyada en umbrales agronómicos reconocidos. | Dependencia de la validación contra laboratorio para construir confianza, lo que introduce un costo y un plazo. |
-
-| Oportunidades | Amenazas |
-|---|---|
-| Brecha de diagnóstico masiva: solo el 2,5 % de los pequeños y medianos productores realiza análisis de suelo. | Baja capacidad de pago del segmento principal: pobreza del 49,3 % en hogares agropecuarios y acceso a crédito formal de solo el 8 %. |
-| Crecimiento acelerado de la conectividad móvil rural: del 41,5 % en 2019 al 85,8 % en 2025. | Envejecimiento del productor —edad promedio 54,5 años— y baja alfabetización digital como barreras de adopción. |
-| Ausencia de un inventario nacional reciente de salinidad, que otorga valor a los datos agregados de la plataforma. | Medidores portátiles de conductividad eléctrica importados a bajo precio que compiten por costo, aunque no por continuidad. |
-| Existencia de programas estatales que cofinancian asistencia técnica y activos productivos (AGROIDEAS, AGRO RURAL). | Entrada de un competidor establecido, como WiseConn, con una línea económica dirigida al mismo segmento. |
-| Cobertura insuficiente de los servicios públicos de extensión agraria, reconocida por el propio INIA. | Conectividad móvil variable en campo, que puede degradar la experiencia de uso. |
-
-**CropX**
-
-| Fortalezas | Debilidades |
-|---|---|
-| Madurez tecnológica y precisión validada del algoritmo agronómico. | Precio prohibitivo para el pequeño productor: USD 600 a 899 por sensor más USD 275 anuales. |
-| Marca consolidada internacionalmente y ecosistema de integraciones. | Ausencia de foco específico en salinización; la CE es una variable más dentro de un conjunto. |
-| Cobertura amplia por sensor, que reduce la densidad de dispositivos requerida. | Interfaz y comunicación diseñadas para un usuario técnico, no para un agricultor de baja alfabetización digital. |
-| Modelo de negocio recurrente y probado. | Sin presencia comercial ni soporte local dedicado en el Perú. |
-
-| Oportunidades | Amenazas |
-|---|---|
-| Expansión hacia mercados emergentes con líneas de producto de menor costo. | Erosión de su mercado medio por soluciones locales de bajo costo. |
-| Integración con sistemas de riego de terceros. | Presión regulatoria y arancelaria sobre hardware importado. |
-
-**WiseConn (DropControl)**
-
-| Fortalezas | Debilidades |
-|---|---|
-| Presencia comercial y soporte técnico verificados en el Perú. | Propuesta dimensionada para fundos con riego tecnificado, del que solo dispone el 14,9 % de los pequeños y medianos productores. |
-| Trayectoria desde 2006 y escala probada: más de 15 000 equipos y cerca de 200 000 hectáreas. | Precio bajo cotización, sin transparencia, lo que dificulta el acceso del pequeño productor. |
-| Capacidad de control efectivo del riego, no solo de monitoreo. | Complejidad de instalación y de operación que exige personal técnico. |
-| Conocimiento del contexto agrícola latinoamericano. | La salinidad es una función secundaria dentro de una plataforma de gestión de riego. |
-
-| Oportunidades | Amenazas |
-|---|---|
-| Expansión hacia la mediana agricultura peruana mediante productos simplificados. | Concentración de su cartera en agroexportación, vulnerable a ciclos del mercado externo. |
-| Aprovechamiento de proyectos de irrigación estatales en ejecución. | Entrada de competidores de bajo costo en el segmento medio. |
-
-**Teralytic**
-
-| Fortalezas | Debilidades |
-|---|---|
-| Amplitud de variables medidas sin equivalente en el mercado: 26 sensores en tres profundidades. | Barrera de entrada muy alta: paquete inicial de USD 5 000 por diez sondas. |
-| Modelo de suscripción con reemplazo de piezas incluido, que reduce el riesgo del cliente. | Requiere infraestructura de red LoRa con gateway propio. |
-| Posicionamiento como referente de innovación en agricultura de precisión. | Orientación al mercado estadounidense, sin presencia ni soporte en el Perú. |
-
-| Oportunidades | Amenazas |
-|---|---|
-| Aplicación en investigación agronómica y en agricultura regenerativa. | Complejidad del dispositivo como factor de fragilidad en campo. |
-| Valorización de los datos agregados de suelo. | Competencia de soluciones especializadas y más simples por caso de uso. |
-
-**Competidores indirectos: laboratorios y medidores portátiles**
+**Laboratorios y medidores portátiles**
 
 | Fortalezas | Debilidades |
 |---|---|
@@ -170,6 +305,53 @@ Se preparó una guía diferente para cada uno de los dos segmentos definidos en 
 10. Si recibiera alertas sobre salinidad en una parcela, ¿le servirían? ¿Qué información deberían mostrar?
 
 ### 2.2.2. Registro de entrevistas
+
+Las entrevistas se realizaron para conocer de primera mano cómo los usuarios objetivo abordan actualmente el cuidado del suelo, la detección de problemas de salinidad y el uso de herramientas de medición o seguimiento. A partir de sus respuestas se identifican necesidades, frustraciones, hábitos de trabajo y expectativas frente a una solución IoT para monitoreo de salinidad.
+
+<table>
+  <thead>
+    <tr>
+      <th>Segmento objetivo</th>
+      <th>Datos</th>
+      <th>Resumen</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3"><strong>Pequeños y medianos productores agropecuarios</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona / distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona / distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona / distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Zona de trabajo:</strong> Zonas agrícolas de la costa<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int1-Seg2.png" alt="Screenshot entrevista Yeira Momán" width="180"></td>
+      <td><strong>Datos generales:</strong> Yeira es ingeniera agrónoma y cuenta con varios años de experiencia en el sector agrícola, brindando asesorías a productores. Trabaja principalmente en zonas agrícolas de la costa y visita diferentes parcelas según las necesidades de los agricultores que asesora.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor se centra en evaluar el estado del suelo, identificar problemas que afectan el desarrollo del cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes mencionó la salinidad, la falta de nutrientes y las dificultades relacionadas con el riego y el drenaje.<br><br><strong>Herramientas y tecnología:</strong> Para sustentar sus recomendaciones utiliza análisis de laboratorio y medidores portátiles de conductividad eléctrica, porque permiten obtener una lectura rápida directamente en campo. También realiza seguimiento comparando resultados de análisis y observando la evolución del cultivo para decidir si el manejo aplicado está funcionando o debe modificarse.<br><br><strong>Necesidades y frustraciones:</strong> Su principal dificultad es el tiempo que demanda revisar varias parcelas y desplazarse entre productores ubicados en diferentes lugares. Esto complica realizar visitas frecuentes, mantener actualizada la información de cada parcela y detectar oportunamente cambios en las condiciones del suelo.<br><br><strong>Expectativas:</strong> Considera que recibir alertas sobre salinidad sería útil porque permitiría anticipar el problema. Para que una alerta aporte valor, debería mostrar el nivel de conductividad eléctrica, la ubicación de la parcela, la fecha de medición, la evolución del valor en el tiempo y un historial de mediciones.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
+      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 2.2.3. Análisis de entrevistas
 
