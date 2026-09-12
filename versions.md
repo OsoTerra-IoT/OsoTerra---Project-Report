@@ -16,5 +16,6 @@
 | 0.0.12 | 08/09/2026 | Iker Gabriel Barturen Panez | Incorporación de la evidencia visual y enlace del board de FigJam para el Big Picture EventStorming del Capítulo II. |
 | 0.0.13 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo del Ubiquitous Language del Capítulo II con términos del dominio agronómico y del negocio de OsoTerra IoT. |
 | 0.0.14 | 08/09/2026 | Iker Gabriel Barturen Panez | Restauración del diseño de entrevistas para los dos segmentos objetivo en el Capítulo II. |
+| 0.0.15 | 11/09/2026 | Iker Gabriel Barturen Panez | Incorporación de la estructura del registro de entrevistas para ambos segmentos y registro de la primera entrevista del segmento de ingenieros agrónomos y asesores técnicos agrícolas. |
 
 # Project Report Collaboration Insights
