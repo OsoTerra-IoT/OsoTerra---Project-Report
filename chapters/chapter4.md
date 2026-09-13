@@ -595,19 +595,101 @@ Las tablas principales son `SALINITY_ALERTS` (alerta con el valor observado, el 
 
 ### 4.2.6. Bounded Context: Analytics and Reporting
 
+Este contexto produce las visualizaciones, agregaciones y reportes que permiten a ambos segmentos comprender la evolución de la salinidad y sustentar decisiones con evidencia documentada. Su naturaleza es predominantemente de lectura, por lo que su modelo se organiza en torno a modelos de lectura y no a agregados transaccionales.
+
 #### 4.2.6.1. Domain Layer
+
+La capa de dominio calcula tendencias, compone reportes y agrega vistas consolidadas para el asesor y el productor.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `SalinityTrend` | Aggregate Root | Representa la tendencia calculada de la salinidad de una parcela en un periodo. Garantiza que solo se produzca una tendencia cuando los datos son suficientes. |
+| `TrendDirection` | Enumeration | Clasifica la dirección de la tendencia: `RISING`, `STABLE` y `FALLING`. |
+| `ReportingPeriod` | Value Object | Encapsula el rango de fechas de un análisis, validando que la fecha inicial preceda a la final. |
+| `ReadingSeries` | Value Object | Encapsula una serie ordenada de lecturas con sus estadísticos descriptivos: mínimo, máximo, promedio y desviación. |
+| `PlotReport` | Aggregate Root | Representa un reporte de parcela con su composición completa. Su generación, exportación y trazabilidad son autónomas. |
+| `ReportSection` | Entity | Representa una sección del reporte: serie de lecturas, tendencia, alertas o acciones correctivas. |
+| `MultiPlotDashboard` | Read Model | Representa la vista consolidada de las parcelas supervisadas por un asesor. |
+| `PlotSummary` | Value Object | Encapsula el estado resumido de una parcela para su presentación en el tablero. |
+| `PlotComparison` | Value Object | Encapsula la comparación de series de entre dos y cuatro parcelas sobre un mismo eje temporal. |
+| `WeatherCorrelation` / `PrecipitationSeries` | Value Object | Encapsulan la serie de precipitación asociada a un periodo y a unas coordenadas. |
+| `SalinityTrendRepository` / `PlotReportRepository` | Repository (interfaz) | Abstracción de persistencia de las tendencias calculadas y los reportes generados. |
+| `TrendComputationService` | Domain Service | Calcula la tendencia mediante regresión lineal sobre la serie y determina su dirección. |
+| `WeatherDataProvider` | Domain Service (interfaz) | Abstrae la obtención de datos meteorológicos, manteniendo el proveedor fuera del dominio. |
+| `ReportExporter` | Domain Service (interfaz) | Abstrae la exportación del reporte a un formato de archivo. |
+
+**Entities y Aggregates:** `SalinityTrend.compute()` falla si la serie contiene menos de treinta lecturas (`isReliable()`), y `projectValueAt(date)` proyecta el valor esperado según la pendiente calculada. `PlotReport` se compone incrementalmente mediante `addSection()` y solo se considera completo (`isComplete()`) cuando reúne las cuatro secciones obligatorias.
+
+**Domain Service central:** `TrendComputationService` aplica regresión lineal sobre la serie de lecturas compensadas y clasifica la pendiente resultante en `RISING`, `STABLE` o `FALLING`.
 
 #### 4.2.6.2. Interface Layer
 
+La capa de interfaz expone los tableros del productor y del asesor, la tendencia por parcela, y la generación/exportación de reportes.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `DashboardController` | REST Controller | Expone el tablero resumen del productor y el tablero multiparcela del asesor. |
+| `SalinityTrendController` | REST Controller | Expone la consulta de tendencia por parcela y periodo. |
+| `PlotReportController` | REST Controller | Expone la generación y exportación de reportes. |
+| `PlotComparisonController` | REST Controller | Expone la comparación entre parcelas. |
+| `DashboardResource` / `PlotSummaryResource` | Resource (DTO) | Representación del tablero y del resumen de una parcela. |
+| `SalinityTrendResource` | Resource (DTO) | Representación de la tendencia con su pendiente y dirección. |
+| `PlotReportResource` | Resource (DTO) | Representación del reporte generado. |
+| `PlotComparisonResource` | Resource (DTO) | Representación de la comparación entre parcelas. |
+
 #### 4.2.6.3. Application Layer
+
+Esta capa orquesta el cálculo de tendencias, la composición de reportes reuniendo información de tres contextos, y la resolución de los tableros.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `ComputeSalinityTrendCommandHandler` | Command Handler | Orquesta el cálculo de la tendencia obteniendo la serie desde Soil Monitoring. |
+| `GeneratePlotReportCommandHandler` | Command Handler | Orquesta la composición del reporte reuniendo series, tendencia, alertas, acciones y datos meteorológicos. |
+| `ExportPlotReportCommandHandler` | Command Handler | Delega la exportación del reporte al formato solicitado. |
+| `SoilReadingStoredEventHandler` | Event Handler | Reacciona a la persistencia de una lectura actualizando el cálculo de tendencia de la parcela. |
+| `MultiPlotDashboardQueryService` | Query Service | Resuelve el tablero multiparcela del asesor, agregando información de tres contextos. |
+| `FarmerDashboardQueryService` | Query Service | Resuelve el tablero resumen del productor. |
+| `PlotComparisonQueryService` | Query Service | Resuelve la comparación de series entre parcelas. |
 
 #### 4.2.6.4. Infrastructure Layer
 
+La capa de infraestructura implementa la persistencia de tendencias y reportes, la exportación a PDF, y las capas de anticorrupción hacia los contextos y el servicio meteorológico externo.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `JpaSalinityTrendRepository` / `JpaPlotReportRepository` | Repository Implementation | Implementan los repositorios del dominio sobre Spring Data JPA. |
+| `ExternalWeatherServiceAdapter` | Anti-corruption Layer | Implementa `WeatherDataProvider` traduciendo la respuesta del servicio meteorológico externo. Degrada de forma controlada ante su indisponibilidad. |
+| `PdfReportExporter` | Domain Service Implementation | Implementa `ReportExporter` produciendo el documento en formato PDF. |
+| `SoilReadingSeriesClient` | Anti-corruption Layer | Traduce las consultas de series hacia el contexto de Soil Monitoring. |
+| `AlertHistoryClient` | Anti-corruption Layer | Traduce las consultas de histórico de alertas hacia el contexto de Salinity Alerting. |
+| `PlotStructureClient` | Anti-corruption Layer | Traduce las consultas de estructura de parcelas hacia el contexto de Farm Management. |
+
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
+
+Dentro del contenedor **RESTful API**, el contexto acotado de **Analytics and Reporting** agrega información de Soil Monitoring, Salinity Alerting y Farm Management, además de un servicio meteorológico externo.
+
+<div align="center">
+<img src="../assets/container-diagram/AnalyticsReporting-Components.png" alt="Component Diagram Analytics and Reporting" width="850">
+<p><em>Component Diagram del bounded context Analytics and Reporting.</em></p>
+</div>
+
+*   **Dashboard / Salinity Trend / Plot Report / Plot Comparison Controllers:** Reciben las solicitudes de la Web Application y la Mobile Application.
+*   **Compute Trend Handler:** Aplica el Trend Computation Service sobre la serie obtenida vía Soil Reading Series ACL.
+*   **Generate Report Handler:** Compone el reporte reuniendo series, histórico de alertas (Alert History ACL), estructura de parcelas (Plot Structure ACL) y datos meteorológicos (Weather Service ACL).
+*   **Analytics Domain Model:** Contiene `SalinityTrend` y `PlotReport` con sus invariantes.
+*   **Multi-Plot Dashboard Query y Farmer Dashboard Query:** Resuelven los tableros agregando información de Soil Monitoring y Farm Management.
+*   **PDF Report Exporter:** Produce el documento exportable del reporte.
 
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
+
+A continuación, el diagrama de clases unificado de la capa de dominio del contexto Analytics and Reporting.
+
+<div align="center">
+<img src="../assets/class-diagram/AnalyticsReporting.png" alt="Class Diagram Analytics and Reporting" width="850">
+<p><em>Class Diagram del Domain Layer de Analytics and Reporting.</em></p>
+</div>
 
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
 
@@ -616,4 +698,6 @@ Las tablas principales son `SALINITY_ALERTS` (alerta con el valor observado, el 
 <p><em>Database Diagram del bounded context Analytics and Reporting.</em></p>
 </div>
 
-<!-- TODO: descripción de entidades, atributos, llaves primarias/foráneas, índices y restricciones CHECK del modelo relacional. -->
+Las tablas principales son `SALINITY_TRENDS` (pendiente y dirección de la tendencia calculada por parcela y periodo), `PLOT_REPORTS` (reporte generado por un usuario para una parcela y periodo) y `REPORT_SECTIONS` (secciones ordenadas que componen cada reporte).
+
+**Restricciones adicionales:** índice único compuesto sobre `(plot_id, period_start_date, period_end_date)` en `SALINITY_TRENDS` para evitar recalcular y duplicar tendencias del mismo periodo; `CHECK (period_start_date < period_end_date)` en ambas tablas; el campo `reading_count` incorpora `CHECK >= 30`, materializando en el esquema la misma invariante de fiabilidad del agregado (`isReliable()`).
