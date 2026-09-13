@@ -143,19 +143,103 @@ Las tablas principales asociadas a este contexto son `USER_ACCOUNTS`, `ADVISORY_
 
 ### 4.2.2. Bounded Context: Subscription and Billing
 
+Este contexto gestiona los planes de suscripción, su ciclo de vida y el cumplimiento de los cupos de parcelas que cada plan habilita.
+
 #### 4.2.2.1. Domain Layer
+
+La capa de dominio de Subscription and Billing garantiza que exista una única suscripción activa por usuario y que el cupo de parcelas consumido nunca exceda el disponible.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `Subscription` | Aggregate Root | Representa la suscripción de un usuario. Es la raíz que garantiza que exista una única suscripción activa por usuario y que el cupo consumido nunca exceda el disponible. |
+| `SubscriptionPlan` | Entity | Representa un plan comercial con su precio, ciclo de facturación y cupo de parcelas. |
+| `PlotQuota` | Value Object | Encapsula el par formado por el cupo total y el cupo consumido, junto con la lógica de disponibilidad. |
+| `Money` | Value Object | Encapsula un importe monetario con su moneda, evitando operaciones entre monedas distintas. |
+| `BillingCycle` | Enumeration | Define los ciclos admisibles: `MONTHLY`, `ANNUAL` y `NONE` para el plan gratuito. |
+| `SubscriptionStatus` | Enumeration | Define los estados: `ACTIVE`, `PENDING_PAYMENT`, `SUSPENDED` y `CANCELLED`. |
+| `BillingPeriod` | Value Object | Encapsula la fecha de inicio y fin del periodo vigente. |
+| `PaymentTransaction` | Entity | Registra un intento de cobro con su resultado y su referencia externa. |
+| `SubscriptionRepository` | Repository (interfaz) | Abstracción de persistencia del agregado `Subscription`. |
+| `SubscriptionPlanRepository` | Repository (interfaz) | Abstracción de persistencia del catálogo de planes. |
+| `PaymentGateway` | Domain Service (interfaz) | Abstrae el procesamiento del cobro, manteniendo el proveedor fuera del dominio. |
+| `SubscriptionActivatedEvent` | Domain Event | Se publica al activarse la suscripción; otorga el cupo a Farm Management. |
+| `SubscriptionSuspendedEvent` | Domain Event | Se publica al expirar o cancelarse; suspende la ingesta en Soil Monitoring. |
+
+**Entities y Aggregates:** `Subscription` controla el ciclo completo mediante `subscribeToFreePlan()`, `subscribeToPaidPlan()`, `confirmPayment()`, `consumeQuota()`/`releaseQuota()`, `cancel()`, `suspend()` y `renew()`. `SubscriptionPlan` y `PaymentTransaction` son entidades internas que solo cambian a través de la raíz.
+
+**Value Objects:** `PlotQuota` encapsula la disponibilidad de cupo (`hasAvailable()`, `consume()`, `release()`); `Money` evita operar importes de monedas distintas; `BillingPeriod` calcula vencimiento y extensión del periodo.
+
+**Ports (Interfaces):** `SubscriptionRepository`, `SubscriptionPlanRepository` y `PaymentGateway` desacoplan la persistencia y el cobro del proveedor externo.
 
 #### 4.2.2.2. Interface Layer
 
+La capa de interfaz expone el catálogo de planes, la gestión de la suscripción del usuario y el webhook de confirmación asíncrona de la pasarela de pago.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `SubscriptionController` | REST Controller | Expone la selección de plan, la consulta del estado, la renovación y la cancelación. |
+| `SubscriptionPlanController` | REST Controller | Expone el catálogo público de planes. |
+| `PaymentWebhookController` | REST Controller | Recibe las confirmaciones asíncronas de la pasarela de pago. |
+| `SubscribeResource` | Resource (DTO) | Carga de entrada de la selección de plan. |
+| `SubscriptionResource` | Resource (DTO) | Representación de la suscripción expuesta al cliente. |
+| `SubscriptionPlanResource` | Resource (DTO) | Representación de un plan del catálogo. |
+
+*   **SubscriptionController:** Expone la contratación de plan, cancelación y renovación, y la consulta del estado vigente.
+*   **SubscriptionPlanController:** Expone el catálogo público de planes (nombre, precio, ciclo y cupo de parcelas).
+*   **PaymentWebhookController:** Endpoint de Open Host Service que recibe las notificaciones asíncronas de la pasarela de pago.
+
 #### 4.2.2.3. Application Layer
+
+Esta capa orquesta la contratación, confirmación de pago, renovación, cancelación y consumo/liberación de cupo, distinguiendo el flujo gratuito del de pago.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `SubscribeToPlanCommandHandler` | Command Handler | Orquesta la contratación de un plan, distinguiendo el flujo gratuito del de pago. |
+| `ConfirmPaymentCommandHandler` | Command Handler | Procesa la confirmación de la pasarela y activa la suscripción. |
+| `CancelSubscriptionCommandHandler` | Command Handler | Registra la cancelación programada. |
+| `RenewSubscriptionCommandHandler` | Command Handler | Ejecuta la renovación del periodo. |
+| `ConsumeQuotaCommandHandler` | Command Handler | Reserva un cupo de parcela a solicitud de Farm Management. |
+| `ReleaseQuotaCommandHandler` | Command Handler | Libera un cupo al darse de baja una parcela. |
+| `SubscriptionExpirationEventHandler` | Event Handler | Reacciona al vencimiento del periodo suspendiendo la suscripción. |
+| `SubscriptionQueryService` | Query Service | Resuelve las consultas de estado y de catálogo de planes. |
 
 #### 4.2.2.4. Infrastructure Layer
 
+La capa de infraestructura implementa la persistencia del catálogo y las suscripciones, la traducción hacia la pasarela de pago externa y la tarea programada de expiración.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `JpaSubscriptionRepository` | Repository Implementation | Implementa `SubscriptionRepository` sobre Spring Data JPA. |
+| `JpaSubscriptionPlanRepository` | Repository Implementation | Implementa `SubscriptionPlanRepository` sobre Spring Data JPA. |
+| `ExternalPaymentGatewayAdapter` | Anti-corruption Layer | Implementa `PaymentGateway` traduciendo entre el modelo del dominio y el de la pasarela externa. |
+| `SubscriptionExpirationScheduler` | Scheduled Job | Evalúa periódicamente las suscripciones vencidas y dispara su suspensión. |
+
 #### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
+
+Dentro del contenedor **RESTful API**, el contexto acotado de **Subscription and Billing** organiza sus responsabilidades en las cuatro capas tácticas, comunicándose con Farm Management (verificación y consumo de cupo) y con Soil Monitoring (suspensión de ingesta) mediante eventos de dominio.
+
+<div align="center">
+<img src="../assets/container-diagram/Billing-Components.png" alt="Component Diagram Subscription and Billing" width="850">
+<p><em>Component Diagram del bounded context Subscription and Billing.</em></p>
+</div>
+
+*   **Subscription / Subscription Plan / Payment Webhook Controllers:** Reciben las solicitudes de la Web Application y las confirmaciones de la pasarela de pago externa.
+*   **Subscription Command Handlers y Quota Command Handlers:** Orquestan la contratación, pago, renovación, cancelación y el consumo/liberación de cupo.
+*   **Billing Domain Model:** Contiene `Subscription`, `PlotQuota` y `SubscriptionPlan` con sus invariantes.
+*   **Subscription Repository:** Adaptador Spring Data JPA hacia la base de datos de la plataforma.
+*   **Payment Gateway ACL:** Traduce el cobro hacia la pasarela de pago externa.
+*   **Expiration Scheduler:** Evalúa periódicamente los periodos vencidos y dispara la suspensión, propagando `SubscriptionSuspendedEvent` hacia Soil Monitoring.
 
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
+
+A continuación, el diagrama de clases unificado de la capa de dominio del contexto Subscription and Billing.
+
+<div align="center">
+<img src="../assets/class-diagram/SubscriptionBilling.png" alt="Class Diagram Subscription and Billing" width="850">
+<p><em>Class Diagram del Domain Layer de Subscription and Billing.</em></p>
+</div>
 
 ##### 4.2.2.6.2. Bounded Context Database Design Diagram
 
@@ -164,7 +248,9 @@ Las tablas principales asociadas a este contexto son `USER_ACCOUNTS`, `ADVISORY_
 <p><em>Database Diagram del bounded context Subscription and Billing.</em></p>
 </div>
 
-<!-- TODO: descripción de entidades, atributos, llaves primarias/foráneas, índices y restricciones CHECK del modelo relacional. -->
+Las tablas principales asociadas a este contexto son `SUBSCRIPTION_PLANS` (catálogo de planes con precio, ciclo de facturación y cupo máximo de parcelas), `SUBSCRIPTIONS` (suscripción vigente de cada usuario, con su cupo total/consumido y periodo de facturación) y `PAYMENT_TRANSACTIONS` (historial de cobros asociados a cada suscripción, con su referencia externa).
+
+**Restricciones adicionales:** `CHECK (quota_consumed <= quota_total)` a nivel de tabla en `SUBSCRIPTIONS`, y un índice único parcial sobre `user_account_id` restringido a los registros con estado `ACTIVE` o `PENDING_PAYMENT`, garantizando una única suscripción vigente por usuario.
 
 ---
 

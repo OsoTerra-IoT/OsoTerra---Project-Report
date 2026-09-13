@@ -14,5 +14,6 @@
 | 0.0.10 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo de la sección de competidores, análisis competitivo y estrategias frente a competidores en el Capítulo II. |
 | 0.0.11 | 12/09/2026 | Iker Gabriel Barturen Panez | Estructuración de la sección 4.2 del Capítulo IV para los 6 bounded contexts e incorporación de los Database Design Diagrams (ERD) en cada uno. |
 | 0.0.12 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Identity and Access Management (4.2.1): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. |
+| 0.0.13 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Subscription and Billing (4.2.2): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. |
 
 # Project Report Collaboration Insights

@@ -7,3 +7,7 @@
 # Structurizr local server artifacts (generated when rendering diagrams)
 assets/**/.structurizr/
 assets/**/workspace.json
+
+# Diagram-as-code sources (PlantUML / Structurizr DSL) - only the rendered images are part of the report
+assets/plant/*.puml
+assets/plant/*.dsl
