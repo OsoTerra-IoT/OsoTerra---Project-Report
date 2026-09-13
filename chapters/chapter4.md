@@ -256,19 +256,106 @@ Las tablas principales asociadas a este contexto son `SUBSCRIPTION_PLANS` (catá
 
 ### 4.2.3. Bounded Context: Farm Management
 
+Este contexto mantiene la estructura agronómica de la solución y provee a los demás contextos el marco de referencia que permite contextualizar cada medición.
+
 #### 4.2.3.1. Domain Layer
+
+La capa de dominio de Farm Management modela la jerarquía finca-parcela, el catálogo de cultivos con su umbral de salinidad y el ciclo de vida de los dispositivos IoT.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `Farm` | Aggregate Root | Representa la finca conducida por un productor. Es raíz de consistencia de las parcelas que agrupa. |
+| `Plot` | Entity | Representa una parcela dentro de una finca, con su superficie, ubicación y cultivo asignado. Es la unidad mínima de monitoreo. |
+| `Crop` | Aggregate Root | Representa un cultivo del catálogo con su umbral de salinidad y su clase de tolerancia. Es raíz independiente porque el catálogo se administra centralmente. |
+| `Device` | Aggregate Root | Representa un dispositivo IoT con su código de activación, su estado operativo y su vinculación a una parcela. |
+| `SalinityThreshold` | Value Object | Encapsula el umbral de conductividad eléctrica de un cultivo en dS/m, con la validación de que sea positivo. |
+| `SaltToleranceClass` | Enumeration | Clasifica el cultivo como `SENSITIVE`, `MODERATELY_SENSITIVE`, `MODERATELY_TOLERANT` o `TOLERANT`. |
+| `PlotArea` | Value Object | Encapsula la superficie en hectáreas, validando que sea mayor a cero. |
+| `GeoLocation` | Value Object | Encapsula latitud y longitud, validando sus rangos admisibles. |
+| `Address` | Value Object | Agrupa departamento, provincia y distrito. |
+| `DeviceActivationCode` | Value Object | Encapsula el código de activación del dispositivo. |
+| `DeviceStatus` | Enumeration | Define los estados: `UNASSIGNED`, `ACTIVE`, `OFFLINE` e `INACTIVE`. |
+| `FarmRepository` / `CropRepository` / `DeviceRepository` | Repository (interfaz) | Abstracción de persistencia de cada agregado. |
+| `PlotRegistrationService` | Domain Service | Coordina el registro de una parcela verificando el cupo de la suscripción, operación que involucra a dos agregados de contextos distintos. |
+| `DeviceInstalledInPlotEvent` | Domain Event | Se publica al vincularse un dispositivo; activa el monitoreo en Soil Monitoring. |
+| `CropAssignedToPlotEvent` | Domain Event | Se publica al asignarse un cultivo; establece el umbral aplicable en Salinity Alerting. |
+
+**Entities y Aggregates:** `Farm` controla el alta/baja de parcelas (`addPlot()`, `removePlot()`) impidiendo remover una con dispositivo activo. `Plot` administra la asignación de cultivo y la vinculación/desvinculación de dispositivo (`assignCrop()`, `attachDevice()`, `detachDevice()`). `Crop` expone `exceedsThreshold(double)` para evaluar si una conductividad supera su tolerancia. `Device` gestiona su ciclo de vida completo: `register()`, `attachToPlot()`, `detach()`, `markOffline()`, `recordHeartbeat()` y `applyCalibration()`.
+
+**Value Objects:** `SalinityThreshold`, `PlotArea`, `GeoLocation`, `Address` y `DeviceActivationCode` encapsulan validaciones estructurales propias de cada dato agronómico o geográfico.
+
+**Domain Service:** `PlotRegistrationService` es el único punto donde el dominio de Farm Management coordina con el cupo de Subscription and Billing antes de crear una parcela.
 
 #### 4.2.3.2. Interface Layer
 
+La capa de interfaz expone el registro y consulta de fincas, parcelas, catálogo de cultivos y dispositivos.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `FarmController` | REST Controller | Expone el registro, consulta, actualización y baja de fincas. |
+| `PlotController` | REST Controller | Expone la gestión de parcelas y la asignación de cultivo. |
+| `CropController` | REST Controller | Expone la consulta del catálogo de cultivos y sus umbrales. |
+| `DeviceController` | REST Controller | Expone el registro, vinculación y consulta del estado de los dispositivos. |
+| `CreateFarmResource` / `CreatePlotResource` / `AssignCropResource` | Resource (DTO) | Cargas de entrada del registro de finca, parcela y asignación de cultivo. |
+| `FarmResource` / `PlotResource` / `CropResource` / `DeviceResource` | Resource (DTO) | Representaciones expuestas al cliente. |
+
+*   **FarmController / PlotController:** Registro y consulta de fincas y parcelas del productor autenticado.
+*   **CropController:** Consulta del catálogo de cultivos con su umbral de tolerancia.
+*   **DeviceController:** Registro de dispositivos por código de activación y vinculación a una parcela.
+
 #### 4.2.3.3. Application Layer
+
+Esta capa orquesta el alta de fincas, parcelas y dispositivos, verificando previamente el cupo de la suscripción y propagando los eventos de asignación de cultivo e instalación de dispositivo.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `RegisterFarmCommandHandler` | Command Handler | Orquesta el alta de una finca. |
+| `RegisterPlotCommandHandler` | Command Handler | Orquesta el alta de una parcela verificando previamente el cupo de la suscripción. |
+| `AssignCropToPlotCommandHandler` | Command Handler | Registra la asignación del cultivo y propaga el evento. |
+| `DeactivatePlotCommandHandler` | Command Handler | Da de baja la parcela y libera el cupo consumido. |
+| `RegisterDeviceCommandHandler` | Command Handler | Da de alta un dispositivo a partir de su código de activación. |
+| `AttachDeviceToPlotCommandHandler` | Command Handler | Vincula el dispositivo a la parcela y publica `DeviceInstalledInPlotEvent`. |
+| `MarkDeviceOfflineEventHandler` | Event Handler | Reacciona a la ausencia de lecturas marcando el dispositivo como fuera de línea. |
+| `FarmQueryService` | Query Service | Resuelve las consultas de fincas y parcelas de un usuario. |
+| `CropQueryService` | Query Service | Resuelve las consultas del catálogo y del umbral aplicable a una parcela. |
 
 #### 4.2.3.4. Infrastructure Layer
 
+La capa de infraestructura implementa la persistencia de fincas, cultivos y dispositivos, la carga inicial del catálogo de cultivos y la verificación de cupo hacia Subscription and Billing.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `JpaFarmRepository` / `JpaCropRepository` / `JpaDeviceRepository` | Repository Implementation | Implementan los repositorios del dominio sobre Spring Data JPA. |
+| `CropCatalogSeeder` | Data Initializer | Carga el catálogo inicial de cultivos con los umbrales de Maas y Hoffman. |
+| `SubscriptionQuotaClient` | Anti-corruption Layer | Traduce las verificaciones de cupo hacia el contexto de Subscription and Billing. |
+
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+Dentro del contenedor **RESTful API**, el contexto acotado de **Farm Management** coordina con Subscription and Billing (verificación de cupo), Soil Monitoring (activación de monitoreo) y Salinity Alerting (umbral del cultivo).
+
+<div align="center">
+<img src="../assets/container-diagram/Farm-Components.png" alt="Component Diagram Farm Management" width="850">
+<p><em>Component Diagram del bounded context Farm Management.</em></p>
+</div>
+
+*   **Farm / Plot / Crop / Device Controllers:** Reciben las solicitudes de la Web Application y la Mobile Application.
+*   **Farm Command Handlers y Device Command Handlers:** Orquestan el alta y actualización de fincas, parcelas y dispositivos.
+*   **Plot Registration Service:** Domain Service que coordina con Subscription and Billing antes de registrar una parcela.
+*   **Farm Domain Model:** Contiene `Farm`, `Plot`, `Crop` y `Device` con sus invariantes.
+*   **Farm / Crop / Device Repository:** Adaptadores Spring Data JPA hacia la base de datos de la plataforma.
+*   **Subscription Quota ACL:** Traduce la verificación de cupo hacia Subscription and Billing.
+*   Los Device Command Handlers publican `DeviceInstalledInPlotEvent` hacia Soil Monitoring, y Crop Query Service provee el umbral del cultivo (`CropAssignedToPlotEvent`) a Salinity Alerting.
 
 #### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
+
+A continuación, el diagrama de clases unificado de la capa de dominio del contexto Farm Management.
+
+<div align="center">
+<img src="../assets/class-diagram/FarmManagement.png" alt="Class Diagram Farm Management" width="850">
+<p><em>Class Diagram del Domain Layer de Farm Management.</em></p>
+</div>
 
 ##### 4.2.3.6.2. Bounded Context Database Design Diagram
 
@@ -277,7 +364,9 @@ Las tablas principales asociadas a este contexto son `SUBSCRIPTION_PLANS` (catá
 <p><em>Database Diagram del bounded context Farm Management.</em></p>
 </div>
 
-<!-- TODO: descripción de entidades, atributos, llaves primarias/foráneas, índices y restricciones CHECK del modelo relacional. -->
+Las tablas principales asociadas a este contexto son `FARMS` (finca y su propietario), `PLOTS` (parcela con su superficie, ubicación, cultivo y finca a la que pertenece), `CROPS` (catálogo de cultivos con su umbral de salinidad en dS/m y su clase de tolerancia) y `DEVICES` (dispositivo IoT con su código de activación y estado).
+
+**Restricciones adicionales:** restricción `UNIQUE` sobre `devices.plot_id` para garantizar que una parcela tenga como máximo un dispositivo vinculado, e índice sobre `plots.farm_id` para optimizar la consulta de parcelas por finca. La tabla `CROPS` se inicializa con los umbrales de tolerancia de Maas y Hoffman para los cultivos predominantes de la costa peruana (arroz, maíz, uva, espárrago, algodón, cebada, trigo, papa, tomate y cebolla).
 
 ---
 
