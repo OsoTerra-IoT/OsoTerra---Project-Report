@@ -489,19 +489,96 @@ Las tablas principales son `SOIL_READINGS` (valor crudo, compensado y factor apl
 
 ### 4.2.5. Bounded Context: Salinity Alerting
 
+Este es el segundo bounded context core. Evalúa las lecturas persistidas contra el umbral del cultivo de cada parcela, genera alertas con la severidad correspondiente y registra el ciclo de atención hasta la acción correctiva.
+
 #### 4.2.5.1. Domain Layer
+
+La capa de dominio garantiza el ciclo completo de atención de una alerta: generación, notificación, reconocimiento y acción correctiva.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `SalinityAlert` | Aggregate Root | Representa una alerta generada por el exceso del umbral. Es la raíz de consistencia del ciclo completo de atención. |
+| `SeverityLevel` | Enumeration | Define los niveles de severidad: `WATCH`, `WARNING` y `CRITICAL`, determinados por la magnitud del exceso sobre el umbral. |
+| `AlertStatus` | Enumeration | Define los estados: `OPEN`, `ACKNOWLEDGED` y `RESOLVED`. |
+| `ThresholdEvaluation` | Value Object | Encapsula el resultado de comparar una lectura contra el umbral: valor observado, umbral aplicado, exceso y nivel resultante. |
+| `CorrectiveAction` | Entity | Registra la intervención ejecutada en respuesta a la alerta, con su tipo y fecha. |
+| `CorrectiveActionType` | Enumeration | Define los tipos admisibles: `SALT_LEACHING`, `IRRIGATION_ADJUSTMENT`, `DRAINAGE_CORRECTION`, `AMENDMENT_APPLICATION` y `OTHER`. |
+| `AlertAcknowledgement` | Value Object | Registra quién reconoció la alerta y cuándo. |
+| `NotificationPreference` | Aggregate Root | Representa la configuración de notificaciones de un usuario: severidad mínima y canal de entrega. |
+| `NotificationChannel` | Enumeration | Define los canales: `PUSH`, `EMAIL` y `BOTH`. |
+| `AlertRecipient` | Value Object | Encapsula un destinatario de la notificación con su rol respecto de la parcela. |
+| `SalinityAlertRepository` / `NotificationPreferenceRepository` | Repository (interfaz) | Abstracción de persistencia y consulta de cada agregado. |
+| `ThresholdEvaluationService` | Domain Service | Compara la conductividad compensada contra el umbral del cultivo y determina el nivel de severidad. |
+| `NotificationDispatcher` | Domain Service (interfaz) | Abstrae el envío de notificaciones, manteniendo el proveedor fuera del dominio. |
+| `AlertGeneratedEvent` | Domain Event | Se publica al generarse una alerta; desencadena la notificación. |
+| `CorrectiveActionRegisteredEvent` | Domain Event | Se publica al registrarse la acción; cierra el ciclo y alimenta la analítica. |
+
+**Entities y Aggregates:** `SalinityAlert` transita `OPEN → ACKNOWLEDGED → RESOLVED` mediante `generate()`, `acknowledge()` y `registerCorrectiveAction()`, y expone `wasResolvedWithin(hours)` para la métrica de tiempo de respuesta. `NotificationPreference` decide si notificar mediante `shouldNotify(severity)` según la severidad mínima configurada por el usuario.
+
+**Domain Service central:** `ThresholdEvaluationService` implementa la regla de negocio central: la severidad se determina por la **proporción del exceso** sobre el umbral del cultivo, no por el valor absoluto de conductividad, ya que un mismo valor puede ser inocuo para un cultivo tolerante y destructivo para uno sensible.
 
 #### 4.2.5.2. Interface Layer
 
+La capa de interfaz expone el centro de notificaciones, el reconocimiento de alertas y consume el evento publicado por Soil Monitoring.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `SalinityAlertController` | REST Controller | Expone la consulta del centro de notificaciones, el reconocimiento de alertas y el registro de acciones correctivas. |
+| `NotificationPreferenceController` | REST Controller | Expone la consulta y actualización de las preferencias de notificación. |
+| `AcknowledgeAlertResource` / `RegisterCorrectiveActionResource` | Resource (DTO) | Cargas de entrada del reconocimiento y del registro de la acción. |
+| `SalinityAlertResource` | Resource (DTO) | Representación de la alerta expuesta al cliente, incluyendo el valor observado, el umbral y la recomendación. |
+| `NotificationPreferenceResource` | Resource (DTO) | Representación de las preferencias del usuario. |
+| `SoilReadingStoredEventConsumer` | Event Consumer | Consume el evento publicado por Soil Monitoring y desencadena la evaluación. |
+
 #### 4.2.5.3. Application Layer
+
+Esta capa orquesta la evaluación de cada lectura contra el umbral del cultivo, la generación y despacho de alertas, y el ciclo de reconocimiento y resolución.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `EvaluateReadingCommandHandler` | Command Handler | Orquesta la evaluación de una lectura: obtiene el umbral del cultivo desde Farm Management, invoca el servicio de evaluación y genera la alerta si corresponde. |
+| `AcknowledgeAlertCommandHandler` | Command Handler | Registra el reconocimiento de la alerta. |
+| `RegisterCorrectiveActionCommandHandler` | Command Handler | Registra la acción correctiva y resuelve la alerta. |
+| `UpdateNotificationPreferenceCommandHandler` | Command Handler | Actualiza la configuración de notificaciones del usuario. |
+| `AlertGeneratedEventHandler` | Event Handler | Reacciona a la generación de una alerta determinando los destinatarios y despachando la notificación. |
+| `SoilReadingStoredEventHandler` | Event Handler | Reacciona al evento de Soil Monitoring invocando la evaluación del umbral. |
+| `SalinityAlertQueryService` | Query Service | Resuelve las consultas del centro de notificaciones y del histórico de alertas por parcela. |
 
 #### 4.2.5.4. Infrastructure Layer
 
+La capa de infraestructura implementa la persistencia de alertas y preferencias, y las capas de anticorrupción hacia los contextos y proveedores externos de los que depende.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `JpaSalinityAlertRepository` / `JpaNotificationPreferenceRepository` | Repository Implementation | Implementan los repositorios del dominio sobre Spring Data JPA. |
+| `PushNotificationDispatcher` / `EmailNotificationDispatcher` | Anti-corruption Layer | Implementaciones alternativas de `NotificationDispatcher` sobre el canal push y el canal de correo. |
+| `CropThresholdClient` | Anti-corruption Layer | Traduce las consultas de umbral hacia el contexto de Farm Management. |
+| `AdvisoryLinkClient` | Anti-corruption Layer | Traduce las consultas de asesores vinculados hacia el contexto de Identity and Access Management. |
+
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
+
+Dentro del contenedor **RESTful API**, el contexto acotado de **Salinity Alerting** consume el evento de Soil Monitoring, consulta el umbral en Farm Management y los asesores vinculados en Identity and Access Management, y provee el histórico a Analytics and Reporting.
+
+<div align="center">
+<img src="../assets/container-diagram/SalinityAlerting-Components.png" alt="Component Diagram Salinity Alerting" width="850">
+<p><em>Component Diagram del bounded context Salinity Alerting.</em></p>
+</div>
+
+*   **Soil Reading Event Consumer y Evaluate Reading Handler:** Reaccionan a `SoilReadingStoredEvent`, obtienen el umbral vía Crop Threshold ACL y ejecutan el Threshold Evaluation Service.
+*   **Alerting Domain Model:** Contiene `SalinityAlert` y `CorrectiveAction` con sus invariantes.
+*   **Alert Generated Event Handler:** Determina destinatarios vía Advisory Link ACL y despacha la notificación mediante Push Notification ACL.
+*   **Alert Command Handlers y Alert Query Service:** Gestionan el reconocimiento, la acción correctiva y el histórico de alertas, proveyendo este último a Analytics and Reporting.
 
 #### 4.2.5.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.5.6.1. Bounded Context Domain Layer Class Diagrams
+
+A continuación, el diagrama de clases unificado de la capa de dominio del contexto Salinity Alerting.
+
+<div align="center">
+<img src="../assets/class-diagram/SalinityAlerting.png" alt="Class Diagram Salinity Alerting" width="850">
+<p><em>Class Diagram del Domain Layer de Salinity Alerting.</em></p>
+</div>
 
 ##### 4.2.5.6.2. Bounded Context Database Design Diagram
 
@@ -510,7 +587,9 @@ Las tablas principales son `SOIL_READINGS` (valor crudo, compensado y factor apl
 <p><em>Database Diagram del bounded context Salinity Alerting.</em></p>
 </div>
 
-<!-- TODO: descripción de entidades, atributos, llaves primarias/foráneas, índices y restricciones CHECK del modelo relacional. -->
+Las tablas principales son `SALINITY_ALERTS` (alerta con el valor observado, el umbral aplicado, la severidad y el estado del ciclo de atención), `CORRECTIVE_ACTIONS` (acción ejecutada en respuesta a una alerta resuelta) y `NOTIFICATION_PREFERENCES` (severidad mínima y canal configurados por cada usuario).
+
+**Restricciones adicionales:** índice único parcial sobre `(plot_id, severity)` restringido a los registros con estado `OPEN`, que impide generar una alerta duplicada mientras exista una activa del mismo nivel para la misma parcela; índice sobre `(plot_id, generated_at)` para optimizar la consulta del histórico de alertas por parcela.
 
 ---
 
