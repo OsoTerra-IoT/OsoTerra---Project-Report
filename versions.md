@@ -16,5 +16,6 @@
 | 0.0.12 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Identity and Access Management (4.2.1): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. |
 | 0.0.13 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Subscription and Billing (4.2.2): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. |
 | 0.0.14 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Farm Management (4.2.3): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. |
+| 0.0.15 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Soil Monitoring (4.2.4): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. |
 
 # Project Report Collaboration Insights

@@ -372,19 +372,107 @@ Las tablas principales asociadas a este contexto son `FARMS` (finca y su propiet
 
 ### 4.2.4. Bounded Context: Soil Monitoring
 
+Este es el primero de los dos bounded contexts core. Concentra la captura, validación, compensación y persistencia de las mediciones del suelo, y es donde reside el valor diferencial de la solución. Su modelo se despliega parcialmente en el Edge Service y parcialmente en el RESTful API.
+
 #### 4.2.4.1. Domain Layer
+
+La capa de dominio garantiza que toda lectura persistida conserve simultáneamente su valor crudo y su valor compensado, y que su marca temporal sea coherente.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `SoilReading` | Aggregate Root | Representa una medición completa del suelo en un instante determinado. Garantiza que toda lectura conserve su valor crudo y su valor compensado. |
+| `ElectricalConductivity` | Value Object | Encapsula un valor de conductividad eléctrica en dS/m. Valida que sea no negativo y esté dentro del rango físico admisible del sensor. |
+| `SoilMoisture` | Value Object | Encapsula el contenido volumétrico de agua expresado como porcentaje, validando el rango de 0 a 100. |
+| `SoilTemperature` | Value Object | Encapsula la temperatura del suelo en grados Celsius, validando el rango físicamente plausible. |
+| `ReadingTimestamp` | Value Object | Encapsula la marca temporal de la captura, garantizando que no sea futura. |
+| `CompensationResult` | Value Object | Agrupa el valor crudo, el valor compensado y el factor aplicado, preservando la trazabilidad del cálculo. |
+| `ReadingBatch` | Aggregate Root | Representa un lote de lecturas transmitido desde el Edge Service. Su ciclo de sincronización e idempotencia son autónomos respecto de cada lectura individual. |
+| `SyncStatus` | Enumeration | Define los estados de sincronización: `PENDING`, `SYNCHRONIZED` y `DISCARDED`. |
+| `SensorRange` | Value Object | Define los límites físicos admisibles de cada sensor, empleados en la validación. |
+| `CalibrationRecord` | Aggregate Root | Registra una calibración del dispositivo contra un resultado de laboratorio, con su valor de referencia y el factor resultante. |
+| `LabResult` | Value Object | Encapsula el resultado de un análisis de laboratorio: valor de conductividad, fecha de muestreo y laboratorio emisor. |
+| `SoilReadingRepository` / `ReadingBatchRepository` / `CalibrationRecordRepository` | Repository (interfaz) | Abstracción de persistencia y consulta de cada agregado. |
+| `ReadingValidationService` | Domain Service | Determina si una lectura se encuentra dentro del rango físico admisible del sensor. |
+| `TemperatureCompensationService` | Domain Service | Aplica la compensación de la conductividad eléctrica a la temperatura de referencia de 25 °C, incorporando el efecto de la humedad. |
+| `SoilReadingStoredEvent` | Domain Event | Se publica al persistirse una lectura. Es el contrato público que consume Salinity Alerting. |
+| `DeviceWentOfflineEvent` | Domain Event | Se publica al detectarse la ausencia prolongada de lecturas de un dispositivo. |
+
+**Entities y Aggregates:** `SoilReading` se crea mediante `capture()` y solo se considera evaluable tras `applyCompensation()`, que fija el valor efectivo (`getEffectiveConductivity()`) usado por Salinity Alerting. `ReadingBatch` agrupa las lecturas transmitidas por un dispositivo y confirma su procesamiento con `markSynchronized(accepted, discarded)`. `CalibrationRecord` calcula el factor de corrección (`computeFactor()`) a partir de un `LabResult`.
+
+**Domain Service central:** `TemperatureCompensationService` implementa la regla técnica más determinante del contexto: ajusta la conductividad a 25 °C incorporando el factor de calibración del dispositivo y el efecto de la humedad, dado que una menor humedad produce lecturas artificialmente bajas.
 
 #### 4.2.4.2. Interface Layer
 
+La capa de interfaz expone la ingesta de lotes desde el Edge Service (como Open Host Service) y la consulta de series históricas por parcela.
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `TelemetryIngestionController` | REST Controller | Expone el endpoint de ingesta de lotes de lecturas desde el Edge Service. Actúa como Open Host Service. |
+| `SoilReadingController` | REST Controller | Expone la consulta de la lectura más reciente y de series históricas por parcela. |
+| `CalibrationController` | REST Controller | Expone el registro y la consulta de calibraciones de un dispositivo. |
+| `LabResultController` | REST Controller | Expone el registro manual de resultados de laboratorio. |
+| `ReadingBatchResource` | Resource (DTO) | Carga de entrada del lote de lecturas remitido por el Edge Service. |
+| `SoilReadingResource` / `ReadingSeriesResource` | Resource (DTO) | Representación de una lectura y de una serie paginada expuestas al cliente. |
+| `CalibrationResource` | Resource (DTO) | Representación de una calibración registrada. |
+| `IngestionAcknowledgementResource` | Resource (DTO) | Respuesta de la ingesta con el conteo de lecturas aceptadas y descartadas. |
+| `TelemetryConsumer` | Message Consumer | Recibe las lecturas transmitidas por el dispositivo, dentro del Edge Service. |
+
 #### 4.2.4.3. Application Layer
+
+Esta capa distingue explícitamente los casos de uso que se ejecutan en el Edge Service (captura y sincronización en campo) de los que se ejecutan en el RESTful API (ingesta y consulta en la nube).
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `IngestReadingBatchCommandHandler` | Command Handler | Orquesta la ingesta del lote: descarta duplicados, persiste las lecturas nuevas y publica el evento por cada una. |
+| `CaptureReadingCommandHandler` | Command Handler | Se ejecuta en el Edge Service. Orquesta la validación, compensación y decisión de transmisión o buffer. |
+| `SynchronizeBufferedReadingsCommandHandler` | Command Handler | Se ejecuta en el Edge Service. Transmite en orden cronológico las lecturas pendientes al restablecerse la conectividad. |
+| `RegisterCalibrationCommandHandler` | Command Handler | Calcula y persiste el factor de corrección a partir del resultado de laboratorio. |
+| `RegisterLabResultCommandHandler` | Command Handler | Registra el resultado de laboratorio y lo asocia a la serie de la parcela. |
+| `DeviceActivationEventHandler` | Event Handler | Reacciona a `DeviceInstalledInPlotEvent` habilitando la ingesta para el dispositivo. |
+| `SubscriptionSuspendedEventHandler` | Event Handler | Reacciona a `SubscriptionSuspendedEvent` suspendiendo la ingesta de las parcelas asociadas. |
+| `StaleDeviceDetectionHandler` | Event Handler | Evalúa periódicamente los dispositivos sin lecturas recientes y publica `DeviceWentOfflineEvent`. |
+| `SoilReadingQueryService` | Query Service | Resuelve las consultas de última lectura y de series por parcela y rango de fechas. |
 
 #### 4.2.4.4. Infrastructure Layer
 
+La capa de infraestructura se materializa en dos containers: el RESTful API (persistencia en la nube) y el Edge Service (persistencia local y sincronización).
+
+| Clase | Categoría | Propósito |
+|---|---|---|
+| `JpaSoilReadingRepository` | Repository Implementation | Implementa `SoilReadingRepository` sobre Spring Data JPA en la plataforma cloud. |
+| `PeeweeSoilReadingRepository` | Repository Implementation | Implementa la persistencia local de lecturas sobre SQLite mediante Peewee ORM, dentro del Edge Service. |
+| `JpaReadingBatchRepository` / `JpaCalibrationRecordRepository` | Repository Implementation | Implementan la persistencia de lotes y calibraciones sobre Spring Data JPA. |
+| `SerialSensorAdapter` | Anti-corruption Layer | Traduce las tramas entregadas por el hardware del sensor al modelo de dominio, aislando el formato del fabricante. |
+| `PlatformSyncClient` | Infrastructure Service | Cliente HTTP del Edge Service que remite los lotes al endpoint de ingesta de la plataforma. |
+| `ConnectivityMonitor` | Infrastructure Service | Determina en el Edge Service si existe conectividad, condicionando la transmisión o el almacenamiento en buffer. |
+| `SoilReadingEventPublisher` | Event Publisher | Publica `SoilReadingStoredEvent` hacia el contexto de Salinity Alerting. |
+
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+El diagrama siguiente corresponde al container **RESTful API** (lado plataforma), que recibe los lotes ya validados y compensados desde el Edge Service.
+
+<div align="center">
+<img src="../assets/container-diagram/SoilMonitoring-Components.png" alt="Component Diagram Soil Monitoring" width="850">
+<p><em>Component Diagram del bounded context Soil Monitoring (container RESTful API).</em></p>
+</div>
+
+*   **Telemetry Ingestion Controller:** Open Host Service que recibe los lotes del Edge Service.
+*   **Ingest Batch Handler:** Descarta duplicados y persiste las lecturas nuevas.
+*   **Stale Device Detection Handler:** Tarea programada que evalúa dispositivos sin lecturas recientes.
+*   **Soil Reading Query Service:** Resuelve la última lectura y series históricas por parcela.
+*   **Monitoring Domain Model:** Contiene `SoilReading`, `ReadingBatch` y `CalibrationRecord`.
+*   **Soil Reading Event Publisher:** Publica `SoilReadingStoredEvent` hacia Salinity Alerting, y `DeviceWentOfflineEvent` hacia Farm Management. Provee series históricas a Analytics and Reporting.
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+A continuación, el diagrama de clases unificado de la capa de dominio del contexto Soil Monitoring.
+
+<div align="center">
+<img src="../assets/class-diagram/SoilMonitoring.png" alt="Class Diagram Soil Monitoring" width="850">
+<p><em>Class Diagram del Domain Layer de Soil Monitoring.</em></p>
+</div>
 
 ##### 4.2.4.6.2. Bounded Context Database Design Diagram
 
@@ -393,7 +481,9 @@ Las tablas principales asociadas a este contexto son `FARMS` (finca y su propiet
 <p><em>Database Diagram del bounded context Soil Monitoring.</em></p>
 </div>
 
-<!-- TODO: descripción de entidades, atributos, llaves primarias/foráneas, índices y restricciones CHECK del modelo relacional. -->
+Las tablas principales son `SOIL_READINGS` (valor crudo, compensado y factor aplicado por lectura), `READING_BATCHES` (lotes transmitidos por el Edge Service con su conteo de aceptadas/descartadas) y `CALIBRATION_RECORDS` (calibraciones de dispositivo contra resultados de laboratorio).
+
+**Restricciones adicionales:** índice único compuesto sobre `(device_id, captured_at)` que garantiza la idempotencia de la ingesta ante reenvíos del Edge Service; índice compuesto sobre `(plot_id, captured_at)` para optimizar la consulta de series históricas, la de mayor frecuencia del sistema. Se contempla el particionamiento de `SOIL_READINGS` por rango temporal dado su crecimiento lineal. El Edge Service replica un subconjunto de `SOIL_READINGS` en SQLite con un campo `is_synchronized` adicional.
 
 ---
 
