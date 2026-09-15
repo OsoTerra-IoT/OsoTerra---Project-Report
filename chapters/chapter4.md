@@ -2,7 +2,156 @@
 
 ## 4.1. Strategic-Level Domain-Driven Design
 
+En esta sección el equipo explica el proceso seguido para tomar las decisiones de nivel estratégico de Domain-Driven Design sobre OsoSense. El punto de partida fue el Big Picture EventStorming de la sección 2.4, con sus 35 eventos de dominio, sus cinco eventos pivote y sus seis fronteras emergentes. A partir de ese material se realizaron, en orden, un Design-Level EventStorming, un Candidate Context Discovery, el modelado de los flujos de mensajes con Domain Storytelling, los Bounded Context Canvases y el Context Mapping. El resultado de este proceso son los seis bounded contexts que se desarrollan de forma táctica en la sección 4.2: Identity and Access Management, Subscription and Billing, Farm Management, Soil Monitoring, Salinity Alerting y Analytics and Reporting.
+
+Todos los artefactos se elaboraron en un mismo board de FigJam, organizado por zonas según la sección del informe a la que corresponde cada captura.
+
 ### 4.1.1. Design-Level EventStorming
+
+El equipo realizó una sesión de Design-Level EventStorming de aproximadamente dos horas para pasar de la visión general del negocio a un modelo con el detalle suficiente para identificar bounded contexts. La sesión tomó como insumo la línea de tiempo del Big Picture EventStorming y siguió la guía indicada en el enunciado (https://bit.ly/dles-guide) y la notación del *EventStorming Glossary & Cheat Sheet* de ddd-crew.
+
+El trabajo se organizó en doce carriles, uno por cada proceso de negocio relevante. En cada carril se reconstruyó la cadena completa de un caso de uso: quién inicia la acción, qué información consulta para decidir, qué comando ejecuta, qué aggregate recibe el comando y protege sus reglas, qué eventos se producen y qué policies reaccionan automáticamente ante esos eventos. Debajo de cada cadena se registraron las reglas de negocio y los HotSpots que surgieron en la discusión.
+
+**Notación utilizada**
+
+| Elemento | Color | Uso en la sesión |
+|---|---|---|
+| Actor | Amarillo | Persona o rol que ejecuta el comando. |
+| Read Model | Verde | Información que el actor consulta antes de decidir. |
+| Command | Azul | Intención o decisión, redactada en imperativo. |
+| Aggregate | Amarillo intenso (forma redondeada) | Entidad que recibe el comando, valida invariantes y emite eventos. |
+| Domain Event | Naranja | Hecho relevante para el negocio, redactado en pasado. |
+| Policy | Lila | Reacción automática con la forma "whenever X, then Y". |
+| External System | Rosado | Sistema de terceros o hardware que interviene en el proceso. |
+| Business Rule | Amarillo (nota ancha) | Invariante que el aggregate debe cumplir. |
+| HotSpot | Rojo | Duda, riesgo o conflicto abierto. |
+
+La sesión se desarrolló en los siguientes pasos:
+
+1. **Selección de procesos.** A partir de las fases del Big Picture se eligieron doce procesos que cubren el ciclo completo del negocio, desde la suscripción hasta la renovación.
+2. **Commands y actores.** Para cada evento se identificó la acción que lo provoca y quién la ejecuta. Los eventos disparados por otros eventos se conectaron mediante policies.
+3. **Aggregates.** Se agruparon los comandos que operan sobre la misma información y protegen las mismas reglas, lo que permitió identificar aggregates como *Subscription*, *Farm*, *Device*, *SoilReading*, *ReadingBatch*, *SalinityAlert*, *AdvisoryLink*, *CalibrationRecord*, *PlotReport* y *SalinityTrend*.
+4. **Read models y sistemas externos.** Se registró la información que cada actor necesita ver y los sistemas de terceros que participan: Stripe, Google OAuth2, el proveedor de notificaciones push y correo, el laboratorio de suelos, el servicio meteorológico y el hardware del sensor.
+5. **Reglas y HotSpots.** Se escribieron las invariantes de cada aggregate y los puntos de duda que deben resolverse en el diseño táctico.
+
+**Carril 1. Suscripción a un plan**
+
+El productor elige un plan (gratuito limitado a una parcela, mensual o anual). El pago se confirma con Stripe y la activación de la suscripción otorga el cupo de parcelas a Farm Management.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-01-subscription.png" alt="Design-Level EventStorming, carril de suscripción a un plan" width="850">
+<p><em>Design-Level EventStorming: suscripción a un plan.</em></p>
+</div>
+
+**Carril 2. Registro de finca, parcela y cultivo**
+
+El productor registra su finca y sus parcelas. Antes de crear la parcela se verifica el cupo disponible; al asignar el cultivo se fija el umbral de salinidad que usará Salinity Alerting.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-02-farm-plot-crop.png" alt="Design-Level EventStorming, carril de registro de finca, parcela y cultivo" width="850">
+<p><em>Design-Level EventStorming: registro de finca, parcela y cultivo.</em></p>
+</div>
+
+**Carril 3. Instalación del dispositivo**
+
+El productor registra el dispositivo con su código de activación y lo vincula a una parcela. La vinculación habilita la ingesta de lecturas.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-03-device-installation.png" alt="Design-Level EventStorming, carril de instalación del dispositivo" width="850">
+<p><em>Design-Level EventStorming: instalación del dispositivo IoT.</em></p>
+</div>
+
+**Carril 4. Captura, compensación y sincronización en el Edge Service**
+
+El dispositivo entrega cada lectura al Edge Service, que la valida contra el rango del sensor, la compensa a 25 °C y la transmite. Si no hay conectividad, la guarda en un buffer local y la sincroniza en orden cronológico al reconectarse.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-04-edge-capture.png" alt="Design-Level EventStorming, carril de captura y sincronización en campo" width="850">
+<p><em>Design-Level EventStorming: captura, compensación y sincronización en el Edge Service.</em></p>
+</div>
+
+**Carril 5. Ingesta de lecturas en la plataforma**
+
+El Edge Service remite lotes al RESTful API. La ingesta descarta duplicados y persiste cada lectura; si un dispositivo deja de reportar, se marca fuera de línea.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-05-ingestion.png" alt="Design-Level EventStorming, carril de ingesta de lecturas" width="850">
+<p><em>Design-Level EventStorming: ingesta de lecturas y detección de dispositivo fuera de línea.</em></p>
+</div>
+
+**Carril 6. Evaluación de umbral y generación de alerta**
+
+Cada lectura almacenada se compara con el umbral del cultivo de la parcela. Si lo supera, se genera una alerta con severidad y se notifica al productor y a sus asesores vinculados.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-06-threshold-alert.png" alt="Design-Level EventStorming, carril de evaluación de umbral y alerta" width="850">
+<p><em>Design-Level EventStorming: evaluación de umbral por cultivo y generación de alerta.</em></p>
+</div>
+
+**Carril 7. Reconocimiento de la alerta y acción correctiva**
+
+El productor revisa la alerta, la reconoce y registra la acción ejecutada en campo, lo que cierra el ciclo de atención.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-07-corrective-action.png" alt="Design-Level EventStorming, carril de acción correctiva" width="850">
+<p><em>Design-Level EventStorming: reconocimiento de la alerta y registro de acción correctiva.</em></p>
+</div>
+
+**Carril 8. Vinculación entre asesor y productor**
+
+El asesor solicita supervisar a un productor, que acepta o revoca el vínculo. Solo los vínculos aceptados reciben alertas y aparecen en el tablero multiparcela.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-08-advisory-link.png" alt="Design-Level EventStorming, carril de vinculación asesor y productor" width="850">
+<p><em>Design-Level EventStorming: vinculación entre asesor técnico y productor.</em></p>
+</div>
+
+**Carril 9. Calibración con laboratorio**
+
+El asesor registra un análisis de laboratorio de la parcela; el sistema calcula el factor de corrección del dispositivo y lo aplica en las siguientes compensaciones.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-09-calibration.png" alt="Design-Level EventStorming, carril de calibración con laboratorio" width="850">
+<p><em>Design-Level EventStorming: calibración del dispositivo con resultado de laboratorio.</em></p>
+</div>
+
+**Carril 10. Generación y exportación del reporte de parcela**
+
+El asesor genera un reporte por parcela y periodo con la serie de lecturas, la tendencia, las alertas, las acciones correctivas y los datos de lluvia, y lo exporta en PDF.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-10-plot-report.png" alt="Design-Level EventStorming, carril de reporte de parcela" width="850">
+<p><em>Design-Level EventStorming: generación y exportación del reporte de parcela.</em></p>
+</div>
+
+**Carril 11. Cálculo de la tendencia de salinidad**
+
+Cada lectura almacenada actualiza la tendencia de la parcela, que el productor consulta como indicador de detección temprana.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-11-salinity-trend.png" alt="Design-Level EventStorming, carril de cálculo de tendencia" width="850">
+<p><em>Design-Level EventStorming: cálculo de la tendencia de salinidad.</em></p>
+</div>
+
+**Carril 12. Renovación, suspensión y baja de parcela**
+
+Al vencer el periodo se intenta la renovación; si el cobro falla, la suscripción se suspende y se detiene la ingesta. Dar de baja una parcela libera su cupo.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-12-subscription-lifecycle.png" alt="Design-Level EventStorming, carril de ciclo de vida de la suscripción" width="850">
+<p><em>Design-Level EventStorming: renovación, suspensión y baja de parcela.</em></p>
+</div>
+
+**Resultados del Design-Level EventStorming**
+
+| Resultado | Detalle |
+|---|---|
+| Aggregates identificados | Subscription, Farm (Plot), Crop, Device, SoilReading, ReadingBatch, CalibrationRecord, SalinityAlert, NotificationPreference, AdvisoryLink, UserAccount, SalinityTrend, PlotReport. |
+| Policies principales | Otorgar cupo al activarse la suscripción; habilitar la ingesta al instalar el dispositivo; evaluar el umbral y recalcular la tendencia al almacenar una lectura; notificar al generar una alerta; aplicar el nuevo factor al calibrar; suspender la ingesta al suspender la suscripción. |
+| Reglas de negocio clave | Una suscripción vigente por usuario; como máximo un dispositivo por parcela; toda lectura conserva el valor crudo y el compensado; ingesta idempotente por dispositivo y fecha de captura; severidad por proporción del exceso sobre el umbral del cultivo; tendencia fiable con 30 lecturas o más. |
+| HotSpots para el diseño táctico | Conectividad intermitente en campo, reenvíos duplicados, fatiga por exceso de alertas, interpretación de valores en dS/m, equivalencia entre la conductividad medida en campo y la ECe de laboratorio, y tratamiento de lecturas durante una suspensión. |
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
 
 #### 4.1.1.1. Candidate Context Discovery
 
