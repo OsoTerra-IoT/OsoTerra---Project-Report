@@ -435,6 +435,97 @@ Subscription and Billing es un contexto generic orientado a revenue, apoyado en 
 
 ### 4.1.2. Context Mapping
 
+En esta sección el equipo explica cómo elaboró el context map de OsoSense, es decir, la visualización de las relaciones estructurales entre los seis bounded contexts. El proceso partió de los Bounded Context Canvases (4.1.1.3) y de los flujos de mensajes (4.1.1.2). Con ese material se construyeron varios mapas candidatos, planteando preguntas del tipo "¿qué pasaría si...?" sugeridas en el enunciado:
+
+- ¿Qué pasaría si partimos un bounded context en varios?
+- ¿Qué pasaría si fusionamos dos contextos que se comunican mucho?
+- ¿Qué pasaría si creamos un shared service para reducir duplicación?
+- ¿Qué pasaría si movemos una capacidad a otro contexto?
+
+Cada alternativa se discutió en función de las reglas de negocio, el lenguaje de cada contexto y el acoplamiento que generaba, hasta llegar a la versión final.
+
+**Patrones de relación utilizados**
+
+| Patrón | Significado en OsoSense |
+|---|---|
+| Customer/Supplier | El contexto upstream (proveedor) atiende las necesidades del downstream (cliente) y publica la información que este requiere. |
+| Partnership | Dos contextos que dependen mutuamente y evolucionan de forma coordinada. |
+| Open Host Service (OHS) | El contexto upstream expone un contrato público y estable, en este caso un evento publicado, para que otros contextos lo consuman. |
+| Conformist | El contexto downstream adopta el modelo del upstream sin traducirlo. |
+| Anti-corruption Layer (ACL) | El contexto downstream traduce el modelo del upstream para proteger su propio modelo. |
+| Shared Kernel | Modelo compartido entre contextos. No se usó, porque ningún par de contextos necesita compartir código o modelo. |
+
+**Versión 1: Device Management como contexto propio**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v1-device-management.png" alt="Context Map versión 1: Device Management como contexto propio" width="850">
+<p><em>Context Map, versión 1: Device Management como contexto propio.</em></p>
+</div>
+
+*Pregunta planteada:* ¿qué pasaría si partimos Farm Management y movemos el ciclo de vida del dispositivo a un contexto Device Management?
+
+- **A favor:** aislaría el registro, el estado y la futura gestión de flota de dispositivos.
+- **En contra:** el dispositivo solo tiene sentido vinculado a una parcela (regla: una parcela admite como máximo un dispositivo) y hoy no existe gestión de flota ni actualización remota de firmware. Además, Analytics and Reporting quedaba como conformista de dos contextos, lo que lo acoplaba a cambios internos.
+- **Decisión:** se descarta por ahora. Device Management se mantiene dentro de Farm Management y se revisará en el Sprint 3 si aparece la gestión de flota.
+
+**Versión 2: Soil Monitoring y Salinity Alerting fusionados**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v2-monitoring-alerting-merged.png" alt="Context Map versión 2: Soil Monitoring y Salinity Alerting fusionados" width="850">
+<p><em>Context Map, versión 2: Soil Monitoring y Salinity Alerting en un solo contexto.</em></p>
+</div>
+
+*Pregunta planteada:* ¿qué pasaría si fusionamos los dos contextos core, que se comunican con cada lectura, en un único contexto de monitoreo y alertas?
+
+- **A favor:** menos integración y un solo modelo de lectura.
+- **En contra:** la ingesta en campo (Edge, idempotencia y compensación) cambia a un ritmo distinto que las reglas agronómicas de severidad, y ambos usan lenguajes diferentes (sensor frente a cultivo y umbral). La fusión también impediría desplegar la parte de campo de forma independiente.
+- **Decisión:** se descarta. Se mantienen dos contextos core unidos por el evento *Soil Reading Stored*.
+
+**Versión 3: Notifications como shared service**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v3-notifications-shared.png" alt="Context Map versión 3: Notifications como shared service" width="850">
+<p><em>Context Map, versión 3: Notifications como shared service.</em></p>
+</div>
+
+*Pregunta planteada:* ¿qué pasaría si creamos un shared service de notificaciones para Identity and Access Management (correos de cuenta) y Salinity Alerting (alertas)?
+
+- **A favor:** reduce la duplicación de los adaptadores de push y correo.
+- **En contra:** las preferencias de notificación dependen de la severidad de la alerta, que es una regla de Salinity Alerting. Un servicio compartido obligaría a Identity and Access Management a conocer conceptos de alertas.
+- **Decisión:** se descarta. *Notification Preference* queda en Salinity Alerting y cada contexto integra su proveedor mediante un Anti-corruption Layer, aceptando una duplicación menor.
+
+**Versión 4: Context map final**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v4-final.png" alt="Context Map versión 4: mapa final" width="850">
+<p><em>Context Map, versión 4: mapa final de OsoSense.</em></p>
+</div>
+
+La versión final conserva los seis bounded contexts y define las siguientes relaciones:
+
+| Upstream | Downstream | Patrón | Mecanismo de integración |
+|---|---|---|---|
+| Subscription and Billing | Farm Management | Customer/Supplier | Evento *Subscription Activated* y consulta de cupo mediante *Subscription Quota Client* (ACL en Farm Management). |
+| Subscription and Billing | Soil Monitoring | Customer/Supplier | Evento *Subscription Suspended*, que detiene la ingesta. |
+| Farm Management | Soil Monitoring | Partnership | *Device Installed In Plot* habilita la ingesta y *Device Went Offline* actualiza el estado del dispositivo. |
+| Farm Management | Salinity Alerting | Customer/Supplier | Evento *Crop Assigned To Plot* y consulta del umbral mediante *Crop Threshold Client*. |
+| Soil Monitoring | Salinity Alerting | Open Host Service | Evento publicado *Soil Reading Stored*, consumido por Salinity Alerting. |
+| Identity and Access Management | Salinity Alerting | Anti-corruption Layer | Consulta de asesores vinculados mediante *Advisory Link Client*. |
+| Salinity Alerting | Analytics and Reporting | Anti-corruption Layer | Historial de alertas y acciones mediante *Alert History Client*. |
+| Soil Monitoring | Analytics and Reporting | Anti-corruption Layer | Series de lecturas mediante *Soil Reading Series Client*. |
+| Farm Management | Analytics and Reporting | Anti-corruption Layer | Estructura de parcelas mediante *Plot Structure Client*. |
+
+Además, cada integración con terceros se protege con un Anti-corruption Layer dentro de su contexto: Stripe en Subscription and Billing, Google OAuth2 y el proveedor SMTP en Identity and Access Management, el proveedor de notificaciones push y correo en Salinity Alerting, el Weather Service API en Analytics and Reporting y el hardware del sensor en el Edge Service de Soil Monitoring.
+
+**Justificación de la versión final**
+
+- **Independencia del core:** Soil Monitoring y Salinity Alerting solo se comunican mediante un evento publicado, por lo que cada uno puede evolucionar y desplegarse sin afectar al otro.
+- **Protección de modelos:** los contextos que consumen información de varios otros, como Analytics and Reporting y Salinity Alerting, usan Anti-corruption Layer para que los cambios internos de sus proveedores no los rompan.
+- **Colaboración real:** Farm Management y Soil Monitoring se relacionan como Partnership, porque la instalación y el estado del dispositivo requieren decisiones coordinadas entre ambos.
+- **Coherencia con el diseño táctico:** las relaciones de la tabla corresponden a los clientes, consumidores y eventos definidos en la sección 4.2.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 ### 4.1.3. Software Architecture
 
 #### 4.1.3.1. Software Architecture System Landscape Diagram

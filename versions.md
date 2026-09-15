@@ -24,5 +24,6 @@
 | 0.0.25 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Candidate Context Discovery (4.1.1.1) con las técnicas start-with-value, look-for-pivotal-events y start-with-simple, iteraciones del EventStorm, figuras por contexto y tabla de bounded contexts candidatos. |
 | 0.0.26 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Domain Message Flows Modeling (4.1.1.2) con Domain Storytelling en cuatro escenarios, notación, figuras y tablas de mensajes numerados. |
 | 0.0.27 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo de los Bounded Context Canvases (4.1.1.3) para los seis bounded contexts, con el proceso iterativo, clasificación estratégica y design critique. |
+| 0.0.28 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Context Mapping (4.1.2) con patrones de relación, tres alternativas evaluadas, mapa final, tabla de relaciones y justificación. |
 
 # Project Report Collaboration Insights
