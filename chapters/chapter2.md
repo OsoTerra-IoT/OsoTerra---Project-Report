@@ -347,7 +347,7 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
   <strong>Edad:</strong> 63 años<br>
   <strong>Zona de trabajo:</strong> Zonas agrícolas del norte<br><br>
   <strong>Screenshot:</strong><br>
-  <img src="../assets/entrevistas/Interview2.png" alt="Screenshot entrevista Emperatriz" width="180">
+  <img src="../assets/entrevistas/Interview2.PNG" alt="Screenshot entrevista Emperatriz" width="180">
 </td>
 <td>
   <strong>Datos generales:</strong> La entrevistada es Emperatriz Sessarego, de 63 años, quien reside en el distrito de Jesús María, en Lima. Cuenta con formación técnica en Administración de Empresas por el CENECAP John F. Kennedy, de donde egresó aproximadamente en 1990. Actualmente se desempeña bajo relación de dependencia dentro de una empresa de consultoría agrícola, brindando asesoría a productores situados en la zona norte del país, cuyas parcelas promedian entre 20 y 30 hectáreas cada una.<br><br>
