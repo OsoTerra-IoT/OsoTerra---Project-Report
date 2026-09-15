@@ -25,5 +25,6 @@
 | 0.0.26 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Domain Message Flows Modeling (4.1.1.2) con Domain Storytelling en cuatro escenarios, notación, figuras y tablas de mensajes numerados. |
 | 0.0.27 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo de los Bounded Context Canvases (4.1.1.3) para los seis bounded contexts, con el proceso iterativo, clasificación estratégica y design critique. |
 | 0.0.28 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Context Mapping (4.1.2) con patrones de relación, tres alternativas evaluadas, mapa final, tabla de relaciones y justificación. |
+| 0.0.29 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Software Architecture System Landscape Diagram (4.1.3.1) con proceso de elaboración, figura, elementos, relaciones y decisiones. |
 
 # Project Report Collaboration Insights

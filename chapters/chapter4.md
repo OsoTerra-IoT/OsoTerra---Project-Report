@@ -530,6 +530,52 @@ Además, cada integración con terceros se protege con un Anti-corruption Layer 
 
 #### 4.1.3.1. Software Architecture System Landscape Diagram
 
+El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en una sola imagen, las personas que interactúan con la solución, los sistemas de software que Oso Terra construye y opera, y los sistemas externos con los que esos sistemas se integran. Su propósito es dar contexto antes de bajar al nivel de Context, Container y Component, sin entrar todavía en tecnologías ni despliegue.
+
+**Proceso de elaboración**
+
+1. **Identificación de personas.** Se tomaron los actores del Big Picture EventStorming (2.4) y de los flujos de mensajes (4.1.1.2) que interactúan directamente con la solución: el visitante del Landing Page, el Agricultural Producer y el Agronomist Advisor.
+2. **Identificación de sistemas propios.** Los productos digitales exigidos por el enunciado se agruparon en dos sistemas de software dentro del límite de la empresa Oso Terra: *OsoSense Platform*, que reúne el Landing Page, la Web App, la Mobile App y el RESTful API, y *OsoSense Field Monitoring*, que reúne el IoT Device y el Edge Service.
+3. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como sistema externo con el que interactúa el asesor.
+4. **Relaciones.** Cada relación se rotuló con la acción principal que realiza el emisor sobre el receptor.
+5. **Revisión.** Se verificó que cada persona y cada sistema externo del diagrama aparezca en al menos un escenario de Domain Storytelling.
+
+<div align="center">
+<img src="../assets/strategic-ddd/system-landscape-diagram.png" alt="Software Architecture System Landscape Diagram de OsoSense" width="900">
+<p><em>Software Architecture System Landscape Diagram de OsoSense.</em></p>
+</div>
+
+**Elementos del diagrama**
+
+| Elemento | Tipo | Descripción |
+|---|---|---|
+| Visitor | Persona | Visitante del Landing Page que conoce la propuesta y elige un plan. |
+| Agricultural Producer | Persona | Productor que registra sus parcelas, consulta lecturas y alertas y registra acciones correctivas. |
+| Agronomist Advisor | Persona | Asesor técnico que supervisa varias parcelas vinculadas, registra resultados de laboratorio y genera reportes. |
+| OsoSense Platform | Sistema propio | Landing Page, Web App, Mobile App y RESTful API. Gestiona parcelas, lecturas, alertas, reportes y suscripciones. |
+| OsoSense Field Monitoring | Sistema propio | IoT Device (ESP32) y Edge Service. Captura, compensa y sincroniza las lecturas del suelo. |
+| Stripe | Sistema externo | Procesa los pagos y cobros recurrentes de las suscripciones. |
+| Google OAuth2 | Sistema externo | Permite el inicio de sesión federado. |
+| Push / Email provider | Sistema externo | Entrega las notificaciones de alertas. |
+| Weather Service API | Sistema externo | Provee datos de precipitación por coordenadas para los reportes. |
+| Soil Laboratory | Sistema externo | Laboratorio acreditado que entrega el análisis de ECe usado para calibrar el dispositivo. |
+
+**Relaciones principales**
+
+- El **Visitor** conoce la propuesta y elige un plan en OsoSense Platform.
+- El **Agricultural Producer** usa OsoSense Platform para gestionar sus parcelas y atender alertas, e instala el dispositivo de OsoSense Field Monitoring en su parcela.
+- El **Agronomist Advisor** supervisa parcelas y genera reportes en OsoSense Platform, y envía muestras de suelo al Soil Laboratory.
+- **OsoSense Field Monitoring** envía lotes de lecturas a OsoSense Platform por HTTPS y recibe de ella el factor de calibración.
+- **OsoSense Platform** cobra las suscripciones con Stripe, verifica el ID token con Google OAuth2, envía alertas mediante el proveedor push y de correo, y consulta la lluvia en el Weather Service API.
+
+**Decisiones reflejadas en el diagrama**
+
+- La solución se separa en dos sistemas porque la parte de campo opera con conectividad intermitente y se despliega en el dispositivo y el Edge Service, mientras que la plataforma se despliega en la nube.
+- Todas las integraciones con terceros pasan por OsoSense Platform; el campo no depende directamente de ningún sistema externo.
+- Los niveles de Context, Container y Deployment se detallan en las secciones siguientes.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
 #### 4.1.3.2. Software Architecture Container Level Diagrams
