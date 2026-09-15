@@ -341,9 +341,26 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
     <tr>
-      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td>
+  <strong>Entrevista 2</strong><br><br>
+  <strong>Entrevistada:</strong> Emperatriz Sessarego<br>
+  <strong>Edad:</strong> 63 años<br>
+  <strong>Zona de trabajo:</strong> Zonas agrícolas del norte<br><br>
+  <strong>Screenshot:</strong><br>
+  <img src="../assets/entrevistas/Interview2.png" alt="Screenshot entrevista Emperatriz" width="180">
+</td>
+<td>
+  <strong>Datos generales:</strong> La entrevistada es Emperatriz Sessarego, de 63 años, quien reside en el distrito de Jesús María, en Lima. Cuenta con formación técnica en Administración de Empresas por el CENECAP John F. Kennedy, de donde egresó aproximadamente en 1990. Actualmente se desempeña bajo relación de dependencia dentro de una empresa de consultoría agrícola, brindando asesoría a productores situados en la zona norte del país, cuyas parcelas promedian entre 20 y 30 hectáreas cada una.<br><br>
+  <strong>Trabajo y responsabilidades:</strong> Su labor principal consiste en gestionar y asesorar a una cartera de aproximadamente 10 productores dedicados a cultivos vegetales y productos naturales. Su rutina implica desplazarse al campo unos tres días por semana para atender a dos o tres clientes por jornada, programando visitas con una periodicidad mensual tras una coordinación telefónica previa. En el terreno inspecciona visualmente el estado del cultivo y del suelo para identificar anomalías —como exceso de salinidad o zonas quemadas—, toma muestras para enviarlas al laboratorio interno de su empresa y brinda las recomendaciones técnicas de forma presencial y directa al agricultor.<br><br>
+  <strong>Herramientas y tecnologías:</strong> Para sus labores utiliza principalmente su teléfono celular y una tablet, combinándolos con el método tradicional de apuntes en papel durante la visita de campo. En cuanto a tecnología agronómica, recurre a drones para sobrevolar las hectáreas y evaluar el terreno desde el aire, mostrando las tomas en pantalla al productor. No emplea medidores portátiles de conductividad eléctrica en suelo, sino que apoya su gestión técnica en una plataforma digital propia desarrollada por su empresa, la cual sintetiza los diagnósticos, el historial de las parcelas y las soluciones recomendadas.<br><br>
+  <strong>Necesidades y frustraciones:</strong> Su principal desafío radica en la brecha tecnológica de los agricultores, quienes suelen ser reacios a la lectura de reportes digitales o a interactuar con plataformas, lo que la obliga a depender del trato presencial y de demostraciones visuales in situ. A esto se suma la ineficiencia de realizar un doble registro de datos —anotar primero a mano en papel para luego transcribir y ampliar la información en digital al volver a la oficina—, así como la considerable demanda de tiempo y esfuerzo que suponen los constantes traslados entre parcelas distantes durante la semana.<br><br>
+  <strong>Expectativas:</strong> Espera contar con herramientas más ágiles, como un tablero de monitoreo de salinidad en tiempo real que le permita diagnosticar a distancia y comunicarse rápidamente con el productor por teléfono sin esperar al viaje mensual. Muestra disposición a adoptar sensores de suelo de bajo costo siempre que ofrezcan mediciones fiables, y destaca la necesidad de reportes automatizados que recopilen datos históricos, estados del suelo y seguimiento de acciones previas para comprobar si el agricultor aplicó las mejoras sugeridas.
+</td>
+<td>
+  <strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCTehknzuIeRrR82obsOJzfAVX-4ZePCDMVwhEOjFG98mw?e=nsp1DO" target="_blank">Ver video</a><br>
+  <strong>Inicio:</strong> 00:00<br>
+  <strong>Duración:</strong> 10:19
+</td>
     </tr>
     <tr>
       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
