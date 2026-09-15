@@ -522,6 +522,27 @@ Estas herramientas ayudan a traducir los datos de campo en perfiles accionables,
 
 ### 2.3.3. User Journey Mapping
 
+Con el objetivo de comprender en profundidad las necesidades y puntos de fricción de los usuarios, se desarrollaron los User Journey Maps utilizando la herramienta UXPressia. Este proceso visualiza de manera empática el recorrido "As-Is" (situación actual) que cada segmento realiza hoy en día, enfrentando la falta de monitoreo continuo y la desorganización de los datos agrícolas sin contar con una solución tecnológica centralizada. 
+
+Cada User Journey Map se encuentra directamente vinculado con su respectivo User Persona, ilustrando paso a paso las acciones, emociones y problemas que experimentan antes de la introducción de OsoSense.
+
+**Segmento Objetivo #1: Familiar joven involucrado en la gestión agrícola (Diego Ramos)**
+Se evidencia un flujo de supervisión fragmentado y reactivo. Diego experimenta alta ansiedad e impotencia al intentar gestionar la parcela familiar a distancia desde la ciudad. Su recorrido actual depende de llamadas telefónicas intermitentes y fotos borrosas. La falta de visibilidad en tiempo real provoca que se entere de los problemas de salinidad cuando el cultivo ya presenta daños visibles, sufriendo una profunda frustración al verse obligado a realizar gastos a ciegas en fertilizantes o riego sin un diagnóstico preciso.
+
+Figura. *As-Is User Journey Map - Persona 1: Diego Ramos*
+
+![](https://i.imgur.com/hpuGDiU.png)
+
+<p>
+
+**Segmento Objetivo #2: Asesora técnica agrícola independiente (María Fernanda Salazar)**
+María Fernanda enfrenta un ciclo operativo ineficiente y limitante para su crecimiento profesional. Su recorrido ilustra un desgaste progresivo que inicia con la planificación a ciegas de sus visitas y cae drásticamente debido a la fricción de los viajes físicos para tomar lecturas manuales. El punto más crítico de su experiencia ocurre durante la espera prolongada por los resultados de laboratorio, lo cual genera un cuello de botella que culmina en la entrega de recomendaciones tardías al agricultor, afectando tanto el cultivo como su propia reputación profesional.
+
+Figura. *As-Is User Journey Map - Persona 2: María Fernanda Salazar*
+
+![](https://i.imgur.com/gQ5sCS4.png)
+
+
 ### 2.3.4. Empathy Mapping
 
 <div align="center">
