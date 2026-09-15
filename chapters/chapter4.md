@@ -155,6 +155,76 @@ Al vencer el periodo se intenta la renovación; si el cobro falla, la suscripci�
 
 #### 4.1.1.1. Candidate Context Discovery
 
+A partir del EventStorm modelado en la sección 4.1.1, el equipo realizó una sesión de Candidate Context Discovery de aproximadamente dos horas en FigJam, con el objetivo de identificar los bounded contexts candidatos de OsoSense. Se combinaron las tres técnicas propuestas en el enunciado:
+
+- **Start-with-value:** se empezó por las partes del dominio que generan la ventaja competitiva de OsoSense. La captura y compensación confiable de lecturas y la evaluación de la salinidad según el cultivo se identificaron como el core del negocio, porque sostienen las hipótesis HS-01, HS-02, HS-03, HS-08 y HS-09 y diferencian a la solución de los medidores portátiles y de las plataformas de agricultura de precisión.
+- **Look-for-pivotal-events:** se usaron los eventos pivote del Big Picture (*Subscription Activated*, *Device Installed In Plot*, *Soil Reading Stored*, *Salinity Alert Generated* y *Corrective Action Registered*) como fronteras naturales entre partes del proceso.
+- **Start-with-simple:** cada proceso se descompuso en pasos secuenciales y se agruparon los comandos, eventos, policies y aggregates que usan el mismo lenguaje, cambian juntos y protegen las mismas reglas.
+
+**Cambios progresivos del EventStorm**
+
+| Iteración | Qué se hizo | Resultado |
+|---|---|---|
+| 1 | Se partió de las once fases del Big Picture EventStorming. | 11 grupos de eventos ordenados en el tiempo. |
+| 2 | Se cortó la línea de tiempo en los cinco eventos pivote. | 6 segmentos candidatos. |
+| 3 | Se clasificó cada segmento por su valor para el negocio. | Core: monitoreo y alertas. Supporting: estructura agrícola y analítica. Generic: identidad y suscripciones. |
+| 4 | Se fusionaron los segmentos que comparten reglas y se separaron los que tienen responsabilidades distintas. | 6 bounded contexts candidatos. |
+
+Las decisiones de la iteración 4 fueron las siguientes:
+
+- La captura en campo, la ingesta en la plataforma y la calibración (fases F5, F6 y F9) se unieron en **Soil Monitoring**, porque las tres dependen de la lectura compensada y del factor de calibración del dispositivo.
+- La evaluación de umbral, la alerta y la acción correctiva (F7 y F8) se unieron en **Salinity Alerting**, porque el ciclo de la alerta solo termina con la acción correctiva.
+- La finca, la parcela, el cultivo y el dispositivo (F2 y F3) se unieron en **Farm Management**, porque un dispositivo solo existe vinculado a una parcela.
+- La fase de acceso y suscripción (F1) se dividió: la cuenta y el vínculo con el asesor (F4) pasaron a **Identity and Access Management**; el plan, el pago y el ciclo de renovación (F11) pasaron a **Subscription and Billing**.
+- Los reportes, tendencias y datos meteorológicos (F10) se agruparon en **Analytics and Reporting**, un contexto predominantemente de lectura.
+
+La figura se organiza con el mismo esquema en todas sus partes. A la izquierda se ubica Identity and Access Management, punto de entrada común a todos los contextos, conectado con cada contexto candidato. Cada contexto se delimita con un recuadro punteado que contiene sus pares de comando y evento, los actores, los read models, los sistemas externos, las policies que ramifican el flujo y, al final de cada fila, en gris, los aggregates.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-01-iam-soil-monitoring.png" alt="Candidate Context Discovery: lista de bounded contexts, Identity and Access Management y Soil Monitoring" width="900">
+<p><em>Candidate Context Discovery: lista de bounded contexts, Identity and Access Management y Soil Monitoring.</em></p>
+</div>
+
+En **Identity and Access Management** se agrupan el registro, el inicio de sesión local y con Google OAuth2, y el ciclo de solicitud, aceptación y revocación del vínculo entre asesor y productor. Sus aggregates son *User Account* y *Advisory Link*.
+
+En **Soil Monitoring** el flujo se ramifica mediante policies. Si la lectura está dentro del rango del sensor, se compensa por temperatura; si no, se descarta. Luego, si hay conectividad, el lote se ingiere y se publica *Soil Reading Stored*; si no, la lectura se guarda en el buffer local y se sincroniza al reconectarse. En una segunda fila se modela la calibración con laboratorio y en una tercera la detección de dispositivos sin lecturas. Sus aggregates son *Soil Reading*, *Reading Batch* y *Calibration Record*.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-02-salinity-alerting.png" alt="Candidate Context Discovery: Salinity Alerting" width="900">
+<p><em>Candidate Context Discovery: Salinity Alerting.</em></p>
+</div>
+
+En **Salinity Alerting** la policy *When soil reading stored* dispara la evaluación de la lectura contra el umbral del cultivo. Si la conductividad eléctrica supera el umbral, se genera la alerta y una segunda policy notifica a los destinatarios mediante el proveedor push o de correo; si no lo supera, la lectura se registra dentro del umbral. En la fila inferior se modela la atención de la alerta por parte del productor y la actualización de sus preferencias de notificación. Sus aggregates son *Salinity Alert* y *Notification Preference*.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-03-farm-analytics.png" alt="Candidate Context Discovery: Farm Management y Analytics and Reporting" width="900">
+<p><em>Candidate Context Discovery: Farm Management y Analytics and Reporting.</em></p>
+</div>
+
+En **Farm Management** se modela el registro de finca y parcela, con la verificación del cupo disponible, la asignación del cultivo con su umbral y la baja de la parcela. En la segunda fila se registra y vincula el dispositivo, y se reacciona a *Device Went Offline* marcándolo fuera de línea. Sus aggregates son *Farm*, *Crop* y *Device*.
+
+En **Analytics and Reporting** una policy recalcula la tendencia de salinidad ante cada lectura almacenada. El asesor consulta el tablero multiparcela, genera el reporte con datos del Weather Service API y lo exporta en PDF. Sus aggregates son *Salinity Trend* y *Plot Report*.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-04-subscription-billing.png" alt="Candidate Context Discovery: Subscription and Billing" width="900">
+<p><em>Candidate Context Discovery: Subscription and Billing.</em></p>
+</div>
+
+En **Subscription and Billing** la suscripción se ramifica según el plan: si requiere pago, se confirma con Stripe antes de activarse; si es el plan gratuito de una parcela, se activa directamente. La activación otorga el cupo de parcelas. En la fila inferior se modela la renovación periódica, la suspensión cuando el cobro falla y la cancelación por parte del productor. Su aggregate es *Subscription*.
+
+**Bounded contexts candidatos**
+
+| Bounded context | Tipo de sub-dominio | Responsabilidad | Sub-dominio SaaS equivalente |
+|---|---|---|---|
+| Soil Monitoring | Core | Captura, validación, compensación, sincronización e ingesta de lecturas; calibración con laboratorio. | Service Execution and Monitoring |
+| Salinity Alerting | Core | Evaluación de umbral por cultivo, alertas con severidad, notificación y acción correctiva. | Service Execution and Monitoring; Profiles and Preferences |
+| Farm Management | Supporting | Fincas, parcelas, catálogo de cultivos y ciclo de vida del dispositivo. | Resource and Asset Management |
+| Analytics and Reporting | Supporting | Tendencias, tableros y reportes exportables. | Dashboard and Analytics |
+| Identity and Access Management | Generic | Identidad, autenticación, roles y vínculo asesor-productor. | Identity and Access Management |
+| Subscription and Billing | Generic | Planes, pagos, cupo de parcelas y renovación. | Subscriptions and Payment Management |
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 #### 4.1.1.2. Domain Message Flows Modeling
 
 #### 4.1.1.3. Bounded Context Canvases

@@ -21,5 +21,6 @@
 | 0.0.22 | 13/09/2026 | Iker Gabriel Barturen Panez | Desarrollo completo del bounded context Analytics and Reporting (4.2.6): capas de dominio, interfaz, aplicación e infraestructura, y Component/Class Diagrams. Cierre de la sección 4.2 del Capítulo IV para los 6 bounded contexts. |
 | 0.0.23 | 14/09/2026 | Iker Gabriel Barturen Panez | Incorporación de Google OAuth2 como método de inicio de sesión federado en Identity and Access Management, y renombramiento de la pasarela de pago genérica a Stripe en Subscription and Billing. |
 | 0.0.24 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo de la introducción de la sección 4.1 y del Design-Level EventStorming (4.1.1) en doce carriles, con notación, pasos de la sesión, figuras por carril y resultados. |
+| 0.0.25 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Candidate Context Discovery (4.1.1.1) con las técnicas start-with-value, look-for-pivotal-events y start-with-simple, iteraciones del EventStorm, figuras por contexto y tabla de bounded contexts candidatos. |
 
 # Project Report Collaboration Insights
