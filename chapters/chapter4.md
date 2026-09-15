@@ -227,6 +227,123 @@ En **Subscription and Billing** la suscripción se ramifica según el plan: si r
 
 #### 4.1.1.2. Domain Message Flows Modeling
 
+En esta sección el equipo explica cómo colaboran los bounded contexts candidatos para resolver los casos de negocio más importantes de OsoSense. Para ello se aplicó la técnica **Domain Storytelling**: cada escenario se narra como una secuencia numerada de mensajes entre actores, sistemas y bounded contexts, de modo que la historia pueda leerse como oraciones del tipo "actor envía mensaje a contexto".
+
+Se eligieron cuatro escenarios que, en conjunto, recorren los seis bounded contexts y todas las integraciones con sistemas externos:
+
+1. Registro de una parcela monitoreada.
+2. Alerta de salinidad a partir de una lectura del suelo (flujo core).
+3. Supervisión del asesor y calibración del dispositivo.
+4. Suscripción a un plan.
+
+**Notación utilizada**
+
+| Símbolo | Significado |
+|---|---|
+| Figura de persona | Actor, usuario o persona (Agricultural Producer, Agronomist Advisor). |
+| Nube lila | Bounded context. |
+| Engranaje | Sistema: aplicaciones de OsoSense, Edge Service, IoT Device o sistemas de terceros. |
+| Flecha punteada | Dirección del mensaje, desde el emisor hacia el receptor. |
+| Nota azul | Command: intención dirigida a un contexto. |
+| Nota naranja | Event: hecho publicado por un contexto. |
+| Nota verde | Query: consulta de información a otro contexto. |
+
+El número de cada mensaje indica su orden dentro del escenario. Cuando dos mensajes ocurren al mismo tiempo, comparten número.
+
+**Escenario 1: Monitored Plot Registration Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-01-plot-registration.png" alt="Domain Message Flows Modeling: registro de parcela monitoreada" width="900">
+<p><em>Domain Message Flows Modeling: Monitored Plot Registration Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | Agricultural Producer | OsoSense Mobile App | Register plot and crop | Command |
+| 2 | OsoSense Mobile App | Farm Management | Register Plot | Command |
+| 3 | Farm Management | Subscription and Billing | Check Plot Quota | Query |
+| 4 | Subscription and Billing | Farm Management | Plot Quota Available | Event |
+| 5 | Farm Management | Salinity Alerting | Crop Assigned To Plot | Event |
+| 6 | Agricultural Producer | OsoSense Mobile App | Attach device | Command |
+| 7 | OsoSense Mobile App | Farm Management | Attach Device To Plot | Command |
+| 8 | Farm Management | Soil Monitoring | Device Installed In Plot | Event |
+
+Farm Management no crea la parcela sin antes confirmar el cupo con Subscription and Billing. Una vez registrada, informa el cultivo a Salinity Alerting para fijar el umbral y, al vincular el dispositivo, habilita la ingesta en Soil Monitoring.
+
+**Escenario 2: Salinity Alert Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-02-salinity-alert.png" alt="Domain Message Flows Modeling: alerta de salinidad" width="900">
+<p><em>Domain Message Flows Modeling: Salinity Alert Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | IoT Device (ESP32) | Edge Service | Send Soil Reading | Command |
+| 2 | Edge Service | Soil Monitoring | Ingest Reading Batch | Command |
+| 3 | Soil Monitoring | Salinity Alerting | Soil Reading Stored | Event |
+| 4 | Salinity Alerting | Farm Management | Get Crop Threshold | Query |
+| 5 | Salinity Alerting | Identity and Access Management | Get Linked Advisors | Query |
+| 6 | Salinity Alerting | Notification System | Salinity Alert Generated | Event |
+| 7 | Notification System | Agricultural Producer / Agronomist Advisor | Notify Producer / Notify Advisor | Command |
+| 8 | Agricultural Producer | Salinity Alerting | Register Corrective Action | Command |
+| 9 | Salinity Alerting | Analytics and Reporting | Corrective Action Registered | Event |
+
+Este es el flujo de mayor valor para el negocio. Soil Monitoring y Salinity Alerting se comunican mediante el evento publicado *Soil Reading Stored*, sin llamadas directas. Salinity Alerting consulta información a Farm Management e Identity and Access Management, pero no modifica sus datos.
+
+**Escenario 3: Advisor Supervision and Calibration Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-03-advisor-calibration.png" alt="Domain Message Flows Modeling: supervisión del asesor y calibración" width="900">
+<p><em>Domain Message Flows Modeling: Advisor Supervision and Calibration Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | Agronomist Advisor | OsoSense Web App | Sign In With Google | Command |
+| 2 | OsoSense Web App | Identity and Access Management | Authenticate With Google | Command |
+| 3 | Identity and Access Management | Google OAuth2 | Verify ID Token | Query |
+| 4 | Agronomist Advisor | OsoSense Web App | Request Advisory Link | Command |
+| 5 | OsoSense Web App | Identity and Access Management | Request Advisory Link | Command |
+| 6 | Identity and Access Management | Agricultural Producer | Advisory Link Requested | Event |
+| 7 | Agricultural Producer | Identity and Access Management | Accept Advisory Link | Command |
+| 8 | Agronomist Advisor | OsoSense Web App | View Multi-Plot Dashboard | Query |
+| 9 | OsoSense Web App | Analytics and Reporting | Get Multi-Plot Dashboard | Query |
+| 10 | Analytics and Reporting | Weather Service API | Get Precipitation | Query |
+| 11 | Agronomist Advisor | OsoSense Web App | Register Lab Result | Command |
+| 12 | OsoSense Web App | Soil Monitoring | Register Lab Result | Command |
+| 13 | Soil Monitoring | Edge Service | Device Calibrated | Event |
+
+El asesor solo accede a las parcelas del productor cuando el vínculo está aceptado. La calibración se registra en Soil Monitoring, que calcula el factor y lo publica hacia el Edge Service para las siguientes compensaciones.
+
+**Escenario 4: Plan Subscription Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-04-plan-subscription.png" alt="Domain Message Flows Modeling: suscripción a un plan" width="900">
+<p><em>Domain Message Flows Modeling: Plan Subscription Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | Agricultural Producer | OsoSense Web / Mobile App | Subscribe To Plan | Command |
+| 2 | OsoSense Web / Mobile App | Subscription and Billing | Subscribe To Plan | Command |
+| 3 | Subscription and Billing | Stripe | Create Charge | Command |
+| 4 | Stripe | Subscription and Billing | Payment Confirmed (webhook) | Event |
+| 5 | Subscription and Billing | Farm Management | Subscription Activated | Event |
+| 6 | Billing Scheduler | Subscription and Billing | Renew Subscription | Command |
+| 7 | Subscription and Billing | Soil Monitoring | Subscription Suspended | Event |
+
+Subscription and Billing se integra con Stripe para el cobro y comunica los cambios de estado de la suscripción a los contextos afectados: el cupo a Farm Management y la suspensión de la ingesta a Soil Monitoring.
+
+**Conclusiones del modelado de flujos**
+
+- Los contextos core se comunican con eventos publicados, lo que reduce el acoplamiento entre la captura de lecturas y la evaluación de alertas.
+- Las consultas entre contextos (Query) no modifican datos del contexto consultado.
+- Cada sistema externo tiene un único contexto responsable de integrarlo: Stripe en Subscription and Billing, Google OAuth2 en Identity and Access Management, el Weather Service API en Analytics and Reporting y el proveedor de notificaciones en Salinity Alerting.
+- Estos flujos son la base de las relaciones del Context Mapping de la sección 4.1.2.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 #### 4.1.1.3. Bounded Context Canvases
 
 ### 4.1.2. Context Mapping
