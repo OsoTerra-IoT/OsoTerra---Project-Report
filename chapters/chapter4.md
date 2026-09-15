@@ -346,6 +346,93 @@ Subscription and Billing se integra con Stripe para el cobro y comunica los camb
 
 #### 4.1.1.3. Bounded Context Canvases
 
+En esta sección el equipo diseña cada bounded context candidato con el **Bounded Context Canvas V4** de ddd-crew. Los contextos se trabajaron por orden de importancia: primero los core (Soil Monitoring y Salinity Alerting), luego los supporting (Farm Management y Analytics and Reporting) y al final los generic (Identity and Access Management y Subscription and Billing).
+
+Cada canvas se elaboró de forma iterativa siguiendo los pasos indicados en el enunciado:
+
+1. **Context Overview Definition:** nombre y propósito del contexto.
+2. **Business Rules Distillation & Ubiquitous Language Capture:** términos propios del contexto y decisiones de negocio que debe proteger.
+3. **Capability Analysis:** mensajes que el contexto recibe (Inbound Communication) y que envía (Outbound Communication).
+4. **Capability Layering:** clasificación estratégica según dominio (core, supporting o generic), modelo de negocio (revenue, engagement, compliance o cost reduction) y evolución (genesis, custom built, product o commodity), junto con el rol del contexto (draft, execution, analysis o gateway).
+5. **Dependencies Capture:** colaboradores de cada mensaje, diferenciados entre bounded context, sistema externo, frontend y rol.
+6. **Design Critique:** revisión cruzada entre canvases para verificar que cada mensaje enviado por un contexto aparezca como recibido en su colaborador.
+
+En los canvases, los mensajes azules son Commands, los amarillos son Events y los verdes son Queries. La leyenda *Collaborator Types* de cada canvas indica el tipo de colaborador.
+
+**Soil Monitoring**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-soil-monitoring.png" alt="Bounded Context Canvas de Soil Monitoring" width="900">
+<p><em>Bounded Context Canvas: Soil Monitoring.</em></p>
+</div>
+
+Soil Monitoring es un contexto core, orientado a generar ingresos y construido a medida, porque el dato confiable del suelo es la base de la propuesta de valor. Cumple el rol de execution context y de gateway context, ya que recibe la telemetría del IoT Device y del Edge Service. Sus decisiones de negocio garantizan que ninguna lectura inválida se almacene y que toda lectura conserve su valor crudo y compensado.
+
+**Salinity Alerting**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-salinity-alerting.png" alt="Bounded Context Canvas de Salinity Alerting" width="900">
+<p><em>Bounded Context Canvas: Salinity Alerting.</em></p>
+</div>
+
+Salinity Alerting es el segundo contexto core. Su modelo de negocio es engagement, porque la alerta oportuna es lo que hace volver al productor a la plataforma. Actúa como execution context y analysis context: interpreta cada lectura según el cultivo y decide la severidad por la proporción del exceso sobre el umbral, no por el valor absoluto.
+
+**Farm Management**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-farm-management.png" alt="Bounded Context Canvas de Farm Management" width="900">
+<p><em>Bounded Context Canvas: Farm Management.</em></p>
+</div>
+
+Farm Management es un contexto supporting que da el marco agronómico a cada lectura: parcela, cultivo, umbral y dispositivo. Coordina con Subscription and Billing para validar el cupo y publica los eventos que activan la ingesta y el umbral en los contextos core.
+
+**Analytics and Reporting**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-analytics-reporting.png" alt="Bounded Context Canvas de Analytics and Reporting" width="900">
+<p><em>Bounded Context Canvas: Analytics and Reporting.</em></p>
+</div>
+
+Analytics and Reporting es un contexto supporting con rol de analysis context. Consume información de Soil Monitoring, Salinity Alerting y Farm Management, y del Weather Service API, sin modificar esos datos. Su valor principal está en el tablero multiparcela y los reportes que sustentan las recomendaciones del asesor.
+
+**Identity and Access Management**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-identity-access-management.png" alt="Bounded Context Canvas de Identity and Access Management" width="900">
+<p><em>Bounded Context Canvas: Identity and Access Management.</em></p>
+</div>
+
+Identity and Access Management es un contexto generic orientado a compliance, que puede resolverse con soluciones estándar como Google OAuth2. Cumple el rol de gateway context para el acceso a la plataforma y controla el vínculo entre asesor y productor, del que dependen las notificaciones de Salinity Alerting.
+
+**Subscription and Billing**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-subscription-billing.png" alt="Bounded Context Canvas de Subscription and Billing" width="900">
+<p><em>Bounded Context Canvas: Subscription and Billing.</em></p>
+</div>
+
+Subscription and Billing es un contexto generic orientado a revenue, apoyado en Stripe como proveedor de pagos. Controla el cupo de parcelas que habilita cada plan y comunica la activación y la suspensión de la suscripción a los contextos afectados.
+
+**Resumen de clasificación estratégica**
+
+| Bounded context | Domain | Business Model | Evolution | Domain Roles |
+|---|---|---|---|---|
+| Soil Monitoring | Core | Revenue | Custom built | Execution context, Gateway context |
+| Salinity Alerting | Core | Engagement | Custom built | Execution context, Analysis context |
+| Farm Management | Supporting | Engagement | Custom built | Execution context |
+| Analytics and Reporting | Supporting | Engagement | Custom built | Analysis context |
+| Identity and Access Management | Generic | Compliance | Commodity | Gateway context |
+| Subscription and Billing | Generic | Revenue | Commodity | Execution context |
+
+**Design Critique**
+
+- Cada evento publicado tiene al menos un contexto consumidor. Por ejemplo, *Soil Reading Stored* es consumido por Salinity Alerting y Analytics and Reporting.
+- Ningún contexto necesita modificar datos de otro contexto. Las necesidades de información se resuelven con queries o eventos.
+- Los sistemas externos quedan aislados en un solo contexto cada uno, lo que permite reemplazarlos sin afectar al resto del dominio.
+- Se evaluó separar Device Management y Notifications como contextos propios. Estas alternativas se discuten en la sección 4.1.2.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 ### 4.1.2. Context Mapping
 
 ### 4.1.3. Software Architecture
