@@ -12,5 +12,7 @@
 | 0.0.8 | 06/09/2026 | Iker Gabriel Barturen Panez | Redacción de los Segmentos objetivo con sustento estadístico (INEI, MIDAGRI, OSIPTEL, CIP, INIA). |
 | 0.0.9 | 06/09/2026 | Iker Gabriel Barturen Panez | Incorporación de la figura del Lean UX Canvas del proyecto OsoSense en el Capítulo I. |
 | 0.0.10 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo de la sección de competidores, análisis competitivo y estrategias frente a competidores en el Capítulo II. |
+| 0.0.11 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Actualización de las imágenes de perfiles de integrantes en el Capítulo I, incluyendo el ajuste de tamaño uniforme para las fotografías. |
+| 0.0.12 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Corrección de los Lean UX Hypothesis Statements del Capítulo I según la estructura solicitada en el statement del proyecto. |
 
 # Project Report Collaboration Insights
