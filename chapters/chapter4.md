@@ -578,9 +578,131 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
-#### 4.1.3.2. Software Architecture Container Level Diagrams
+El System Context Diagram enfoca **OsoSense Platform** —el sistema con el que interactúan directamente las personas— y muestra sus dependencias inmediatas: los usuarios, el sistema de campo que le entrega lecturas y los sistemas externos con los que se integra. Todavía no se detallan contenedores ni tecnologías; eso corresponde al nivel de Container.
 
-#### 4.1.3.3. Software Architecture Deployment Diagrams
+**Proceso de elaboración**
+
+1. **Sistema en foco.** Se eligió OsoSense Platform como sistema central, por ser el que usan directamente el visitante, el productor y el asesor.
+2. **Personas.** Se heredaron del System Landscape (4.1.3.1): Visitor, Agricultural Producer y Agronomist Advisor.
+3. **Sistema adyacente.** OsoSense Field Monitoring se modela como sistema vecino que envía lotes de lecturas y recibe el factor de calibración.
+4. **Sistemas externos.** Se conservaron los del Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo, el Weather Service API y el Soil Laboratory.
+5. **Relaciones.** Cada relación se rotuló con la acción principal y el protocolo del emisor sobre el receptor.
+
+<div align="center">
+<img src="../assets/strategic-ddd/system-context-diagram.png" alt="Software Architecture System Context Diagram de OsoSense" width="900">
+<p><em>Software Architecture System Context Diagram de OsoSense.</em></p>
+</div>
+
+**Elementos del diagrama**
+
+| Elemento | Tipo | Descripción |
+|---|---|---|
+| Visitor | Persona | Visitante del Landing Page que consulta la propuesta y los planes. |
+| Agricultural Producer | Persona | Registra parcelas, consulta el estado del suelo y atiende alertas. |
+| Agronomist Advisor | Persona | Supervisa parcelas vinculadas, calibra dispositivos y genera reportes. |
+| OsoSense Platform | Sistema en foco | Reúne Landing Page, Web App, Mobile App y RESTful API. |
+| OsoSense Field Monitoring | Sistema adyacente | Captura, valida, compensa y sincroniza las lecturas del suelo. |
+| Stripe | Sistema externo | Procesa las transacciones de suscripción. |
+| Google OAuth2 | Sistema externo | Verifica el ID token del inicio de sesión federado. |
+| Push / Email provider | Sistema externo | Entrega notificaciones push y correos transaccionales. |
+| Weather Service API | Sistema externo | Provee precipitación y temperatura ambiental por coordenadas. |
+| Soil Laboratory | Sistema externo | Emite el análisis de ECe de referencia usado para calibrar el dispositivo. |
+
+**Relaciones principales**
+
+- El **Visitor** consulta la propuesta y los planes en OsoSense Platform (HTTPS).
+- El **Producer** gestiona sus parcelas y atiende alertas, y el **Advisor** supervisa parcelas, calibra y genera reportes (HTTPS).
+- **OsoSense Field Monitoring** envía lotes de lecturas a la plataforma y recibe de ella el factor de calibración (HTTPS).
+- **OsoSense Platform** procesa pagos con Stripe, verifica el ID token con Google OAuth2, envía notificaciones por el proveedor push/correo y consulta el clima en el Weather Service API.
+- El **Advisor** solicita análisis al **Soil Laboratory** y registra su resultado en la plataforma, cerrando el ciclo de calibración.
+
+**Decisiones reflejadas en el diagrama**
+
+- El foco en OsoSense Platform evita repetir el Landscape: Field Monitoring se ve aquí como una caja cuyo interior se abre en el nivel de Container.
+- La dependencia del **servicio meteorológico** es no crítica: su indisponibilidad degrada la riqueza del diagnóstico pero no impide la operación.
+- Todas las integraciones con terceros pasan por la plataforma; el campo no depende directamente de ningún sistema externo.
+
+#### 4.1.3.3. Software Architecture Container Level Diagrams
+
+El Container Level abre los sistemas del nivel anterior en sus unidades de despliegue independiente (aplicaciones, servicios y almacenes de datos), con la tecnología de cada una y sus canales de comunicación. En total son **siete unidades desplegables** repartidas en los dos sistemas propios.
+
+**Proceso de elaboración**
+
+1. **Descomposición de OsoSense Platform.** Landing Page (estático), Web App y Mobile App como clientes, el RESTful API como backend de negocio y la Platform Database como almacén.
+2. **Descomposición de OsoSense Field Monitoring.** Embedded Application sobre el ESP32, Edge Service en campo y su base local para la sincronización diferida.
+3. **Tecnologías.** Se anotó la pila establecida por el curso para cada contenedor.
+4. **Protocolos.** Cada relación se rotuló con su protocolo (JSON/HTTPS, JDBC, SQL local, Serial/WiFi, SMTP).
+
+<div align="center">
+<img src="../assets/strategic-ddd/container-diagram-platform.png" alt="Software Architecture Container Diagram — OsoSense Platform" width="950">
+<p><em>Software Architecture Container Diagram — OsoSense Platform.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/strategic-ddd/container-diagram-field.png" alt="Software Architecture Container Diagram — OsoSense Field Monitoring" width="850">
+<p><em>Software Architecture Container Diagram — OsoSense Field Monitoring.</em></p>
+</div>
+
+**Elementos del diagrama**
+
+| Contenedor | Sistema | Tecnología | Responsabilidad |
+|---|---|---|---|
+| Landing Page | OsoSense Platform | HTML5, CSS3, JavaScript | Sitio estático que presenta el modelo de negocio y los planes. |
+| Web Application | OsoSense Platform | Angular, TypeScript, Angular Material | Interfaz responsive de gestión, tableros y reportes (asesor). |
+| Mobile Application | OsoSense Platform | Kotlin / Android | App nativa de consulta en campo y recepción de alertas (productor). |
+| RESTful API | OsoSense Platform | Spring Boot, Java, Spring Data JPA | Expone las capacidades de los seis bounded contexts. |
+| Platform Database | OsoSense Platform | MySQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
+| Embedded Application | OsoSense Field Monitoring | C++ / ESP32 | Captura periódicamente CE, humedad y temperatura del suelo. |
+| Edge Service | OsoSense Field Monitoring | Flask, Python, Peewee ORM | Valida, compensa y sincroniza las lecturas del dispositivo. |
+| Edge Local Database | OsoSense Field Monitoring | SQLite | Almacena las lecturas pendientes de sincronización. |
+
+**Relaciones principales**
+
+- El **Visitor** visita el Landing Page, que redirige a la Web App mediante un call-to-action (HTTPS).
+- **Web App** y **Mobile App** consumen el mismo **RESTful API** (JSON/HTTPS); el API es el único que lee y escribe en la Platform Database (JDBC).
+- La **Embedded Application** transmite lecturas al **Edge Service** (Serial/WiFi); el Edge las guarda en su base local (SQL) y sincroniza los lotes al API (JSON/HTTPS).
+- El **RESTful API** concentra las integraciones externas: Stripe, Weather Service API y notificaciones push (JSON/HTTPS) y correo (SMTP).
+
+**Decisiones reflejadas en el diagrama**
+
+- La separación entre **Edge Service** y **RESTful API** es la decisión más relevante: el Edge se despliega en campo y asume la validación de rango, la compensación a 25 °C sobre la lectura fresca y el almacenamiento local con sincronización diferida. Sin ella, cada corte de conexión produciría un vacío irrecuperable en el histórico —el activo que sostiene la propuesta de valor.
+- La **Web App** (asesor, gabinete, pantalla amplia) y la **Mobile App** (productor, campo, notificaciones push) consumen el mismo API pero atienden contextos de uso distintos.
+- El **Landing Page** se mantiene como contenedor independiente, desplegado como sitio estático, para publicarse y evolucionar sin acoplarse al ciclo de despliegue de la Web App.
+
+#### 4.1.3.4. Software Architecture Deployment Diagrams
+
+El Deployment Diagram mapea los contenedores del nivel anterior a la infraestructura donde se ejecutan, evidenciando la naturaleza distribuida de la solución en tres ámbitos físicos: la parcela, los dispositivos del usuario y el proveedor cloud.
+
+**Proceso de elaboración**
+
+1. **Nodos de campo.** La Embedded Application se despliega en el nodo ESP32 y el Edge Service, con su base SQLite, en un gateway local.
+2. **Dispositivos del usuario.** El Landing Page y la Web App se ejecutan en el navegador; la Mobile App, en el dispositivo Android.
+3. **Nodos cloud.** Se separaron el hosting estático (Landing Page), el hosting de la Web App, el servidor de aplicaciones (RESTful API sobre la JVM) y el servidor de base de datos.
+4. **Enlaces.** Cada canal de despliegue se rotuló con su protocolo.
+
+<div align="center">
+<img src="../assets/strategic-ddd/deployment-diagram.png" alt="Software Architecture Deployment Diagram de OsoSense" width="950">
+<p><em>Software Architecture Deployment Diagram de OsoSense.</em></p>
+</div>
+
+**Elementos del diagrama**
+
+| Deployment Node | Contenedores desplegados | Notas |
+|---|---|---|
+| Parcela → ESP32 (microcontrolador) | Embedded Application (C++ / Arduino Framework) | Opera con conectividad intermitente. |
+| Parcela → Gateway local (Raspberry Pi / PC) | Edge Service (Flask/Python) + Edge Local Database (SQLite) | Compensa y bufferiza hasta sincronizar. |
+| Navegador web | Landing Page (HTML/CSS/JS) + Web Application (Angular SPA) | Descargados desde el hosting cloud. |
+| Dispositivo Android | Mobile Application (Kotlin APK) | Cliente de campo del productor. |
+| Cloud → Static Hosting | Landing Page (archivos estáticos) | Publicación desacoplada. |
+| Cloud → Web Hosting | Web Application (build de producción) | — |
+| Cloud → Application Server (JVM) | RESTful API (Spring Boot JAR) | Backend de negocio. |
+| Cloud → Database Server | Platform Database (MySQL) | Persistencia canónica. |
+
+**Decisiones reflejadas en el diagrama**
+
+- La parte de campo (ESP32 + gateway local) se despliega **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; la plataforma se despliega **en la nube**.
+- El Landing Page y la Web App se sirven como contenido estático/compilado desde la nube y se ejecutan en el navegador del usuario, separados del servidor de aplicaciones que ejecuta el API sobre la JVM.
+- La base de datos MySQL se despliega en un servidor dedicado, accesible únicamente desde el servidor de aplicaciones.
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
