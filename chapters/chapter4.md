@@ -2,19 +2,579 @@
 
 ## 4.1. Strategic-Level Domain-Driven Design
 
+En esta sección el equipo explica el proceso seguido para tomar las decisiones de nivel estratégico de Domain-Driven Design sobre OsoSense. El punto de partida fue el Big Picture EventStorming de la sección 2.4, con sus 35 eventos de dominio, sus cinco eventos pivote y sus seis fronteras emergentes. A partir de ese material se realizaron, en orden, un Design-Level EventStorming, un Candidate Context Discovery, el modelado de los flujos de mensajes con Domain Storytelling, los Bounded Context Canvases y el Context Mapping. El resultado de este proceso son los seis bounded contexts que se desarrollan de forma táctica en la sección 4.2: Identity and Access Management, Subscription and Billing, Farm Management, Soil Monitoring, Salinity Alerting y Analytics and Reporting.
+
+Todos los artefactos se elaboraron en un mismo board de FigJam, organizado por zonas según la sección del informe a la que corresponde cada captura.
+
 ### 4.1.1. Design-Level EventStorming
+
+El equipo realizó una sesión de Design-Level EventStorming de aproximadamente dos horas para pasar de la visión general del negocio a un modelo con el detalle suficiente para identificar bounded contexts. La sesión tomó como insumo la línea de tiempo del Big Picture EventStorming y siguió la guía indicada en el enunciado (https://bit.ly/dles-guide) y la notación del *EventStorming Glossary & Cheat Sheet* de ddd-crew.
+
+El trabajo se organizó en doce carriles, uno por cada proceso de negocio relevante. En cada carril se reconstruyó la cadena completa de un caso de uso: quién inicia la acción, qué información consulta para decidir, qué comando ejecuta, qué aggregate recibe el comando y protege sus reglas, qué eventos se producen y qué policies reaccionan automáticamente ante esos eventos. Debajo de cada cadena se registraron las reglas de negocio y los HotSpots que surgieron en la discusión.
+
+**Notación utilizada**
+
+| Elemento | Color | Uso en la sesión |
+|---|---|---|
+| Actor | Amarillo | Persona o rol que ejecuta el comando. |
+| Read Model | Verde | Información que el actor consulta antes de decidir. |
+| Command | Azul | Intención o decisión, redactada en imperativo. |
+| Aggregate | Amarillo intenso (forma redondeada) | Entidad que recibe el comando, valida invariantes y emite eventos. |
+| Domain Event | Naranja | Hecho relevante para el negocio, redactado en pasado. |
+| Policy | Lila | Reacción automática con la forma "whenever X, then Y". |
+| External System | Rosado | Sistema de terceros o hardware que interviene en el proceso. |
+| Business Rule | Amarillo (nota ancha) | Invariante que el aggregate debe cumplir. |
+| HotSpot | Rojo | Duda, riesgo o conflicto abierto. |
+
+La sesión se desarrolló en los siguientes pasos:
+
+1. **Selección de procesos.** A partir de las fases del Big Picture se eligieron doce procesos que cubren el ciclo completo del negocio, desde la suscripción hasta la renovación.
+2. **Commands y actores.** Para cada evento se identificó la acción que lo provoca y quién la ejecuta. Los eventos disparados por otros eventos se conectaron mediante policies.
+3. **Aggregates.** Se agruparon los comandos que operan sobre la misma información y protegen las mismas reglas, lo que permitió identificar aggregates como *Subscription*, *Farm*, *Device*, *SoilReading*, *ReadingBatch*, *SalinityAlert*, *AdvisoryLink*, *CalibrationRecord*, *PlotReport* y *SalinityTrend*.
+4. **Read models y sistemas externos.** Se registró la información que cada actor necesita ver y los sistemas de terceros que participan: Stripe, Google OAuth2, el proveedor de notificaciones push y correo, el laboratorio de suelos, el servicio meteorológico y el hardware del sensor.
+5. **Reglas y HotSpots.** Se escribieron las invariantes de cada aggregate y los puntos de duda que deben resolverse en el diseño táctico.
+
+**Carril 1. Suscripción a un plan**
+
+El productor elige un plan (gratuito limitado a una parcela, mensual o anual). El pago se confirma con Stripe y la activación de la suscripción otorga el cupo de parcelas a Farm Management.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-01-subscription.png" alt="Design-Level EventStorming, carril de suscripción a un plan" width="850">
+<p><em>Design-Level EventStorming: suscripción a un plan.</em></p>
+</div>
+
+**Carril 2. Registro de finca, parcela y cultivo**
+
+El productor registra su finca y sus parcelas. Antes de crear la parcela se verifica el cupo disponible; al asignar el cultivo se fija el umbral de salinidad que usará Salinity Alerting.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-02-farm-plot-crop.png" alt="Design-Level EventStorming, carril de registro de finca, parcela y cultivo" width="850">
+<p><em>Design-Level EventStorming: registro de finca, parcela y cultivo.</em></p>
+</div>
+
+**Carril 3. Instalación del dispositivo**
+
+El productor registra el dispositivo con su código de activación y lo vincula a una parcela. La vinculación habilita la ingesta de lecturas.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-03-device-installation.png" alt="Design-Level EventStorming, carril de instalación del dispositivo" width="850">
+<p><em>Design-Level EventStorming: instalación del dispositivo IoT.</em></p>
+</div>
+
+**Carril 4. Captura, compensación y sincronización en el Edge Service**
+
+El dispositivo entrega cada lectura al Edge Service, que la valida contra el rango del sensor, la compensa a 25 °C y la transmite. Si no hay conectividad, la guarda en un buffer local y la sincroniza en orden cronológico al reconectarse.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-04-edge-capture.png" alt="Design-Level EventStorming, carril de captura y sincronización en campo" width="850">
+<p><em>Design-Level EventStorming: captura, compensación y sincronización en el Edge Service.</em></p>
+</div>
+
+**Carril 5. Ingesta de lecturas en la plataforma**
+
+El Edge Service remite lotes al RESTful API. La ingesta descarta duplicados y persiste cada lectura; si un dispositivo deja de reportar, se marca fuera de línea.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-05-ingestion.png" alt="Design-Level EventStorming, carril de ingesta de lecturas" width="850">
+<p><em>Design-Level EventStorming: ingesta de lecturas y detección de dispositivo fuera de línea.</em></p>
+</div>
+
+**Carril 6. Evaluación de umbral y generación de alerta**
+
+Cada lectura almacenada se compara con el umbral del cultivo de la parcela. Si lo supera, se genera una alerta con severidad y se notifica al productor y a sus asesores vinculados.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-06-threshold-alert.png" alt="Design-Level EventStorming, carril de evaluación de umbral y alerta" width="850">
+<p><em>Design-Level EventStorming: evaluación de umbral por cultivo y generación de alerta.</em></p>
+</div>
+
+**Carril 7. Reconocimiento de la alerta y acción correctiva**
+
+El productor revisa la alerta, la reconoce y registra la acción ejecutada en campo, lo que cierra el ciclo de atención.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-07-corrective-action.png" alt="Design-Level EventStorming, carril de acción correctiva" width="850">
+<p><em>Design-Level EventStorming: reconocimiento de la alerta y registro de acción correctiva.</em></p>
+</div>
+
+**Carril 8. Vinculación entre asesor y productor**
+
+El asesor solicita supervisar a un productor, que acepta o revoca el vínculo. Solo los vínculos aceptados reciben alertas y aparecen en el tablero multiparcela.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-08-advisory-link.png" alt="Design-Level EventStorming, carril de vinculación asesor y productor" width="850">
+<p><em>Design-Level EventStorming: vinculación entre asesor técnico y productor.</em></p>
+</div>
+
+**Carril 9. Calibración con laboratorio**
+
+El asesor registra un análisis de laboratorio de la parcela; el sistema calcula el factor de corrección del dispositivo y lo aplica en las siguientes compensaciones.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-09-calibration.png" alt="Design-Level EventStorming, carril de calibración con laboratorio" width="850">
+<p><em>Design-Level EventStorming: calibración del dispositivo con resultado de laboratorio.</em></p>
+</div>
+
+**Carril 10. Generación y exportación del reporte de parcela**
+
+El asesor genera un reporte por parcela y periodo con la serie de lecturas, la tendencia, las alertas, las acciones correctivas y los datos de lluvia, y lo exporta en PDF.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-10-plot-report.png" alt="Design-Level EventStorming, carril de reporte de parcela" width="850">
+<p><em>Design-Level EventStorming: generación y exportación del reporte de parcela.</em></p>
+</div>
+
+**Carril 11. Cálculo de la tendencia de salinidad**
+
+Cada lectura almacenada actualiza la tendencia de la parcela, que el productor consulta como indicador de detección temprana.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-11-salinity-trend.png" alt="Design-Level EventStorming, carril de cálculo de tendencia" width="850">
+<p><em>Design-Level EventStorming: cálculo de la tendencia de salinidad.</em></p>
+</div>
+
+**Carril 12. Renovación, suspensión y baja de parcela**
+
+Al vencer el periodo se intenta la renovación; si el cobro falla, la suscripción se suspende y se detiene la ingesta. Dar de baja una parcela libera su cupo.
+
+<div align="center">
+<img src="../assets/strategic-ddd/design-level-12-subscription-lifecycle.png" alt="Design-Level EventStorming, carril de ciclo de vida de la suscripción" width="850">
+<p><em>Design-Level EventStorming: renovación, suspensión y baja de parcela.</em></p>
+</div>
+
+**Resultados del Design-Level EventStorming**
+
+| Resultado | Detalle |
+|---|---|
+| Aggregates identificados | Subscription, Farm (Plot), Crop, Device, SoilReading, ReadingBatch, CalibrationRecord, SalinityAlert, NotificationPreference, AdvisoryLink, UserAccount, SalinityTrend, PlotReport. |
+| Policies principales | Otorgar cupo al activarse la suscripción; habilitar la ingesta al instalar el dispositivo; evaluar el umbral y recalcular la tendencia al almacenar una lectura; notificar al generar una alerta; aplicar el nuevo factor al calibrar; suspender la ingesta al suspender la suscripción. |
+| Reglas de negocio clave | Una suscripción vigente por usuario; como máximo un dispositivo por parcela; toda lectura conserva el valor crudo y el compensado; ingesta idempotente por dispositivo y fecha de captura; severidad por proporción del exceso sobre el umbral del cultivo; tendencia fiable con 30 lecturas o más. |
+| HotSpots para el diseño táctico | Conectividad intermitente en campo, reenvíos duplicados, fatiga por exceso de alertas, interpretación de valores en dS/m, equivalencia entre la conductividad medida en campo y la ECe de laboratorio, y tratamiento de lecturas durante una suspensión. |
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
 
 #### 4.1.1.1. Candidate Context Discovery
 
+A partir del EventStorm modelado en la sección 4.1.1, el equipo realizó una sesión de Candidate Context Discovery de aproximadamente dos horas en FigJam, con el objetivo de identificar los bounded contexts candidatos de OsoSense. Se combinaron las tres técnicas propuestas en el enunciado:
+
+- **Start-with-value:** se empezó por las partes del dominio que generan la ventaja competitiva de OsoSense. La captura y compensación confiable de lecturas y la evaluación de la salinidad según el cultivo se identificaron como el core del negocio, porque sostienen las hipótesis HS-01, HS-02, HS-03, HS-08 y HS-09 y diferencian a la solución de los medidores portátiles y de las plataformas de agricultura de precisión.
+- **Look-for-pivotal-events:** se usaron los eventos pivote del Big Picture (*Subscription Activated*, *Device Installed In Plot*, *Soil Reading Stored*, *Salinity Alert Generated* y *Corrective Action Registered*) como fronteras naturales entre partes del proceso.
+- **Start-with-simple:** cada proceso se descompuso en pasos secuenciales y se agruparon los comandos, eventos, policies y aggregates que usan el mismo lenguaje, cambian juntos y protegen las mismas reglas.
+
+**Cambios progresivos del EventStorm**
+
+| Iteración | Qué se hizo | Resultado |
+|---|---|---|
+| 1 | Se partió de las once fases del Big Picture EventStorming. | 11 grupos de eventos ordenados en el tiempo. |
+| 2 | Se cortó la línea de tiempo en los cinco eventos pivote. | 6 segmentos candidatos. |
+| 3 | Se clasificó cada segmento por su valor para el negocio. | Core: monitoreo y alertas. Supporting: estructura agrícola y analítica. Generic: identidad y suscripciones. |
+| 4 | Se fusionaron los segmentos que comparten reglas y se separaron los que tienen responsabilidades distintas. | 6 bounded contexts candidatos. |
+
+Las decisiones de la iteración 4 fueron las siguientes:
+
+- La captura en campo, la ingesta en la plataforma y la calibración (fases F5, F6 y F9) se unieron en **Soil Monitoring**, porque las tres dependen de la lectura compensada y del factor de calibración del dispositivo.
+- La evaluación de umbral, la alerta y la acción correctiva (F7 y F8) se unieron en **Salinity Alerting**, porque el ciclo de la alerta solo termina con la acción correctiva.
+- La finca, la parcela, el cultivo y el dispositivo (F2 y F3) se unieron en **Farm Management**, porque un dispositivo solo existe vinculado a una parcela.
+- La fase de acceso y suscripción (F1) se dividió: la cuenta y el vínculo con el asesor (F4) pasaron a **Identity and Access Management**; el plan, el pago y el ciclo de renovación (F11) pasaron a **Subscription and Billing**.
+- Los reportes, tendencias y datos meteorológicos (F10) se agruparon en **Analytics and Reporting**, un contexto predominantemente de lectura.
+
+La figura se organiza con el mismo esquema en todas sus partes. A la izquierda se ubica Identity and Access Management, punto de entrada común a todos los contextos, conectado con cada contexto candidato. Cada contexto se delimita con un recuadro punteado que contiene sus pares de comando y evento, los actores, los read models, los sistemas externos, las policies que ramifican el flujo y, al final de cada fila, en gris, los aggregates.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-01-iam-soil-monitoring.png" alt="Candidate Context Discovery: lista de bounded contexts, Identity and Access Management y Soil Monitoring" width="900">
+<p><em>Candidate Context Discovery: lista de bounded contexts, Identity and Access Management y Soil Monitoring.</em></p>
+</div>
+
+En **Identity and Access Management** se agrupan el registro, el inicio de sesión local y con Google OAuth2, y el ciclo de solicitud, aceptación y revocación del vínculo entre asesor y productor. Sus aggregates son *User Account* y *Advisory Link*.
+
+En **Soil Monitoring** el flujo se ramifica mediante policies. Si la lectura está dentro del rango del sensor, se compensa por temperatura; si no, se descarta. Luego, si hay conectividad, el lote se ingiere y se publica *Soil Reading Stored*; si no, la lectura se guarda en el buffer local y se sincroniza al reconectarse. En una segunda fila se modela la calibración con laboratorio y en una tercera la detección de dispositivos sin lecturas. Sus aggregates son *Soil Reading*, *Reading Batch* y *Calibration Record*.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-02-salinity-alerting.png" alt="Candidate Context Discovery: Salinity Alerting" width="900">
+<p><em>Candidate Context Discovery: Salinity Alerting.</em></p>
+</div>
+
+En **Salinity Alerting** la policy *When soil reading stored* dispara la evaluación de la lectura contra el umbral del cultivo. Si la conductividad eléctrica supera el umbral, se genera la alerta y una segunda policy notifica a los destinatarios mediante el proveedor push o de correo; si no lo supera, la lectura se registra dentro del umbral. En la fila inferior se modela la atención de la alerta por parte del productor y la actualización de sus preferencias de notificación. Sus aggregates son *Salinity Alert* y *Notification Preference*.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-03-farm-analytics.png" alt="Candidate Context Discovery: Farm Management y Analytics and Reporting" width="900">
+<p><em>Candidate Context Discovery: Farm Management y Analytics and Reporting.</em></p>
+</div>
+
+En **Farm Management** se modela el registro de finca y parcela, con la verificación del cupo disponible, la asignación del cultivo con su umbral y la baja de la parcela. En la segunda fila se registra y vincula el dispositivo, y se reacciona a *Device Went Offline* marcándolo fuera de línea. Sus aggregates son *Farm*, *Crop* y *Device*.
+
+En **Analytics and Reporting** una policy recalcula la tendencia de salinidad ante cada lectura almacenada. El asesor consulta el tablero multiparcela, genera el reporte con datos del Weather Service API y lo exporta en PDF. Sus aggregates son *Salinity Trend* y *Plot Report*.
+
+<div align="center">
+<img src="../assets/strategic-ddd/candidate-context-discovery-04-subscription-billing.png" alt="Candidate Context Discovery: Subscription and Billing" width="900">
+<p><em>Candidate Context Discovery: Subscription and Billing.</em></p>
+</div>
+
+En **Subscription and Billing** la suscripción se ramifica según el plan: si requiere pago, se confirma con Stripe antes de activarse; si es el plan gratuito de una parcela, se activa directamente. La activación otorga el cupo de parcelas. En la fila inferior se modela la renovación periódica, la suspensión cuando el cobro falla y la cancelación por parte del productor. Su aggregate es *Subscription*.
+
+**Bounded contexts candidatos**
+
+| Bounded context | Tipo de sub-dominio | Responsabilidad | Sub-dominio SaaS equivalente |
+|---|---|---|---|
+| Soil Monitoring | Core | Captura, validación, compensación, sincronización e ingesta de lecturas; calibración con laboratorio. | Service Execution and Monitoring |
+| Salinity Alerting | Core | Evaluación de umbral por cultivo, alertas con severidad, notificación y acción correctiva. | Service Execution and Monitoring; Profiles and Preferences |
+| Farm Management | Supporting | Fincas, parcelas, catálogo de cultivos y ciclo de vida del dispositivo. | Resource and Asset Management |
+| Analytics and Reporting | Supporting | Tendencias, tableros y reportes exportables. | Dashboard and Analytics |
+| Identity and Access Management | Generic | Identidad, autenticación, roles y vínculo asesor-productor. | Identity and Access Management |
+| Subscription and Billing | Generic | Planes, pagos, cupo de parcelas y renovación. | Subscriptions and Payment Management |
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 #### 4.1.1.2. Domain Message Flows Modeling
+
+En esta sección el equipo explica cómo colaboran los bounded contexts candidatos para resolver los casos de negocio más importantes de OsoSense. Para ello se aplicó la técnica **Domain Storytelling**: cada escenario se narra como una secuencia numerada de mensajes entre actores, sistemas y bounded contexts, de modo que la historia pueda leerse como oraciones del tipo "actor envía mensaje a contexto".
+
+Se eligieron cuatro escenarios que, en conjunto, recorren los seis bounded contexts y todas las integraciones con sistemas externos:
+
+1. Registro de una parcela monitoreada.
+2. Alerta de salinidad a partir de una lectura del suelo (flujo core).
+3. Supervisión del asesor y calibración del dispositivo.
+4. Suscripción a un plan.
+
+**Notación utilizada**
+
+| Símbolo | Significado |
+|---|---|
+| Figura de persona | Actor, usuario o persona (Agricultural Producer, Agronomist Advisor). |
+| Nube lila | Bounded context. |
+| Engranaje | Sistema: aplicaciones de OsoSense, Edge Service, IoT Device o sistemas de terceros. |
+| Flecha punteada | Dirección del mensaje, desde el emisor hacia el receptor. |
+| Nota azul | Command: intención dirigida a un contexto. |
+| Nota naranja | Event: hecho publicado por un contexto. |
+| Nota verde | Query: consulta de información a otro contexto. |
+
+El número de cada mensaje indica su orden dentro del escenario. Cuando dos mensajes ocurren al mismo tiempo, comparten número.
+
+**Escenario 1: Monitored Plot Registration Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-01-plot-registration.png" alt="Domain Message Flows Modeling: registro de parcela monitoreada" width="900">
+<p><em>Domain Message Flows Modeling: Monitored Plot Registration Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | Agricultural Producer | OsoSense Mobile App | Register plot and crop | Command |
+| 2 | OsoSense Mobile App | Farm Management | Register Plot | Command |
+| 3 | Farm Management | Subscription and Billing | Check Plot Quota | Query |
+| 4 | Subscription and Billing | Farm Management | Plot Quota Available | Event |
+| 5 | Farm Management | Salinity Alerting | Crop Assigned To Plot | Event |
+| 6 | Agricultural Producer | OsoSense Mobile App | Attach device | Command |
+| 7 | OsoSense Mobile App | Farm Management | Attach Device To Plot | Command |
+| 8 | Farm Management | Soil Monitoring | Device Installed In Plot | Event |
+
+Farm Management no crea la parcela sin antes confirmar el cupo con Subscription and Billing. Una vez registrada, informa el cultivo a Salinity Alerting para fijar el umbral y, al vincular el dispositivo, habilita la ingesta en Soil Monitoring.
+
+**Escenario 2: Salinity Alert Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-02-salinity-alert.png" alt="Domain Message Flows Modeling: alerta de salinidad" width="900">
+<p><em>Domain Message Flows Modeling: Salinity Alert Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | IoT Device (ESP32) | Edge Service | Send Soil Reading | Command |
+| 2 | Edge Service | Soil Monitoring | Ingest Reading Batch | Command |
+| 3 | Soil Monitoring | Salinity Alerting | Soil Reading Stored | Event |
+| 4 | Salinity Alerting | Farm Management | Get Crop Threshold | Query |
+| 5 | Salinity Alerting | Identity and Access Management | Get Linked Advisors | Query |
+| 6 | Salinity Alerting | Notification System | Salinity Alert Generated | Event |
+| 7 | Notification System | Agricultural Producer / Agronomist Advisor | Notify Producer / Notify Advisor | Command |
+| 8 | Agricultural Producer | Salinity Alerting | Register Corrective Action | Command |
+| 9 | Salinity Alerting | Analytics and Reporting | Corrective Action Registered | Event |
+
+Este es el flujo de mayor valor para el negocio. Soil Monitoring y Salinity Alerting se comunican mediante el evento publicado *Soil Reading Stored*, sin llamadas directas. Salinity Alerting consulta información a Farm Management e Identity and Access Management, pero no modifica sus datos.
+
+**Escenario 3: Advisor Supervision and Calibration Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-03-advisor-calibration.png" alt="Domain Message Flows Modeling: supervisión del asesor y calibración" width="900">
+<p><em>Domain Message Flows Modeling: Advisor Supervision and Calibration Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | Agronomist Advisor | OsoSense Web App | Sign In With Google | Command |
+| 2 | OsoSense Web App | Identity and Access Management | Authenticate With Google | Command |
+| 3 | Identity and Access Management | Google OAuth2 | Verify ID Token | Query |
+| 4 | Agronomist Advisor | OsoSense Web App | Request Advisory Link | Command |
+| 5 | OsoSense Web App | Identity and Access Management | Request Advisory Link | Command |
+| 6 | Identity and Access Management | Agricultural Producer | Advisory Link Requested | Event |
+| 7 | Agricultural Producer | Identity and Access Management | Accept Advisory Link | Command |
+| 8 | Agronomist Advisor | OsoSense Web App | View Multi-Plot Dashboard | Query |
+| 9 | OsoSense Web App | Analytics and Reporting | Get Multi-Plot Dashboard | Query |
+| 10 | Analytics and Reporting | Weather Service API | Get Precipitation | Query |
+| 11 | Agronomist Advisor | OsoSense Web App | Register Lab Result | Command |
+| 12 | OsoSense Web App | Soil Monitoring | Register Lab Result | Command |
+| 13 | Soil Monitoring | Edge Service | Device Calibrated | Event |
+
+El asesor solo accede a las parcelas del productor cuando el vínculo está aceptado. La calibración se registra en Soil Monitoring, que calcula el factor y lo publica hacia el Edge Service para las siguientes compensaciones.
+
+**Escenario 4: Plan Subscription Scenario**
+
+<div align="center">
+<img src="../assets/strategic-ddd/domain-message-flow-04-plan-subscription.png" alt="Domain Message Flows Modeling: suscripción a un plan" width="900">
+<p><em>Domain Message Flows Modeling: Plan Subscription Scenario.</em></p>
+</div>
+
+| # | Emisor | Receptor | Mensaje | Tipo |
+|---|---|---|---|---|
+| 1 | Agricultural Producer | OsoSense Web / Mobile App | Subscribe To Plan | Command |
+| 2 | OsoSense Web / Mobile App | Subscription and Billing | Subscribe To Plan | Command |
+| 3 | Subscription and Billing | Stripe | Create Charge | Command |
+| 4 | Stripe | Subscription and Billing | Payment Confirmed (webhook) | Event |
+| 5 | Subscription and Billing | Farm Management | Subscription Activated | Event |
+| 6 | Billing Scheduler | Subscription and Billing | Renew Subscription | Command |
+| 7 | Subscription and Billing | Soil Monitoring | Subscription Suspended | Event |
+
+Subscription and Billing se integra con Stripe para el cobro y comunica los cambios de estado de la suscripción a los contextos afectados: el cupo a Farm Management y la suspensión de la ingesta a Soil Monitoring.
+
+**Conclusiones del modelado de flujos**
+
+- Los contextos core se comunican con eventos publicados, lo que reduce el acoplamiento entre la captura de lecturas y la evaluación de alertas.
+- Las consultas entre contextos (Query) no modifican datos del contexto consultado.
+- Cada sistema externo tiene un único contexto responsable de integrarlo: Stripe en Subscription and Billing, Google OAuth2 en Identity and Access Management, el Weather Service API en Analytics and Reporting y el proveedor de notificaciones en Salinity Alerting.
+- Estos flujos son la base de las relaciones del Context Mapping de la sección 4.1.2.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
 
 #### 4.1.1.3. Bounded Context Canvases
 
+En esta sección el equipo diseña cada bounded context candidato con el **Bounded Context Canvas V4** de ddd-crew. Los contextos se trabajaron por orden de importancia: primero los core (Soil Monitoring y Salinity Alerting), luego los supporting (Farm Management y Analytics and Reporting) y al final los generic (Identity and Access Management y Subscription and Billing).
+
+Cada canvas se elaboró de forma iterativa siguiendo los pasos indicados en el enunciado:
+
+1. **Context Overview Definition:** nombre y propósito del contexto.
+2. **Business Rules Distillation & Ubiquitous Language Capture:** términos propios del contexto y decisiones de negocio que debe proteger.
+3. **Capability Analysis:** mensajes que el contexto recibe (Inbound Communication) y que envía (Outbound Communication).
+4. **Capability Layering:** clasificación estratégica según dominio (core, supporting o generic), modelo de negocio (revenue, engagement, compliance o cost reduction) y evolución (genesis, custom built, product o commodity), junto con el rol del contexto (draft, execution, analysis o gateway).
+5. **Dependencies Capture:** colaboradores de cada mensaje, diferenciados entre bounded context, sistema externo, frontend y rol.
+6. **Design Critique:** revisión cruzada entre canvases para verificar que cada mensaje enviado por un contexto aparezca como recibido en su colaborador.
+
+En los canvases, los mensajes azules son Commands, los amarillos son Events y los verdes son Queries. La leyenda *Collaborator Types* de cada canvas indica el tipo de colaborador.
+
+**Soil Monitoring**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-soil-monitoring.png" alt="Bounded Context Canvas de Soil Monitoring" width="900">
+<p><em>Bounded Context Canvas: Soil Monitoring.</em></p>
+</div>
+
+Soil Monitoring es un contexto core, orientado a generar ingresos y construido a medida, porque el dato confiable del suelo es la base de la propuesta de valor. Cumple el rol de execution context y de gateway context, ya que recibe la telemetría del IoT Device y del Edge Service. Sus decisiones de negocio garantizan que ninguna lectura inválida se almacene y que toda lectura conserve su valor crudo y compensado.
+
+**Salinity Alerting**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-salinity-alerting.png" alt="Bounded Context Canvas de Salinity Alerting" width="900">
+<p><em>Bounded Context Canvas: Salinity Alerting.</em></p>
+</div>
+
+Salinity Alerting es el segundo contexto core. Su modelo de negocio es engagement, porque la alerta oportuna es lo que hace volver al productor a la plataforma. Actúa como execution context y analysis context: interpreta cada lectura según el cultivo y decide la severidad por la proporción del exceso sobre el umbral, no por el valor absoluto.
+
+**Farm Management**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-farm-management.png" alt="Bounded Context Canvas de Farm Management" width="900">
+<p><em>Bounded Context Canvas: Farm Management.</em></p>
+</div>
+
+Farm Management es un contexto supporting que da el marco agronómico a cada lectura: parcela, cultivo, umbral y dispositivo. Coordina con Subscription and Billing para validar el cupo y publica los eventos que activan la ingesta y el umbral en los contextos core.
+
+**Analytics and Reporting**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-analytics-reporting.png" alt="Bounded Context Canvas de Analytics and Reporting" width="900">
+<p><em>Bounded Context Canvas: Analytics and Reporting.</em></p>
+</div>
+
+Analytics and Reporting es un contexto supporting con rol de analysis context. Consume información de Soil Monitoring, Salinity Alerting y Farm Management, y del Weather Service API, sin modificar esos datos. Su valor principal está en el tablero multiparcela y los reportes que sustentan las recomendaciones del asesor.
+
+**Identity and Access Management**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-identity-access-management.png" alt="Bounded Context Canvas de Identity and Access Management" width="900">
+<p><em>Bounded Context Canvas: Identity and Access Management.</em></p>
+</div>
+
+Identity and Access Management es un contexto generic orientado a compliance, que puede resolverse con soluciones estándar como Google OAuth2. Cumple el rol de gateway context para el acceso a la plataforma y controla el vínculo entre asesor y productor, del que dependen las notificaciones de Salinity Alerting.
+
+**Subscription and Billing**
+
+<div align="center">
+<img src="../assets/strategic-ddd/bc-canvas-subscription-billing.png" alt="Bounded Context Canvas de Subscription and Billing" width="900">
+<p><em>Bounded Context Canvas: Subscription and Billing.</em></p>
+</div>
+
+Subscription and Billing es un contexto generic orientado a revenue, apoyado en Stripe como proveedor de pagos. Controla el cupo de parcelas que habilita cada plan y comunica la activación y la suspensión de la suscripción a los contextos afectados.
+
+**Resumen de clasificación estratégica**
+
+| Bounded context | Domain | Business Model | Evolution | Domain Roles |
+|---|---|---|---|---|
+| Soil Monitoring | Core | Revenue | Custom built | Execution context, Gateway context |
+| Salinity Alerting | Core | Engagement | Custom built | Execution context, Analysis context |
+| Farm Management | Supporting | Engagement | Custom built | Execution context |
+| Analytics and Reporting | Supporting | Engagement | Custom built | Analysis context |
+| Identity and Access Management | Generic | Compliance | Commodity | Gateway context |
+| Subscription and Billing | Generic | Revenue | Commodity | Execution context |
+
+**Design Critique**
+
+- Cada evento publicado tiene al menos un contexto consumidor. Por ejemplo, *Soil Reading Stored* es consumido por Salinity Alerting y Analytics and Reporting.
+- Ningún contexto necesita modificar datos de otro contexto. Las necesidades de información se resuelven con queries o eventos.
+- Los sistemas externos quedan aislados en un solo contexto cada uno, lo que permite reemplazarlos sin afectar al resto del dominio.
+- Se evaluó separar Device Management y Notifications como contextos propios. Estas alternativas se discuten en la sección 4.1.2.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+
 ### 4.1.2. Context Mapping
+
+En esta sección el equipo explica cómo elaboró el context map de OsoSense, es decir, la visualización de las relaciones estructurales entre los seis bounded contexts. El proceso partió de los Bounded Context Canvases (4.1.1.3) y de los flujos de mensajes (4.1.1.2). Con ese material se construyeron varios mapas candidatos, planteando preguntas del tipo "¿qué pasaría si...?" sugeridas en el enunciado:
+
+- ¿Qué pasaría si partimos un bounded context en varios?
+- ¿Qué pasaría si fusionamos dos contextos que se comunican mucho?
+- ¿Qué pasaría si creamos un shared service para reducir duplicación?
+- ¿Qué pasaría si movemos una capacidad a otro contexto?
+
+Cada alternativa se discutió en función de las reglas de negocio, el lenguaje de cada contexto y el acoplamiento que generaba, hasta llegar a la versión final.
+
+**Patrones de relación utilizados**
+
+| Patrón | Significado en OsoSense |
+|---|---|
+| Customer/Supplier | El contexto upstream (proveedor) atiende las necesidades del downstream (cliente) y publica la información que este requiere. |
+| Partnership | Dos contextos que dependen mutuamente y evolucionan de forma coordinada. |
+| Open Host Service (OHS) | El contexto upstream expone un contrato público y estable, en este caso un evento publicado, para que otros contextos lo consuman. |
+| Conformist | El contexto downstream adopta el modelo del upstream sin traducirlo. |
+| Anti-corruption Layer (ACL) | El contexto downstream traduce el modelo del upstream para proteger su propio modelo. |
+| Shared Kernel | Modelo compartido entre contextos. No se usó, porque ningún par de contextos necesita compartir código o modelo. |
+
+**Versión 1: Device Management como contexto propio**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v1-device-management.png" alt="Context Map versión 1: Device Management como contexto propio" width="850">
+<p><em>Context Map, versión 1: Device Management como contexto propio.</em></p>
+</div>
+
+*Pregunta planteada:* ¿qué pasaría si partimos Farm Management y movemos el ciclo de vida del dispositivo a un contexto Device Management?
+
+- **A favor:** aislaría el registro, el estado y la futura gestión de flota de dispositivos.
+- **En contra:** el dispositivo solo tiene sentido vinculado a una parcela (regla: una parcela admite como máximo un dispositivo) y hoy no existe gestión de flota ni actualización remota de firmware. Además, Analytics and Reporting quedaba como conformista de dos contextos, lo que lo acoplaba a cambios internos.
+- **Decisión:** se descarta por ahora. Device Management se mantiene dentro de Farm Management y se revisará en el Sprint 3 si aparece la gestión de flota.
+
+**Versión 2: Soil Monitoring y Salinity Alerting fusionados**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v2-monitoring-alerting-merged.png" alt="Context Map versión 2: Soil Monitoring y Salinity Alerting fusionados" width="850">
+<p><em>Context Map, versión 2: Soil Monitoring y Salinity Alerting en un solo contexto.</em></p>
+</div>
+
+*Pregunta planteada:* ¿qué pasaría si fusionamos los dos contextos core, que se comunican con cada lectura, en un único contexto de monitoreo y alertas?
+
+- **A favor:** menos integración y un solo modelo de lectura.
+- **En contra:** la ingesta en campo (Edge, idempotencia y compensación) cambia a un ritmo distinto que las reglas agronómicas de severidad, y ambos usan lenguajes diferentes (sensor frente a cultivo y umbral). La fusión también impediría desplegar la parte de campo de forma independiente.
+- **Decisión:** se descarta. Se mantienen dos contextos core unidos por el evento *Soil Reading Stored*.
+
+**Versión 3: Notifications como shared service**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v3-notifications-shared.png" alt="Context Map versión 3: Notifications como shared service" width="850">
+<p><em>Context Map, versión 3: Notifications como shared service.</em></p>
+</div>
+
+*Pregunta planteada:* ¿qué pasaría si creamos un shared service de notificaciones para Identity and Access Management (correos de cuenta) y Salinity Alerting (alertas)?
+
+- **A favor:** reduce la duplicación de los adaptadores de push y correo.
+- **En contra:** las preferencias de notificación dependen de la severidad de la alerta, que es una regla de Salinity Alerting. Un servicio compartido obligaría a Identity and Access Management a conocer conceptos de alertas.
+- **Decisión:** se descarta. *Notification Preference* queda en Salinity Alerting y cada contexto integra su proveedor mediante un Anti-corruption Layer, aceptando una duplicación menor.
+
+**Versión 4: Context map final**
+
+<div align="center">
+<img src="../assets/strategic-ddd/context-map-v4-final.png" alt="Context Map versión 4: mapa final" width="850">
+<p><em>Context Map, versión 4: mapa final de OsoSense.</em></p>
+</div>
+
+La versión final conserva los seis bounded contexts y define las siguientes relaciones:
+
+| Upstream | Downstream | Patrón | Mecanismo de integración |
+|---|---|---|---|
+| Subscription and Billing | Farm Management | Customer/Supplier | Evento *Subscription Activated* y consulta de cupo mediante *Subscription Quota Client* (ACL en Farm Management). |
+| Subscription and Billing | Soil Monitoring | Customer/Supplier | Evento *Subscription Suspended*, que detiene la ingesta. |
+| Farm Management | Soil Monitoring | Partnership | *Device Installed In Plot* habilita la ingesta y *Device Went Offline* actualiza el estado del dispositivo. |
+| Farm Management | Salinity Alerting | Customer/Supplier | Evento *Crop Assigned To Plot* y consulta del umbral mediante *Crop Threshold Client*. |
+| Soil Monitoring | Salinity Alerting | Open Host Service | Evento publicado *Soil Reading Stored*, consumido por Salinity Alerting. |
+| Identity and Access Management | Salinity Alerting | Anti-corruption Layer | Consulta de asesores vinculados mediante *Advisory Link Client*. |
+| Salinity Alerting | Analytics and Reporting | Anti-corruption Layer | Historial de alertas y acciones mediante *Alert History Client*. |
+| Soil Monitoring | Analytics and Reporting | Anti-corruption Layer | Series de lecturas mediante *Soil Reading Series Client*. |
+| Farm Management | Analytics and Reporting | Anti-corruption Layer | Estructura de parcelas mediante *Plot Structure Client*. |
+
+Además, cada integración con terceros se protege con un Anti-corruption Layer dentro de su contexto: Stripe en Subscription and Billing, Google OAuth2 y el proveedor SMTP en Identity and Access Management, el proveedor de notificaciones push y correo en Salinity Alerting, el Weather Service API en Analytics and Reporting y el hardware del sensor en el Edge Service de Soil Monitoring.
+
+**Justificación de la versión final**
+
+- **Independencia del core:** Soil Monitoring y Salinity Alerting solo se comunican mediante un evento publicado, por lo que cada uno puede evolucionar y desplegarse sin afectar al otro.
+- **Protección de modelos:** los contextos que consumen información de varios otros, como Analytics and Reporting y Salinity Alerting, usan Anti-corruption Layer para que los cambios internos de sus proveedores no los rompan.
+- **Colaboración real:** Farm Management y Soil Monitoring se relacionan como Partnership, porque la instalación y el estado del dispositivo requieren decisiones coordinadas entre ambos.
+- **Coherencia con el diseño táctico:** las relaciones de la tabla corresponden a los clientes, consumidores y eventos definidos en la sección 4.2.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
 
 ### 4.1.3. Software Architecture
 
 #### 4.1.3.1. Software Architecture System Landscape Diagram
+
+El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en una sola imagen, las personas que interactúan con la solución, los sistemas de software que Oso Terra construye y opera, y los sistemas externos con los que esos sistemas se integran. Su propósito es dar contexto antes de bajar al nivel de Context, Container y Component, sin entrar todavía en tecnologías ni despliegue.
+
+**Proceso de elaboración**
+
+1. **Identificación de personas.** Se tomaron los actores del Big Picture EventStorming (2.4) y de los flujos de mensajes (4.1.1.2) que interactúan directamente con la solución: el visitante del Landing Page, el Agricultural Producer y el Agronomist Advisor.
+2. **Identificación de sistemas propios.** Los productos digitales exigidos por el enunciado se agruparon en dos sistemas de software dentro del límite de la empresa Oso Terra: *OsoSense Platform*, que reúne el Landing Page, la Web App, la Mobile App y el RESTful API, y *OsoSense Field Monitoring*, que reúne el IoT Device y el Edge Service.
+3. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como sistema externo con el que interactúa el asesor.
+4. **Relaciones.** Cada relación se rotuló con la acción principal que realiza el emisor sobre el receptor.
+5. **Revisión.** Se verificó que cada persona y cada sistema externo del diagrama aparezca en al menos un escenario de Domain Storytelling.
+
+<div align="center">
+<img src="../assets/strategic-ddd/system-landscape-diagram.png" alt="Software Architecture System Landscape Diagram de OsoSense" width="900">
+<p><em>Software Architecture System Landscape Diagram de OsoSense.</em></p>
+</div>
+
+**Elementos del diagrama**
+
+| Elemento | Tipo | Descripción |
+|---|---|---|
+| Visitor | Persona | Visitante del Landing Page que conoce la propuesta y elige un plan. |
+| Agricultural Producer | Persona | Productor que registra sus parcelas, consulta lecturas y alertas y registra acciones correctivas. |
+| Agronomist Advisor | Persona | Asesor técnico que supervisa varias parcelas vinculadas, registra resultados de laboratorio y genera reportes. |
+| OsoSense Platform | Sistema propio | Landing Page, Web App, Mobile App y RESTful API. Gestiona parcelas, lecturas, alertas, reportes y suscripciones. |
+| OsoSense Field Monitoring | Sistema propio | IoT Device (ESP32) y Edge Service. Captura, compensa y sincroniza las lecturas del suelo. |
+| Stripe | Sistema externo | Procesa los pagos y cobros recurrentes de las suscripciones. |
+| Google OAuth2 | Sistema externo | Permite el inicio de sesión federado. |
+| Push / Email provider | Sistema externo | Entrega las notificaciones de alertas. |
+| Weather Service API | Sistema externo | Provee datos de precipitación por coordenadas para los reportes. |
+| Soil Laboratory | Sistema externo | Laboratorio acreditado que entrega el análisis de ECe usado para calibrar el dispositivo. |
+
+**Relaciones principales**
+
+- El **Visitor** conoce la propuesta y elige un plan en OsoSense Platform.
+- El **Agricultural Producer** usa OsoSense Platform para gestionar sus parcelas y atender alertas, e instala el dispositivo de OsoSense Field Monitoring en su parcela.
+- El **Agronomist Advisor** supervisa parcelas y genera reportes en OsoSense Platform, y envía muestras de suelo al Soil Laboratory.
+- **OsoSense Field Monitoring** envía lotes de lecturas a OsoSense Platform por HTTPS y recibe de ella el factor de calibración.
+- **OsoSense Platform** cobra las suscripciones con Stripe, verifica el ID token con Google OAuth2, envía alertas mediante el proveedor push y de correo, y consulta la lluvia en el Weather Service API.
+
+**Decisiones reflejadas en el diagrama**
+
+- La solución se separa en dos sistemas porque la parte de campo opera con conectividad intermitente y se despliega en el dispositivo y el Edge Service, mientras que la plataforma se despliega en la nube.
+- Todas las integraciones con terceros pasan por OsoSense Platform; el campo no depende directamente de ningún sistema externo.
+- Los niveles de Context, Container y Deployment se detallan en las secciones siguientes.
+
+**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
