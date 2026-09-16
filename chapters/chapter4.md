@@ -22,7 +22,7 @@ El C4 Model organiza la arquitectura en niveles de abstracción crecientes, de m
 
 El System Landscape Diagram representa el ecosistema completo en el que Oso Terra opera, sin limitarse a lo que la plataforma construye o controla. Su propósito es dar una lectura de conjunto: qué actores participan en el problema de la salinización, qué sistemas intervienen y cómo se relacionan entre sí, incluso cuando esas relaciones ocurren fuera de OsoSense.
 
-<div align="center"> <img src="../assets/SoftwareArchitecture/system-landscape.png" alt="System Landscape Diagram de OsoSense" width="900"/> <p><em>Figura X. System Landscape Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
+<div align="center"> <img src="../assets/SoftwareArchitecture/landscape.png" alt="System Landscape Diagram de OsoSense" width="900"/> <p><em>Figura X. System Landscape Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
 
 El diagrama muestra a los dos segmentos objetivo definidos en la sección 1.3. El productor agropecuario conduce las parcelas y toma las decisiones de riego, fertilización y recuperación del suelo. El asesor agronómico atiende a varios productores y necesita evidencia técnica para sustentar sus recomendaciones. Entre ambos existe una relación previa a la solución: el productor solicita asistencia técnica al asesor, y esa relación se mantiene con o sin plataforma.
 
@@ -36,7 +36,7 @@ Conviene señalar una diferencia deliberada entre esta vista y la siguiente. El 
 
 El System Context Diagram presenta OsoSense como una única caja negra y responde a dos preguntas: quiénes usan el sistema y con qué otros sistemas intercambia información. En este nivel no se discute tecnología ni estructura interna; el objetivo es fijar la frontera de responsabilidad de la solución.
 
-<div align="center"> <img src="../assets/SoftwareArchitecture/system-context.png" alt="System Context Diagram de OsoSense" width="900"/> <p><em>Figura X. System Context Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
+<div align="center"> <img src="../assets/SoftwareArchitecture/contexto.png" alt="System Context Diagram de OsoSense" width="900"/> <p><em>Figura X. System Context Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
 
 Del lado de los usuarios, el productor agropecuario registra sus fincas y parcelas, consulta el estado del suelo, recibe las alertas de salinidad y registra las acciones correctivas que ejecuta. El asesor agronómico revisa la tendencia de salinidad de las parcelas que asesora, la contrasta con el ECe de laboratorio y descarga los reportes que sustentan sus recomendaciones. Ambos son usuarios directos, pero con necesidades distintas: el productor necesita una respuesta accionable en campo, mientras que el asesor necesita evidencia comparable entre parcelas y a lo largo del tiempo.
 
@@ -48,7 +48,7 @@ Es importante notar qué queda dentro de la caja de OsoSense en este nivel. El n
 
 El Container Diagram descompone OsoSense en unidades de despliegue independientes y expone las decisiones de tecnología de cada una.
 
-<div align="center"> <img src="../assets/SoftwareArchitecture/containers.png" alt="Container Diagram de OsoSense" width="900"/> <p><em>Figura X. Container Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
+<div align="center"> <img src="../assets/SoftwareArchitecture/contenedores.png" alt="Container Diagram de OsoSense" width="900"/> <p><em>Figura X. Container Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
 
 La cadena de captura arranca en el Nodo Sensor, un ESP32 que mide conductividad eléctrica, humedad y temperatura, aplica la compensación térmica a 25 °C y publica la lectura por MQTT. El Edge Service, alojado en una Raspberry Pi en la parcela, recibe esas lecturas y las conserva en un almacén local SQLite cuando no hay conectividad. Este contenedor responde directamente a uno de los puntos de dolor identificados en el EventStorming: la conectividad intermitente en campo. Ninguna medición se pierde por una caída de enlace, y la sincronización contra la nube ocurre de forma diferida.
 
