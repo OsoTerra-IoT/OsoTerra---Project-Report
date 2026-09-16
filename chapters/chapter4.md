@@ -14,11 +14,47 @@
 
 ### 4.1.3. Software Architecture
 
+En esta sección se presenta la arquitectura de software de OsoSense aplicando el C4 Model de Simon Brown, elaborado en Structurizr mediante su lenguaje de descripción de arquitectura (Structurizr DSL). La elección del DSL responde a que permite mantener un único modelo versionado en el repositorio, del cual se derivan todas las vistas de forma consistente: si un contenedor cambia de tecnología, el cambio se refleja en todos los diagramas sin necesidad de reeditarlos uno por uno.
+
+El C4 Model organiza la arquitectura en niveles de abstracción crecientes, de modo que cada diagrama responde a una audiencia distinta. El System Landscape sitúa la solución dentro del ecosistema en el que opera; el System Context delimita qué es responsabilidad de OsoSense y qué no; el Container Diagram descompone la solución en unidades de despliegue independientes con sus decisiones de tecnología; y el Component Diagram desciende al interior de cada contenedor. Las tres primeras vistas se presentan a continuación, y la de componentes se desarrolla por bounded context en la sección 4.2.
+
 #### 4.1.3.1. Software Architecture System Landscape Diagram
+
+El System Landscape Diagram representa el ecosistema completo en el que Oso Terra opera, sin limitarse a lo que la plataforma construye o controla. Su propósito es dar una lectura de conjunto: qué actores participan en el problema de la salinización, qué sistemas intervienen y cómo se relacionan entre sí, incluso cuando esas relaciones ocurren fuera de OsoSense.
+
+<div align="center"> <img src="../assets/SoftwareArchitecture/system-landscape.png" alt="System Landscape Diagram de OsoSense" width="900"/> <p><em>Figura X. System Landscape Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
+
+El diagrama muestra a los dos segmentos objetivo definidos en la sección 1.3. El productor agropecuario conduce las parcelas y toma las decisiones de riego, fertilización y recuperación del suelo. El asesor agronómico atiende a varios productores y necesita evidencia técnica para sustentar sus recomendaciones. Entre ambos existe una relación previa a la solución: el productor solicita asistencia técnica al asesor, y esa relación se mantiene con o sin plataforma.
+
+En el centro se ubica OsoSense, la plataforma que monitorea de forma continua la conductividad eléctrica, la humedad y la temperatura del suelo, y que convierte esas mediciones en alertas interpretadas según el cultivo de cada parcela.
+
+Alrededor aparecen tres sistemas de terceros. La pasarela de pagos procesa el cobro de las suscripciones. El servicio de notificaciones entrega las alertas por correo electrónico y notificación push, y es el que finalmente alcanza al usuario en campo. El laboratorio de análisis de suelos emite el ECe del extracto de saturación, que es el método de referencia frente al cual se contrasta y calibra la lectura del dispositivo.
+
+Conviene señalar una diferencia deliberada entre esta vista y la siguiente. El laboratorio aparece en el landscape porque forma parte del ecosistema del problema y porque el asesor interactúa con él de manera habitual, pero no aparece en el diagrama de contexto: hoy no existe integración automática entre OsoSense y el laboratorio. Los resultados de ECe llegan en un informe y es el asesor quien los registra en la plataforma. Representarlo como un sistema conectado a OsoSense sugeriría una integración que no está construida.
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
+El System Context Diagram presenta OsoSense como una única caja negra y responde a dos preguntas: quiénes usan el sistema y con qué otros sistemas intercambia información. En este nivel no se discute tecnología ni estructura interna; el objetivo es fijar la frontera de responsabilidad de la solución.
+
+<div align="center"> <img src="../assets/SoftwareArchitecture/system-context.png" alt="System Context Diagram de OsoSense" width="900"/> <p><em>Figura X. System Context Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
+
+Del lado de los usuarios, el productor agropecuario registra sus fincas y parcelas, consulta el estado del suelo, recibe las alertas de salinidad y registra las acciones correctivas que ejecuta. El asesor agronómico revisa la tendencia de salinidad de las parcelas que asesora, la contrasta con el ECe de laboratorio y descarga los reportes que sustentan sus recomendaciones. Ambos son usuarios directos, pero con necesidades distintas: el productor necesita una respuesta accionable en campo, mientras que el asesor necesita evidencia comparable entre parcelas y a lo largo del tiempo.
+
+Del lado de los sistemas externos, OsoSense solicita al servicio de notificaciones el envío de la alerta de salinidad, y es ese servicio el que la entrega al productor y a su asesor. Esta indirección es intencional: la plataforma decide cuándo y a quién alertar, pero delega el canal, de modo que agregar SMS o mensajería instantánea más adelante no obliga a modificar la lógica de alertas. Con la pasarela de pagos, OsoSense cobra la suscripción y recibe la confirmación de la transacción; los datos de la tarjeta nunca atraviesan la plataforma.
+
+Es importante notar qué queda dentro de la caja de OsoSense en este nivel. El nodo sensor y el servicio de borde instalados en la parcela no aparecen como sistemas externos, porque son parte del producto: Oso Terra los diseña, los despliega y los mantiene. Aparecerán en el nivel siguiente como contenedores, que es donde el C4 Model sitúa las unidades de despliegue. Esta decisión es coherente con lo indicado en la sección 4.2.4: el bounded context Soil Monitoring reside en dos contenedores, el Edge Service con almacenamiento local y sincronización diferida, y la RESTful API como store canónico.
+
 #### 4.1.3.2. Software Architecture Container Level Diagrams
+
+El Container Diagram descompone OsoSense en unidades de despliegue independientes y expone las decisiones de tecnología de cada una.
+
+<div align="center"> <img src="../assets/SoftwareArchitecture/containers.png" alt="Container Diagram de OsoSense" width="900"/> <p><em>Figura X. Container Diagram de OsoSense, elaborado en Structurizr.</em></p> </div>
+
+La cadena de captura arranca en el Nodo Sensor, un ESP32 que mide conductividad eléctrica, humedad y temperatura, aplica la compensación térmica a 25 °C y publica la lectura por MQTT. El Edge Service, alojado en una Raspberry Pi en la parcela, recibe esas lecturas y las conserva en un almacén local SQLite cuando no hay conectividad. Este contenedor responde directamente a uno de los puntos de dolor identificados en el EventStorming: la conectividad intermitente en campo. Ninguna medición se pierde por una caída de enlace, y la sincronización contra la nube ocurre de forma diferida.
+
+La RESTful API es el store canónico y concentra los seis bounded contexts: evalúa los umbrales de salinidad por cultivo, genera las alertas, y gestiona fincas, parcelas, suscripciones y reportes. Persiste sobre PostgreSQL.
+
+Del lado del usuario hay tres contenedores. La Landing Page capta el registro, la Aplicación Web sirve el análisis de escritorio con tendencias y comparación entre parcelas, y la Aplicación Móvil cubre el uso en campo: recibir la alerta y registrar la acción correctiva en el momento.
 
 #### 4.1.3.3. Software Architecture Deployment Diagrams
 
