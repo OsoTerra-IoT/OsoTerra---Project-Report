@@ -136,55 +136,31 @@ Los assumptions se organizaron siguiendo las cinco categorías solicitadas en el
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
-De acuerdo con las instrucciones del statement, se formula un Hypothesis Statement por cada Feature Assumption. Cada hipótesis conecta un resultado de negocio esperado, una persona o segmento, un beneficio de usuario y una característica concreta de la solución.
+De acuerdo con las instrucciones del statement, se formula un Hypothesis Statement por cada Feature Assumption. Cada hipótesis expresa una creencia sobre una característica, el segmento beneficiado, el resultado esperado y la forma en que se validará si dicha creencia es correcta.
 
-**HS-01 - Dispositivo IoT de campo**
+Creemos que ofrecer un dispositivo IoT de campo que mida conductividad eléctrica, humedad y temperatura para pequeños y medianos productores agrícolas y asesores técnicos logrará aumentar la adopción inicial de OsoSense al brindar monitoreo continuo del estado del suelo. Sabremos que esto es cierto cuando los usuarios piloto consulten las lecturas del dispositivo de forma recurrente durante las pruebas de validación.
 
-Creemos que lograremos aumentar la adopción inicial de OsoSense si los productores agrícolas y asesores técnicos obtienen información continua del suelo con un dispositivo IoT de campo que mide conductividad eléctrica, humedad y temperatura.
+Creemos que implementar un motor de umbrales configurables por cultivo para productores agrícolas y asesores técnicos logrará reducir las alertas poco pertinentes al evaluar cada parcela según el cultivo registrado. Sabremos que esto es cierto cuando, en escenarios de prueba con cultivos distintos, las alertas generadas correspondan al nivel de tolerancia definido para cada cultivo.
 
-**HS-02 - Motor de umbrales por cultivo**
+Creemos que enviar notificaciones móviles por nivel de severidad para productores agrícolas logrará una respuesta más rápida ante niveles críticos de salinidad. Sabremos que esto es cierto cuando, en una prueba de uso, los productores identifiquen la alerta crítica y seleccionen una acción correctiva recomendada sin requerir explicación adicional.
 
-Creemos que lograremos reducir alertas poco pertinentes si los productores y asesores reciben evaluaciones adaptadas al cultivo registrado en cada parcela con un motor de umbrales configurables.
+Creemos que ofrecer un tablero con histórico y tendencia por parcela para productores agrícolas y asesores técnicos logrará aumentar la frecuencia de consulta de la plataforma al facilitar la comprensión de la evolución de la salinidad. Sabremos que esto es cierto cuando los usuarios puedan explicar si el estado del suelo mejora, empeora o se mantiene estable a partir de la visualización histórica.
 
-**HS-03 - Notificaciones móviles**
+Creemos que permitir la gestión de fincas, parcelas y cultivos para productores agrícolas y asesores técnicos logrará una interpretación más precisa de las mediciones al asociar cada lectura con su contexto agrícola. Sabremos que esto es cierto cuando cada dispositivo registrado pueda vincularse correctamente con una finca, una parcela y un cultivo durante la prueba funcional.
 
-Creemos que lograremos una respuesta más rápida ante niveles críticos de salinidad si los productores reciben avisos oportunos en su teléfono con un sistema de notificaciones móviles por severidad.
+Creemos que ofrecer un tablero multiparcela para asesores técnicos independientes logrará que supervisen más parcelas desde la plataforma al comparar rápidamente el estado de varios clientes. Sabremos que esto es cierto cuando, en un escenario de prueba con múltiples parcelas, el asesor pueda identificar cuáles requieren atención prioritaria sin revisar cada parcela por separado.
 
-**HS-04 - Tablero con histórico y tendencia**
+Creemos que generar reportes exportables por parcela y periodo para asesores técnicos independientes logrará fortalecer la utilidad percibida de OsoSense al permitir sustentar recomendaciones ante productores. Sabremos que esto es cierto cuando los asesores puedan generar un reporte con lecturas, tendencia y recomendación asociada durante una prueba de validación.
 
-Creemos que lograremos una mayor frecuencia de consulta de la plataforma si los usuarios comprenden la evolución de la salinidad mediante un tablero con histórico y tendencia por parcela.
+Creemos que incorporar un servicio de borde con almacenamiento local y sincronización diferida para productores ubicados en zonas con conectividad intermitente logrará reducir la pérdida de lecturas en campo. Sabremos que esto es cierto cuando las mediciones capturadas sin conexión se conserven localmente y se sincronicen correctamente al restablecerse la conectividad.
 
-**HS-05 - Gestión de fincas, parcelas y cultivos**
+Creemos que incluir un módulo de calibración y validación para productores agrícolas y asesores técnicos logrará aumentar la confianza en el dispositivo al contrastar las mediciones de OsoSense con referencias de laboratorio. Sabremos que esto es cierto cuando los usuarios puedan revisar la comparación entre ambas mediciones y declarar que la lectura del dispositivo es confiable para tomar decisiones preliminares.
 
-Creemos que lograremos una interpretación más precisa de las mediciones si el productor registra el contexto agrícola de cada punto de medición con un módulo de gestión de fincas, parcelas y cultivos.
+Creemos que integrar información meteorológica externa para productores agrícolas y asesores técnicos logrará mejorar la interpretación del diagnóstico del suelo al relacionar las variaciones de salinidad con lluvia y condiciones ambientales. Sabremos que esto es cierto cuando los usuarios puedan identificar si un cambio en las lecturas coincide con un evento meteorológico relevante.
 
-**HS-06 - Tablero multiparcela**
+Creemos que diseñar un Landing Page con contenido diferenciado por segmento para productores agrícolas y asesores técnicos logrará incrementar la conversión de visitantes a registros. Sabremos que esto es cierto cuando los visitantes identifiquen con claridad la propuesta de valor correspondiente a su rol y completen el formulario de registro o manifiesten intención de contacto.
 
-Creemos que lograremos que los asesores técnicos supervisen más parcelas desde la plataforma si pueden comparar el estado de varios clientes mediante un tablero multiparcela.
-
-**HS-07 - Reportes exportables**
-
-Creemos que lograremos fortalecer la utilidad percibida por asesores técnicos si pueden sustentar sus recomendaciones ante productores con reportes exportables por parcela y periodo.
-
-**HS-08 - Servicio de borde con sincronización diferida**
-
-Creemos que lograremos reducir la pérdida de lecturas en campo si los productores ubicados en zonas con conectividad intermitente conservan el registro de datos mediante un servicio de borde con almacenamiento local.
-
-**HS-09 - Calibración y validación**
-
-Creemos que lograremos aumentar la confianza en el dispositivo si productores y asesores pueden contrastar las mediciones de OsoSense con referencias de laboratorio mediante un módulo de calibración.
-
-**HS-10 - Integración meteorológica externa**
-
-Creemos que lograremos mejorar la interpretación del diagnóstico si los usuarios relacionan las variaciones del suelo con lluvia y condiciones ambientales mediante una integración meteorológica externa.
-
-**HS-11 - Landing Page segmentado**
-
-Creemos que lograremos incrementar el registro de usuarios si productores y asesores encuentran mensajes orientados a sus necesidades mediante un Landing Page con contenido diferenciado por segmento.
-
-**HS-12 - Plan gratuito limitado**
-
-Creemos que lograremos reducir la barrera de entrada si pequeños productores pueden probar la solución en una parcela mediante un esquema de suscripción con plan gratuito limitado.
+Creemos que ofrecer un plan gratuito limitado para pequeños productores agrícolas logrará reducir la barrera de entrada y aumentar la activación inicial de OsoSense. Sabremos que esto es cierto cuando los productores puedan probar la solución en una parcela sin pago recurrente y completar el flujo inicial de registro y monitoreo.
 
 #### 1.2.2.4. Lean UX Canvas
 
