@@ -16,5 +16,8 @@
 | 0.0.12 | 08/09/2026 | Iker Gabriel Barturen Panez | Incorporación de la evidencia visual y enlace del board de FigJam para el Big Picture EventStorming del Capítulo II. |
 | 0.0.13 | 08/09/2026 | Iker Gabriel Barturen Panez | Desarrollo del Ubiquitous Language del Capítulo II con términos del dominio agronómico y del negocio de OsoTerra IoT. |
 | 0.0.14 | 08/09/2026 | Iker Gabriel Barturen Panez | Restauración del diseño de entrevistas para los dos segmentos objetivo en el Capítulo II. |
+| 0.0.15 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Actualización de las imágenes de perfiles de integrantes en el Capítulo I, incluyendo el ajuste de tamaño uniforme para las fotografías. |
+| 0.0.16 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Corrección de los Lean UX Hypothesis Statements del Capítulo I según la estructura solicitada en el statement del proyecto. |
+
 
 # Project Report Collaboration Insights
