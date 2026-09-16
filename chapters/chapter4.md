@@ -622,8 +622,6 @@ El System Context Diagram enfoca **OsoSense Platform** —el sistema con el que 
 - La dependencia del **servicio meteorológico** es no crítica: su indisponibilidad degrada la riqueza del diagnóstico pero no impide la operación.
 - Todas las integraciones con terceros pasan por la plataforma; el campo no depende directamente de ningún sistema externo.
 
-> *Nota:* según el enunciado, los diagramas C4 se elaboran en **Structurizr**. La imagen `assets/strategic-ddd/system-context-diagram.png` debe generarse desde el workspace del equipo.
-
 #### 4.1.3.3. Software Architecture Container Level Diagrams
 
 El Container Level abre los sistemas del nivel anterior en sus unidades de despliegue independiente (aplicaciones, servicios y almacenes de datos), con la tecnología de cada una y sus canales de comunicación. En total son **siete unidades desplegables** repartidas en los dos sistemas propios.
@@ -671,8 +669,6 @@ El Container Level abre los sistemas del nivel anterior en sus unidades de despl
 - La **Web App** (asesor, gabinete, pantalla amplia) y la **Mobile App** (productor, campo, notificaciones push) consumen el mismo API pero atienden contextos de uso distintos.
 - El **Landing Page** se mantiene como contenedor independiente, desplegado como sitio estático, para publicarse y evolucionar sin acoplarse al ciclo de despliegue de la Web App.
 
-> *Nota:* diagrama a elaborar en **Structurizr**; generar `assets/strategic-ddd/container-diagram.png` desde el workspace del equipo.
-
 #### 4.1.3.4. Software Architecture Deployment Diagrams
 
 El Deployment Diagram mapea los contenedores del nivel anterior a la infraestructura donde se ejecutan, evidenciando la naturaleza distribuida de la solución en tres ámbitos físicos: la parcela, los dispositivos del usuario y el proveedor cloud.
@@ -707,8 +703,6 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 - La parte de campo (ESP32 + gateway local) se despliega **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; la plataforma se despliega **en la nube**.
 - El Landing Page y la Web App se sirven como contenido estático/compilado desde la nube y se ejecutan en el navegador del usuario, separados del servidor de aplicaciones que ejecuta el API sobre la JVM.
 - La base de datos MySQL se despliega en un servidor dedicado, accesible únicamente desde el servidor de aplicaciones.
-
-> *Nota:* diagrama a elaborar en **Structurizr**; generar `assets/strategic-ddd/deployment-diagram.png` desde el workspace del equipo.
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
