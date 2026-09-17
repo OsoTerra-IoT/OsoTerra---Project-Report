@@ -662,6 +662,46 @@ Estas herramientas ayudan a traducir los datos de campo en perfiles accionables,
 
 ### 2.3.2. User Task Matrix
 
+En esta sección se analizan las tareas que Diego Ramos y María Fernanda Salazar realizan hoy para dar seguimiento al estado del suelo y actuar frente a la salinización, de forma independiente a la existencia de OsoSense. Diego supervisa una parcela familiar a distancia desde Lima; María Fernanda asesora a varios productores de la costa norte y se desplaza entre sus parcelas.
+
+A continuación se presenta la matriz de tareas, evaluando la Frecuencia (F) y la Importancia (I) de cada una bajo la escala Baja, Media y Alta. Cuando una tarea no aplica a un perfil, se indica como N/A.
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">N.º</th>
+      <th rowspan="2">Tarea</th>
+      <th colspan="2">Diego Ramos</th>
+      <th colspan="2">María Fernanda Salazar</th>
+    </tr>
+    <tr>
+      <th>Frecuencia</th>
+      <th>Importancia</th>
+      <th>Frecuencia</th>
+      <th>Importancia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Inspeccionar visualmente la parcela en busca de señales de daño (costra blanca, hojas quemadas, menor crecimiento)</td><td>Baja</td><td>Alta</td><td>Alta</td><td>Alta</td></tr>
+    <tr><td>2</td><td>Comunicarse por teléfono o WhatsApp con la persona a cargo de la parcela para conocer su estado</td><td>Alta</td><td>Alta</td><td>Media</td><td>Media</td></tr>
+    <tr><td>3</td><td>Tomar o solicitar una muestra de suelo para análisis de laboratorio</td><td>Baja</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+    <tr><td>4</td><td>Medir la conductividad eléctrica del suelo con un medidor portátil</td><td>N/A</td><td>N/A</td><td>Alta</td><td>Alta</td></tr>
+    <tr><td>5</td><td>Interpretar resultados técnicos (conductividad eléctrica, pH) para decidir una acción</td><td>Baja</td><td>Media</td><td>Alta</td><td>Alta</td></tr>
+    <tr><td>6</td><td>Recomendar o coordinar una acción correctiva (riego, lavado de sales, cambio de manejo)</td><td>Media</td><td>Alta</td><td>Alta</td><td>Alta</td></tr>
+    <tr><td>7</td><td>Llevar un registro o historial de mediciones y visitas por parcela</td><td>Baja</td><td>Media</td><td>Media</td><td>Alta</td></tr>
+  </tbody>
+</table>
+
+**Análisis de la matriz**
+
+La tarea 2, comunicarse por teléfono o WhatsApp, es la de mayor frecuencia e importancia para Diego y solo media para María Fernanda. Para Diego es el único canal disponible para enterarse del estado de la parcela; para María Fernanda es un complemento a la visita presencial, no su fuente principal de diagnóstico.
+
+Las prioridades de Diego están en la comunicación y la coordinación a distancia, no en el trabajo técnico sobre el suelo: no mide conductividad eléctrica (tarea 4, N/A) y su frecuencia es baja en tomar muestras (tarea 3) o interpretar resultados técnicos (tarea 5), porque delega esas tareas en su familia o en un asesor.
+
+María Fernanda concentra su frecuencia e importancia en las tareas técnicas de campo (3, 4 y 5), consistentes con su rol de asesora que debe sustentar cada recomendación con datos. La tarea 7, llevar un historial de mediciones, tiene importancia alta para ella pero frecuencia solo media, porque hoy ese registro depende de comparar resultados de laboratorio dispersos entre visitas, sin una fuente centralizada.
+
+La diferencia principal entre ambos perfiles no está en qué problema enfrentan, sino en el nivel de la tarea: Diego necesita que alguien más traduzca el estado del suelo en información simple y accionable; María Fernanda necesita comparar datos técnicos entre parcelas para decidir dónde intervenir primero. La matriz confirma que ninguno de los dos cuenta hoy con una medición continua y comparable: dependen de canales manuales (llamadas, visitas, análisis puntuales) para tareas que ocurren con alta frecuencia e importancia.
+
 ### 2.3.3. User Journey Mapping
 
 Con el objetivo de comprender en profundidad las necesidades y puntos de fricción de los usuarios, se desarrollaron los User Journey Maps utilizando la herramienta UXPressia. Este proceso visualiza de manera empática el recorrido "As-Is" (situación actual) que cada segmento realiza hoy en día, enfrentando la falta de monitoreo continuo y la desorganización de los datos agrícolas sin contar con una solución tecnológica centralizada. 
