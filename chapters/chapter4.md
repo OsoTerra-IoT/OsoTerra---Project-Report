@@ -1167,7 +1167,9 @@ La capa de infraestructura se materializa en dos containers: el RESTful API (per
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-El diagrama siguiente corresponde al container **RESTful API** (lado plataforma), que recibe los lotes ya validados y compensados desde el Edge Service.
+Soil Monitoring se despliega en dos containers, por lo que se presentan dos Component Diagrams: el del **RESTful API** (lado plataforma), que recibe los lotes ya validados y compensados, y el del **Edge Service** (lado campo), que captura, valida, compensa y sincroniza las lecturas.
+
+**Container RESTful API**
 
 <div align="center">
 <img src="../assets/container-diagram/SoilMonitoring-Components.png" alt="Component Diagram Soil Monitoring" width="850">
@@ -1180,6 +1182,22 @@ El diagrama siguiente corresponde al container **RESTful API** (lado plataforma)
 *   **Soil Reading Query Service:** Resuelve la última lectura y series históricas por parcela.
 *   **Monitoring Domain Model:** Contiene `SoilReading`, `ReadingBatch` y `CalibrationRecord`.
 *   **Soil Reading Event Publisher:** Publica `SoilReadingStoredEvent` hacia Salinity Alerting, y `DeviceWentOfflineEvent` hacia Farm Management. Provee series históricas a Analytics and Reporting.
+
+**Container Edge Service**
+
+<div align="center">
+<img src="../assets/container-diagram/SoilMonitoring-Edge-Components.png" alt="Component Diagram Soil Monitoring Edge Service" width="850">
+<p><em>Component Diagram del bounded context Soil Monitoring (container Edge Service).</em></p>
+</div>
+
+*   **Telemetry Consumer:** Recibe por Serial/WiFi las tramas de lectura que envía la Embedded Application.
+*   **Serial Sensor Adapter:** Anti-corruption Layer que traduce la trama del fabricante del sensor al modelo de dominio.
+*   **Capture Reading Handler:** Orquesta la captura: valida el rango, compensa la conductividad, guarda la lectura y decide si se transmite o queda en buffer según la conectividad.
+*   **Reading Validation Service y Temperature Compensation Service:** Domain Services que descartan lecturas fuera de rango y compensan la conductividad eléctrica a 25 °C.
+*   **Monitoring Domain Model:** Contiene `SoilReading`, `CompensationResult` y `SensorRange` en su versión del Edge Service.
+*   **Local Soil Reading Repository:** Adaptador Peewee ORM que persiste las lecturas y su estado de sincronización en la Edge Local Database (SQLite).
+*   **Connectivity Monitor:** Determina si existe conexión con la plataforma antes de transmitir.
+*   **Synchronize Buffered Readings Handler y Platform Sync Client:** Tarea programada que lee las lecturas pendientes y las remite en orden cronológico al Telemetry Ingestion Controller del RESTful API.
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 

@@ -37,5 +37,6 @@
 | 0.0.33 | 16/09/2026 | Alvaro Fabrizzio Salazar Caballero | Actualización de la figura del Lean UX Canvas e incorporación de la fotografía de perfil en el Capítulo I. |
 | 0.0.34 | 16/09/2026 | Alvaro Fabrizzio Salazar Caballero | Aplicación de la técnica 5W + 2H en la sección 1.2.1 y ampliación de los segmentos objetivo de la sección 1.3 con sustento estadístico. |
 
+| 0.0.35 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación del Component Level Diagram del container Edge Service para el bounded context Soil Monitoring en el Capítulo IV, con la descripción de sus componentes. |
 
 # Project Report Collaboration Insights
