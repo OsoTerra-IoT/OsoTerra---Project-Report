@@ -16,5 +16,6 @@
 | 0.0.36 | 17/09/2026 | Andreow Jomark Santiago Peña | Reestructuración del Capítulo III según las reglas de redacción: épicas y User Stories en una sola tabla, títulos en infinitivo, descripciones con quiero, al menos dos escenarios Gherkin por User Story, Impact Mapping con trazabilidad por ID y Product Backlog con introducción, enlace y escala de Story Points. |
 | 0.0.37 | 17/09/2026 | Andreow Jomark Santiago Peña | Ampliación de los tres Impact Maps del Capítulo III con más impactos y Deliverables por User Persona, e incorporación de tres User Stories derivadas de las entrevistas (invitar a un familiar, consultar la acción recomendada y compartir alertas por WhatsApp), con renumeración y actualización del Product Backlog. |
 | 0.0.38 | 17/09/2026 | Andreow Jomark Santiago Peña | Ajuste de las descripciones de épicas y User Stories del Capítulo III al formato "Como... deseo... para..." del enunciado, en la tabla, el Impact Mapping y el Product Backlog. |
+| 0.0.39 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro del Product Backlog de OsoSense en Trello con las 55 User Stories, captura del tablero y enlace público en el Capítulo III. |
 
 # Project Report Collaboration Insights

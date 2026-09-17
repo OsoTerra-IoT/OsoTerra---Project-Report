@@ -143,13 +143,13 @@ Se desarrollaron tres Impact Maps, uno por cada Business Goal del producto. En c
 
 ## 3.3. Product Backlog
 
-El Product Backlog de OsoSense se gestiona en [herramienta] y contiene las 55 User Stories definidas en la sección 3.1, sin incluir las épicas. Las User Stories se ordenaron de mayor a menor prioridad según el valor que aportan al negocio. Las del Landing Page ocupan los primeros lugares porque el sitio web es la puerta de entrada de ambos segmentos y se desarrolla desde el primer sprint. Les siguen las que habilitan el flujo principal de registro, monitoreo y alertas, y al final las que amplían el análisis y la supervisión multiparcela. La estimación se expresa en Story Points con la escala 1, 2, 3, 5, 8 y 13, y ninguna User Story supera los 13 Story Points.
+El Product Backlog de OsoSense se gestiona en Trello y contiene las 55 User Stories definidas en la sección 3.1, sin incluir las épicas. Las User Stories se ordenaron de mayor a menor prioridad según el valor que aportan al negocio. Las del Landing Page ocupan los primeros lugares porque el sitio web es la puerta de entrada de ambos segmentos y se desarrolla desde el primer sprint. Les siguen las que habilitan el flujo principal de registro, monitoreo y alertas, y al final las que amplían el análisis y la supervisión multiparcela. La estimación se expresa en Story Points con la escala 1, 2, 3, 5, 8 y 13, y ninguna User Story supera los 13 Story Points. En el tablero, cada User Story es una tarjeta de la lista Product Backlog con su ID, su título, su descripción y dos etiquetas, una con sus Story Points y otra con la épica a la que pertenece. Las listas Sprint Backlog, In Progress y Done se usan para el seguimiento de cada sprint.
 
-Enlace del Product Backlog en [herramienta]: [enlace]
+Enlace del Product Backlog en Trello: https://trello.com/b/adykOjs5/ososense-backlog
 
 <div align="center">
 <img src="../assets/backlog/product-backlog.png" alt="Product Backlog de OsoSense" width="900"/>
-<p><em>Figura. Product Backlog de OsoSense en la herramienta de gestión.</em></p>
+<p><em>Figura. Product Backlog de OsoSense en Trello.</em></p>
 </div>
 
 | # Orden | User Story ID | Título | Descripción | Story Points |
