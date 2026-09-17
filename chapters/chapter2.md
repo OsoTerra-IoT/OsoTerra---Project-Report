@@ -320,18 +320,18 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
   <tbody>
     <tr>
       <td rowspan="3"><strong>Pequeños y medianos productores agropecuarios</strong></td>
-      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona / distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Diego Ramirez<br><strong>Edad:</strong> 20 años<br><strong>Zona / distrito:</strong> Huaral, Lima; durante sus vacaciones apoya en la parcela o planta familiar<br><br><strong>Perfil:</strong> Alumno universitario que colabora con las actividades agrícolas de su familia durante sus vacaciones<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/int1-Seg1.png" alt="Screenshot entrevista segmento 1" width="180"></td>
+      <td><strong>Datos generales:</strong> El entrevistado tiene 20 años, vive en Lima y es alumno universitario. Durante sus vacaciones ayuda a su familia en la parcela o planta familiar, por lo que participa directamente en algunas actividades agrícolas, aunque no se dedica a tiempo completo a la producción.<br><br><strong>Cultivos y cuidado del suelo:</strong> Su familia cultiva principalmente hortalizas, como lechuga, cebolla, zanahoria y hierbas. Para cuidar el suelo procuran mantenerlo limpio, retirar los residuos de los cultivos y controlar el riego. También utilizan compost, estiércol y, en algunas ocasiones, fertilizantes; además, intentan rotar los cultivos para evitar el desgaste del suelo.<br><br><strong>Decisiones y resultados:</strong> Las recomendaciones provienen principalmente de sus padres y familiares con más experiencia. También consultan a otros agricultores de la zona o buscan información en internet. El compost y el estiércol les han funcionado porque ayudan a que las plantas crezcan mejor y mantienen el suelo más suelto, aunque no siempre saben cuál es la cantidad correcta que deben aplicar.<br><br><strong>Problemas de salinidad y apoyo:</strong> Han observado en algunas zonas tierra un poco blanca y plantas que crecen menos, pero no saben con seguridad si se debe a la salinidad o a un problema con el riego. Cuando aparece un problema, primero consultan entre la familia y con otros agricultores conocidos; si parece más serio, buscan orientación de un técnico agrícola.<br><br><strong>Análisis de suelo:</strong> El entrevistado no ha realizado personalmente un análisis de suelo. Su familia hizo uno hace algunos años, pero el proceso fue complicado porque tuvieron que llevar la muestra a un laboratorio y esperar los resultados. Además, no siempre comprendían completamente la información recibida.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avisara antes de que la sal dañara el cultivo, siempre que fuera fácil de instalar y tuviera un costo accesible. Para confiar en él necesitaría mediciones claras, alertas anticipadas e indicaciones sobre qué acción tomar. También consideró importante que funcionara correctamente en el campo y que alguien les enseñara a utilizarlo.</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312899_upc_edu_pe/IQAcB97pG-fDS4BQGTQK2N5WAdovrJhmt2a7BnUcWfZR03Y?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=NYGUsb">Ver video</a><br><strong>Inicio:</strong> 00:00<br><strong>Duración:</strong> 04:09</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Mathias Peña<br><strong>Edad:</strong> 22 años<br><strong>Zona / distrito:</strong> Ferreñafe, Lambayeque; vive y estudia en Lima<br><br><strong>Perfil:</strong> Estudiante universitario cuya familia tiene una parcela de unas 3 hectáreas; apoya en vacaciones y algunos fines de semana largos<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int2-Seg1.png" alt="Screenshot entrevista Mathias Peña" width="180"></td>
+      <td><strong>Datos generales:</strong> Mathias tiene 22 años y estudia en Lima. Su familia tiene una parcela de unas 3 hectáreas en Ferreñafe, Lambayeque, que maneja su papá. Él va a la parcela en vacaciones o algunos fines de semana largos, por lo que sigue lo que pasa en el campo principalmente a distancia.<br><br><strong>Cultivos y cuidado del suelo:</strong> Cultivan principalmente arroz y, a veces, entre campañas siembran un poco de maíz. Para cuidar el suelo usan urea y guano, y en ocasiones limpian los canales para que el agua corra mejor.<br><br><strong>Decisiones y recomendaciones:</strong> Las prácticas que aplican las recomienda la tienda de insumos del pueblo y se basan en lo que su papá aprendió de su abuelo, sin un diagnóstico técnico del suelo.<br><br><strong>Problemas de salinidad:</strong> En una esquina de la parcela, donde el agua se queda empozada, aparece una costra blanca cuando se seca. En esa zona el arroz sale más bajo y amarillento. Su papá lo atribuye al salitre, pero no saben cuánto afecta ni cómo solucionarlo bien.<br><br><strong>Análisis de suelo:</strong> Hicieron un análisis hace unos tres años. Tuvieron que llevar la muestra a Chiclayo y el resultado demoró casi dos semanas. Cuando llegó, tenía muchos números y términos que no entendieron, así que terminaron consultando a un ingeniero conocido.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avise antes de que la sal dañe el cultivo, sobre todo porque desde Lima se entera tarde de lo que pasa en la parcela. Le gustaría recibir la alerta en el celular y poder reenviarla por WhatsApp a su papá. Para confiar en él, la herramienta tendría que explicar en palabras simples qué pasa y qué hacer, funcionar aunque la señal en el campo sea mala y no ser muy cara.</td>
       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
     <tr>
-      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona / distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
-    </tr>
-    <tr>
-      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona / distrito:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Alex Ávila<br><strong>Edad:</strong> 23 años<br><strong>Zona / distrito:</strong> Salas Guadalupe, Ica<br><br><strong>Perfil:</strong> Técnico agropecuario que trabaja a tiempo completo en el fundo familiar de unas 6 hectáreas, a cargo del riego y la fertilización junto con su tío<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int3-Seg1.png" alt="Screenshot entrevista Alex Ávila" width="180"></td>
+      <td><strong>Datos generales:</strong> Alex tiene 23 años y vive en Salas Guadalupe, Ica. Estudió técnico agropecuario en un instituto y trabaja a tiempo completo en el fundo de su familia, de unas 6 hectáreas. Desde hace dos años se encarga del riego y de la fertilización junto con su tío, por lo que participa directamente en las decisiones de manejo del suelo.<br><br><strong>Cultivos y mercado:</strong> Cultivan uva de mesa en 4 hectáreas y palto en las otras 2. La producción se vende a una agroexportadora, que les exige calidad y calibre, por lo que cualquier pérdida de rendimiento afecta directamente sus ingresos.<br><br><strong>Cuidado del suelo y decisiones:</strong> Cuentan con riego por goteo con fertirriego. Aplican yeso agrícola y ácidos húmicos, y cada cierto tiempo realizan riegos largos para lavar las sales. Estas prácticas las recomendó el técnico de la agroexportadora y se complementan con lo que Alex aprendió en el instituto. Sin embargo, como el técnico visita el fundo una vez al mes, muchas decisiones se toman "al ojo".<br><br><strong>Problemas de salinidad:</strong> El principal problema no es el agua empozada, sino el agua de riego, que se vuelve más salada sobre todo en verano, cuando baja el nivel. En el palto se queman las puntas de las hojas y en algunas hileras de uva el racimo sale más chico. Casi no se observa costra blanca, porque con el goteo la sal se acumula en el borde del bulbo húmedo; por eso, cuando se nota el problema, el cultivo ya presenta daño.<br><br><strong>Análisis de suelo:</strong> Realizan dos análisis al año, uno de suelo y otro de agua, en un laboratorio de Ica. Cada uno cuesta alrededor de S/ 250 y el resultado llega en una semana o diez días. Alex entiende la conductividad eléctrica, pero considera que el análisis es una foto de un solo día: entre un análisis y otro la salinidad cambia y no saben en qué momento ocurrió.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avise antes de que la sal dañe el cultivo, siempre que mida de forma continua y guarde el historial para ver cómo sube la salinidad después de cada riego. Le gustaría que sugiera cuándo realizar un lavado de sales y que sus mediciones puedan compararse con las del laboratorio para verificar su precisión. Además, necesita que funcione con panel solar, porque en el fundo no hay enchufes. Sobre el precio, estaría dispuesto a pagarlo si al año le cuesta menos que dos o tres análisis de laboratorio y le ayuda a no perder calibre en la uva.</td>
       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
     <tr>
@@ -363,14 +363,156 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
 </td>
     </tr>
     <tr>
-      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td>
+  <strong>Entrevista 3</strong><br><br>
+  <strong>Entrevistado:</strong> Germán Villalobos Lauro<br>
+  <strong>Edad:</strong> 30 años<br>
+  <strong>Zona de trabajo:</strong> Valles de la costa (Lambayeque, La Libertad y Chincha)<br><br>
+  <strong>Screenshot:</strong>
+  <img src="../assets/entrevistas/Interview-3_Seg2.PNG" alt="Screenshot entrevista German" width="180">
+</td>
+<td>
+  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
+  <strong>Trabajo y responsabilidades:</strong> Trabaja principalmente en la costa, sobre todo en los valles de Lambayeque y La Libertad, además de algunos clientes en la zona de Chincha, donde la agricultura depende bastante del riego. Su labor consiste en evaluar el estado del suelo, identificar problemas que afectan el cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes menciona la salinidad y el drenaje: parcelas con costra blanca sobre el suelo (señal de acumulación de sales), terrenos que permanecen encharcados demasiado tiempo tras el riego, cultivos que pierden rendimiento sin causa evidente y compactación del suelo por el uso constante de maquinaria en la misma zona.<br><br>
+  <strong>Herramientas y tecnología:</strong> Se apoya principalmente en análisis de laboratorio, solicitando conductividad eléctrica, pH y textura, además de otros parámetros según el terreno. Para confirmar problemas de salinidad utiliza la conductividad eléctrica del suelo, comparándola con la tolerancia del cultivo, ya que algunas especies toleran niveles de salinidad mayores que otras. Como recomendaciones de manejo aplica riegos de lavado calculados cuando hay acumulación de sales, sistemas de drenaje para evacuar las sales de la zona radicular, incorporación de materia orgánica (compost, guano u otros abonos), yeso agrícola para problemas de sodio, ácidos húmicos y la elección de cultivos adecuados a las condiciones del terreno. Insiste en no aplicar productos "a ciegas" solo porque a otro productor le funcionaron, sin conocer primero el estado del suelo.<br><br>
+  <strong>Necesidades y frustraciones:</strong> Su mayor dificultad es atender a varios productores ubicados en zonas distintas: la distancia le impide visitar las parcelas con la frecuencia que quisiera, por lo que debe priorizar según qué productor reporta un problema o qué cultivo parece más comprometido. Muchas veces, cuando llega al terreno, el daño ya está bastante avanzado. A esto se suma el costo del análisis de laboratorio (una muestra puede ir desde unos 80 dólares hasta miles, según la complejidad y el laboratorio) y los tiempos de espera, que en ocasiones han tomado semanas por temas del propio laboratorio.<br><br>
+  <strong>Expectativas:</strong> Considera que recibir alertas de salinidad le ayudaría a anticipar los problemas y, sobre todo, a organizar mejor sus visitas cuando maneja varios clientes, permitiéndole decidir si una parcela requiere atención inmediata o puede esperar. Para que la alerta aporte valor, debería mostrar qué parcela la presenta y su productor dueño, el nivel de conductividad eléctrica y su evolución reciente (si va en aumento o disminución), el nivel de tolerancia del cultivo sembrado en esa parcela, la fecha de la última revisión y un parámetro crítico de prioridad (bajo, medio o alto). Idealmente, también poder comparar varias parcelas en una sola pantalla.
+</td>
+<td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
   </tbody>
 </table>
 
 ### 2.2.3. Análisis de entrevistas
+
+En esta sección se analizan las seis entrevistas registradas en la sección 2.2.2, tres por cada segmento objetivo. Para obtener el sustento estadístico, el equipo leyó el resumen de cada entrevista y marcó qué características objetivas (edad, ubicación, ocupación, herramientas) y subjetivas (frustraciones, motivaciones, condiciones de confianza) aparecen en él. Cada porcentaje indica qué parte de los entrevistados del segmento presenta la característica; como cada segmento tiene tres entrevistas, los valores posibles son 33% (1 de 3), 67% (2 de 3) y 100% (3 de 3). En cada gráfico se muestran las iniciales de los entrevistados que respaldan el valor, de modo que cada característica puede rastrearse hasta su resumen.
+
+**Perfil general de los entrevistados**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g1-perfil-entrevistados.png" alt="Perfil de los entrevistados por segmento" width="900"/>
+<p><em>Gráfico 1. Perfil de los entrevistados por segmento.</em></p>
+</div>
+
+Los dos segmentos tienen perfiles claramente diferentes. Los productores entrevistados son jóvenes (promedio de 21.7 años) y todos están vinculados a una parcela o fundo familiar en la costa peruana. El 67% son estudiantes universitarios que viven en Lima y apoyan en la parcela solo en vacaciones o feriados, mientras que el 33% trabaja a tiempo completo en el campo y tiene formación técnica agropecuaria. En el caso de los asesores, el promedio de edad es de 41 años, aunque el 67% tiene alrededor de 30 años; el 100% asesora a varios productores en valles de la costa o del norte y el 67% es ingeniero agrónomo.
+
+#### Segmento 1: Pequeños y medianos productores agropecuarios
+
+**Prácticas de cuidado del suelo y fuentes de recomendación**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g2-productores-practicas-y-fuentes.png" alt="Prácticas de cuidado del suelo y fuentes de recomendación de los productores" width="900"/>
+<p><em>Gráfico 2. Productores: prácticas de cuidado del suelo y fuentes de recomendación.</em></p>
+</div>
+
+El 100% de los productores maneja el riego o el agua de su parcela y aplica fertilizantes, y el 67% usa materia orgánica como compost, estiércol o guano. Solo el 33% aplica enmiendas específicas contra las sales (yeso agrícola, ácidos húmicos y lavados), lo que muestra que la mayoría no tiene un manejo dirigido a la salinidad. En cuanto a las recomendaciones, el 100% recurre en algún momento a un técnico o ingeniero agrícola, pero lo hace cuando el problema ya es serio, para interpretar un análisis o durante visitas mensuales. En el día a día, el 67% decide con base en la experiencia familiar, y cada entrevistado suma una fuente distinta: otros agricultores, internet, la tienda de insumos del pueblo o su propia formación técnica.
+
+**Percepción de la salinidad**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g3-productores-senales-salinidad.png" alt="Señales de salinidad percibidas por los productores" width="850"/>
+<p><em>Gráfico 3. Productores: señales de salinidad percibidas.</em></p>
+</div>
+
+El 100% de los productores ha observado cultivos con menor crecimiento o rendimiento, y el 100% detecta el problema tarde o sin certeza de su causa: Diego no sabe si se debe a la salinidad o al riego, Mathias no sabe cuánto afecta ni cómo solucionarlo, y Alex explica que, con riego por goteo, cuando se nota el problema el cultivo ya presenta daño. El 67% reconoce la costra o tierra blanca y el 67% observa hojas amarillas o con puntas quemadas. Estas señales son visibles solo cuando la sal ya afectó al cultivo, lo que confirma la necesidad de una medición anticipada.
+
+**Experiencia con el análisis de suelo**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g4-productores-analisis-de-suelo.png" alt="Experiencia de los productores con el análisis de suelo" width="900"/>
+<p><em>Gráfico 4. Productores: experiencia con el análisis de suelo.</em></p>
+</div>
+
+El 100% de los productores ha tenido al menos un análisis de suelo en su parcela, pero el 67% lo hizo de forma esporádica, hace varios años, y solo el 33% lo realiza de manera periódica (dos veces al año). La dificultad común a todos es la espera de resultados, que llega hasta dos semanas. El 67% tuvo que trasladar la muestra a un laboratorio y el 67% no comprendió del todo los resultados. El productor con análisis periódicos agrega que cada uno cuesta alrededor de S/ 250 y que el resultado es una foto de un solo día, por lo que no sabe en qué momento sube la salinidad entre un análisis y otro.
+
+**Condiciones para adoptar un dispositivo de alerta**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g5-productores-condiciones-de-adopcion.png" alt="Condiciones de los productores para adoptar un dispositivo de alerta" width="850"/>
+<p><em>Gráfico 5. Productores: condiciones para adoptar un dispositivo de alerta.</em></p>
+</div>
+
+El 100% de los productores usaría un dispositivo que avise antes de que la sal dañe el cultivo. Para confiar en él, el 100% exige un costo accesible (o menor que el de los análisis de laboratorio), indicaciones claras sobre qué acción tomar y que funcione en las condiciones reales del campo, con mala señal o sin enchufes. El 67% pide que las mediciones se expliquen de forma clara y simple. Otras condiciones aparecen en un solo entrevistado, pero son relevantes para el diseño: recibir la alerta en el celular y reenviarla por WhatsApp, contar con instalación sencilla y capacitación, guardar un historial continuo y poder comparar las mediciones con las del laboratorio.
+
+**Resumen de características del segmento 1**
+
+| Tipo | Característica | % | Entrevistados |
+|---|---|---|---|
+| Objetiva | Edad entre 20 y 23 años (promedio 21.7) | 100% | DR, MP, AA |
+| Objetiva | Parcela o fundo familiar en la costa peruana | 100% | DR, MP, AA |
+| Objetiva | Estudiante universitario que vive en Lima, lejos de la parcela | 67% | DR, MP |
+| Objetiva | Ha tenido al menos un análisis de suelo | 100% | DR, MP, AA |
+| Objetiva | Menciona el celular y WhatsApp como canal para recibir alertas | 33% | MP |
+| Subjetiva | Decide por experiencia familiar, sin diagnóstico técnico continuo | 67% | DR, MP |
+| Subjetiva | Detecta la salinidad tarde o sin certeza de la causa | 100% | DR, MP, AA |
+| Subjetiva | Le frustra la espera de resultados del laboratorio | 100% | DR, MP, AA |
+| Subjetiva | No entiende del todo los resultados del análisis | 67% | DR, MP |
+| Subjetiva | Usaría un dispositivo de alerta temprana | 100% | DR, MP, AA |
+| Subjetiva | Necesita costo accesible, indicaciones claras y funcionamiento en campo | 100% | DR, MP, AA |
+
+*DR: Diego Ramirez · MP: Mathias Peña · AA: Alex Ávila.*
+
+#### Segmento 2: Ingenieros agrónomos y asesores técnicos agrícolas
+
+**Problemas atendidos y herramientas de diagnóstico**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g6-asesores-problemas-y-herramientas.png" alt="Problemas atendidos y herramientas de diagnóstico de los asesores" width="900"/>
+<p><em>Gráfico 6. Asesores técnicos: problemas atendidos y herramientas de diagnóstico.</em></p>
+</div>
+
+La salinidad es un problema frecuente para el 100% de los asesores, seguida del riego y el drenaje (67%). Para diagnosticarla, el 100% combina el análisis de laboratorio con la inspección visual en campo. El uso de otras tecnologías es disperso: solo el 33% tiene un medidor portátil de conductividad eléctrica, y solo el 33% trabaja con drones, una plataforma digital propia de su empresa y registros en celular, tablet y papel. Ningún asesor cuenta con una medición continua de la conductividad eléctrica en las parcelas que atiende.
+
+**Frustraciones en el trabajo**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g7-asesores-frustraciones.png" alt="Frustraciones de los asesores técnicos" width="850"/>
+<p><em>Gráfico 7. Asesores técnicos: frustraciones en su trabajo.</em></p>
+</div>
+
+El 100% de los asesores identifica como principal frustración el tiempo de traslado entre parcelas de distintos productores, y el 100% indica que por eso visita pocas veces cada parcela y trabaja con información desactualizada. Como consecuencia, el 67% encuentra el daño ya avanzado o tiene dificultades para detectar a tiempo los cambios del suelo. Otras frustraciones son el costo y la espera del laboratorio, la resistencia de algunos productores a leer reportes digitales y el doble registro de datos en papel y en digital (33% cada una).
+
+**Información requerida en una alerta de salinidad**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g8-asesores-contenido-de-alerta.png" alt="Información requerida por los asesores en una alerta de salinidad" width="850"/>
+<p><em>Gráfico 8. Asesores técnicos: información requerida en una alerta de salinidad.</em></p>
+</div>
+
+El 100% de los asesores considera útil recibir alertas o monitorear la salinidad a distancia, y el 100% necesita ver el nivel de conductividad eléctrica. El 67% pide además la evolución o tendencia del valor, la parcela con su ubicación y productor, la fecha de medición o de la última revisión y el historial de mediciones. El 33% agrega datos que permiten priorizar el trabajo cuando se manejan varios clientes: la tolerancia del cultivo sembrado, un nivel de prioridad (bajo, medio o alto), la comparación de varias parcelas en una sola pantalla, el seguimiento de las acciones aplicadas y reportes automatizados.
+
+**Resumen de características del segmento 2**
+
+| Tipo | Característica | % | Entrevistados |
+|---|---|---|---|
+| Objetiva | Asesora a varios productores en valles de la costa o del norte | 100% | YM, ES, GV |
+| Objetiva | Ingeniero(a) agrónomo(a) | 67% | YM, GV |
+| Objetiva | Edad de alrededor de 30 años (promedio del segmento: 41) | 67% | YM, GV |
+| Objetiva | Usa análisis de laboratorio e inspección visual en campo | 100% | YM, ES, GV |
+| Objetiva | Usa celular, tablet, drones y una plataforma digital | 33% | ES |
+| Subjetiva | Le frustra el tiempo de traslado entre parcelas | 100% | YM, ES, GV |
+| Subjetiva | Trabaja con información desactualizada por las pocas visitas | 100% | YM, ES, GV |
+| Subjetiva | Detecta tarde el daño en el cultivo | 67% | YM, GV |
+| Subjetiva | Valora las alertas y el monitoreo de salinidad a distancia | 100% | YM, ES, GV |
+| Subjetiva | Necesita ver en la alerta la tendencia de la CE, la parcela y la fecha | 67% | YM, GV |
+
+*YM: Yeira Momán · ES: Emperatriz Sessarego · GV: Germán Villalobos.*
+
+#### Comparación entre segmentos
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g9-necesidades-compartidas.png" alt="Necesidades compartidas entre segmentos y capacidades de OsoTerra" width="900"/>
+<p><em>Gráfico 9. Necesidades compartidas entre segmentos y capacidad de OsoTerra que las atiende.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g10-matriz-de-trazabilidad.png" alt="Matriz de trazabilidad de necesidades por entrevistado" width="900"/>
+<p><em>Gráfico 10. Matriz de trazabilidad de necesidades por entrevistado.</em></p>
+</div>
+
+Al cruzar ambos segmentos se encuentran tres necesidades presentes en el 100% de los entrevistados: dar seguimiento a la parcela a distancia o con visitas poco frecuentes, depender del análisis de laboratorio para conocer el estado del suelo y querer alertas anticipadas y remotas. La detección tardía del problema aparece en el 83% de los entrevistados, al igual que la preocupación por el costo y la necesidad de saber qué hacer o qué parcela atender primero. Estas coincidencias validan la propuesta central de OsoTerra: la lectura continua de la conductividad eléctrica y las alertas de salinidad según el umbral de cada cultivo.
+
+Las diferencias entre segmentos orientan el diseño para cada tipo de usuario. Para el productor, la robustez en campo (100% frente a 0%) y las indicaciones simples son prioritarias, por lo que la solución debe operar con energía solar, seguir funcionando cuando falle la señal y traducir cada alerta en una acción concreta. Para el asesor, el historial y la evolución de la conductividad eléctrica (100% frente a 33%) son determinantes, junto con la vista de varias parcelas y la prioridad de cada alerta. Estas características son la base de los User Personas de la sección 2.3.1.
 
 ## 2.3. Needfinding
 

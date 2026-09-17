@@ -36,6 +36,8 @@
 | 0.0.32 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Software Architecture System Landscape Diagram (4.1.3.1) con proceso de elaboración, figura, elementos, relaciones y decisiones. |
 | 0.0.33 | 16/09/2026 | Alvaro Fabrizzio Salazar Caballero | Actualización de la figura del Lean UX Canvas e incorporación de la fotografía de perfil en el Capítulo I. |
 | 0.0.34 | 16/09/2026 | Alvaro Fabrizzio Salazar Caballero | Aplicación de la técnica 5W + 2H en la sección 1.2.1 y ampliación de los segmentos objetivo de la sección 1.3 con sustento estadístico. |
-
+| 0.0.35 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la segunda entrevista del segmento de pequeños y medianos productores agropecuarios (Mathias Peña, Ferreñafe, Lambayeque) en el Capítulo II, con screenshot y resumen. |
+| 0.0.36 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la tercera entrevista del segmento de pequeños y medianos productores agropecuarios (Alex Ávila, Salas Guadalupe, Ica) en el Capítulo II, con screenshot y resumen. |
+| 0.0.37 | 17/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del análisis de entrevistas del Capítulo II por segmento, con porcentajes de características objetivas y subjetivas, diez gráficos, tablas resumen y comparación entre segmentos. |
 
 # Project Report Collaboration Insights
