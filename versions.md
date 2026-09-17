@@ -36,9 +36,16 @@
 | 0.0.32 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del Software Architecture System Landscape Diagram (4.1.3.1) con proceso de elaboración, figura, elementos, relaciones y decisiones. |
 | 0.0.33 | 16/09/2026 | Alvaro Fabrizzio Salazar Caballero | Actualización de la figura del Lean UX Canvas e incorporación de la fotografía de perfil en el Capítulo I. |
 | 0.0.34 | 16/09/2026 | Alvaro Fabrizzio Salazar Caballero | Aplicación de la técnica 5W + 2H en la sección 1.2.1 y ampliación de los segmentos objetivo de la sección 1.3 con sustento estadístico. |
-
-| 0.0.35 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación del Component Level Diagram del container Edge Service para el bounded context Soil Monitoring en el Capítulo IV, con la descripción de sus componentes. |
-| 0.0.36 | 17/09/2026 | Andreow Jomark Santiago Peña | Documentación de la capa de dominio de los seis bounded contexts del Capítulo IV a manera de diccionario, con atributos, métodos, visibilidad y relaciones entre clases. |
-| 0.0.37 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación de Event Consumers en Interface Layer y Event Handlers en Application Layer para los bounded contexts del Capítulo IV, alineados con los eventos del Context Mapping. |
+| 0.0.35 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la segunda entrevista del segmento de pequeños y medianos productores agropecuarios (Mathias Peña, Ferreñafe, Lambayeque) en el Capítulo II, con screenshot y resumen. |
+| 0.0.36 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la tercera entrevista del segmento de pequeños y medianos productores agropecuarios (Alex Ávila, Salas Guadalupe, Ica) en el Capítulo II, con screenshot y resumen. |
+| 0.0.37 | 17/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del análisis de entrevistas del Capítulo II por segmento, con porcentajes de características objetivas y subjetivas, diez gráficos, tablas resumen y comparación entre segmentos. |
+| 0.0.38 | 17/09/2026 | Andreow Jomark Santiago Peña | Actualización de las imágenes de los tres Impact Maps del Capítulo III en UXPressia, con User Stories trazables por ID, nombres completos de las User Personas y porcentajes con formato uniforme. |
+| 0.0.39 | 17/09/2026 | Andreow Jomark Santiago Peña | Reestructuración del Capítulo III según las reglas de redacción: épicas y User Stories en una sola tabla, títulos en infinitivo, descripciones con quiero, al menos dos escenarios Gherkin por User Story, Impact Mapping con trazabilidad por ID y Product Backlog con introducción, enlace y escala de Story Points. |
+| 0.0.40 | 17/09/2026 | Andreow Jomark Santiago Peña | Ampliación de los tres Impact Maps del Capítulo III con más impactos y Deliverables por User Persona, e incorporación de tres User Stories derivadas de las entrevistas (invitar a un familiar, consultar la acción recomendada y compartir alertas por WhatsApp), con renumeración y actualización del Product Backlog. |
+| 0.0.41 | 17/09/2026 | Andreow Jomark Santiago Peña | Ajuste de las descripciones de épicas y User Stories del Capítulo III al formato "Como... deseo... para..." del enunciado, en la tabla, el Impact Mapping y el Product Backlog. |
+| 0.0.42 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro del Product Backlog de OsoSense en Trello con las 55 User Stories, captura del tablero y enlace público en el Capítulo III. |
+| 0.0.43 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación del Component Level Diagram del container Edge Service para el bounded context Soil Monitoring en el Capítulo IV, con la descripción de sus componentes. |
+| 0.0.44 | 17/09/2026 | Andreow Jomark Santiago Peña | Documentación de la capa de dominio de los seis bounded contexts del Capítulo IV a manera de diccionario, con atributos, métodos, visibilidad y relaciones entre clases. |
+| 0.0.45 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación de Event Consumers en Interface Layer y Event Handlers en Application Layer para los bounded contexts del Capítulo IV, alineados con los eventos del Context Mapping. |
 
 # Project Report Collaboration Insights
