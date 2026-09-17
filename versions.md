@@ -44,5 +44,8 @@
 | 0.0.40 | 17/09/2026 | Andreow Jomark Santiago Peña | Ampliación de los tres Impact Maps del Capítulo III con más impactos y Deliverables por User Persona, e incorporación de tres User Stories derivadas de las entrevistas (invitar a un familiar, consultar la acción recomendada y compartir alertas por WhatsApp), con renumeración y actualización del Product Backlog. |
 | 0.0.41 | 17/09/2026 | Andreow Jomark Santiago Peña | Ajuste de las descripciones de épicas y User Stories del Capítulo III al formato "Como... deseo... para..." del enunciado, en la tabla, el Impact Mapping y el Product Backlog. |
 | 0.0.42 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro del Product Backlog de OsoSense en Trello con las 55 User Stories, captura del tablero y enlace público en el Capítulo III. |
+| 0.0.43 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación del Component Level Diagram del container Edge Service para el bounded context Soil Monitoring en el Capítulo IV, con la descripción de sus componentes. |
+| 0.0.44 | 17/09/2026 | Andreow Jomark Santiago Peña | Documentación de la capa de dominio de los seis bounded contexts del Capítulo IV a manera de diccionario, con atributos, métodos, visibilidad y relaciones entre clases. |
+| 0.0.45 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación de Event Consumers en Interface Layer y Event Handlers en Application Layer para los bounded contexts del Capítulo IV, alineados con los eventos del Context Mapping. |
 
 # Project Report Collaboration Insights
