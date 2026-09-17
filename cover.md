@@ -34,15 +34,23 @@
 
 </div>
 
-| Código | Apellidos y Nombres |
-|---|---|
-| u202318049 | Goñe Araccata, Esther Abigail |
-| u202321941 | Salazar Caballero, Alvaro Fabrizzio |
-| u20211g481 | Encalada Salazar, Alexis |
-| u202312899 | Ortiz Alarcon, Victor Nicolas |
-| u202317362 | Santiago Peña, Andreow Jomark |
-| u20241c134 | Tumi Oliden, Manuel Ignacio |
-| u202312629 | Barturen Panez, Iker Gabriel |
+<table style="margin: 0 auto;">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Apellidos y Nombres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>u202318049</td><td>Goñe Araccata, Esther Abigail</td></tr>
+    <tr><td>u202321941</td><td>Salazar Caballero, Alvaro Fabrizzio</td></tr>
+    <tr><td>u20211g481</td><td>Encalada Salazar, Alexis</td></tr>
+    <tr><td>u202312899</td><td>Ortiz Alarcon, Victor Nicolas</td></tr>
+    <tr><td>u202317362</td><td>Santiago Peña, Andreow Jomark</td></tr>
+    <tr><td>u20241c134</td><td>Tumi Oliden, Manuel Ignacio</td></tr>
+    <tr><td>u202312629</td><td>Barturen Panez, Iker Gabriel</td></tr>
+  </tbody>
+</table>
 
 <div style="
   text-align: center;
