@@ -20,6 +20,7 @@
 | 0.0.16 | 14/09/2026 | Andreow Jomark Santiago Peña | Desarrollo detallado del Big Picture EventStorming del Capítulo II en cinco etapas (Chaotic Exploration, Enforce the Timeline, People and External Systems, Problems and Opportunities, Pivotal Events and Emerging Boundaries), con figuras por etapa y enlace al board de FigJam. |
 | 0.0.17 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Actualización de las imágenes de perfiles de integrantes en el Capítulo I, incluyendo el ajuste de tamaño uniforme para las fotografías. |
 | 0.0.18 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Corrección de los Lean UX Hypothesis Statements del Capítulo I según la estructura solicitada en el statement del proyecto. |
-| 0.0.19 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la tercera entrevista del segmento de pequeños y medianos productores agropecuarios (Alex Ávila, Salas Guadalupe, Ica) en el Capítulo II, con screenshot y resumen. |
+| 0.0.19 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la segunda entrevista del segmento de pequeños y medianos productores agropecuarios (Mathias Peña, Ferreñafe, Lambayeque) en el Capítulo II, con screenshot y resumen. |
+| 0.0.20 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la tercera entrevista del segmento de pequeños y medianos productores agropecuarios (Alex Ávila, Salas Guadalupe, Ica) en el Capítulo II, con screenshot y resumen. |
 
 # Project Report Collaboration Insights
