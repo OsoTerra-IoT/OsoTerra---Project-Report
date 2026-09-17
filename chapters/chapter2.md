@@ -363,9 +363,22 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
 </td>
     </tr>
     <tr>
-      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td>
+  <strong>Entrevista 3</strong><br><br>
+  <strong>Entrevistado:</strong> Germán Villalobos Lauro<br>
+  <strong>Edad:</strong> 30 años<br>
+  <strong>Zona de trabajo:</strong> Valles de la costa (Lambayeque, La Libertad y Chincha)<br><br>
+  <strong>Screenshot:</strong>
+  <img src="../assets/entrevistas/Interview-3_Seg2.PNG" alt="Screenshot entrevista German" width="180">
+</td>
+<td>
+  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
+  <strong>Trabajo y responsabilidades:</strong> Trabaja principalmente en la costa, sobre todo en los valles de Lambayeque y La Libertad, además de algunos clientes en la zona de Chincha, donde la agricultura depende bastante del riego. Su labor consiste en evaluar el estado del suelo, identificar problemas que afectan el cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes menciona la salinidad y el drenaje: parcelas con costra blanca sobre el suelo (señal de acumulación de sales), terrenos que permanecen encharcados demasiado tiempo tras el riego, cultivos que pierden rendimiento sin causa evidente y compactación del suelo por el uso constante de maquinaria en la misma zona.<br><br>
+  <strong>Herramientas y tecnología:</strong> Se apoya principalmente en análisis de laboratorio, solicitando conductividad eléctrica, pH y textura, además de otros parámetros según el terreno. Para confirmar problemas de salinidad utiliza la conductividad eléctrica del suelo, comparándola con la tolerancia del cultivo, ya que algunas especies toleran niveles de salinidad mayores que otras. Como recomendaciones de manejo aplica riegos de lavado calculados cuando hay acumulación de sales, sistemas de drenaje para evacuar las sales de la zona radicular, incorporación de materia orgánica (compost, guano u otros abonos), yeso agrícola para problemas de sodio, ácidos húmicos y la elección de cultivos adecuados a las condiciones del terreno. Insiste en no aplicar productos "a ciegas" solo porque a otro productor le funcionaron, sin conocer primero el estado del suelo.<br><br>
+  <strong>Necesidades y frustraciones:</strong> Su mayor dificultad es atender a varios productores ubicados en zonas distintas: la distancia le impide visitar las parcelas con la frecuencia que quisiera, por lo que debe priorizar según qué productor reporta un problema o qué cultivo parece más comprometido. Muchas veces, cuando llega al terreno, el daño ya está bastante avanzado. A esto se suma el costo del análisis de laboratorio (una muestra puede ir desde unos 80 dólares hasta miles, según la complejidad y el laboratorio) y los tiempos de espera, que en ocasiones han tomado semanas por temas del propio laboratorio.<br><br>
+  <strong>Expectativas:</strong> Considera que recibir alertas de salinidad le ayudaría a anticipar los problemas y, sobre todo, a organizar mejor sus visitas cuando maneja varios clientes, permitiéndole decidir si una parcela requiere atención inmediata o puede esperar. Para que la alerta aporte valor, debería mostrar qué parcela la presenta y su productor dueño, el nivel de conductividad eléctrica y su evolución reciente (si va en aumento o disminución), el nivel de tolerancia del cultivo sembrado en esa parcela, la fecha de la última revisión y un parámetro crítico de prioridad (bajo, medio o alto). Idealmente, también poder comparar varias parcelas en una sola pantalla.
+</td>
+<td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
   </tbody>
 </table>
