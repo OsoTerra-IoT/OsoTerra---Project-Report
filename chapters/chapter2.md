@@ -341,14 +341,44 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
     <tr>
-      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td>
+  <strong>Entrevista 2</strong><br><br>
+  <strong>Entrevistada:</strong> Emperatriz Sessarego<br>
+  <strong>Edad:</strong> 63 años<br>
+  <strong>Zona de trabajo:</strong> Zonas agrícolas del norte<br><br>
+  <strong>Screenshot:</strong><br>
+  <img src="../assets/entrevistas/Interview2.PNG" alt="Screenshot entrevista Emperatriz" width="180">
+</td>
+<td>
+  <strong>Datos generales:</strong> La entrevistada es Emperatriz Sessarego, de 63 años, quien reside en el distrito de Jesús María, en Lima. Cuenta con formación técnica en Administración de Empresas por el CENECAP John F. Kennedy, de donde egresó aproximadamente en 1990. Actualmente se desempeña bajo relación de dependencia dentro de una empresa de consultoría agrícola, brindando asesoría a productores situados en la zona norte del país, cuyas parcelas promedian entre 20 y 30 hectáreas cada una.<br><br>
+  <strong>Trabajo y responsabilidades:</strong> Su labor principal consiste en gestionar y asesorar a una cartera de aproximadamente 10 productores dedicados a cultivos vegetales y productos naturales. Su rutina implica desplazarse al campo unos tres días por semana para atender a dos o tres clientes por jornada, programando visitas con una periodicidad mensual tras una coordinación telefónica previa. En el terreno inspecciona visualmente el estado del cultivo y del suelo para identificar anomalías —como exceso de salinidad o zonas quemadas—, toma muestras para enviarlas al laboratorio interno de su empresa y brinda las recomendaciones técnicas de forma presencial y directa al agricultor.<br><br>
+  <strong>Herramientas y tecnologías:</strong> Para sus labores utiliza principalmente su teléfono celular y una tablet, combinándolos con el método tradicional de apuntes en papel durante la visita de campo. En cuanto a tecnología agronómica, recurre a drones para sobrevolar las hectáreas y evaluar el terreno desde el aire, mostrando las tomas en pantalla al productor. No emplea medidores portátiles de conductividad eléctrica en suelo, sino que apoya su gestión técnica en una plataforma digital propia desarrollada por su empresa, la cual sintetiza los diagnósticos, el historial de las parcelas y las soluciones recomendadas.<br><br>
+  <strong>Necesidades y frustraciones:</strong> Su principal desafío radica en la brecha tecnológica de los agricultores, quienes suelen ser reacios a la lectura de reportes digitales o a interactuar con plataformas, lo que la obliga a depender del trato presencial y de demostraciones visuales in situ. A esto se suma la ineficiencia de realizar un doble registro de datos —anotar primero a mano en papel para luego transcribir y ampliar la información en digital al volver a la oficina—, así como la considerable demanda de tiempo y esfuerzo que suponen los constantes traslados entre parcelas distantes durante la semana.<br><br>
+  <strong>Expectativas:</strong> Espera contar con herramientas más ágiles, como un tablero de monitoreo de salinidad en tiempo real que le permita diagnosticar a distancia y comunicarse rápidamente con el productor por teléfono sin esperar al viaje mensual. Muestra disposición a adoptar sensores de suelo de bajo costo siempre que ofrezcan mediciones fiables, y destaca la necesidad de reportes automatizados que recopilen datos históricos, estados del suelo y seguimiento de acciones previas para comprobar si el agricultor aplicó las mejoras sugeridas.
+</td>
+<td>
+  <strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCTehknzuIeRrR82obsOJzfAVX-4ZePCDMVwhEOjFG98mw?e=nsp1DO" target="_blank">Ver video</a><br>
+  <strong>Inicio:</strong> 00:00<br>
+  <strong>Duración:</strong> 10:19
+</td>
     </tr>
     <tr>
-      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Pendiente<br><strong>Edad:</strong> Pendiente<br><strong>Zona de trabajo:</strong> Pendiente<br><br><strong>Screenshot:</strong> Pendiente</td>
-      <td>Pendiente de registrar resumen de entrevista.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td>
+  <strong>Entrevista 3</strong><br><br>
+  <strong>Entrevistado:</strong> Germán Villalobos Lauro<br>
+  <strong>Edad:</strong> 30 años<br>
+  <strong>Zona de trabajo:</strong> Valles de la costa (Lambayeque, La Libertad y Chincha)<br><br>
+  <strong>Screenshot:</strong>
+  <img src="../assets/entrevistas/Interview-3_Seg2.PNG" alt="Screenshot entrevista German" width="180">
+</td>
+<td>
+  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
+  <strong>Trabajo y responsabilidades:</strong> Trabaja principalmente en la costa, sobre todo en los valles de Lambayeque y La Libertad, además de algunos clientes en la zona de Chincha, donde la agricultura depende bastante del riego. Su labor consiste en evaluar el estado del suelo, identificar problemas que afectan el cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes menciona la salinidad y el drenaje: parcelas con costra blanca sobre el suelo (señal de acumulación de sales), terrenos que permanecen encharcados demasiado tiempo tras el riego, cultivos que pierden rendimiento sin causa evidente y compactación del suelo por el uso constante de maquinaria en la misma zona.<br><br>
+  <strong>Herramientas y tecnología:</strong> Se apoya principalmente en análisis de laboratorio, solicitando conductividad eléctrica, pH y textura, además de otros parámetros según el terreno. Para confirmar problemas de salinidad utiliza la conductividad eléctrica del suelo, comparándola con la tolerancia del cultivo, ya que algunas especies toleran niveles de salinidad mayores que otras. Como recomendaciones de manejo aplica riegos de lavado calculados cuando hay acumulación de sales, sistemas de drenaje para evacuar las sales de la zona radicular, incorporación de materia orgánica (compost, guano u otros abonos), yeso agrícola para problemas de sodio, ácidos húmicos y la elección de cultivos adecuados a las condiciones del terreno. Insiste en no aplicar productos "a ciegas" solo porque a otro productor le funcionaron, sin conocer primero el estado del suelo.<br><br>
+  <strong>Necesidades y frustraciones:</strong> Su mayor dificultad es atender a varios productores ubicados en zonas distintas: la distancia le impide visitar las parcelas con la frecuencia que quisiera, por lo que debe priorizar según qué productor reporta un problema o qué cultivo parece más comprometido. Muchas veces, cuando llega al terreno, el daño ya está bastante avanzado. A esto se suma el costo del análisis de laboratorio (una muestra puede ir desde unos 80 dólares hasta miles, según la complejidad y el laboratorio) y los tiempos de espera, que en ocasiones han tomado semanas por temas del propio laboratorio.<br><br>
+  <strong>Expectativas:</strong> Considera que recibir alertas de salinidad le ayudaría a anticipar los problemas y, sobre todo, a organizar mejor sus visitas cuando maneja varios clientes, permitiéndole decidir si una parcela requiere atención inmediata o puede esperar. Para que la alerta aporte valor, debería mostrar qué parcela la presenta y su productor dueño, el nivel de conductividad eléctrica y su evolución reciente (si va en aumento o disminución), el nivel de tolerancia del cultivo sembrado en esa parcela, la fecha de la última revisión y un parámetro crítico de prioridad (bajo, medio o alto). Idealmente, también poder comparar varias parcelas en una sola pantalla.
+</td>
+<td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
   </tbody>
 </table>
@@ -504,6 +534,27 @@ Estas herramientas ayudan a traducir los datos de campo en perfiles accionables,
 ### 2.3.2. User Task Matrix
 
 ### 2.3.3. User Journey Mapping
+
+Con el objetivo de comprender en profundidad las necesidades y puntos de fricción de los usuarios, se desarrollaron los User Journey Maps utilizando la herramienta UXPressia. Este proceso visualiza de manera empática el recorrido "As-Is" (situación actual) que cada segmento realiza hoy en día, enfrentando la falta de monitoreo continuo y la desorganización de los datos agrícolas sin contar con una solución tecnológica centralizada. 
+
+Cada User Journey Map se encuentra directamente vinculado con su respectivo User Persona, ilustrando paso a paso las acciones, emociones y problemas que experimentan antes de la introducción de OsoSense.
+
+**Segmento Objetivo #1: Familiar joven involucrado en la gestión agrícola (Diego Ramos)**
+Se evidencia un flujo de supervisión fragmentado y reactivo. Diego experimenta alta ansiedad e impotencia al intentar gestionar la parcela familiar a distancia desde la ciudad. Su recorrido actual depende de llamadas telefónicas intermitentes y fotos borrosas. La falta de visibilidad en tiempo real provoca que se entere de los problemas de salinidad cuando el cultivo ya presenta daños visibles, sufriendo una profunda frustración al verse obligado a realizar gastos a ciegas en fertilizantes o riego sin un diagnóstico preciso.
+
+Figura. *As-Is User Journey Map - Persona 1: Diego Ramos*
+
+![](https://i.imgur.com/hpuGDiU.png)
+
+<p>
+
+**Segmento Objetivo #2: Asesora técnica agrícola independiente (María Fernanda Salazar)**
+María Fernanda enfrenta un ciclo operativo ineficiente y limitante para su crecimiento profesional. Su recorrido ilustra un desgaste progresivo que inicia con la planificación a ciegas de sus visitas y cae drásticamente debido a la fricción de los viajes físicos para tomar lecturas manuales. El punto más crítico de su experiencia ocurre durante la espera prolongada por los resultados de laboratorio, lo cual genera un cuello de botella que culmina en la entrega de recomendaciones tardías al agricultor, afectando tanto el cultivo como su propia reputación profesional.
+
+Figura. *As-Is User Journey Map - Persona 2: María Fernanda Salazar*
+
+![](https://i.imgur.com/gQ5sCS4.png)
+
 
 ### 2.3.4. Empathy Mapping
 
