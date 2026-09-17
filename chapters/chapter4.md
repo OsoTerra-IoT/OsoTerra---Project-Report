@@ -757,6 +757,151 @@ La capa de dominio de IAM contiene las reglas fundamentales de negocio independi
 
 **Ports (Interfaces):** `UserAccountRepository`, `AdvisoryLinkRepository`, `PasswordHashingService` y `GoogleTokenVerifier` definen las operaciones lógicas de almacenamiento, hasheo y verificación de identidad federada sin depender de tecnologías específicas como JPA, BCrypt o el SDK de Google.
 
+**Diccionario de clases**
+
+A continuación se documenta cada clase de la capa de dominio a manera de diccionario, con sus atributos, sus métodos y la visibilidad de cada miembro, tal como aparecen en el diagrama de clases de la sección 4.2.1.6.1.
+
+**`UserAccount`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `UserAccountId` | private | Atributo: Identificador único de la cuenta. |
+| `email` | `EmailAddress` | private | Atributo: Correo validado y único de la cuenta. |
+| `passwordHash` | `PasswordHash` | private | Atributo: Credencial local hasheada. Es opcional si la cuenta solo usa Google. |
+| `googleAccountId` | `GoogleAccountId` | private | Atributo: Identificador de la cuenta de Google vinculada, si existe. |
+| `name` | `PersonName` | private | Atributo: Nombres y apellidos del usuario. |
+| `role` | `UserRole` | private | Atributo: Rol del usuario en la plataforma. |
+| `license` | `ProfessionalLicense` | private | Atributo: Número de colegiatura, solo para asesores. |
+| `isActive` | `boolean` | private | Atributo: Indica si la cuenta está habilitada. |
+| `createdAt` | `LocalDateTime` | private | Atributo: Fecha y hora de creación. |
+| `register(EmailAddress, PasswordHash, PersonName, UserRole)` | `UserAccount` | public static | Método: Crea una cuenta con credencial local. |
+| `registerWithGoogle(EmailAddress, PersonName, UserRole, GoogleAccountId)` | `UserAccount` | public static | Método: Crea una cuenta a partir de una identidad de Google. |
+| `linkGoogleAccount(GoogleAccountId)` | `void` | public | Método: Vincula una cuenta de Google a la cuenta existente. |
+| `verifyPassword(String, PasswordHashingService)` | `boolean` | public | Método: Comprueba una contraseña contra la credencial almacenada. |
+| `changePassword(PasswordHash)` | `void` | public | Método: Reemplaza la credencial local. |
+| `hasPassword()` | `boolean` | public | Método: Indica si la cuenta tiene credencial local. |
+| `hasGoogleAccountLinked()` | `boolean` | public | Método: Indica si la cuenta tiene Google vinculado. |
+| `isAdvisor()` | `boolean` | public | Método: Indica si el rol es de asesor. |
+| `deactivate()` | `void` | public | Método: Deshabilita la cuenta. |
+
+**`AdvisoryLink`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `AdvisoryLinkId` | private | Atributo: Identificador de la vinculación. |
+| `advisorId` | `UserAccountId` | private | Atributo: Cuenta del asesor. |
+| `farmerId` | `UserAccountId` | private | Atributo: Cuenta del productor. |
+| `status` | `LinkStatus` | private | Atributo: Estado actual de la vinculación. |
+| `requestedAt` | `LocalDateTime` | private | Atributo: Fecha de la solicitud. |
+| `respondedAt` | `LocalDateTime` | private | Atributo: Fecha de aceptación o revocación. |
+| `request(UserAccountId, UserAccountId)` | `AdvisoryLink` | public static | Método: Crea una solicitud en estado PENDING. |
+| `accept()` | `void` | public | Método: Cambia el estado a ACCEPTED y publica AdvisoryLinkAcceptedEvent. |
+| `revoke()` | `void` | public | Método: Cambia el estado a REVOKED y publica AdvisoryLinkRevokedEvent. |
+| `isActive()` | `boolean` | public | Método: Indica si la vinculación está aceptada. |
+
+**`EmailAddress`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `value` | `String` | private | Atributo: Correo con formato validado. |
+| `getValue()` | `String` | public | Método: Devuelve el correo. |
+
+**`PasswordHash`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `value` | `String` | private | Atributo: Resultado del hasheo. |
+| `algorithm` | `String` | private | Atributo: Algoritmo usado, por ejemplo BCrypt. |
+
+**`PersonName`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `firstName` | `String` | private | Atributo: Nombres. |
+| `lastName` | `String` | private | Atributo: Apellidos. |
+| `getFullName()` | `String` | public | Método: Devuelve el nombre completo. |
+
+**`ProfessionalLicense`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `number` | `String` | private | Atributo: Número de colegiatura. |
+| `getNumber()` | `String` | public | Método: Devuelve el número. |
+
+**`GoogleAccountId`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `value` | `String` | private | Atributo: Identificador sub de Google. |
+| `getValue()` | `String` | public | Método: Devuelve el identificador. |
+
+**`VerifiedGoogleIdentity`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `email` | `EmailAddress` | private | Atributo: Correo verificado por Google. |
+| `googleAccountId` | `GoogleAccountId` | private | Atributo: Identificador de la cuenta. |
+| `fullName` | `String` | private | Atributo: Nombre informado por Google. |
+
+**`UserRole`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `FARMER` | Productor agropecuario. |
+| `ADVISOR` | Asesor técnico. |
+
+**`LinkStatus`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `PENDING` | Solicitud enviada. |
+| `ACCEPTED` | Vinculación activa. |
+| `REVOKED` | Vinculación retirada. |
+
+**`UserAccountRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(UserAccount)` | `UserAccount` | public | Método: Guarda la cuenta. |
+| `findById(UserAccountId)` | `Optional<UserAccount>` | public | Método: Busca por identificador. |
+| `findByEmail(EmailAddress)` | `Optional<UserAccount>` | public | Método: Busca por correo. |
+| `existsByEmail(EmailAddress)` | `boolean` | public | Método: Verifica la unicidad del correo. |
+
+**`AdvisoryLinkRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(AdvisoryLink)` | `AdvisoryLink` | public | Método: Guarda la vinculación. |
+| `findById(AdvisoryLinkId)` | `Optional<AdvisoryLink>` | public | Método: Busca por identificador. |
+| `findActiveByFarmerId(UserAccountId)` | `List<AdvisoryLink>` | public | Método: Lista las vinculaciones activas de un productor. |
+| `findActiveByAdvisorId(UserAccountId)` | `List<AdvisoryLink>` | public | Método: Lista las vinculaciones activas de un asesor. |
+
+**`PasswordHashingService`** (Domain Service (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `hash(String)` | `PasswordHash` | public | Método: Genera el hash de una contraseña. |
+| `matches(String, PasswordHash)` | `boolean` | public | Método: Compara una contraseña con su hash. |
+
+**`GoogleTokenVerifier`** (Domain Service (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `verify(String)` | `VerifiedGoogleIdentity` | public | Método: Valida el ID Token y devuelve la identidad verificada. |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `UserAccount` | Composición | `EmailAddress, PersonName` | 1 a 1 | Cada cuenta contiene su correo y su nombre. |
+| `UserAccount` | Composición | `PasswordHash, ProfessionalLicense, GoogleAccountId` | 1 a 0..1 | Datos opcionales según el método de acceso y el rol. |
+| `UserAccount` | Asociación | `UserRole` | 1 a 1 | Cada cuenta tiene un rol. |
+| `AdvisoryLink` | Asociación (advisor, farmer) | `UserAccount` | 0..* a 1 | Una cuenta puede participar en varias vinculaciones como asesor o productor. |
+| `AdvisoryLink` | Asociación | `LinkStatus` | 1 a 1 | Cada vinculación tiene un estado. |
+| `UserAccountRepository / AdvisoryLinkRepository` | Dependencia (persiste) | `UserAccount / AdvisoryLink` | No aplica | Persisten cada agregado. |
+| `UserAccount` | Dependencia (usa) | `PasswordHashingService` | No aplica | Verifica la contraseña mediante el servicio. |
+| `GoogleTokenVerifier` | Dependencia (produce) | `VerifiedGoogleIdentity` | No aplica | Devuelve la identidad verificada. |
+
 #### 4.2.1.2. Interface Layer
 
 La capa de interfaz expone las API REST del contexto acotado, traduciendo las peticiones JSON HTTP externas en comandos de aplicación fuertemente tipados.
@@ -885,6 +1030,127 @@ La capa de dominio de Subscription and Billing garantiza que exista una única s
 
 **Ports (Interfaces):** `SubscriptionRepository`, `SubscriptionPlanRepository` y `PaymentGateway` desacoplan la persistencia y el cobro del proveedor externo.
 
+**Diccionario de clases**
+
+A continuación se documenta cada clase de la capa de dominio a manera de diccionario, con sus atributos, sus métodos y la visibilidad de cada miembro, tal como aparecen en el diagrama de clases de la sección 4.2.2.6.1.
+
+**`Subscription`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `SubscriptionId` | private | Atributo: Identificador de la suscripción. |
+| `userAccountId` | `UserAccountId` | private | Atributo: Usuario titular. |
+| `status` | `SubscriptionStatus` | private | Atributo: Estado del ciclo de vida. |
+| `quota` | `PlotQuota` | private | Atributo: Cupo total y consumido de parcelas. |
+| `currentPeriod` | `BillingPeriod` | private | Atributo: Periodo de facturación vigente. |
+| `transactions` | `List<PaymentTransaction>` | private | Atributo: Historial de cobros. |
+| `subscribeToFreePlan(UserAccountId, SubscriptionPlan)` | `Subscription` | public static | Método: Crea una suscripción activa al plan gratuito. |
+| `subscribeToPaidPlan(UserAccountId, SubscriptionPlan)` | `Subscription` | public static | Método: Crea una suscripción pendiente de pago. |
+| `confirmPayment(PaymentTransaction)` | `void` | public | Método: Registra el cobro y activa la suscripción. |
+| `consumeQuota()` | `void` | public | Método: Reserva un cupo de parcela. |
+| `releaseQuota()` | `void` | public | Método: Libera un cupo de parcela. |
+| `hasAvailableQuota()` | `boolean` | public | Método: Indica si queda cupo. |
+| `cancel()` | `void` | public | Método: Programa la cancelación al final del periodo. |
+| `suspend()` | `void` | public | Método: Suspende la suscripción vencida. |
+| `renew(PaymentTransaction)` | `void` | public | Método: Extiende el periodo con un nuevo cobro. |
+
+**`SubscriptionPlan`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `SubscriptionPlanId` | private | Atributo: Identificador del plan. |
+| `name` | `String` | private | Atributo: Nombre comercial. |
+| `price` | `Money` | private | Atributo: Precio del plan. |
+| `billingCycle` | `BillingCycle` | private | Atributo: Frecuencia de cobro. |
+| `maxPlots` | `int` | private | Atributo: Cupo máximo de parcelas. |
+| `isFree` | `boolean` | private | Atributo: Indica si es el plan gratuito. |
+| `allowsPlots(int)` | `boolean` | public | Método: Indica si el plan admite un número de parcelas. |
+
+**`PaymentTransaction`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `PaymentTransactionId` | private | Atributo: Identificador del cobro. |
+| `amount` | `Money` | private | Atributo: Importe cobrado. |
+| `externalReference` | `String` | private | Atributo: Referencia del cobro en Stripe. |
+| `isSuccessful` | `boolean` | private | Atributo: Resultado del cobro. |
+| `processedAt` | `LocalDateTime` | private | Atributo: Fecha de procesamiento. |
+
+**`PlotQuota`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `total` | `int` | private | Atributo: Cupo total del plan. |
+| `consumed` | `int` | private | Atributo: Cupo usado. |
+| `hasAvailable()` | `boolean` | public | Método: Indica si consumed es menor que total. |
+| `consume()` | `PlotQuota` | public | Método: Devuelve un nuevo cupo con una parcela más consumida. |
+| `release()` | `PlotQuota` | public | Método: Devuelve un nuevo cupo con una parcela liberada. |
+| `getAvailable()` | `int` | public | Método: Devuelve el cupo restante. |
+
+**`BillingPeriod`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `startDate` | `LocalDate` | private | Atributo: Inicio del periodo. |
+| `endDate` | `LocalDate` | private | Atributo: Fin del periodo. |
+| `isExpired(LocalDate)` | `boolean` | public | Método: Indica si el periodo venció en una fecha. |
+| `extend(BillingCycle)` | `BillingPeriod` | public | Método: Devuelve el periodo siguiente. |
+
+**`Money`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `amount` | `BigDecimal` | private | Atributo: Importe. |
+| `currency` | `String` | private | Atributo: Moneda ISO 4217. |
+| `add(Money)` | `Money` | public | Método: Suma importes de la misma moneda. |
+| `isZero()` | `boolean` | public | Método: Indica si el importe es cero. |
+
+**`BillingCycle`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `MONTHLY` | Cobro mensual. |
+| `ANNUAL` | Cobro anual. |
+| `NONE` | Sin cobro, plan gratuito. |
+
+**`SubscriptionStatus`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `ACTIVE` | Suscripción vigente. |
+| `PENDING_PAYMENT` | Esperando confirmación de pago. |
+| `SUSPENDED` | Periodo vencido sin renovar. |
+| `CANCELLED` | Cancelada por el usuario. |
+
+**`SubscriptionRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(Subscription)` | `Subscription` | public | Método: Guarda la suscripción. |
+| `findById(SubscriptionId)` | `Optional<Subscription>` | public | Método: Busca por identificador. |
+| `findActiveByUserAccountId(UserAccountId)` | `Optional<Subscription>` | public | Método: Busca la suscripción vigente de un usuario. |
+| `findExpired(LocalDate)` | `List<Subscription>` | public | Método: Lista las suscripciones vencidas a una fecha. |
+
+**`PaymentGateway`** (Domain Service (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `charge(Money, String)` | `PaymentTransaction` | public | Método: Solicita un cobro al proveedor. |
+| `verifyCallback(String)` | `boolean` | public | Método: Valida la firma del webhook del proveedor. |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `Subscription` | Asociación | `SubscriptionPlan` | 1 a 1 | Cada suscripción corresponde a un plan. |
+| `Subscription` | Composición | `PlotQuota, BillingPeriod` | 1 a 1 | La suscripción contiene su cupo y su periodo. |
+| `Subscription` | Composición | `PaymentTransaction` | 1 a 0..* | La suscripción acumula sus cobros. |
+| `Subscription` | Asociación | `SubscriptionStatus` | 1 a 1 | Cada suscripción tiene un estado. |
+| `SubscriptionPlan / PaymentTransaction` | Composición | `Money` | 1 a 1 | Precio del plan e importe del cobro. |
+| `SubscriptionPlan` | Asociación | `BillingCycle` | 1 a 1 | Cada plan tiene un ciclo de cobro. |
+| `SubscriptionRepository` | Dependencia (persiste) | `Subscription` | No aplica | Persiste el agregado. |
+| `Subscription` | Dependencia (cobra mediante) | `PaymentGateway` | No aplica | Delega el cobro al proveedor. |
+
 #### 4.2.2.2. Interface Layer
 
 La capa de interfaz expone el catálogo de planes, la gestión de la suscripción del usuario y el webhook de confirmación asíncrona de Stripe.
@@ -1002,6 +1268,167 @@ La capa de dominio de Farm Management modela la jerarquía finca-parcela, el cat
 
 **Domain Service:** `PlotRegistrationService` es el único punto donde el dominio de Farm Management coordina con el cupo de Subscription and Billing antes de crear una parcela.
 
+**Diccionario de clases**
+
+A continuación se documenta cada clase de la capa de dominio a manera de diccionario, con sus atributos, sus métodos y la visibilidad de cada miembro, tal como aparecen en el diagrama de clases de la sección 4.2.3.6.1.
+
+**`Farm`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `FarmId` | private | Atributo: Identificador de la finca. |
+| `ownerId` | `UserAccountId` | private | Atributo: Productor propietario. |
+| `name` | `String` | private | Atributo: Nombre de la finca. |
+| `address` | `Address` | private | Atributo: Ubicación administrativa. |
+| `plots` | `List<Plot>` | private | Atributo: Parcelas de la finca. |
+| `register(UserAccountId, String, Address)` | `Farm` | public static | Método: Crea una finca para un productor. |
+| `addPlot(String, PlotArea, GeoLocation)` | `Plot` | public | Método: Agrega una parcela a la finca. |
+| `removePlot(PlotId)` | `void` | public | Método: Retira una parcela sin dispositivo activo. |
+| `findPlot(PlotId)` | `Optional<Plot>` | public | Método: Busca una parcela de la finca. |
+| `getPlotCount()` | `int` | public | Método: Devuelve el número de parcelas. |
+
+**`Plot`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `PlotId` | private | Atributo: Identificador de la parcela. |
+| `name` | `String` | private | Atributo: Nombre de la parcela. |
+| `area` | `PlotArea` | private | Atributo: Superficie en hectáreas. |
+| `location` | `GeoLocation` | private | Atributo: Coordenadas de la parcela. |
+| `cropId` | `CropId` | private | Atributo: Cultivo asignado. |
+| `deviceId` | `DeviceId` | private | Atributo: Dispositivo vinculado. |
+| `isActive` | `boolean` | private | Atributo: Indica si la parcela está activa. |
+| `assignCrop(CropId)` | `void` | public | Método: Asigna el cultivo y publica CropAssignedToPlotEvent. |
+| `attachDevice(DeviceId)` | `void` | public | Método: Vincula un dispositivo. |
+| `detachDevice()` | `void` | public | Método: Desvincula el dispositivo. |
+| `hasCropAssigned()` | `boolean` | public | Método: Indica si tiene cultivo. |
+| `deactivate()` | `void` | public | Método: Da de baja la parcela. |
+
+**`Crop`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `CropId` | private | Atributo: Identificador del cultivo. |
+| `commonName` | `String` | private | Atributo: Nombre común. |
+| `scientificName` | `String` | private | Atributo: Nombre científico. |
+| `threshold` | `SalinityThreshold` | private | Atributo: Umbral de salinidad tolerado. |
+| `toleranceClass` | `SaltToleranceClass` | private | Atributo: Clase de tolerancia a sales. |
+| `exceedsThreshold(double)` | `boolean` | public | Método: Indica si una conductividad supera el umbral. |
+| `getThresholdValue()` | `double` | public | Método: Devuelve el umbral en dS/m. |
+
+**`Device`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `DeviceId` | private | Atributo: Identificador del dispositivo. |
+| `activationCode` | `DeviceActivationCode` | private | Atributo: Código de activación. |
+| `plotId` | `PlotId` | private | Atributo: Parcela vinculada. |
+| `status` | `DeviceStatus` | private | Atributo: Estado operativo. |
+| `calibrationFactor` | `double` | private | Atributo: Factor de corrección vigente. |
+| `lastSeenAt` | `LocalDateTime` | private | Atributo: Última comunicación recibida. |
+| `register(DeviceActivationCode)` | `Device` | public static | Método: Da de alta un dispositivo sin asignar. |
+| `attachToPlot(PlotId)` | `void` | public | Método: Vincula el dispositivo y lo activa. |
+| `detach()` | `void` | public | Método: Desvincula el dispositivo. |
+| `markOffline()` | `void` | public | Método: Marca el dispositivo como fuera de línea. |
+| `recordHeartbeat(LocalDateTime)` | `void` | public | Método: Actualiza la última comunicación. |
+| `applyCalibration(double)` | `void` | public | Método: Actualiza el factor de corrección. |
+
+**`SalinityThreshold`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `valueInDeciSiemensPerMeter` | `double` | private | Atributo: Umbral en dS/m, mayor a cero. |
+| `isExceededBy(double)` | `boolean` | public | Método: Indica si un valor supera el umbral. |
+| `getValue()` | `double` | public | Método: Devuelve el umbral. |
+
+**`PlotArea`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `hectares` | `BigDecimal` | private | Atributo: Superficie mayor a cero. |
+| `getHectares()` | `BigDecimal` | public | Método: Devuelve la superficie. |
+
+**`GeoLocation`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `latitude` | `double` | private | Atributo: Latitud entre -90 y 90. |
+| `longitude` | `double` | private | Atributo: Longitud entre -180 y 180. |
+| `getLatitude()` | `double` | public | Método: Devuelve la latitud. |
+| `getLongitude()` | `double` | public | Método: Devuelve la longitud. |
+
+**`Address`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `department` | `String` | private | Atributo: Departamento. |
+| `province` | `String` | private | Atributo: Provincia. |
+| `district` | `String` | private | Atributo: Distrito. |
+| `getFullAddress()` | `String` | public | Método: Devuelve la dirección completa. |
+
+**`DeviceActivationCode`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `code` | `String` | private | Atributo: Código impreso en el dispositivo. |
+| `getCode()` | `String` | public | Método: Devuelve el código. |
+
+**`SaltToleranceClass`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `SENSITIVE` | Cultivo sensible. |
+| `MODERATELY_SENSITIVE` | Moderadamente sensible. |
+| `MODERATELY_TOLERANT` | Moderadamente tolerante. |
+| `TOLERANT` | Tolerante. |
+
+**`DeviceStatus`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `UNASSIGNED` | Registrado sin parcela. |
+| `ACTIVE` | Enviando lecturas. |
+| `OFFLINE` | Sin lecturas recientes. |
+| `INACTIVE` | Dado de baja. |
+
+**`FarmRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(Farm)` | `Farm` | public | Método: Guarda la finca. |
+| `findById(FarmId)` | `Optional<Farm>` | public | Método: Busca por identificador. |
+| `findByOwnerId(UserAccountId)` | `List<Farm>` | public | Método: Lista las fincas de un productor. |
+
+**`CropRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `findById(CropId)` | `Optional<Crop>` | public | Método: Busca un cultivo. |
+| `findAll()` | `List<Crop>` | public | Método: Lista el catálogo. |
+
+**`DeviceRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(Device)` | `Device` | public | Método: Guarda el dispositivo. |
+| `findByActivationCode(DeviceActivationCode)` | `Optional<Device>` | public | Método: Busca por código de activación. |
+| `findStaleDevices(LocalDateTime)` | `List<Device>` | public | Método: Lista los dispositivos sin comunicación desde una fecha. |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `Farm` | Composición | `Plot` | 1 a 0..* | La finca contiene sus parcelas. |
+| `Farm` | Composición | `Address` | 1 a 1 | La finca tiene una dirección. |
+| `Plot` | Composición | `PlotArea, GeoLocation` | 1 a 1 | La parcela tiene superficie y ubicación. |
+| `Plot` | Asociación | `Crop` | 0..* a 0..1 | Varias parcelas pueden usar un mismo cultivo. |
+| `Plot` | Asociación | `Device` | 1 a 0..1 | Una parcela tiene como máximo un dispositivo. |
+| `Crop` | Composición | `SalinityThreshold` | 1 a 1 | Cada cultivo tiene un umbral. |
+| `Crop` | Asociación | `SaltToleranceClass` | 1 a 1 | Cada cultivo tiene una clase de tolerancia. |
+| `Device` | Composición | `DeviceActivationCode` | 1 a 1 | Cada dispositivo tiene su código. |
+| `Device` | Asociación | `DeviceStatus` | 1 a 1 | Cada dispositivo tiene un estado. |
+| `FarmRepository / CropRepository / DeviceRepository` | Dependencia (persiste) | `Farm / Crop / Device` | No aplica | Persisten cada agregado. |
+
 #### 4.2.3.2. Interface Layer
 
 La capa de interfaz expone el registro y consulta de fincas, parcelas, catálogo de cultivos y dispositivos.
@@ -1118,6 +1545,163 @@ La capa de dominio garantiza que toda lectura persistida conserve simultáneamen
 **Entities y Aggregates:** `SoilReading` se crea mediante `capture()` y solo se considera evaluable tras `applyCompensation()`, que fija el valor efectivo (`getEffectiveConductivity()`) usado por Salinity Alerting. `ReadingBatch` agrupa las lecturas transmitidas por un dispositivo y confirma su procesamiento con `markSynchronized(accepted, discarded)`. `CalibrationRecord` calcula el factor de corrección (`computeFactor()`) a partir de un `LabResult`.
 
 **Domain Service central:** `TemperatureCompensationService` implementa la regla técnica más determinante del contexto: ajusta la conductividad a 25 °C incorporando el factor de calibración del dispositivo y el efecto de la humedad, dado que una menor humedad produce lecturas artificialmente bajas.
+
+**Diccionario de clases**
+
+A continuación se documenta cada clase de la capa de dominio a manera de diccionario, con sus atributos, sus métodos y la visibilidad de cada miembro, tal como aparecen en el diagrama de clases de la sección 4.2.4.6.1.
+
+**`SoilReading`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `SoilReadingId` | private | Atributo: Identificador de la lectura. |
+| `deviceId` | `DeviceId` | private | Atributo: Dispositivo que capturó la lectura. |
+| `plotId` | `PlotId` | private | Atributo: Parcela medida. |
+| `rawConductivity` | `ElectricalConductivity` | private | Atributo: Conductividad sin compensar. |
+| `compensatedConductivity` | `ElectricalConductivity` | private | Atributo: Conductividad compensada a 25 °C. |
+| `moisture` | `SoilMoisture` | private | Atributo: Humedad volumétrica. |
+| `temperature` | `SoilTemperature` | private | Atributo: Temperatura del suelo. |
+| `capturedAt` | `ReadingTimestamp` | private | Atributo: Momento de captura. |
+| `storedAt` | `LocalDateTime` | private | Atributo: Momento de persistencia. |
+| `capture(DeviceId, PlotId, ElectricalConductivity, SoilMoisture, SoilTemperature, ReadingTimestamp)` | `SoilReading` | public static | Método: Crea una lectura cruda. |
+| `applyCompensation(CompensationResult)` | `void` | public | Método: Fija el valor compensado. |
+| `isCompensated()` | `boolean` | public | Método: Indica si ya tiene valor compensado. |
+| `getEffectiveConductivity()` | `ElectricalConductivity` | public | Método: Devuelve el valor usado para evaluar alertas. |
+| `belongsToSameCaptureAs(SoilReading)` | `boolean` | public | Método: Detecta duplicados por dispositivo y marca temporal. |
+
+**`ReadingBatch`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `ReadingBatchId` | private | Atributo: Identificador del lote. |
+| `deviceId` | `DeviceId` | private | Atributo: Dispositivo de origen. |
+| `readings` | `List<SoilReading>` | private | Atributo: Lecturas del lote. |
+| `status` | `SyncStatus` | private | Atributo: Estado de sincronización. |
+| `submittedAt` | `LocalDateTime` | private | Atributo: Momento de envío. |
+| `acceptedCount` | `int` | private | Atributo: Lecturas aceptadas. |
+| `discardedCount` | `int` | private | Atributo: Lecturas descartadas. |
+| `submit(DeviceId, List<SoilReading>)` | `ReadingBatch` | public static | Método: Crea un lote pendiente. |
+| `markSynchronized(int, int)` | `void` | public | Método: Registra aceptadas y descartadas. |
+| `isEmpty()` | `boolean` | public | Método: Indica si el lote no tiene lecturas. |
+
+**`CalibrationRecord`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `CalibrationRecordId` | private | Atributo: Identificador de la calibración. |
+| `deviceId` | `DeviceId` | private | Atributo: Dispositivo calibrado. |
+| `referenceResult` | `LabResult` | private | Atributo: Resultado de laboratorio de referencia. |
+| `deviceReadingAtSampling` | `double` | private | Atributo: Lectura del dispositivo al momento del muestreo. |
+| `resultingFactor` | `double` | private | Atributo: Factor de corrección calculado. |
+| `registeredAt` | `LocalDateTime` | private | Atributo: Fecha de registro. |
+| `register(DeviceId, LabResult, double)` | `CalibrationRecord` | public static | Método: Crea la calibración. |
+| `computeFactor()` | `double` | public | Método: Calcula el factor entre laboratorio y dispositivo. |
+
+**`ElectricalConductivity`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `valueInDeciSiemensPerMeter` | `double` | private | Atributo: Conductividad en dS/m, no negativa. |
+| `getValue()` | `double` | public | Método: Devuelve el valor. |
+| `isWithin(SensorRange)` | `boolean` | public | Método: Valida el rango del sensor. |
+| `toTotalDissolvedSolids()` | `double` | public | Método: Convierte a sólidos disueltos totales. |
+
+**`SoilMoisture`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `volumetricPercentage` | `double` | private | Atributo: Humedad entre 0 y 100. |
+| `getValue()` | `double` | public | Método: Devuelve el valor. |
+| `isWithin(SensorRange)` | `boolean` | public | Método: Valida el rango del sensor. |
+
+**`SoilTemperature`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `celsius` | `double` | private | Atributo: Temperatura en °C. |
+| `getValue()` | `double` | public | Método: Devuelve el valor. |
+| `isWithin(SensorRange)` | `boolean` | public | Método: Valida el rango del sensor. |
+| `deviationFromReference()` | `double` | public | Método: Diferencia respecto de 25 °C. |
+
+**`ReadingTimestamp`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `value` | `Instant` | private | Atributo: Instante de captura. |
+| `getValue()` | `Instant` | public | Método: Devuelve el instante. |
+| `isFuture()` | `boolean` | public | Método: Indica si es posterior al momento actual. |
+
+**`CompensationResult`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `rawValue` | `double` | private | Atributo: Valor crudo. |
+| `compensatedValue` | `double` | private | Atributo: Valor compensado. |
+| `appliedFactor` | `double` | private | Atributo: Factor aplicado. |
+| `getCompensatedValue()` | `double` | public | Método: Devuelve el valor compensado. |
+| `getAppliedFactor()` | `double` | public | Método: Devuelve el factor. |
+
+**`SensorRange`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `minimum` | `double` | private | Atributo: Límite inferior. |
+| `maximum` | `double` | private | Atributo: Límite superior. |
+| `contains(double)` | `boolean` | public | Método: Indica si un valor está en el rango. |
+
+**`LabResult`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `conductivityValue` | `double` | private | Atributo: Conductividad medida en laboratorio. |
+| `samplingDate` | `LocalDate` | private | Atributo: Fecha del muestreo. |
+| `laboratoryName` | `String` | private | Atributo: Laboratorio emisor. |
+| `getConductivityValue()` | `double` | public | Método: Devuelve la conductividad. |
+
+**`SyncStatus`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `PENDING` | Pendiente de envío. |
+| `SYNCHRONIZED` | Confirmado por la plataforma. |
+| `DISCARDED` | Descartado por duplicado o rango. |
+
+**`SoilReadingRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(SoilReading)` | `SoilReading` | public | Método: Guarda la lectura. |
+| `findLatestByPlotId(PlotId)` | `Optional<SoilReading>` | public | Método: Devuelve la última lectura de una parcela. |
+| `findSeriesByPlotIdAndRange(PlotId, Instant, Instant)` | `List<SoilReading>` | public | Método: Devuelve la serie de un rango. |
+| `existsByDeviceIdAndTimestamp(DeviceId, ReadingTimestamp)` | `boolean` | public | Método: Detecta lecturas duplicadas. |
+
+**`ReadingValidationService`** (Domain Service)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `isValid(SoilReading)` | `boolean` | public | Método: Valida las tres variables contra su rango. |
+| `getRangeFor(String)` | `SensorRange` | public | Método: Devuelve el rango de un sensor. |
+
+**`TemperatureCompensationService`** (Domain Service)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `REFERENCE_TEMPERATURE` | `double` | public static final | Atributo: Temperatura de referencia, 25 °C. |
+| `compensate(ElectricalConductivity, SoilTemperature, SoilMoisture, double)` | `CompensationResult` | public | Método: Compensa la conductividad con temperatura, humedad y factor de calibración. |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `SoilReading` | Composición (cruda, compensada) | `ElectricalConductivity` | 1 a 1 | Cada lectura guarda ambos valores. |
+| `SoilReading` | Composición | `SoilMoisture, SoilTemperature, ReadingTimestamp` | 1 a 1 | Variables y marca temporal de la lectura. |
+| `ReadingBatch` | Composición | `SoilReading` | 1 a 1..* | Un lote agrupa una o más lecturas. |
+| `ReadingBatch` | Asociación | `SyncStatus` | 1 a 1 | Cada lote tiene un estado. |
+| `CalibrationRecord` | Composición | `LabResult` | 1 a 1 | Cada calibración usa un resultado de laboratorio. |
+| `ElectricalConductivity` | Dependencia (validada contra) | `SensorRange` | No aplica | Valida el valor contra el rango. |
+| `ReadingValidationService` | Dependencia (valida) | `SoilReading` | No aplica | Valida la lectura. |
+| `TemperatureCompensationService` | Dependencia (calcula) | `CompensationResult` | No aplica | Produce el resultado de compensación. |
+| `SoilReadingRepository` | Dependencia (persiste) | `SoilReading` | No aplica | Persiste el agregado. |
 
 #### 4.2.4.2. Interface Layer
 
@@ -1255,6 +1839,147 @@ La capa de dominio garantiza el ciclo completo de atención de una alerta: gener
 
 **Domain Service central:** `ThresholdEvaluationService` implementa la regla de negocio central: la severidad se determina por la **proporción del exceso** sobre el umbral del cultivo, no por el valor absoluto de conductividad, ya que un mismo valor puede ser inocuo para un cultivo tolerante y destructivo para uno sensible.
 
+**Diccionario de clases**
+
+A continuación se documenta cada clase de la capa de dominio a manera de diccionario, con sus atributos, sus métodos y la visibilidad de cada miembro, tal como aparecen en el diagrama de clases de la sección 4.2.5.6.1.
+
+**`SalinityAlert`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `SalinityAlertId` | private | Atributo: Identificador de la alerta. |
+| `plotId` | `PlotId` | private | Atributo: Parcela afectada. |
+| `soilReadingId` | `SoilReadingId` | private | Atributo: Lectura que originó la alerta. |
+| `evaluation` | `ThresholdEvaluation` | private | Atributo: Resultado de la evaluación de umbral. |
+| `severity` | `SeverityLevel` | private | Atributo: Nivel de severidad. |
+| `status` | `AlertStatus` | private | Atributo: Estado del ciclo de atención. |
+| `acknowledgement` | `AlertAcknowledgement` | private | Atributo: Datos del reconocimiento. |
+| `correctiveAction` | `CorrectiveAction` | private | Atributo: Acción que resolvió la alerta. |
+| `generatedAt` | `LocalDateTime` | private | Atributo: Momento de generación. |
+| `generate(PlotId, SoilReadingId, ThresholdEvaluation)` | `SalinityAlert` | public static | Método: Crea una alerta abierta y publica AlertGeneratedEvent. |
+| `acknowledge(UserAccountId)` | `void` | public | Método: Registra el reconocimiento. |
+| `registerCorrectiveAction(CorrectiveActionType, LocalDate, String)` | `void` | public | Método: Registra la acción y resuelve la alerta. |
+| `isOpen()` | `boolean` | public | Método: Indica si sigue abierta. |
+| `hasSameSeverityAs(SalinityAlert)` | `boolean` | public | Método: Compara severidades para evitar duplicados. |
+| `wasResolvedWithin(int)` | `boolean` | public | Método: Indica si se resolvió dentro de un número de horas. |
+
+**`CorrectiveAction`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `CorrectiveActionId` | private | Atributo: Identificador de la acción. |
+| `type` | `CorrectiveActionType` | private | Atributo: Tipo de intervención. |
+| `executedAt` | `LocalDate` | private | Atributo: Fecha de ejecución. |
+| `notes` | `String` | private | Atributo: Observaciones. |
+| `registeredBy` | `UserAccountId` | private | Atributo: Usuario que la registró. |
+
+**`NotificationPreference`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `NotificationPreferenceId` | private | Atributo: Identificador de la preferencia. |
+| `userAccountId` | `UserAccountId` | private | Atributo: Usuario dueño. |
+| `minimumSeverity` | `SeverityLevel` | private | Atributo: Severidad mínima a notificar. |
+| `channel` | `NotificationChannel` | private | Atributo: Canal de entrega. |
+| `shouldNotify(SeverityLevel)` | `boolean` | public | Método: Indica si una severidad debe notificarse. |
+| `updateChannel(NotificationChannel)` | `void` | public | Método: Cambia el canal. |
+
+**`ThresholdEvaluation`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `observedConductivity` | `double` | private | Atributo: Valor observado. |
+| `appliedThreshold` | `double` | private | Atributo: Umbral aplicado. |
+| `excessRatio` | `double` | private | Atributo: Proporción del exceso. |
+| `resultingLevel` | `SeverityLevel` | private | Atributo: Nivel resultante. |
+| `isExceeded()` | `boolean` | public | Método: Indica si hubo exceso. |
+| `getExcessRatio()` | `double` | public | Método: Devuelve la proporción del exceso. |
+
+**`AlertAcknowledgement`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `acknowledgedBy` | `UserAccountId` | private | Atributo: Usuario que reconoció. |
+| `acknowledgedAt` | `LocalDateTime` | private | Atributo: Momento del reconocimiento. |
+| `getAcknowledgedAt()` | `LocalDateTime` | public | Método: Devuelve el momento. |
+
+**`AlertRecipient`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `userAccountId` | `UserAccountId` | private | Atributo: Destinatario. |
+| `relationToPlot` | `String` | private | Atributo: Relación con la parcela: propietario o asesor. |
+| `isOwner()` | `boolean` | public | Método: Indica si es el propietario. |
+
+**`SeverityLevel`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `WATCH` | Exceso leve. |
+| `WARNING` | Exceso moderado. |
+| `CRITICAL` | Exceso grave. |
+
+**`AlertStatus`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `OPEN` | Generada. |
+| `ACKNOWLEDGED` | Reconocida. |
+| `RESOLVED` | Resuelta con acción. |
+
+**`CorrectiveActionType`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `SALT_LEACHING` | Lavado de sales. |
+| `IRRIGATION_ADJUSTMENT` | Ajuste de riego. |
+| `DRAINAGE_CORRECTION` | Corrección de drenaje. |
+| `AMENDMENT_APPLICATION` | Aplicación de enmienda. |
+| `OTHER` | Otra intervención. |
+
+**`NotificationChannel`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `PUSH` | Notificación push. |
+| `EMAIL` | Correo. |
+| `BOTH` | Ambos canales. |
+
+**`SalinityAlertRepository`** (Repository (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `save(SalinityAlert)` | `SalinityAlert` | public | Método: Guarda la alerta. |
+| `findById(SalinityAlertId)` | `Optional<SalinityAlert>` | public | Método: Busca por identificador. |
+| `findOpenByPlotIdAndSeverity(PlotId, SeverityLevel)` | `Optional<SalinityAlert>` | public | Método: Busca una alerta abierta de la misma severidad. |
+| `findByPlotIdAndRange(PlotId, LocalDate, LocalDate)` | `List<SalinityAlert>` | public | Método: Lista el histórico de alertas. |
+
+**`ThresholdEvaluationService`** (Domain Service)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `evaluate(double, double)` | `ThresholdEvaluation` | public | Método: Compara conductividad y umbral y determina la severidad. |
+
+**`NotificationDispatcher`** (Domain Service (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `dispatch(SalinityAlert, AlertRecipient, NotificationChannel)` | `void` | public | Método: Envía la notificación por el canal indicado. |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `SalinityAlert` | Composición | `ThresholdEvaluation` | 1 a 1 | Cada alerta guarda su evaluación. |
+| `SalinityAlert` | Composición | `CorrectiveAction, AlertAcknowledgement` | 1 a 0..1 | Se completan durante el ciclo de atención. |
+| `SalinityAlert` | Asociación | `SeverityLevel, AlertStatus` | 1 a 1 | Cada alerta tiene severidad y estado. |
+| `CorrectiveAction` | Asociación | `CorrectiveActionType` | 1 a 1 | Cada acción tiene un tipo. |
+| `NotificationPreference` | Asociación | `SeverityLevel, NotificationChannel` | 1 a 1 | Severidad mínima y canal. |
+| `ThresholdEvaluation` | Asociación | `SeverityLevel` | 1 a 1 | Nivel resultante de la evaluación. |
+| `ThresholdEvaluationService` | Dependencia (produce) | `ThresholdEvaluation` | No aplica | Genera la evaluación. |
+| `NotificationDispatcher` | Dependencia (notifica a) | `AlertRecipient` | No aplica | Entrega la alerta al destinatario. |
+| `SalinityAlertRepository` | Dependencia (persiste) | `SalinityAlert` | No aplica | Persiste el agregado. |
+
 #### 4.2.5.2. Interface Layer
 
 La capa de interfaz expone el centro de notificaciones, el reconocimiento de alertas y consume el evento publicado por Soil Monitoring.
@@ -1361,6 +2086,161 @@ La capa de dominio calcula tendencias, compone reportes y agrega vistas consolid
 **Entities y Aggregates:** `SalinityTrend.compute()` falla si la serie contiene menos de treinta lecturas (`isReliable()`), y `projectValueAt(date)` proyecta el valor esperado según la pendiente calculada. `PlotReport` se compone incrementalmente mediante `addSection()` y solo se considera completo (`isComplete()`) cuando reúne las cuatro secciones obligatorias.
 
 **Domain Service central:** `TrendComputationService` aplica regresión lineal sobre la serie de lecturas compensadas y clasifica la pendiente resultante en `RISING`, `STABLE` o `FALLING`.
+
+**Diccionario de clases**
+
+A continuación se documenta cada clase de la capa de dominio a manera de diccionario, con sus atributos, sus métodos y la visibilidad de cada miembro, tal como aparecen en el diagrama de clases de la sección 4.2.6.6.1.
+
+**`SalinityTrend`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `SalinityTrendId` | private | Atributo: Identificador de la tendencia. |
+| `plotId` | `PlotId` | private | Atributo: Parcela analizada. |
+| `period` | `ReportingPeriod` | private | Atributo: Periodo analizado. |
+| `slope` | `double` | private | Atributo: Pendiente de la regresión. |
+| `direction` | `TrendDirection` | private | Atributo: Dirección de la tendencia. |
+| `readingCount` | `int` | private | Atributo: Número de lecturas usadas. |
+| `computedAt` | `LocalDateTime` | private | Atributo: Momento del cálculo. |
+| `compute(PlotId, ReportingPeriod, ReadingSeries)` | `SalinityTrend` | public static | Método: Calcula la tendencia si hay al menos treinta lecturas. |
+| `isReliable()` | `boolean` | public | Método: Indica si la serie es suficiente. |
+| `projectValueAt(LocalDate)` | `double` | public | Método: Proyecta el valor esperado en una fecha. |
+
+**`PlotReport`** (Aggregate Root)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `PlotReportId` | private | Atributo: Identificador del reporte. |
+| `plotId` | `PlotId` | private | Atributo: Parcela reportada. |
+| `period` | `ReportingPeriod` | private | Atributo: Periodo del reporte. |
+| `sections` | `List<ReportSection>` | private | Atributo: Secciones del reporte. |
+| `generatedBy` | `UserAccountId` | private | Atributo: Usuario que lo generó. |
+| `generatedAt` | `LocalDateTime` | private | Atributo: Momento de generación. |
+| `generate(PlotId, ReportingPeriod, UserAccountId)` | `PlotReport` | public static | Método: Crea un reporte vacío. |
+| `addSection(ReportSection)` | `void` | public | Método: Agrega una sección. |
+| `isComplete()` | `boolean` | public | Método: Indica si tiene las cuatro secciones obligatorias. |
+
+**`ReportSection`** (Entity)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `id` | `ReportSectionId` | private | Atributo: Identificador de la sección. |
+| `title` | `String` | private | Atributo: Título. |
+| `type` | `SectionType` | private | Atributo: Tipo: lecturas, tendencia, alertas o acciones. |
+| `content` | `String` | private | Atributo: Contenido serializado. |
+
+**`MultiPlotDashboard`** (Read Model)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `advisorId` | `UserAccountId` | private | Atributo: Asesor dueño del tablero. |
+| `summaries` | `List<PlotSummary>` | private | Atributo: Resumen por parcela. |
+| `sortBySeverity()` | `void` | public | Método: Ordena por criticidad. |
+| `filterByFarmer(UserAccountId)` | `MultiPlotDashboard` | public | Método: Filtra por productor. |
+| `getCriticalCount()` | `int` | public | Método: Cuenta parcelas críticas. |
+
+**`ReportingPeriod`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `startDate` | `LocalDate` | private | Atributo: Fecha inicial. |
+| `endDate` | `LocalDate` | private | Atributo: Fecha final, posterior a la inicial. |
+| `getDayCount()` | `int` | public | Método: Devuelve el número de días. |
+| `contains(LocalDate)` | `boolean` | public | Método: Indica si una fecha está en el periodo. |
+
+**`ReadingSeries`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `values` | `List<Double>` | private | Atributo: Valores compensados. |
+| `timestamps` | `List<Instant>` | private | Atributo: Marcas temporales. |
+| `getSize()` | `int` | public | Método: Número de lecturas. |
+| `getAverage()` | `double` | public | Método: Promedio. |
+| `getMinimum()` | `double` | public | Método: Mínimo. |
+| `getMaximum()` | `double` | public | Método: Máximo. |
+| `getStandardDeviation()` | `double` | public | Método: Desviación estándar. |
+
+**`PlotSummary`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `plotId` | `PlotId` | private | Atributo: Parcela. |
+| `plotName` | `String` | private | Atributo: Nombre de la parcela. |
+| `farmerName` | `String` | private | Atributo: Productor. |
+| `cropName` | `String` | private | Atributo: Cultivo. |
+| `latestConductivity` | `double` | private | Atributo: Última conductividad. |
+| `salinityCategory` | `String` | private | Atributo: Categoría de salinidad. |
+| `lastReadingAt` | `Instant` | private | Atributo: Última lectura. |
+| `isCritical()` | `boolean` | public | Método: Indica si está en estado crítico. |
+
+**`PlotComparison`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `plotIds` | `List<PlotId>` | private | Atributo: Parcelas comparadas. |
+| `period` | `ReportingPeriod` | private | Atributo: Periodo común. |
+| `series` | `Map<PlotId, ReadingSeries>` | private | Atributo: Serie por parcela. |
+| `getPlotCount()` | `int` | public | Método: Número de parcelas, entre dos y cuatro. |
+
+**`WeatherCorrelation`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `location` | `GeoLocation` | private | Atributo: Coordenadas consultadas. |
+| `period` | `ReportingPeriod` | private | Atributo: Periodo consultado. |
+| `precipitation` | `PrecipitationSeries` | private | Atributo: Serie de precipitación. |
+| `isAvailable()` | `boolean` | public | Método: Indica si el servicio respondió. |
+
+**`PrecipitationSeries`** (Value Object)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `millimeters` | `List<Double>` | private | Atributo: Precipitación diaria en mm. |
+| `dates` | `List<LocalDate>` | private | Atributo: Fechas. |
+| `getTotalPrecipitation()` | `double` | public | Método: Total del periodo. |
+
+**`TrendDirection`** (Enumeration)
+
+| Valor | Descripción |
+|---|---|
+| `RISING` | Salinidad en aumento. |
+| `STABLE` | Sin cambio relevante. |
+| `FALLING` | Salinidad en descenso. |
+
+**`TrendComputationService`** (Domain Service)
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `MINIMUM_READINGS` | `int` | public static final | Atributo: Mínimo de lecturas, treinta. |
+| `computeSlope(ReadingSeries)` | `double` | public | Método: Calcula la pendiente por regresión lineal. |
+| `classifyDirection(double)` | `TrendDirection` | public | Método: Clasifica la pendiente. |
+
+**`WeatherDataProvider`** (Domain Service (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `fetchPrecipitation(GeoLocation, ReportingPeriod)` | `WeatherCorrelation` | public | Método: Obtiene la precipitación del servicio externo. |
+
+**`ReportExporter`** (Domain Service (interfaz))
+
+| Miembro | Tipo | Visibilidad | Descripción |
+|---|---|---|---|
+| `export(PlotReport)` | `byte[]` | public | Método: Exporta el reporte a un archivo. |
+
+**Relaciones entre clases**
+
+| Origen | Relación | Destino | Multiplicidad | Descripción |
+|---|---|---|---|---|
+| `PlotReport` | Composición | `ReportSection` | 1 a 1..* | El reporte contiene sus secciones. |
+| `PlotReport / SalinityTrend` | Composición | `ReportingPeriod` | 1 a 1 | Periodo del análisis. |
+| `SalinityTrend` | Asociación | `TrendDirection` | 1 a 1 | Dirección calculada. |
+| `SalinityTrend` | Dependencia (calculada desde) | `ReadingSeries` | No aplica | Se calcula a partir de la serie. |
+| `MultiPlotDashboard` | Composición | `PlotSummary` | 1 a 0..* | El tablero agrupa resúmenes. |
+| `PlotComparison` | Composición | `ReadingSeries` | 1 a 2..4 | Compara entre dos y cuatro series. |
+| `WeatherCorrelation` | Composición | `PrecipitationSeries` | 1 a 1 | Serie de precipitación asociada. |
+| `TrendComputationService` | Dependencia (produce) | `SalinityTrend` | No aplica | Calcula la tendencia. |
+| `WeatherDataProvider` | Dependencia (obtiene) | `WeatherCorrelation` | No aplica | Obtiene los datos meteorológicos. |
+| `ReportExporter` | Dependencia (exporta) | `PlotReport` | No aplica | Exporta el reporte. |
 
 #### 4.2.6.2. Interface Layer
 
