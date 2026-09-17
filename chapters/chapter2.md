@@ -385,6 +385,135 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
 
 ### 2.2.3. Análisis de entrevistas
 
+En esta sección se analizan las seis entrevistas registradas en la sección 2.2.2, tres por cada segmento objetivo. Para obtener el sustento estadístico, el equipo leyó el resumen de cada entrevista y marcó qué características objetivas (edad, ubicación, ocupación, herramientas) y subjetivas (frustraciones, motivaciones, condiciones de confianza) aparecen en él. Cada porcentaje indica qué parte de los entrevistados del segmento presenta la característica; como cada segmento tiene tres entrevistas, los valores posibles son 33% (1 de 3), 67% (2 de 3) y 100% (3 de 3). En cada gráfico se muestran las iniciales de los entrevistados que respaldan el valor, de modo que cada característica puede rastrearse hasta su resumen.
+
+**Perfil general de los entrevistados**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g1-perfil-entrevistados.png" alt="Perfil de los entrevistados por segmento" width="900"/>
+<p><em>Gráfico 1. Perfil de los entrevistados por segmento.</em></p>
+</div>
+
+Los dos segmentos tienen perfiles claramente diferentes. Los productores entrevistados son jóvenes (promedio de 21.7 años) y todos están vinculados a una parcela o fundo familiar en la costa peruana. El 67% son estudiantes universitarios que viven en Lima y apoyan en la parcela solo en vacaciones o feriados, mientras que el 33% trabaja a tiempo completo en el campo y tiene formación técnica agropecuaria. En el caso de los asesores, el promedio de edad es de 41 años, aunque el 67% tiene alrededor de 30 años; el 100% asesora a varios productores en valles de la costa o del norte y el 67% es ingeniero agrónomo.
+
+#### Segmento 1: Pequeños y medianos productores agropecuarios
+
+**Prácticas de cuidado del suelo y fuentes de recomendación**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g2-productores-practicas-y-fuentes.png" alt="Prácticas de cuidado del suelo y fuentes de recomendación de los productores" width="900"/>
+<p><em>Gráfico 2. Productores: prácticas de cuidado del suelo y fuentes de recomendación.</em></p>
+</div>
+
+El 100% de los productores maneja el riego o el agua de su parcela y aplica fertilizantes, y el 67% usa materia orgánica como compost, estiércol o guano. Solo el 33% aplica enmiendas específicas contra las sales (yeso agrícola, ácidos húmicos y lavados), lo que muestra que la mayoría no tiene un manejo dirigido a la salinidad. En cuanto a las recomendaciones, el 100% recurre en algún momento a un técnico o ingeniero agrícola, pero lo hace cuando el problema ya es serio, para interpretar un análisis o durante visitas mensuales. En el día a día, el 67% decide con base en la experiencia familiar, y cada entrevistado suma una fuente distinta: otros agricultores, internet, la tienda de insumos del pueblo o su propia formación técnica.
+
+**Percepción de la salinidad**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g3-productores-senales-salinidad.png" alt="Señales de salinidad percibidas por los productores" width="850"/>
+<p><em>Gráfico 3. Productores: señales de salinidad percibidas.</em></p>
+</div>
+
+El 100% de los productores ha observado cultivos con menor crecimiento o rendimiento, y el 100% detecta el problema tarde o sin certeza de su causa: Diego no sabe si se debe a la salinidad o al riego, Mathias no sabe cuánto afecta ni cómo solucionarlo, y Alex explica que, con riego por goteo, cuando se nota el problema el cultivo ya presenta daño. El 67% reconoce la costra o tierra blanca y el 67% observa hojas amarillas o con puntas quemadas. Estas señales son visibles solo cuando la sal ya afectó al cultivo, lo que confirma la necesidad de una medición anticipada.
+
+**Experiencia con el análisis de suelo**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g4-productores-analisis-de-suelo.png" alt="Experiencia de los productores con el análisis de suelo" width="900"/>
+<p><em>Gráfico 4. Productores: experiencia con el análisis de suelo.</em></p>
+</div>
+
+El 100% de los productores ha tenido al menos un análisis de suelo en su parcela, pero el 67% lo hizo de forma esporádica, hace varios años, y solo el 33% lo realiza de manera periódica (dos veces al año). La dificultad común a todos es la espera de resultados, que llega hasta dos semanas. El 67% tuvo que trasladar la muestra a un laboratorio y el 67% no comprendió del todo los resultados. El productor con análisis periódicos agrega que cada uno cuesta alrededor de S/ 250 y que el resultado es una foto de un solo día, por lo que no sabe en qué momento sube la salinidad entre un análisis y otro.
+
+**Condiciones para adoptar un dispositivo de alerta**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g5-productores-condiciones-de-adopcion.png" alt="Condiciones de los productores para adoptar un dispositivo de alerta" width="850"/>
+<p><em>Gráfico 5. Productores: condiciones para adoptar un dispositivo de alerta.</em></p>
+</div>
+
+El 100% de los productores usaría un dispositivo que avise antes de que la sal dañe el cultivo. Para confiar en él, el 100% exige un costo accesible (o menor que el de los análisis de laboratorio), indicaciones claras sobre qué acción tomar y que funcione en las condiciones reales del campo, con mala señal o sin enchufes. El 67% pide que las mediciones se expliquen de forma clara y simple. Otras condiciones aparecen en un solo entrevistado, pero son relevantes para el diseño: recibir la alerta en el celular y reenviarla por WhatsApp, contar con instalación sencilla y capacitación, guardar un historial continuo y poder comparar las mediciones con las del laboratorio.
+
+**Resumen de características del segmento 1**
+
+| Tipo | Característica | % | Entrevistados |
+|---|---|---|---|
+| Objetiva | Edad entre 20 y 23 años (promedio 21.7) | 100% | DR, MP, AA |
+| Objetiva | Parcela o fundo familiar en la costa peruana | 100% | DR, MP, AA |
+| Objetiva | Estudiante universitario que vive en Lima, lejos de la parcela | 67% | DR, MP |
+| Objetiva | Ha tenido al menos un análisis de suelo | 100% | DR, MP, AA |
+| Objetiva | Menciona el celular y WhatsApp como canal para recibir alertas | 33% | MP |
+| Subjetiva | Decide por experiencia familiar, sin diagnóstico técnico continuo | 67% | DR, MP |
+| Subjetiva | Detecta la salinidad tarde o sin certeza de la causa | 100% | DR, MP, AA |
+| Subjetiva | Le frustra la espera de resultados del laboratorio | 100% | DR, MP, AA |
+| Subjetiva | No entiende del todo los resultados del análisis | 67% | DR, MP |
+| Subjetiva | Usaría un dispositivo de alerta temprana | 100% | DR, MP, AA |
+| Subjetiva | Necesita costo accesible, indicaciones claras y funcionamiento en campo | 100% | DR, MP, AA |
+
+*DR: Diego Ramirez · MP: Mathias Peña · AA: Alex Ávila.*
+
+#### Segmento 2: Ingenieros agrónomos y asesores técnicos agrícolas
+
+**Problemas atendidos y herramientas de diagnóstico**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g6-asesores-problemas-y-herramientas.png" alt="Problemas atendidos y herramientas de diagnóstico de los asesores" width="900"/>
+<p><em>Gráfico 6. Asesores técnicos: problemas atendidos y herramientas de diagnóstico.</em></p>
+</div>
+
+La salinidad es un problema frecuente para el 100% de los asesores, seguida del riego y el drenaje (67%). Para diagnosticarla, el 100% combina el análisis de laboratorio con la inspección visual en campo. El uso de otras tecnologías es disperso: solo el 33% tiene un medidor portátil de conductividad eléctrica, y solo el 33% trabaja con drones, una plataforma digital propia de su empresa y registros en celular, tablet y papel. Ningún asesor cuenta con una medición continua de la conductividad eléctrica en las parcelas que atiende.
+
+**Frustraciones en el trabajo**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g7-asesores-frustraciones.png" alt="Frustraciones de los asesores técnicos" width="850"/>
+<p><em>Gráfico 7. Asesores técnicos: frustraciones en su trabajo.</em></p>
+</div>
+
+El 100% de los asesores identifica como principal frustración el tiempo de traslado entre parcelas de distintos productores, y el 100% indica que por eso visita pocas veces cada parcela y trabaja con información desactualizada. Como consecuencia, el 67% encuentra el daño ya avanzado o tiene dificultades para detectar a tiempo los cambios del suelo. Otras frustraciones son el costo y la espera del laboratorio, la resistencia de algunos productores a leer reportes digitales y el doble registro de datos en papel y en digital (33% cada una).
+
+**Información requerida en una alerta de salinidad**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g8-asesores-contenido-de-alerta.png" alt="Información requerida por los asesores en una alerta de salinidad" width="850"/>
+<p><em>Gráfico 8. Asesores técnicos: información requerida en una alerta de salinidad.</em></p>
+</div>
+
+El 100% de los asesores considera útil recibir alertas o monitorear la salinidad a distancia, y el 100% necesita ver el nivel de conductividad eléctrica. El 67% pide además la evolución o tendencia del valor, la parcela con su ubicación y productor, la fecha de medición o de la última revisión y el historial de mediciones. El 33% agrega datos que permiten priorizar el trabajo cuando se manejan varios clientes: la tolerancia del cultivo sembrado, un nivel de prioridad (bajo, medio o alto), la comparación de varias parcelas en una sola pantalla, el seguimiento de las acciones aplicadas y reportes automatizados.
+
+**Resumen de características del segmento 2**
+
+| Tipo | Característica | % | Entrevistados |
+|---|---|---|---|
+| Objetiva | Asesora a varios productores en valles de la costa o del norte | 100% | YM, ES, GV |
+| Objetiva | Ingeniero(a) agrónomo(a) | 67% | YM, GV |
+| Objetiva | Edad de alrededor de 30 años (promedio del segmento: 41) | 67% | YM, GV |
+| Objetiva | Usa análisis de laboratorio e inspección visual en campo | 100% | YM, ES, GV |
+| Objetiva | Usa celular, tablet, drones y una plataforma digital | 33% | ES |
+| Subjetiva | Le frustra el tiempo de traslado entre parcelas | 100% | YM, ES, GV |
+| Subjetiva | Trabaja con información desactualizada por las pocas visitas | 100% | YM, ES, GV |
+| Subjetiva | Detecta tarde el daño en el cultivo | 67% | YM, GV |
+| Subjetiva | Valora las alertas y el monitoreo de salinidad a distancia | 100% | YM, ES, GV |
+| Subjetiva | Necesita ver en la alerta la tendencia de la CE, la parcela y la fecha | 67% | YM, GV |
+
+*YM: Yeira Momán · ES: Emperatriz Sessarego · GV: Germán Villalobos.*
+
+#### Comparación entre segmentos
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g9-necesidades-compartidas.png" alt="Necesidades compartidas entre segmentos y capacidades de OsoTerra" width="900"/>
+<p><em>Gráfico 9. Necesidades compartidas entre segmentos y capacidad de OsoTerra que las atiende.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g10-matriz-de-trazabilidad.png" alt="Matriz de trazabilidad de necesidades por entrevistado" width="900"/>
+<p><em>Gráfico 10. Matriz de trazabilidad de necesidades por entrevistado.</em></p>
+</div>
+
+Al cruzar ambos segmentos se encuentran tres necesidades presentes en el 100% de los entrevistados: dar seguimiento a la parcela a distancia o con visitas poco frecuentes, depender del análisis de laboratorio para conocer el estado del suelo y querer alertas anticipadas y remotas. La detección tardía del problema aparece en el 83% de los entrevistados, al igual que la preocupación por el costo y la necesidad de saber qué hacer o qué parcela atender primero. Estas coincidencias validan la propuesta central de OsoTerra: la lectura continua de la conductividad eléctrica y las alertas de salinidad según el umbral de cada cultivo.
+
+Las diferencias entre segmentos orientan el diseño para cada tipo de usuario. Para el productor, la robustez en campo (100% frente a 0%) y las indicaciones simples son prioritarias, por lo que la solución debe operar con energía solar, seguir funcionando cuando falle la señal y traducir cada alerta en una acción concreta. Para el asesor, el historial y la evolución de la conductividad eléctrica (100% frente a 33%) son determinantes, junto con la vista de varias parcelas y la prioridad de cada alerta. Estas características son la base de los User Personas de la sección 2.3.1.
+
 ## 2.3. Needfinding
 
 ### 2.3.1. User Personas

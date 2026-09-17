@@ -22,5 +22,6 @@
 | 0.0.18 | 16/09/2026 | Victor Nicolas Ortiz Alarcon | Corrección de los Lean UX Hypothesis Statements del Capítulo I según la estructura solicitada en el statement del proyecto. |
 | 0.0.19 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la segunda entrevista del segmento de pequeños y medianos productores agropecuarios (Mathias Peña, Ferreñafe, Lambayeque) en el Capítulo II, con screenshot y resumen. |
 | 0.0.20 | 17/09/2026 | Andreow Jomark Santiago Peña | Registro de la tercera entrevista del segmento de pequeños y medianos productores agropecuarios (Alex Ávila, Salas Guadalupe, Ica) en el Capítulo II, con screenshot y resumen. |
+| 0.0.21 | 17/09/2026 | Andreow Jomark Santiago Peña | Desarrollo del análisis de entrevistas del Capítulo II por segmento, con porcentajes de características objetivas y subjetivas, diez gráficos, tablas resumen y comparación entre segmentos. |
 
 # Project Report Collaboration Insights
