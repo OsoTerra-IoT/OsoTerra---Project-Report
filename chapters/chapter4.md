@@ -1,5 +1,9 @@
 # Capítulo IV: Solution Software Design
 
+Este capítulo traduce la comprensión del dominio construida en los capítulos anteriores en un diseño de software concreto. El desarrollo se organiza en dos niveles complementarios del Domain-Driven Design. El nivel estratégico (4.1) parte del Design-Level EventStorming para descubrir los límites naturales del dominio, los formaliza como bounded contexts mediante Bounded Context Canvases, establece las relaciones entre ellos con Context Mapping y los proyecta sobre una arquitectura de software descrita con el modelo C4. El nivel táctico (4.2) desciende al interior de cada bounded context y detalla su estructura interna por capas, sus componentes y su modelo de datos.
+
+La secuencia no es arbitraria: cada artefacto alimenta al siguiente. Los eventos de dominio identificados en el EventStorming determinan los contextos candidatos; los contextos candidatos se refinan en canvases; las relaciones entre canvases producen el context map; y el context map condiciona la distribución de contenedores de la arquitectura. Las decisiones de diseño se justifican en cada sección en lugar de presentarse como resultados dados.
+
 ## 4.1. Strategic-Level Domain-Driven Design
 
 En esta sección el equipo explica el proceso seguido para tomar las decisiones de nivel estratégico de Domain-Driven Design sobre OsoSense. El punto de partida fue el Big Picture EventStorming de la sección 2.4, con sus 35 eventos de dominio, sus cinco eventos pivote y sus seis fronteras emergentes. A partir de ese material se realizaron, en orden, un Design-Level EventStorming, un Candidate Context Discovery, el modelado de los flujos de mensajes con Domain Storytelling, los Bounded Context Canvases y el Context Mapping. El resultado de este proceso son los seis bounded contexts que se desarrollan de forma táctica en la sección 4.2: Identity and Access Management, Subscription and Billing, Farm Management, Soil Monitoring, Salinity Alerting y Analytics and Reporting.
@@ -528,6 +532,12 @@ Además, cada integración con terceros se protege con un Anti-corruption Layer 
 
 ### 4.1.3. Software Architecture
 
+La arquitectura de software de OsoTerra IoT se documenta siguiendo el modelo C4 de Simon Brown, que描 describe un sistema mediante niveles sucesivos de detalle, de modo que cada audiencia encuentre la vista con el grado de abstracción que necesita sin verse obligada a interpretar diagramas irrelevantes para su rol.
+
+Se presentan cuatro vistas. El **System Landscape Diagram** (4.1.3.1) ubica a OsoTerra IoT dentro del ecosistema de sistemas y actores con los que convive, incluidos los servicios externos de pago, notificación y datos meteorológicos. El **Context Level Diagram** (4.1.3.2) acota el alcance a la solución misma y a sus interacciones directas con usuarios y sistemas externos, sin revelar su estructura interna. El **Container Level Diagram** (4.1.3.3) descompone la solución en sus unidades desplegables —dispositivo de campo, Edge Service, RESTful API, aplicaciones web y móvil, Landing Page y base de datos— y muestra las tecnologías y protocolos que las comunican. El **Deployment Diagram** (4.1.3.4) proyecta esos contenedores sobre la infraestructura física y de nube donde se ejecutan.
+
+Los diagramas de nivel de componente, que corresponden al tercer nivel del C4, no se presentan aquí sino dentro de cada bounded context en la sección 4.2, porque su lectura solo tiene sentido junto al detalle táctico del contexto al que pertenecen.
+
 #### 4.1.3.1. Software Architecture System Landscape Diagram
 
 El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en una sola imagen, las personas que interactúan con la solución, los sistemas de software que Oso Terra construye y opera, y los sistemas externos con los que esos sistemas se integran. Su propósito es dar contexto antes de bajar al nivel de Context, Container y Component, sin entrar todavía en tecnologías ni despliegue.
@@ -706,6 +716,14 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
+Definidos los límites y las relaciones entre contextos en la sección anterior, esta sección desciende al interior de cada uno de los seis bounded contexts identificados: Identity and Access Management, Subscription and Billing, Farm Management, Soil Monitoring, Salinity Alerting y Analytics and Reporting.
+
+Cada contexto se documenta con la misma estructura, derivada de la arquitectura por capas propuesta por el Domain-Driven Design. La **capa de dominio** concentra las reglas de negocio y el modelo conceptual —aggregate roots, entidades, value objects, enumeraciones y domain services— sin dependencia alguna de infraestructura. La **capa de interfaz** expone las capacidades del contexto hacia el exterior mediante controladores REST y transformadores de recursos. La **capa de aplicación** orquesta los casos de uso coordinando el dominio con los servicios de infraestructura, sin contener reglas de negocio propias. La **capa de infraestructura** implementa la persistencia y la integración con sistemas externos mediante repositorios y adaptadores.
+
+A esa descripción por capas se suman, en cada contexto, el **Component Level Diagram**, que corresponde al tercer nivel del modelo C4 y muestra los componentes internos del contexto y sus dependencias, y los **Code Level Diagrams**, que descienden al cuarto nivel con el diagrama de clases de la capa de dominio y el diseño de la base de datos.
+
+La uniformidad de esta estructura es deliberada: permite comparar contextos entre sí y facilita que distintos integrantes del equipo trabajen en paralelo sobre contextos diferentes manteniendo la coherencia del documento.
+
 ### 4.2.1. Bounded Context: Identity and Access Management
 
 Este contexto es responsable de la identidad de los usuarios, su autenticación y las vinculaciones de supervisión entre asesores y productores.
@@ -808,6 +826,8 @@ Dentro del contenedor **RESTful API**, el contexto acotado de **Identity and Acc
 *   **Email Notification ACL:** Traduce las solicitudes de envío de correo hacia el proveedor SMTP externo.
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
+
+El cuarto nivel del modelo C4 desciende al detalle del código. Para Identity and Access Management se presentan dos vistas complementarias: el diagrama de clases de la capa de dominio, que refleja la estructura conceptual de la cuenta de usuario y de las vinculaciones asesor-productor, y el diseño de la base de datos, que muestra cómo esa estructura se materializa en tablas relacionales.
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
@@ -926,6 +946,8 @@ Dentro del contenedor **RESTful API**, el contexto acotado de **Subscription and
 
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
 
+Para Subscription and Billing se presentan dos vistas del nivel de código: el diagrama de clases de la capa de dominio, centrado en la suscripción como raíz de consistencia del cupo de parcelas, y el diseño de la base de datos, que refleja la persistencia de planes, suscripciones y registros de facturación.
+
 ##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
 
 A continuación, el diagrama de clases unificado de la capa de dominio del contexto Subscription and Billing.
@@ -1041,6 +1063,8 @@ Dentro del contenedor **RESTful API**, el contexto acotado de **Farm Management*
 *   Los Device Command Handlers publican `DeviceInstalledInPlotEvent` hacia Soil Monitoring, y Crop Query Service provee el umbral del cultivo (`CropAssignedToPlotEvent`) a Salinity Alerting.
 
 #### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
+
+Para Farm Management se presentan dos vistas del nivel de código: el diagrama de clases de la capa de dominio, que modela la jerarquía finca-parcela junto con el catálogo de cultivos y los dispositivos, y el diseño de la base de datos, que traduce esa jerarquía a un esquema relacional con sus claves foráneas y restricciones de integridad.
 
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
 
@@ -1159,6 +1183,8 @@ El diagrama siguiente corresponde al container **RESTful API** (lado plataforma)
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
+Para Soil Monitoring se presentan dos vistas del nivel de código: el diagrama de clases de la capa de dominio, que modela la lectura de suelo con sus tres variables medidas y su doble valor crudo y compensado, y el diseño de la base de datos, cuyo esquema está optimizado para la escritura intensiva y la consulta por rango temporal que impone una serie de mediciones.
+
 ##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
 
 A continuación, el diagrama de clases unificado de la capa de dominio del contexto Soil Monitoring.
@@ -1264,6 +1290,8 @@ Dentro del contenedor **RESTful API**, el contexto acotado de **Salinity Alertin
 *   **Alert Command Handlers y Alert Query Service:** Gestionan el reconocimiento, la acción correctiva y el histórico de alertas, proveyendo este último a Analytics and Reporting.
 
 #### 4.2.5.6. Bounded Context Software Architecture Code Level Diagrams
+
+Para Salinity Alerting se presentan dos vistas del nivel de código: el diagrama de clases de la capa de dominio, que modela el ciclo completo de la alerta desde su generación hasta su resolución, y el diseño de la base de datos, que persiste tanto la alerta como la evaluación de umbral que la originó y la acción correctiva que la cerró.
 
 ##### 4.2.5.6.1. Bounded Context Domain Layer Class Diagrams
 
@@ -1375,6 +1403,8 @@ Dentro del contenedor **RESTful API**, el contexto acotado de **Analytics and Re
 *   **PDF Report Exporter:** Produce el documento exportable del reporte.
 
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
+
+Para Analytics and Reporting se presentan dos vistas del nivel de código: el diagrama de clases de la capa de dominio, que modela el cálculo de tendencias y la composición de reportes, y el diseño de la base de datos, orientada a la consulta analítica sobre series históricas más que a la escritura transaccional.
 
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
 
