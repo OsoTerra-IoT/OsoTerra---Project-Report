@@ -3,3 +3,11 @@
 
 # Local project statement
 /upc-pre-202620-1asi0572-final_project-statement-abet_v1-IOT.pdf
+
+# Structurizr local server artifacts (generated when rendering diagrams)
+assets/**/.structurizr/
+assets/**/workspace.json
+
+# Diagram-as-code sources (PlantUML / Structurizr DSL) - only the rendered images are part of the report
+assets/plant/*.puml
+assets/plant/*.dsl
