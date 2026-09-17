@@ -904,7 +904,7 @@ A continuación se documenta cada clase de la capa de dominio a manera de diccio
 
 #### 4.2.1.2. Interface Layer
 
-La capa de interfaz expone las API REST del contexto acotado, traduciendo las peticiones JSON HTTP externas en comandos de aplicación fuertemente tipados.
+La capa de interfaz expone las API REST del contexto acotado, traduciendo las peticiones JSON HTTP externas en comandos de aplicación fuertemente tipados, y consume los eventos de suscripción publicados por Subscription and Billing.
 
 | Clase | Categoría | Propósito |
 |---|---|---|
@@ -917,6 +917,7 @@ La capa de interfaz expone las API REST del contexto acotado, traduciendo las pe
 | `AuthenticatedUserResource` | Resource (DTO) | Representa la respuesta de autenticación, incluyendo el token y su expiración, sin importar el método usado. |
 | `UserAccountResource` / `AdvisoryLinkResource` | Resource (DTO) | Representan la cuenta y la vinculación expuestas al cliente, sin datos sensibles. |
 | `UserAccountResourceAssembler` | Assembler | Traduce entre el agregado y su representación de salida. |
+| `SubscriptionStatusEventConsumer` | Event Consumer | Consume `SubscriptionActivatedEvent` y `SubscriptionSuspendedEvent` publicados por Subscription and Billing. |
 
 *   **AuthenticationController:** Expone `sign-up`, `sign-in`, solicitud y confirmación de restablecimiento de contraseña.
 *   **GoogleOAuthController:** Expone `POST /auth/google` para recibir el ID Token que el cliente obtiene directamente del SDK de Google (Web/Mobile), delegando su verificación a la capa de aplicación.
@@ -937,6 +938,9 @@ Esta capa orquesta los casos de uso del contexto, coordinando el dominio con los
 | `RequestAdvisoryLinkCommandHandler` | Command Handler | Crea la solicitud de vinculación. |
 | `AcceptAdvisoryLinkCommandHandler` | Command Handler | Registra la aceptación del productor. |
 | `RevokeAdvisoryLinkCommandHandler` | Command Handler | Registra la revocación y dispara la propagación del evento. |
+| `UserRegisteredEventHandler` | Event Handler | Reacciona a `UserRegisteredEvent` solicitando el envío del correo de bienvenida. |
+| `SubscriptionActivatedEventHandler` | Event Handler | Reacciona a `SubscriptionActivatedEvent` habilitando en el token de acceso los permisos del plan contratado. |
+| `SubscriptionSuspendedEventHandler` | Event Handler | Reacciona a `SubscriptionSuspendedEvent` restringiendo los permisos de la cuenta a las funciones del plan gratuito. |
 | `UserAccountQueryService` | Query Service | Resuelve las consultas de cuentas y de asesores vinculados a un productor. |
 
 #### 4.2.1.4. Infrastructure Layer
@@ -1163,6 +1167,7 @@ La capa de interfaz expone el catálogo de planes, la gestión de la suscripció
 | `SubscribeResource` | Resource (DTO) | Carga de entrada de la selección de plan. |
 | `SubscriptionResource` | Resource (DTO) | Representación de la suscripción expuesta al cliente. |
 | `SubscriptionPlanResource` | Resource (DTO) | Representación de un plan del catálogo. |
+| `UserRegisteredEventConsumer` | Event Consumer | Consume `UserRegisteredEvent` publicado por Identity and Access Management. |
 
 *   **SubscriptionController:** Expone la contratación de plan, cancelación y renovación, y la consulta del estado vigente.
 *   **SubscriptionPlanController:** Expone el catálogo público de planes (nombre, precio, ciclo y cupo de parcelas).
@@ -1181,6 +1186,7 @@ Esta capa orquesta la contratación, confirmación de pago, renovación, cancela
 | `ConsumeQuotaCommandHandler` | Command Handler | Reserva un cupo de parcela a solicitud de Farm Management. |
 | `ReleaseQuotaCommandHandler` | Command Handler | Libera un cupo al darse de baja una parcela. |
 | `SubscriptionExpirationEventHandler` | Event Handler | Reacciona al vencimiento del periodo suspendiendo la suscripción. |
+| `UserRegisteredEventHandler` | Event Handler | Reacciona a `UserRegisteredEvent` aplicando el plan preseleccionado en el Landing Page o dejando la cuenta lista para elegir un plan. |
 | `SubscriptionQueryService` | Query Service | Resuelve las consultas de estado y de catálogo de planes. |
 
 #### 4.2.2.4. Infrastructure Layer
@@ -1441,6 +1447,8 @@ La capa de interfaz expone el registro y consulta de fincas, parcelas, catálogo
 | `DeviceController` | REST Controller | Expone el registro, vinculación y consulta del estado de los dispositivos. |
 | `CreateFarmResource` / `CreatePlotResource` / `AssignCropResource` | Resource (DTO) | Cargas de entrada del registro de finca, parcela y asignación de cultivo. |
 | `FarmResource` / `PlotResource` / `CropResource` / `DeviceResource` | Resource (DTO) | Representaciones expuestas al cliente. |
+| `SubscriptionActivatedEventConsumer` | Event Consumer | Consume `SubscriptionActivatedEvent` publicado por Subscription and Billing. |
+| `DeviceWentOfflineEventConsumer` | Event Consumer | Consume `DeviceWentOfflineEvent` publicado por Soil Monitoring. |
 
 *   **FarmController / PlotController:** Registro y consulta de fincas y parcelas del productor autenticado.
 *   **CropController:** Consulta del catálogo de cultivos con su umbral de tolerancia.
@@ -1459,6 +1467,7 @@ Esta capa orquesta el alta de fincas, parcelas y dispositivos, verificando previ
 | `RegisterDeviceCommandHandler` | Command Handler | Da de alta un dispositivo a partir de su código de activación. |
 | `AttachDeviceToPlotCommandHandler` | Command Handler | Vincula el dispositivo a la parcela y publica `DeviceInstalledInPlotEvent`. |
 | `MarkDeviceOfflineEventHandler` | Event Handler | Reacciona a la ausencia de lecturas marcando el dispositivo como fuera de línea. |
+| `SubscriptionActivatedEventHandler` | Event Handler | Reacciona a `SubscriptionActivatedEvent` actualizando el cupo de parcelas disponible para el productor. |
 | `FarmQueryService` | Query Service | Resuelve las consultas de fincas y parcelas de un usuario. |
 | `CropQueryService` | Query Service | Resuelve las consultas del catálogo y del umbral aplicable a una parcela. |
 
@@ -1718,6 +1727,8 @@ La capa de interfaz expone la ingesta de lotes desde el Edge Service (como Open 
 | `CalibrationResource` | Resource (DTO) | Representación de una calibración registrada. |
 | `IngestionAcknowledgementResource` | Resource (DTO) | Respuesta de la ingesta con el conteo de lecturas aceptadas y descartadas. |
 | `TelemetryConsumer` | Message Consumer | Recibe las lecturas transmitidas por el dispositivo, dentro del Edge Service. |
+| `DeviceInstalledInPlotEventConsumer` | Event Consumer | Consume `DeviceInstalledInPlotEvent` publicado por Farm Management. |
+| `SubscriptionSuspendedEventConsumer` | Event Consumer | Consume `SubscriptionSuspendedEvent` publicado por Subscription and Billing. |
 
 #### 4.2.4.3. Application Layer
 
@@ -1992,6 +2003,8 @@ La capa de interfaz expone el centro de notificaciones, el reconocimiento de ale
 | `SalinityAlertResource` | Resource (DTO) | Representación de la alerta expuesta al cliente, incluyendo el valor observado, el umbral y la recomendación. |
 | `NotificationPreferenceResource` | Resource (DTO) | Representación de las preferencias del usuario. |
 | `SoilReadingStoredEventConsumer` | Event Consumer | Consume el evento publicado por Soil Monitoring y desencadena la evaluación. |
+| `CropAssignedToPlotEventConsumer` | Event Consumer | Consume `CropAssignedToPlotEvent` publicado por Farm Management. |
+| `AdvisoryLinkRevokedEventConsumer` | Event Consumer | Consume `AdvisoryLinkRevokedEvent` publicado por Identity and Access Management. |
 
 #### 4.2.5.3. Application Layer
 
@@ -2005,6 +2018,8 @@ Esta capa orquesta la evaluación de cada lectura contra el umbral del cultivo, 
 | `UpdateNotificationPreferenceCommandHandler` | Command Handler | Actualiza la configuración de notificaciones del usuario. |
 | `AlertGeneratedEventHandler` | Event Handler | Reacciona a la generación de una alerta determinando los destinatarios y despachando la notificación. |
 | `SoilReadingStoredEventHandler` | Event Handler | Reacciona al evento de Soil Monitoring invocando la evaluación del umbral. |
+| `CropAssignedToPlotEventHandler` | Event Handler | Reacciona a `CropAssignedToPlotEvent` registrando el umbral vigente de la parcela para las siguientes evaluaciones. |
+| `AdvisoryLinkRevokedEventHandler` | Event Handler | Reacciona a `AdvisoryLinkRevokedEvent` retirando al asesor de los destinatarios de las alertas de esas parcelas. |
 | `SalinityAlertQueryService` | Query Service | Resuelve las consultas del centro de notificaciones y del histórico de alertas por parcela. |
 
 #### 4.2.5.4. Infrastructure Layer
@@ -2256,6 +2271,9 @@ La capa de interfaz expone los tableros del productor y del asesor, la tendencia
 | `SalinityTrendResource` | Resource (DTO) | Representación de la tendencia con su pendiente y dirección. |
 | `PlotReportResource` | Resource (DTO) | Representación del reporte generado. |
 | `PlotComparisonResource` | Resource (DTO) | Representación de la comparación entre parcelas. |
+| `SoilReadingStoredEventConsumer` | Event Consumer | Consume `SoilReadingStoredEvent` publicado por Soil Monitoring. |
+| `AlertGeneratedEventConsumer` | Event Consumer | Consume `AlertGeneratedEvent` publicado por Salinity Alerting. |
+| `CorrectiveActionRegisteredEventConsumer` | Event Consumer | Consume `CorrectiveActionRegisteredEvent` publicado por Salinity Alerting. |
 
 #### 4.2.6.3. Application Layer
 
@@ -2267,6 +2285,8 @@ Esta capa orquesta el cálculo de tendencias, la composición de reportes reunie
 | `GeneratePlotReportCommandHandler` | Command Handler | Orquesta la composición del reporte reuniendo series, tendencia, alertas, acciones y datos meteorológicos. |
 | `ExportPlotReportCommandHandler` | Command Handler | Delega la exportación del reporte al formato solicitado. |
 | `SoilReadingStoredEventHandler` | Event Handler | Reacciona a la persistencia de una lectura actualizando el cálculo de tendencia de la parcela. |
+| `AlertGeneratedEventHandler` | Event Handler | Reacciona a `AlertGeneratedEvent` actualizando la categoría de salinidad de la parcela en los tableros. |
+| `CorrectiveActionRegisteredEventHandler` | Event Handler | Reacciona a `CorrectiveActionRegisteredEvent` registrando la acción para la métrica de tiempo de respuesta y la sección de acciones del reporte. |
 | `MultiPlotDashboardQueryService` | Query Service | Resuelve el tablero multiparcela del asesor, agregando información de tres contextos. |
 | `FarmerDashboardQueryService` | Query Service | Resuelve el tablero resumen del productor. |
 | `PlotComparisonQueryService` | Query Service | Resuelve la comparación de series entre parcelas. |

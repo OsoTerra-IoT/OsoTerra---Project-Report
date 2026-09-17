@@ -39,5 +39,6 @@
 
 | 0.0.35 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación del Component Level Diagram del container Edge Service para el bounded context Soil Monitoring en el Capítulo IV, con la descripción de sus componentes. |
 | 0.0.36 | 17/09/2026 | Andreow Jomark Santiago Peña | Documentación de la capa de dominio de los seis bounded contexts del Capítulo IV a manera de diccionario, con atributos, métodos, visibilidad y relaciones entre clases. |
+| 0.0.37 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación de Event Consumers en Interface Layer y Event Handlers en Application Layer para los bounded contexts del Capítulo IV, alineados con los eventos del Context Mapping. |
 
 # Project Report Collaboration Insights
