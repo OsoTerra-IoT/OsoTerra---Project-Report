@@ -70,6 +70,7 @@
 | 0.0.66 | 18/09/2026 | Andreow Jomark Santiago Peña | Conclusiones: cifras alineadas con el análisis de entrevistas, referencia correcta a las Feature Assumptions y corrección del género de los asesores entrevistados. |
 | 0.0.67 | 18/09/2026 | Andreow Jomark Santiago Peña | Student Outcome: párrafo introductorio idéntico al del enunciado. |
 | 0.0.68 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: nombre del producto unificado como OsoSense. |
+| 0.0.69 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: citas de fuente para las cifras de 5W+2H y de segmentos objetivo; corrección de cifras no verificables (unidades de hasta 5 ha, pobreza rural, acceso a internet rural, precios de sondas y laboratorios); Lean UX Canvas actualizado con las cifras corregidas. |
 
 # Project Report Collaboration Insights
 
