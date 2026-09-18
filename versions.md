@@ -71,6 +71,7 @@
 | 0.0.67 | 18/09/2026 | Andreow Jomark Santiago Peña | Student Outcome: párrafo introductorio idéntico al del enunciado. |
 | 0.0.68 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: nombre del producto unificado como OsoSense. |
 | 0.0.69 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: citas de fuente para las cifras de 5W+2H y de segmentos objetivo; corrección de cifras no verificables (unidades de hasta 5 ha, pobreza rural, acceso a internet rural, precios de sondas y laboratorios); Lean UX Canvas actualizado con las cifras corregidas. |
+| 0.0.70 | 18/09/2026 | Andreow Jomark Santiago Peña | Bibliografía: referencias en formato APA 7 ordenadas alfabéticamente, con URL o DOI, para todas las fuentes citadas en los Capítulos I y II. |
 
 # Project Report Collaboration Insights
 
