@@ -67,6 +67,7 @@
 | 0.0.63 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: incorporación del enunciado del problema, puntos clave, objetivos y restricciones en Antecedentes y problemática; códigos HS-01 a HS-12 en los Hypothesis Statements; Lean UX Canvas con los siete Business Outcomes; imágenes de integrantes alojadas en el repositorio. |
 | 0.0.64 | 18/09/2026 | Andreow Jomark Santiago Peña | Carátula: logo de la universidad alojado en el repositorio en lugar de un enlace a un repositorio externo. |
 | 0.0.65 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: preguntas complementarias en la guía de entrevistas; distrito de la entrevista 2 del segmento 2; género y ubicación en el análisis de entrevistas y contraste con el perfil del Capítulo I; relación de los User Personas con el análisis de competidores; etapas nombradas en los User Journey Maps alojados en el repositorio; proceso de elaboración de los Empathy Maps; corrección de fichas de User Persona y del glosario; nombre del producto unificado como OsoSense. |
+| 0.0.66 | 18/09/2026 | Andreow Jomark Santiago Peña | Conclusiones: cifras alineadas con el análisis de entrevistas, referencia correcta a las Feature Assumptions y corrección del género de los asesores entrevistados. |
 
 # Project Report Collaboration Insights
 
