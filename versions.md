@@ -65,6 +65,7 @@
 | 0.0.61 | 17/09/2026 | Iker Gabriel Barturen Panez | Completar la Tabla de Contenidos, la sección Student Outcome, Project Report Collaboration Insights, y el avance de Conclusiones, Bibliografía y Anexos requeridos para la entrega AV1. |
 | 0.0.62 | 18/09/2026 | Andreow Jomark Santiago Peña | Corrección de términos y referencias del Capítulo IV: carácter extraño en la introducción del C4 Model, término "librería", rutas a código fuente inexistentes y nota obsoleta sobre el ERD de IAM. |
 | 0.0.63 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: incorporación del enunciado del problema, puntos clave, objetivos y restricciones en Antecedentes y problemática; códigos HS-01 a HS-12 en los Hypothesis Statements; Lean UX Canvas con los siete Business Outcomes; imágenes de integrantes alojadas en el repositorio. |
+| 0.0.64 | 18/09/2026 | Andreow Jomark Santiago Peña | Carátula: logo de la universidad alojado en el repositorio en lugar de un enlace a un repositorio externo. |
 
 # Project Report Collaboration Insights
 
