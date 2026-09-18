@@ -74,6 +74,7 @@
 | 0.0.70 | 18/09/2026 | Andreow Jomark Santiago Peña | Bibliografía: referencias en formato APA 7 ordenadas alfabéticamente, con URL o DOI, para todas las fuentes citadas en los Capítulos I y II. |
 | 0.0.71 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: precios referenciales de OsoSense en validación en el Competitive Analysis Landscape; precios de competidores con fuente; distritos de residencia de los asesores entrevistados y su análisis; cifras alineadas con el Capítulo I. |
 | 0.0.72 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: descripciones de los integrantes con los conocimientos técnicos y habilidades que cada uno aporta al equipo. |
+| 0.0.73 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: títulos descriptivos en los User Journey Maps y Empathy Maps exportados de UXPressia. |
 
 # Project Report Collaboration Insights
 
