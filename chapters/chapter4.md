@@ -532,7 +532,7 @@ Además, cada integración con terceros se protege con un Anti-corruption Layer 
 
 ### 4.1.3. Software Architecture
 
-La arquitectura de software de OsoTerra IoT se documenta siguiendo el modelo C4 de Simon Brown, que描 describe un sistema mediante niveles sucesivos de detalle, de modo que cada audiencia encuentre la vista con el grado de abstracción que necesita sin verse obligada a interpretar diagramas irrelevantes para su rol.
+La arquitectura de software de OsoTerra IoT se documenta siguiendo el modelo C4 de Simon Brown, que describe un sistema mediante niveles sucesivos de detalle, de modo que cada audiencia encuentre la vista con el grado de abstracción que necesita sin verse obligada a interpretar diagramas irrelevantes para su rol.
 
 Se presentan cuatro vistas. El **System Landscape Diagram** (4.1.3.1) ubica a OsoTerra IoT dentro del ecosistema de sistemas y actores con los que convive, incluidos los servicios externos de pago, notificación y datos meteorológicos. El **Context Level Diagram** (4.1.3.2) acota el alcance a la solución misma y a sus interacciones directas con usuarios y sistemas externos, sin revelar su estructura interna. El **Container Level Diagram** (4.1.3.3) descompone la solución en sus unidades desplegables —dispositivo de campo, Edge Service, RESTful API, aplicaciones web y móvil, Landing Page y base de datos— y muestra las tecnologías y protocolos que las comunican. El **Deployment Diagram** (4.1.3.4) proyecta esos contenedores sobre la infraestructura física y de nube donde se ejecutan.
 
@@ -952,14 +952,14 @@ La capa de infraestructura implementa las interfaces de dominio (puertos) y prov
 | `JpaUserAccountRepository` | Repository Implementation | Implementa `UserAccountRepository` sobre Spring Data JPA. |
 | `JpaAdvisoryLinkRepository` | Repository Implementation | Implementa `AdvisoryLinkRepository` sobre Spring Data JPA. |
 | `BCryptPasswordHashingService` | Domain Service Implementation | Implementa `PasswordHashingService` mediante el algoritmo BCrypt. |
-| `GoogleIdTokenVerifierAdapter` | Anti-corruption Layer | Implementa `GoogleTokenVerifier` mediante la librería cliente de Google, validando la firma, el emisor y la audiencia (Client ID) del ID Token. |
+| `GoogleIdTokenVerifierAdapter` | Anti-corruption Layer | Implementa `GoogleTokenVerifier` mediante la biblioteca cliente de Google, validando la firma, el emisor y la audiencia (Client ID) del ID Token. |
 | `JwtTokenService` | Infrastructure Service | Emite y valida los tokens de acceso (JWT). |
 | `SmtpEmailNotificationService` | Anti-corruption Layer | Traduce las solicitudes de envío de correo al modelo del proveedor SMTP. |
 | `SecurityConfiguration` | Configuration | Configura los filtros de autenticación y la política de autorización por rol. |
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-Dentro del contenedor **RESTful API**, el contexto acotado de **Identity and Access Management** se organiza siguiendo el patrón de arquitectura hexagonal (Interfaces, Application, Domain e Infrastructure). El diagrama fue modelado en Structurizr DSL (ver código fuente en `assets/plant/component-iam.dsl`) y renderizado como imagen para su inclusión en el informe.
+Dentro del contenedor **RESTful API**, el contexto acotado de **Identity and Access Management** se organiza siguiendo el patrón de arquitectura hexagonal (Interfaces, Application, Domain e Infrastructure). El diagrama fue modelado en Structurizr DSL y renderizado como imagen para su inclusión en el informe.
 
 <div align="center">
 <img src="../assets/container-diagram/IAM-Components.png" alt="Component Diagram Identity and Access Management" width="850">
@@ -980,7 +980,7 @@ El cuarto nivel del modelo C4 desciende al detalle del código. Para Identity an
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-A continuación, el diagrama de clases unificado de la capa de dominio del contexto IAM, modelado en PlantUML (ver código fuente en `assets/plant/class-iam.puml`) y renderizado como imagen para su inclusión en el informe.
+A continuación, el diagrama de clases unificado de la capa de dominio del contexto IAM, modelado en PlantUML y renderizado como imagen para su inclusión en el informe.
 
 <div align="center">
 <img src="../assets/class-diagram/IAM.png" alt="Class Diagram Identity and Access Management" width="850">
@@ -999,8 +999,6 @@ Las tablas principales asociadas a este contexto son `USER_ACCOUNTS`, `ADVISORY_
 **Soporte de inicio de sesión federado:** `USER_ACCOUNTS` incorpora las columnas `password_hash`/`hash_algorithm` como **nullables** (una cuenta creada exclusivamente vía Google no posee credencial local) y una columna `google_account_id VARCHAR(255) NULL UNIQUE` que almacena el identificador (`sub`) de la cuenta de Google vinculada, cuando aplica.
 
 **Restricciones adicionales:** índice único compuesto sobre `(advisor_id, farmer_id)` en `ADVISORY_LINKS`, limitado a los registros con estado distinto de `REVOKED`, a fin de impedir vinculaciones activas duplicadas entre el mismo asesor y productor. `CHECK (password_hash IS NOT NULL OR google_account_id IS NOT NULL)` garantiza que toda cuenta tenga al menos un método de autenticación.
-
-> **Nota:** el ERD (`assets/architecture-db/IAM.png`) fue generado antes de esta incorporación y debe actualizarse manualmente en la herramienta ERD para reflejar las columnas `google_account_id` y la nulabilidad de `password_hash`/`hash_algorithm`.
 
 ---
 

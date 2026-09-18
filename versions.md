@@ -63,6 +63,7 @@
 | 0.0.59 | 17/09/2026 | Andreow Jomark Santiago Peña | Documentación de la capa de dominio de los seis bounded contexts del Capítulo IV a manera de diccionario, con atributos, métodos, visibilidad y relaciones entre clases. |
 | 0.0.60 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación de Event Consumers en Interface Layer y Event Handlers en Application Layer para los bounded contexts del Capítulo IV, alineados con los eventos del Context Mapping. |
 | 0.0.61 | 17/09/2026 | Iker Gabriel Barturen Panez | Completar la Tabla de Contenidos, la sección Student Outcome, Project Report Collaboration Insights, y el avance de Conclusiones, Bibliografía y Anexos requeridos para la entrega AV1. |
+| 0.0.62 | 18/09/2026 | Andreow Jomark Santiago Peña | Corrección de términos y referencias del Capítulo IV: carácter extraño en la introducción del C4 Model, término "librería", rutas a código fuente inexistentes y nota obsoleta sobre el ERD de IAM. |
 
 # Project Report Collaboration Insights
 
