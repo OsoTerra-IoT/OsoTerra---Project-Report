@@ -73,6 +73,7 @@
 | 0.0.69 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: citas de fuente para las cifras de 5W+2H y de segmentos objetivo; corrección de cifras no verificables (unidades de hasta 5 ha, pobreza rural, acceso a internet rural, precios de sondas y laboratorios); Lean UX Canvas actualizado con las cifras corregidas. |
 | 0.0.70 | 18/09/2026 | Andreow Jomark Santiago Peña | Bibliografía: referencias en formato APA 7 ordenadas alfabéticamente, con URL o DOI, para todas las fuentes citadas en los Capítulos I y II. |
 | 0.0.71 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: precios referenciales de OsoSense en validación en el Competitive Analysis Landscape; precios de competidores con fuente; distritos de residencia de los asesores entrevistados y su análisis; cifras alineadas con el Capítulo I. |
+| 0.0.72 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: descripciones de los integrantes con los conocimientos técnicos y habilidades que cada uno aporta al equipo. |
 
 # Project Report Collaboration Insights
 
