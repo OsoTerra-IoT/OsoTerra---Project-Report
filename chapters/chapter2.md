@@ -82,10 +82,10 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
     </tr>
     <tr>
       <td><strong>Precios &amp; Costos</strong></td>
-      <td>Modelo objetivo: dispositivo a precio de acceso significativamente inferior al rango comercial internacional, más suscripción mensual por parcela, con un plan gratuito limitado a una parcela. <em>(Estructura de precios en definición.)</em></td>
-      <td>Sensores entre <strong>USD 600 y USD 899</strong> por unidad, más <strong>USD 275 anuales por sensor</strong> de suscripción. El modelo Vertex V4 alcanza aproximadamente <strong>USD 2 398</strong>. El modelo Apex requiere telemetría adquirida por separado.</td>
+      <td><em>Precios referenciales en proceso de validación con los segmentos:</em><br>• <strong>Kit OsoSense</strong> (dispositivo con sensores de CE, humedad y temperatura, panel solar e instalación): <strong>S/ 390</strong> en un pago, estimado a partir de un costo de componentes de S/ 200 a S/ 250 por equipo.<br>• <strong>Plan Gratuito:</strong> S/ 0, una parcela, alertas básicas e historial de 30 días.<br>• <strong>Plan Productor:</strong> <strong>S/ 15 por parcela al mes</strong>, con alertas por cultivo, historial completo y recomendaciones.<br>• <strong>Plan Asesor:</strong> <strong>S/ 89 al mes</strong> hasta 15 parcelas, con tablero multiparcela y reportes exportables.<br>Supuesto de referencia: el primer año del Plan Productor para una parcela (S/ 390 + S/ 180) equivale a unos dos análisis de laboratorio de S/ 250, pero entrega lecturas continuas durante toda la campaña.</td>
+      <td>Sensores entre <strong>USD 600 y USD 899</strong> por unidad, más <strong>USD 275 anuales por sensor</strong> de suscripción. El modelo Apex requiere telemetría adquirida por separado (The Spoon, 2018).</td>
       <td>Precio bajo cotización. No publica tarifario. Proyecto llave en mano dimensionado por hectárea y por complejidad del sistema de riego.</td>
-      <td>Paquete inicial de 10 sondas por <strong>USD 5 000</strong>; <strong>USD 500</strong> por sonda adicional. Modelo de suscripción que incluye el reemplazo de piezas.</td>
+      <td>Servicio de <strong>USD 500 por sonda al año</strong>, que incluye el hardware, el software y la analítica de red (The Western Producer, 2020). Modelo de suscripción que incluye el reemplazo de piezas.</td>
     </tr>
     <tr>
       <td><strong>Canales de distribución</strong><br>(Web y/o Móvil)</td>
@@ -159,7 +159,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       </td>
       <td>
         <ul>
-          <li>Barrera de entrada muy alta: paquete inicial de USD 5 000 por diez sondas.</li>
+          <li>Costo recurrente de USD 500 por sonda al año, que se multiplica por el número de sondas del campo.</li>
           <li>Requiere infraestructura de red LoRa con gateway propio.</li>
           <li>Orientación al mercado estadounidense, sin presencia ni soporte en el Perú.</li>
         </ul>
@@ -170,7 +170,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       <td>
         <ul>
           <li>Brecha de diagnóstico masiva: solo el 2,5 % de los pequeños y medianos productores realiza análisis de suelo.</li>
-          <li>Crecimiento acelerado de la conectividad móvil rural: del 41,5 % en 2019 al 85,8 % en 2025.</li>
+          <li>Crecimiento acelerado del acceso a internet en hogares rurales: del 41,5 % en 2019 al 85,8 % en 2025.</li>
           <li>Ausencia de un inventario nacional reciente de salinidad, que otorga valor a los datos agregados de la plataforma.</li>
           <li>Existencia de programas estatales que cofinancian asistencia técnica y activos productivos (AGROIDEAS, AGRO RURAL).</li>
           <li>Cobertura insuficiente de los servicios públicos de extensión agraria, reconocida por el propio INIA.</li>
@@ -248,7 +248,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
 Frente a competidores que miden más variables y con mayor precisión, OsoSense no intenta igualarlos: resuelve un problema que ellos tratan como función secundaria. *Tácticas:* posicionar toda la comunicación en torno a la salinización y no al monitoreo genérico de suelo; construir el motor de umbrales por cultivo como diferenciador funcional visible; producir contenido educativo sobre reconocimiento temprano de sales dirigido al productor.
 
 **Estrategia 2 — Convertir la restricción de precio en la barrera de entrada del competidor.**
-El rango de USD 500 a 2 398 por sonda que manejan CropX y Teralytic no puede reducirse sin canibalizar su propio mercado. *Tácticas:* diseñar el dispositivo sobre componentes de bajo costo y disponibilidad local; ofrecer un plan gratuito limitado a una parcela que elimine la barrera de desembolso inicial; estructurar la suscripción por parcela y no por finca, de modo que el costo escale con el beneficio percibido.
+El rango de USD 500 a 899 por sonda, más suscripción, que manejan CropX y Teralytic no puede reducirse sin canibalizar su propio mercado. *Tácticas:* diseñar el dispositivo sobre componentes de bajo costo y disponibilidad local; ofrecer un plan gratuito limitado a una parcela que elimine la barrera de desembolso inicial; estructurar la suscripción por parcela y no por finca, de modo que el costo escale con el beneficio percibido.
 
 **Estrategia 3 — Usar al asesor técnico como canal y como aval.**
 La desconfianza hacia un dispositivo económico es la principal amenaza de adopción, y el asesor técnico es quien puede disolverla. *Tácticas:* diseñar funcionalidades específicas para el asesor —tablero multiparcela, reportes exportables— que le den razones propias para adoptar la plataforma; establecer un esquema de referidos por productor incorporado; entregar al asesor el dato crudo además de la interpretación, porque su credibilidad profesional depende de poder auditarlo.
@@ -362,8 +362,8 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
     </tr>
     <tr>
       <td rowspan="3"><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
-      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Zona de trabajo:</strong> Zonas agrícolas de la costa<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int1-Seg2.png" alt="Screenshot entrevista Yeira Momán" width="180"></td>
-      <td><strong>Datos generales:</strong> Yeira es ingeniera agrónoma y cuenta con varios años de experiencia en el sector agrícola, brindando asesorías a productores. Trabaja principalmente en zonas agrícolas de la costa y visita diferentes parcelas según las necesidades de los agricultores que asesora.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor se centra en evaluar el estado del suelo, identificar problemas que afectan el desarrollo del cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes mencionó la salinidad, la falta de nutrientes y las dificultades relacionadas con el riego y el drenaje.<br><br><strong>Herramientas y tecnología:</strong> Para sustentar sus recomendaciones utiliza análisis de laboratorio y medidores portátiles de conductividad eléctrica, porque permiten obtener una lectura rápida directamente en campo. También realiza seguimiento comparando resultados de análisis y observando la evolución del cultivo para decidir si el manejo aplicado está funcionando o debe modificarse.<br><br><strong>Necesidades y frustraciones:</strong> Su principal dificultad es el tiempo que demanda revisar varias parcelas y desplazarse entre productores ubicados en diferentes lugares. Esto complica realizar visitas frecuentes, mantener actualizada la información de cada parcela y detectar oportunamente cambios en las condiciones del suelo.<br><br><strong>Expectativas:</strong> Considera que recibir alertas sobre salinidad sería útil porque permitiría anticipar el problema. Para que una alerta aporte valor, debería mostrar el nivel de conductividad eléctrica, la ubicación de la parcela, la fecha de medición, la evolución del valor en el tiempo y un historial de mediciones.</td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Distrito:</strong> Pueblo Libre, Lima<br><strong>Zona de trabajo:</strong> Zonas agrícolas de la costa<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int1-Seg2.png" alt="Screenshot entrevista Yeira Momán" width="180"></td>
+      <td><strong>Datos generales:</strong> Yeira tiene 30 años y vive en el distrito de Pueblo Libre, en Lima. Es ingeniera agrónoma y cuenta con varios años de experiencia en el sector agrícola, brindando asesorías a productores. Trabaja principalmente en zonas agrícolas de la costa y visita diferentes parcelas según las necesidades de los agricultores que asesora.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor se centra en evaluar el estado del suelo, identificar problemas que afectan el desarrollo del cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes mencionó la salinidad, la falta de nutrientes y las dificultades relacionadas con el riego y el drenaje.<br><br><strong>Herramientas y tecnología:</strong> Para sustentar sus recomendaciones utiliza análisis de laboratorio y medidores portátiles de conductividad eléctrica, porque permiten obtener una lectura rápida directamente en campo. También realiza seguimiento comparando resultados de análisis y observando la evolución del cultivo para decidir si el manejo aplicado está funcionando o debe modificarse.<br><br><strong>Necesidades y frustraciones:</strong> Su principal dificultad es el tiempo que demanda revisar varias parcelas y desplazarse entre productores ubicados en diferentes lugares. Esto complica realizar visitas frecuentes, mantener actualizada la información de cada parcela y detectar oportunamente cambios en las condiciones del suelo.<br><br><strong>Expectativas:</strong> Considera que recibir alertas sobre salinidad sería útil porque permitiría anticipar el problema. Para que una alerta aporte valor, debería mostrar el nivel de conductividad eléctrica, la ubicación de la parcela, la fecha de medición, la evolución del valor en el tiempo y un historial de mediciones.</td>
       <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
     </tr>
     <tr>
@@ -394,12 +394,13 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
   <strong>Entrevista 3</strong><br><br>
   <strong>Entrevistado:</strong> Germán Villalobos Lauro<br>
   <strong>Edad:</strong> 30 años<br>
+  <strong>Distrito:</strong> Santiago de Surco, Lima<br>
   <strong>Zona de trabajo:</strong> Valles de la costa (Lambayeque, La Libertad y Chincha)<br><br>
   <strong>Screenshot:</strong>
   <img src="../assets/entrevistas/Interview-3_Seg2.PNG" alt="Screenshot entrevista German" width="180">
 </td>
 <td>
-  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
+  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, quien vive en el distrito de Santiago de Surco, en Lima. Es ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
   <strong>Trabajo y responsabilidades:</strong> Trabaja principalmente en la costa, sobre todo en los valles de Lambayeque y La Libertad, además de algunos clientes en la zona de Chincha, donde la agricultura depende bastante del riego. Su labor consiste en evaluar el estado del suelo, identificar problemas que afectan el cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes menciona la salinidad y el drenaje: parcelas con costra blanca sobre el suelo (señal de acumulación de sales), terrenos que permanecen encharcados demasiado tiempo tras el riego, cultivos que pierden rendimiento sin causa evidente y compactación del suelo por el uso constante de maquinaria en la misma zona.<br><br>
   <strong>Herramientas y tecnología:</strong> Se apoya principalmente en análisis de laboratorio, solicitando conductividad eléctrica, pH y textura, además de otros parámetros según el terreno. Para confirmar problemas de salinidad utiliza la conductividad eléctrica del suelo, comparándola con la tolerancia del cultivo, ya que algunas especies toleran niveles de salinidad mayores que otras. Como recomendaciones de manejo aplica riegos de lavado calculados cuando hay acumulación de sales, sistemas de drenaje para evacuar las sales de la zona radicular, incorporación de materia orgánica (compost, guano u otros abonos), yeso agrícola para problemas de sodio, ácidos húmicos y la elección de cultivos adecuados a las condiciones del terreno. Insiste en no aplicar productos "a ciegas" solo porque a otro productor le funcionaron, sin conocer primero el estado del suelo.<br><br>
   <strong>Necesidades y frustraciones:</strong> Su mayor dificultad es atender a varios productores ubicados en zonas distintas: la distancia le impide visitar las parcelas con la frecuencia que quisiera, por lo que debe priorizar según qué productor reporta un problema o qué cultivo parece más comprometido. Muchas veces, cuando llega al terreno, el daño ya está bastante avanzado. A esto se suma el costo del análisis de laboratorio (una muestra puede ir desde unos 80 dólares hasta miles, según la complejidad y el laboratorio) y los tiempos de espera, que en ocasiones han tomado semanas por temas del propio laboratorio.<br><br>
@@ -518,6 +519,7 @@ El 100% de los asesores considera útil recibir alertas o monitorear la salinida
 | Objetiva | Género femenino | 67% | YM, ES |
 | Objetiva | Asesora a varios productores en valles de la costa o del norte | 100% | YM, ES, GV |
 | Objetiva | Trabaja en valles de la costa norte (Lambayeque, La Libertad) | 67% | ES, GV |
+| Objetiva | Reside en Lima (Pueblo Libre, Jesús María, Santiago de Surco) y se desplaza a las parcelas | 100% | YM, ES, GV |
 | Objetiva | Ingeniero(a) agrónomo(a) | 67% | YM, GV |
 | Objetiva | Edad de alrededor de 30 años (promedio del segmento: 41) | 67% | YM, GV |
 | Objetiva | Usa análisis de laboratorio e inspección visual en campo | 100% | YM, ES, GV |
@@ -932,7 +934,7 @@ El siguiente glosario recoge los términos y conceptos del dominio del negocio e
 | **Growing Season** | Campaña agrícola | Ciclo productivo que abarca desde la siembra hasta la cosecha de un cultivo. En el Perú se contabiliza oficialmente de agosto a julio. |
 | **Yield** | Rendimiento | Producción obtenida por unidad de superficie, habitualmente expresada en toneladas por hectárea. |
 | **Agricultural Producer** | Productor agropecuario | Persona que conduce una unidad agropecuaria y toma las decisiones sobre su manejo. Es el usuario principal de la solución. |
-| **Smallholder** | Pequeño productor | Productor agropecuario que conduce una unidad menor a cinco hectáreas. Representa el 81,9 % de los productores del Perú. |
+| **Smallholder** | Pequeño productor | Productor agropecuario que conduce una unidad menor a cinco hectáreas. Representa el 81,8 % de los productores del Perú. |
 | **Agronomist Advisor** | Asesor agronómico | Ingeniero agrónomo que presta servicios de asesoría técnica a uno o varios productores. Es el segundo segmento objetivo de la solución. |
 | **Technical Assistance** | Asistencia técnica | Servicio de acompañamiento profesional al productor en las decisiones de manejo del cultivo. |
 | **Soil Analysis** | Análisis de suelo | Determinación en laboratorio de las propiedades físicas y químicas de una muestra de suelo. Constituye la alternativa vigente y el referente de precisión frente al cual se valida la solución. |
