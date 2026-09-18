@@ -27,12 +27,12 @@ El nombre **Oso Terra** combina la idea de vigilancia y resistencia asociada al 
 | Foto del estudiante | Nombres y apellidos | Código de estudiante | Descripción |
 |---|---|---|---|
 | <img src="../assets/members/Iker_Barturen.png" alt="Barturen Panez, Iker Gabriel" width="120"> | Barturen Panez, Iker Gabriel | u202312629 | Estudiante de Ingeniería de Software. Participa en la documentación del proyecto, revisión de perfiles y organización de recursos para el informe. |
-| <img src="https://i.imgur.com/dCNE1N0.jpeg" alt="Encalada Salazar, Alexis" width="120"> | Encalada Salazar, Alexis | u20211g481 | Estudiante de Ingeniería de Software. Apoya en el desarrollo conceptual del producto, revisión de secciones del informe y análisis de necesidades de usuarios. |
-| <img src="https://i.imgur.com/GByNzjm.png" alt="Goñe Araccata, Esther Abigail" width="120"> | Goñe Araccata, Esther Abigail | u202318049 | Estudiante de Ingeniería de Software. Participa en la elaboración del informe, análisis del problema y organización de los artefactos del proyecto OsoSense. |
-| <img src="../assets/members/Osito.jpeg" alt="Ortiz Alarcon, Victor Nicolas" width="120"> | Ortiz Alarcon, Victor Nicolas | u202312899 | Estudiante de Ingeniería de Software. Participa en la estructuración del repositorio, redacción del Capítulo I y organización de la documentación del proyecto. |
-| <img src="../assets/members/Alvaro_Salazar.jpg" alt="Salazar Caballero, Alvaro Fabrizzio" width="120"> | Salazar Caballero, Alvaro Fabrizzio | u202321941 | Estudiante de Ingeniería de Software. Contribuye en la investigación del contexto agrícola, definición de requerimientos y documentación de la solución IoT. |
-| <img src="https://i.imgur.com/g7mWVo0.jpeg" alt="Santiago Peña, Andreow Jomark" width="120"> | Santiago Peña, Andreow Jomark | u202317362 | Estudiante de Ingeniería de Software. Contribuye en el análisis de la solución, documentación técnica y revisión colaborativa de los contenidos del informe. |
-| <img src="https://i.imgur.com/pbg4HYE.png" alt="Tumi Oliden, Manuel Ignacio" width="120"> | Tumi Oliden, Manuel Ignacio | u20241c134 | Estudiante de Ingeniería de Software. Apoya en la investigación del producto, definición de criterios de diseño y consolidación de información del equipo. |
+| <img src="../assets/members/Alexis_Encalada.jpeg" alt="Encalada Salazar, Alexis" width="120"> | Encalada Salazar, Alexis | u20211g481 | Estudiante de Ingeniería de Software. Apoya en el desarrollo conceptual del producto, revisión de secciones del informe y análisis de necesidades de usuarios. |
+| <img src="../assets/members/Esther_Gone.png" alt="Goñe Araccata, Esther Abigail" width="120"> | Goñe Araccata, Esther Abigail | u202318049 | Estudiante de Ingeniería de Software. Participa en la elaboración del informe, análisis del problema y organización de los artefactos del proyecto OsoSense. |
+| <img src="../assets/members/Victor_Ortiz.jpeg" alt="Ortiz Alarcon, Victor Nicolas" width="120"> | Ortiz Alarcon, Victor Nicolas | u202312899 | Estudiante de Ingeniería de Software. Participa en la estructuración del repositorio, redacción del Capítulo I y organización de la documentación del proyecto. |
+| <img src="../assets/members/Alvaro_Salazar.jpg" alt="Salazar Caballero, Alvaro Fabrizzio" width="120"> | Salazar Caballero, Alvaro Fabrizzio | u202321941 | Estudiante de Ingeniería de Software. Contribuye en la investigación del contexto agrícola, definición de requisitos y documentación de la solución IoT. |
+| <img src="../assets/members/Andreow_Santiago.jpeg" alt="Santiago Peña, Andreow Jomark" width="120"> | Santiago Peña, Andreow Jomark | u202317362 | Estudiante de Ingeniería de Software. Contribuye en el análisis de la solución, documentación técnica y revisión colaborativa de los contenidos del informe. |
+| <img src="../assets/members/Manuel_Tumi.png" alt="Tumi Oliden, Manuel Ignacio" width="120"> | Tumi Oliden, Manuel Ignacio | u20241c134 | Estudiante de Ingeniería de Software. Apoya en la investigación del producto, definición de criterios de diseño y consolidación de información del equipo. |
 
 ## 1.2. Solution Profile
 
@@ -112,6 +112,43 @@ El resultado combinado es que la detección llega tarde, de forma puntual, y sol
 
 *En capacidad de recepción.* Frente a todo lo anterior, **el 85,8 % de la población rural accede a internet mediante telefonía móvil**, lo que demuestra que el canal para entregar la información ya existe y está instalado; lo que falta es el instrumento asequible que la genere.
 
+#### Enunciado del problema
+
+Los pequeños y medianos productores de la costa peruana, y los asesores técnicos que los acompañan, no cuentan con un medio asequible y continuo para conocer la salinidad de sus parcelas. La salinización avanza durante toda la campaña, pero se detecta tarde, con análisis de laboratorio esporádicos, costosos y lentos, o con medidores portátiles que exigen presencia física y no dejan historial. Como resultado, las decisiones de riego y manejo se toman sin evidencia y la pérdida de rendimiento se descubre cuando ya es irreversible.
+
+#### Puntos clave que debe resolver la solución
+
+1. **Monitoreo continuo:** capturar de forma periódica la conductividad eléctrica, la humedad y la temperatura del suelo de cada parcela, sin que alguien deba estar presente en el campo.
+2. **Interpretación según el cultivo:** comparar cada lectura, compensada por temperatura, con el umbral de tolerancia del cultivo registrado en la parcela.
+3. **Alerta temprana y accionable:** avisar al productor y a su asesor en un lenguaje simple, con un nivel de severidad y una acción recomendada.
+4. **Historial y tendencia:** conservar las lecturas para mostrar la evolución de la salinidad y respaldar las recomendaciones del asesor.
+5. **Supervisión de varias parcelas:** permitir que el asesor priorice sus visitas comparando el estado de las parcelas de sus clientes.
+6. **Operación con conectividad intermitente:** no perder lecturas cuando el campo se queda sin señal.
+7. **Confianza en la medición:** contrastar las lecturas del dispositivo con análisis de laboratorio.
+
+#### Objetivos
+
+**Objetivo general.** Desarrollar OsoSense, una solución IoT de bajo costo que monitoree de forma continua la salinidad del suelo agrícola y la traduzca en alertas y recomendaciones comprensibles para pequeños y medianos productores y para sus asesores técnicos.
+
+**Objetivos específicos.**
+
+1. Construir un prototipo físico del dispositivo IoT, con una Embedded Application que mida conductividad eléctrica, humedad y temperatura del suelo.
+2. Implementar un Edge Service que valide, compense por temperatura y almacene localmente las lecturas, y que las sincronice con la plataforma al recuperar la conexión.
+3. Implementar un RESTful API que gestione cuentas, suscripciones, fincas, parcelas, cultivos, lecturas, alertas y reportes.
+4. Desarrollar una Web Application y una Mobile Application con interfaz adaptable, integradas con el RESTful API, para el productor y el asesor técnico.
+5. Publicar un Landing Page con contenido diferenciado para cada segmento y call-to-action hacia las aplicaciones.
+6. Integrar al menos un servicio externo de terceros, como información meteorológica, para enriquecer la interpretación de las lecturas.
+
+#### Restricciones y alcance
+
+- **Variables medidas:** el alcance se limita a conductividad eléctrica, humedad y temperatura del suelo. No incluye pH, nutrientes (NPK) ni imágenes satelitales o de drones.
+- **Complemento del laboratorio:** OsoSense es una herramienta de detección temprana y seguimiento de tendencia. No reemplaza el análisis de laboratorio acreditado ni emite diagnósticos formales.
+- **Monitoreo, no control:** la solución no acciona sistemas de riego ni de fertirriego; entrega información y recomendaciones para que el usuario decida.
+- **Costo del dispositivo:** el hardware debe basarse en componentes de bajo costo y disponibilidad local, como el microcontrolador ESP32, para mantener un precio de acceso muy inferior al de las sondas comerciales.
+- **Conectividad:** la solución debe tolerar la conectividad móvil intermitente propia del campo y priorizar el uso desde el teléfono móvil.
+- **Foco inicial:** pequeños y medianos productores de la costa, empezando por los valles de Piura y Lambayeque, y los asesores técnicos que los atienden.
+- **Plazo y tecnología:** el proyecto se desarrolla durante el ciclo académico 2026-20, con las herramientas y tecnologías establecidas por el curso. Las interfaces usan inglés como idioma por defecto e incluyen español latinoamericano mediante i18n.
+
 ### 1.2.2. Lean UX Process
 
 El equipo aplicó el **Lean UX Process** para ordenar las principales creencias del proyecto antes de iniciar la construcción de la solución. De acuerdo con las instrucciones del enunciado, este proceso parte del dominio del problema, identifica los segmentos afectados, precisa los dolores actuales, reconoce la brecha que no cubren las alternativas existentes y formula una estrategia inicial de producto.
@@ -190,39 +227,39 @@ Los assumptions se organizaron siguiendo las cinco categorías solicitadas en el
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
-De acuerdo con las instrucciones del statement, se formula un Hypothesis Statement por cada Feature Assumption. Cada hipótesis expresa una creencia sobre una característica, el segmento beneficiado, el resultado esperado y la forma en que se validará si dicha creencia es correcta.
+De acuerdo con las instrucciones del enunciado, se formula un Hypothesis Statement por cada Feature Assumption. Cada hipótesis se identifica con un código (HS-01 a HS-12) que corresponde, en el mismo orden, a la Feature Assumption que la origina, y que se usa en el Lean UX Canvas. Cada hipótesis expresa una creencia sobre una característica, el segmento beneficiado, el resultado esperado y la forma en que se validará si dicha creencia es correcta.
 
-Creemos que ofrecer un dispositivo IoT de campo que mida conductividad eléctrica, humedad y temperatura para pequeños y medianos productores agrícolas y asesores técnicos logrará aumentar la adopción inicial de OsoSense al brindar monitoreo continuo del estado del suelo. Sabremos que esto es cierto cuando los usuarios piloto consulten las lecturas del dispositivo de forma recurrente durante las pruebas de validación.
+**HS-01.** Creemos que ofrecer un dispositivo IoT de campo que mida conductividad eléctrica, humedad y temperatura para pequeños y medianos productores agrícolas y asesores técnicos logrará aumentar la adopción inicial de OsoSense al brindar monitoreo continuo del estado del suelo. Sabremos que esto es cierto cuando los usuarios piloto consulten las lecturas del dispositivo de forma recurrente durante las pruebas de validación.
 
-Creemos que implementar un motor de umbrales configurables por cultivo para productores agrícolas y asesores técnicos logrará reducir las alertas poco pertinentes al evaluar cada parcela según el cultivo registrado. Sabremos que esto es cierto cuando, en escenarios de prueba con cultivos distintos, las alertas generadas correspondan al nivel de tolerancia definido para cada cultivo.
+**HS-02.** Creemos que implementar un motor de umbrales configurables por cultivo para productores agrícolas y asesores técnicos logrará reducir las alertas poco pertinentes al evaluar cada parcela según el cultivo registrado. Sabremos que esto es cierto cuando, en escenarios de prueba con cultivos distintos, las alertas generadas correspondan al nivel de tolerancia definido para cada cultivo.
 
-Creemos que enviar notificaciones móviles por nivel de severidad para productores agrícolas logrará una respuesta más rápida ante niveles críticos de salinidad. Sabremos que esto es cierto cuando, en una prueba de uso, los productores identifiquen la alerta crítica y seleccionen una acción correctiva recomendada sin requerir explicación adicional.
+**HS-03.** Creemos que enviar notificaciones móviles por nivel de severidad para productores agrícolas logrará una respuesta más rápida ante niveles críticos de salinidad. Sabremos que esto es cierto cuando, en una prueba de uso, los productores identifiquen la alerta crítica y seleccionen una acción correctiva recomendada sin requerir explicación adicional.
 
-Creemos que ofrecer un tablero con histórico y tendencia por parcela para productores agrícolas y asesores técnicos logrará aumentar la frecuencia de consulta de la plataforma al facilitar la comprensión de la evolución de la salinidad. Sabremos que esto es cierto cuando los usuarios puedan explicar si el estado del suelo mejora, empeora o se mantiene estable a partir de la visualización histórica.
+**HS-04.** Creemos que ofrecer un tablero con histórico y tendencia por parcela para productores agrícolas y asesores técnicos logrará aumentar la frecuencia de consulta de la plataforma al facilitar la comprensión de la evolución de la salinidad. Sabremos que esto es cierto cuando los usuarios puedan explicar si el estado del suelo mejora, empeora o se mantiene estable a partir de la visualización histórica.
 
-Creemos que permitir la gestión de fincas, parcelas y cultivos para productores agrícolas y asesores técnicos logrará una interpretación más precisa de las mediciones al asociar cada lectura con su contexto agrícola. Sabremos que esto es cierto cuando cada dispositivo registrado pueda vincularse correctamente con una finca, una parcela y un cultivo durante la prueba funcional.
+**HS-05.** Creemos que permitir la gestión de fincas, parcelas y cultivos para productores agrícolas y asesores técnicos logrará una interpretación más precisa de las mediciones al asociar cada lectura con su contexto agrícola. Sabremos que esto es cierto cuando cada dispositivo registrado pueda vincularse correctamente con una finca, una parcela y un cultivo durante la prueba funcional.
 
-Creemos que ofrecer un tablero multiparcela para asesores técnicos independientes logrará que supervisen más parcelas desde la plataforma al comparar rápidamente el estado de varios clientes. Sabremos que esto es cierto cuando, en un escenario de prueba con múltiples parcelas, el asesor pueda identificar cuáles requieren atención prioritaria sin revisar cada parcela por separado.
+**HS-06.** Creemos que ofrecer un tablero multiparcela para asesores técnicos independientes logrará que supervisen más parcelas desde la plataforma al comparar rápidamente el estado de varios clientes. Sabremos que esto es cierto cuando, en un escenario de prueba con múltiples parcelas, el asesor pueda identificar cuáles requieren atención prioritaria sin revisar cada parcela por separado.
 
-Creemos que generar reportes exportables por parcela y periodo para asesores técnicos independientes logrará fortalecer la utilidad percibida de OsoSense al permitir sustentar recomendaciones ante productores. Sabremos que esto es cierto cuando los asesores puedan generar un reporte con lecturas, tendencia y recomendación asociada durante una prueba de validación.
+**HS-07.** Creemos que generar reportes exportables por parcela y periodo para asesores técnicos independientes logrará fortalecer la utilidad percibida de OsoSense al permitir sustentar recomendaciones ante productores. Sabremos que esto es cierto cuando los asesores puedan generar un reporte con lecturas, tendencia y recomendación asociada durante una prueba de validación.
 
-Creemos que incorporar un servicio de borde con almacenamiento local y sincronización diferida para productores ubicados en zonas con conectividad intermitente logrará reducir la pérdida de lecturas en campo. Sabremos que esto es cierto cuando las mediciones capturadas sin conexión se conserven localmente y se sincronicen correctamente al restablecerse la conectividad.
+**HS-08.** Creemos que incorporar un servicio de borde con almacenamiento local y sincronización diferida para productores ubicados en zonas con conectividad intermitente logrará reducir la pérdida de lecturas en campo. Sabremos que esto es cierto cuando las mediciones capturadas sin conexión se conserven localmente y se sincronicen correctamente al restablecerse la conectividad.
 
-Creemos que incluir un módulo de calibración y validación para productores agrícolas y asesores técnicos logrará aumentar la confianza en el dispositivo al contrastar las mediciones de OsoSense con referencias de laboratorio. Sabremos que esto es cierto cuando los usuarios puedan revisar la comparación entre ambas mediciones y declarar que la lectura del dispositivo es confiable para tomar decisiones preliminares.
+**HS-09.** Creemos que incluir un módulo de calibración y validación para productores agrícolas y asesores técnicos logrará aumentar la confianza en el dispositivo al contrastar las mediciones de OsoSense con referencias de laboratorio. Sabremos que esto es cierto cuando los usuarios puedan revisar la comparación entre ambas mediciones y declarar que la lectura del dispositivo es confiable para tomar decisiones preliminares.
 
-Creemos que integrar información meteorológica externa para productores agrícolas y asesores técnicos logrará mejorar la interpretación del diagnóstico del suelo al relacionar las variaciones de salinidad con lluvia y condiciones ambientales. Sabremos que esto es cierto cuando los usuarios puedan identificar si un cambio en las lecturas coincide con un evento meteorológico relevante.
+**HS-10.** Creemos que integrar información meteorológica externa para productores agrícolas y asesores técnicos logrará mejorar la interpretación del diagnóstico del suelo al relacionar las variaciones de salinidad con lluvia y condiciones ambientales. Sabremos que esto es cierto cuando los usuarios puedan identificar si un cambio en las lecturas coincide con un evento meteorológico relevante.
 
-Creemos que diseñar un Landing Page con contenido diferenciado por segmento para productores agrícolas y asesores técnicos logrará incrementar la conversión de visitantes a registros. Sabremos que esto es cierto cuando los visitantes identifiquen con claridad la propuesta de valor correspondiente a su rol y completen el formulario de registro o manifiesten intención de contacto.
+**HS-11.** Creemos que diseñar un Landing Page con contenido diferenciado por segmento para productores agrícolas y asesores técnicos logrará incrementar la conversión de visitantes a registros. Sabremos que esto es cierto cuando los visitantes identifiquen con claridad la propuesta de valor correspondiente a su rol y completen el formulario de registro o manifiesten intención de contacto.
 
-Creemos que ofrecer un plan gratuito limitado para pequeños productores agrícolas logrará reducir la barrera de entrada y aumentar la activación inicial de OsoSense. Sabremos que esto es cierto cuando los productores puedan probar la solución en una parcela sin pago recurrente y completar el flujo inicial de registro y monitoreo.
+**HS-12.** Creemos que ofrecer un plan gratuito limitado para pequeños productores agrícolas logrará reducir la barrera de entrada y aumentar la activación inicial de OsoSense. Sabremos que esto es cierto cuando los productores puedan probar la solución en una parcela sin pago recurrente y completar el flujo inicial de registro y monitoreo.
 
 #### 1.2.2.4. Lean UX Canvas
 
 El Lean UX Canvas consolida en un solo artefacto los resultados de las secciones anteriores y los convierte en un plan de aprendizaje. El equipo lo recorrió en el orden propuesto por Jeff Gothelf: se parte del problema de negocio, se define cómo se vería el éxito en términos de comportamiento observable, se identifica a quién debe cambiar ese comportamiento y qué gana con ello, y solo entonces se proponen soluciones. Los tres últimos bloques traducen esas apuestas en hipótesis verificables y en el experimento mínimo necesario para reducir incertidumbre.
 
 <div align="center">
-<img src="../assets/lean-ux-canvas/Lean%20UX%20Canvas%20IoT.png" alt="Lean UX Canvas OsoTerra IoT" width="100%"/>
-<p><em>Figura 3. Lean UX Canvas de OsoTerra IoT.</em></p>
+<img src="../assets/lean-ux-canvas/Lean%20UX%20Canvas%20IoT.png" alt="Lean UX Canvas OsoSense" width="100%"/>
+<p><em>Figura. Lean UX Canvas de OsoSense.</em></p>
 </div>
 
 | # | Bloque | Contenido |
