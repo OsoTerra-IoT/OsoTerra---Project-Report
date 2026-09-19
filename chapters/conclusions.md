@@ -49,4 +49,4 @@ Ver la sección [Student Outcome](../outcome.md#student-outcome).
 
 ### Anexo C. Videos de Exposiciones
 
-> **Pendiente de equipo:** incluir el enlace del video de exposición de AV1, subido a Microsoft Stream/Clipchamp, una vez grabado y editado.
+**Video de Exposición — AV1:** [ver video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVCrvLYWWkT73bHtQrAT8FAbVIPh1q838lp9DUTX9KrDI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ihMbhP)
