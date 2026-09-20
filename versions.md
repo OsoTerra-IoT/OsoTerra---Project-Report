@@ -75,6 +75,8 @@
 | 0.0.71 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: precios referenciales de OsoSense en validación en el Competitive Analysis Landscape; precios de competidores con fuente; distritos de residencia de los asesores entrevistados y su análisis; cifras alineadas con el Capítulo I. |
 | 0.0.72 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: descripciones de los integrantes con los conocimientos técnicos y habilidades que cada uno aporta al equipo. |
 | 0.0.73 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: títulos descriptivos en los User Journey Maps y Empathy Maps exportados de UXPressia. |
+| 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
+| 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
 
 # Project Report Collaboration Insights
 
