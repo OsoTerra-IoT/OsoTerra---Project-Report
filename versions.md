@@ -63,6 +63,20 @@
 | 0.0.59 | 17/09/2026 | Andreow Jomark Santiago Peña | Documentación de la capa de dominio de los seis bounded contexts del Capítulo IV a manera de diccionario, con atributos, métodos, visibilidad y relaciones entre clases. |
 | 0.0.60 | 17/09/2026 | Andreow Jomark Santiago Peña | Incorporación de Event Consumers en Interface Layer y Event Handlers en Application Layer para los bounded contexts del Capítulo IV, alineados con los eventos del Context Mapping. |
 | 0.0.61 | 17/09/2026 | Iker Gabriel Barturen Panez | Completar la Tabla de Contenidos, la sección Student Outcome, Project Report Collaboration Insights, y el avance de Conclusiones, Bibliografía y Anexos requeridos para la entrega AV1. |
+| 0.0.62 | 18/09/2026 | Andreow Jomark Santiago Peña | Corrección de términos y referencias del Capítulo IV: carácter extraño en la introducción del C4 Model, término "librería", rutas a código fuente inexistentes y nota obsoleta sobre el ERD de IAM. |
+| 0.0.63 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: incorporación del enunciado del problema, puntos clave, objetivos y restricciones en Antecedentes y problemática; códigos HS-01 a HS-12 en los Hypothesis Statements; Lean UX Canvas con los siete Business Outcomes; imágenes de integrantes alojadas en el repositorio. |
+| 0.0.64 | 18/09/2026 | Andreow Jomark Santiago Peña | Carátula: logo de la universidad alojado en el repositorio en lugar de un enlace a un repositorio externo. |
+| 0.0.65 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: preguntas complementarias en la guía de entrevistas; distrito de la entrevista 2 del segmento 2; género y ubicación en el análisis de entrevistas y contraste con el perfil del Capítulo I; relación de los User Personas con el análisis de competidores; etapas nombradas en los User Journey Maps alojados en el repositorio; proceso de elaboración de los Empathy Maps; corrección de fichas de User Persona y del glosario; nombre del producto unificado como OsoSense. |
+| 0.0.66 | 18/09/2026 | Andreow Jomark Santiago Peña | Conclusiones: cifras alineadas con el análisis de entrevistas, referencia correcta a las Feature Assumptions y corrección del género de los asesores entrevistados. |
+| 0.0.67 | 18/09/2026 | Andreow Jomark Santiago Peña | Student Outcome: párrafo introductorio idéntico al del enunciado. |
+| 0.0.68 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: nombre del producto unificado como OsoSense. |
+| 0.0.69 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: citas de fuente para las cifras de 5W+2H y de segmentos objetivo; corrección de cifras no verificables (unidades de hasta 5 ha, pobreza rural, acceso a internet rural, precios de sondas y laboratorios); Lean UX Canvas actualizado con las cifras corregidas. |
+| 0.0.70 | 18/09/2026 | Andreow Jomark Santiago Peña | Bibliografía: referencias en formato APA 7 ordenadas alfabéticamente, con URL o DOI, para todas las fuentes citadas en los Capítulos I y II. |
+| 0.0.71 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: precios referenciales de OsoSense en validación en el Competitive Analysis Landscape; precios de competidores con fuente; distritos de residencia de los asesores entrevistados y su análisis; cifras alineadas con el Capítulo I. |
+| 0.0.72 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo I: descripciones de los integrantes con los conocimientos técnicos y habilidades que cada uno aporta al equipo. |
+| 0.0.73 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: títulos descriptivos en los User Journey Maps y Empathy Maps exportados de UXPressia. |
+| 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
+| 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
 
 # Project Report Collaboration Insights
 

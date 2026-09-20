@@ -2,7 +2,7 @@
 
 ## 2.1. Competidores
 
-El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres tipos de oferta. En primer lugar, las plataformas internacionales de agricultura de precisión, que ofrecen sondas multiparamétricas con conectividad y suscripción, dirigidas a la agroexportación. En segundo lugar, los laboratorios de análisis de suelo, que entregan un diagnóstico preciso pero puntual y diferido. En tercer lugar, los medidores portátiles de conductividad eléctrica, que resuelven el costo pero no el monitoreo continuo. OsoTerra IoT se sitúa deliberadamente en el espacio que ninguno de los tres ocupa.
+El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres tipos de oferta. En primer lugar, las plataformas internacionales de agricultura de precisión, que ofrecen sondas multiparamétricas con conectividad y suscripción, dirigidas a la agroexportación. En segundo lugar, los laboratorios de análisis de suelo, que entregan un diagnóstico preciso pero puntual y diferido. En tercer lugar, los medidores portátiles de conductividad eléctrica, que resuelven el costo pero no el monitoreo continuo. OsoSense se sitúa deliberadamente en el espacio que ninguno de los tres ocupa.
 
 **Competidores directos identificados:**
 
@@ -35,7 +35,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
     <tr>
       <th></th>
       <th></th>
-      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoTerra IoT)</em><br><img src="../assets/competitors/OsoTerra.png" alt="Logo OsoTerra" width="100"></th>
+      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoSense)</em><br><img src="../assets/competitors/OsoTerra.png" alt="Logo OsoTerra" width="100"></th>
       <th>Competidor 1<br><strong>CropX</strong><br><img src="../assets/competitors/CropX.png" alt="Logo CropX" width="100"></th>
       <th>Competidor 2<br><strong>WiseConn</strong><br><em>(DropControl)</em><br><img src="../assets/competitors/WiseConn.png" alt="Logo WiseConn" width="100"></th>
       <th>Competidor 3<br><strong>Teralytic</strong><br><img src="../assets/competitors/Teralytic.png" alt="Logo Teralytic" width="100"></th>
@@ -82,10 +82,10 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
     </tr>
     <tr>
       <td><strong>Precios &amp; Costos</strong></td>
-      <td>Modelo objetivo: dispositivo a precio de acceso significativamente inferior al rango comercial internacional, más suscripción mensual por parcela, con un plan gratuito limitado a una parcela. <em>(Estructura de precios en definición.)</em></td>
-      <td>Sensores entre <strong>USD 600 y USD 899</strong> por unidad, más <strong>USD 275 anuales por sensor</strong> de suscripción. El modelo Vertex V4 alcanza aproximadamente <strong>USD 2 398</strong>. El modelo Apex requiere telemetría adquirida por separado.</td>
+      <td><em>Precios referenciales en proceso de validación con los segmentos:</em><br>• <strong>Kit OsoSense</strong> (dispositivo con sensores de CE, humedad y temperatura, panel solar e instalación): <strong>S/ 390</strong> en un pago, estimado a partir de un costo de componentes de S/ 200 a S/ 250 por equipo.<br>• <strong>Plan Gratuito:</strong> S/ 0, una parcela, alertas básicas e historial de 30 días.<br>• <strong>Plan Productor:</strong> <strong>S/ 15 por parcela al mes</strong>, con alertas por cultivo, historial completo y recomendaciones.<br>• <strong>Plan Asesor:</strong> <strong>S/ 89 al mes</strong> hasta 15 parcelas, con tablero multiparcela y reportes exportables.<br>Supuesto de referencia: el primer año del Plan Productor para una parcela (S/ 390 + S/ 180) equivale a unos dos análisis de laboratorio de S/ 250, pero entrega lecturas continuas durante toda la campaña.</td>
+      <td>Sensores entre <strong>USD 600 y USD 899</strong> por unidad, más <strong>USD 275 anuales por sensor</strong> de suscripción. El modelo Apex requiere telemetría adquirida por separado (The Spoon, 2018).</td>
       <td>Precio bajo cotización. No publica tarifario. Proyecto llave en mano dimensionado por hectárea y por complejidad del sistema de riego.</td>
-      <td>Paquete inicial de 10 sondas por <strong>USD 5 000</strong>; <strong>USD 500</strong> por sonda adicional. Modelo de suscripción que incluye el reemplazo de piezas.</td>
+      <td>Servicio de <strong>USD 500 por sonda al año</strong>, que incluye el hardware, el software y la analítica de red (The Western Producer, 2020). Modelo de suscripción que incluye el reemplazo de piezas.</td>
     </tr>
     <tr>
       <td><strong>Canales de distribución</strong><br>(Web y/o Móvil)</td>
@@ -159,7 +159,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       </td>
       <td>
         <ul>
-          <li>Barrera de entrada muy alta: paquete inicial de USD 5 000 por diez sondas.</li>
+          <li>Costo recurrente de USD 500 por sonda al año, que se multiplica por el número de sondas del campo.</li>
           <li>Requiere infraestructura de red LoRa con gateway propio.</li>
           <li>Orientación al mercado estadounidense, sin presencia ni soporte en el Perú.</li>
         </ul>
@@ -170,7 +170,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       <td>
         <ul>
           <li>Brecha de diagnóstico masiva: solo el 2,5 % de los pequeños y medianos productores realiza análisis de suelo.</li>
-          <li>Crecimiento acelerado de la conectividad móvil rural: del 41,5 % en 2019 al 85,8 % en 2025.</li>
+          <li>Crecimiento acelerado del acceso a internet en hogares rurales: del 41,5 % en 2019 al 85,8 % en 2025.</li>
           <li>Ausencia de un inventario nacional reciente de salinidad, que otorga valor a los datos agregados de la plataforma.</li>
           <li>Existencia de programas estatales que cofinancian asistencia técnica y activos productivos (AGROIDEAS, AGRO RURAL).</li>
           <li>Cobertura insuficiente de los servicios públicos de extensión agraria, reconocida por el propio INIA.</li>
@@ -245,16 +245,16 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
 **Estrategia 1 — Competir por especificidad, no por amplitud.**
-Frente a competidores que miden más variables y con mayor precisión, OsoTerra IoT no intenta igualarlos: resuelve un problema que ellos tratan como función secundaria. *Tácticas:* posicionar toda la comunicación en torno a la salinización y no al monitoreo genérico de suelo; construir el motor de umbrales por cultivo como diferenciador funcional visible; producir contenido educativo sobre reconocimiento temprano de sales dirigido al productor.
+Frente a competidores que miden más variables y con mayor precisión, OsoSense no intenta igualarlos: resuelve un problema que ellos tratan como función secundaria. *Tácticas:* posicionar toda la comunicación en torno a la salinización y no al monitoreo genérico de suelo; construir el motor de umbrales por cultivo como diferenciador funcional visible; producir contenido educativo sobre reconocimiento temprano de sales dirigido al productor.
 
 **Estrategia 2 — Convertir la restricción de precio en la barrera de entrada del competidor.**
-El rango de USD 500 a 2 398 por sonda que manejan CropX y Teralytic no puede reducirse sin canibalizar su propio mercado. *Tácticas:* diseñar el dispositivo sobre componentes de bajo costo y disponibilidad local; ofrecer un plan gratuito limitado a una parcela que elimine la barrera de desembolso inicial; estructurar la suscripción por parcela y no por finca, de modo que el costo escale con el beneficio percibido.
+El rango de USD 500 a 899 por sonda, más suscripción, que manejan CropX y Teralytic no puede reducirse sin canibalizar su propio mercado. *Tácticas:* diseñar el dispositivo sobre componentes de bajo costo y disponibilidad local; ofrecer un plan gratuito limitado a una parcela que elimine la barrera de desembolso inicial; estructurar la suscripción por parcela y no por finca, de modo que el costo escale con el beneficio percibido.
 
 **Estrategia 3 — Usar al asesor técnico como canal y como aval.**
 La desconfianza hacia un dispositivo económico es la principal amenaza de adopción, y el asesor técnico es quien puede disolverla. *Tácticas:* diseñar funcionalidades específicas para el asesor —tablero multiparcela, reportes exportables— que le den razones propias para adoptar la plataforma; establecer un esquema de referidos por productor incorporado; entregar al asesor el dato crudo además de la interpretación, porque su credibilidad profesional depende de poder auditarlo.
 
 **Estrategia 4 — Neutralizar la ventaja de precisión del laboratorio convirtiéndolo en aliado.**
-No se compite contra el laboratorio en exactitud; se compite en frecuencia y en costo. *Tácticas:* publicar la comparación entre las lecturas del dispositivo y las de un laboratorio acreditado como evidencia de confiabilidad; comunicar explícitamente que OsoTerra IoT es un instrumento de detección temprana y seguimiento de tendencia, no un sustituto del análisis certificado; permitir el registro manual de resultados de laboratorio dentro de la plataforma para calibrar el dispositivo.
+No se compite contra el laboratorio en exactitud; se compite en frecuencia y en costo. *Tácticas:* publicar la comparación entre las lecturas del dispositivo y las de un laboratorio acreditado como evidencia de confiabilidad; comunicar explícitamente que OsoSense es un instrumento de detección temprana y seguimiento de tendencia, no un sustituto del análisis certificado; permitir el registro manual de resultados de laboratorio dentro de la plataforma para calibrar el dispositivo.
 
 **Estrategia 5 — Superar a los medidores portátiles en aquello que estructuralmente no pueden ofrecer.**
 Un medidor de mano requiere presencia física y produce un dato aislado. *Tácticas:* enfatizar la continuidad del monitoreo y la alerta proactiva como diferencial; mostrar la línea de tendencia como el artefacto que un medidor portátil nunca puede producir; destacar el ahorro en desplazamientos para el asesor.
@@ -268,7 +268,7 @@ Dado que solo el 8 % de los productores accede a crédito formal, la vía de ado
 
 Las entrevistas buscan conocer, con palabras sencillas, cómo los participantes cuidan el suelo en la actualidad, qué problemas encuentran, qué productos o métodos emplean para prevenirlos y cómo toman sus decisiones. También permiten conocer su relación con la tecnología y evaluar si una herramienta de monitoreo y alertas sería comprensible y útil para ellos.
 
-Se preparó una guía diferente para cada uno de los dos segmentos definidos en el Capítulo I. Primero se pregunta por experiencias y acciones reales. La propuesta de OsoTerra IoT se presenta recién al final para no influir en las respuestas. Las preguntas complementarias solo se utilizarán cuando sea necesario profundizar en alguna respuesta.
+Se preparó una guía diferente para cada uno de los dos segmentos definidos en el Capítulo I. Primero se pregunta por experiencias y acciones reales. La propuesta de OsoSense se presenta recién al final para no influir en las respuestas. Cada guía tiene preguntas principales, que se hacen a todos los entrevistados, y preguntas complementarias, que recogen los datos demográficos, tecnológicos y de preferencias necesarios para construir los arquetipos. Las preguntas complementarias se usan cuando la respuesta principal no cubre esos datos o cuando es necesario profundizar en ella.
 
 #### Guía de entrevista — Segmento 1: Pequeños y medianos productores agropecuarios
 
@@ -287,6 +287,19 @@ Se preparó una guía diferente para cada uno de los dos segmentos definidos en 
 9. ¿Alguna vez ha hecho un análisis de suelo? ¿Fue fácil o difícil?
 10. Si un dispositivo le avisara antes de que la sal dañe su cultivo, ¿lo usaría? ¿Qué necesitaría para confiar?
 
+**Preguntas complementarias:**
+
+1. ¿Qué edad tiene y en qué distrito vive? ¿Vive cerca de la parcela?
+2. ¿Con quién vive y quiénes de su familia trabajan en la parcela?
+3. ¿A qué se dedica además de la parcela? ¿Qué estudios tiene?
+4. ¿Cuántas hectáreas tiene la parcela y quién toma las decisiones sobre ella?
+5. ¿Qué celular usa? ¿Tiene computadora o tablet?
+6. ¿Qué aplicaciones usa con más frecuencia (WhatsApp, Facebook, YouTube, otras)? ¿Qué navegador usa?
+7. ¿Qué tan buena es la señal de celular e internet en la parcela?
+8. ¿En qué marcas de insumos, tiendas o personas confía para decidir qué comprar?
+9. ¿Cómo se describiría: prefiere probar cosas nuevas o espera a ver si a otros les funcionan?
+10. ¿Cuánto estaría dispuesto a pagar por un servicio que le avise del estado de su suelo?
+
 #### Guía de entrevista — Segmento 2: Ingenieros agrónomos y asesores técnicos
 
 **Objetivo.** Conocer cómo el asesor detecta y previene problemas del suelo en las parcelas de sus clientes, qué herramientas recomienda y qué información necesita para tomar decisiones.
@@ -303,6 +316,19 @@ Se preparó una guía diferente para cada uno de los dos segmentos definidos en 
 8. ¿Usa análisis de suelo, sensores o alguna herramienta de medición?
 9. ¿Qué dificultad tiene para revisar varias parcelas o atender a varios productores?
 10. Si recibiera alertas sobre salinidad en una parcela, ¿le servirían? ¿Qué información deberían mostrar?
+
+**Preguntas complementarias:**
+
+1. ¿Qué edad tiene y en qué distrito vive?
+2. ¿Dónde estudió y qué formación tiene? ¿Está colegiado?
+3. ¿Trabaja de forma independiente o para una empresa, cooperativa o institución?
+4. ¿A cuántos productores atiende y cada cuánto visita sus parcelas?
+5. ¿Cuánto cobra por su asesoría y cómo la cobra (por visita, por campaña, mensual)?
+6. ¿Qué dispositivos usa en campo y en oficina (celular, tablet, computadora)? ¿Qué navegador usa?
+7. ¿Qué aplicaciones o plataformas usa para registrar información y comunicarse con los productores?
+8. ¿Qué marcas de equipos de medición o laboratorios recomienda o prefiere? ¿Por qué?
+9. ¿Dónde se informa sobre nuevas tecnologías agrícolas (ferias, redes, revistas, colegas)?
+10. ¿Qué haría que confíe en las lecturas de un sensor de bajo costo?
 
 ### 2.2.2. Registro de entrevistas
 
@@ -322,29 +348,30 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
       <td rowspan="3"><strong>Pequeños y medianos productores agropecuarios</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Diego Ramirez<br><strong>Edad:</strong> 20 años<br><strong>Zona / distrito:</strong> Huaral, Lima; durante sus vacaciones apoya en la parcela o planta familiar<br><br><strong>Perfil:</strong> Alumno universitario que colabora con las actividades agrícolas de su familia durante sus vacaciones<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/int1-Seg1.png" alt="Screenshot entrevista segmento 1" width="180"></td>
       <td><strong>Datos generales:</strong> El entrevistado tiene 20 años, vive en Lima y es alumno universitario. Durante sus vacaciones ayuda a su familia en la parcela o planta familiar, por lo que participa directamente en algunas actividades agrícolas, aunque no se dedica a tiempo completo a la producción.<br><br><strong>Cultivos y cuidado del suelo:</strong> Su familia cultiva principalmente hortalizas, como lechuga, cebolla, zanahoria y hierbas. Para cuidar el suelo procuran mantenerlo limpio, retirar los residuos de los cultivos y controlar el riego. También utilizan compost, estiércol y, en algunas ocasiones, fertilizantes; además, intentan rotar los cultivos para evitar el desgaste del suelo.<br><br><strong>Decisiones y resultados:</strong> Las recomendaciones provienen principalmente de sus padres y familiares con más experiencia. También consultan a otros agricultores de la zona o buscan información en internet. El compost y el estiércol les han funcionado porque ayudan a que las plantas crezcan mejor y mantienen el suelo más suelto, aunque no siempre saben cuál es la cantidad correcta que deben aplicar.<br><br><strong>Problemas de salinidad y apoyo:</strong> Han observado en algunas zonas tierra un poco blanca y plantas que crecen menos, pero no saben con seguridad si se debe a la salinidad o a un problema con el riego. Cuando aparece un problema, primero consultan entre la familia y con otros agricultores conocidos; si parece más serio, buscan orientación de un técnico agrícola.<br><br><strong>Análisis de suelo:</strong> El entrevistado no ha realizado personalmente un análisis de suelo. Su familia hizo uno hace algunos años, pero el proceso fue complicado porque tuvieron que llevar la muestra a un laboratorio y esperar los resultados. Además, no siempre comprendían completamente la información recibida.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avisara antes de que la sal dañara el cultivo, siempre que fuera fácil de instalar y tuviera un costo accesible. Para confiar en él necesitaría mediciones claras, alertas anticipadas e indicaciones sobre qué acción tomar. También consideró importante que funcionara correctamente en el campo y que alguien les enseñara a utilizarlo.</td>
-      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312899_upc_edu_pe/IQAcB97pG-fDS4BQGTQK2N5WAdovrJhmt2a7BnUcWfZR03Y?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=NYGUsb">Ver video</a><br><strong>Inicio:</strong> 00:00<br><strong>Duración:</strong> 04:09</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 05:45<br><strong>Duración:</strong> 04:09</td>
     </tr>
     <tr>
       <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Mathias Peña<br><strong>Edad:</strong> 22 años<br><strong>Zona / distrito:</strong> Ferreñafe, Lambayeque; vive y estudia en Lima<br><br><strong>Perfil:</strong> Estudiante universitario cuya familia tiene una parcela de unas 3 hectáreas; apoya en vacaciones y algunos fines de semana largos<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int2-Seg1.png" alt="Screenshot entrevista Mathias Peña" width="180"></td>
       <td><strong>Datos generales:</strong> Mathias tiene 22 años y estudia en Lima. Su familia tiene una parcela de unas 3 hectáreas en Ferreñafe, Lambayeque, que maneja su papá. Él va a la parcela en vacaciones o algunos fines de semana largos, por lo que sigue lo que pasa en el campo principalmente a distancia.<br><br><strong>Cultivos y cuidado del suelo:</strong> Cultivan principalmente arroz y, a veces, entre campañas siembran un poco de maíz. Para cuidar el suelo usan urea y guano, y en ocasiones limpian los canales para que el agua corra mejor.<br><br><strong>Decisiones y recomendaciones:</strong> Las prácticas que aplican las recomienda la tienda de insumos del pueblo y se basan en lo que su papá aprendió de su abuelo, sin un diagnóstico técnico del suelo.<br><br><strong>Problemas de salinidad:</strong> En una esquina de la parcela, donde el agua se queda empozada, aparece una costra blanca cuando se seca. En esa zona el arroz sale más bajo y amarillento. Su papá lo atribuye al salitre, pero no saben cuánto afecta ni cómo solucionarlo bien.<br><br><strong>Análisis de suelo:</strong> Hicieron un análisis hace unos tres años. Tuvieron que llevar la muestra a Chiclayo y el resultado demoró casi dos semanas. Cuando llegó, tenía muchos números y términos que no entendieron, así que terminaron consultando a un ingeniero conocido.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avise antes de que la sal dañe el cultivo, sobre todo porque desde Lima se entera tarde de lo que pasa en la parcela. Le gustaría recibir la alerta en el celular y poder reenviarla por WhatsApp a su papá. Para confiar en él, la herramienta tendría que explicar en palabras simples qué pasa y qué hacer, funcionar aunque la señal en el campo sea mala y no ser muy cara.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 00:00<br><strong>Duración:</strong> 05:45</td>
     </tr>
     <tr>
       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Alex Ávila<br><strong>Edad:</strong> 23 años<br><strong>Zona / distrito:</strong> Salas Guadalupe, Ica<br><br><strong>Perfil:</strong> Técnico agropecuario que trabaja a tiempo completo en el fundo familiar de unas 6 hectáreas, a cargo del riego y la fertilización junto con su tío<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int3-Seg1.png" alt="Screenshot entrevista Alex Ávila" width="180"></td>
       <td><strong>Datos generales:</strong> Alex tiene 23 años y vive en Salas Guadalupe, Ica. Estudió técnico agropecuario en un instituto y trabaja a tiempo completo en el fundo de su familia, de unas 6 hectáreas. Desde hace dos años se encarga del riego y de la fertilización junto con su tío, por lo que participa directamente en las decisiones de manejo del suelo.<br><br><strong>Cultivos y mercado:</strong> Cultivan uva de mesa en 4 hectáreas y palto en las otras 2. La producción se vende a una agroexportadora, que les exige calidad y calibre, por lo que cualquier pérdida de rendimiento afecta directamente sus ingresos.<br><br><strong>Cuidado del suelo y decisiones:</strong> Cuentan con riego por goteo con fertirriego. Aplican yeso agrícola y ácidos húmicos, y cada cierto tiempo realizan riegos largos para lavar las sales. Estas prácticas las recomendó el técnico de la agroexportadora y se complementan con lo que Alex aprendió en el instituto. Sin embargo, como el técnico visita el fundo una vez al mes, muchas decisiones se toman "al ojo".<br><br><strong>Problemas de salinidad:</strong> El principal problema no es el agua empozada, sino el agua de riego, que se vuelve más salada sobre todo en verano, cuando baja el nivel. En el palto se queman las puntas de las hojas y en algunas hileras de uva el racimo sale más chico. Casi no se observa costra blanca, porque con el goteo la sal se acumula en el borde del bulbo húmedo; por eso, cuando se nota el problema, el cultivo ya presenta daño.<br><br><strong>Análisis de suelo:</strong> Realizan dos análisis al año, uno de suelo y otro de agua, en un laboratorio de Ica. Cada uno cuesta alrededor de S/ 250 y el resultado llega en una semana o diez días. Alex entiende la conductividad eléctrica, pero considera que el análisis es una foto de un solo día: entre un análisis y otro la salinidad cambia y no saben en qué momento ocurrió.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avise antes de que la sal dañe el cultivo, siempre que mida de forma continua y guarde el historial para ver cómo sube la salinidad después de cada riego. Le gustaría que sugiera cuándo realizar un lavado de sales y que sus mediciones puedan compararse con las del laboratorio para verificar su precisión. Además, necesita que funcione con panel solar, porque en el fundo no hay enchufes. Sobre el precio, estaría dispuesto a pagarlo si al año le cuesta menos que dos o tres análisis de laboratorio y le ayuda a no perder calibre en la uva.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 09:54<br><strong>Duración:</strong> 05:20</td>
     </tr>
     <tr>
       <td rowspan="3"><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
-      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Zona de trabajo:</strong> Zonas agrícolas de la costa<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int1-Seg2.png" alt="Screenshot entrevista Yeira Momán" width="180"></td>
-      <td><strong>Datos generales:</strong> Yeira es ingeniera agrónoma y cuenta con varios años de experiencia en el sector agrícola, brindando asesorías a productores. Trabaja principalmente en zonas agrícolas de la costa y visita diferentes parcelas según las necesidades de los agricultores que asesora.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor se centra en evaluar el estado del suelo, identificar problemas que afectan el desarrollo del cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes mencionó la salinidad, la falta de nutrientes y las dificultades relacionadas con el riego y el drenaje.<br><br><strong>Herramientas y tecnología:</strong> Para sustentar sus recomendaciones utiliza análisis de laboratorio y medidores portátiles de conductividad eléctrica, porque permiten obtener una lectura rápida directamente en campo. También realiza seguimiento comparando resultados de análisis y observando la evolución del cultivo para decidir si el manejo aplicado está funcionando o debe modificarse.<br><br><strong>Necesidades y frustraciones:</strong> Su principal dificultad es el tiempo que demanda revisar varias parcelas y desplazarse entre productores ubicados en diferentes lugares. Esto complica realizar visitas frecuentes, mantener actualizada la información de cada parcela y detectar oportunamente cambios en las condiciones del suelo.<br><br><strong>Expectativas:</strong> Considera que recibir alertas sobre salinidad sería útil porque permitiría anticipar el problema. Para que una alerta aporte valor, debería mostrar el nivel de conductividad eléctrica, la ubicación de la parcela, la fecha de medición, la evolución del valor en el tiempo y un historial de mediciones.</td>
-      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Distrito:</strong> Pueblo Libre, Lima<br><strong>Zona de trabajo:</strong> Zonas agrícolas de la costa<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int1-Seg2.png" alt="Screenshot entrevista Yeira Momán" width="180"></td>
+      <td><strong>Datos generales:</strong> Yeira tiene 30 años y vive en el distrito de Pueblo Libre, en Lima. Es ingeniera agrónoma y cuenta con varios años de experiencia en el sector agrícola, brindando asesorías a productores. Trabaja principalmente en zonas agrícolas de la costa y visita diferentes parcelas según las necesidades de los agricultores que asesora.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor se centra en evaluar el estado del suelo, identificar problemas que afectan el desarrollo del cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes mencionó la salinidad, la falta de nutrientes y las dificultades relacionadas con el riego y el drenaje.<br><br><strong>Herramientas y tecnología:</strong> Para sustentar sus recomendaciones utiliza análisis de laboratorio y medidores portátiles de conductividad eléctrica, porque permiten obtener una lectura rápida directamente en campo. También realiza seguimiento comparando resultados de análisis y observando la evolución del cultivo para decidir si el manejo aplicado está funcionando o debe modificarse.<br><br><strong>Necesidades y frustraciones:</strong> Su principal dificultad es el tiempo que demanda revisar varias parcelas y desplazarse entre productores ubicados en diferentes lugares. Esto complica realizar visitas frecuentes, mantener actualizada la información de cada parcela y detectar oportunamente cambios en las condiciones del suelo.<br><br><strong>Expectativas:</strong> Considera que recibir alertas sobre salinidad sería útil porque permitiría anticipar el problema. Para que una alerta aporte valor, debería mostrar el nivel de conductividad eléctrica, la ubicación de la parcela, la fecha de medición, la evolución del valor en el tiempo y un historial de mediciones.</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 15:14<br><strong>Duración:</strong> 05:55</td>
     </tr>
     <tr>
       <td>
   <strong>Entrevista 2</strong><br><br>
   <strong>Entrevistada:</strong> Emperatriz Sessarego<br>
   <strong>Edad:</strong> 63 años<br>
+  <strong>Distrito:</strong> Jesús María, Lima<br>
   <strong>Zona de trabajo:</strong> Zonas agrícolas del norte<br><br>
   <strong>Screenshot:</strong><br>
   <img src="../assets/entrevistas/Interview2.PNG" alt="Screenshot entrevista Emperatriz" width="180">
@@ -357,9 +384,9 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
   <strong>Expectativas:</strong> Espera contar con herramientas más ágiles, como un tablero de monitoreo de salinidad en tiempo real que le permita diagnosticar a distancia y comunicarse rápidamente con el productor por teléfono sin esperar al viaje mensual. Muestra disposición a adoptar sensores de suelo de bajo costo siempre que ofrezcan mediciones fiables, y destaca la necesidad de reportes automatizados que recopilen datos históricos, estados del suelo y seguimiento de acciones previas para comprobar si el agricultor aplicó las mejoras sugeridas.
 </td>
 <td>
-  <strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCTehknzuIeRrR82obsOJzfAVX-4ZePCDMVwhEOjFG98mw?e=nsp1DO" target="_blank">Ver video</a><br>
-  <strong>Inicio:</strong> 00:00<br>
-  <strong>Duración:</strong> 10:19
+  <strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS" target="_blank">Ver video</a><br>
+  <strong>Inicio:</strong> 21:09<br>
+  <strong>Duración:</strong> 05:45
 </td>
     </tr>
     <tr>
@@ -367,18 +394,19 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
   <strong>Entrevista 3</strong><br><br>
   <strong>Entrevistado:</strong> Germán Villalobos Lauro<br>
   <strong>Edad:</strong> 30 años<br>
+  <strong>Distrito:</strong> Santiago de Surco, Lima<br>
   <strong>Zona de trabajo:</strong> Valles de la costa (Lambayeque, La Libertad y Chincha)<br><br>
   <strong>Screenshot:</strong>
   <img src="../assets/entrevistas/Interview-3_Seg2.PNG" alt="Screenshot entrevista German" width="180">
 </td>
 <td>
-  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
+  <strong>Datos generales:</strong> El entrevistado es Germán Villalobos Lauro, de 30 años, quien vive en el distrito de Santiago de Surco, en Lima. Es ingeniero agrónomo egresado de la Universidad Nacional de Ingeniería (UNI). Cuenta con aproximadamente 8 años de experiencia trabajando directamente con productores agrícolas. Inició su trayectoria en una cooperativa, donde atendía a varios agricultores de la zona, y conforme fue conociendo los problemas de campo pasó a trabajar de manera independiente. Actualmente asesora a diferentes productores según los cultivos y las necesidades que cada uno tenga.<br><br>
   <strong>Trabajo y responsabilidades:</strong> Trabaja principalmente en la costa, sobre todo en los valles de Lambayeque y La Libertad, además de algunos clientes en la zona de Chincha, donde la agricultura depende bastante del riego. Su labor consiste en evaluar el estado del suelo, identificar problemas que afectan el cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes menciona la salinidad y el drenaje: parcelas con costra blanca sobre el suelo (señal de acumulación de sales), terrenos que permanecen encharcados demasiado tiempo tras el riego, cultivos que pierden rendimiento sin causa evidente y compactación del suelo por el uso constante de maquinaria en la misma zona.<br><br>
   <strong>Herramientas y tecnología:</strong> Se apoya principalmente en análisis de laboratorio, solicitando conductividad eléctrica, pH y textura, además de otros parámetros según el terreno. Para confirmar problemas de salinidad utiliza la conductividad eléctrica del suelo, comparándola con la tolerancia del cultivo, ya que algunas especies toleran niveles de salinidad mayores que otras. Como recomendaciones de manejo aplica riegos de lavado calculados cuando hay acumulación de sales, sistemas de drenaje para evacuar las sales de la zona radicular, incorporación de materia orgánica (compost, guano u otros abonos), yeso agrícola para problemas de sodio, ácidos húmicos y la elección de cultivos adecuados a las condiciones del terreno. Insiste en no aplicar productos "a ciegas" solo porque a otro productor le funcionaron, sin conocer primero el estado del suelo.<br><br>
   <strong>Necesidades y frustraciones:</strong> Su mayor dificultad es atender a varios productores ubicados en zonas distintas: la distancia le impide visitar las parcelas con la frecuencia que quisiera, por lo que debe priorizar según qué productor reporta un problema o qué cultivo parece más comprometido. Muchas veces, cuando llega al terreno, el daño ya está bastante avanzado. A esto se suma el costo del análisis de laboratorio (una muestra puede ir desde unos 80 dólares hasta miles, según la complejidad y el laboratorio) y los tiempos de espera, que en ocasiones han tomado semanas por temas del propio laboratorio.<br><br>
   <strong>Expectativas:</strong> Considera que recibir alertas de salinidad le ayudaría a anticipar los problemas y, sobre todo, a organizar mejor sus visitas cuando maneja varios clientes, permitiéndole decidir si una parcela requiere atención inmediata o puede esperar. Para que la alerta aporte valor, debería mostrar qué parcela la presenta y su productor dueño, el nivel de conductividad eléctrica y su evolución reciente (si va en aumento o disminución), el nivel de tolerancia del cultivo sembrado en esa parcela, la fecha de la última revisión y un parámetro crítico de prioridad (bajo, medio o alto). Idealmente, también poder comparar varias parcelas en una sola pantalla.
 </td>
-<td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+<td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 26:54<br><strong>Duración:</strong> 05:30</td>
     </tr>
   </tbody>
 </table>
@@ -438,8 +466,11 @@ El 100% de los productores usaría un dispositivo que avise antes de que la sal 
 
 | Tipo | Característica | % | Entrevistados |
 |---|---|---|---|
+| Objetiva | Género masculino | 100% | DR, MP, AA |
 | Objetiva | Edad entre 20 y 23 años (promedio 21.7) | 100% | DR, MP, AA |
 | Objetiva | Parcela o fundo familiar en la costa peruana | 100% | DR, MP, AA |
+| Objetiva | Parcela en la costa centro y sur (Huaral, Ica) | 67% | DR, AA |
+| Objetiva | Parcela en la costa norte (Ferreñafe, Lambayeque) | 33% | MP |
 | Objetiva | Estudiante universitario que vive en Lima, lejos de la parcela | 67% | DR, MP |
 | Objetiva | Ha tenido al menos un análisis de suelo | 100% | DR, MP, AA |
 | Objetiva | Menciona el celular y WhatsApp como canal para recibir alertas | 33% | MP |
@@ -485,7 +516,10 @@ El 100% de los asesores considera útil recibir alertas o monitorear la salinida
 
 | Tipo | Característica | % | Entrevistados |
 |---|---|---|---|
+| Objetiva | Género femenino | 67% | YM, ES |
 | Objetiva | Asesora a varios productores en valles de la costa o del norte | 100% | YM, ES, GV |
+| Objetiva | Trabaja en valles de la costa norte (Lambayeque, La Libertad) | 67% | ES, GV |
+| Objetiva | Reside en Lima (Pueblo Libre, Jesús María, Santiago de Surco) y se desplaza a las parcelas | 100% | YM, ES, GV |
 | Objetiva | Ingeniero(a) agrónomo(a) | 67% | YM, GV |
 | Objetiva | Edad de alrededor de 30 años (promedio del segmento: 41) | 67% | YM, GV |
 | Objetiva | Usa análisis de laboratorio e inspección visual en campo | 100% | YM, ES, GV |
@@ -510,9 +544,11 @@ El 100% de los asesores considera útil recibir alertas o monitorear la salinida
 <p><em>Gráfico 10. Matriz de trazabilidad de necesidades por entrevistado.</em></p>
 </div>
 
-Al cruzar ambos segmentos se encuentran tres necesidades presentes en el 100% de los entrevistados: dar seguimiento a la parcela a distancia o con visitas poco frecuentes, depender del análisis de laboratorio para conocer el estado del suelo y querer alertas anticipadas y remotas. La detección tardía del problema aparece en el 83% de los entrevistados, al igual que la preocupación por el costo y la necesidad de saber qué hacer o qué parcela atender primero. Estas coincidencias validan la propuesta central de OsoTerra: la lectura continua de la conductividad eléctrica y las alertas de salinidad según el umbral de cada cultivo.
+Al cruzar ambos segmentos se encuentran tres necesidades presentes en el 100% de los entrevistados: dar seguimiento a la parcela a distancia o con visitas poco frecuentes, depender del análisis de laboratorio para conocer el estado del suelo y querer alertas anticipadas y remotas. La detección tardía del problema aparece en el 83% de los entrevistados, al igual que la preocupación por el costo y la necesidad de saber qué hacer o qué parcela atender primero. Estas coincidencias validan la propuesta central de OsoSense: la lectura continua de la conductividad eléctrica y las alertas de salinidad según el umbral de cada cultivo.
 
 Las diferencias entre segmentos orientan el diseño para cada tipo de usuario. Para el productor, la robustez en campo (100% frente a 0%) y las indicaciones simples son prioritarias, por lo que la solución debe operar con energía solar, seguir funcionando cuando falle la señal y traducir cada alerta en una acción concreta. Para el asesor, el historial y la evolución de la conductividad eléctrica (100% frente a 33%) son determinantes, junto con la vista de varias parcelas y la prioridad de cada alerta. Estas características son la base de los User Personas de la sección 2.3.1.
+
+**Contraste con el perfil estadístico del Capítulo I.** El perfil de los productores entrevistados difiere del perfil censal descrito en la sección 1.3, en el que el productor promedio tiene 54,5 años y educación primaria. Los tres entrevistados son familiares jóvenes que participan en la gestión de una parcela familiar, y dos de ellos lo hacen desde Lima. Este hallazgo muestra que, en muchas familias productoras, la adopción de una herramienta digital pasa por un familiar joven que usa el celular con soltura y que traslada la información al productor. Por esa razón, el User Persona del segmento 1 representa a este familiar joven, y la solución debe permitirle compartir las alertas con la persona que está en la parcela. En el segmento 2, dos de los tres entrevistados son ingenieros agrónomos y uno trabaja de forma independiente; la tercera entrevistada asesora a productores desde una consultora agrícola, lo que confirma que el asesor técnico también opera dentro de empresas de servicios y no solo de forma independiente.
 
 ## 2.3. Needfinding
 
@@ -522,12 +558,14 @@ Como parte del análisis del proceso de needfinding, se desarrollaron user perso
 
 Estas herramientas ayudan a traducir los datos de campo en perfiles accionables, orientando las decisiones estratégicas sobre las funcionalidades y la priorización técnica del producto. Las personas creadas reflejan las necesidades urgentes de detección temprana, accesibilidad tecnológica y monitoreo continuo, facilitando un diseño más empático, comprensible y efectivo para OsoSense.
 
+Las fichas también recogen lo aprendido en el análisis de competidores de la sección 2.1. Las plataformas de agricultura de precisión como CropX, WiseConn y Teralytic ofrecen datos detallados, pero con precios y lenguaje pensados para la agroexportación, y los laboratorios entregan resultados precisos pero puntuales y tardíos. Por eso la ficha de Diego destaca la necesidad de alertas simples en el celular a bajo costo, y la de María Fernanda destaca la necesidad de historial, comparación entre parcelas y datos verificables, que hoy solo obtiene con el laboratorio y el medidor portátil. Cada ficha se elaboró en UXPressia con su nombre, datos demográficos, background, objetivos, motivaciones, frustraciones, necesidades y habilidades.
+
 **Persona 1:** Familiar joven involucrado en la gestión agrícola
 - **Nombre:** Diego Ramos
 - **Edad:** 20 años
 - **Ocupación:** Estudiante universitario y apoyo en la gestión de una parcela familiar
 - **Ubicación:** Lima, Perú
-- **Zona de la parcela:** Huaral, Cañete o Chancay, por confirmar en la entrevista
+- **Zona de la parcela:** Huaral, Lima
 - **Rol:** Familiar joven que ayuda a coordinar y supervisar actividades agrícolas desde Lima
 - **Perfil:** Tiene facilidad para utilizar aplicaciones móviles, pero sus conocimientos sobre salinidad, conductividad eléctrica y análisis de suelo son básicos. Aunque no permanece diariamente en el campo, mantiene comunicación con sus familiares y participa en la coordinación de actividades, compra de insumos y seguimiento de la parcela.
 - **Background:** Diego vive en Lima y mantiene relación con una parcela familiar ubicada en una zona agrícola cercana. Visita el campo de manera ocasional y depende principalmente de llamadas y mensajes para conocer el estado del cultivo. Cuando aparece un problema, consulta a un familiar con más experiencia o a un asesor agrícola. Su interés es utilizar la tecnología para informarse a distancia y ayudar a su familia a actuar antes de que un problema del suelo afecte el cultivo.
@@ -538,6 +576,8 @@ Estas herramientas ayudan a traducir los datos de campo en perfiles accionables,
 * YouTube y Google para buscar información.
 * Google Maps y cámara del celular.
 * Internet móvil, sujeto a la conectividad disponible en la zona agrícola.
+
+**Herramienta:** WhatsApp, su principal canal para mantenerse informado sobre el estado de la parcela y coordinar con su familia.
 
 **Skills:**
 * Manejo básico de aplicaciones móviles.
@@ -582,6 +622,9 @@ Estas herramientas ayudan a traducir los datos de campo en perfiles accionables,
 **Problema principal:**
 > Diego no puede supervisar constantemente la parcela porque vive en Lima. Cuando recibe información sobre un problema del suelo, puede ser demasiado tarde para actuar.
 
+**Quote representativa:**
+> "No siempre puedo ir a la parcela; necesito saber rápido si ocurre algún problema."
+
 <div align="center">
 <img src="../assets/user-persona/userpersona1.png" alt="User Persona 1: Diego Ramos" width="800">
 <p><em>Figura. User Persona 1: Diego Ramos.</em></p>
@@ -605,6 +648,8 @@ Estas herramientas ayudan a traducir los datos de campo en perfiles accionables,
 * Internet móvil.
 * Hojas de cálculo o registros digitales.
 * Plataforma web para consultar reportes e históricos.
+
+**Herramienta:** Medidor portátil de conductividad eléctrica, su principal instrumento de diagnóstico en campo.
 
 **Skills:**
 * Interpretación de conductividad eléctrica.
@@ -708,24 +753,30 @@ Con el objetivo de comprender en profundidad las necesidades y puntos de fricci�
 
 Cada User Journey Map se encuentra directamente vinculado con su respectivo User Persona, ilustrando paso a paso las acciones, emociones y problemas que experimentan antes de la introducción de OsoSense.
 
+El end-to-end journey que se ilustra va desde que el usuario necesita conocer el estado del suelo hasta que se aplica una acción sobre la parcela. Para Diego, el recorrido tiene cinco etapas: Supervisión (pide noticias por WhatsApp), Aviso (recibe la llamada del familiar), Diagnóstico (busca la causa en internet), Asesoría (consulta al asesor técnico) y Acción (aplica el tratamiento). Para María Fernanda, las etapas son Planificación (organiza la ruta semanal), Visita (mide la conductividad eléctrica en campo), Análisis (envía muestras al laboratorio), Seguimiento (consolida los resultados) y Recomendación (comunica el plan de acción al productor).
+
 **Segmento Objetivo #1: Familiar joven involucrado en la gestión agrícola (Diego Ramos)**
 Se evidencia un flujo de supervisión fragmentado y reactivo. Diego experimenta alta ansiedad e impotencia al intentar gestionar la parcela familiar a distancia desde la ciudad. Su recorrido actual depende de llamadas telefónicas intermitentes y fotos borrosas. La falta de visibilidad en tiempo real provoca que se entere de los problemas de salinidad cuando el cultivo ya presenta daños visibles, sufriendo una profunda frustración al verse obligado a realizar gastos a ciegas en fertilizantes o riego sin un diagnóstico preciso.
 
-Figura. *As-Is User Journey Map - Persona 1: Diego Ramos*
-
-![](https://i.imgur.com/hpuGDiU.png)
-
-<p>
+<div align="center">
+<img src="../assets/journey-maps/journey-map-1.png" alt="As-Is User Journey Map: Diego Ramos" width="900">
+<p><em>Figura. As-Is User Journey Map - Persona 1: Diego Ramos.</em></p>
+</div>
 
 **Segmento Objetivo #2: Asesora técnica agrícola independiente (María Fernanda Salazar)**
 María Fernanda enfrenta un ciclo operativo ineficiente y limitante para su crecimiento profesional. Su recorrido ilustra un desgaste progresivo que inicia con la planificación a ciegas de sus visitas y cae drásticamente debido a la fricción de los viajes físicos para tomar lecturas manuales. El punto más crítico de su experiencia ocurre durante la espera prolongada por los resultados de laboratorio, lo cual genera un cuello de botella que culmina en la entrega de recomendaciones tardías al agricultor, afectando tanto el cultivo como su propia reputación profesional.
 
-Figura. *As-Is User Journey Map - Persona 2: María Fernanda Salazar*
-
-![](https://i.imgur.com/gQ5sCS4.png)
+<div align="center">
+<img src="../assets/journey-maps/journey-map-2.png" alt="As-Is User Journey Map: María Fernanda Salazar" width="900">
+<p><em>Figura. As-Is User Journey Map - Persona 2: María Fernanda Salazar.</em></p>
+</div>
 
 
 ### 2.3.4. Empathy Mapping
+
+Los Empathy Maps se elaboraron en UXPressia, vinculados a los User Personas de la sección 2.3.1. En la preparación, el equipo revisó los resúmenes de las entrevistas, el análisis de la sección 2.2.3 y los User Journey Maps, y colocó al centro de cada mapa al User Persona correspondiente. Luego, cada integrante aportó sus observaciones sobre el User Persona en las secciones del mapa, respondiendo en orden las preguntas ¿Con quién estamos empatizando?, ¿Qué necesita hacer?, ¿Qué ve?, ¿Qué dice?, ¿Qué hace?, ¿Qué escucha? y ¿Qué piensa y siente? Finalmente, el equipo agrupó las observaciones repetidas y resumió los Pains (miedos, frustraciones y obstáculos) y los Gains (deseos, necesidades y medidas de éxito) de cada User Persona.
+
+En el caso de Diego Ramos, el mapa muestra a un familiar joven que depende de llamadas, mensajes y fotos para saber qué pasa en la parcela, que no entiende los términos técnicos y que teme enterarse tarde de un problema. Sus Gains se concentran en recibir alertas claras en el celular y poder compartirlas con su familia o con un asesor. En el caso de María Fernanda Salazar, el mapa muestra a una asesora que siente presión por atender a varios productores, desconfía de mediciones no validadas y pierde tiempo en desplazamientos. Sus Gains se concentran en supervisar varias parcelas desde una plataforma, consultar históricos y tendencias y priorizar dónde intervenir.
 
 <div align="center">
 <img src="../assets/empathy-maps/Empathy%20map%201.png" alt="Empathy Map 1: Diego Ramos" width="900">
@@ -739,7 +790,7 @@ Figura. *As-Is User Journey Map - Persona 2: María Fernanda Salazar*
 
 ## 2.4. Big Picture EventStorming
 
-El equipo realizó un Big Picture EventStorming para comprender el dominio completo de OsoTerra IoT antes de especificar requisitos y diseñar la solución. El objetivo fue construir una visión compartida del negocio de monitoreo de salinidad del suelo: qué ocurre desde que un productor o un asesor técnico llega a la plataforma hasta que se toma una acción correctiva en la parcela, qué personas y sistemas participan, dónde están los principales problemas y qué oportunidades puede aprovechar la solución.
+El equipo realizó un Big Picture EventStorming para comprender el dominio completo de OsoSense antes de especificar requisitos y diseñar la solución. El objetivo fue construir una visión compartida del negocio de monitoreo de salinidad del suelo: qué ocurre desde que un productor o un asesor técnico llega a la plataforma hasta que se toma una acción correctiva en la parcela, qué personas y sistemas participan, dónde están los principales problemas y qué oportunidades puede aprovechar la solución.
 
 La sesión se trabajó de forma colaborativa en FigJam y se apoyó en la información ya obtenida en capítulos anteriores: el problema y los segmentos objetivo del Capítulo I, las hipótesis del Lean UX Process, el análisis de competidores, las guías y el registro de entrevistas, y los términos del dominio agronómico. Se siguió la guía paso a paso de Big Picture EventStorming indicada en el enunciado (https://bit.ly/bpes-guide) y la notación del *EventStorming Glossary & Cheat Sheet* de ddd-crew.
 
@@ -870,7 +921,7 @@ El siguiente glosario recoge los términos y conceptos del dominio del negocio e
 | **Salinity Threshold** | Umbral de salinidad | Valor de conductividad eléctrica a partir del cual un cultivo determinado comienza a experimentar reducción de rendimiento. Varía por especie según el modelo de Maas y Hoffman. |
 | **Salt Tolerance** | Tolerancia a la sal | Capacidad de un cultivo para mantener su rendimiento bajo condiciones de salinidad creciente. Los cultivos se clasifican como sensibles, moderadamente sensibles, moderadamente tolerantes o tolerantes. |
 | **Salt Leaching** | Lavado de sales | Práctica de manejo consistente en aplicar una lámina de riego superior a la demanda del cultivo con el fin de desplazar las sales acumuladas por debajo de la zona radicular. |
-| **Leaching Requirement** | Requerimiento de lavado | Fracción adicional de la lámina de riego necesaria para mantener la salinidad de la zona radicular por debajo del umbral tolerable del cultivo. |
+| **Leaching Requirement** | Necesidad de lavado | Fracción adicional de la lámina de riego necesaria para mantener la salinidad de la zona radicular por debajo del umbral tolerable del cultivo. |
 | **Soil Moisture** | Humedad del suelo | Contenido de agua presente en el suelo. Afecta directamente la lectura de conductividad eléctrica, ya que la corriente circula a través de la solución del suelo. |
 | **Soil Temperature** | Temperatura del suelo | Temperatura del perfil edáfico. Influye sobre la conductividad eléctrica medida, por lo que toda lectura requiere compensación térmica para ser comparable. |
 | **Temperature Compensation** | Compensación por temperatura | Ajuste matemático aplicado a una lectura de conductividad eléctrica para expresarla en su valor equivalente a una temperatura de referencia, convencionalmente 25 °C. |
@@ -887,7 +938,7 @@ El siguiente glosario recoge los términos y conceptos del dominio del negocio e
 | **Growing Season** | Campaña agrícola | Ciclo productivo que abarca desde la siembra hasta la cosecha de un cultivo. En el Perú se contabiliza oficialmente de agosto a julio. |
 | **Yield** | Rendimiento | Producción obtenida por unidad de superficie, habitualmente expresada en toneladas por hectárea. |
 | **Agricultural Producer** | Productor agropecuario | Persona que conduce una unidad agropecuaria y toma las decisiones sobre su manejo. Es el usuario principal de la solución. |
-| **Smallholder** | Pequeño productor | Productor agropecuario que conduce una unidad menor a cinco hectáreas. Representa el 81,9 % de los productores del Perú. |
+| **Smallholder** | Pequeño productor | Productor agropecuario que conduce una unidad menor a cinco hectáreas. Representa el 81,8 % de los productores del Perú. |
 | **Agronomist Advisor** | Asesor agronómico | Ingeniero agrónomo que presta servicios de asesoría técnica a uno o varios productores. Es el segundo segmento objetivo de la solución. |
 | **Technical Assistance** | Asistencia técnica | Servicio de acompañamiento profesional al productor en las decisiones de manejo del cultivo. |
 | **Soil Analysis** | Análisis de suelo | Determinación en laboratorio de las propiedades físicas y químicas de una muestra de suelo. Constituye la alternativa vigente y el referente de precisión frente al cual se valida la solución. |

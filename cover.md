@@ -7,7 +7,7 @@
   text-align: center;
   font-family: Arial, sans-serif;
 ">
-<img src="https://raw.githubusercontent.com/bananawire/iot-report/e9675ff926a72205d0e30e312a2bc1da2e5e1077/assets/cover/upc.svg" alt="UPC-LOGO" width="100" style="margin-bottom: 30px;"/>
+<img src="assets/cover/upc.svg" alt="UPC-LOGO" width="100" style="margin-bottom: 30px;"/>
 <p style="margin: 5px 0;">Universidad Peruana de Ciencias Aplicadas</p>
 <p style="margin: 5px 0;">Carrera de Ingeniería de Software</p>
 <p style="margin: 5px 0;">Ciclo 202620</p>
