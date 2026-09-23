@@ -80,6 +80,7 @@
 | 0.0.76 | 20/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1.1 General Style Guidelines (principios de diseño, branding, colores, tipografía, espaciado, iconografía y tono de comunicación) con ocho tableros de referencia. |
 | 0.0.77 | 20/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1.2 Web, Mobile and IoT Style Guidelines (componentes web, responsive y Landing Page, Android, interfaz física del dispositivo, visualización de datos, accesibilidad, i18n y movimiento) con seis tableros de referencia. |
 | 0.0.78 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3.1 Landing Page Wireframe (wireframes Desktop y Mobile Web Browser con principios, diseño inclusivo y arquitectura de información). |
+| 0.0.79 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3.2 Landing Page Mock-up (Design System, mock-ups Desktop y Mobile Web Browser y contraste WCAG). |
 
 # Project Report Collaboration Insights
 
