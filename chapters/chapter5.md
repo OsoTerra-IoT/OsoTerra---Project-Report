@@ -515,19 +515,169 @@ El Landing Page ya aplica `aria-label` en la navegación y el menú, `aria-label
 
 El movimiento explica cambios y nunca es decorativo. En el Landing Page, los cambios de color de *hover* y foco duran 150 ms con la curva `cubic-bezier(0.4, 0, 0.2, 1)`; el acordeón se abre en 360 ms; y las tarjetas aparecen al hacer scroll entre 750 y 900 ms con un leve desplazamiento vertical. Con la preferencia «reducir movimiento» del sistema, las apariciones se desactivan y el contenido se muestra directamente.
 
-Diseño en Figma: [OsoSense — Style Guidelines](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq) (páginas «SG · Marca» a «SG · Datos y accesibilidad»).
+Diseño en Figma: [Marca](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-17&t=zv0k9BZ0KNZ8WH8D-1), [Color](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-18&t=zv0k9BZ0KNZ8WH8D-1), [Tipografía y espacio](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-19&t=zv0k9BZ0KNZ8WH8D-1), [Íconos y componentes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-20&t=zv0k9BZ0KNZ8WH8D-1), [Mobile e IoT](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-21&t=zv0k9BZ0KNZ8WH8D-1) y [Datos y accesibilidad](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-22&t=zv0k9BZ0KNZ8WH8D-1).
 
 ## 5.2. Information Architecture
 
+La arquitectura de información del Landing Page responde a una pregunta: ¿qué necesita saber un productor o un asesor técnico, y en qué orden, para decidir probar OsoSense? Las entrevistas (sección 2.2.3) mostraron que el productor desconfía de un sensor de bajo costo, no conoce la salinidad como un problema medible y quiere indicaciones claras; el asesor busca datos que sustenten sus recomendaciones. Por eso el contenido se ordena como un recorrido que primero hace visible el problema, luego muestra la solución y cómo se adopta, y al final da confianza antes de pedir una acción.
+
+El Landing Page es una **sola página** de once bloques con anclas (`#id`). Esta decisión reduce la carga de navegación (no hay páginas internas que recordar), funciona bien con conexiones rurales lentas porque todo se carga una sola vez y permite enlazar directamente a cualquier bloque desde WhatsApp o desde la Web App. Los diagramas de esta sección se elaboraron en Figma, en la página «IA · Landing Page».
+
+<div align="center">
+<img src="../assets/information-architecture/ia-01-mapa-sitio.png" alt="Mapa del sitio del Landing Page" width="900">
+<p><em>Figura 5.47. Mapa del sitio del Landing Page.</em></p>
+</div>
+
+El mapa del sitio muestra la raíz (`ososense.pe`), los tres elementos que acompañan a toda la página (encabezado fijo, hero y pie de página) y los ocho bloques de contenido agrupados en seis etapas del recorrido: **Problema**, **Beneficio**, **Solución**, **Adopción**, **Confianza** y **Acción**. Cada bloque tiene un ancla propia (por ejemplo `#planes`), que es el destino de los enlaces del menú.
+
 ### 5.2.1. Organization Systems
+
+Se usan los tres sistemas de organización visual, cada uno en el grupo de información donde ayuda más.
+
+**Organización secuencial (paso a paso).** Es el sistema principal de la página: los bloques siguen un orden fijo, de modo que cada uno responde la pregunta que deja el anterior.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-02-secuencia.png" alt="Seis etapas del recorrido con las miniaturas de cada bloque" width="900">
+<p><em>Figura 5.48. Organización secuencial del recorrido.</em></p>
+</div>
+
+| Etapa | Bloque | Pregunta del visitante que responde |
+|---|---|---|
+| Problema | El impacto de la salinidad | ¿Por qué debería preocuparme la sal en mi suelo? |
+| Beneficio | Protege tu inversión agrícola | ¿Qué gano con medirla? |
+| Solución | Nuestras capacidades · Proceso de implementación | ¿Qué hace OsoSense y cómo se instala? |
+| Adopción | Planes a tu medida | ¿Cuánto cuesta y cuál me conviene? |
+| Confianza | Preguntas frecuentes · El equipo | ¿Funciona sin señal? ¿Quién está detrás? |
+| Acción | Asegura tu cosecha | ¿Qué hago ahora? |
+
+Dentro del bloque de proceso se repite el patrón secuencial: los cuatro pasos numerados (mapeo, instalación, umbrales y riego) se leen en orden, en zigzag alrededor de la foto en escritorio y en lista vertical en móvil.
+
+**Organización jerárquica (jerarquía visual).** Dentro de cada bloque, el contenido se ordena por importancia con tamaño, peso y posición.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-03-jerarquia.png" alt="Sección de impacto con los cuatro niveles de jerarquía marcados" width="742">
+<p><em>Figura 5.49. Jerarquía visual de una sección.</em></p>
+</div>
+
+En el bloque de impacto, los marcadores indican el orden en que el ojo recorre el contenido: **(1)** el título H2 centrado de 36 px, **(2)** la bajada gris de 14 px, **(3)** los datos en tarjetas, con la cifra en negrita como primer elemento de cada una, y **(4)** la acción, un botón claro al final de la tarjeta de historia. Todos los bloques repiten esta estructura, lo que permite recorrer la página leyendo solo los títulos.
+
+**Organización matricial.** Se usa donde el visitante compara opciones en varias dimensiones: los planes.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-04-matriz.png" alt="Matriz de comparación de los tres planes" width="742">
+<p><em>Figura 5.50. Organización matricial de los planes.</em></p>
+</div>
+
+Los tres planes se presentan como columnas paralelas con las mismas filas (precio, sensores, frecuencia de lectura, alertas, curvas, historial, informes y soporte), de modo que la comparación se hace de un vistazo. El plan recomendado se destaca con fondo verde claro, sombra y la etiqueta «Más Popular».
+
+**Esquemas de categorización.** Además de la organización visual, el contenido se clasifica con estos esquemas:
+
+<div align="center">
+<img src="../assets/information-architecture/ia-05-esquemas.png" alt="Cuatro esquemas de categorización con ejemplos" width="900">
+<p><em>Figura 5.51. Esquemas de categorización.</em></p>
+</div>
+
+| Esquema | Dónde se aplica | Por qué |
+|---|---|---|
+| **Por tópicos** | Menú principal (Ecosistema, Capacidades, Planes, FAQ, Equipo, Contacto) y columnas del pie de página. | El visitante busca por tema; cada tema es un bloque. |
+| **Por audiencia** | Planes: Piloto para quien quiere probar, Productor para el productor con una parcela y Asesor Pro para asesores técnicos y agroindustria. | Los dos segmentos del Capítulo I tienen necesidades y presupuestos distintos. |
+| **Cronológico** | Proceso de implementación (pasos 01 a 04). | La adopción ocurre en un orden temporal real. |
+| **Alfabético** | No se usa en el Landing Page. | Con once bloques no aporta; se reserva para listas largas de las aplicaciones, como parcelas y cultivos. |
 
 ### 5.2.2. Labeling Systems
 
+Las etiquetas usan el menor número de palabras posible y el vocabulario de los usuarios, no el técnico: «Planes» y no «Suscripciones», «Probar Gratis» y no «Registro». Cada etiqueta del menú coincide con el título del bloque al que lleva, para que el visitante confirme que llegó al lugar correcto.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-06-etiquetado.png" alt="Etiquetas del menú y de los botones con su destino y lo que el visitante espera encontrar" width="900">
+<p><em>Figura 5.52. Etiquetas y asociaciones.</em></p>
+</div>
+
+La figura relaciona cada etiqueta con su destino y con lo que el visitante espera encontrar. Las etiquetas se agrupan en tres tipos: de **menú** (tópicos, en gris), de **llamada a la acción** (verbos, en verde lleno) y de **utilidad** (idioma, con contorno).
+
+| Etiqueta | Tipo | Destino | Asociación que genera |
+|---|---|---|---|
+| Ecosistema | Menú | `#ecosistema` (hero) | Qué es OsoSense y cómo se ve en campo. |
+| Capacidades | Menú | `#capacidades` | Qué mide el sensor y qué hace la plataforma. |
+| Planes | Menú | `#planes` | Precios y qué incluye cada plan. |
+| FAQ | Menú | `#faq` | Respuestas a dudas de señal, instalación, batería y uso. |
+| Equipo | Menú | `#equipo` | Quiénes son OsoTerra. |
+| Contacto | Menú | `#contacto` | Cómo empezar, sin llenar el encabezado de teléfonos y correos. |
+| Probar Gratis | Acción | `#planes` | El plan Piloto de 14 días sin costo. |
+| Conocer solución | Acción | `#capacidades` | La solución explicada en cuatro capacidades. |
+| Elegir Piloto · Elegir Productor · Elegir Asesor | Acción | Registro en la Web App con el plan elegido | Crear la cuenta con ese plan; los botones se enlazarán a la vista de registro cuando la Web App esté desplegada. |
+| Conocer Más | Acción | `#capacidades` | Cómo la tecnología resuelve el problema recién mostrado. |
+| Comenzar ahora | Acción | `#planes` | Volver a los planes para empezar. |
+| EN \| ES | Utilidad | La misma página en el otro idioma | El contenido completo cambia de idioma sin recargar. |
+
+Dentro de los bloques, los datos se etiquetan con la cifra primero y la explicación después («+300,000 ha afectadas en la costa», «Hasta 40% de pérdida en rendimiento»), y los niveles de salinidad siempre con palabra, color e ícono («Muy alto»), nunca solo con la medida en dS/m.
+
 ### 5.2.3. SEO Tags and Meta Tags
+
+El Landing Page incluye en su `<head>` las etiquetas que piden los buscadores y las redes sociales. Se agregaron en la rama `feature/seo-meta-tags` del repositorio del Landing Page.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-07-seo.png" alt="Vista previa en un buscador, tarjeta para redes sociales y código de las etiquetas" width="900">
+<p><em>Figura 5.53. SEO y meta tags del Landing Page.</em></p>
+</div>
+
+A la izquierda, cómo aparece la página en un buscador: el título y la descripción son exactamente los valores de `title` y `description`. Al centro, la tarjeta que se genera al compartir el enlace por WhatsApp o redes sociales, a partir de las etiquetas Open Graph. A la derecha, el código.
+
+| Etiqueta | Valor |
+|---|---|
+| `title` | OsoSense - Suelo vivo, Cosecha segura |
+| `meta description` | OsoSense mide la salinidad del suelo con sensores IoT de bajo costo y envía alertas al celular para que los productores de la costa peruana protejan su cosecha. |
+| `meta keywords` | salinidad del suelo, sensor IoT, conductividad eléctrica, CEe, agricultura inteligente, alertas de riego, palto, uva, arándano, Piura, Lambayeque, OsoSense |
+| `meta author` | OsoTerra |
+| `meta robots` | index, follow |
+| `meta theme-color` | #047857 |
+| `og:title` · `og:description` | Título de la página · «Monitoreo continuo de salinidad con sensores IoT de bajo costo y alertas móviles a pie de surco.» |
+| `og:image` | Fotografía del hero (`hero-fields.webp`) |
+| `og:locale` | es_PE, con `og:locale:alternate` en_US |
+| `twitter:card` | summary_large_image |
+| `link rel="icon"` | Favicon con el símbolo de Oso Terra (64 y 180 px) |
+
+Criterios de los valores: el título tiene 37 caracteres, por debajo de los 60 que muestran los buscadores, y combina la marca con la promesa; la descripción tiene 160 caracteres, justo en el límite que muestran los buscadores, y nombra el problema (salinidad), la tecnología (sensores IoT), el beneficio (alertas al celular) y el público (productores de la costa); las palabras clave mezclan el problema, la tecnología, los cultivos del segmento y las regiones donde está.
 
 ### 5.2.4. Searching Systems
 
+Con once bloques en una sola página, un buscador interno no aporta: el visitante encuentra lo que busca más rápido con las ayudas de la página que escribiendo una consulta.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-09-busqueda.png" alt="Menú de anclas, preguntas frecuentes y pie de página como ayudas para encontrar" width="900">
+<p><em>Figura 5.54. Ayudas para encontrar información.</em></p>
+</div>
+
+| Ayuda | Cómo ayuda a encontrar | Cómo se ve el resultado |
+|---|---|---|
+| **Menú de anclas** | Seis destinos de una palabra, visibles siempre en el encabezado. | La página se desplaza hasta el bloque y el ancla activa queda subrayada. |
+| **Preguntas frecuentes** | Reúne las dudas más repetidas en las entrevistas: señal, instalación, batería y conocimientos técnicos. | La pregunta se abre en el lugar y muestra la respuesta, sin salir de la página. |
+| **Pie de página** | Agrupa los enlaces de ayuda: preguntas frecuentes, contacto, guías de instalación y soporte. | Enlaces directos a cada tema. |
+
+El navegador conserva además su búsqueda de texto (Ctrl + F), que funciona sobre todo el contenido porque está en una sola página y en texto real, no en imágenes.
+
 ### 5.2.5. Navigation Systems
+
+La navegación combina siete sistemas, cada uno con un propósito distinto. La figura los ubica sobre la página completa: cada punto de color marca dónde aparece cada tipo.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-08-navegacion.png" alt="Página completa del Landing Page con los siete sistemas de navegación marcados" width="900">
+<p><em>Figura 5.55. Sistemas de navegación.</em></p>
+</div>
+
+| Sistema | Dónde está | Cómo guía al visitante |
+|---|---|---|
+| **Global** (verde) | Encabezado fijo | El logo vuelve al inicio y las seis anclas llevan a cada bloque; el ancla del bloque visible se subraya en `#059669` (y se marca con `aria-current`), así el visitante sabe dónde está. |
+| **Utilidad** (azul) | Encabezado | El selector de idioma y el botón *Probar Gratis* siguen visibles durante todo el recorrido. |
+| **Local** (verde claro) | Dentro de los bloques | *Conocer solución* en el hero y *Conocer Más* en el impacto llevan a las capacidades; las flechas del carrusel cambian la foto del hero. |
+| **Contextual** (naranja) | Planes | Los botones *Elegir* conectan la decisión con el registro. |
+| **Ayuda** (morado) | Preguntas frecuentes | El acordeón resuelve dudas sin salir de la página. |
+| **Llamada final** (rojo) | Banner de contacto | *Comenzar ahora* cierra el recorrido y devuelve a los planes. |
+| **Pie de página** (gris) | Final de la página | Navegación secundaria en Empresa, Soluciones y Ayuda. |
+
+El recorrido principal va de arriba abajo con el scroll; los atajos del menú permiten saltar a cualquier bloque; y el desplazamiento entre anclas es suave para que el visitante vea que se movió dentro de la misma página. En móvil, las anclas y el idioma pasan al menú de hamburguesa, el botón *Probar Gratis* sigue visible junto a él y, al tocar un ancla, el menú se cierra y la página se desplaza hasta el bloque (ver la figura de navegación de la sección 5.1.2).
+
+Diagramas en Figma: [OsoSense — Arquitectura de información](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2&t=zv0k9BZ0KNZ8WH8D-1).
 
 ## 5.3. Landing Page UI Design
 
@@ -559,22 +709,22 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-1.png" alt="Wireframe desktop del Landing Page: encabezado, hero e impacto de la salinidad" width="800">
-<p><em>Figura 5.47. Wireframe Desktop Web Browser (1/4): encabezado, hero y bloque de impacto de la salinidad.</em></p>
+<p><em>Figura 5.56. Wireframe Desktop Web Browser (1/4): encabezado, hero y bloque de impacto de la salinidad.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="800">
-<p><em>Figura 5.48. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
+<p><em>Figura 5.57. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-3.png" alt="Wireframe desktop del Landing Page: planes y preguntas frecuentes" width="800">
-<p><em>Figura 5.49. Wireframe Desktop Web Browser (3/4): planes y preguntas frecuentes.</em></p>
+<p><em>Figura 5.58. Wireframe Desktop Web Browser (3/4): planes y preguntas frecuentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-4.png" alt="Wireframe desktop del Landing Page: equipo, llamado a la acción y pie de página" width="800">
-<p><em>Figura 5.50. Wireframe Desktop Web Browser (4/4): equipo, llamado a la acción y pie de página.</em></p>
+<p><em>Figura 5.59. Wireframe Desktop Web Browser (4/4): equipo, llamado a la acción y pie de página.</em></p>
 </div>
 
 **Principios y elementos de diseño aplicados**
@@ -605,7 +755,7 @@ En 390 px la estructura se conserva y solo cambia la disposición: el menú se c
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-mobile.png" alt="Wireframe mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.51. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<p><em>Figura 5.60. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
 </div>
 
 ### 5.3.2. Landing Page Mock-up
@@ -624,27 +774,27 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-design-system.png" alt="Design System del Landing Page: colores, tipografía y componentes" width="800">
-<p><em>Figura 5.52. Design System del Landing Page: estilos de color, escala tipográfica y componentes.</em></p>
+<p><em>Figura 5.61. Design System del Landing Page: estilos de color, escala tipográfica y componentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-1.png" alt="Mock-up desktop del Landing Page: encabezado con logo, hero e impacto" width="800">
-<p><em>Figura 5.53. Mock-up Desktop Web Browser (1/4): encabezado con el logo de Oso Terra, hero con fotografía del valle y bloque de impacto.</em></p>
+<p><em>Figura 5.62. Mock-up Desktop Web Browser (1/4): encabezado con el logo de Oso Terra, hero con fotografía del valle y bloque de impacto.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="800">
-<p><em>Figura 5.54. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
+<p><em>Figura 5.63. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-3.png" alt="Mock-up desktop del Landing Page: planes y preguntas frecuentes" width="800">
-<p><em>Figura 5.55. Mock-up Desktop Web Browser (3/4): planes con el plan recomendado destacado y preguntas frecuentes.</em></p>
+<p><em>Figura 5.64. Mock-up Desktop Web Browser (3/4): planes con el plan recomendado destacado y preguntas frecuentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-4.png" alt="Mock-up desktop del Landing Page: equipo, llamado a la acción y pie de página" width="800">
-<p><em>Figura 5.56. Mock-up Desktop Web Browser (4/4): equipo, banner de llamado a la acción y pie de página.</em></p>
+<p><em>Figura 5.65. Mock-up Desktop Web Browser (4/4): equipo, banner de llamado a la acción y pie de página.</em></p>
 </div>
 
 **Cómo se aplican los principios en el mock-up**
@@ -664,10 +814,10 @@ El mock-up móvil aplica los mismos estilos con los ajustes de la sección anter
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-mobile.png" alt="Mock-up mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.57. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<p><em>Figura 5.66. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
 </div>
 
-Diseño en Figma: [OsoSense — Landing Page UI Design](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq).
+Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2&t=zv0k9BZ0KNZ8WH8D-1), [mock-ups](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3&t=zv0k9BZ0KNZ8WH8D-1) y [Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1&t=zv0k9BZ0KNZ8WH8D-1) del Landing Page.
 
 ## 5.4. Applications UX/UI Design
 
