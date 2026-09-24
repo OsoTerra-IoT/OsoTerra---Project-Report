@@ -82,6 +82,8 @@
 | 0.0.78 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3.1 Landing Page Wireframe (wireframes Desktop y Mobile Web Browser con principios, diseño inclusivo y arquitectura de información). |
 | 0.0.79 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3.2 Landing Page Mock-up (Design System, mock-ups Desktop y Mobile Web Browser y contraste WCAG). |
 | 0.0.80 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1 Style Guidelines actualizada a los tokens del Landing Page (verde esmeralda, neutros y Plus Jakarta Sans), con 19 figuras sin rótulos explicadas en el texto; renumeración de figuras de la 5.3. |
+| 0.0.81 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1 Style Guidelines rehecha en Figma con 46 figuras por tema (marca, color, tipografía y espacio, íconos y componentes, mobile e IoT, datos y accesibilidad), valores anotados y explicación en el texto. |
+| 0.0.82 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3 Landing Page Mock-up actualizada con los botones en `#047857` y renumeración de figuras. |
 
 # Project Report Collaboration Insights
 

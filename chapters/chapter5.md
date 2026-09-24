@@ -6,9 +6,9 @@ Este capítulo traduce el análisis de los usuarios (Capítulo II) y el diseño 
 
 Las guías de estilo de Oso Terra buscan que el Landing Page, la Web App, la Mobile App y el dispositivo de campo se perciban como un solo producto. Por eso todas las decisiones visuales se expresan como **tokens de diseño** (colores, tipografía, espaciado, formas y movimiento) que se declaran una sola vez y se usan en cada plataforma: como variables CSS en el Landing Page, como tema de Angular Material en la Web App, como `ColorScheme` y `Typography` de Material 3 en Jetpack Compose y como colores y patrones de destello del LED en el dispositivo.
 
-La guía parte del **Landing Page ya implementado**, que es el primer producto publicado de OsoSense: de su hoja de estilos se midieron los colores, la tipografía, los radios y los espaciados. A eso se suman el logo oficial de Oso Terra, los niveles de salinidad que ya calcula la Web App y los hallazgos de las entrevistas (sección 2.2.3) y del perfil de usuarios (sección 1.3). Para validar las decisiones se usó una base de conocimiento de diseño de interfaces (paletas, combinaciones tipográficas y reglas de UX por tipo de producto), que para productos de tecnología agrícola recomienda un verde de acción con texto blanco solo cuando el contraste es suficiente y, para productos SaaS cercanos, una sola familia tipográfica versátil. Cuando una regla describe algo que un producto todavía no implementa, se marca como *a adoptar*.
+La guía toma como fuente el **Landing Page implementado**, que es el primer producto publicado de OsoSense: sus colores, su tipografía, sus radios y sus espaciados son los valores fijos de la marca. A eso se suman el logo oficial de Oso Terra, los niveles de salinidad que ya calcula la Web App y los hallazgos de las entrevistas (sección 2.2.3) y del perfil de usuarios (sección 1.3). Las decisiones se contrastaron con una base de conocimiento de diseño de interfaces (paletas, combinaciones tipográficas y reglas de UX por tipo de producto), que para productos de tecnología agrícola recomienda un verde de acción con texto blanco solo cuando el contraste es suficiente y, para productos SaaS cercanos, una sola familia tipográfica. Siguiendo esa revisión, el Landing Page pasó sus botones con texto al tono `#047857` de su propia paleta.
 
-Las imágenes de esta sección muestran solo el elemento (logo, color, componente o pantalla), sin rótulos; cada una se explica en el texto que la acompaña, de izquierda a derecha.
+Todas las figuras de esta sección se diseñaron en Figma, en seis páginas de Style Guidelines (Marca, Color, Tipografía y espacio, Íconos y componentes, Mobile e IoT, y Datos y accesibilidad). Cada figura muestra un solo tema, con los valores anotados debajo de cada muestra, y se explica en el texto que la acompaña.
 
 ### 5.1.1. General Style Guidelines
 
@@ -28,178 +28,231 @@ Los usuarios principales de OsoSense son productores agrícolas de 54,5 años de
 
 #### Branding
 
-El logo de Oso Terra combina la silueta de un oso dentro de un círculo, con montañas y colinas en su interior. El oso expresa vigilancia y resistencia; el paisaje, la tierra que se protege. El wordmark usa dos tonos: «Oso» en casi negro y «Terra» en verde oliva.
+El logo de Oso Terra combina la silueta de un oso dentro de un círculo, con montañas y colinas en su interior. El oso expresa vigilancia y resistencia; el paisaje, la tierra que se protege. El wordmark usa dos tonos: «Oso» en casi negro y «Terra» en verde oliva. Hay tres versiones del logo.
 
 <div align="center">
-<img src="../assets/style-guidelines/01-logo-versiones.png" alt="Logo principal de Oso Terra, símbolo y lockup de OsoSense" width="800">
-<p><em>Figura 5.1. Versiones del logo.</em></p>
+<img src="../assets/style-guidelines/sg-01-logo-principal.png" alt="Logo principal de Oso Terra" width="486">
+<p><em>Figura 5.1. Logo principal.</em></p>
 </div>
 
-La Figura 5.1 muestra, de izquierda a derecha, las tres versiones del logo:
-
-| Versión | Composición | Dónde se usa |
-|---|---|---|
-| Logo principal | Símbolo sobre el wordmark «OsoTerra», apilados | Documentos, carátula del informe, presentaciones y todo lo que habla de la startup. |
-| Símbolo | Solo el círculo con el oso | Favicon, ícono de la aplicación, avatar, grabado del dispositivo y espacios cuadrados pequeños. |
-| Lockup de producto | Símbolo a la izquierda y «OsoSense» en Plus Jakarta Sans Bold | Encabezado y pie de página del Landing Page, barra superior de la Web App y de la Mobile App. |
+El **logo principal** apila el símbolo sobre el wordmark «OsoTerra». Es la firma de la startup: se usa en documentos, en la carátula de este informe, en presentaciones y en todo lo que habla de la empresa y no de un producto.
 
 <div align="center">
-<img src="../assets/style-guidelines/02-logo-fondos.png" alt="Lockup de OsoSense sobre blanco, verde claro, verde oscuro y casi negro" width="800">
-<p><em>Figura 5.2. Fondos permitidos.</em></p>
+<img src="../assets/style-guidelines/sg-01-simbolo.png" alt="Símbolo del logo" width="486">
+<p><em>Figura 5.2. Símbolo.</em></p>
 </div>
 
-La Figura 5.2 fija los cuatro fondos admitidos. Sobre **blanco** y sobre **verde claro** (`#F0FDF4`) se usa el logo a color con el nombre en casi negro. Sobre **verde oscuro** (`#065F46`) y sobre **casi negro** (`#111827`) se usa la versión monocromática en blanco, porque el logo a color pierde contraste en fondos oscuros.
+El **símbolo** es solo el círculo con el oso. Se usa donde el espacio es cuadrado o pequeño: favicon, ícono de la aplicación, avatar de notificaciones y grabado del dispositivo.
 
 <div align="center">
-<img src="../assets/style-guidelines/03-logo-zona-tamanos.png" alt="Zona de seguridad del lockup y tamaños mínimos del símbolo" width="800">
-<p><em>Figura 5.3. Zona de seguridad y tamaños del símbolo.</em></p>
+<img src="../assets/style-guidelines/sg-01-lockup.png" alt="Lockup de producto OsoSense" width="486">
+<p><em>Figura 5.3. Lockup de producto.</em></p>
 </div>
 
-En la Figura 5.3, a la izquierda, el recuadro punteado marca la **zona de seguridad**: alrededor del logo se deja libre un margen igual a la mitad del diámetro del símbolo (los cuadros grises de las esquinas); ningún texto, borde ni imagen entra en esa zona. A la derecha, el símbolo en sus tamaños de uso:
+El **lockup de producto** pone el símbolo a la izquierda y el nombre «OsoSense» en Plus Jakarta Sans Bold, con una separación de un cuarto del diámetro del símbolo. Es la versión del encabezado y del pie de página del Landing Page y de la barra superior de las aplicaciones.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-01-contexto.png" alt="Logo en la pestaña del navegador, en el encabezado, como ícono de app y grabado en el dispositivo" width="900">
+<p><em>Figura 5.4. Logo en contexto.</em></p>
+</div>
+
+La figura anterior muestra el logo en sus cuatro soportes reales, de izquierda a derecha: el favicon de 32 px en la pestaña del navegador junto al título de la página; el lockup de 40 px en el encabezado del Landing Page (captura real); el ícono de la aplicación en la pantalla de inicio de un teléfono, sobre fondo blanco y con esquinas de 16 px; y el símbolo en versión blanca grabado en la carcasa del dispositivo, de 12 mm.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-01-fondos.png" alt="Lockup sobre cuatro fondos permitidos" width="900">
+<p><em>Figura 5.5. Fondos permitidos.</em></p>
+</div>
+
+Solo se admiten cuatro fondos: **blanco** `#FFFFFF` y **verde claro** `#F0FDF4`, con el logo a color y el nombre en casi negro; y **verde oscuro** `#065F46` y **casi negro** `#111827`, con la versión monocromática blanca, porque el logo a color pierde contraste sobre fondos oscuros.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-01-construccion.png" alt="Construcción del símbolo y zona de seguridad del lockup" width="800">
+<p><em>Figura 5.6. Construcción y zona de seguridad.</em></p>
+</div>
+
+A la izquierda, la **construcción** del símbolo sobre una cuadrícula de 20 px: el círculo exterior, los ejes que lo centran y dos circunferencias guía que marcan hasta dónde llega el oso. A la derecha, la **zona de seguridad** del lockup: un margen libre igual a la mitad del diámetro del símbolo en los cuatro lados (el recuadro punteado); ningún texto, borde ni imagen entra en esa zona.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-01-tamanos.png" alt="Símbolo en seis tamaños" width="484">
+<p><em>Figura 5.7. Tamaños del símbolo.</em></p>
+</div>
 
 | Tamaño | Uso |
 |---|---|
 | 96 px | Portadas, pantallas de bienvenida y estados vacíos. |
-| 64 px | Ícono de la aplicación en tiendas y avatar de notificación. |
+| 64 px | Ícono de la aplicación en la tienda y avatar de notificación. |
 | 48 px | Pie de página del Landing Page. |
 | 40 px | Encabezado del Landing Page y barras superiores. |
-| 32 px | Mínimo recomendado en pantalla; por debajo se pierden las montañas interiores. |
-| 16 px | Solo favicon (en el Landing Page se entrega también en 64 y 180 px para pantallas de alta densidad). |
+| 32 px | Mínimo en pantalla; por debajo se pierden las montañas interiores. |
+| 16 px | Solo favicon (marcado en rojo en la figura); el Landing Page entrega además 64 y 180 px para pantallas de alta densidad. |
 
 <div align="center">
-<img src="../assets/style-guidelines/04-logo-usos-incorrectos.png" alt="Cinco usos incorrectos del símbolo" width="800">
-<p><em>Figura 5.4. Usos incorrectos.</em></p>
+<img src="../assets/style-guidelines/sg-01-usos-incorrectos.png" alt="Seis usos incorrectos del logo" width="900">
+<p><em>Figura 5.8. Usos incorrectos.</em></p>
 </div>
 
-La Figura 5.4 reúne, de izquierda a derecha, los cinco usos que **no** se permiten: deformar el símbolo (estirarlo o achatarlo); recolorearlo fuera de la paleta; rotarlo o agregarle sombras y efectos; usar la versión a color sobre un fondo oscuro, donde se pierde; y colocarlo sobre una fotografía o un fondo con textura que compite con él.
+Los seis usos no permitidos, de izquierda a derecha: deformar el símbolo; recolorearlo fuera de la paleta; rotarlo o agregarle sombras; usar la versión a color sobre un fondo oscuro, donde se pierde; colocarlo sobre una fotografía que compite con él; y escribir el nombre con otra tipografía, otro color o en cursiva.
 
 #### Colors
 
-La paleta tiene tres capas: el **verde esmeralda** de la interfaz, que es el color de acción de todos los productos; los **neutros**, que ocupan la mayor parte de cada pantalla; y los **colores de marca** del logo, que no se usan en la interfaz fuera del propio logo. A esto se suman los colores semánticos de los niveles de salinidad.
+La paleta es la del Landing Page y tiene tres capas: el **verde esmeralda**, que es el color de acción de todos los productos; los **neutros**, que ocupan la mayor parte de cada pantalla; y los **colores del logo**, que solo viven dentro del logo. Se suman los colores de los niveles de salinidad. Las escalas se presentan como estratos de una muestra de suelo, del tono más claro al más oscuro.
 
 <div align="center">
-<img src="../assets/style-guidelines/05-colores-primario.png" alt="Escala de verde esmeralda de 50 a 900" width="800">
-<p><em>Figura 5.5. Escala del color primario.</em></p>
+<img src="../assets/style-guidelines/sg-02-primario.png" alt="Escala de verde esmeralda de 50 a 900" width="900">
+<p><em>Figura 5.9. Escala del color primario.</em></p>
 </div>
 
-La Figura 5.5 muestra la escala de diez tonos del verde esmeralda, del más claro al más oscuro. Los dos tonos recuadrados son los de uso principal.
-
-| Token | Hex | Uso |
+| Token | Hex | Uso en el Landing Page y las apps |
 |---|---|---|
 | `primary-50` | `#ECFDF5` | Fondos muy suaves. |
-| `primary-100` | `#D1FAE5` | Etiquetas y chips (en el Landing Page se usa `#DCFCE7`). |
-| `primary-200` a `primary-500` | `#A7F3D0` · `#6EE7B7` · `#34D399` · `#10B981` | Ilustraciones, bandas de gráficos y estados *hover* de superficies. |
-| `primary-600` | `#059669` | Íconos, números de paso, viñetas y elementos gráficos grandes. |
-| `primary-700` | `#047857` | **Botones con texto blanco**, enlaces y etiquetas destacadas. |
-| `primary-800` | `#065F46` | Estado presionado y fondos oscuros de marca. |
-| `primary-900` | `#064E3B` | Texto sobre superficies verdes claras cuando se necesita más contraste. |
-
-El Landing Page usa hoy `#059669` en sus botones; como el texto blanco sobre ese tono no llega a 4,5 : 1 (ver contraste más abajo), los botones con texto pasan a `#047857` (*a adoptar*) y `#059669` queda para íconos y elementos gráficos.
+| `primary-100` | `#D1FAE5` | Contenedores y el indicador de la navegación inferior en Android. |
+| `primary-200` a `primary-500` | `#A7F3D0` · `#6EE7B7` · `#34D399` · `#10B981` | Ilustraciones, bandas de gráficos y marcas de medida. |
+| `primary-600` | `#059669` | Íconos, números de paso, viñetas, subrayado del menú y círculos de flecha. |
+| `primary-700` | `#047857` | Botones con texto blanco, botones de contorno, idioma activo y etiqueta «Más Popular». |
+| `primary-800` | `#065F46` | *Hover* y estado presionado de los botones; fondos oscuros de marca. |
+| `primary-900` | `#064E3B` | Sombra del verde oscuro y texto sobre superficies verdes cuando se necesita más contraste. |
 
 <div align="center">
-<img src="../assets/style-guidelines/06-colores-neutros-marca.png" alt="Escala de neutros y los dos colores de marca" width="800">
-<p><em>Figura 5.6. Neutros y colores de marca.</em></p>
+<img src="../assets/style-guidelines/sg-02-neutros.png" alt="Escala de neutros" width="900">
+<p><em>Figura 5.10. Escala de neutros.</em></p>
 </div>
-
-La Figura 5.6 muestra a la izquierda los nueve neutros y, separados, los dos colores de marca.
 
 | Token | Hex | Uso |
 |---|---|---|
-| `white` | `#FFFFFF` | Fondo principal y tarjetas. |
+| `neutral-0` | `#FFFFFF` | Fondo principal y tarjetas. |
 | `neutral-50` | `#F9FAFB` | Pie de página y fondos alternos. |
-| `neutral-100` | `#F3F4F6` | Botones secundarios, campos deshabilitados. |
+| `neutral-100` | `#F3F4F6` | Botón del menú, botones secundarios y deshabilitados. |
 | `neutral-200` | `#E5E7EB` | Bordes de tarjetas, divisores y campos. |
-| `neutral-400` | `#9CA3AF` | Texto de ejemplo (*placeholder*) y elementos deshabilitados. |
+| `neutral-400` | `#9CA3AF` | Texto de ejemplo y elementos deshabilitados. |
 | `neutral-500` | `#6B7280` | Texto secundario y bajadas. |
 | `neutral-600` | `#4B5563` | Texto de apoyo en párrafos largos. |
 | `neutral-900` | `#111827` | Títulos y texto principal. |
 | `neutral-950` | `#030712` | Nombre del producto en el lockup. |
-| `brand-forest` | `#263D29` | Aro y sombras del logo. |
-| `brand-olive` | `#64663F` | «Terra» del wordmark y relleno del oso. |
 
 <div align="center">
-<img src="../assets/style-guidelines/07-colores-uso.png" alt="Proporción 60-30-10 y tarjeta de plan como ejemplo de aplicación" width="800">
-<p><em>Figura 5.7. Proporción de uso y aplicación.</em></p>
+<img src="../assets/style-guidelines/sg-02-marca.png" alt="Colores muestreados del logo" width="742">
+<p><em>Figura 5.11. Colores del logo.</em></p>
 </div>
 
-La Figura 5.7 muestra a la izquierda la **regla 60 · 30 · 10**: alrededor del 60 % de cada pantalla es blanco o neutro, un 30 % son superficies verdes claras (`#F0FDF4`) que agrupan contenido destacado, y solo un 10 % es verde de acción. A la derecha, la tarjeta del plan recomendado del Landing Page aplica esa proporción: fondo verde claro, texto neutro y un único botón verde.
+Los dos colores del logo se muestrearon del propio símbolo (los puntos sobre la imagen): **Forest** `#263D29`, del aro y del wordmark, y **Olive** `#64663F`, de «Terra» y del relleno del oso. Solo se usan dentro del logo, para no competir con el verde de acción de la interfaz.
 
 <div align="center">
-<img src="../assets/style-guidelines/08-colores-contraste.png" alt="Muestras de texto sobre los fondos de la paleta" width="800">
-<p><em>Figura 5.8. Combinaciones de texto y fondo.</em></p>
+<img src="../assets/style-guidelines/sg-02-roles.png" alt="Roles de color en la interfaz" width="742">
+<p><em>Figura 5.12. Roles de color.</em></p>
 </div>
 
-Los contrastes se calcularon con la fórmula de luminancia relativa de WCAG 2.1; el criterio es 4,5 : 1 para texto normal y 3 : 1 para texto grande y componentes. La tabla sigue el orden de la Figura 5.8, de izquierda a derecha:
-
-| Texto sobre fondo | Ratio | Resultado |
-|---|---|---|
-| `#111827` sobre blanco | 17,74 : 1 | AA y AAA |
-| `#4B5563` sobre blanco | 7,56 : 1 | AA y AAA |
-| `#6B7280` sobre blanco | 4,83 : 1 | AA |
-| Blanco sobre `#047857` | 5,48 : 1 | AA — color de los botones |
-| Blanco sobre `#065F46` | 7,68 : 1 | AA y AAA |
-| `#047857` sobre `#F0FDF4` | 5,24 : 1 | AA — etiquetas sobre superficie verde |
-| Blanco sobre `#059669` | 3,77 : 1 | Solo texto grande (≥ 24 px o 18,5 px en negrita) |
+La figura resume qué color cumple cada rol, en dos filas: **acción** `#047857`, **ícono** `#059669`, **presionado** `#065F46`, **superficie** `#F0FDF4` (tarjetas destacadas y plan recomendado) y **etiqueta** `#DCFCE7`; y **texto** `#111827`, **secundario** `#6B7280`, **borde** `#E5E7EB`, **fondo** `#FFFFFF` y **pie** `#F9FAFB`. Las muestras tienen forma de hoja, el motivo que acompaña a la paleta.
 
 <div align="center">
-<img src="../assets/style-guidelines/09-colores-estados.png" alt="Píldoras de los cinco niveles de salinidad" width="800">
-<p><em>Figura 5.9. Colores de estado de salinidad.</em></p>
+<img src="../assets/style-guidelines/sg-02-proporcion.png" alt="Proporción 60-30-10" width="742">
+<p><em>Figura 5.13. Proporción de uso.</em></p>
 </div>
 
-**Colores de estado.** Los niveles de salinidad tienen colores propios, independientes del verde de marca, porque comunican riesgo. Se calculan como la relación entre la conductividad eléctrica del extracto de saturación (ECe) y el umbral de tolerancia del cultivo, según Maas y Hoffman (1977), y la Web App ya aplica esta regla. La Figura 5.9 muestra las cinco píldoras en orden:
+La **regla 60 · 30 · 10** equilibra cada pantalla: alrededor del 60 % es blanco o neutro, un 30 % son superficies verdes claras que agrupan contenido destacado y solo un 10 % es verde de acción. Así la mirada va directo a los botones.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-02-sombras.png" alt="Cuatro niveles de elevación" width="742">
+<p><em>Figura 5.14. Elevación.</em></p>
+</div>
+
+La elevación es mínima y tiene cuatro niveles, de izquierda a derecha: **nivel 0**, borde de 1 px `#E5E7EB` sin sombra (tarjetas de datos, preguntas frecuentes); **nivel 1**, sombra verde suave de 40 px de desenfoque (plan recomendado); **nivel 2**, sombra corta de 4 a 6 px (botones y chips); y **nivel 3**, sombra de 24 px (indicador de salinidad sobre fotografía).
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-02-contraste.png" alt="Siete combinaciones de texto y fondo con su ratio" width="900">
+<p><em>Figura 5.15. Contraste WCAG 2.1.</em></p>
+</div>
+
+Los contrastes se calcularon con la fórmula de luminancia relativa de WCAG 2.1 (4,5 : 1 para texto normal y 3 : 1 para texto grande y componentes). La tabla sigue el orden de la figura:
+
+| Texto sobre fondo | Ratio | Resultado | Uso |
+|---|---|---|---|
+| `#111827` sobre blanco | 17,74 : 1 | AAA | Títulos y texto principal. |
+| `#4B5563` sobre blanco | 7,56 : 1 | AAA | Párrafos de apoyo. |
+| `#6B7280` sobre blanco | 4,83 : 1 | AA | Bajadas y texto secundario. |
+| Blanco sobre `#047857` | 5,48 : 1 | AA | Botones con texto. |
+| Blanco sobre `#065F46` | 7,68 : 1 | AAA | Botón presionado y fondos oscuros. |
+| `#047857` sobre `#F0FDF4` | 5,24 : 1 | AA | Etiquetas sobre superficie verde. |
+| Blanco sobre `#059669` | 3,77 : 1 | AA texto grande | Solo íconos y flechas dentro de círculos, nunca texto normal. |
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-02-estados.png" alt="Píldoras de los cinco niveles de salinidad" width="900">
+<p><em>Figura 5.16. Colores de estado de salinidad.</em></p>
+</div>
+
+Los niveles de salinidad tienen colores propios, independientes del verde de marca, porque comunican riesgo. Se calculan como la relación entre la conductividad eléctrica del extracto de saturación (ECe) y el umbral de tolerancia del cultivo, según Maas y Hoffman (1977), y la Web App ya aplica esta regla.
 
 | Nivel | Ícono | Texto | Fondo | Cuándo |
 |---|---|---|---|---|
 | Normal | círculo con check | `#1B6234` | `#E1F0E4` | ECe < 0,8 × umbral |
 | En vigilancia | ojo | `#70510B` | `#FFF1C6` | 0,8 × umbral ≤ ECe ≤ 1,0 × umbral |
-| Alto | triángulo de advertencia | `#85440D` | `#FFF0DD` | 1,0 × umbral < ECe ≤ 1,25 × umbral |
+| Alto | triángulo | `#85440D` | `#FFF0DD` | 1,0 × umbral < ECe ≤ 1,25 × umbral |
 | Muy alto | círculo con aspa | `#A12426` | `#FFEAEB` | ECe > 1,25 × umbral |
 | Sin lectura | signo de pregunta | `#3E5150` | `#E6EBEA` | El dispositivo aún no reporta |
 
-Como cada estado combina color, ícono y palabra, la lectura no depende de percibir el color.
+<div align="center">
+<img src="../assets/style-guidelines/sg-02-estados-contexto.png" alt="Lista de parcelas con su nivel de salinidad" width="742">
+<p><em>Figura 5.17. Estados en contexto.</em></p>
+</div>
+
+En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores de ejemplo muestran que el nivel depende del cultivo: 3,4 dS/m es *muy alto* para el arándano (umbral 2,5) y 3,5 dS/m es *en vigilancia* para el palto (umbral 3,5).
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-02-aplicacion.png" alt="Sección de planes del Landing Page" width="742">
+<p><em>Figura 5.18. Aplicación en el Landing Page.</em></p>
+</div>
+
+La sección de planes del Landing Page (captura real) aplica la paleta: fondo blanco, tarjetas con borde neutro, el plan recomendado sobre superficie verde clara y un único botón lleno en `#047857`.
 
 #### Typography
 
-Se usa una sola familia: **Plus Jakarta Sans**, la misma del Landing Page. Es una sans-serif geométrica de trazo abierto, diseñada para pantallas, con pesos de 200 a 800 y cobertura completa del español y del inglés. Usar una sola familia simplifica la carga (una fuente en lugar de dos, algo importante con conexiones rurales lentas) y da una voz uniforme entre productos; la jerarquía se construye con tamaño y peso. El Landing Page la carga desde Google Fonts; en la Web App y la Mobile App se autoalojará (*a adoptar*) para no depender de la red.
+Se usa una sola familia: **Plus Jakarta Sans**, la del Landing Page, cargada desde Google Fonts. Es una sans-serif geométrica de trazo abierto, pensada para pantallas, con pesos de 200 a 800 y cobertura completa del español y del inglés. Una sola familia simplifica la carga, algo importante con conexiones rurales lentas, y la jerarquía se construye con tamaño y peso.
 
 <div align="center">
-<img src="../assets/style-guidelines/10-tipografia.png" alt="Muestra de Plus Jakarta Sans y escala tipográfica" width="800">
-<p><em>Figura 5.10. Plus Jakarta Sans y escala tipográfica.</em></p>
+<img src="../assets/style-guidelines/sg-03-familia.png" alt="Muestra de Plus Jakarta Sans" width="900">
+<p><em>Figura 5.19. Familia tipográfica.</em></p>
 </div>
 
-A la izquierda de la Figura 5.10 está la muestra de la familia (alfabeto, cifras, tildes, signos de apertura y los pesos Regular, Medium, SemiBold, Bold y ExtraBold). A la derecha, la escala, de arriba abajo:
+A la izquierda, el nombre de la familia; a la derecha, el alfabeto con la eñe, las cifras, las tildes, los signos de apertura del español y las unidades del producto (dS/m y °C), y debajo los seis pesos disponibles, de Light 300 a ExtraBold 800.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-03-escala.png" alt="Escala tipográfica de diez estilos" width="900">
+<p><em>Figura 5.20. Escala tipográfica.</em></p>
+</div>
 
 | Estilo | Peso | Tamaño / interlínea | Uso |
 |---|---|---|---|
-| Display | ExtraBold 800, espaciado −2,5 % | 58 / 64 px (30 px en móvil) | Titular del hero. |
+| Display | ExtraBold 800, −2,5 % | 58 / 64 px (30 px en móvil) | Titular del hero. |
 | Heading 2 | Bold 700 | 36 / 44 px (28 px en móvil) | Título de sección. |
-| Heading 3 | Bold 700 | 20 / 28 px | Título de tarjeta o beneficio. |
-| Heading 4 | Bold 700 | 18 / 27 px | Título de dato, de capacidad o de pregunta. |
+| Heading 3 | Bold 700 | 20 / 28 px | Título de beneficio o de plan. |
+| Heading 4 | Bold 700 | 18 / 27 px | Título de dato, capacidad o pregunta. |
 | Body Large | Regular 400 | 18 / 29 px | Texto destacado en tarjetas. |
-| Body | Regular 400 | 16 / 26 px | Texto base de toda la interfaz. |
+| Body | Regular 400 | 16 / 26 px | Texto base. |
 | Body Small | Regular 400 | 14 / 22 px | Bajadas, descripciones y pie de página. |
-| Label | SemiBold 600 | 14 / 20 px | Botones, enlaces del menú y etiquetas. |
-| Eyebrow | Bold 700, mayúsculas, espaciado +5 % | 12 / 17 px | Rótulo sobre el título de un beneficio. |
+| Label | SemiBold 600 | 14 / 20 px | Botones, menú y etiquetas. |
+| Eyebrow | Bold 700, mayúsculas, +5 % | 12 / 17 px | Rótulo sobre el título de un beneficio. |
 | Price / Data | ExtraBold 800 | 36 / 40 px | Precios y cifras de salinidad. |
 
-Reglas complementarias: el cuerpo no baja de 16 px, por la edad promedio del segmento 1; entre 45 y 75 caracteres por línea en texto corrido; el español ocupa hasta un tercio más que el inglés, por lo que se reserva un 30 % de ancho adicional en botones y etiquetas.
+El cuerpo no baja de 16 px por la edad promedio del segmento 1; las líneas de texto corrido tienen entre 45 y 75 caracteres; y se reserva un 30 % de ancho extra en botones y etiquetas porque el español ocupa hasta un tercio más que el inglés.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-03-contexto.png" alt="Hero del Landing Page con el titular Display" width="742">
+<p><em>Figura 5.21. Tipografía en contexto.</em></p>
+</div>
+
+En el hero del Landing Page (captura real), el Display blanco de 58 px se apoya en una capa verde oscura semitransparente sobre la fotografía; encima va el rótulo «Agricultura inteligente» en Heading 3 y debajo la bajada en Body.
 
 #### Spacing
 
-El espaciado sigue una base de 4 px con múltiplos de 8, que es la escala que ya usa el Landing Page.
-
 <div align="center">
-<img src="../assets/style-guidelines/11-espaciado-forma.png" alt="Escala de espaciado y radios de borde" width="800">
-<p><em>Figura 5.11. Espaciado y forma.</em></p>
+<img src="../assets/style-guidelines/sg-03-espaciado.png" alt="Escala de espaciado de 4 a 96 px" width="742">
+<p><em>Figura 5.22. Escala de espaciado.</em></p>
 </div>
-
-La fila superior de la Figura 5.11 muestra la escala de espaciado y la inferior, los radios de borde.
 
 | Token | Valor | Uso |
 |---|---|---|
 | `space-1` | 4 px | Entre ícono y texto muy juntos. |
-| `space-2` | 8 px | Entre elementos relacionados (título y bajada). |
-| `space-3` | 12 px | Entre botón y su ícono circular; relleno de chips. |
+| `space-2` | 8 px | Entre título y bajada. |
+| `space-3` | 12 px | Entre el texto del botón y su círculo; relleno de chips. |
 | `space-4` | 16 px | Margen lateral en móvil y separación de columnas. |
 | `space-5` | 24 px | Relleno interno de tarjetas. |
 | `space-6` | 32 px | Entre tarjetas y relleno de tarjetas grandes. |
@@ -207,42 +260,59 @@ La fila superior de la Figura 5.11 muestra la escala de espaciado y la inferior,
 | `space-8` | 64 px | Separación de secciones en móvil. |
 | `space-9` | 96 px | Separación de secciones en escritorio. |
 
+<div align="center">
+<img src="../assets/style-guidelines/sg-03-espaciado-contexto.png" alt="Tarjeta de dato con las medidas de relleno marcadas" width="742">
+<p><em>Figura 5.23. Espaciado en una tarjeta.</em></p>
+</div>
+
+Sobre una tarjeta real del Landing Page, las bandas verdes marcan el relleno de 28 px en los cuatro lados y la banda amarilla, los 20 px entre el ícono y el texto.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-03-radios.png" alt="Seis radios de borde" width="742">
+<p><em>Figura 5.24. Radios de borde.</em></p>
+</div>
+
 | Radio | Valor | Uso |
 |---|---|---|
 | `radius-sm` | 8 px | Campos compactos e imágenes pequeñas. |
 | `radius-md` | 12 px | Campos de formulario. |
-| `radius-lg` | 20 px | Tarjetas de datos y preguntas frecuentes. |
-| `radius-xl` | 28 px | Tarjetas grandes, planes, hero y banners (32 px en el hero de escritorio). |
-| `radius-pill` | 999 px | Botones, etiquetas y píldoras de estado. |
-| Círculo | 50 % | Íconos de fondo, avatar y símbolo del logo. |
-
-La elevación es mínima: las tarjetas se separan con borde de 1 px `#E5E7EB` y solo el elemento destacado (plan recomendado, indicador sobre una foto) lleva una sombra suave.
+| `radius-lg` | 20 px | Tarjetas de datos. |
+| `radius-xl` | 28 px | Planes, hero y banners (32 px en el hero de escritorio). |
+| `radius-pill` | 999 px | Botones, etiquetas y píldoras. |
+| Círculo | 50 % | Íconos de fondo, avatar y símbolo. |
 
 <div align="center">
-<img src="../assets/style-guidelines/12-grilla.png" alt="Grilla de 12, 8 y 4 columnas" width="800">
-<p><em>Figura 5.12. Grilla en escritorio, tablet y móvil.</em></p>
+<img src="../assets/style-guidelines/sg-03-grilla.png" alt="Grilla de 12 columnas sobre el Landing Page y grillas de tablet y móvil" width="900">
+<p><em>Figura 5.25. Grilla.</em></p>
 </div>
 
-La Figura 5.12 muestra, de izquierda a derecha, la grilla de escritorio, tablet y móvil:
+A la izquierda, la grilla de 12 columnas superpuesta a la sección de impacto del Landing Page; a la derecha, las grillas de tablet (8 columnas) y móvil (4 columnas).
 
-| Ancho | Columnas | Gutter | Margen lateral | Contenedor |
-|---|---|---|---|---|
-| ≥ 1024 px | 12 | 24–32 px | 72 px | Hasta 1440 px (96 % del ancho). |
-| 640–1023 px | 8 | 24 px | 32 px | Grillas de 2 columnas pasan a 1. |
-| < 640 px | 4 | 16 px | 16 px | Todo en una columna. |
+| Ancho | Columnas | Gutter | Margen lateral |
+|---|---|---|---|
+| ≥ 1024 px | 12 | 24 px | 72 px (contenedor hasta 1440 px) |
+| 640–1023 px | 8 | 24 px | 32 px |
+| < 640 px | 4 | 16 px | 16 px |
 
-**Objetivos táctiles.** 44 × 44 px como mínimo en web (WCAG 2.5.5) y 48 × 48 dp en Android, con al menos 8 px entre objetivos.
+Objetivos táctiles de 44 × 44 px como mínimo en web y 48 × 48 dp en Android, con al menos 8 px entre ellos.
 
 #### Iconography
 
 <div align="center">
-<img src="../assets/style-guidelines/13-iconografia.png" alt="Íconos de línea en verde, en círculos claros y oscuros, y en negro" width="800">
-<p><em>Figura 5.13. Sistema de íconos.</em></p>
+<img src="../assets/style-guidelines/sg-04-iconos.png" alt="Veinticuatro íconos de línea con su nombre" width="900">
+<p><em>Figura 5.26. Set de íconos.</em></p>
 </div>
 
-Se usan **íconos de línea** de 24 × 24 px con trazo de 2 px y extremos redondeados, el mismo estilo del Landing Page, que en las aplicaciones se tomarán del conjunto Material Symbols en su variante *Outlined* para mantener la misma línea (*a adoptar*: la Web App usa hoy Material Icons rellenos). La Figura 5.13 muestra en la fila superior el ícono dentro de un círculo verde claro (uso en tarjetas de datos y capacidades) y, al final, dentro de un círculo verde oscuro (beneficios destacados); en la fila inferior, el ícono suelto en casi negro (menús y acciones). Los íconos del catálogo representan, en orden: alertas, cultivo, agua, tendencia, gráfico, sensor, celular, asesor, sin conexión, costos, parcela, temperatura, idioma, descarga, inicio y menú.
+Se usan **íconos de línea** de 24 × 24 px con trazo de 2 px y extremos redondeados, el estilo del Landing Page. La figura reúne los 24 íconos del producto con su significado: alertas, cultivo, agua, pérdida, telemetría, sensor, celular, asesor, sin conexión, costos, parcela, temperatura, idioma, descargar, inicio, menú, incluido, abrir, cerrar, avanzar, ir a, cerrar menú, anterior y siguiente.
 
-Reglas: todo ícono con función lleva texto visible o `aria-label`; los decorativos llevan `aria-hidden="true"`; no se mezclan íconos rellenos con íconos de línea; y los íconos de estado de salinidad siempre acompañan a la palabra del estado.
+<div align="center">
+<img src="../assets/style-guidelines/sg-04-iconos-tamanos.png" alt="Íconos en cuatro tamaños y en contenedores" width="900">
+<p><em>Figura 5.27. Tamaños y contenedores.</em></p>
+</div>
+
+De izquierda a derecha: el ícono suelto en 16, 20, 24 y 32 px; dentro de un círculo verde claro de 40 y 48 px (datos y capacidades); dentro de un círculo verde de 52 px (beneficios destacados); la flecha en el círculo blanco de 34 px de los botones; y la viñeta de 22 px de las listas de planes.
+
+Todo ícono con función lleva texto visible o `aria-label`; los decorativos llevan `aria-hidden="true"`; no se mezclan íconos rellenos con íconos de línea; y los íconos de estado siempre acompañan a la palabra del estado.
 
 #### Tone of voice
 
@@ -251,11 +321,11 @@ Las cuatro dimensiones de tono que exige el enunciado se fijaron a partir de las
 | Dimensión | Posición | Sustento |
 |---|---|---|
 | Divertido / Serio | **Serio** | Se comunican riesgos de pérdida de cosecha, y el asesor sustenta recomendaciones profesionales. Sin bromas ni exclamaciones. |
-| Formal / Casual | **Casual cercano** | Lenguaje cotidiano y frases cortas, sin jerga técnica: los productores entrevistados piden indicaciones claras y mediciones explicadas de forma simple. Trato de «tú» en el Landing Page, igual que su texto actual. |
+| Formal / Casual | **Casual cercano** | Lenguaje cotidiano y frases cortas, sin jerga técnica; trato de «tú», como el Landing Page. Los productores entrevistados piden indicaciones claras y mediciones explicadas de forma simple. |
 | Respetuoso / Irreverente | **Respetuoso** | Usuarios de mayor edad con desconfianza inicial hacia un sensor de bajo costo; nunca se culpa al usuario. |
 | Entusiasta / Sereno | **Sereno** | Una alerta crítica no debe alarmar, sino informar el hecho y la acción a tomar. El entusiasmo se reserva para logros, como una salinidad que baja. |
 
-El nivel de detalle cambia según quién lee: al **productor** se le habla con frases de hasta 20 palabras y valores cualitativos, con la medida en dS/m disponible bajo demanda; al **asesor técnico**, con lenguaje profesional y dato crudo (ECe, umbral del cultivo, tendencia); y al **visitante del Landing Page**, con titulares breves centrados en el beneficio («Suelo vivo, Cosecha segura.») y verbos de acción en los botones.
+El nivel de detalle cambia según quién lee: al **productor**, frases de hasta 20 palabras y valores cualitativos, con la medida en dS/m bajo demanda; al **asesor técnico**, lenguaje profesional y dato crudo (ECe, umbral, tendencia); y al **visitante del Landing Page**, titulares breves centrados en el beneficio («Suelo vivo, Cosecha segura.») y verbos de acción en los botones.
 
 | Contexto | Así sí | Así no |
 |---|---|---|
@@ -264,71 +334,120 @@ El nivel de detalle cambia según quién lee: al **productor** se le habla con f
 | Error de formulario | «Usa al menos 12 caracteres.» | «Contraseña inválida.» |
 | Logro | «La salinidad de La Quebrada bajó a nivel normal. El lavado de sales funcionó.» | «¡¡Felicidades, campeón!!» |
 
-El producto usa **una sola palabra por concepto**: *parcela* (no lote ni terreno), *lectura* (no muestra ni telemetría en la app), *dispositivo* (no nodo ni gateway), *acción correctiva* y los estados *normal, en vigilancia, alto y muy alto*. Los botones llevan un verbo y, si hace falta, un objeto («Elegir Productor», «Registrar acción»); la unidad se separa de la cifra con un espacio (3.5 dS/m).
+El producto usa **una sola palabra por concepto**: *parcela* (no lote ni terreno), *lectura* (no muestra), *dispositivo* (no nodo), *acción correctiva* y los estados *normal, en vigilancia, alto y muy alto*. Los botones llevan un verbo y, si hace falta, un objeto («Elegir Productor», «Registrar acción»), y la unidad se separa de la cifra con un espacio (3.5 dS/m).
 
 ### 5.1.2. Web, Mobile and IoT Style Guidelines
 
-Sobre la base común de la sección 5.1.1, esta sección fija los estándares visuales y de interacción de cada plataforma: los componentes web, las interfaces responsive, la aplicación Android, la interfaz física del dispositivo, la visualización de datos y las reglas de accesibilidad, idioma y movimiento.
+Sobre la base común de la sección 5.1.1, esta sección fija los estándares visuales y de interacción de cada plataforma.
 
 #### Web: componentes
 
 <div align="center">
-<img src="../assets/style-guidelines/14-componentes.png" alt="Botones en sus estados, campos de formulario, etiquetas, tarjeta de dato y pregunta frecuente" width="800">
-<p><em>Figura 5.14. Componentes web.</em></p>
+<img src="../assets/style-guidelines/sg-04-botones.png" alt="Botones del Landing Page en sus estados" width="900">
+<p><em>Figura 5.28. Botones y estados.</em></p>
 </div>
 
-La Figura 5.14 muestra los componentes base en tres filas.
-
-**Fila 1, botones.** De izquierda a derecha: botón principal en reposo (píldora `#047857` con círculo blanco y flecha), el mismo presionado (`#065F46`), botón claro sobre fotografía (blanco con borde y círculo verde), botón secundario con contorno (usado en planes no recomendados), botón con foco de teclado (anillo azul `#2563EB` de 3 px separado 3 px) y botón deshabilitado (gris, sin sombra). La altura es de 46 a 52 px y solo un botón con relleno por bloque.
-
-**Fila 2, formularios y etiquetas.** Campo con etiqueta visible siempre arriba (nunca solo el texto de ejemplo), radio de 12 px y borde `#D1D5DB`; campo con error, que cambia el borde a `#A12426` y muestra debajo un mensaje que explica cómo corregir; y las tres etiquetas del Landing Page: destacada (verde lleno), de categoría (verde claro) y neutra (gris).
-
-**Fila 3, tarjetas.** Tarjeta de dato con ícono en círculo, título y descripción; y elemento de preguntas frecuentes, que se abre al pulsar el signo «+» (cambia a «−»).
-
-#### Web: interfaces responsive
+En la fila superior, el botón principal en sus cuatro estados: **reposo** (píldora `#047857` con círculo blanco y flecha), **hover y presionado** (`#065F46`), **foco** (anillo azul `#2563EB` de 3 px por fuera) y **deshabilitado** (gris). En la fila inferior: el botón **claro sobre fotografía** (blanco con círculo `#059669`), el **botón de bloque** de los planes, el **botón de contorno** de los planes no recomendados y el **selector de idioma** con el idioma activo en `#047857`. Solo hay un botón con relleno por bloque.
 
 <div align="center">
-<img src="../assets/style-guidelines/15-web-responsive.png" alt="Landing Page en laptop y en teléfono" width="800">
-<p><em>Figura 5.15. El mismo diseño en escritorio y en móvil.</em></p>
+<img src="../assets/style-guidelines/sg-04-formularios.png" alt="Campos de formulario en cuatro estados" width="900">
+<p><em>Figura 5.29. Campos de formulario.</em></p>
 </div>
 
-La Figura 5.15 muestra el Landing Page en una laptop (izquierda) y en un teléfono (derecha). Un solo diseño se adapta con estos cortes, que son los del Landing Page:
+De izquierda a derecha: campo en **reposo** con borde `#D1D5DB` y texto de ejemplo gris; en **foco**, con borde `#047857` y halo verde claro de 4 px; con **error**, borde `#A12426`, ícono y un mensaje que explica cómo corregir; y **deshabilitado**, con fondo gris claro. La etiqueta siempre está visible arriba del campo, nunca solo como texto de ejemplo.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-04-etiquetas.png" alt="Etiquetas y píldoras de estado" width="742">
+<p><em>Figura 5.30. Etiquetas y píldoras.</em></p>
+</div>
+
+Arriba, las tres etiquetas del Landing Page: destacada (verde lleno), de categoría (verde claro) y neutra (gris). Abajo, las cinco píldoras de estado, que combinan ícono, palabra y color.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-04-tarjetas.png" alt="Tarjeta de dato y acordeón cerrado y abierto" width="742">
+<p><em>Figura 5.31. Tarjetas y acordeón.</em></p>
+</div>
+
+Arriba, la tarjeta de dato: ícono en círculo claro, título Heading 4 y descripción, con radio de 20 px, relleno de 28 px y borde de 1 px. Abajo, el acordeón de preguntas frecuentes cerrado (signo «+») y abierto (signo «−» y respuesta en texto secundario).
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-04-plan.png" alt="Tarjeta del plan recomendado" width="742">
+<p><em>Figura 5.32. Tarjeta de plan.</em></p>
+</div>
+
+La tarjeta del plan recomendado (captura real) combina los tokens: superficie `#F0FDF4` con borde `#BBF7D0` y sombra de nivel 1, etiqueta «Más Popular», precio en 36 px ExtraBold, viñetas de 22 px y botón de bloque a todo el ancho.
+
+#### Web: navegación e interfaces responsive
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-04-navegacion.png" alt="Encabezado, pie de página y menú móvil abierto" width="900">
+<p><em>Figura 5.33. Navegación.</em></p>
+</div>
+
+A la izquierda, el **encabezado fijo** del Landing Page (logo, seis anclas con el subrayado activo en `#059669`, selector de idioma y botón principal) y el **pie de página** con la marca y tres columnas de navegación secundaria. A la derecha, el **menú móvil abierto**: el botón de hamburguesa se convierte en una «×» y despliega un panel con las seis anclas, la activa resaltada en verde claro, y el selector de idioma al final.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-04-responsive.png" alt="Landing Page en escritorio, tablet y móvil" width="900">
+<p><em>Figura 5.34. Responsive.</em></p>
+</div>
+
+El mismo diseño en tres anchos reales, de izquierda a derecha: escritorio (1440 px), tablet (768 px) y móvil (390 px).
 
 | Ancho | Comportamiento |
 |---|---|
-| ≥ 1200 px | Menú horizontal completo con selector EN / ES y botón *Probar Gratis*; grillas de 2, 3 y 4 columnas. |
+| ≥ 1200 px | Menú horizontal completo con selector de idioma y botón *Probar Gratis*; grillas de 2, 3 y 4 columnas. |
 | 640–1199 px | El menú pasa a un botón de hamburguesa que despliega un panel; las grillas de 3 columnas pasan a 1 o 2. |
-| < 640 px | Una columna; titular de 30 px; secciones a 64 px de distancia; selector de idioma dentro del menú. |
+| < 640 px | Una columna; titular de 30 px; secciones a 64 px; selector de idioma dentro del menú. |
 
-En la Web App, cuyo prototipo ya usa cortes de 700, 900 y 1100 px, la barra lateral pasa a un cajón deslizable por debajo de 900 px y las tablas se convierten en listas de tarjetas con la píldora de estado visible.
+En la Web App, cuyo prototipo usa cortes de 700, 900 y 1100 px, la barra lateral pasa a un cajón deslizable por debajo de 900 px y las tablas se convierten en listas de tarjetas con la píldora de estado visible.
 
 #### Mobile: aplicación Android
 
 <div align="center">
-<img src="../assets/style-guidelines/16-mobile-android.png" alt="Pantalla de inicio de la app, notificación y aviso sin conexión" width="700">
-<p><em>Figura 5.16. Estándares de la aplicación Android.</em></p>
+<img src="../assets/style-guidelines/sg-05-app-pantallas.png" alt="Pantalla de inicio y detalle de parcela en Android" width="760">
+<p><em>Figura 5.35. Aplicación Android.</em></p>
 </div>
 
-La Mobile App se construye con Kotlin y Jetpack Compose (Material 3, `minSdk` 24) y usa los mismos tokens: `primary` = `#047857`, `primaryContainer` = `#D1FAE5`, `surface` = blanco, `surfaceVariant` = `#F9FAFB`, `outline` = `#E5E7EB` y `error` = `#A12426`, con Plus Jakarta Sans en toda la escala tipográfica en `sp`. La Figura 5.16 muestra a la izquierda la pantalla de inicio de ejemplo:
+La Mobile App (Kotlin y Jetpack Compose con Material 3) usa los mismos tokens. A la izquierda, la **pantalla de inicio**: barra superior con el lockup y la campana; tarjeta principal verde oscuro con la parcela, la cifra en Data y la píldora de estado; lista de parcelas; botón principal a todo el ancho; y navegación inferior con cuatro destinos (Inicio, Parcelas, Alertas y Perfil), con el activo resaltado en `#D1FAE5`. A la derecha, el **detalle de parcela**: cifra actual con su píldora, mini gráfico con las bandas de nivel y el umbral, la acción recomendada sobre superficie verde clara y las lecturas de humedad y temperatura.
 
-- **Barra superior** de 56 dp con el lockup y la campana de alertas.
-- **Tarjeta principal** en verde oscuro con la parcela, el cultivo, la cifra de salinidad en Data 40 sp y la píldora de estado.
-- **Lista de parcelas** en tarjetas blancas con borde, cada una con su píldora de estado y la antigüedad de la lectura.
-- **Botón principal** a ancho completo sobre la navegación inferior.
-- **Navegación inferior** de cuatro destinos (Inicio, Parcelas, Alertas, Perfil) con el destino activo en verde.
+<div align="center">
+<img src="../assets/style-guidelines/sg-05-app-tema.png" alt="Roles de color del tema Material 3" width="484">
+<p><em>Figura 5.36. Tema Material 3.</em></p>
+</div>
 
-A la derecha, arriba, una **notificación** de nivel muy alto: símbolo del logo, título con el hecho y texto con la acción. Cada severidad tiene su canal de Android: «Muy alto» con vibración y aviso emergente, «En vigilancia» con sonido discreto y «Sin lectura» como resumen. Debajo, el **aviso sin conexión**, una barra oscura con la hora de la última lectura; mientras tanto se muestran los últimos datos guardados. Márgenes laterales de 16 dp y objetivos táctiles de 48 dp.
+El tema de Compose asigna los tokens a los roles de Material 3: `primary` `#047857`, `onPrimary` blanco, `primaryContainer` `#D1FAE5`, `onPrimaryContainer` `#065F46`, `surface` blanco, `surfaceVariant` `#F9FAFB`, `onSurface` `#111827`, `onSurfaceVariant` `#6B7280`, `outline` `#E5E7EB` y `error` `#A12426`. Toda la escala tipográfica usa Plus Jakarta Sans en `sp` y el objetivo táctil es de 48 dp.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-05-notificaciones.png" alt="Tres notificaciones por severidad" width="742">
+<p><em>Figura 5.37. Notificaciones por severidad.</em></p>
+</div>
+
+Cada notificación muestra el símbolo, un título con el hecho, un texto con la acción y la píldora del nivel. Cada severidad tiene su canal de Android: «Muy alto» con vibración y aviso emergente, «En vigilancia» con sonido discreto y «Sin lectura» como resumen.
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-05-conexion.png" alt="Avisos sin conexión y conexión restablecida" width="742">
+<p><em>Figura 5.38. Avisos de conexión.</em></p>
+</div>
+
+Sin red, una barra oscura fija indica desde cuándo son los datos que se muestran; al volver la conexión, una barra verde clara confirma cuántas lecturas se sincronizaron.
 
 #### IoT: interfaz física del dispositivo
 
+El dispositivo de campo (ESP32 con sonda de conductividad eléctrica, humedad y temperatura) no tiene pantalla: se comunica con un LED RGB, un botón y la carcasa.
+
 <div align="center">
-<img src="../assets/style-guidelines/17-iot-dispositivo.png" alt="Dispositivo de campo con panel solar, LED y botón, y los seis estados del LED" width="700">
-<p><em>Figura 5.17. Dispositivo de campo y estados del LED.</em></p>
+<img src="../assets/style-guidelines/sg-05-dispositivo.png" alt="Vista frontal y lateral del dispositivo" width="742">
+<p><em>Figura 5.39. Dispositivo de campo.</em></p>
 </div>
 
-El dispositivo (ESP32 con sonda de conductividad eléctrica, humedad y temperatura) no tiene pantalla: se comunica con **un LED RGB, un botón y la carcasa**. A la izquierda de la Figura 5.17 está la propuesta de carcasa, de arriba abajo: panel solar en la tapa, LED de estado bajo un difusor translúcido, botón único y, en la esquina, el símbolo de Oso Terra grabado en blanco; debajo sale la sonda. La carcasa mide 90 × 60 mm, en plástico ABS/ASA estabilizado contra rayos UV color `#065F46`, con sellado IP65 y esquinas de 12 mm.
+En la **vista frontal**, de arriba abajo: panel solar en la tapa, LED de estado bajo un difusor translúcido, botón único y el símbolo de Oso Terra grabado en blanco; debajo sale la sonda. La carcasa mide 90 × 60 mm, en plástico ABS/ASA estabilizado contra rayos UV color `#065F46`, con sellado IP65 y esquinas de 12 mm. En la **vista lateral** se ven el panel, el botón y la sonda de 150 mm; la línea discontinua marca el nivel del suelo.
 
-A la derecha, los seis estados del LED, leídos por filas de izquierda a derecha. Cada estado se distingue por **color y número de destellos**, para que se reconozca con daltonismo o con sol intenso:
+<div align="center">
+<img src="../assets/style-guidelines/sg-05-led.png" alt="Seis patrones de destello del LED en 20 segundos" width="900">
+<p><em>Figura 5.40. Patrones del LED.</em></p>
+</div>
+
+Cada fila muestra 20 segundos de un estado: el color del LED a la izquierda y, en la franja oscura, los momentos en que se enciende. Cada estado se distingue por **color y número de destellos**, para reconocerlo con daltonismo o con sol intenso.
 
 | Estado | Color | Patrón | Significado |
 |---|---|---|---|
@@ -339,48 +458,64 @@ A la derecha, los seis estados del LED, leídos por filas de izquierda a derecha
 | Sin conexión | Blanco | 1 destello largo cada 5 s | Guarda lecturas y las sincroniza después. |
 | Emparejamiento | Azul | Parpadeo continuo | Vinculación con la app durante 2 minutos. |
 
-**Botón único.** Pulsación corta (menos de 1 s): toma una lectura y la envía. Pulsación de 3 s: emparejamiento. Pulsación de 10 s: restablecer a fábrica, con tres destellos rojos de aviso. El LED siempre confirma la acción.
+<div align="center">
+<img src="../assets/style-guidelines/sg-05-boton.png" alt="Tres duraciones de pulsación del botón" width="484">
+<p><em>Figura 5.41. Botón único.</em></p>
+</div>
 
-> [!NOTE]
-> Las dimensiones, materiales y patrones del dispositivo son una propuesta del equipo y se ajustarán con el prototipo físico (sección 5.6).
+La barra verde representa cuánto se mantiene pulsado el botón y el punto de color, la respuesta del LED: menos de 1 s toma una lectura y la envía (verde); 3 s activa el emparejamiento (azul); 10 s restablece la configuración de fábrica (rojo, con tres destellos de aviso).
+
+<div align="center">
+<img src="../assets/style-guidelines/sg-05-instalacion.png" alt="Cinco pasos de instalación con la respuesta del LED" width="900">
+<p><em>Figura 5.42. Instalación en cinco pasos.</em></p>
+</div>
+
+La puesta en marcha se hace sin herramientas y cada paso tiene una respuesta visible del LED (el punto bajo cada ícono): ubicar un punto representativo de la parcela, clavar la sonda hasta la línea de suelo, encender con el botón (blanco), emparejar con la app (azul) y verificar la primera lectura (verde).
 
 #### Visualización de datos
 
 <div align="center">
-<img src="../assets/style-guidelines/18-visualizacion-datos.png" alt="Gráfico de línea de ECe con bandas de nivel y umbral del cultivo" width="800">
-<p><em>Figura 5.18. Gráfico de salinidad con umbral. Datos ilustrativos.</em></p>
+<img src="../assets/style-guidelines/sg-06-grafico-linea.png" alt="Gráfico de línea de ECe con bandas de nivel y umbral" width="900">
+<p><em>Figura 5.43. Serie de tiempo de ECe. Datos ilustrativos.</em></p>
 </div>
 
-La Figura 5.18 es el gráfico tipo de la plataforma: la ECe de una parcela a lo largo de un mes. Lo que se ve y por qué:
+El gráfico tipo de la plataforma muestra la ECe de una parcela durante un mes: línea `#047857` de 3 px; bandas de fondo con los colores de los cuatro niveles, para leer el nivel sin leyenda; umbral del cultivo como línea discontinua `#A12426` con su etiqueta; eje Y desde cero con la unidad; fechas cortas en el eje X; y la etiqueta directa del valor actual junto al último punto.
 
-- **Línea** verde `#047857` de 3 px para la serie de tiempo; barras solo para comparar parcelas en un instante; nunca gráficos circulares ni en 3D.
-- **Bandas de fondo** con los colores de fondo de los cuatro niveles (verde, amarillo, naranja y rojo claros), para leer el nivel sin mirar la leyenda.
-- **Umbral del cultivo** como línea discontinua roja con su etiqueta a la izquierda (en el ejemplo, palto con 3,5 dS/m).
-- **Etiqueta directa** del valor actual junto al último punto, en lugar de una leyenda aparte.
-- **Eje Y desde cero** con la unidad escrita (ECe en dS/m) y eje X con fechas cortas.
-- Máximo cuatro series por gráfico, cada una con color y tipo de trazo distintos, y una **tabla alternativa** (fecha, ECe y nivel) con resumen en texto para lector de pantalla.
+<div align="center">
+<img src="../assets/style-guidelines/sg-06-grafico-barras.png" alt="Barras de ECe por parcela con umbral de cada cultivo" width="900">
+<p><em>Figura 5.44. Comparación de parcelas. Datos ilustrativos.</em></p>
+</div>
+
+Para comparar parcelas en un instante se usan barras horizontales con el color del nivel de cada una y una línea negra que marca el umbral de su cultivo; a la derecha van el valor y la píldora. Nunca se usan gráficos circulares ni en 3D, se muestran como máximo cuatro series por gráfico y cada gráfico tiene una tabla alternativa (fecha, ECe y nivel) con un resumen en texto para lectores de pantalla.
 
 #### Accesibilidad, idioma y movimiento
 
 <div align="center">
-<img src="../assets/style-guidelines/19-accesibilidad.png" alt="Foco de teclado, selector de idioma, objetivo táctil, estado con ícono y texto sobre foto" width="800">
-<p><em>Figura 5.19. Patrones de accesibilidad.</em></p>
+<img src="../assets/style-guidelines/sg-06-accesibilidad.png" alt="Cinco patrones de accesibilidad" width="900">
+<p><em>Figura 5.45. Patrones de accesibilidad.</em></p>
 </div>
 
-La Figura 5.19 reúne, de izquierda a derecha, cinco patrones: el **anillo de foco** azul visible en todo elemento interactivo al navegar con teclado; el **selector de idioma** ES / EN, siempre en el encabezado, con el idioma activo en verde y negrita y `aria-pressed`; el **objetivo táctil** mínimo de 44 × 44 px (recuadro punteado) aunque el ícono sea más pequeño; el **estado con ícono y palabra**, nunca solo color; y el **texto sobre fotografía**, que se apoya en una capa verde oscura semitransparente para mantener el contraste.
+De izquierda a derecha: el **foco visible**, un anillo azul `#2563EB` en todo elemento interactivo al navegar con teclado; el **selector de idioma** en el encabezado, con `aria-pressed`; el **objetivo táctil** mínimo de 44 × 44 px (recuadro rojo) aunque el ícono sea más pequeño; el **estado con ícono y palabra**, nunca solo color; y el **texto sobre fotografía**, apoyado en una capa verde oscura.
 
-| Principio WCAG 2.1 (nivel AA) | Reglas |
+| Principio WCAG 2.1 (AA) | Reglas |
 |---|---|
-| Perceptible | Contraste de 4,5 : 1 en texto y 3 : 1 en componentes; el estado nunca se comunica solo con color; texto redimensionable al 200 %; texto alternativo en fotos informativas y `alt=""` en decorativas. |
-| Operable | Todo se maneja con teclado en orden lógico; foco siempre visible; objetivos táctiles de 44 px; nada parpadea más de tres veces por segundo. |
-| Comprensible | Idioma de la página declarado en `lang`; mensajes de error que explican cómo corregir; etiquetas visibles en todos los campos; navegación igual en todas las páginas. |
-| Robusto | HTML semántico; `aria-label`, `aria-labelledby`, `aria-expanded`, `aria-controls` y `aria-pressed` donde hacen falta; cambios de estado anunciados con `aria-live` (*a adoptar*). |
+| Perceptible | Contraste de 4,5 : 1 en texto y 3 : 1 en componentes; el estado nunca se comunica solo con color; texto ampliable al 200 %; texto alternativo en fotos informativas y `alt=""` en decorativas. |
+| Operable | Todo se maneja con teclado; foco siempre visible; objetivos táctiles de 44 px; nada parpadea más de tres veces por segundo. |
+| Comprensible | Idioma declarado en `lang`; mensajes de error que explican cómo corregir; etiquetas visibles; navegación igual en todas las páginas. |
+| Robusto | HTML semántico con `aria-label`, `aria-labelledby`, `aria-expanded`, `aria-controls` y `aria-pressed`; cambios de estado anunciados con `aria-live` en las aplicaciones. |
 
 El Landing Page ya aplica `aria-label` en la navegación y el menú, `aria-labelledby` en cada sección, `aria-expanded` y `aria-controls` en el menú móvil, `aria-pressed` en el selector de idioma, textos alternativos y `prefers-reduced-motion`. La Web App incorpora además un enlace «Saltar al contenido», `aria-current="page"` y `role="alert"` en los errores.
 
-**Internacionalización.** Todos los productos se ofrecen en inglés (en_US) y español latinoamericano (es_419) con el selector EN / ES. Los textos viven en archivos de traducción, las fechas siguen el formato de cada idioma y las unidades se mantienen (3.5 dS/m, 4.2 ha, 23.8 °C).
+**Internacionalización.** Todos los productos se ofrecen en inglés (en_US) y español latinoamericano (es_419) con el selector EN / ES; los textos viven en archivos de traducción, las fechas siguen el formato de cada idioma y las unidades se mantienen (3.5 dS/m, 4.2 ha, 23.8 °C).
 
-**Movimiento.** El movimiento explica cambios y nunca es decorativo. En el Landing Page, los cambios de color de *hover* y foco duran 150 ms con la curva `cubic-bezier(0.4, 0, 0.2, 1)`, el acordeón de preguntas frecuentes se abre en 360 ms y las tarjetas aparecen al hacer scroll en 750 a 900 ms con un leve desplazamiento vertical. En las aplicaciones se usan 150 ms para interacciones mínimas, 250 ms para menús y 400 ms para diálogos. Con la preferencia «reducir movimiento» del sistema, las animaciones se desactivan y el contenido aparece directamente.
+<div align="center">
+<img src="../assets/style-guidelines/sg-06-movimiento.png" alt="Duraciones de las animaciones" width="900">
+<p><em>Figura 5.46. Duraciones de movimiento.</em></p>
+</div>
+
+El movimiento explica cambios y nunca es decorativo. En el Landing Page, los cambios de color de *hover* y foco duran 150 ms con la curva `cubic-bezier(0.4, 0, 0.2, 1)`; el acordeón se abre en 360 ms; y las tarjetas aparecen al hacer scroll entre 750 y 900 ms con un leve desplazamiento vertical. Con la preferencia «reducir movimiento» del sistema, las apariciones se desactivan y el contenido se muestra directamente.
+
+Diseño en Figma: [OsoSense — Style Guidelines](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq) (páginas «SG · Marca» a «SG · Datos y accesibilidad»).
 
 ## 5.2. Information Architecture
 
@@ -424,22 +559,22 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-1.png" alt="Wireframe desktop del Landing Page: encabezado, hero e impacto de la salinidad" width="800">
-<p><em>Figura 5.20. Wireframe Desktop Web Browser (1/4): encabezado, hero y bloque de impacto de la salinidad.</em></p>
+<p><em>Figura 5.47. Wireframe Desktop Web Browser (1/4): encabezado, hero y bloque de impacto de la salinidad.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="800">
-<p><em>Figura 5.21. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
+<p><em>Figura 5.48. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-3.png" alt="Wireframe desktop del Landing Page: planes y preguntas frecuentes" width="800">
-<p><em>Figura 5.22. Wireframe Desktop Web Browser (3/4): planes y preguntas frecuentes.</em></p>
+<p><em>Figura 5.49. Wireframe Desktop Web Browser (3/4): planes y preguntas frecuentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-4.png" alt="Wireframe desktop del Landing Page: equipo, llamado a la acción y pie de página" width="800">
-<p><em>Figura 5.23. Wireframe Desktop Web Browser (4/4): equipo, llamado a la acción y pie de página.</em></p>
+<p><em>Figura 5.50. Wireframe Desktop Web Browser (4/4): equipo, llamado a la acción y pie de página.</em></p>
 </div>
 
 **Principios y elementos de diseño aplicados**
@@ -470,7 +605,7 @@ En 390 px la estructura se conserva y solo cambia la disposición: el menú se c
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-mobile.png" alt="Wireframe mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.24. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<p><em>Figura 5.51. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
 </div>
 
 ### 5.3.2. Landing Page Mock-up
@@ -479,7 +614,7 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 
 | Categoría | Tokens |
 |---|---|
-| Color de acción | Primary/600 `#059669` (botones, íconos, números del proceso), Primary/700 `#047857` (etiquetas y estados *hover*), Primary/800 `#065F46` |
+| Color de acción | Primary/700 `#047857` (botones con texto y etiqueta destacada), Primary/600 `#059669` (íconos, números del proceso y círculos de flecha), Primary/800 `#065F46` (*hover* y presionado) |
 | Superficies verdes | Primary/50 `#F0FDF4` (tarjetas destacadas y plan recomendado), Primary/100 `#DCFCE7` (etiquetas) |
 | Neutros | Neutral/900 `#111827` (títulos), Neutral/600 `#4B5563` y Neutral/500 `#6B7280` (texto secundario), Neutral/200 `#E5E7EB` (bordes), Neutral/50 `#F9FAFB` (pie de página), blanco |
 | Marca | Brand/Forest `#263D29` y Brand/Olive `#64663F`, presentes en el logo |
@@ -489,27 +624,27 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-design-system.png" alt="Design System del Landing Page: colores, tipografía y componentes" width="800">
-<p><em>Figura 5.25. Design System del Landing Page: estilos de color, escala tipográfica y componentes.</em></p>
+<p><em>Figura 5.52. Design System del Landing Page: estilos de color, escala tipográfica y componentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-1.png" alt="Mock-up desktop del Landing Page: encabezado con logo, hero e impacto" width="800">
-<p><em>Figura 5.26. Mock-up Desktop Web Browser (1/4): encabezado con el logo de Oso Terra, hero con fotografía del valle y bloque de impacto.</em></p>
+<p><em>Figura 5.53. Mock-up Desktop Web Browser (1/4): encabezado con el logo de Oso Terra, hero con fotografía del valle y bloque de impacto.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="800">
-<p><em>Figura 5.27. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
+<p><em>Figura 5.54. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-3.png" alt="Mock-up desktop del Landing Page: planes y preguntas frecuentes" width="800">
-<p><em>Figura 5.28. Mock-up Desktop Web Browser (3/4): planes con el plan recomendado destacado y preguntas frecuentes.</em></p>
+<p><em>Figura 5.55. Mock-up Desktop Web Browser (3/4): planes con el plan recomendado destacado y preguntas frecuentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-4.png" alt="Mock-up desktop del Landing Page: equipo, llamado a la acción y pie de página" width="800">
-<p><em>Figura 5.29. Mock-up Desktop Web Browser (4/4): equipo, banner de llamado a la acción y pie de página.</em></p>
+<p><em>Figura 5.56. Mock-up Desktop Web Browser (4/4): equipo, banner de llamado a la acción y pie de página.</em></p>
 </div>
 
 **Cómo se aplican los principios en el mock-up**
@@ -521,7 +656,7 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 
 **Diseño inclusivo en el mock-up**
 
-Los contrastes medidos (WCAG 2.1) son: títulos `#111827` sobre blanco 17,74:1; texto secundario `#4B5563` 7,56:1 y `#6B7280` 4,83:1 sobre blanco; etiquetas `#047857` sobre `#F0FDF4` 5,24:1, todos por encima de AA. El texto blanco sobre el botón `#059669` alcanza 3,77:1, que cumple AA solo para texto grande; por eso, en la siguiente iteración los botones con texto de 14 px pasarán a Primary/700 `#047857` (5,48:1). Sobre las fotografías, el texto blanco se apoya en una capa verde oscura semitransparente.
+Los contrastes medidos (WCAG 2.1) son: títulos `#111827` sobre blanco 17,74:1; texto secundario `#4B5563` 7,56:1 y `#6B7280` 4,83:1 sobre blanco; etiquetas `#047857` sobre `#F0FDF4` 5,24:1, todos por encima de AA. Los botones con texto usan Primary/700 `#047857`, con 5,48:1 para el texto blanco; Primary/600 `#059669` (3,77:1) queda solo para íconos y flechas dentro de círculos. Sobre las fotografías, el texto blanco se apoya en una capa verde oscura semitransparente.
 
 **Versión Mobile Web Browser**
 
@@ -529,7 +664,7 @@ El mock-up móvil aplica los mismos estilos con los ajustes de la sección anter
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-mobile.png" alt="Mock-up mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.30. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<p><em>Figura 5.57. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
 </div>
 
 Diseño en Figma: [OsoSense — Landing Page UI Design](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq).
