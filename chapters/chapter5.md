@@ -194,7 +194,15 @@ Los niveles de salinidad tienen colores propios, independientes del verde de mar
 <p><em>Figura 5.17. Estados en contexto.</em></p>
 </div>
 
-En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores de ejemplo muestran que el nivel depende del cultivo: 3,4 dS/m es *muy alto* para el arándano (umbral 2,5) y 3,5 dS/m es *en vigilancia* para el palto (umbral 3,5).
+En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores son los de las parcelas de demostración de la Web App y muestran que el nivel depende del cultivo: la misma lectura de 1,62 dS/m es *muy alto* en el palto de Sector Norte y solo *alto* en la uva de mesa de El Mirador.
+
+| Cultivo | Umbral ECe | Pérdida por dS/m sobre el umbral | Fuente |
+|---|---|---|---|
+| Uva de mesa | 1,5 dS/m | 9,6 % | Maas y Hoffman (1977), recogido por Ayers y Westcot (1985). |
+| Palto | 1,1 dS/m (referencial) | Sin dato publicado | Umbral de agua de riego de 0,75 dS/m citado por Acosta-Rangel et al. (2019), convertido a ECe con la relación ECe ≈ 1,5 × ECw de Ayers y Westcot (1985). |
+| Arándano | 1,5 dS/m (referencial) | Sin dato publicado | Machado et al. (2014): el crecimiento de raíces y hojas se reduce por encima de 1,5 dS/m. |
+
+El palto figura como cultivo sensible en las tablas de FAO, pero sin un umbral de ECe propio; por eso su valor se marca como referencial y, al igual que en el arándano, la plataforma no estima pérdida de rendimiento sin una pendiente publicada.
 
 <div align="center">
 <img src="../assets/style-guidelines/sg-02-aplicacion.png" alt="Sección de planes del Landing Page" width="742">
@@ -205,7 +213,7 @@ La sección de planes del Landing Page (captura real) aplica la paleta: fondo bl
 
 #### Typography
 
-Se usa una sola familia: **Plus Jakarta Sans**, la del Landing Page, cargada desde Google Fonts. Es una sans-serif geométrica de trazo abierto, pensada para pantallas, con pesos de 200 a 800 y cobertura completa del español y del inglés. Una sola familia simplifica la carga, algo importante con conexiones rurales lentas, y la jerarquía se construye con tamaño y peso.
+Se usa una sola familia: **Plus Jakarta Sans**, la del Landing Page, que la carga desde Google Fonts; la Web App la incluye dentro de la propia aplicación (con `@fontsource`), para no depender de la red en zonas con señal intermitente. Es una sans-serif geométrica de trazo abierto, pensada para pantallas, con pesos de 200 a 800 y cobertura completa del español y del inglés. Una sola familia simplifica la carga, algo importante con conexiones rurales lentas, y la jerarquía se construye con tamaño y peso.
 
 <div align="center">
 <img src="../assets/style-guidelines/sg-03-familia.png" alt="Muestra de Plus Jakarta Sans" width="900">
@@ -312,7 +320,7 @@ Se usan **íconos de línea** de 24 × 24 px con trazo de 2 px y extremos redond
 
 De izquierda a derecha: el ícono suelto en 16, 20, 24 y 32 px; dentro de un círculo verde claro de 40 y 48 px (datos y capacidades); dentro de un círculo verde de 52 px (beneficios destacados); la flecha en el círculo blanco de 34 px de los botones; y la viñeta de 22 px de las listas de planes.
 
-Todo ícono con función lleva texto visible o `aria-label`; los decorativos llevan `aria-hidden="true"`; no se mezclan íconos rellenos con íconos de línea; y los íconos de estado siempre acompañan a la palabra del estado.
+Todo ícono con función lleva texto visible o `aria-label`; los decorativos llevan `aria-hidden="true"`; no se mezclan íconos rellenos con íconos de línea (la Web App usa Material Icons en su variante *Outlined*, con los mismos nombres de ícono); y los íconos de estado siempre acompañan a la palabra del estado.
 
 #### Tone of voice
 
@@ -329,7 +337,7 @@ El nivel de detalle cambia según quién lee: al **productor**, frases de hasta 
 
 | Contexto | Así sí | Así no |
 |---|---|---|
-| Alerta crítica | «Salinidad muy alta en Lote Sur. Riega con agua de menor salinidad y revisa el drenaje hoy.» | «¡¡ALERTA!! EC 6.2 dS/m excede el umbral ECe del cultivo!!!» |
+| Alerta crítica | «Salinidad muy alta en Sector Norte. Riega con agua de menor salinidad y revisa el drenaje hoy.» | «¡¡ALERTA!! EC 6.2 dS/m excede el umbral ECe del cultivo!!!» |
 | Estado vacío | «Aún no hay lecturas. Conecta tu dispositivo para ver la salinidad de esta parcela.» | «Error 404: no se encontraron datos de telemetría.» |
 | Error de formulario | «Usa al menos 12 caracteres.» | «Contraseña inválida.» |
 | Logro | «La salinidad de La Quebrada bajó a nivel normal. El lavado de sales funcionó.» | «¡¡Felicidades, campeón!!» |
@@ -479,7 +487,7 @@ La puesta en marcha se hace sin herramientas y cada paso tiene una respuesta vis
 <p><em>Figura 5.43. Serie de tiempo de ECe. Datos ilustrativos.</em></p>
 </div>
 
-El gráfico tipo de la plataforma muestra la ECe de una parcela durante un mes: línea `#047857` de 3 px; bandas de fondo con los colores de los cuatro niveles, para leer el nivel sin leyenda; umbral del cultivo como línea discontinua `#A12426` con su etiqueta; eje Y desde cero con la unidad; fechas cortas en el eje X; y la etiqueta directa del valor actual junto al último punto.
+El gráfico tipo de la plataforma muestra la ECe de una parcela durante un mes (en la figura, el arándano de Campo Este frente a su umbral de 1,5 dS/m): línea `#047857` de 3 px; bandas de fondo con los colores de los cuatro niveles, para leer el nivel sin leyenda; umbral del cultivo como línea discontinua `#A12426` con su etiqueta; eje Y desde cero con la unidad; fechas cortas en el eje X; y la etiqueta directa del valor actual junto al último punto.
 
 <div align="center">
 <img src="../assets/style-guidelines/sg-06-grafico-barras.png" alt="Barras de ECe por parcela con umbral de cada cultivo" width="900">
@@ -504,7 +512,7 @@ De izquierda a derecha: el **foco visible**, un anillo azul `#2563EB` en todo el
 | Comprensible | Idioma declarado en `lang`; mensajes de error que explican cómo corregir; etiquetas visibles; navegación igual en todas las páginas. |
 | Robusto | HTML semántico con `aria-label`, `aria-labelledby`, `aria-expanded`, `aria-controls` y `aria-pressed`; cambios de estado anunciados con `aria-live` en las aplicaciones. |
 
-El Landing Page ya aplica `aria-label` en la navegación y el menú, `aria-labelledby` en cada sección, `aria-expanded` y `aria-controls` en el menú móvil, `aria-pressed` en el selector de idioma, textos alternativos y `prefers-reduced-motion`. La Web App incorpora además un enlace «Saltar al contenido», `aria-current="page"` y `role="alert"` en los errores.
+El Landing Page ya aplica `aria-label` en la navegación y el menú, `aria-labelledby` en cada sección, `aria-expanded` y `aria-controls` en el menú móvil, `aria-pressed` en el selector de idioma, textos alternativos y `prefers-reduced-motion`. La Web App incorpora además un enlace «Saltar al contenido», `aria-current="page"`, `role="alert"` en los errores, avisos con `role="status"` y `aria-live` cuando se reconoce una alerta o se registra una acción, y conserva en la dirección web los filtros de Alertas y la pestaña abierta del detalle de parcela, para poder compartir o recuperar la vista.
 
 **Internacionalización.** Todos los productos se ofrecen en inglés (en_US) y español latinoamericano (es_419) con el selector EN / ES; los textos viven en archivos de traducción, las fechas siguen el formato de cada idioma y las unidades se mantienen (3.5 dS/m, 4.2 ha, 23.8 °C).
 
