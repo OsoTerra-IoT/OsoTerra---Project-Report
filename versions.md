@@ -85,6 +85,7 @@
 | 0.0.81 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1 Style Guidelines rehecha en Figma con 46 figuras por tema (marca, color, tipografía y espacio, íconos y componentes, mobile e IoT, datos y accesibilidad), valores anotados y explicación en el texto. |
 | 0.0.82 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3 Landing Page Mock-up actualizada con los botones en `#047857` y renumeración de figuras. |
 | 0.0.83 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.2 Information Architecture del Landing Page (organization, labeling, SEO y meta tags, searching y navigation systems) con nueve diagramas en Figma; enlaces de Figma por página en 5.1 y 5.3. |
+| 0.0.84 | 25/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1 con umbrales reales de palto, uva de mesa y arándano (tabla con fuentes), figuras de estados, app Android, notificaciones y gráficos actualizadas, y estado real de la Web App; bibliografía con tres fuentes nuevas. |
 
 # Project Report Collaboration Insights
 

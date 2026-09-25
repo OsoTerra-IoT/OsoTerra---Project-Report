@@ -16,7 +16,9 @@ El contraste entre los doce Hypothesis Statements y un resultado de comportamien
 
 Las siguientes fuentes sustentan las cifras y afirmaciones citadas en los Capítulos I y II. Se presentan en orden alfabético según el formato APA 7.ª edición.
 
+- Acosta-Rangel, A. M., Li, R., Celis, N., Suarez, D. L., Santiago, L. S., Arpaia, M. L., & Mauk, P. A. (2019). The physiological response of 'Hass' avocado to salinity as influenced by rootstock. *Scientia Horticulturae, 256*, 108629. https://doi.org/10.1016/j.scienta.2019.108629
 - Aimituma-Franco, K. M., Llanqui-Ticona, S. E., & Fernández-Rojas, H. (2023). Biorremediación de suelos salinos con enmiendas orgánicas de estiércol de cuy y vacuno, Cusco-Perú. *Revista Amazónica de Ciencias Ambientales y Ecológicas, 2*(1), e388. https://doi.org/10.51252/reacae.v2i1.e388
+- Ayers, R. S., & Westcot, D. W. (1985). *Water quality for agriculture* (FAO Irrigation and Drainage Paper 29 Rev. 1). FAO. https://www.fao.org/4/t0234e/t0234e00.htm
 - Campoverde, L. (2012). *Evaluación de áreas agrícolas con problemas de salinización para uso potencial en acuicultura en el valle bajo del río Santa, Áncash-Perú* [Tesis de doctorado, Universidad Nacional de Trujillo]. http://dspace.unitru.edu.pe/handle/UNITRU/5928
 - Colegio de Ingenieros del Perú, Consejo Departamental de Lima [CIP-CD Lima]. (s.f.). *Acerca del Capítulo*. Capítulo de Ingeniería Agronómica y Zootecnia. https://agronomica.cdlima.org.pe/acerca-del-capitulo/
 - Congreso de la República del Perú. (2020). *Proyecto de Ley 7786/2020-CR, que declara de interés nacional la prevención de la salinización del suelo agrícola*.
@@ -28,6 +30,7 @@ Las siguientes fuentes sustentan las cifras y afirmaciones citadas en los Capít
 - Instituto Nacional de Estadística e Informática [INEI]. (s.f.). *Pequeños y medianos productores agropecuarios destinan el 78% del volumen de su producción a la venta* [Nota de prensa, Encuesta Nacional Agropecuaria 2015]. https://m.inei.gob.pe/prensa/noticias/pequenos-y-medianos-productores-agropecuarios-destinan-el-78-del-volumen-de-su-produccion-a-la-venta-9153/
 - Instituto Nacional de Innovación Agraria [INIA]. (2024). *Información técnica sobre salinidad de suelos agrícolas*.
 - Maas, E. V., & Hoffman, G. J. (1977). Crop salt tolerance: Current assessment. *Journal of the Irrigation and Drainage Division, 103*(2), 115–134. https://doi.org/10.1061/JRCEA4.0001137
+- Machado, R. M. A., Bryla, D. R., & Vargas, O. (2014). Effects of salinity induced by ammonium sulfate fertilizer on root and shoot growth of highbush blueberry. *Acta Horticulturae, 1017*, 407–414. https://doi.org/10.17660/ActaHortic.2014.1017.49
 - Ministerio de Desarrollo Agrario y Riego [MIDAGRI]. (2026). *Midagri: INIA implementa moderno laboratorio para fortalecer la agricultura en Puno* [Nota de prensa]. https://www.gob.pe/institucion/inia/noticias/1376064-midagri-inia-implementa-moderno-laboratorio-para-fortalecer-la-agricultura-en-puno
 - Ministerio de Desarrollo Agrario y Riego [MIDAGRI]. (s.f.). *Suelo*. https://www.midagri.gob.pe/portal/datero/43-sector-agrario/suelo
 - Organismo Supervisor de Inversión Privada en Telecomunicaciones [OSIPTEL]. (2026). *Erestel 2025: aumenta a 96 % los hogares peruanos que tienen acceso a internet fijo o móvil* [Nota de prensa]. https://www.gob.pe/institucion/osiptel/noticias/1393824-erestel-2025-aumenta-a-96-los-hogares-peruanos-que-tienen-acceso-a-internet-fijo-o-movil
