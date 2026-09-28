@@ -1,3 +1,5 @@
+<div style="page-break-before: always; break-before: page;"></div>
+
 # Capítulo V: Solution UI/UX Design
 
 ## 5.1. Style Guidelines

@@ -1,3 +1,5 @@
+<div style="page-break-before: always; break-before: page;"></div>
+
 # Capítulo IV: Solution Software Design
 
 Este capítulo traduce la comprensión del dominio construida en los capítulos anteriores en un diseño de software concreto. El desarrollo se organiza en dos niveles complementarios del Domain-Driven Design. El nivel estratégico (4.1) parte del Design-Level EventStorming para descubrir los límites naturales del dominio, los formaliza como bounded contexts mediante Bounded Context Canvases, establece las relaciones entre ellos con Context Mapping y los proyecta sobre una arquitectura de software descrita con el modelo C4. El nivel táctico (4.2) desciende al interior de cada bounded context y detalla su estructura interna por capas, sus componentes y su modelo de datos.

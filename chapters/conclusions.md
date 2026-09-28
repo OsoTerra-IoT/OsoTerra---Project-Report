@@ -1,3 +1,5 @@
+<div style="page-break-before: always; break-before: page;"></div>
+
 # Conclusiones
 
 ## Conclusiones y recomendaciones
@@ -11,6 +13,8 @@ Del lado de los asesores técnicos, las tres entrevistas confirman el Business O
 El contraste entre los doce Hypothesis Statements y un resultado de comportamiento real de los usuarios frente al producto no puede completarse todavía: las Validation Interviews (6.3) y la implementación del Landing Page y de las aplicaciones (Capítulo VI) aún no se han iniciado, por lo que ninguna hipótesis puede darse por validada ni refutada en esta entrega. Esa evaluación se retomará a partir de TB1, cuando exista una primera versión desplegada del Landing Page y de las aplicaciones web.
 
 **Recomendaciones para la siguiente entrega.** Completar el registro de video de las seis entrevistas ya realizadas (cuatro de ellas aún sin URL de Microsoft Stream/Clipchamp) y consolidarlas en un único video editado, tal como exige el enunciado. Programar con anticipación las entrevistas de validación del Capítulo VI, dado que el registro de entrevistas de needfinding fue la actividad que más tiempo tomó en esta entrega por depender de la disponibilidad de terceros.
+
+<div style="page-break-before: always; break-before: page;"></div>
 
 # Bibliografía
 
@@ -36,6 +40,8 @@ Las siguientes fuentes sustentan las cifras y afirmaciones citadas en los Capít
 - Rocha-Yupanqui, R., & Gomero, L. A. (2019). *Métodos para recuperar suelos afectados por la salinidad y/o sodicidad* [Trabajo de investigación de bachiller, Universidad Científica del Sur]. https://repositorio.cientifica.edu.pe/handle/20.500.12805/780
 - The Spoon. (2018). *CropX makes soil sensors to measure moisture, gets investment from ICL*. https://thespoon.tech/cropx-makes-soil-sensors-to-measure-moisture-gets-investment-from-icl/
 - The Western Producer. (2020). *Independent probes take the measure of the soil*. https://www.producer.com/crops/independent-probes-take-the-measure-of-the-soil/
+
+<div style="page-break-before: always; break-before: page;"></div>
 
 # Anexos
 
