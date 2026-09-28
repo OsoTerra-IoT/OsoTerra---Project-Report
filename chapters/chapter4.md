@@ -534,21 +534,24 @@ Además, cada integración con terceros se protege con un Anti-corruption Layer 
 
 La arquitectura de software de OsoSense se documenta siguiendo el modelo C4 de Simon Brown, que describe un sistema mediante niveles sucesivos de detalle, de modo que cada audiencia encuentre la vista con el grado de abstracción que necesita sin verse obligada a interpretar diagramas irrelevantes para su rol.
 
-Se presentan cuatro vistas. El **System Landscape Diagram** (4.1.3.1) ubica a OsoSense dentro del ecosistema de sistemas y actores con los que convive, incluidos los servicios externos de pago, notificación y datos meteorológicos. El **Context Level Diagram** (4.1.3.2) acota el alcance a la solución misma y a sus interacciones directas con usuarios y sistemas externos, sin revelar su estructura interna. El **Container Level Diagram** (4.1.3.3) descompone la solución en sus unidades desplegables —dispositivo de campo, Edge Service, RESTful API, aplicaciones web y móvil, Landing Page y base de datos— y muestra las tecnologías y protocolos que las comunican. El **Deployment Diagram** (4.1.3.4) proyecta esos contenedores sobre la infraestructura física y de nube donde se ejecutan.
+Se presentan cuatro vistas. El **System Landscape Diagram** (4.1.3.1) ubica a OsoSense dentro del ecosistema de actores, sistemas externos y hardware con los que convive. El **Context Level Diagram** (4.1.3.2) acota el alcance al sistema OsoSense y a sus interacciones directas, sin revelar su estructura interna. El **Container Level Diagram** (4.1.3.3) descompone OsoSense en sus unidades desplegables —Landing Page, Web App, Mobile App, RESTful API y su base de datos, Edge Service y su base local, y Embedded Application— y muestra las tecnologías y protocolos que las comunican. El **Deployment Diagram** (4.1.3.4) proyecta esos contenedores sobre la infraestructura física y de nube donde se ejecutan.
+
+Los cuatro diagramas se elaboraron con **Structurizr DSL** a partir de un único modelo, de modo que los nombres, las descripciones y las relaciones son idénticos en todas las vistas. El archivo fuente se versiona junto al informe en `assets/strategic-ddd/c4/ososense.dsl`.
 
 Los diagramas de nivel de componente, que corresponden al tercer nivel del C4, no se presentan aquí sino dentro de cada bounded context en la sección 4.2, porque su lectura solo tiene sentido junto al detalle táctico del contexto al que pertenecen.
 
 #### 4.1.3.1. Software Architecture System Landscape Diagram
 
-El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en una sola imagen, las personas que interactúan con la solución, los sistemas de software que Oso Terra construye y opera, y los sistemas externos con los que esos sistemas se integran. Su propósito es dar contexto antes de bajar al nivel de Context, Container y Component, sin entrar todavía en tecnologías ni despliegue.
+El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en una sola imagen, las personas que interactúan con la solución, el sistema de software que Oso Terra construye y opera, el hardware de campo y los sistemas externos con los que se integra. Su propósito es dar contexto antes de bajar al nivel de Context, Container y Component, sin entrar todavía en tecnologías ni despliegue.
 
 **Proceso de elaboración**
 
 1. **Identificación de personas.** Se tomaron los actores del Big Picture EventStorming (2.4) y de los flujos de mensajes (4.1.1.2) que interactúan directamente con la solución: el visitante del Landing Page, el Agricultural Producer y el Agronomist Advisor.
-2. **Identificación de sistemas propios.** Los productos digitales exigidos por el enunciado se agruparon en dos sistemas de software dentro del límite de la empresa Oso Terra: *OsoSense Platform*, que reúne el Landing Page, la Web App, la Mobile App y el RESTful API, y *OsoSense Field Monitoring*, que reúne el IoT Device y el Edge Service.
-3. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como sistema externo con el que interactúa el asesor.
-4. **Relaciones.** Cada relación se rotuló con la acción principal que realiza el emisor sobre el receptor.
-5. **Revisión.** Se verificó que cada persona y cada sistema externo del diagrama aparezca en al menos un escenario de Domain Storytelling.
+2. **Identificación del sistema propio.** Todos los productos de software exigidos por el enunciado —Landing Page, Web App, Mobile App, RESTful API, Edge Service y Embedded Application— se agruparon en un **único sistema de software, OsoSense**, porque los construye y opera el mismo equipo y solo tienen sentido juntos.
+3. **Identificación del hardware.** El **Soil Sensing Hardware** (placa ESP32 con las sondas de conductividad eléctrica, humedad y temperatura, el LED de estado y el botón) se representa como el único elemento físico fuera del sistema: el software embebido que corre sobre él sí forma parte de OsoSense.
+4. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como sistema externo con el que interactúa el asesor.
+5. **Relaciones.** Cada relación se rotuló con la acción principal que realiza el emisor sobre el receptor.
+6. **Revisión.** Se verificó que cada persona y cada sistema externo del diagrama aparezca en al menos un escenario de Domain Storytelling.
 
 <div align="center">
 <img src="../assets/strategic-ddd/system-landscape-diagram.png" alt="Software Architecture System Landscape Diagram de OsoSense" width="900">
@@ -559,43 +562,42 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 
 | Elemento | Tipo | Descripción |
 |---|---|---|
-| Visitor | Persona | Visitante del Landing Page que conoce la propuesta y elige un plan. |
-| Agricultural Producer | Persona | Productor que registra sus parcelas, consulta lecturas y alertas y registra acciones correctivas. |
-| Agronomist Advisor | Persona | Asesor técnico que supervisa varias parcelas vinculadas, registra resultados de laboratorio y genera reportes. |
-| OsoSense Platform | Sistema propio | Landing Page, Web App, Mobile App y RESTful API. Gestiona parcelas, lecturas, alertas, reportes y suscripciones. |
-| OsoSense Field Monitoring | Sistema propio | IoT Device (ESP32) y Edge Service. Captura, compensa y sincroniza las lecturas del suelo. |
+| Visitor | Persona | Visitante del Landing Page que consulta la propuesta y elige un plan. |
+| Agricultural Producer | Persona | Registra parcelas, consulta el estado del suelo, atiende alertas e instala el dispositivo en su parcela. |
+| Agronomist Advisor | Persona | Supervisa parcelas vinculadas, calibra dispositivos, envía muestras al laboratorio y genera reportes. |
+| OsoSense | Sistema propio | Captura, sincroniza e interpreta la salinidad del suelo según el cultivo; gestiona parcelas, alertas, reportes y suscripciones. |
+| Soil Sensing Hardware | Hardware | Placa ESP32 con sondas de conductividad eléctrica, humedad y temperatura del suelo, LED de estado y botón. |
 | Stripe | Sistema externo | Procesa los pagos y cobros recurrentes de las suscripciones. |
 | Google OAuth2 | Sistema externo | Permite el inicio de sesión federado. |
 | Push / Email provider | Sistema externo | Entrega las notificaciones de alertas. |
-| Weather Service API | Sistema externo | Provee datos de precipitación por coordenadas para los reportes. |
+| Weather Service API | Sistema externo | Provee datos de precipitación y temperatura por coordenadas. |
 | Soil Laboratory | Sistema externo | Laboratorio acreditado que entrega el análisis de ECe usado para calibrar el dispositivo. |
 
 **Relaciones principales**
 
-- El **Visitor** conoce la propuesta y elige un plan en OsoSense Platform.
-- El **Agricultural Producer** usa OsoSense Platform para gestionar sus parcelas y atender alertas, e instala el dispositivo de OsoSense Field Monitoring en su parcela.
-- El **Agronomist Advisor** supervisa parcelas y genera reportes en OsoSense Platform, y envía muestras de suelo al Soil Laboratory.
-- **OsoSense Field Monitoring** envía lotes de lecturas a OsoSense Platform por HTTPS y recibe de ella el factor de calibración.
-- **OsoSense Platform** cobra las suscripciones con Stripe, verifica el ID token con Google OAuth2, envía alertas mediante el proveedor push y de correo, y consulta la lluvia en el Weather Service API.
+- El **Visitor** consulta la propuesta y los planes; el **Agricultural Producer** gestiona sus parcelas y atiende alertas; el **Agronomist Advisor** supervisa parcelas, calibra y genera reportes. Los tres interactúan con OsoSense por HTTPS.
+- El **Agricultural Producer** instala el **Soil Sensing Hardware** en la parcela, y OsoSense lee de él la conductividad eléctrica, la humedad y la temperatura del suelo y controla su LED de estado.
+- El **Agronomist Advisor** envía muestras de suelo al **Soil Laboratory**.
+- **OsoSense** cobra las suscripciones con Stripe, verifica el ID token con Google OAuth2, envía alertas mediante el proveedor push y de correo, y consulta el clima en el Weather Service API.
 
 **Decisiones reflejadas en el diagrama**
 
-- La solución se separa en dos sistemas porque la parte de campo opera con conectividad intermitente y se despliega en el dispositivo y el Edge Service, mientras que la plataforma se despliega en la nube.
-- Todas las integraciones con terceros pasan por OsoSense Platform; el campo no depende directamente de ningún sistema externo.
+- La solución es **un solo sistema de software**: el Edge Service y la Embedded Application son contenedores de OsoSense, no un sistema aparte. Lo único que queda fuera del límite es el hardware físico.
+- Todas las integraciones con terceros se hacen desde OsoSense y, como se verá en el nivel de Container, las concentra el RESTful API.
 - Los niveles de Context, Container y Deployment se detallan en las secciones siguientes.
 
 **URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
-El System Context Diagram enfoca **OsoSense Platform** —el sistema con el que interactúan directamente las personas— y muestra sus dependencias inmediatas: los usuarios, el sistema de campo que le entrega lecturas y los sistemas externos con los que se integra. Todavía no se detallan contenedores ni tecnologías; eso corresponde al nivel de Container.
+El System Context Diagram enfoca el sistema **OsoSense** y muestra sus dependencias inmediatas: los usuarios, el hardware de campo del que obtiene las lecturas y los sistemas externos con los que se integra. Todavía no se detallan contenedores ni tecnologías; eso corresponde al nivel de Container.
 
 **Proceso de elaboración**
 
-1. **Sistema en foco.** Se eligió OsoSense Platform como sistema central, por ser el que usan directamente el visitante, el productor y el asesor.
+1. **Sistema en foco.** OsoSense como una sola caja que reúne todos los productos de software de la solución, incluidos el Edge Service y la Embedded Application.
 2. **Personas.** Se heredaron del System Landscape (4.1.3.1): Visitor, Agricultural Producer y Agronomist Advisor.
-3. **Sistema adyacente.** OsoSense Field Monitoring se modela como sistema vecino que envía lotes de lecturas y recibe el factor de calibración.
-4. **Sistemas externos.** Se conservaron los del Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo, el Weather Service API y el Soil Laboratory.
+3. **Hardware.** El Soil Sensing Hardware se modela fuera del sistema: OsoSense lee sus sensores y controla su LED de estado; el productor lo instala en la parcela.
+4. **Sistemas externos.** Se conservaron los del Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API.
 5. **Relaciones.** Cada relación se rotuló con la acción principal y el protocolo del emisor sobre el receptor.
 
 <div align="center">
@@ -608,74 +610,68 @@ El System Context Diagram enfoca **OsoSense Platform** —el sistema con el que 
 | Elemento | Tipo | Descripción |
 |---|---|---|
 | Visitor | Persona | Visitante del Landing Page que consulta la propuesta y los planes. |
-| Agricultural Producer | Persona | Registra parcelas, consulta el estado del suelo y atiende alertas. |
+| Agricultural Producer | Persona | Registra parcelas, consulta el estado del suelo, atiende alertas e instala el dispositivo. |
 | Agronomist Advisor | Persona | Supervisa parcelas vinculadas, calibra dispositivos y genera reportes. |
-| OsoSense Platform | Sistema en foco | Reúne Landing Page, Web App, Mobile App y RESTful API. |
-| OsoSense Field Monitoring | Sistema adyacente | Captura, valida, compensa y sincroniza las lecturas del suelo. |
+| OsoSense | Sistema en foco | Landing Page, Web App, Mobile App, RESTful API, Edge Service y Embedded Application. |
+| Soil Sensing Hardware | Hardware | Sensores de conductividad eléctrica, humedad y temperatura del suelo sobre la placa ESP32. |
 | Stripe | Sistema externo | Procesa las transacciones de suscripción. |
 | Google OAuth2 | Sistema externo | Verifica el ID token del inicio de sesión federado. |
 | Push / Email provider | Sistema externo | Entrega notificaciones push y correos transaccionales. |
-| Weather Service API | Sistema externo | Provee precipitación y temperatura ambiental por coordenadas. |
-| Soil Laboratory | Sistema externo | Emite el análisis de ECe de referencia usado para calibrar el dispositivo. |
+| Weather Service API | Sistema externo | Provee precipitación y temperatura por coordenadas. |
 
 **Relaciones principales**
 
-- El **Visitor** consulta la propuesta y los planes en OsoSense Platform (HTTPS).
-- El **Producer** gestiona sus parcelas y atiende alertas, y el **Advisor** supervisa parcelas, calibra y genera reportes (HTTPS).
-- **OsoSense Field Monitoring** envía lotes de lecturas a la plataforma y recibe de ella el factor de calibración (HTTPS).
-- **OsoSense Platform** procesa pagos con Stripe, verifica el ID token con Google OAuth2, envía notificaciones por el proveedor push/correo y consulta el clima en el Weather Service API.
-- El **Advisor** solicita análisis al **Soil Laboratory** y registra su resultado en la plataforma, cerrando el ciclo de calibración.
+- El **Visitor** consulta la propuesta y los planes, el **Producer** gestiona sus parcelas y atiende alertas, y el **Advisor** supervisa parcelas, calibra y genera reportes (HTTPS).
+- **OsoSense** lee la conductividad eléctrica, la humedad y la temperatura del **Soil Sensing Hardware** y enciende su LED de estado (GPIO, ADC y 1-Wire); el **Producer** instala el dispositivo en la parcela.
+- **OsoSense** procesa pagos con Stripe, verifica el ID token con Google OAuth2, envía notificaciones por el proveedor push/correo y consulta el clima en el Weather Service API.
 
 **Decisiones reflejadas en el diagrama**
 
-- El foco en OsoSense Platform evita repetir el Landscape: Field Monitoring se ve aquí como una caja cuyo interior se abre en el nivel de Container.
+- El límite del sistema separa **software** de **hardware**: la captura, la compensación, el almacenamiento local y la sincronización de lecturas son responsabilidades de OsoSense, aunque se ejecuten en campo.
 - La dependencia del **servicio meteorológico** es no crítica: su indisponibilidad degrada la riqueza del diagnóstico pero no impide la operación.
-- Todas las integraciones con terceros pasan por la plataforma; el campo no depende directamente de ningún sistema externo.
+- Todas las integraciones con terceros pasan por OsoSense; el hardware no depende directamente de ningún sistema externo.
 
 #### 4.1.3.3. Software Architecture Container Level Diagrams
 
-El Container Level abre los sistemas del nivel anterior en sus unidades de despliegue independiente (aplicaciones, servicios y almacenes de datos), con la tecnología de cada una y sus canales de comunicación. En total son **siete unidades desplegables** repartidas en los dos sistemas propios.
+El Container Level abre el sistema OsoSense en sus unidades de despliegue independiente (aplicaciones, servicios y almacenes de datos), con la tecnología de cada una y sus canales de comunicación. Son **ocho contenedores** dentro de un solo límite de sistema; fuera quedan las personas, los sistemas externos y el hardware.
 
 **Proceso de elaboración**
 
-1. **Descomposición de OsoSense Platform.** Landing Page (estático), Web App y Mobile App como clientes, el RESTful API como backend de negocio y la Platform Database como almacén.
-2. **Descomposición de OsoSense Field Monitoring.** Embedded Application sobre el ESP32, Edge Service en campo y su base local para la sincronización diferida.
-3. **Tecnologías.** Se anotó la pila establecida por el curso para cada contenedor.
-4. **Protocolos.** Cada relación se rotuló con su protocolo (JSON/HTTPS, JDBC, SQL local, Serial/WiFi, SMTP).
+1. **Contenedores de cara al usuario.** Landing Page (estático), Web App y Mobile App como clientes.
+2. **Backend.** El RESTful API como monolito modular de negocio y la Platform Database como su almacén.
+3. **Contenedores de campo.** El Edge Service con su propia base local (Edge Local Database) para la sincronización diferida, y la Embedded Application que corre sobre el ESP32.
+4. **Tecnologías.** Se anotó la pila establecida por el curso para cada contenedor.
+5. **Protocolos.** Cada relación se rotuló con su protocolo (JSON/HTTPS, JDBC, SQL local, JSON/HTTP sobre WiFi, GPIO/ADC/1-Wire, SMTP).
 
 <div align="center">
-<img src="../assets/strategic-ddd/container-diagram-platform.png" alt="Software Architecture Container Diagram — OsoSense Platform" width="950">
-<p><em>Software Architecture Container Diagram — OsoSense Platform.</em></p>
-</div>
-
-<div align="center">
-<img src="../assets/strategic-ddd/container-diagram-field.png" alt="Software Architecture Container Diagram — OsoSense Field Monitoring" width="850">
-<p><em>Software Architecture Container Diagram — OsoSense Field Monitoring.</em></p>
+<img src="../assets/strategic-ddd/container-diagram.png" alt="Software Architecture Container Diagram de OsoSense" width="950">
+<p><em>Software Architecture Container Diagram de OsoSense.</em></p>
 </div>
 
 **Elementos del diagrama**
 
-| Contenedor | Sistema | Tecnología | Responsabilidad |
-|---|---|---|---|
-| Landing Page | OsoSense Platform | HTML5, CSS3, JavaScript | Sitio estático que presenta el modelo de negocio y los planes. |
-| Web Application | OsoSense Platform | Angular, TypeScript, Angular Material | Interfaz responsive de gestión, tableros y reportes (asesor). |
-| Mobile Application | OsoSense Platform | Kotlin / Android | App nativa de consulta en campo y recepción de alertas (productor). |
-| RESTful API | OsoSense Platform | Spring Boot, Java, Spring Data JPA | Expone las capacidades de los seis bounded contexts. |
-| Platform Database | OsoSense Platform | MySQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
-| Embedded Application | OsoSense Field Monitoring | C++ / ESP32 | Captura periódicamente CE, humedad y temperatura del suelo. |
-| Edge Service | OsoSense Field Monitoring | Flask, Python, Peewee ORM | Valida, compensa y sincroniza las lecturas del dispositivo. |
-| Edge Local Database | OsoSense Field Monitoring | SQLite | Almacena las lecturas pendientes de sincronización. |
+| Contenedor | Tecnología | Responsabilidad |
+|---|---|---|
+| Landing Page | HTML5, CSS3, JavaScript | Sitio estático que presenta el modelo de negocio y los planes. |
+| Web Application | Angular, TypeScript, Angular Material | Interfaz responsive de gestión, tableros y reportes (asesor y productor). |
+| Mobile Application | Kotlin / Android | App nativa de consulta en campo y recepción de alertas (productor). |
+| RESTful API | Spring Boot, Java, Spring Data JPA | Monolito modular que expone las capacidades de los seis bounded contexts. |
+| Platform Database | MySQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
+| Edge Service | Flask, Python, Peewee ORM | Valida, compensa a 25 °C y sincroniza las lecturas; reenvía los lotes pendientes al recuperar la conexión. |
+| Edge Local Database | SQLite | Persiste las lecturas pendientes de sincronización. |
+| Embedded Application | C++ / Arduino Framework | Firmware que muestrea los sensores, controla el LED y el botón y envía las lecturas. |
 
 **Relaciones principales**
 
 - El **Visitor** visita el Landing Page, que redirige a la Web App mediante un call-to-action (HTTPS).
 - **Web App** y **Mobile App** consumen el mismo **RESTful API** (JSON/HTTPS); el API es el único que lee y escribe en la Platform Database (JDBC).
-- La **Embedded Application** transmite lecturas al **Edge Service** (Serial/WiFi); el Edge las guarda en su base local (SQL) y sincroniza los lotes al API (JSON/HTTPS).
-- El **RESTful API** concentra las integraciones externas: Stripe, Weather Service API y notificaciones push (JSON/HTTPS) y correo (SMTP).
+- El flujo de campo es **RESTful API ↔ Edge Service ↔ Embedded Application ↔ hardware**: la **Embedded Application** lee los sensores del **Soil Sensing Hardware** (GPIO/ADC/1-Wire) y envía las lecturas al **Edge Service** (JSON/HTTP sobre WiFi); el Edge las guarda en su base local (SQL), sincroniza los lotes al API (JSON/HTTPS) y recibe de él el factor de calibración y los umbrales.
+- El **RESTful API** concentra las integraciones externas: Stripe, Google OAuth2, Weather Service API y notificaciones push (JSON/HTTPS) y correo (SMTP).
 
 **Decisiones reflejadas en el diagrama**
 
-- La separación entre **Edge Service** y **RESTful API** es la decisión más relevante: el Edge se despliega en campo y asume la validación de rango, la compensación a 25 °C sobre la lectura fresca y el almacenamiento local con sincronización diferida. Sin ella, cada corte de conexión produciría un vacío irrecuperable en el histórico —el activo que sostiene la propuesta de valor.
+- **RESTful API como monolito modular.** Los seis bounded contexts se implementan como módulos de un mismo despliegue Spring Boot, cada uno con sus capas `domain`, `application`, `infrastructure` e `interfaces`, y se comunican entre sí solo por sus fachadas y eventos. Se eligió así por practicidad: un equipo de siete personas, un único pipeline de despliegue, una sola base de datos transaccional y menor costo de operación en la nube. Como los límites entre módulos ya coinciden con los bounded contexts, cualquiera de ellos puede extraerse a un servicio independiente si su carga lo exige, sin rediseñar el dominio.
+- La separación entre **Edge Service** y **RESTful API** es la decisión más relevante del lado de campo: el Edge se despliega junto a la parcela y asume la validación de rango, la compensación a 25 °C sobre la lectura fresca y el almacenamiento local con sincronización diferida. Sin ella, cada corte de conexión produciría un vacío irrecuperable en el histórico, que es el activo que sostiene la propuesta de valor.
 - La **Web App** (asesor, gabinete, pantalla amplia) y la **Mobile App** (productor, campo, notificaciones push) consumen el mismo API pero atienden contextos de uso distintos.
 - El **Landing Page** se mantiene como contenedor independiente, desplegado como sitio estático, para publicarse y evolucionar sin acoplarse al ciclo de despliegue de la Web App.
 
@@ -685,9 +681,9 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 
 **Proceso de elaboración**
 
-1. **Nodos de campo.** La Embedded Application se despliega en el nodo ESP32 y el Edge Service, con su base SQLite, en un gateway local.
+1. **Nodos de campo.** La Embedded Application se despliega en el ESP32 del Soil Sensing Hardware y el Edge Service, con su base SQLite, en un gateway local.
 2. **Dispositivos del usuario.** El Landing Page y la Web App se ejecutan en el navegador; la Mobile App, en el dispositivo Android.
-3. **Nodos cloud.** Se separaron el hosting estático (Landing Page), el hosting de la Web App, el servidor de aplicaciones (RESTful API sobre la JVM) y el servidor de base de datos.
+3. **Nodos cloud.** Se separaron el servidor de aplicaciones (RESTful API sobre la JVM) y el servidor de base de datos.
 4. **Enlaces.** Cada canal de despliegue se rotuló con su protocolo.
 
 <div align="center">
@@ -699,19 +695,17 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 
 | Deployment Node | Contenedores desplegados | Notas |
 |---|---|---|
-| Parcela → ESP32 (microcontrolador) | Embedded Application (C++ / Arduino Framework) | Opera con conectividad intermitente. |
-| Parcela → Gateway local (Raspberry Pi / PC) | Edge Service (Flask/Python) + Edge Local Database (SQLite) | Compensa y bufferiza hasta sincronizar. |
-| Navegador web | Landing Page (HTML/CSS/JS) + Web Application (Angular SPA) | Descargados desde el hosting cloud. |
-| Dispositivo Android | Mobile Application (Kotlin APK) | Cliente de campo del productor. |
-| Cloud → Static Hosting | Landing Page (archivos estáticos) | Publicación desacoplada. |
-| Cloud → Web Hosting | Web Application (build de producción) | — |
-| Cloud → Application Server (JVM) | RESTful API (Spring Boot JAR) | Backend de negocio. |
-| Cloud → Database Server | Platform Database (MySQL) | Persistencia canónica. |
+| Parcela agrícola → ESP32 (Soil Sensing Hardware) | Embedded Application (C++ / Arduino Framework) | Opera con conectividad intermitente. |
+| Parcela agrícola → Gateway local (Raspberry Pi / PC) | Edge Service (Flask/Python) + Edge Local Database (SQLite) | Compensa y bufferiza hasta sincronizar. |
+| Dispositivos del usuario → Navegador web | Landing Page (HTML/CSS/JS) + Web Application (Angular SPA) | Descargados desde el hosting cloud. |
+| Dispositivos del usuario → Dispositivo Android | Mobile Application (Kotlin APK) | Cliente de campo del productor. |
+| Proveedor cloud → Application Server (JVM) | RESTful API (Spring Boot JAR) | Monolito modular de negocio. |
+| Proveedor cloud → Database Server | Platform Database (MySQL) | Persistencia canónica. |
 
 **Decisiones reflejadas en el diagrama**
 
-- La parte de campo (ESP32 + gateway local) se despliega **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; la plataforma se despliega **en la nube**.
-- El Landing Page y la Web App se sirven como contenido estático/compilado desde la nube y se ejecutan en el navegador del usuario, separados del servidor de aplicaciones que ejecuta el API sobre la JVM.
+- Los contenedores de campo (Embedded Application, Edge Service y su base local) se despliegan **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; el resto del sistema se despliega **en la nube**. Todos pertenecen al mismo sistema OsoSense.
+- El Landing Page y la Web App se sirven como contenido estático/compilado y se ejecutan en el navegador del usuario, separados del servidor de aplicaciones que ejecuta el API sobre la JVM.
 - La base de datos MySQL se despliega en un servidor dedicado, accesible únicamente desde el servidor de aplicaciones.
 
 ## 4.2. Tactical-Level Domain-Driven Design
