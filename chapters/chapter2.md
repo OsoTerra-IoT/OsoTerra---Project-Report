@@ -20,31 +20,33 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
 
 #### Competitive Analysis Landscape
 
-<table>
+<table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+  <colgroup><col style="width: 28%"><col style="width: 72%"></colgroup>
   <tbody>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <th colspan="2">Competitive Analysis Landscape</th>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>¿Por qué llevar a cabo este análisis?</strong></td>
       <td>Determinar si existe un espacio de mercado no atendido en el monitoreo de salinidad de suelos para el pequeño y mediano productor peruano, e identificar en qué dimensiones —precio, complejidad, especificidad del caso de uso y canal— la oferta actual deja una brecha aprovechable para una solución de bajo costo.</td>
     </tr>
   </tbody>
 </table>
 
-<table>
+<table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+  <colgroup><col style="width: 10%"><col style="width: 14%"><col style="width: 19%"><col style="width: 19%"><col style="width: 19%"><col style="width: 19%"></colgroup>
   <thead>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <th></th>
       <th></th>
-      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoSense)</em><br><img src="../assets/competitors/OsoTerra.png" alt="Logo OsoTerra" width="100"></th>
-      <th>Competidor 1<br><strong>CropX</strong><br><img src="../assets/competitors/CropX.png" alt="Logo CropX" width="100"></th>
-      <th>Competidor 2<br><strong>WiseConn</strong><br><em>(DropControl)</em><br><img src="../assets/competitors/WiseConn.png" alt="Logo WiseConn" width="100"></th>
-      <th>Competidor 3<br><strong>Teralytic</strong><br><img src="../assets/competitors/Teralytic.png" alt="Logo Teralytic" width="100"></th>
+      <th>Su startup<br><strong>OsoTerra</strong><br><em>(OsoSense)</em><br><img src="../assets/competitors/OsoTerra.png" alt="Logo OsoTerra" width="80"></th>
+      <th>Competidor 1<br><strong>CropX</strong><br><img src="../assets/competitors/CropX.png" alt="Logo CropX" width="80"></th>
+      <th>Competidor 2<br><strong>WiseConn</strong><br><em>(DropControl)</em><br><img src="../assets/competitors/WiseConn.png" alt="Logo WiseConn" width="80"></th>
+      <th>Competidor 3<br><strong>Teralytic</strong><br><img src="../assets/competitors/Teralytic.png" alt="Logo Teralytic" width="80"></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td rowspan="2"><strong>Perfil</strong></td>
       <td><strong>Overview</strong></td>
       <td>Startup peruana fundada en 2026. Solución IoT de bajo costo para monitoreo continuo y detección temprana de salinización, orientada específicamente a la pequeña y mediana agricultura de la costa peruana.</td>
@@ -52,14 +54,14 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       <td>Empresa chilena fundada en 2006, especializada en automatización y telemetría de riego. Opera con más de 15 000 equipos en más de 2 500 campos en Chile, <strong>Perú</strong>, México, Estados Unidos, España, Italia y Australia, con cerca de 200 000 hectáreas automatizadas.</td>
       <td>Empresa estadounidense que lanzó en 2019 la primera sonda inalámbrica de suelo con medición de NPK. Integra 26 sensores en tres profundidades.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Ventaja competitiva</strong><br>¿Qué valor ofrece a los clientes?</td>
       <td>Precio de acceso al menos un orden de magnitud inferior al de las sondas comerciales, especialización en el caso de uso de salinización, y traducción del dato técnico a lenguaje accionable para un usuario de baja alfabetización digital. Umbrales contextualizados por cultivo.</td>
       <td>Precisión y madurez del algoritmo agronómico. Integración directa con sistemas de riego. Cobertura de un sensor por cada 40 acres aproximadamente, lo que reduce la densidad de dispositivos necesaria.</td>
       <td>Presencia y soporte técnico local en el Perú. Control efectivo del riego, no solo monitoreo. Robustez probada en operaciones agroexportadoras de gran escala.</td>
       <td>Amplitud de variables medidas en un solo dispositivo: humedad, salinidad, temperatura, pH, NPK, aireación y respiración del suelo, en tres profundidades simultáneas.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td rowspan="2"><strong>Perfil de Marketing</strong></td>
       <td><strong>Mercado objetivo</strong></td>
       <td>Pequeños y medianos productores de la costa norte peruana con unidades menores a 10 ha, e ingenieros agrónomos y asesores técnicos independientes que los atienden.</td>
@@ -67,14 +69,14 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       <td>Agroexportación y agricultura de gran escala en Latinoamérica, Estados Unidos y Europa. Fundos con riego tecnificado.</td>
       <td>Agricultura comercial de gran escala, principalmente en Estados Unidos. Investigación agronómica.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Estrategias de marketing</strong></td>
       <td>Marketing de contenido educativo sobre salinización dirigido al productor. Canal B2B2C mediante asesores técnicos y cooperativas. Articulación con programas estatales de asistencia técnica (AGROIDEAS, AGRO RURAL). Demostración de correspondencia con laboratorio acreditado como argumento de confianza.</td>
       <td>Presencia en ferias internacionales de agtech. Alianzas con distribuidores de insumos y con fabricantes de sistemas de riego. Casos de estudio con grandes productores.</td>
       <td>Fuerza de ventas directa con presencia local. Participación en medios especializados del sector, como Redagrícola. Demostraciones en campo con fundos de referencia.</td>
       <td>Comunicación centrada en la innovación tecnológica —primera sonda NPK inalámbrica del mundo—. Prensa especializada en agricultura de precisión.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td rowspan="3"><strong>Perfil de Producto</strong></td>
       <td><strong>Productos &amp; Servicios</strong></td>
       <td>Dispositivo IoT de campo basado en ESP32 (CE, humedad, temperatura). Edge Service con sincronización diferida. Plataforma web y aplicación móvil. Motor de alertas por cultivo. Reportes exportables. Landing Page informativo.</td>
@@ -82,21 +84,21 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
       <td>Nodos de campo, estaciones meteorológicas, sensores de humedad, pH y CE. Plataforma DropControl. Control automatizado de riego y fertirriego. Gestión de pozos.</td>
       <td>Sonda de suelo con 26 sensores. Red LoRa con gateway. Plataforma de análisis. Servicio de reemplazo de componentes incluido en la suscripción.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Precios &amp; Costos</strong></td>
       <td><em>Precios referenciales en proceso de validación con los segmentos:</em><br>• <strong>Kit OsoSense</strong> (dispositivo con sensores de CE, humedad y temperatura, panel solar e instalación): <strong>S/ 390</strong> en un pago, estimado a partir de un costo de componentes de S/ 200 a S/ 250 por equipo.<br>• <strong>Plan Gratuito:</strong> S/ 0, una parcela, alertas básicas e historial de 30 días.<br>• <strong>Plan Productor:</strong> <strong>S/ 15 por parcela al mes</strong>, con alertas por cultivo, historial completo y recomendaciones.<br>• <strong>Plan Asesor:</strong> <strong>S/ 89 al mes</strong> hasta 15 parcelas, con tablero multiparcela y reportes exportables.<br>Supuesto de referencia: el primer año del Plan Productor para una parcela (S/ 390 + S/ 180) equivale a unos dos análisis de laboratorio de S/ 250, pero entrega lecturas continuas durante toda la campaña.</td>
       <td>Sensores entre <strong>USD 600 y USD 899</strong> por unidad, más <strong>USD 275 anuales por sensor</strong> de suscripción. El modelo Apex requiere telemetría adquirida por separado (The Spoon, 2018).</td>
       <td>Precio bajo cotización. No publica tarifario. Proyecto llave en mano dimensionado por hectárea y por complejidad del sistema de riego.</td>
       <td>Servicio de <strong>USD 500 por sonda al año</strong>, que incluye el hardware, el software y la analítica de red (The Western Producer, 2020). Modelo de suscripción que incluye el reemplazo de piezas.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Canales de distribución</strong><br>(Web y/o Móvil)</td>
       <td>Landing Page con call-to-action diferenciado por segmento, aplicación web responsive y aplicación móvil nativa. Canal indirecto mediante asesores técnicos y organizaciones de productores.</td>
       <td>Tienda en línea propia, aplicación web y móvil. Red de distribuidores e integradores.</td>
       <td>Venta directa con oficinas y soporte en los países donde opera, incluido el Perú. Plataforma web y móvil.</td>
       <td>Venta directa en línea. Plataforma web.</td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td rowspan="4"><strong>Análisis SWOT</strong></td>
       <td><strong>Fortalezas</strong></td>
       <td>
@@ -132,7 +134,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
         </ul>
       </td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Debilidades</strong></td>
       <td>
         <ul>
@@ -167,7 +169,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
         </ul>
       </td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Oportunidades</strong></td>
       <td>
         <ul>
@@ -197,7 +199,7 @@ El mercado de monitoreo de suelo agrícola en el Perú está ocupado por tres ti
         </ul>
       </td>
     </tr>
-    <tr>
+    <tr style="page-break-inside: avoid; break-inside: avoid;">
       <td><strong>Amenazas</strong></td>
       <td>
         <ul>
