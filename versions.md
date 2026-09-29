@@ -82,6 +82,7 @@
 | 0.0.94 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.2 Aspect Leaders and Collaborators con la matriz de líderes y colaboradores del Sprint 1. |
 | 0.0.95 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.3 Sprint Backlog 1 con las User Stories del sprint y sus tareas. |
 | 0.0.96 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.4 Development Evidence con los commits de implementación de cada repositorio. |
+| 0.0.97 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.5 Testing Suite Evidence con las pruebas del RESTful API y de la Web App y el .feature de TS01. |
 
 # Project Report Collaboration Insights
 

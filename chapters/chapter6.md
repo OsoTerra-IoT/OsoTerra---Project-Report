@@ -341,6 +341,57 @@ La tabla reúne los commits de implementación de cada repositorio entre el 7 y 
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 
+Las pruebas del Sprint 1 cubren el dominio de Identity and Access Management en el RESTful API y la autenticación, la protección de rutas y los datos de la Web App.
+
+**RESTful API · pruebas unitarias (JUnit 5)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Backend, carpeta `src/test`.
+
+| Clase de prueba | Clase probada | Comportamientos verificados |
+|---|---|---|
+| `UserAccountTest` | `UserAccount` | Registro de un productor activo con el evento `UserRegistered`; rechazo de un asesor sin colegiatura y de un productor con colegiatura; verificación y cambio de contraseña; desactivación de la cuenta; limpieza de eventos pendientes. |
+| `EmailAddressTest` | `EmailAddress` | Acepta un correo bien formado y lo normaliza a minúsculas; rechaza correos sin arroba o sin dominio. |
+| `AdvisoryLinkTest` | `AdvisoryLink` | Solicitud pendiente sin eventos; rechazo de un asesor que se vincula consigo mismo; aceptación y revocación con sus eventos; errores al aceptar o revocar un vínculo que no está pendiente. |
+| `OsosenseBackendApplicationTests` | Contexto de Spring | La aplicación inicia con su configuración. |
+
+**Web App · pruebas unitarias y de navegación (Vitest vía Angular CLI)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Web-Application, 32 pruebas que pasan con `ng test`.
+
+| Archivo | Relación | Comportamientos verificados |
+|---|---|---|
+| `auth.service.spec.ts` | US09, US10, US11, US12 | Rechazo de credenciales inválidas; normalización del correo; colegiatura CIP obligatoria para asesores; correos duplicados; tokens de recuperación de un solo uso y vencidos. |
+| `monitoring.service.spec.ts` | US27, US37, US43 | Aislamiento de los datos de cada productor; parcelas asignadas al asesor; validación de parcelas; registro de acciones correctivas y del contador de alertas. |
+| `salinity-status.spec.ts` | US27 | Nivel de salinidad con texto; umbral del cultivo visible sin lectura; no comparar conductividad aparente con umbrales de ECe. |
+| `app.spec.ts` | US11, US39, US43 | Redirección al inicio de sesión con la ruta de retorno; separación de rutas y menú por rol; cierre de sesión y cambio de idioma sin perder la sesión. |
+
+**Pruebas de aceptación (BDD).** Los criterios de aceptación en Gherkin de la sección 3.1 son la base de los archivos `.feature`. Este es el archivo de la Technical Story del sprint:
+
+```gherkin
+Feature: TS01 Authentication endpoints
+  As a developer
+  I want authentication endpoints
+  So that the web and mobile apps can sign users in securely
+
+  Scenario: Valid sign-in
+    Given a farmer account registered with "diego.ramos@example.com"
+    When the developer sends POST "/api/v1/auth/signin" with valid credentials
+    Then the response status is 200
+    And the body contains a token and its expiration time
+
+  Scenario: Invalid credentials
+    Given a farmer account registered with "diego.ramos@example.com"
+    When the developer sends POST "/api/v1/auth/signin" with a wrong password
+    Then the response status is 401
+    And the body contains an error message without internal details
+```
+
+<!-- TODO(equipo): automatizar los .feature con Cucumber y sus Steps en Java en el Sprint 2 y agregar aquí los commits. -->
+
+Commits relacionados con pruebas en el Sprint 1:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisor-reports | dbc04bd | test: update route tests and advisor docs | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 35dfd38 | test: move iam domain and application tests to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | c5065cd | test: add identity access domain and application tests | — | 11/09/2026 |
+
 #### 6.2.1.6. Execution Evidence for Sprint Review
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
