@@ -592,13 +592,38 @@ Los tres planes se presentan como columnas paralelas con las mismas filas (preci
 | **Cronológico** | Proceso de implementación (pasos 01 a 04). | La adopción ocurre en un orden temporal real. |
 | **Alfabético** | No se usa en el Landing Page. | Con once bloques no aporta; se reserva para listas largas de las aplicaciones, como parcelas y cultivos. |
 
+**Aplicaciones.** La Web App y la Mobile App se organizan primero **por audiencia**: el productor y la asesora técnica entran al mismo producto, pero cada uno ve solo los destinos de su rol. Los dos mapas siguientes muestran todas las vistas y su nivel.
+
+<div align="center">
+<img src="../assets/information-architecture/ia-apps-web.png" alt="Mapa de navegación de la Web App por rol" width="800">
+<p><em>Figura 5.52. Mapa de navegación de la Web App.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/information-architecture/ia-apps-mobile.png" alt="Mapa de navegación de la Mobile App" width="800">
+<p><em>Figura 5.53. Mapa de navegación de la Mobile App.</em></p>
+</div>
+
+| Sistema | Dónde se aplica en las aplicaciones |
+|---|---|
+| **Jerárquico** | Cada vista tiene un solo elemento dominante: la frase de estado en el inicio, la lectura actual en el detalle de parcela y el título de la tarea en formularios. |
+| **Secuencial** | Tareas con pasos: registrar parcela, calibrar un sensor (elegir sensor, revisar lectura, ingresar laboratorio) y armar un reporte (parcela, periodo, contenido, vista previa). |
+| **Matricial** | Comparar parcelas y la tabla de la asesora: filas por parcela y columnas por cliente, cultivo, CE, porcentaje del umbral y cambio en 30 días. |
+
+| Esquema | Dónde se aplica en las aplicaciones |
+|---|---|
+| **Por audiencia** | Menú lateral distinto para el productor y la asesora; accesos de demostración separados en el inicio de sesión. |
+| **Por riesgo (tópico)** | Parcelas ordenadas por porcentaje del umbral, de mayor a menor, en ambos inicios. |
+| **Cronológico** | Alertas, acciones correctivas y tendencias, de la más reciente a la más antigua. |
+| **Alfabético** | Listas de selección largas: clientes, fincas, cultivos y sensores. |
+
 ### 5.2.2. Labeling Systems
 
 Las etiquetas usan el menor número de palabras posible y el vocabulario de los usuarios, no el técnico: «Planes» y no «Suscripciones», «Probar Gratis» y no «Registro». Cada etiqueta del menú coincide con el título del bloque al que lleva, para que el visitante confirme que llegó al lugar correcto.
 
 <div align="center">
 <img src="../assets/information-architecture/ia-06-etiquetado.png" alt="Etiquetas del menú y de los botones con su destino y lo que el visitante espera encontrar" width="900">
-<p><em>Figura 5.52. Etiquetas y asociaciones.</em></p>
+<p><em>Figura 5.54. Etiquetas y asociaciones.</em></p>
 </div>
 
 La figura relaciona cada etiqueta con su destino y con lo que el visitante espera encontrar. Las etiquetas se agrupan en tres tipos: de **menú** (tópicos, en gris), de **llamada a la acción** (verbos, en verde lleno) y de **utilidad** (idioma, con contorno).
@@ -613,12 +638,25 @@ La figura relaciona cada etiqueta con su destino y con lo que el visitante esper
 | Contacto | Menú | `#contacto` | Cómo empezar, sin llenar el encabezado de teléfonos y correos. |
 | Probar Gratis | Acción | `#planes` | El plan Piloto de 14 días sin costo. |
 | Conocer solución | Acción | `#capacidades` | La solución explicada en cuatro capacidades. |
-| Elegir Piloto · Elegir Productor · Elegir Asesor | Acción | Registro en la Web App con el plan elegido | Crear la cuenta con ese plan; los botones se enlazarán a la vista de registro cuando la Web App esté desplegada. |
+| Elegir Piloto · Elegir Productor · Elegir Asesor | Acción | Registro en la Web App desplegada (productor o asesor) | Crear la cuenta con ese plan. |
 | Conocer Más | Acción | `#capacidades` | Cómo la tecnología resuelve el problema recién mostrado. |
-| Comenzar ahora | Acción | `#planes` | Volver a los planes para empezar. |
+| Comenzar ahora | Acción | Registro en la Web App | Empezar a usar OsoSense. |
 | EN \| ES | Utilidad | La misma página en el otro idioma | El contenido completo cambia de idioma sin recargar. |
 
 Dentro de los bloques, los datos se etiquetan con la cifra primero y la explicación después («+300,000 ha afectadas en la costa», «Hasta 40% de pérdida en rendimiento»), y los niveles de salinidad siempre con palabra, color e ícono («Muy alto»), nunca solo con la medida en dS/m.
+
+**Aplicaciones.** Las etiquetas del menú coinciden con el título de la vista a la que llevan y usan el vocabulario de cada rol: el productor ve «Mis parcelas» y «Mi asesor»; la asesora, «Parcelas supervisadas» y «Mis clientes». Los niveles de salinidad siempre se nombran con palabra, color y porcentaje del umbral.
+
+| Etiqueta | Rol | Asociación que genera |
+|---|---|---|
+| Inicio | Ambos | El estado de todas mis parcelas en una frase. |
+| Mis parcelas · Parcelas supervisadas | Productor · Asesora | La lista de parcelas y su detalle. |
+| Alertas | Ambos | Lo que requiere una acción y lo que ya se hizo. |
+| Registrar acción | Ambos | Dejar constancia de lo que se hizo en campo. |
+| Comparar parcelas | Asesora | Ver varias parcelas en la misma escala. |
+| Calibración | Asesora | Ajustar un sensor con el análisis de laboratorio. |
+| Reportes | Asesora | Preparar el PDF para el productor. |
+| Nivel normal · en vigilancia · alto · muy alto | Ambos | Menos de 80 %, 80 a 100 %, 100 a 125 % y más de 125 % del umbral del cultivo. |
 
 ### 5.2.3. SEO Tags and Meta Tags
 
@@ -626,7 +664,7 @@ El Landing Page incluye en su `<head>` las etiquetas que piden los buscadores y 
 
 <div align="center">
 <img src="../assets/information-architecture/ia-07-seo.png" alt="Vista previa en un buscador, tarjeta para redes sociales y código de las etiquetas" width="900">
-<p><em>Figura 5.53. SEO y meta tags del Landing Page.</em></p>
+<p><em>Figura 5.55. SEO y meta tags del Landing Page.</em></p>
 </div>
 
 A la izquierda, cómo aparece la página en un buscador: el título y la descripción son exactamente los valores de `title` y `description`. Al centro, la tarjeta que se genera al compartir el enlace por WhatsApp o redes sociales, a partir de las etiquetas Open Graph. A la derecha, el código.
@@ -647,13 +685,40 @@ A la izquierda, cómo aparece la página en un buscador: el título y la descrip
 
 Criterios de los valores: el título tiene 37 caracteres, por debajo de los 60 que muestran los buscadores, y combina la marca con la promesa; la descripción tiene 160 caracteres, justo en el límite que muestran los buscadores, y nombra el problema (salinidad), la tecnología (sensores IoT), el beneficio (alertas al celular) y el público (productores de la costa); las palabras clave mezclan el problema, la tecnología, los cultivos del segmento y las regiones donde está.
 
+**Web Application.** La Web App es una aplicación de una sola página; el `index.html` define las etiquetas base y cada vista actualiza el `title` al navegar. Las vistas internas requieren sesión, por lo que solo el inicio de sesión y el registro se indexan.
+
+| Vista | `title` | `meta description` |
+|---|---|---|
+| Base (`index.html`) | OsoSense | OsoSense web app: monitor soil salinity by plot, receive alerts and record corrective actions with your technical advisor. |
+| Iniciar sesión | Iniciar sesión · OsoSense | Entra a tu espacio de monitoreo de salinidad del suelo. |
+| Crear cuenta | Crear cuenta · OsoSense | Regístrate como productor o asesor técnico y empieza a monitorear tus parcelas. |
+| Inicio | Inicio · OsoSense | (vista privada, `robots: noindex`) |
+| Detalle de parcela | Sector Norte · OsoSense | (vista privada, `robots: noindex`) |
+
+| Etiqueta | Valor |
+|---|---|
+| `meta keywords` | OsoSense, soil salinity, electrical conductivity, ECe, IoT, alerts, technical advisor, agriculture |
+| `meta author` | OsoTerra |
+| `meta theme-color` | #047857 |
+| `link rel="icon"` | Símbolo de Oso Terra (`favicon.png` y `apple-touch-icon.png`) |
+
+**Mobile Application (ASO).** La app se publicará en Google Play con estos elementos:
+
+| Elemento | Valor |
+|---|---|
+| App Title | OsoSense: salinidad del suelo |
+| App Subtitle (descripción corta) | Alertas de salinidad por parcela y qué hacer en campo. |
+| App Keywords | salinidad, suelo, conductividad eléctrica, riego, palto, uva, arándano, alertas agrícolas, sensor IoT |
+| App Description | OsoSense mide la conductividad eléctrica, la humedad y la temperatura del suelo con un sensor instalado en tu parcela y te avisa en el celular cuando la salinidad se acerca al límite de tu cultivo. Ves cada parcela como una franja fácil de leer, recibes qué hacer en cada alerta, registras las acciones de tu familia o tu asesor y compartes el resumen por WhatsApp. Funciona aunque la parcela se quede sin señal: las lecturas se guardan y se envían al volver la conexión. |
+| Categoría | Productividad (subcategoría agricultura) |
+
 ### 5.2.4. Searching Systems
 
 Con once bloques en una sola página, un buscador interno no aporta: el visitante encuentra lo que busca más rápido con las ayudas de la página que escribiendo una consulta.
 
 <div align="center">
 <img src="../assets/information-architecture/ia-09-busqueda.png" alt="Menú de anclas, preguntas frecuentes y pie de página como ayudas para encontrar" width="900">
-<p><em>Figura 5.54. Ayudas para encontrar información.</em></p>
+<p><em>Figura 5.56. Ayudas para encontrar información.</em></p>
 </div>
 
 | Ayuda | Cómo ayuda a encontrar | Cómo se ve el resultado |
@@ -664,13 +729,25 @@ Con once bloques en una sola página, un buscador interno no aporta: el visitant
 
 El navegador conserva además su búsqueda de texto (Ctrl + F), que funciona sobre todo el contenido porque está en una sola página y en texto real, no en imágenes.
 
+**Aplicaciones.** Las aplicaciones sí tienen búsqueda y filtros, porque la asesora puede supervisar decenas de parcelas y el historial de alertas crece cada semana.
+
+| Herramienta | Dónde | Filtros | Cómo se ven los resultados |
+|---|---|---|---|
+| **Búsqueda de parcelas** | Barra superior de la Web App, siempre visible | Nombre de parcela, finca o cliente | La lista de parcelas se reduce mientras se escribe, conservando el orden por riesgo. |
+| **Filtros de alertas** | Bandeja de alertas | Estado (abiertas, reconocidas, cerradas), nivel y parcela | Chips arriba de la lista; el filtro queda en la URL para compartirlo o volver con *Atrás*. |
+| **Parcelas supervisadas** | Vista de la asesora | Criticidad, cultivo y cliente, con orden por riesgo o por cliente | Franjas o filas con el nivel y el porcentaje del umbral. |
+| **Selector de comparación** | Comparar parcelas | Hasta tres parcelas y el periodo | Líneas del mismo color que el chip de cada parcela y tabla debajo. |
+| **Periodo del reporte** | Reportes | Parcela y rango de fechas | Vista previa del PDF o un mensaje claro si el periodo no tiene lecturas. |
+
+En la Mobile App, la búsqueda vive dentro de *Parcelas* para no recargar la barra superior del celular.
+
 ### 5.2.5. Navigation Systems
 
 La navegación combina siete sistemas, cada uno con un propósito distinto. La figura los ubica sobre la página completa: cada punto de color marca dónde aparece cada tipo.
 
 <div align="center">
 <img src="../assets/information-architecture/ia-08-navegacion.png" alt="Página completa del Landing Page con los siete sistemas de navegación marcados" width="900">
-<p><em>Figura 5.55. Sistemas de navegación.</em></p>
+<p><em>Figura 5.57. Sistemas de navegación.</em></p>
 </div>
 
 | Sistema | Dónde está | Cómo guía al visitante |
@@ -685,7 +762,17 @@ La navegación combina siete sistemas, cada uno con un propósito distinto. La f
 
 El recorrido principal va de arriba abajo con el scroll; los atajos del menú permiten saltar a cualquier bloque; y el desplazamiento entre anclas es suave para que el visitante vea que se movió dentro de la misma página. En móvil, las anclas y el idioma pasan al menú de hamburguesa, el botón *Probar Gratis* sigue visible junto a él y, al tocar un ancla, el menú se cierra y la página se desplaza hasta el bloque (ver la figura de navegación de la sección 5.1.2).
 
-Diagramas en Figma: [OsoSense — Arquitectura de información](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2&t=zv0k9BZ0KNZ8WH8D-1).
+**Aplicaciones.**
+
+| Sistema | Web App | Mobile App |
+|---|---|---|
+| **Global** | Menú lateral con los destinos del rol; una marca verde se desliza hasta la sección activa y el menú se contrae a una columna de íconos. | Barra inferior con cuatro destinos: Inicio, Parcelas, Alertas y Perfil. |
+| **Utilidad** | Barra superior con búsqueda, idioma y campana con el número de alertas activas; cuenta y cierre de sesión al pie del menú. | Barra superior con el título de la vista y las acciones de compartir y más opciones. |
+| **Local** | Migas de pan en las vistas de segundo nivel (por ejemplo, Mis parcelas / Sector Norte). | Flecha de retroceso en la barra superior. |
+| **Contextual** | Botones de acción en cada franja, alerta y formulario (*Registrar acción*, *Comparar parcelas*, *Exportar PDF*). | Hojas inferiores para registrar acciones y compartir. |
+| **Entrada directa** | Enlace de la campana a la bandeja de alertas; enlaces desde el correo al detalle de parcela. | La notificación abre el detalle de la parcela con la alerta. |
+
+Diagramas en Figma: [arquitectura de información del Landing Page](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2&t=zv0k9BZ0KNZ8WH8D-1) y [de las aplicaciones](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=59-2).
 
 ## 5.3. Landing Page UI Design
 
@@ -717,22 +804,22 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-1.png" alt="Wireframe desktop del Landing Page: encabezado, hero e impacto de la salinidad" width="800">
-<p><em>Figura 5.56. Wireframe Desktop Web Browser (1/4): encabezado, hero y bloque de impacto de la salinidad.</em></p>
+<p><em>Figura 5.58. Wireframe Desktop Web Browser (1/4): encabezado, hero y bloque de impacto de la salinidad.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="800">
-<p><em>Figura 5.57. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
+<p><em>Figura 5.59. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-3.png" alt="Wireframe desktop del Landing Page: planes y preguntas frecuentes" width="800">
-<p><em>Figura 5.58. Wireframe Desktop Web Browser (3/4): planes y preguntas frecuentes.</em></p>
+<p><em>Figura 5.60. Wireframe Desktop Web Browser (3/4): planes y preguntas frecuentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-desktop-4.png" alt="Wireframe desktop del Landing Page: equipo, llamado a la acción y pie de página" width="800">
-<p><em>Figura 5.59. Wireframe Desktop Web Browser (4/4): equipo, llamado a la acción y pie de página.</em></p>
+<p><em>Figura 5.61. Wireframe Desktop Web Browser (4/4): equipo, llamado a la acción y pie de página.</em></p>
 </div>
 
 **Principios y elementos de diseño aplicados**
@@ -763,7 +850,7 @@ En 390 px la estructura se conserva y solo cambia la disposición: el menú se c
 
 <div align="center">
 <img src="../assets/landing-page-wireframes/landing-wireframe-mobile.png" alt="Wireframe mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.60. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
 </div>
 
 ### 5.3.2. Landing Page Mock-up
@@ -782,27 +869,27 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-design-system.png" alt="Design System del Landing Page: colores, tipografía y componentes" width="800">
-<p><em>Figura 5.61. Design System del Landing Page: estilos de color, escala tipográfica y componentes.</em></p>
+<p><em>Figura 5.63. Design System del Landing Page: estilos de color, escala tipográfica y componentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-1.png" alt="Mock-up desktop del Landing Page: encabezado con logo, hero e impacto" width="800">
-<p><em>Figura 5.62. Mock-up Desktop Web Browser (1/4): encabezado con el logo de Oso Terra, hero con fotografía del valle y bloque de impacto.</em></p>
+<p><em>Figura 5.64. Mock-up Desktop Web Browser (1/4): encabezado con el logo de Oso Terra, hero con fotografía del valle y bloque de impacto.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="800">
-<p><em>Figura 5.63. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
+<p><em>Figura 5.65. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-3.png" alt="Mock-up desktop del Landing Page: planes y preguntas frecuentes" width="800">
-<p><em>Figura 5.64. Mock-up Desktop Web Browser (3/4): planes con el plan recomendado destacado y preguntas frecuentes.</em></p>
+<p><em>Figura 5.66. Mock-up Desktop Web Browser (3/4): planes con el plan recomendado destacado y preguntas frecuentes.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-desktop-4.png" alt="Mock-up desktop del Landing Page: equipo, llamado a la acción y pie de página" width="800">
-<p><em>Figura 5.65. Mock-up Desktop Web Browser (4/4): equipo, banner de llamado a la acción y pie de página.</em></p>
+<p><em>Figura 5.67. Mock-up Desktop Web Browser (4/4): equipo, banner de llamado a la acción y pie de página.</em></p>
 </div>
 
 **Cómo se aplican los principios en el mock-up**
@@ -822,7 +909,7 @@ El mock-up móvil aplica los mismos estilos con los ajustes de la sección anter
 
 <div align="center">
 <img src="../assets/landing-page-mockups/landing-mockup-mobile.png" alt="Mock-up mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.66. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
 </div>
 
 Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2&t=zv0k9BZ0KNZ8WH8D-1), [mock-ups](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3&t=zv0k9BZ0KNZ8WH8D-1) y [Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1&t=zv0k9BZ0KNZ8WH8D-1) del Landing Page.
