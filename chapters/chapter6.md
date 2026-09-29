@@ -493,6 +493,47 @@ La figura muestra la ejecución del flujo de despliegue sobre `develop`, junto c
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
 
+El trabajo del Sprint 1 se organizó por producto, con un líder por repositorio. Las capturas muestran la actividad de cada repositorio en su rama `develop`.
+
+<div align="center">
+<img src="../assets/sprint-1/commits-webapp.png" alt="Historial de commits de la Web App" width="800">
+<p><em>Figura 6.11. Commits de la Web App en develop.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/network-webapp.png" alt="Network graph de la Web App" width="800">
+<p><em>Figura 6.12. Network graph de la Web App: ramas de feature integradas en develop.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/commits-landing.png" alt="Historial de commits del Landing Page" width="800">
+<p><em>Figura 6.13. Commits del Landing Page en develop.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/commits-mobile.png" alt="Historial de commits de la Mobile App" width="800">
+<p><em>Figura 6.14. Commits de la Mobile App en develop.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/contrib-report.png" alt="Contributors del repositorio del informe" width="800">
+<p><em>Figura 6.15. Contribuciones al informe por integrante.</em></p>
+</div>
+
+| Integrante | Landing Page | Web App | RESTful API | Mobile App | Informe |
+|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel (krxxg04) | | | 49 | | 64 |
+| Encalada Salazar, Alexis (Alexiz248) | | 14 | 1 | 1 | 6 |
+| Goñe Araccata, Esther Abigail (abigoe02) | 3 | | | | 12 |
+| Ortiz Alarcon, Victor Nicolas (Nico1234556) | | | | | 15 |
+| Salazar Caballero, Alvaro Fabrizzio (DymianUPC) | | 1 | | | 7 |
+| Santiago Peña, Andreow Jomark (andrew65411) | 4 | 9 | | | 22 |
+| Tumi Oliden, Manuel Ignacio (ManuelTumi2224) | | | | 7 | 9 |
+
+*Número de commits sin contar merges, por repositorio, hasta el 28 de septiembre de 2026.*
+
+**Interpretación del equipo.** Cada producto avanzó con un integrante que concentró la mayoría de los commits: Iker en el RESTful API, Alexis en la Web App, Abigail en el Landing Page y Manuel en la Mobile App. El informe es el repositorio con participación más repartida. La concentración aceleró el primer sprint, pero no cumple todavía con que todos los integrantes participen en cada producto. Para el Sprint 2 el equipo acuerda que los colaboradores de la matriz de liderazgo (sección 6.2.1.2) tomen tareas propias en cada repositorio, integren por pull request y que cada pull request sea revisado por otro integrante antes de entrar a `develop`.
+
 ## 6.3. Validation Interviews
 
 ### 6.3.1. Diseño de Entrevistas
