@@ -1,0 +1,3 @@
+# Diagram and simulation sources: keep them in the repo but out of the GitHub language bar.
+*.dsl linguist-detectable=false
+*.ino linguist-detectable=false
