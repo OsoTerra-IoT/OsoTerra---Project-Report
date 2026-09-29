@@ -441,6 +441,42 @@ Video de la navegación del Sprint 1: enlace de Microsoft Stream (por agregar).
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
+En el Sprint 1 se implementaron los endpoints del bounded context de Identity and Access Management. Todos usan JSON y la ruta base `/api/v1`. En este sprint el RESTful API se ejecuta de forma local (`http://localhost:8080`); la documentación OpenAPI vía Swagger (Technical Story TS04) y su publicación se agregan al desplegar el API en el Sprint 2.
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/auth/signup` | Registrar cuenta | POST | `POST /api/v1/auth/signup` | Cuerpo: `email`, `password` (mínimo 8), `firstName`, `lastName`, `role` (`FARMER` o `ADVISOR`), `professionalLicenseNumber` (obligatorio para asesores) | `201 Created` con la cuenta: `id`, `email`, `firstName`, `lastName`, `role`, `active`, `createdAt`. |
+| `/api/v1/auth/signin` | Iniciar sesión | POST | `POST /api/v1/auth/signin` | Cuerpo: `email`, `password` | `200 OK` con `token` (JWT), `expiresAt` y los datos de la cuenta. |
+| `/api/v1/auth/password-reset-requests` | Solicitar restablecimiento | POST | `POST /api/v1/auth/password-reset-requests` | Cuerpo: `email` | `202 Accepted`; si la cuenta existe, se envía el enlace por correo. |
+| `/api/v1/auth/password-resets` | Restablecer contraseña | POST | `POST /api/v1/auth/password-resets` | Cuerpo: `token`, `newPassword` (mínimo 8) | `204 No Content`. |
+| `/api/v1/users/me` | Consultar mi cuenta | GET | `GET /api/v1/users/me` | Cabecera `Authorization: Bearer <token>` | `200 OK` con los datos de la cuenta autenticada. |
+| `/api/v1/advisory-links` | Solicitar vínculo de asesoría | POST | `POST /api/v1/advisory-links` | Cabecera con token del asesor; cuerpo: `farmerId` | `201 Created` con `id`, `advisorId`, `farmerId`, `status` (`PENDING`) y `requestedAt`. |
+| `/api/v1/advisory-links/{id}/acceptance` | Aceptar vínculo | POST | `POST /api/v1/advisory-links/12/acceptance` | Ruta: `id`; cabecera con token del productor | `200 OK` con el vínculo en estado `ACCEPTED` y `respondedAt`. |
+| `/api/v1/advisory-links/{id}/revocation` | Revocar vínculo | POST | `POST /api/v1/advisory-links/12/revocation` | Ruta: `id`; cabecera con token de una de las partes | `200 OK` con el vínculo en estado `REVOKED`. |
+
+Ejemplo de respuesta de `POST /api/v1/auth/signin` con datos de muestra:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9…",
+  "expiresAt": "2026-10-04T20:00:00Z",
+  "user": {
+    "id": 1,
+    "email": "diego.ramos@example.com",
+    "firstName": "Diego",
+    "lastName": "Ramos",
+    "role": "FARMER",
+    "professionalLicenseNumber": null,
+    "active": true,
+    "createdAt": "2026-09-12T10:15:00"
+  }
+}
+```
+
+Repositorio del RESTful API: https://github.com/OsoTerra-IoT/OsoTerra---Backend. Commits de los endpoints documentados: `2c36ac3` (recursos REST de autenticación), `ce592fe` (recursos de cuenta y vínculos de asesoría) y `b2a9ef7` (recursos de restablecimiento de contraseña).
+
+<!-- TODO(equipo): agregar springdoc-openapi, publicar Swagger UI y reemplazar esta nota por las capturas de la documentación con datos de muestra. -->
+
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
