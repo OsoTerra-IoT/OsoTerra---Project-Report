@@ -1,3 +1,5 @@
+<div style="page-break-before: always; break-before: page;"></div>
+
 # Capítulo II: Requirements Elicitation & Analysis
 
 ## 2.1. Competidores

@@ -1,3 +1,5 @@
+<div style="page-break-before: always; break-before: page;"></div>
+
 # Registro de Versiones del Informe
 
 | Versión | Fecha | Autor | Descripción de modificación |
@@ -77,6 +79,9 @@
 | 0.0.73 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: títulos descriptivos en los User Journey Maps y Empathy Maps exportados de UXPressia. |
 | 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
 | 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
+| 0.0.87 | 28/09/2026 | Andreow Jomark Santiago Peña | Maquetación según la retroalimentación del AV1: carátula compactada en una sola página, y salto de página antes del Registro de Versiones, Collaboration Insights, Student Outcome, contenido, cada capítulo, bibliografía y anexos. |
+
+<div style="page-break-before: always; break-before: page;"></div>
 
 # Project Report Collaboration Insights
 

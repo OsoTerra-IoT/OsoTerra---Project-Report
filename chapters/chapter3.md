@@ -1,3 +1,5 @@
+<div style="page-break-before: always; break-before: page;"></div>
+
 # Capítulo III: Requirements Specification
 
 A partir del análisis de la información obtenida en el Capítulo II, este capítulo especifica los requisitos de los productos digitales que componen OsoSense. Los requisitos se expresan como épicas y User Stories con criterios de aceptación en Gherkin, se vinculan con los objetivos de negocio mediante el Impact Map y se priorizan en el Product Backlog según el valor que aportan al negocio.
