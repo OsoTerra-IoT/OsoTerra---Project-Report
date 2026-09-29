@@ -209,6 +209,44 @@ L: líder del aspecto. C: colaborador.
 
 #### 6.2.1.3. Sprint Backlog 1
 
+El objetivo del Sprint 1 es publicar la primera versión del Landing Page y de la Web App, con los endpoints de autenticación del RESTful API como base. Las User Stories se tomaron del inicio del Product Backlog (sección 3.3), respetando su orden por valor, hasta completar la velocidad acordada de 60 Story Points.
+
+<!-- TODO(equipo): agregar la captura del tablero del Sprint 1 en Trello y su URL pública. -->
+Tablero del Product Backlog en Trello: https://trello.com/b/adykOjs5/ososense-backlog
+
+<table>
+  <tr><th>Sprint #</th><th colspan="7">Sprint 1</th></tr>
+  <tr><th colspan="2">User Story</th><th colspan="6">Work-Item / Task</th></tr>
+  <tr><th>Story Id</th><th>Story Title</th><th>Task Id</th><th>Task Title</th><th>Task Description</th><th>Estimation (Hours)</th><th>Assigned To</th><th>Status (To-do / In-Process / To-Review / Done)</th></tr>
+  <tr><td>US01</td><td>Ver propuesta de valor</td><td>T01</td><td>Hero del Landing Page</td><td>Maquetar el hero con carrusel, titular, bajada y botón principal.</td><td>4</td><td>Goñe Araccata, Esther Abigail</td><td>Done</td></tr>
+  <tr><td>US04</td><td>Conocer problema de salinización</td><td>T02</td><td>Bloque de impacto</td><td>Implementar los tres datos de impacto y la tarjeta de historia.</td><td>3</td><td>Goñe Araccata, Esther Abigail</td><td>Done</td></tr>
+  <tr><td>US02</td><td>Consultar beneficios para productores</td><td>T03</td><td>Bloque de beneficios</td><td>Implementar los beneficios para el productor en el bloque dividido.</td><td>2</td><td>Ortiz Alarcon, Victor Nicolas</td><td>Done</td></tr>
+  <tr><td>US03</td><td>Consultar beneficios para asesores</td><td>T04</td><td>Bloque de capacidades</td><td>Implementar las cuatro capacidades con la foto del sensor.</td><td>2</td><td>Ortiz Alarcon, Victor Nicolas</td><td>Done</td></tr>
+  <tr><td>US05</td><td>Consultar planes y precios</td><td>T05</td><td>Bloque de planes</td><td>Maquetar los tres planes con el plan recomendado destacado.</td><td>3</td><td>Goñe Araccata, Esther Abigail</td><td>Done</td></tr>
+  <tr><td>US05</td><td>Consultar planes y precios</td><td>T06</td><td>Enlazar planes a la Web App</td><td>Llevar cada botón de plan al registro de la Web App desplegada.</td><td>1</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US07</td><td>Leer términos y condiciones</td><td>T07</td><td>Enlace a términos</td><td>Agregar el enlace a términos y condiciones en el pie de página.</td><td>1</td><td>Barturen Panez, Iker Gabriel</td><td>Done</td></tr>
+  <tr><td>US06</td><td>Conocer al equipo</td><td>T08</td><td>Bloque del equipo</td><td>Implementar las tarjetas de los siete integrantes.</td><td>2</td><td>Goñe Araccata, Esther Abigail</td><td>Done</td></tr>
+  <tr><td>US08</td><td>Cambiar idioma del sitio</td><td>T09</td><td>Traducción EN / ES</td><td>Implementar el cambio de idioma con los textos en en_US y es_419.</td><td>4</td><td>Goñe Araccata, Esther Abigail</td><td>Done</td></tr>
+  <tr><td>US08</td><td>Cambiar idioma del sitio</td><td>T10</td><td>SEO, contraste y marca</td><td>Agregar meta tags, logo, favicon y contraste accesible en los botones.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>TS01</td><td>Exponer endpoints de autenticación</td><td>T11</td><td>Modelo de dominio IAM</td><td>Implementar UserAccount, EmailAddress y AdvisoryLink con sus eventos.</td><td>6</td><td>Barturen Panez, Iker Gabriel</td><td>Done</td></tr>
+  <tr><td>TS01</td><td>Exponer endpoints de autenticación</td><td>T12</td><td>Endpoints de autenticación</td><td>Exponer registro, inicio de sesión y restablecimiento de contraseña con JWT.</td><td>6</td><td>Barturen Panez, Iker Gabriel</td><td>Done</td></tr>
+  <tr><td>TS01</td><td>Exponer endpoints de autenticación</td><td>T13</td><td>Pruebas del dominio IAM</td><td>Escribir las pruebas unitarias de UserAccount, EmailAddress y AdvisoryLink.</td><td>3</td><td>Ortiz Alarcon, Victor Nicolas</td><td>Done</td></tr>
+  <tr><td>US09</td><td>Registrar cuenta de productor</td><td>T14</td><td>Registro por rol</td><td>Implementar la elección de rol y el formulario de registro de productor.</td><td>3</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>US10</td><td>Registrar cuenta de asesor</td><td>T15</td><td>Registro de asesor</td><td>Agregar el número de colegiatura CIP y su validación al registro.</td><td>2</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>US11</td><td>Iniciar sesión</td><td>T16</td><td>Inicio de sesión</td><td>Implementar el inicio de sesión, las cuentas de demostración y la protección de rutas.</td><td>4</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>US12</td><td>Recuperar contraseña</td><td>T17</td><td>Recuperación de contraseña</td><td>Implementar la solicitud y el restablecimiento con token de un solo uso.</td><td>3</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>US39</td><td>Ver tablero del productor</td><td>T18</td><td>Inicio del productor</td><td>Implementar el tablero con parcelas, alertas activas y dispositivos.</td><td>5</td><td>Salazar Caballero, Alvaro Fabrizzio</td><td>Done</td></tr>
+  <tr><td>US27</td><td>Consultar estado de parcela</td><td>T19</td><td>Detalle de parcela</td><td>Mostrar la lectura actual, el nivel frente al umbral del cultivo y la tendencia.</td><td>5</td><td>Salazar Caballero, Alvaro Fabrizzio</td><td>Done</td></tr>
+  <tr><td>US27</td><td>Consultar estado de parcela</td><td>T20</td><td>Cultivos con umbral</td><td>Cargar palto, uva de mesa y arándano con sus umbrales y fuentes.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US37</td><td>Registrar acción correctiva</td><td>T21</td><td>Acciones correctivas</td><td>Registrar la acción de una alerta y actualizar el contador de alertas.</td><td>4</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>US43</td><td>Ver tablero multiparcela</td><td>T22</td><td>Inicio del asesor</td><td>Implementar el tablero que ordena las parcelas supervisadas por riesgo.</td><td>6</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>US43</td><td>Ver tablero multiparcela</td><td>T23</td><td>Guía de estilo y accesibilidad</td><td>Aplicar los tokens de la guía de estilo, íconos de línea y atributos ARIA.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T24</td><td>Despliegue continuo de la Web App</td><td>Configurar GitHub Actions y GitHub Pages para publicar <code>develop</code>.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T25</td><td>Prototipo de la Mobile App</td><td>Crear el proyecto Android con Jetpack Compose y las primeras vistas.</td><td>8</td><td>Tumi Oliden, Manuel Ignacio</td><td>Done</td></tr>
+</table>
+
+La suma de Story Points de las User Stories del sprint es 60: US01 (3), US04 (3), US02 (2), US03 (2), US05 (3), US07 (2), US06 (2), US08 (3), TS01 (5), US09 (3), US10 (3), US11 (3), US12 (3), US39 (5), US27 (5), US37 (5) y US43 (8).
+
 #### 6.2.1.4. Development Evidence for Sprint Review
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review

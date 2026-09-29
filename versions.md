@@ -80,6 +80,7 @@
 | 0.0.92 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.1 Software Configuration Management (herramientas por actividad, repositorios, GitFlow, Semantic Versioning, Conventional Commits, guías de estilo por lenguaje y configuración de despliegue de cada producto). |
 | 0.0.93 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.1 Sprint Planning 1 (fecha, asistentes, Sprint Goal con el template de Scrum.org, velocidad y Story Points). |
 | 0.0.94 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.2 Aspect Leaders and Collaborators con la matriz de líderes y colaboradores del Sprint 1. |
+| 0.0.95 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.3 Sprint Backlog 1 con las User Stories del sprint y sus tareas. |
 
 # Project Report Collaboration Insights
 
