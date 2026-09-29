@@ -77,6 +77,7 @@
 | 0.0.73 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: títulos descriptivos en los User Journey Maps y Empathy Maps exportados de UXPressia. |
 | 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
 | 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
+| 0.0.91 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: tablas del análisis competitivo con anchos de columna fijos y filas que no se parten entre páginas, para que se conserven al convertir el informe a PDF (retroalimentación del AV1). |
 
 # Project Report Collaboration Insights
 
