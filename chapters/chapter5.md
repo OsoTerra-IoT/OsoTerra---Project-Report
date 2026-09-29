@@ -916,13 +916,365 @@ Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70z
 
 ## 5.4. Applications UX/UI Design
 
+Esta sección presenta la propuesta visual y de interacción de las dos aplicaciones de OsoSense: la **Web Application**, que usan el productor y la asesora técnica desde la computadora, y la **Mobile Application** para Android, pensada para el productor que recibe las alertas en el celular. Ambas comparten el mismo Design System y la misma idea central: el estado del suelo se lee de un vistazo como una **franja de salinidad** que compara la conductividad eléctrica actual con el umbral del cultivo.
+
+El diseño parte de los dos User Personas de la sección 2.3.1 y de sus objetivos. De cada ficha se tomaron los objetivos que la aplicación debe resolver y se redactaron como *user goals*:
+
+| # | User Persona | User goal | Aplicación |
+|---|---|---|---|
+| UG1 | Diego Ramos, productor que supervisa la parcela familiar desde Lima | Saber cómo está mi parcela sin ir a verla. | Web y Mobile |
+| UG2 | Diego Ramos | Atender una alerta y coordinar la acción con mi familia. | Web y Mobile |
+| UG3 | Diego Ramos | Registrar mi parcela con su cultivo. | Web |
+| UG4 | María Fernanda Salazar, asesora técnica | Decidir qué parcela visitar primero. | Web |
+| UG5 | María Fernanda Salazar | Calibrar un sensor con el análisis de laboratorio. | Web |
+| UG6 | María Fernanda Salazar | Entregar al productor un reporte de su parcela. | Web |
+
+Los wireframes y los mock-ups se elaboraron en Figma, en las páginas **Apps · Wireframes** y **Apps · Mock-ups** del archivo de diseño del proyecto; los wireflows y los user flows, en el tablero de FigJam **OsoSense — Wireflows y User Flows**. Las pantallas de la Web App se diseñaron a 1440 px de ancho y las de la Mobile App a 390 px.
+
 ### 5.4.1. Applications Wireframes
+
+Los wireframes fijan la estructura, la jerarquía y el orden de lectura de cada pantalla en escala de grises, sin color de marca ni imágenes: el logo se reemplaza por un círculo gris y los gráficos conservan solo su forma. Se diseñaron 14 pantallas de la Web App y 8 de la Mobile App, incluidos los estados de error y sin conexión que se usan después en los user flows.
+
+**Estructura común de la Web App.** Todas las vistas internas comparten tres zonas: un **menú lateral** claro a la izquierda con los destinos del rol, una **barra superior** delgada con la búsqueda de parcelas, el idioma y las alertas, y el **contenido** a la derecha con un ancho máximo de 1180 px. La cuenta y el cierre de sesión se ubican al pie del menú lateral, lejos de las acciones frecuentes.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-login.png" alt="Wireframe de inicio de sesión de la Web App" width="800">
+<p><em>Figura 5.69. Wireframe de inicio de sesión (Web App).</em></p>
+</div>
+
+La pantalla de acceso se divide en dos: a la izquierda, el mensaje de la marca con la ilustración de los horizontes del suelo; a la derecha, el formulario con solo dos campos, el enlace de recuperación y dos accesos de demostración grandes, uno por rol.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-productor-inicio.png" alt="Wireframe del inicio del productor" width="800">
+<p><em>Figura 5.70. Wireframe del inicio del productor.</em></p>
+</div>
+
+El inicio responde primero la pregunta de Diego con una frase construida con los datos («1 de tus 2 parcelas necesita atención.»). Debajo, tres cifras en una sola línea (parcelas, alertas y sensores conectados) y la lista de parcelas, cada una como una franja con su lectura y la marca del umbral.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-productor-detalle.png" alt="Wireframe del detalle de parcela" width="800">
+<p><em>Figura 5.71. Wireframe del detalle de parcela.</em></p>
+</div>
+
+El detalle de parcela ordena la información por importancia: la lectura actual en grande con su nivel, la recomendación «Qué hacer ahora» a la derecha y, abajo, la tendencia de 30 días con la línea del umbral del cultivo.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-productor-registrar-accion.png" alt="Wireframe de alertas con el diálogo de registrar acción" width="800">
+<p><em>Figura 5.72. Wireframe de alertas con el diálogo de registrar acción correctiva.</em></p>
+</div>
+
+La bandeja de alertas se filtra por estado con chips y cada alerta ofrece dos acciones: reconocerla o registrar lo que se hizo. El registro se abre en un diálogo con tres campos y una casilla para avisar a la asesora, sin sacar al usuario de la bandeja.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-productor-nueva-parcela.png" alt="Wireframe del formulario de nueva parcela" width="800">
+<p><em>Figura 5.73. Wireframe del formulario de nueva parcela.</em></p>
+</div>
+
+El formulario agrupa seis campos en dos columnas y explica, bajo el cultivo, el umbral de salinidad que se usará en las alertas. La ubicación y el código del sensor tienen ayudas para evitar errores de digitación.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-asesora-inicio.png" alt="Wireframe del inicio de la asesora" width="800">
+<p><em>Figura 5.74. Wireframe del inicio de la asesora técnica.</em></p>
+</div>
+
+El inicio de María Fernanda repite la estructura del productor con otra frase («3 de 4 parcelas de tus 2 clientes necesitan una visita.»), cuatro cifras y las franjas ordenadas por riesgo, con el nombre del productor en cada una.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-asesora-comparar.png" alt="Wireframe de comparar parcelas" width="800">
+<p><em>Figura 5.75. Wireframe de comparar parcelas.</em></p>
+</div>
+
+Para comparar parcelas con cultivos distintos, el gráfico muestra el porcentaje del umbral de cada cultivo, no la CE en dS/m: así palto, uva y arándano quedan en la misma escala y la línea de 100 % marca el límite para todos. Se comparan hasta tres parcelas a la vez.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-asesora-calibracion.png" alt="Wireframe de calibración" width="800">
+<p><em>Figura 5.76. Wireframe de calibración de un sensor.</em></p>
+</div>
+
+La calibración es un proceso paso a paso (elegir el sensor, revisar la lectura del sensor e ingresar el resultado del laboratorio) y el resultado se muestra a la derecha antes de aplicarlo, con el efecto que tendrá sobre la lectura.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-web-asesora-reportes.png" alt="Wireframe de reportes" width="800">
+<p><em>Figura 5.77. Wireframe del reporte de parcela.</em></p>
+</div>
+
+El reporte se arma a la izquierda (parcela, periodo y contenido) y se revisa a la derecha como una hoja, antes de exportarlo en PDF o compartirlo.
+
+**Mobile App.** La app para Android usa la navegación de Material 3: barra superior con el título de la vista y barra inferior con cuatro destinos (Inicio, Parcelas, Alertas y Perfil). Las acciones de una parcela se abren como hojas inferiores, al alcance del pulgar.
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-mobile-1.png" alt="Wireframes móviles: inicio de sesión, inicio, inicio sin conexión y notificación" width="800">
+<p><em>Figura 5.78. Wireframes de la Mobile App (1/2): inicio de sesión, inicio, inicio sin conexión y notificación de alerta.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-wireframes/wf-mobile-2.png" alt="Wireframes móviles: detalle, registrar acción, acción sin señal y compartir" width="800">
+<p><em>Figura 5.79. Wireframes de la Mobile App (2/2): detalle de parcela, registrar acción, acción guardada sin señal y compartir.</em></p>
+</div>
+
+**Principios y elementos de diseño aplicados**
+
+- **Jerarquía:** en cada vista hay un solo elemento dominante (la frase de estado, la lectura actual o el título de la tarea) y el resto baja de tamaño y peso según su importancia.
+- **Proximidad:** la lectura, su franja y su nivel forman un solo bloque; las acciones de una alerta están en la misma fila que la alerta.
+- **Repetición:** la franja de salinidad es la misma en el inicio, en el detalle, en la app móvil y en el reporte, así que se aprende una vez.
+- **Contraste:** solo hay un botón con relleno por vista; las acciones secundarias van con contorno.
+- **Alineación:** contenido a la izquierda sobre una columna de 1180 px en la Web App y márgenes de 16 px en la Mobile App.
+
+**Diseño inclusivo**
+
+- El nivel de salinidad nunca depende solo del color: siempre va con palabra («Nivel muy alto») y con el porcentaje del umbral.
+- Objetivos táctiles de 44 px o más en la Web App y de 48 px en la Mobile App.
+- Texto base de 15 a 16 px, etiquetas visibles sobre cada campo y mensajes de error junto al campo que los causa.
+- Estados sin conexión explícitos: la app dice qué datos está mostrando y cuándo se actualizarán.
+- Las animaciones se desactivan cuando el sistema pide reducir el movimiento.
+
+**Arquitectura de información**
+
+Los wireframes aplican las decisiones de la sección 5.2: organización por rol en el menú lateral, orden por riesgo en las listas, etiquetas cortas iguales al título de cada vista y migas de pan en las vistas de segundo nivel.
 
 ### 5.4.2. Applications Wireflow Diagrams
 
+Cada wireflow muestra, con los wireframes de la sección anterior, la ruta típica para cumplir un *user goal*. La flecha indica la acción del usuario que lleva de una pantalla a la siguiente; cuando la acción cambia el estado de la misma pantalla (por ejemplo, abrir un diálogo), se agrega el wireframe con el nuevo estado.
+
+**WF1 · Diego Ramos · Web App.** *User goal:* saber cómo está mi parcela sin ir a verla.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-1.png" alt="Wireflow 1: inicio de sesión, inicio y detalle de parcela" width="900">
+<p><em>Figura 5.80. Wireflow 1: saber cómo está mi parcela (Web App).</em></p>
+</div>
+
+Diego entra con su cuenta de productor y el inicio le dice en una frase cuántas parcelas necesitan atención. Toca la parcela marcada en rojo y en el detalle ve la lectura, la tendencia y qué hacer. Son dos acciones desde el inicio de sesión.
+
+**WF2 · Diego Ramos · Web App.** *User goal:* atender una alerta y coordinar la acción con mi familia.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-2.png" alt="Wireflow 2: inicio, alertas, diálogo de registrar acción y alertas" width="900">
+<p><em>Figura 5.81. Wireflow 2: atender una alerta (Web App).</em></p>
+</div>
+
+Desde el contador de la campana, Diego llega a la bandeja de alertas, registra la acción que hizo su familia (lavado de sales) y, al guardarla, la alerta pasa a cerrada y la asesora recibe el aviso.
+
+**WF3 · Diego Ramos · Web App.** *User goal:* registrar mi parcela con su cultivo.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-3.png" alt="Wireflow 3: inicio, nueva parcela y detalle" width="900">
+<p><em>Figura 5.82. Wireflow 3: registrar mi parcela (Web App).</em></p>
+</div>
+
+Con *Agregar parcela* abre el formulario, elige el cultivo (que fija el umbral), escribe el código del sensor y al guardar llega al detalle de la parcela nueva, donde aparecerá la primera lectura.
+
+**WF4 · María Fernanda Salazar · Web App.** *User goal:* decidir qué parcela visitar primero.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-4.png" alt="Wireflow 4: inicio de sesión, inicio de la asesora y comparar parcelas" width="900">
+<p><em>Figura 5.83. Wireflow 4: decidir qué parcela visitar primero (Web App).</em></p>
+</div>
+
+María Fernanda entra con su cuenta de asesora; el inicio ya ordena las parcelas por riesgo. Para confirmar la prioridad compara las tres primeras en la misma escala y ve cuál sube más rápido.
+
+**WF5 · María Fernanda Salazar · Web App.** *User goal:* calibrar un sensor con el análisis de laboratorio.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-5.png" alt="Wireflow 5: inicio, calibración e inicio" width="900">
+<p><em>Figura 5.84. Wireflow 5: calibrar un sensor (Web App).</em></p>
+</div>
+
+Desde el menú lateral abre *Calibración*, elige el sensor, ingresa la ECe del laboratorio y revisa el factor antes de aplicarlo. Al aplicar vuelve a su inicio, donde las franjas ya usan la lectura ajustada.
+
+**WF6 · María Fernanda Salazar · Web App.** *User goal:* entregar al productor un reporte de su parcela.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-6.png" alt="Wireflow 6: inicio, reportes y PDF enviado" width="900">
+<p><em>Figura 5.85. Wireflow 6: entregar un reporte (Web App).</em></p>
+</div>
+
+En *Reportes* elige la parcela y el periodo, revisa la vista previa y exporta el PDF, que comparte con Diego por WhatsApp.
+
+**WF7 · Diego Ramos · Mobile App.** *User goal:* saber cómo está mi parcela sin ir a verla.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-7.png" alt="Wireflow 7 móvil: inicio de sesión, inicio y detalle" width="700">
+<p><em>Figura 5.86. Wireflow 7: saber cómo está mi parcela (Mobile App).</em></p>
+</div>
+
+El recorrido es el mismo que en la Web App, adaptado al celular: la sesión queda abierta y el inicio muestra las parcelas como tarjetas con su franja.
+
+**WF8 · Diego Ramos · Mobile App.** *User goal:* atender una alerta y coordinar la acción con mi familia.
+
+<div align="center">
+<img src="../assets/applications-wireflows/wireflow-8.png" alt="Wireflow 8 móvil: notificación, detalle, registrar acción y compartir" width="900">
+<p><em>Figura 5.87. Wireflow 8: atender una alerta y avisar a la familia (Mobile App).</em></p>
+</div>
+
+La alerta llega como notificación; *Ver parcela* abre directamente el detalle. Diego registra la acción en una hoja inferior y comparte el resumen por WhatsApp con la persona que está en la parcela, que era la tarea más frecuente de su matriz de tareas (sección 2.3.2).
+
 ### 5.4.2. Applications Mock-ups
 
+Los mock-ups llevan los wireframes a alta fidelidad con el Design System de las aplicaciones. Parten de los tokens de la guía de estilo (5.1) y agregan cuatro colores para el fondo, el texto y los niveles de salinidad.
+
+<div align="center">
+<img src="../assets/applications-mockups/apps-design-system.png" alt="Design System de las aplicaciones: colores, tipografía y componentes" width="800">
+<p><em>Figura 5.88. Design System de las aplicaciones.</em></p>
+</div>
+
+| Categoría | Tokens |
+|---|---|
+| Acción | Esmeralda 700 `#047857` (botones, enlaces y marca del menú activo), Esmeralda 600 `#059669` (franja en nivel normal) |
+| Superficies | Sal `#F5F7F6` (fondo), blanco (tarjetas), Brote 50 `#ECFDF5` (ítem activo y recomendación), Línea `#E3E8E5` (bordes) |
+| Texto | Tinta `#16211C` (títulos, cifras y marca del umbral), Neutral 600 `#4B5563` y 500 `#6B7280` (texto secundario) |
+| Niveles | Vigilancia `#CA8A04`, Alto `#D97706`, Muy alto `#B91C1C` (con texto `#A12426`) |
+| Tipografía | Plus Jakarta Sans: frase de estado 52 px ExtraBold, título de vista 40 px, título de tarjeta 20 px, cifras con números tabulares, texto 15–16 px |
+| Componentes | Franja de salinidad, menú lateral con indicador deslizante, botones de relleno y contorno de 12 px de radio, chips de filtro, tarjetas de 24 px de radio |
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-login.png" alt="Mock-up de inicio de sesión" width="800">
+<p><em>Figura 5.89. Mock-up de inicio de sesión (Web App).</em></p>
+</div>
+
+La escena de la izquierda cuenta lo que hace el producto sin palabras: una sonda entra en las capas del suelo, aparecen los cristales de sal y se muestra una lectura. En la aplicación, esta secuencia se anima una sola vez al cargar la página.
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-productor-inicio.png" alt="Mock-up del inicio del productor" width="800">
+<p><em>Figura 5.90. Mock-up del inicio del productor.</em></p>
+</div>
+
+El color se reserva para el estado del suelo: la franja de Sector Norte pasa de naranja a rojo porque supera en 47 % el umbral del palto, mientras La Quebrada queda en verde. Al abrir el inicio, las franjas se llenan de izquierda a derecha, una tras otra; es la única animación de la vista.
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-productor-detalle.png" alt="Mock-up del detalle de parcela" width="800">
+<p><em>Figura 5.91. Mock-up del detalle de parcela.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-productor-registrar-accion.png" alt="Mock-up del diálogo de registrar acción" width="800">
+<p><em>Figura 5.92. Mock-up del diálogo de registrar acción correctiva.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-productor-nueva-parcela.png" alt="Mock-up del formulario de nueva parcela" width="800">
+<p><em>Figura 5.93. Mock-up del formulario de nueva parcela.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-asesora-inicio.png" alt="Mock-up del inicio de la asesora" width="800">
+<p><em>Figura 5.94. Mock-up del inicio de la asesora técnica.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-asesora-comparar.png" alt="Mock-up de comparar parcelas" width="800">
+<p><em>Figura 5.95. Mock-up de comparar parcelas.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-asesora-calibracion.png" alt="Mock-up de calibración" width="800">
+<p><em>Figura 5.96. Mock-up de calibración de un sensor.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-web-asesora-reportes.png" alt="Mock-up del reporte de parcela" width="800">
+<p><em>Figura 5.97. Mock-up del reporte de parcela.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-mobile-1.png" alt="Mock-ups móviles: inicio de sesión, inicio, inicio sin conexión y notificación" width="800">
+<p><em>Figura 5.98. Mock-ups de la Mobile App (1/2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/applications-mockups/mk-mobile-2.png" alt="Mock-ups móviles: detalle, registrar acción, sin señal y compartir" width="800">
+<p><em>Figura 5.99. Mock-ups de la Mobile App (2/2).</em></p>
+</div>
+
+**Cómo se aplican los principios en los mock-ups**
+
+- **Minimalismo con un solo protagonista por vista.** La frase de estado, la lectura de 64 px o el título de la tarea dominan; todo lo demás es blanco, gris y una línea de borde.
+- **El color comunica estado, no decora.** El verde esmeralda marca lo que se puede pulsar; el ámbar, el naranja y el rojo solo aparecen en lecturas y alertas.
+- **Movimiento con propósito.** Solo tres animaciones en toda la aplicación: la escena del inicio de sesión, el llenado de las franjas al abrir el inicio y el desplazamiento del indicador del menú al cambiar de sección, que confirma a dónde se fue.
+- **Marca de Oso Terra** en el menú lateral, la notificación y la hoja del reporte.
+
+**Diseño inclusivo en los mock-ups**
+
+Contrastes medidos (WCAG 2.1): tinta `#16211C` sobre el fondo `#F5F7F6`, 15,9:1; texto secundario `#4B5563` sobre blanco, 7,56:1; esmeralda `#047857` con texto blanco, 5,48:1; rojo de texto `#A12426` sobre blanco, 7,9:1. La marca del umbral es una línea de 2 px en tinta, visible sobre cualquier color de franja. En la Mobile App, la notificación usa el mismo texto que la alerta de la Web App para que el mensaje sea reconocible en ambos canales.
+
+Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-3) y [mock-ups y Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-2).
+
 ### 5.4.3. Applications User Flow Diagrams
+
+Los user flows derivan de los wireflows y usan los mock-ups. Además de la ruta esperada (*happy path*, flechas verdes continuas), muestran las rutas alternativas (*unhappy paths*, flechas rojas discontinuas) y las condiciones que las separan (rombos amarillos). Los óvalos verdes marcan el inicio y el resultado de cada flujo.
+
+**UF1 · Diego Ramos · Web App.** *User goal:* saber cómo está mi parcela sin ir a verla.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-1.png" alt="User flow 1 con error de credenciales" width="900">
+<p><em>Figura 5.100. User flow 1: saber cómo está mi parcela (Web App).</em></p>
+</div>
+
+*Happy path:* Diego inicia sesión, llega a su inicio, toca Sector Norte y lee la recomendación. *Unhappy path:* si el correo o la contraseña no coinciden, los dos campos se marcan en rojo y un mensaje explica qué revisar (por ejemplo, las mayúsculas); al corregir vuelve al inicio de sesión.
+
+**UF2 · Diego Ramos · Web App.** *User goal:* atender una alerta y coordinar la acción con mi familia.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-2.png" alt="User flow 2 con cancelación" width="900">
+<p><em>Figura 5.101. User flow 2: atender una alerta (Web App).</em></p>
+</div>
+
+*Happy path:* desde la bandeja abre *Registrar acción*, completa el tipo, la fecha y la observación, y guarda; la alerta se cierra y la asesora recibe un correo. *Unhappy path:* si cancela, vuelve a la bandeja y la alerta sigue abierta, para que no se pierda.
+
+**UF3 · Diego Ramos · Web App.** *User goal:* registrar mi parcela con su cultivo.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-3.png" alt="User flow 3 con error de validación" width="900">
+<p><em>Figura 5.102. User flow 3: registrar mi parcela (Web App).</em></p>
+</div>
+
+*Happy path:* completa el formulario y llega al detalle de la parcela nueva. *Unhappy path:* si falta el cultivo o el área es 0, un resumen arriba indica cuántos campos revisar y cada campo explica el problema («Elige el cultivo; sin él no podemos calcular el umbral.»); al corregir, se guarda.
+
+**UF4 · María Fernanda Salazar · Web App.** *User goal:* decidir qué parcela visitar primero.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-4.png" alt="User flow 4 con caso sin parcelas sobre el umbral" width="900">
+<p><em>Figura 5.103. User flow 4: decidir qué parcela visitar primero (Web App).</em></p>
+</div>
+
+*Happy path:* si hay parcelas sobre el umbral, compara las prioritarias y decide visitar primero la que más supera el umbral. *Ruta alternativa:* si ninguna está sobre el umbral, la frase del inicio lo dice y no hace falta seguir; la revisión queda para la semana siguiente.
+
+**UF5 · María Fernanda Salazar · Web App.** *User goal:* calibrar un sensor con el análisis de laboratorio.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-5.png" alt="User flow 5 con valor fuera de rango" width="900">
+<p><em>Figura 5.104. User flow 5: calibrar un sensor (Web App).</em></p>
+</div>
+
+*Happy path:* ingresa la ECe del laboratorio, revisa el factor (0,91) y lo aplica; las lecturas se ajustan y Diego recibe el aviso. *Unhappy path:* si el valor está fuera del rango posible (por ejemplo, 14,8 en lugar de 1,48 por una coma mal puesta), el campo se marca, el factor no se calcula y el botón queda desactivado hasta corregirlo.
+
+**UF6 · María Fernanda Salazar · Web App.** *User goal:* entregar al productor un reporte de su parcela.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-6.png" alt="User flow 6 con periodo sin lecturas" width="900">
+<p><em>Figura 5.105. User flow 6: entregar un reporte (Web App).</em></p>
+</div>
+
+*Happy path:* elige parcela y periodo, revisa la vista previa y exporta el PDF para compartirlo. *Unhappy path:* si el periodo no tiene lecturas (el sensor estuvo sin conexión), la vista previa lo explica y ofrece dos salidas: revisar el dispositivo o usar los últimos 30 días.
+
+**UF7 · Diego Ramos · Mobile App.** *User goal:* saber cómo está mi parcela sin ir a verla.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-7.png" alt="User flow 7 móvil sin conexión" width="900">
+<p><em>Figura 5.106. User flow 7: saber cómo está mi parcela (Mobile App).</em></p>
+</div>
+
+*Happy path:* con conexión, el inicio muestra las lecturas del momento. *Unhappy path:* sin conexión, un aviso ámbar indica que las lecturas son de hace 2 horas y que se actualizarán al volver la señal; Diego igual puede abrir el detalle.
+
+**UF8 · Diego Ramos · Mobile App.** *User goal:* atender una alerta y coordinar la acción con mi familia.
+
+<div align="center">
+<img src="../assets/applications-user-flows/user-flow-8.png" alt="User flow 8 móvil sin señal" width="900">
+<p><em>Figura 5.107. User flow 8: atender una alerta y avisar a la familia (Mobile App).</em></p>
+</div>
+
+*Happy path:* desde la notificación abre la parcela, registra la acción y la comparte por WhatsApp. *Unhappy path:* si no hay señal al guardar, la acción queda en el celular con la etiqueta «1 acción pendiente de envío» y se envía sola cuando vuelve la conexión; el mensaje lo explica sin culpar al usuario.
+
+Tablero en FigJam: [OsoSense — Wireflows y User Flows](https://www.figma.com/board/QhrU4aUPvxBQeR1hSyJ3Jn).
 
 ## 5.5. Applications Prototyping
 
