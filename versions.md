@@ -106,6 +106,7 @@
 | 0.0.100 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.8 Software Deployment Evidence con el despliegue del Landing Page y de la Web App en GitHub Pages. |
 | 0.0.101 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.9 Team Collaboration Insights con los analíticos de GitHub y la interpretación del equipo. |
 | 0.0.102 | 29/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: base de datos de la plataforma corregida a PostgreSQL (la que usa el RESTful API) en el texto de 4.1.3, el Structurizr DSL y los diagramas de contenedores y de despliegue. |
+| 0.0.103 | 29/09/2026 | Andreow Jomark Santiago Peña | Contenido: índice actualizado con el Capítulo VI (6.1 y Sprint 1) y los títulos vigentes de la guía de estilo web. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
