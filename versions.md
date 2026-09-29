@@ -83,6 +83,7 @@
 | 0.0.95 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.3 Sprint Backlog 1 con las User Stories del sprint y sus tareas. |
 | 0.0.96 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.4 Development Evidence con los commits de implementación de cada repositorio. |
 | 0.0.97 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.5 Testing Suite Evidence con las pruebas del RESTful API y de la Web App y el .feature de TS01. |
+| 0.0.98 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.6 Execution Evidence con capturas del Landing Page y de la Web App publicados. |
 
 # Project Report Collaboration Insights
 

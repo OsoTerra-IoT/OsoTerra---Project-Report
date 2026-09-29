@@ -394,6 +394,51 @@ Commits relacionados con pruebas en el Sprint 1:
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
 
+Al cierre del Sprint 1 están publicados el Landing Page y la Web App. El visitante recorre el Landing Page en inglés o español y, desde los planes, llega al registro de la Web App. En la Web App, el productor y el asesor inician sesión con sus cuentas de demostración y cada uno ve su propio menú y sus vistas.
+
+<div align="center">
+<img src="../assets/sprint-1/landing-desplegada.png" alt="Landing Page publicado en GitHub Pages" width="800">
+<p><em>Figura 6.2. Landing Page publicado.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-desplegada.png" alt="Inicio de sesión de la Web App publicada" width="800">
+<p><em>Figura 6.3. Inicio de sesión de la Web App publicada.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-02-productor-inicio.png" alt="Inicio del productor en la Web App" width="800">
+<p><em>Figura 6.4. Inicio del productor.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-04-detalle-parcela.png" alt="Detalle de parcela en la Web App" width="800">
+<p><em>Figura 6.5. Detalle de parcela con la lectura y la tendencia.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-05-alertas.png" alt="Bandeja de alertas del productor" width="800">
+<p><em>Figura 6.6. Bandeja de alertas y registro de acciones.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-07-asesor-inicio.png" alt="Inicio del asesor con parcelas ordenadas por riesgo" width="800">
+<p><em>Figura 6.7. Inicio del asesor con las parcelas ordenadas por riesgo.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-08-asesor-comparar.png" alt="Comparación de parcelas del asesor" width="800">
+<p><em>Figura 6.8. Comparación de parcelas.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-1/webapp-09-asesor-reportes.png" alt="Reportes del asesor" width="800">
+<p><em>Figura 6.9. Reportes con exportación a PDF.</em></p>
+</div>
+
+<!-- TODO(equipo): subir el video del Sprint 1 a Microsoft Stream o Clipchamp y reemplazar la línea siguiente por su enlace. -->
+Video de la navegación del Sprint 1: enlace de Microsoft Stream (por agregar).
+
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
