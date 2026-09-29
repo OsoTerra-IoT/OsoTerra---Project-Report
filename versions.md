@@ -78,6 +78,7 @@
 | 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
 | 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
 | 0.0.85 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: C4 Model corregido según la retroalimentación del AV1. OsoSense como un único sistema (Edge Service y Embedded Application dentro), el Soil Sensing Hardware como único elemento externo, un solo Container Diagram con el flujo API, Edge, Embedded y hardware, justificación del monolito modular y fuente en Structurizr DSL. |
+| 0.0.102 | 29/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: base de datos de la plataforma corregida a PostgreSQL (la que usa el RESTful API) en el texto de 4.1.3, el Structurizr DSL y los diagramas de contenedores y de despliegue. |
 
 # Project Report Collaboration Insights
 

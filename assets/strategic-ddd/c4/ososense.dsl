@@ -19,7 +19,7 @@ workspace "OsoSense" "C4 Model de OsoSense (Oso Terra)" {
             web = container "Web Application" "Interfaz responsive de gestión, tableros y reportes (asesor y productor)." "Angular, TypeScript, Angular Material"
             mobile = container "Mobile Application" "App nativa de consulta en campo y recepción de alertas (productor)." "Kotlin / Android"
             api = container "RESTful API" "Monolito modular que expone los seis bounded contexts." "Spring Boot, Java, Spring Data JPA"
-            db = container "Platform Database" "Cuentas, suscripciones, fincas, parcelas, lecturas y alertas." "MySQL" "Database"
+            db = container "Platform Database" "Cuentas, suscripciones, fincas, parcelas, lecturas y alertas." "PostgreSQL" "Database"
             edge = container "Edge Service" "Valida, compensa a 25 °C y sincroniza las lecturas; reenvía los lotes pendientes al recuperar la conexión." "Flask, Python, Peewee ORM"
             edgeDb = container "Edge Local Database" "Persiste las lecturas pendientes de sincronización." "SQLite" "Database"
             embedded = container "Embedded Application" "Firmware que muestrea los sensores, controla el LED y el botón y envía las lecturas." "C++ / Arduino Framework"
