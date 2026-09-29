@@ -85,6 +85,7 @@
 | 0.0.97 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.5 Testing Suite Evidence con las pruebas del RESTful API y de la Web App y el .feature de TS01. |
 | 0.0.98 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.6 Execution Evidence con capturas del Landing Page y de la Web App publicados. |
 | 0.0.99 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.7 Services Documentation Evidence con los endpoints de Identity and Access Management. |
+| 0.0.100 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.8 Software Deployment Evidence con el despliegue del Landing Page y de la Web App en GitHub Pages. |
 
 # Project Report Collaboration Insights
 

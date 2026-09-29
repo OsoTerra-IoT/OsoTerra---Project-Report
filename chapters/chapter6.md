@@ -479,6 +479,18 @@ Repositorio del RESTful API: https://github.com/OsoTerra-IoT/OsoTerra---Backend.
 
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
 
+En el Sprint 1 se publicaron los dos productos que exige el TB1, sin crear cuentas nuevas ni usar un proveedor cloud: ambos se sirven desde GitHub Pages, dentro de la organización OsoTerra-IoT.
+
+1. **Landing Page.** Se integraron en `develop` las ramas de logo, contraste y meta tags, y se configuró GitHub Pages para publicar desde `develop`. El sitio quedó en https://osoterra-iot.github.io/OsoTerra---Landing-Page/ con los botones de planes enlazados al registro de la Web App.
+2. **Web App.** Se agregó el flujo `deploy-pages.yml` de GitHub Actions, se habilitó GitHub Pages con origen en Actions y se permitió desplegar desde `develop` en el entorno `github-pages`. La primera ejecución terminó en 47 segundos y publicó la Web App en https://osoterra-iot.github.io/OsoTerra---Web-Application/.
+
+<div align="center">
+<img src="../assets/sprint-1/actions-webapp.png" alt="Ejecuciones de GitHub Actions del repositorio de la Web App" width="800">
+<p><em>Figura 6.10. Ejecución del flujo «Deploy to GitHub Pages» de la Web App.</em></p>
+</div>
+
+La figura muestra la ejecución del flujo de despliegue sobre `develop`, junto con las revisiones automáticas de código de las ramas de feature. Las Figuras 6.2 y 6.3 muestran los dos productos ya publicados. El RESTful API, la Mobile App con Firebase App Distribution, el Edge Service y la Embedded Application se despliegan desde el Sprint 2, con los pasos de la sección 6.1.4.
+
 #### 6.2.1.9. Team Collaboration Insights during Sprint
 
 ## 6.3. Validation Interviews
