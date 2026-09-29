@@ -193,6 +193,20 @@ El Sprint Planning se hizo al inicio del sprint, con el Product Backlog de la se
 
 #### 6.2.1.2. Aspect Leaders and Collaborators
 
+Los aspectos del Sprint 1 corresponden a los productos que se trabajaron: el Landing Page, la Web App (con una vista para cada rol), el RESTful API con Identity and Access Management, el prototipo de la Mobile App, y un aspecto transversal de diseño UX/UI y despliegue. Cada aspecto tiene un líder, que coordina las tareas y revisa lo que se integra, y colaboradores que toman tareas del mismo aspecto en el Sprint Backlog.
+
+| Team Member (Last Name, First Name) | GitHub Username | Landing Page | Web App · Productor | Web App · Asesor | Web Services · IAM | Mobile App | UX/UI y despliegue |
+|---|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | C | | | L | | C |
+| Encalada Salazar, Alexis | Alexiz248 | | C | L | C | C | |
+| Goñe Araccata, Esther Abigail | abigoe02 | L | | | | | C |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | C | | C | C | | |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | | L | C | | | |
+| Santiago Peña, Andreow Jomark | andrew65411 | C | C | C | | | L |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | | | | | L | C |
+
+L: líder del aspecto. C: colaborador.
+
 #### 6.2.1.3. Sprint Backlog 1
 
 #### 6.2.1.4. Development Evidence for Sprint Review

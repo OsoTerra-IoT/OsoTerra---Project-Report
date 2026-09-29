@@ -79,6 +79,7 @@
 | 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
 | 0.0.92 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.1 Software Configuration Management (herramientas por actividad, repositorios, GitFlow, Semantic Versioning, Conventional Commits, guías de estilo por lenguaje y configuración de despliegue de cada producto). |
 | 0.0.93 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.1 Sprint Planning 1 (fecha, asistentes, Sprint Goal con el template de Scrum.org, velocidad y Story Points). |
+| 0.0.94 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.2 Aspect Leaders and Collaborators con la matriz de líderes y colaboradores del Sprint 1. |
 
 # Project Report Collaboration Insights
 
