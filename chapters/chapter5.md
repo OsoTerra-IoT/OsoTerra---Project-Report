@@ -1278,4 +1278,88 @@ Tablero en FigJam: [OsoSense — Wireflows y User Flows](https://www.figma.com/b
 
 ## 5.5. Applications Prototyping
 
+Los prototipos se construyeron en Figma sobre los mock-ups de la sección 5.4.2, conectando botones, enlaces y elementos del menú con transiciones. Siguen las rutas de los user flows, incluidos los caminos alternativos: por ejemplo, *Iniciar sesión* sin datos lleva al estado de error, *Guardar parcela* con el formulario incompleto muestra la validación y *Guardar acción* en la Mobile App muestra el aviso sin señal.
+
+**Criterios de interacción**
+
+- **La navegación sigue la arquitectura de información (5.2.5).** En la Web App, el menú lateral lleva a cada vista del rol y la marca de la sección activa se desliza al nuevo destino; en la Mobile App, la barra inferior cambia de sección y las acciones de una parcela se abren como hojas desde abajo, sin perder el contexto.
+- **Transiciones que explican el cambio.** Entre vistas se usa *smart animate* de 300 ms con salida suave; los diálogos, las hojas y los estados de error aparecen con un fundido de 250 ms, porque cambian la misma pantalla y no llevan a otra.
+- **Una acción, un resultado visible.** Cada botón del prototipo lleva a una pantalla que confirma lo ocurrido: alerta cerrada, factor aplicado, PDF listo o acción pendiente de envío.
+- **Accesos directos desde el contexto.** La notificación del celular abre el detalle de la parcela sin pasar por el inicio; la campana de la Web App lleva directo a la bandeja de alertas.
+
+| Prototipo | Punto de inicio | Rutas cubiertas |
+|---|---|---|
+| Web App (Desktop Web Browser) | Inicio de sesión | UG1 a UG6, con los estados de error de credenciales, validación de parcela, valor de laboratorio fuera de rango y reporte sin datos |
+| Mobile App (Mobile) | Notificación de alerta e inicio de sesión | UG1 y UG2, con los estados sin conexión y sin señal |
+
+Prototipos en Figma: [Web App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=51-2&starting-point-node-id=51%3A2) y [Mobile App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=52-61&starting-point-node-id=52%3A61).
+
+**Videos de demostración**
+
+<!-- TODO(equipo): grabar un video por aplicación recorriendo el prototipo (guion en el wiki: cap5-apps-plan), subirlo a Microsoft Stream o Clipchamp, y reemplazar estas dos líneas por la captura del video y su enlace. -->
+- Web App: captura y enlace del video en Microsoft Stream (por agregar).
+- Mobile App: captura y enlace del video en Microsoft Stream (por agregar).
+
 ## 5.6. IoT Device Design
+
+El dispositivo de campo de OsoSense es una estaca con una carcasa sellada que se clava junto al cultivo. Sus decisiones de diseño responden a tres condiciones de la costa norte observadas en las entrevistas: la parcela no siempre tiene señal, nadie la revisa todos los días y quien la instala no es técnico. Por eso el dispositivo funciona con energía solar, guarda y reenvía sus lecturas a través del Edge Service y se comunica sin pantalla, con un LED y un botón.
+
+**Relación con la arquitectura de información y la guía de estilo.** El dispositivo usa la misma escala de niveles que las aplicaciones (normal, en vigilancia, alto y muy alto): el color y el número de destellos del LED (sección 5.1.2) repiten el color de la franja que Diego ve en el celular, así que lo que ve en la parcela coincide con lo que ve en la app. El botón único cubre las tres acciones que la app necesita del dispositivo: tomar una lectura ahora, emparejar y restablecer.
+
+<div align="center">
+<img src="../assets/iot-device/iot-vistas-acotadas.png" alt="Vista frontal y lateral acotadas del dispositivo" width="700">
+<p><em>Figura 5.108. Vistas frontal y lateral del dispositivo, con medidas.</em></p>
+</div>
+
+La carcasa mide 90 × 60 × 35 mm, en plástico ABS/ASA estabilizado contra rayos UV color `#065F46`, con esquinas de 12 mm y sellado IP65. En la cara frontal, de arriba abajo: el panel solar, el LED de estado bajo un difusor translúcido, el botón y el símbolo de Oso Terra. La sonda de 150 mm se clava hasta la línea de suelo, de modo que los electrodos quedan en la zona de las raíces.
+
+<div align="center">
+<img src="../assets/iot-device/iot-componentes.png" alt="Seis capas del dispositivo, de la tapa a la sonda" width="800">
+<p><em>Figura 5.109. Componentes del dispositivo, de la tapa a la sonda.</em></p>
+</div>
+
+| # | Componente | Decisión |
+|---|---|---|
+| 1 | Tapa con panel solar de 6 V y 1 W | Evita cambiar baterías en campo. |
+| 2 | Difusor del LED RGB y botón sellado | Interfaz física sin pantalla, legible a pleno sol. |
+| 3 | Placa con ESP32 y cargador TP4056 | WiFi integrado para hablar con el Edge Service y sueño profundo entre lecturas. |
+| 4 | Batería 18650 de 3,7 V y 2 600 mAh | Autonomía de semanas con lecturas cada 15 minutos. |
+| 5 | Base con prensaestopas IP68 | Paso de cables sin filtraciones de agua de riego. |
+| 6 | Sonda de 150 mm | Electrodos de acero inoxidable para la CE, sensor capacitivo de humedad y DS18B20 encapsulado para la temperatura, que el Edge usa para compensar la CE a 25 °C. |
+
+<div align="center">
+<img src="../assets/iot-device/iot-bloques.png" alt="Diagrama de bloques: energía, ESP32, sensores, LED y botón, Edge Service" width="800">
+<p><em>Figura 5.110. Diagrama de bloques del hardware.</em></p>
+</div>
+
+El diagrama de bloques muestra los tres caminos del dispositivo: la **energía** (panel, cargador, batería y regulador de 3,3 V), la **medición** (tres sensores que entran al ESP32 por dos entradas analógicas y un bus 1-Wire) y la **comunicación** (LED y botón hacia el usuario, WiFi hacia el Edge Service de la parcela).
+
+**Diseño del circuito**
+
+El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene sonda de conductividad ni sensor capacitivo de humedad, ambos se simulan con potenciómetros que entregan la misma señal analógica; la temperatura usa el DS18B20 real del simulador.
+
+<div align="center">
+<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32, dos potenciómetros, DS18B20, LED RGB y botón" width="800">
+<p><em>Figura 5.111. Circuito del dispositivo en Wokwi.</em></p>
+</div>
+
+| Elemento | Pin del ESP32 | Conexión |
+|---|---|---|
+| Sonda de CE (potenciómetro en la simulación) | GPIO 34 (ADC) | Salida analógica 0–3,3 V |
+| Humedad capacitiva (potenciómetro en la simulación) | GPIO 35 (ADC) | Salida analógica 0–3,3 V |
+| DS18B20 | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
+| LED RGB de cátodo común | GPIO 25, 26 y 27 | Una resistencia de 220 Ω por color |
+| Botón | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
+| Alimentación | 3V3 y GND | Desde el regulador de 3,3 V |
+
+**Flujos de interacción que cubre el prototipo**
+
+1. **Encendido:** destello blanco y conexión a la red WiFi del Edge.
+2. **Lectura periódica:** cada 15 minutos (10 s en la simulación) mide los tres valores, los envía al Edge en JSON y muestra el nivel con el LED según la tabla de la sección 5.1.2.
+3. **Sin conexión:** destello blanco; el Edge Service conserva las lecturas y las reenvía al recuperar la señal.
+4. **Pulsación corta:** toma y envía una lectura en el momento, útil durante la instalación.
+5. **Pulsación de 3 s:** parpadeo azul de emparejamiento con la app.
+
+Los archivos del circuito (`diagram.json`, `sketch.ino` y `libraries.txt`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden importar en Wokwi para ejecutar la simulación.
+
+Diseño físico en Figma: [IoT · Dispositivo](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4).
