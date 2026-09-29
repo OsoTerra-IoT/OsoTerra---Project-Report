@@ -168,25 +168,44 @@ El Deployment Diagram de la sección 4.1.3.4 muestra cómo se distribuyen estos 
 
 ## 6.2. Landing Page, Services & Applications Implementation
 
-### 6.2.X. Sprint n
+### 6.2.1. Sprint 1
 
-#### 6.2.X.1. Sprint Planning n
+#### 6.2.1.1. Sprint Planning 1
 
-#### 6.2.X.2. Aspect Leaders and Collaborators
+En el Sprint 1 el equipo construyó la primera versión de los productos que el TB1 exige desplegados: el Landing Page y la Web App. En paralelo avanzó el RESTful API con el bounded context de Identity and Access Management y un primer prototipo de la Mobile App. El sprint duró cuatro semanas, del 7 de septiembre al 4 de octubre de 2026, e incluyó la integración de las correcciones del AV1.
 
-#### 6.2.X.3. Sprint Backlog n
+El Sprint Planning se hizo al inicio del sprint, con el Product Backlog de la sección 3.3 como base. Como es el primer sprint de implementación, no hay revisión ni retrospectiva de un sprint anterior; en su lugar se tomó como punto de partida lo entregado en el AV1.
 
-#### 6.2.X.4. Development Evidence for Sprint Review
+| Sprint # | Sprint 1 |
+|---|---|
+| **Sprint Planning Background** | |
+| Date | 2026-09-07 |
+| Time | 08:00 PM |
+| Location | Reunión virtual en Google Meet |
+| Prepared By | Encalada Salazar, Alexis |
+| Attendees (to planning meeting) | Barturen Panez, Iker Gabriel / Encalada Salazar, Alexis / Goñe Araccata, Esther Abigail / Ortiz Alarcon, Victor Nicolas / Salazar Caballero, Alvaro Fabrizzio / Santiago Peña, Andreow Jomark / Tumi Oliden, Manuel Ignacio |
+| Sprint 0 Review Summary | No hubo un sprint de implementación previo. El punto de partida es el AV1: investigación de usuarios, User Stories con criterios de aceptación, Product Backlog priorizado y diseño estratégico y táctico del software. |
+| Sprint 0 Retrospective Summary | En el AV1 el trabajo del informe se concentró en pocas personas. Para este sprint el equipo acordó un líder por producto, commits con Conventional Commits y revisión cruzada antes de integrar en `develop`. |
+| **Sprint Goal & User Stories** | |
+| Sprint 1 Goal | *Our focus is on* presentar OsoSense a los visitantes con un Landing Page claro y bilingüe; dar a productores y asesores técnicos una primera Web App para registrarse, iniciar sesión, ver el estado de salinidad de sus parcelas y registrar acciones correctivas; y dar a los developers los endpoints de autenticación del RESTful API. *We believe it delivers* confianza para decidir probar OsoSense a los visitantes, una forma rápida de saber qué parcela necesita atención a productores y asesores, y una base segura para construir las siguientes funcionalidades al equipo de desarrollo. *This will be confirmed when* el Landing Page y la Web App están publicados y un visitante llega desde un botón de planes hasta el registro en no más de dos clics, un productor identifica su parcela en riesgo desde el inicio sin abrir otra vista, y la Web App y la Mobile App pueden autenticar usuarios contra los endpoints de `/api/v1/auth`. |
+| Sprint 1 Velocity | 60 Story Points |
+| Sum of Story Points | 60 Story Points |
 
-#### 6.2.X.5. Testing Suite Evidence for Sprint Review
+#### 6.2.1.2. Aspect Leaders and Collaborators
 
-#### 6.2.X.6. Execution Evidence for Sprint Review
+#### 6.2.1.3. Sprint Backlog 1
 
-#### 6.2.X.7. Services Documentation Evidence for Sprint Review
+#### 6.2.1.4. Development Evidence for Sprint Review
 
-#### 6.2.X.8. Software Deployment Evidence for Sprint Review
+#### 6.2.1.5. Testing Suite Evidence for Sprint Review
 
-#### 6.2.X.9. Team Collaboration Insights during Sprint
+#### 6.2.1.6. Execution Evidence for Sprint Review
+
+#### 6.2.1.7. Services Documentation Evidence for Sprint Review
+
+#### 6.2.1.8. Software Deployment Evidence for Sprint Review
+
+#### 6.2.1.9. Team Collaboration Insights during Sprint
 
 ## 6.3. Validation Interviews
 
