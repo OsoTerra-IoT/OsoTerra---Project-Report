@@ -78,6 +78,15 @@
 | 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
 | 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
 | 0.0.92 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.1 Software Configuration Management (herramientas por actividad, repositorios, GitFlow, Semantic Versioning, Conventional Commits, guías de estilo por lenguaje y configuración de despliegue de cada producto). |
+| 0.0.93 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.1 Sprint Planning 1 (fecha, asistentes, Sprint Goal con el template de Scrum.org, velocidad y Story Points). |
+| 0.0.94 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.2 Aspect Leaders and Collaborators con la matriz de líderes y colaboradores del Sprint 1. |
+| 0.0.95 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.3 Sprint Backlog 1 con las User Stories del sprint y sus tareas. |
+| 0.0.96 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.4 Development Evidence con los commits de implementación de cada repositorio. |
+| 0.0.97 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.5 Testing Suite Evidence con las pruebas del RESTful API y de la Web App y el .feature de TS01. |
+| 0.0.98 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.6 Execution Evidence con capturas del Landing Page y de la Web App publicados. |
+| 0.0.99 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.7 Services Documentation Evidence con los endpoints de Identity and Access Management. |
+| 0.0.100 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.8 Software Deployment Evidence con el despliegue del Landing Page y de la Web App en GitHub Pages. |
+| 0.0.101 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.9 Team Collaboration Insights con los analíticos de GitHub y la interpretación del equipo. |
 
 # Project Report Collaboration Insights
 
