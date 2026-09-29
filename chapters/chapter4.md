@@ -656,7 +656,7 @@ El Container Level abre el sistema OsoSense en sus unidades de despliegue indepe
 | Web Application | Angular, TypeScript, Angular Material | Interfaz responsive de gestión, tableros y reportes (asesor y productor). |
 | Mobile Application | Kotlin / Android | App nativa de consulta en campo y recepción de alertas (productor). |
 | RESTful API | Spring Boot, Java, Spring Data JPA | Monolito modular que expone las capacidades de los seis bounded contexts. |
-| Platform Database | MySQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
+| Platform Database | PostgreSQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
 | Edge Service | Flask, Python, Peewee ORM | Valida, compensa a 25 °C y sincroniza las lecturas; reenvía los lotes pendientes al recuperar la conexión. |
 | Edge Local Database | SQLite | Persiste las lecturas pendientes de sincronización. |
 | Embedded Application | C++ / Arduino Framework | Firmware que muestrea los sensores, controla el LED y el botón y envía las lecturas. |
@@ -700,13 +700,13 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 | Dispositivos del usuario → Navegador web | Landing Page (HTML/CSS/JS) + Web Application (Angular SPA) | Descargados desde el hosting cloud. |
 | Dispositivos del usuario → Dispositivo Android | Mobile Application (Kotlin APK) | Cliente de campo del productor. |
 | Proveedor cloud → Application Server (JVM) | RESTful API (Spring Boot JAR) | Monolito modular de negocio. |
-| Proveedor cloud → Database Server | Platform Database (MySQL) | Persistencia canónica. |
+| Proveedor cloud → Database Server | Platform Database (PostgreSQL) | Persistencia canónica. |
 
 **Decisiones reflejadas en el diagrama**
 
 - Los contenedores de campo (Embedded Application, Edge Service y su base local) se despliegan **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; el resto del sistema se despliega **en la nube**. Todos pertenecen al mismo sistema OsoSense.
 - El Landing Page y la Web App se sirven como contenido estático/compilado y se ejecutan en el navegador del usuario, separados del servidor de aplicaciones que ejecuta el API sobre la JVM.
-- La base de datos MySQL se despliega en un servidor dedicado, accesible únicamente desde el servidor de aplicaciones.
+- La base de datos PostgreSQL se despliega en un servidor dedicado, accesible únicamente desde el servidor de aplicaciones.
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
