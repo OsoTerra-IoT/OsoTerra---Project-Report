@@ -249,6 +249,96 @@ La suma de Story Points de las User Stories del sprint es 60: US01 (3), US04 (3)
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 
+En el Sprint 1 se implementaron el Landing Page completo, la Web App con las vistas del productor y del asesor sobre datos de demostración, el bounded context de Identity and Access Management del RESTful API y un primer prototipo de la Mobile App. La Web App todavía no consume el RESTful API: usa un servicio con datos de demostración que tiene el mismo contrato que tendrán los endpoints, para integrarlos en el Sprint 2 sin cambiar las vistas.
+
+La tabla reúne los commits de implementación de cada repositorio entre el 7 y el 28 de septiembre de 2026, sin contar los commits de *merge*. El repositorio del RESTful API es privado; sus commits se listan desde la copia local del equipo.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/webapp-cta-links | b7426d5 | feat(cta): link plan and call-to-action buttons to web app sign-up | — | 28/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/seo-meta-tags | cdd3022 | feat(seo): add description, keywords, author and social meta tags | — | 23/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/accessible-button-contrast | 7e7680e | style(a11y): raise contrast of primary and outline buttons | — | 23/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/brand-logo | 45ec869 | feat(branding): add brand logo to header, footer and favicon | — | 23/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | main | c6ca34a | Delete CNAME | — | 20/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | main | 4ddfad8 | Create CNAME | — | 20/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | main | e345926 | feat: add landing page | — | 20/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/minimal-redesign | a2d1aa8 | feat(ui): redesign sign-in, sidebar and home with salinity strips | — | 28/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/github-pages-deploy | 70ea60a | ci(deploy): publish develop to GitHub Pages with SPA fallback | — | 28/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | fix/mobile-topbar-and-sources | d140ca1 | fix(layout): fit mobile top bar and cite each crop source in reports | — | 24/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/demo-crops | a0622bc | feat(demo-data): use avocado, table grape and blueberry with sourced thresholds | — | 24/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/accessibility-forms | 0b2f463 | fix(a11y): sync filters and tabs with url and tune form fields | — | 24/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/ui-components | 5ce55da | feat(ui): switch to outlined icons and announce alert actions | — | 24/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/brand-identity | eaa8ed8 | feat(branding): replace placeholder mark with OsoSense logo and favicon | — | 24/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/style-guidelines-theme | 0b8c72a | style(theme): apply style guidelines tokens, typography and palette | — | 24/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | fix/material-icons-and-demo-advisor | 9774f8a | fix(auth): add material icons class and resolve demo login by role | The @fontsource stylesheet only ships the @font-face; without the .material-icons utility class every icon rendered as literal text. The Technical advisor demo … | 19/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisor-reports | ed3c57b | feat: add advisor settings page | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisor-reports | 444f3a5 | feat: add advisor subscription page | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisor-reports | 6eff504 | feat: add reports with PDF export | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisor-reports | 5e02e5f | feat: add calibration form and records | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | d2db928 | feat: add clients directory | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | 3c2c434 | feat: add plot comparison screen | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | cddc39e | feat: add advisor alerts with corrective actions | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | 5527db0 | feat: add advisor plot detail view | — | 09/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | e972a6e | feat: add supervised plots list with filters | — | 09/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | 6314e63 | Turn the empty advisor landing page into a portfolio view: four indicators (clients, supervised plots and area, active alerts, devices online) and a dense table that ranks every supervised plot by how close its latest reading sits to the crop threshold. | The table shows the client, crop, measured conductivity, the ECe threshold and the share of that threshold, so the advisor can triage without opening each plot.… | 09/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | f2e26d6 | feat(core): add second demo farmer and advisor client roster | The advisor supervises plots from two farms, but only one of the owners existed as a demo account, so client-facing screens could show an owner ID and nothing e… | 09/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | main | bea3ab9 | add workspace sidebar and navigation shell | Replace the minimal advisor toolbar with a full workspace shell: an advisor-only sidebar, quick plot search, active alert badge, breadcrumbs and sign out. The s… | 09/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | b2a9ef7 | refactor: move password reset REST resources and interfaces layer documentation to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | ce592fe | refactor: move user account and advisory link REST resources to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 2c36ac3 | refactor: move authentication REST resources to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 853d2cd | refactor: move advisory link controller and REST cross-cutting support to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 77c0669 | refactor: move authentication and user account controllers to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 29f8ea2 | refactor: remove obsolete identityaccess package after iam rename | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 84ef4f3 | refactor: move SMTP password reset notifier to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | f26b477 | refactor: move password hashing security to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | a8785e1 | refactor: move JWT authentication security to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | e3c187a | refactor: move password reset token JPA persistence to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 7270e2b | refactor: move advisory link JPA persistence to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | f7a72f0 | refactor: move user account JPA persistence to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | eab22c1 | refactor: move iam application layer package documentation | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 77ffb7a | refactor: move user account query service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 92f353d | refactor: move revoke advisory link command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | c70c1df | refactor: move accept advisory link command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 95ea7a9 | refactor: move request advisory link command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 0bdb96c | refactor: move reset password command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 1c6a7e0 | refactor: move request password reset command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 2b7a3b3 | refactor: move authenticate user command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | ed67af8 | refactor: move register user command service to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | b7e0c15 | refactor: move query service contract to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | d5ea762 | refactor: move authentication and password domain contracts to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 9790fd2 | refactor: move advisory link domain contracts to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 05b647b | refactor: move iam repository interfaces to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | c05a0da | refactor: move iam domain exceptions and gateways to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 6968393 | refactor: move iam domain events to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 85419b4 | refactor: move iam domain model to iam package | — | 12/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 90f7482 | feat: add database migrations and application configuration | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 6d10546 | feat: add identity access REST resources and assemblers | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | cb9f229 | feat: add identity access REST controllers | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 82c170c | feat: add SMTP password reset notifier | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 4508919 | feat: add JWT authentication and password hashing security | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | b4acce4 | feat: add JPA persistence adapters for identity access | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 9c86b0d | feat: implement identity access query service | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 67ccb41 | feat: implement identity access command services | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 1583444 | feat: add identity access domain service contracts | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 24e235c | feat: add identity access repository interfaces | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | d7ee512 | feat: add identity access domain exceptions and gateways | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 25c9fc4 | feat: add identity access domain events | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | a2254c4 | feat: add identity access domain model | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | fac5a6c | chore: scaffold salinity alerting, soil monitoring and subscription billing bounded contexts | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 3adee3a | chore: scaffold analytics reporting and farm management bounded contexts | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 7c9ad66 | feat: add shared kernel DDD base classes | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 91d7294 | feat: add Spring Boot application entry point | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 33f6771 | chore: add gitignore and gitattributes | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 8c25bdd | chore: add Maven wrapper and build configuration | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | main | ae2f504 | Initial commit | — | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | 176aa29 | refactor: encabezado de perfil compacto para ver todo sin scroll | El encabezado pasa de un bloque centrado grande (avatar 96dp y tres líneas apiladas) a una fila compacta (avatar 64dp a la izquierda con nombre, correo y rol al | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | 3cf07df | fix: perfil desplazable para que no se corte el botón de cerrar sesión | La pantalla de perfil no tenía scroll y, al crecer la lista de opciones, el Spacer con weight empujaba el botón de cerrar sesión contra el borde inferior y lo d | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | a79676d | chore: usar el logo de OsoTerra como ícono de la app | Reemplaza el ícono adaptativo vectorial por el escudo del logo (oso y montañas) recortado del logotipo, con set completo de densidades (mdpi a xxxhdpi) e íconos | 11/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | 44fbb71 | feat: tablero multiparcela del asesor (EP09) | US40: tablero con todas las parcelas supervisadas (productor, cultivo y categoría de salinidad). US41: ordenamiento por criticidad y filtros por productor y cul | 10/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | b3360bb | feat: preferencias de notificación y estado de suscripción | US35: pantalla de preferencias de notificación (nivel mínimo de severidad y canales push/correo) persistida en DataStore. US15: pantalla de estado de suscripció | 10/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | f43f26f | feat: gestión de dispositivos y calibración (EP05) | Implementa US23 (registro y vinculación de dispositivo a parcela), US24 (estado del dispositivo: en línea, batería baja, fuera de línea) y US25 (registro de cal | 10/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | develop | 1ca2f92 | Initial app design with mockups | — | 07/09/2026 |
+
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
