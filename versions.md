@@ -86,6 +86,9 @@
 | 0.0.82 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.3 Landing Page Mock-up actualizada con los botones en `#047857` y renumeración de figuras. |
 | 0.0.83 | 23/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.2 Information Architecture del Landing Page (organization, labeling, SEO y meta tags, searching y navigation systems) con nueve diagramas en Figma; enlaces de Figma por página en 5.1 y 5.3. |
 | 0.0.84 | 25/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.1 con umbrales reales de palto, uva de mesa y arándano (tabla con fuentes), figuras de estados, app Android, notificaciones y gráficos actualizadas, y estado real de la Web App; bibliografía con tres fuentes nuevas. |
+| 0.0.88 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.2 Information Architecture completada para la Web App y la Mobile App (mapas de navegación por rol, organización, etiquetado, SEO por vista, ASO para Google Play, búsqueda con filtros y navegación) y enlaces del Landing Page actualizados a la Web App desplegada. |
+| 0.0.89 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.4 Applications UX/UI Design con user goals de Diego Ramos y María Fernanda Salazar, 22 wireframes, 8 wireflows, Design System de las aplicaciones, mock-ups de la Web App y la Mobile App basados en el rediseño, y 8 user flows con happy y unhappy paths (Figma y FigJam). |
+| 0.0.90 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo V: secciones 5.5 Applications Prototyping (prototipos navegables en Figma para Web y Mobile) y 5.6 IoT Device Design (vistas acotadas, componentes, diagrama de bloques y circuito en Wokwi con sus archivos). |
 
 # Project Report Collaboration Insights
 
