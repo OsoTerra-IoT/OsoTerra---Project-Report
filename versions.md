@@ -79,9 +79,11 @@
 | 0.0.73 | 18/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: títulos descriptivos en los User Journey Maps y Empathy Maps exportados de UXPressia. |
 | 0.0.74 | 18/09/2026 | Alexis Encalada Salazar | Capítulo II: enlace único del video de entrevistas de needfinding con el timing de inicio y la duración de cada una de las seis entrevistas. |
 | 0.0.75 | 18/09/2026 | Alexis Encalada Salazar | Anexos: enlace del video de exposición de AV1 en el Anexo C. |
+| 0.0.85 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: C4 Model corregido según la retroalimentación del AV1. OsoSense como un único sistema (Edge Service y Embedded Application dentro), el Soil Sensing Hardware como único elemento externo, un solo Container Diagram con el flujo API, Edge, Embedded y hardware, justificación del monolito modular y fuente en Structurizr DSL. |
 | 0.0.86 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo III: Technical Stories separadas de las User Stories en una tabla propia, renombradas de US46–US55 a TS01–TS10, y Product Backlog actualizado con los nuevos identificadores. |
 | 0.0.87 | 28/09/2026 | Andreow Jomark Santiago Peña | Maquetación según la retroalimentación del AV1: carátula compactada en una sola página, y salto de página antes del Registro de Versiones, Collaboration Insights, Student Outcome, contenido, cada capítulo, bibliografía y anexos. |
 | 0.0.91 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo II: tablas del análisis competitivo con anchos de columna fijos y filas que no se parten entre páginas, para que se conserven al convertir el informe a PDF (retroalimentación del AV1). |
+| 0.0.102 | 29/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: base de datos de la plataforma corregida a PostgreSQL (la que usa el RESTful API) en el texto de 4.1.3, el Structurizr DSL y los diagramas de contenedores y de despliegue. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
