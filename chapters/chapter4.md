@@ -78,7 +78,7 @@ El dispositivo entrega cada lectura al Edge Service, que la valida contra el ran
 
 **Carril 5. Ingesta de lecturas en la plataforma**
 
-El Edge Service remite lotes al RESTful API. La ingesta descarta duplicados y persiste cada lectura; si un dispositivo deja de reportar, se marca fuera de línea.
+El Edge Service remite lotes al Modular Monolith. La ingesta descarta duplicados y persiste cada lectura; si un dispositivo deja de reportar, se marca fuera de línea.
 
 <div align="center">
 <img src="../assets/strategic-ddd/design-level-05-ingestion.png" alt="Design-Level EventStorming, carril de ingesta de lecturas" width="850">
@@ -536,7 +536,7 @@ Además, cada integración con terceros se protege con un Anti-corruption Layer 
 
 La arquitectura de software de OsoSense se documenta siguiendo el modelo C4 de Simon Brown, que describe un sistema mediante niveles sucesivos de detalle, de modo que cada audiencia encuentre la vista con el grado de abstracción que necesita sin verse obligada a interpretar diagramas irrelevantes para su rol.
 
-Se presentan cuatro vistas. El **System Landscape Diagram** (4.1.3.1) ubica a OsoSense dentro del ecosistema de actores, sistemas externos y hardware con los que convive. El **Context Level Diagram** (4.1.3.2) acota el alcance al sistema OsoSense y a sus interacciones directas, sin revelar su estructura interna. El **Container Level Diagram** (4.1.3.3) descompone OsoSense en sus unidades desplegables —Landing Page, Web App, Mobile App, RESTful API y su base de datos, Edge Service y su base local, y Embedded Application— y muestra las tecnologías y protocolos que las comunican. El **Deployment Diagram** (4.1.3.4) proyecta esos contenedores sobre la infraestructura física y de nube donde se ejecutan.
+Se presentan cuatro vistas. El **System Landscape Diagram** (4.1.3.1) ubica a OsoSense dentro del ecosistema de actores, sistemas externos y hardware con los que convive. El **Context Level Diagram** (4.1.3.2) acota el alcance al sistema OsoSense y a sus interacciones directas, sin revelar su estructura interna. El **Container Level Diagram** (4.1.3.3) descompone OsoSense en sus unidades desplegables —Landing Page, Web App, Mobile App, Modular Monolith y su base de datos, Edge Service y su base local, y Embedded Application— y muestra las tecnologías y protocolos que las comunican. El **Deployment Diagram** (4.1.3.4) proyecta esos contenedores sobre la infraestructura física y de nube donde se ejecutan.
 
 Los cuatro diagramas se elaboraron con **Structurizr DSL** a partir de un único modelo, de modo que los nombres, las descripciones y las relaciones son idénticos en todas las vistas. El archivo fuente se versiona junto al informe en `assets/strategic-ddd/c4/ososense.dsl`.
 
@@ -549,7 +549,7 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 **Proceso de elaboración**
 
 1. **Identificación de personas.** Se tomaron los actores del Big Picture EventStorming (2.4) y de los flujos de mensajes (4.1.1.2) que interactúan directamente con la solución: el visitante del Landing Page, el Agricultural Producer y el Agronomist Advisor.
-2. **Identificación del sistema propio.** Todos los productos de software exigidos por el enunciado —Landing Page, Web App, Mobile App, RESTful API, Edge Service y Embedded Application— se agruparon en un **único sistema de software, OsoSense**, porque los construye y opera el mismo equipo y solo tienen sentido juntos.
+2. **Identificación del sistema propio.** Todos los productos de software exigidos por el enunciado —Landing Page, Web App, Mobile App, backend de servicios web (implementado como Modular Monolith), Edge Service y Embedded Application— se agruparon en un **único sistema de software, OsoSense**, porque los construye y opera el mismo equipo y solo tienen sentido juntos.
 3. **Identificación del hardware.** El **Soil Sensing Hardware** (placa ESP32 con las sondas de conductividad eléctrica, humedad y temperatura, el LED de estado y el botón) se representa como el único elemento físico fuera del sistema: el software embebido que corre sobre él sí forma parte de OsoSense.
 4. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como sistema externo con el que interactúa el asesor.
 5. **Relaciones.** Cada relación se rotuló con la acción principal que realiza el emisor sobre el receptor.
@@ -585,7 +585,7 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 **Decisiones reflejadas en el diagrama**
 
 - La solución es **un solo sistema de software**: el Edge Service y la Embedded Application son contenedores de OsoSense, no un sistema aparte. Lo único que queda fuera del límite es el hardware físico.
-- Todas las integraciones con terceros se hacen desde OsoSense y, como se verá en el nivel de Container, las concentra el RESTful API.
+- Todas las integraciones con terceros se hacen desde OsoSense y, como se verá en el nivel de Container, las concentra el Modular Monolith.
 - Los niveles de Context, Container y Deployment se detallan en las secciones siguientes.
 
 **URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
@@ -614,7 +614,7 @@ El System Context Diagram enfoca el sistema **OsoSense** y muestra sus dependenc
 | Visitor | Persona | Visitante del Landing Page que consulta la propuesta y los planes. |
 | Agricultural Producer | Persona | Registra parcelas, consulta el estado del suelo, atiende alertas e instala el dispositivo. |
 | Agronomist Advisor | Persona | Supervisa parcelas vinculadas, calibra dispositivos y genera reportes. |
-| OsoSense | Sistema en foco | Landing Page, Web App, Mobile App, RESTful API, Edge Service y Embedded Application. |
+| OsoSense | Sistema en foco | Landing Page, Web App, Mobile App, Modular Monolith, Edge Service y Embedded Application. |
 | Soil Sensing Hardware | Hardware | Sensores de conductividad eléctrica, humedad y temperatura del suelo sobre la placa ESP32. |
 | Stripe | Sistema externo | Procesa las transacciones de suscripción. |
 | Google OAuth2 | Sistema externo | Verifica el ID token del inicio de sesión federado. |
@@ -640,7 +640,7 @@ El Container Level abre el sistema OsoSense en sus unidades de despliegue indepe
 **Proceso de elaboración**
 
 1. **Contenedores de cara al usuario.** Landing Page (estático), Web App y Mobile App como clientes.
-2. **Backend.** El RESTful API como monolito modular de negocio y la Platform Database como su almacén.
+2. **Backend.** Un único **Modular Monolith** de negocio, que expone los servicios web consumidos por los clientes y por el Edge Service, y la Platform Database como su almacén. No se representa como un conjunto de APIs independientes porque los seis bounded contexts se despliegan juntos como módulos de una sola aplicación.
 3. **Contenedores de campo.** El Edge Service con su propia base local (Edge Local Database) para la sincronización diferida, y la Embedded Application que corre sobre el ESP32.
 4. **Tecnologías.** Se anotó la pila establecida por el curso para cada contenedor.
 5. **Protocolos.** Cada relación se rotuló con su protocolo (JSON/HTTPS, JDBC, SQL local, JSON/HTTP sobre WiFi, GPIO/ADC/1-Wire, SMTP).
@@ -657,7 +657,7 @@ El Container Level abre el sistema OsoSense en sus unidades de despliegue indepe
 | Landing Page | HTML5, CSS3, JavaScript | Sitio estático que presenta el modelo de negocio y los planes. |
 | Web Application | Angular, TypeScript, Angular Material | Interfaz responsive de gestión, tableros y reportes (asesor y productor). |
 | Mobile Application | Kotlin / Android | App nativa de consulta en campo y recepción de alertas (productor). |
-| RESTful API | Spring Boot, Java, Spring Data JPA | Monolito modular que expone las capacidades de los seis bounded contexts. |
+| Modular Monolith | Spring Boot, Java, Spring Data JPA | Backend de negocio: implementa los seis bounded contexts como módulos de un único despliegue y atiende a los clientes y al Edge Service. |
 | Platform Database | PostgreSQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
 | Edge Service | Flask, Python, Peewee ORM | Valida, compensa a 25 °C y sincroniza las lecturas; reenvía los lotes pendientes al recuperar la conexión. |
 | Edge Local Database | SQLite | Persiste las lecturas pendientes de sincronización. |
@@ -666,14 +666,14 @@ El Container Level abre el sistema OsoSense en sus unidades de despliegue indepe
 **Relaciones principales**
 
 - El **Visitor** visita el Landing Page, que redirige a la Web App mediante un call-to-action (HTTPS).
-- **Web App** y **Mobile App** consumen el mismo **RESTful API** (JSON/HTTPS); el API es el único que lee y escribe en la Platform Database (JDBC).
-- El flujo de campo es **RESTful API ↔ Edge Service ↔ Embedded Application ↔ hardware**: la **Embedded Application** lee los sensores del **Soil Sensing Hardware** (GPIO/ADC/1-Wire) y envía las lecturas al **Edge Service** (JSON/HTTP sobre WiFi); el Edge las guarda en su base local (SQL), sincroniza los lotes al API (JSON/HTTPS) y recibe de él el factor de calibración y los umbrales.
-- El **RESTful API** concentra las integraciones externas: Stripe, Google OAuth2, Weather Service API y notificaciones push (JSON/HTTPS) y correo (SMTP).
+- **Web App** y **Mobile App** consumen el mismo **Modular Monolith** (JSON/HTTPS); el Modular Monolith es el único que lee y escribe en la Platform Database (JDBC).
+- El flujo de campo es **Modular Monolith ↔ Edge Service ↔ Embedded Application ↔ hardware**: la **Embedded Application** lee los sensores del **Soil Sensing Hardware** (GPIO/ADC/1-Wire) y envía las lecturas al **Edge Service** (JSON/HTTP sobre WiFi); el Edge las guarda en su base local (SQL), sincroniza los lotes al Modular Monolith (JSON/HTTPS) y recibe de él el factor de calibración y los umbrales.
+- El **Modular Monolith** concentra las integraciones externas: Stripe, Google OAuth2, Weather Service API y notificaciones push (JSON/HTTPS) y correo (SMTP).
 
 **Decisiones reflejadas en el diagrama**
 
-- **RESTful API como monolito modular.** Los seis bounded contexts se implementan como módulos de un mismo despliegue Spring Boot, cada uno con sus capas `domain`, `application`, `infrastructure` e `interfaces`, y se comunican entre sí solo por sus fachadas y eventos. Se eligió así por practicidad: un equipo de siete personas, un único pipeline de despliegue, una sola base de datos transaccional y menor costo de operación en la nube. Como los límites entre módulos ya coinciden con los bounded contexts, cualquiera de ellos puede extraerse a un servicio independiente si su carga lo exige, sin rediseñar el dominio.
-- La separación entre **Edge Service** y **RESTful API** es la decisión más relevante del lado de campo: el Edge se despliega junto a la parcela y asume la validación de rango, la compensación a 25 °C sobre la lectura fresca y el almacenamiento local con sincronización diferida. Sin ella, cada corte de conexión produciría un vacío irrecuperable en el histórico, que es el activo que sostiene la propuesta de valor.
+- **Backend como Modular Monolith.** Los seis bounded contexts se implementan como módulos de un mismo despliegue Spring Boot, cada uno con sus capas `domain`, `application`, `infrastructure` e `interfaces`, y se comunican entre sí solo por sus fachadas y eventos. Se eligió así por practicidad: un equipo de siete personas, un único pipeline de despliegue, una sola base de datos transaccional y menor costo de operación en la nube. Como los límites entre módulos ya coinciden con los bounded contexts, cualquiera de ellos puede extraerse a un servicio independiente si su carga lo exige, sin rediseñar el dominio.
+- La separación entre **Edge Service** y **Modular Monolith** es la decisión más relevante del lado de campo: el Edge se despliega junto a la parcela y asume la validación de rango, la compensación a 25 °C sobre la lectura fresca y el almacenamiento local con sincronización diferida. Sin ella, cada corte de conexión produciría un vacío irrecuperable en el histórico, que es el activo que sostiene la propuesta de valor.
 - La **Web App** (asesor, gabinete, pantalla amplia) y la **Mobile App** (productor, campo, notificaciones push) consumen el mismo API pero atienden contextos de uso distintos.
 - El **Landing Page** se mantiene como contenedor independiente, desplegado como sitio estático, para publicarse y evolucionar sin acoplarse al ciclo de despliegue de la Web App.
 
@@ -685,7 +685,7 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 
 1. **Nodos de campo.** La Embedded Application se despliega en el ESP32 del Soil Sensing Hardware y el Edge Service, con su base SQLite, en un gateway local.
 2. **Dispositivos del usuario.** El Landing Page y la Web App se ejecutan en el navegador; la Mobile App, en el dispositivo Android.
-3. **Nodos cloud.** Se separaron el servidor de aplicaciones (RESTful API sobre la JVM) y el servidor de base de datos.
+3. **Nodos cloud.** Se separaron el servidor de aplicaciones (Modular Monolith sobre la JVM) y el servidor de base de datos.
 4. **Enlaces.** Cada canal de despliegue se rotuló con su protocolo.
 
 <div align="center">
@@ -701,7 +701,7 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 | Parcela agrícola → Gateway local (Raspberry Pi / PC) | Edge Service (Flask/Python) + Edge Local Database (SQLite) | Compensa y bufferiza hasta sincronizar. |
 | Dispositivos del usuario → Navegador web | Landing Page (HTML/CSS/JS) + Web Application (Angular SPA) | Descargados desde el hosting cloud. |
 | Dispositivos del usuario → Dispositivo Android | Mobile Application (Kotlin APK) | Cliente de campo del productor. |
-| Proveedor cloud → Application Server (JVM) | RESTful API (Spring Boot JAR) | Monolito modular de negocio. |
+| Proveedor cloud → Application Server (JVM) | Modular Monolith (Spring Boot JAR) | Backend de negocio con los seis bounded contexts como módulos. |
 | Proveedor cloud → Database Server | Platform Database (PostgreSQL) | Persistencia canónica. |
 
 **Decisiones reflejadas en el diagrama**
@@ -955,7 +955,7 @@ La capa de infraestructura implementa las interfaces de dominio (puertos) y prov
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-Dentro del contenedor **RESTful API**, el contexto acotado de **Identity and Access Management** se organiza siguiendo el patrón de arquitectura hexagonal (Interfaces, Application, Domain e Infrastructure). El diagrama fue modelado en Structurizr DSL y renderizado como imagen para su inclusión en el informe.
+Dentro del contenedor **Modular Monolith**, el contexto acotado de **Identity and Access Management** se organiza siguiendo el patrón de arquitectura hexagonal (Interfaces, Application, Domain e Infrastructure). El diagrama fue modelado en Structurizr DSL y renderizado como imagen para su inclusión en el informe.
 
 <div align="center">
 <img src="../assets/container-diagram/IAM-Components.png" alt="Component Diagram Identity and Access Management" width="850">
@@ -1196,7 +1196,7 @@ La capa de infraestructura implementa la persistencia del catálogo y las suscri
 
 #### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-Dentro del contenedor **RESTful API**, el contexto acotado de **Subscription and Billing** organiza sus responsabilidades en las cuatro capas tácticas, comunicándose con Farm Management (verificación y consumo de cupo) y con Soil Monitoring (suspensión de ingesta) mediante eventos de dominio.
+Dentro del contenedor **Modular Monolith**, el contexto acotado de **Subscription and Billing** organiza sus responsabilidades en las cuatro capas tácticas, comunicándose con Farm Management (verificación y consumo de cupo) y con Soil Monitoring (suspensión de ingesta) mediante eventos de dominio.
 
 <div align="center">
 <img src="../assets/container-diagram/Billing-Components.png" alt="Component Diagram Subscription and Billing" width="850">
@@ -1477,7 +1477,7 @@ La capa de infraestructura implementa la persistencia de fincas, cultivos y disp
 
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-Dentro del contenedor **RESTful API**, el contexto acotado de **Farm Management** coordina con Subscription and Billing (verificación de cupo), Soil Monitoring (activación de monitoreo) y Salinity Alerting (umbral del cultivo).
+Dentro del contenedor **Modular Monolith**, el contexto acotado de **Farm Management** coordina con Subscription and Billing (verificación de cupo), Soil Monitoring (activación de monitoreo) y Salinity Alerting (umbral del cultivo).
 
 <div align="center">
 <img src="../assets/container-diagram/Farm-Components.png" alt="Component Diagram Farm Management" width="850">
@@ -1520,7 +1520,7 @@ Las tablas principales asociadas a este contexto son `FARMS` (finca y su propiet
 
 ### 4.2.4. Bounded Context: Soil Monitoring
 
-Este es el primero de los dos bounded contexts core. Concentra la captura, validación, compensación y persistencia de las mediciones del suelo, y es donde reside el valor diferencial de la solución. Su modelo se despliega parcialmente en el Edge Service y parcialmente en el RESTful API.
+Este es el primero de los dos bounded contexts core. Concentra la captura, validación, compensación y persistencia de las mediciones del suelo, y es donde reside el valor diferencial de la solución. Su modelo se despliega parcialmente en el Edge Service y parcialmente en el Modular Monolith.
 
 #### 4.2.4.1. Domain Layer
 
@@ -1726,7 +1726,7 @@ La capa de interfaz expone la ingesta de lotes desde el Edge Service (como Open 
 
 #### 4.2.4.3. Application Layer
 
-Esta capa distingue explícitamente los casos de uso que se ejecutan en el Edge Service (captura y sincronización en campo) de los que se ejecutan en el RESTful API (ingesta y consulta en la nube).
+Esta capa distingue explícitamente los casos de uso que se ejecutan en el Edge Service (captura y sincronización en campo) de los que se ejecutan en el Modular Monolith (ingesta y consulta en la nube).
 
 | Clase | Categoría | Propósito |
 |---|---|---|
@@ -1742,7 +1742,7 @@ Esta capa distingue explícitamente los casos de uso que se ejecutan en el Edge 
 
 #### 4.2.4.4. Infrastructure Layer
 
-La capa de infraestructura se materializa en dos containers: el RESTful API (persistencia en la nube) y el Edge Service (persistencia local y sincronización).
+La capa de infraestructura se materializa en dos containers: el Modular Monolith (persistencia en la nube) y el Edge Service (persistencia local y sincronización).
 
 | Clase | Categoría | Propósito |
 |---|---|---|
@@ -1756,13 +1756,13 @@ La capa de infraestructura se materializa en dos containers: el RESTful API (per
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-Soil Monitoring se despliega en dos containers, por lo que se presentan dos Component Diagrams: el del **RESTful API** (lado plataforma), que recibe los lotes ya validados y compensados, y el del **Edge Service** (lado campo), que captura, valida, compensa y sincroniza las lecturas.
+Soil Monitoring se despliega en dos containers, por lo que se presentan dos Component Diagrams: el del **Modular Monolith** (lado plataforma), que recibe los lotes ya validados y compensados, y el del **Edge Service** (lado campo), que captura, valida, compensa y sincroniza las lecturas.
 
-**Container RESTful API**
+**Container Modular Monolith**
 
 <div align="center">
 <img src="../assets/container-diagram/SoilMonitoring-Components.png" alt="Component Diagram Soil Monitoring" width="850">
-<p><em>Component Diagram del bounded context Soil Monitoring (container RESTful API).</em></p>
+<p><em>Component Diagram del bounded context Soil Monitoring (container Modular Monolith).</em></p>
 </div>
 
 *   **Telemetry Ingestion Controller:** Open Host Service que recibe los lotes del Edge Service.
@@ -1786,7 +1786,7 @@ Soil Monitoring se despliega en dos containers, por lo que se presentan dos Comp
 *   **Monitoring Domain Model:** Contiene `SoilReading`, `CompensationResult` y `SensorRange` en su versión del Edge Service.
 *   **Local Soil Reading Repository:** Adaptador Peewee ORM que persiste las lecturas y su estado de sincronización en la Edge Local Database (SQLite).
 *   **Connectivity Monitor:** Determina si existe conexión con la plataforma antes de transmitir.
-*   **Synchronize Buffered Readings Handler y Platform Sync Client:** Tarea programada que lee las lecturas pendientes y las remite en orden cronológico al Telemetry Ingestion Controller del RESTful API.
+*   **Synchronize Buffered Readings Handler y Platform Sync Client:** Tarea programada que lee las lecturas pendientes y las remite en orden cronológico al Telemetry Ingestion Controller del Modular Monolith.
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -2029,7 +2029,7 @@ La capa de infraestructura implementa la persistencia de alertas y preferencias,
 
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-Dentro del contenedor **RESTful API**, el contexto acotado de **Salinity Alerting** consume el evento de Soil Monitoring, consulta el umbral en Farm Management y los asesores vinculados en Identity and Access Management, y provee el histórico a Analytics and Reporting.
+Dentro del contenedor **Modular Monolith**, el contexto acotado de **Salinity Alerting** consume el evento de Soil Monitoring, consulta el umbral en Farm Management y los asesores vinculados en Identity and Access Management, y provee el histórico a Analytics and Reporting.
 
 <div align="center">
 <img src="../assets/container-diagram/SalinityAlerting-Components.png" alt="Component Diagram Salinity Alerting" width="850">
@@ -2300,7 +2300,7 @@ La capa de infraestructura implementa la persistencia de tendencias y reportes, 
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-Dentro del contenedor **RESTful API**, el contexto acotado de **Analytics and Reporting** agrega información de Soil Monitoring, Salinity Alerting y Farm Management, además de un servicio meteorológico externo.
+Dentro del contenedor **Modular Monolith**, el contexto acotado de **Analytics and Reporting** agrega información de Soil Monitoring, Salinity Alerting y Farm Management, además de un servicio meteorológico externo.
 
 <div align="center">
 <img src="../assets/container-diagram/AnalyticsReporting-Components.png" alt="Component Diagram Analytics and Reporting" width="850">

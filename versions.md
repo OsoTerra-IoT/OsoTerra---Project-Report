@@ -107,6 +107,7 @@
 | 0.0.101 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.9 Team Collaboration Insights con los analíticos de GitHub y la interpretación del equipo. |
 | 0.0.102 | 29/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: base de datos de la plataforma corregida a PostgreSQL (la que usa el RESTful API) en el texto de 4.1.3, el Structurizr DSL y los diagramas de contenedores y de despliegue. |
 | 0.0.103 | 29/09/2026 | Andreow Jomark Santiago Peña | Contenido: índice actualizado con el Capítulo VI (6.1 y Sprint 1) y los títulos vigentes de la guía de estilo web. |
+| 0.0.104 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: el contenedor de backend se presenta como Modular Monolith (no como RESTful API) en el Structurizr DSL, los diagramas de contenedores y de despliegue y el texto del capítulo. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
