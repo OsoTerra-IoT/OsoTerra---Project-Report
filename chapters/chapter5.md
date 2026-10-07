@@ -1298,9 +1298,7 @@ Prototipos en Figma: [Web App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zr
 
 **Videos de demostración**
 
-<!-- TODO(equipo): grabar un video por aplicación recorriendo el prototipo (guion en el wiki: cap5-apps-plan), subirlo a Microsoft Stream o Clipchamp, y reemplazar estas dos líneas por la captura del video y su enlace. -->
-- Web App: captura y enlace del video en Microsoft Stream (por agregar).
-- Mobile App: captura y enlace del video en Microsoft Stream (por agregar).
+El recorrido de los prototipos de la Web App y de la Mobile App se presenta en un solo video: [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312629_upc_edu_pe/IQBW9pKD0m2aTYL4WPlSa8bFAei65ipPDVodq3Sx95FNhmE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5SQVcB)
 
 ## 5.6. IoT Device Design
 
