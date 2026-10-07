@@ -1298,7 +1298,17 @@ Prototipos en Figma: [Web App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zr
 
 **Videos de demostración**
 
-El recorrido de los prototipos de la Web App y de la Mobile App se presenta en un solo video: [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312629_upc_edu_pe/IQBW9pKD0m2aTYL4WPlSa8bFAei65ipPDVodq3Sx95FNhmE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5SQVcB)
+El recorrido de cada prototipo se presenta en un video en Microsoft Stream. Cada imagen enlaza a su video.
+
+<div align="center">
+<a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN"><img src="../assets/prototypes/video-prototype-web.jpg" alt="Captura del video de navegación del prototipo de la Web App" width="800"></a>
+<p><em>Figura 5.108. Video de navegación del prototipo de la Web App (Desktop Web Browser): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN">ver video en Microsoft Stream</a>.</em></p>
+</div>
+
+<div align="center">
+<a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS"><img src="../assets/prototypes/video-prototype-mobile.jpg" alt="Captura del video de navegación del prototipo de la Mobile App" width="800"></a>
+<p><em>Figura 5.109. Video de navegación del prototipo de la Mobile App (Mobile): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS">ver video en Microsoft Stream</a>.</em></p>
+</div>
 
 ## 5.6. IoT Device Design
 
@@ -1308,14 +1318,14 @@ El dispositivo de campo de OsoSense es una estaca con una carcasa sellada que se
 
 <div align="center">
 <img src="../assets/iot-device/iot-vistas-acotadas.png" alt="Vista frontal y lateral acotadas del dispositivo" width="700">
-<p><em>Figura 5.108. Vistas frontal y lateral del dispositivo, con medidas.</em></p>
+<p><em>Figura 5.110. Vistas frontal y lateral del dispositivo, con medidas.</em></p>
 </div>
 
 La carcasa mide 90 × 60 × 35 mm, en plástico ABS/ASA estabilizado contra rayos UV color `#065F46`, con esquinas de 12 mm y sellado IP65. En la cara frontal, de arriba abajo: el panel solar, el LED de estado bajo un difusor translúcido, el botón y el símbolo de Oso Terra. La sonda de 150 mm se clava hasta la línea de suelo, de modo que los electrodos quedan en la zona de las raíces.
 
 <div align="center">
 <img src="../assets/iot-device/iot-componentes.png" alt="Seis capas del dispositivo, de la tapa a la sonda" width="800">
-<p><em>Figura 5.109. Componentes del dispositivo, de la tapa a la sonda.</em></p>
+<p><em>Figura 5.111. Componentes del dispositivo, de la tapa a la sonda.</em></p>
 </div>
 
 | # | Componente | Decisión |
@@ -1329,7 +1339,7 @@ La carcasa mide 90 × 60 × 35 mm, en plástico ABS/ASA estabilizado contra rayo
 
 <div align="center">
 <img src="../assets/iot-device/iot-bloques.png" alt="Diagrama de bloques: energía, ESP32, sensores, LED y botón, Edge Service" width="800">
-<p><em>Figura 5.110. Diagrama de bloques del hardware.</em></p>
+<p><em>Figura 5.112. Diagrama de bloques del hardware.</em></p>
 </div>
 
 El diagrama de bloques muestra los tres caminos del dispositivo: la **energía** (panel, cargador, batería y regulador de 3,3 V), la **medición** (tres sensores que entran al ESP32 por dos entradas analógicas y un bus 1-Wire) y la **comunicación** (LED y botón hacia el usuario, WiFi hacia el Edge Service de la parcela).
@@ -1340,7 +1350,7 @@ El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene 
 
 <div align="center">
 <img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32, dos potenciómetros, DS18B20, LED RGB y botón" width="800">
-<p><em>Figura 5.111. Circuito del dispositivo en Wokwi.</em></p>
+<p><em>Figura 5.113. Circuito del dispositivo en Wokwi.</em></p>
 </div>
 
 | Elemento | Pin del ESP32 | Conexión |
