@@ -121,7 +121,6 @@
       - [Tone of voice](chapters/chapter5.md#tone-of-voice)
     - [5.1.2. Web, Mobile and IoT Style Guidelines](chapters/chapter5.md#512-web-mobile-and-iot-style-guidelines)
       - [Web: componentes](chapters/chapter5.md#web-componentes)
-      - [Web: componentes](chapters/chapter5.md#web-componentes)
       - [Web: navegación e interfaces responsive](chapters/chapter5.md#web-navegación-e-interfaces-responsive)
       - [Mobile: aplicación Android](chapters/chapter5.md#mobile-aplicación-android)
       - [IoT: interfaz física del dispositivo](chapters/chapter5.md#iot-interfaz-física-del-dispositivo)
