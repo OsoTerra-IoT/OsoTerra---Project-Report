@@ -1298,7 +1298,10 @@ Prototipos en Figma: [Web App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zr
 
 **Videos de demostración**
 
-El recorrido de los prototipos de la Web App y de la Mobile App se presenta en un solo video: [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312629_upc_edu_pe/IQBW9pKD0m2aTYL4WPlSa8bFAei65ipPDVodq3Sx95FNhmE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5SQVcB)
+El recorrido de cada prototipo se presenta en un video en Microsoft Stream:
+
+- **Web App (Desktop Web Browser):** [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN)
+- **Mobile App (Mobile):** [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS)
 
 ## 5.6. IoT Device Design
 
