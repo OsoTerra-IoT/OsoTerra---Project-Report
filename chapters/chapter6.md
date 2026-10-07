@@ -213,8 +213,12 @@ L: líder del aspecto. C: colaborador.
 
 El objetivo del Sprint 1 es publicar la primera versión del Landing Page y de la Web App, con los endpoints de autenticación del RESTful API como base. Las User Stories se tomaron del inicio del Product Backlog (sección 3.3), respetando su orden por valor, hasta completar la velocidad acordada de 60 Story Points.
 
-<!-- TODO(equipo): agregar la captura del tablero del Sprint 1 en Trello y su URL pública. -->
-Tablero del Product Backlog en Trello: https://trello.com/b/adykOjs5/ososense-backlog
+La figura muestra el tablero de Trello al cierre del sprint, con las User Stories del Sprint 1 en la lista *Done*. Tablero público: https://trello.com/b/adykOjs5/ososense-backlog
+
+<div align="center">
+<img src="../assets/sprint-1/trello-sprint-1.png" alt="Tablero de Trello con las User Stories del Sprint 1 en Done" width="800">
+<p><em>Figura 6.2. Tablero del Sprint 1 en Trello.</em></p>
+</div>
 
 <table>
   <tr><th>Sprint #</th><th colspan="7">Sprint 1</th></tr>
@@ -253,7 +257,7 @@ La suma de Story Points de las User Stories del sprint es 60: US01 (3), US04 (3)
 
 En el Sprint 1 se implementaron el Landing Page completo, la Web App con las vistas del productor y del asesor sobre datos de demostración, el bounded context de Identity and Access Management del RESTful API y un primer prototipo de la Mobile App. La Web App todavía no consume el RESTful API: usa un servicio con datos de demostración que tiene el mismo contrato que tendrán los endpoints, para integrarlos en el Sprint 2 sin cambiar las vistas.
 
-La tabla reúne los commits de implementación de cada repositorio entre el 7 y el 28 de septiembre de 2026, sin contar los commits de *merge*. El repositorio del RESTful API es privado; sus commits se listan desde la copia local del equipo.
+La tabla reúne los commits de implementación de cada repositorio entre el 7 y el 28 de septiembre de 2026, sin contar los commits de *merge*.
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 |---|---|---|---|---|---|
@@ -400,61 +404,75 @@ Al cierre del Sprint 1 están publicados el Landing Page y la Web App. El visita
 
 <div align="center">
 <img src="../assets/sprint-1/landing-desplegada.png" alt="Landing Page publicado en GitHub Pages" width="800">
-<p><em>Figura 6.2. Landing Page publicado.</em></p>
+<p><em>Figura 6.3. Landing Page publicado.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-desplegada.png" alt="Inicio de sesión de la Web App publicada" width="800">
-<p><em>Figura 6.3. Inicio de sesión de la Web App publicada.</em></p>
+<p><em>Figura 6.4. Inicio de sesión de la Web App publicada.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-02-productor-inicio.png" alt="Inicio del productor en la Web App" width="800">
-<p><em>Figura 6.4. Inicio del productor.</em></p>
+<p><em>Figura 6.5. Inicio del productor.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-04-detalle-parcela.png" alt="Detalle de parcela en la Web App" width="800">
-<p><em>Figura 6.5. Detalle de parcela con la lectura y la tendencia.</em></p>
+<p><em>Figura 6.6. Detalle de parcela con la lectura y la tendencia.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-05-alertas.png" alt="Bandeja de alertas del productor" width="800">
-<p><em>Figura 6.6. Bandeja de alertas y registro de acciones.</em></p>
+<p><em>Figura 6.7. Bandeja de alertas y registro de acciones.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-07-asesor-inicio.png" alt="Inicio del asesor con parcelas ordenadas por riesgo" width="800">
-<p><em>Figura 6.7. Inicio del asesor con las parcelas ordenadas por riesgo.</em></p>
+<p><em>Figura 6.8. Inicio del asesor con las parcelas ordenadas por riesgo.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-08-asesor-comparar.png" alt="Comparación de parcelas del asesor" width="800">
-<p><em>Figura 6.8. Comparación de parcelas.</em></p>
+<p><em>Figura 6.9. Comparación de parcelas.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-09-asesor-reportes.png" alt="Reportes del asesor" width="800">
-<p><em>Figura 6.9. Reportes con exportación a PDF.</em></p>
+<p><em>Figura 6.10. Reportes con exportación a PDF.</em></p>
 </div>
 
-<!-- TODO(equipo): subir el video del Sprint 1 a Microsoft Stream o Clipchamp y reemplazar la línea siguiente por su enlace. -->
-Video de la navegación del Sprint 1: enlace de Microsoft Stream (por agregar).
+Video de la navegación del Sprint 1: [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312629_upc_edu_pe/IQBW9pKD0m2aTYL4WPlSa8bFAei65ipPDVodq3Sx95FNhmE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5SQVcB)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
-En el Sprint 1 se implementaron los endpoints del bounded context de Identity and Access Management. Todos usan JSON y la ruta base `/api/v1`. En este sprint el RESTful API se ejecuta de forma local (`http://localhost:8080`); la documentación OpenAPI vía Swagger (Technical Story TS04) y su publicación se agregan al desplegar el API en el Sprint 2.
+El alcance comprometido del Sprint 1 para el RESTful API fueron los endpoints de Identity and Access Management (TS01). En la última semana del sprint el equipo también expuso los endpoints de los otros cinco bounded contexts y adelantó la documentación OpenAPI de la Technical Story TS04, generada con springdoc-openapi a partir de los controladores. El API todavía se ejecuta de forma local, por lo que la documentación se consulta en las URL locales:
+
+- **Swagger UI:** `http://localhost:8080/swagger-ui.html`. El selector *Select a definition* muestra una definición por bounded context.
+- **Especificación OpenAPI 3.1 por bounded context:** `http://localhost:8080/v3/api-docs/{grupo}`, con los grupos `iam`, `subscription-billing`, `farm-management`, `soil-monitoring`, `salinity-alerting` y `analytics-reporting`. El grupo `all` reúne todos los endpoints.
+
+Todos los endpoints usan JSON y la ruta base `/api/v1`. Salvo los de `/api/v1/auth/**` y el webhook de pagos, exigen la cabecera `Authorization: Bearer <token>` con el JWT obtenido al iniciar sesión, y el usuario se identifica a partir de ese token y no de un parámetro. En Swagger UI el token se ingresa una sola vez con el botón *Authorize*. La documentación publicada en un entorno desplegado se agrega en el Sprint 2, junto con el despliegue del API.
+
+Las tablas siguientes resumen las acciones de cada bounded context. Después de cada tabla se muestra su definición en Swagger UI.
+
+**Identity and Access Management** (`/v3/api-docs/iam`)
 
 | Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
 |---|---|---|---|---|---|
 | `/api/v1/auth/signup` | Registrar cuenta | POST | `POST /api/v1/auth/signup` | Cuerpo: `email`, `password` (mínimo 8), `firstName`, `lastName`, `role` (`FARMER` o `ADVISOR`), `professionalLicenseNumber` (obligatorio para asesores) | `201 Created` con la cuenta: `id`, `email`, `firstName`, `lastName`, `role`, `active`, `createdAt`. |
 | `/api/v1/auth/signin` | Iniciar sesión | POST | `POST /api/v1/auth/signin` | Cuerpo: `email`, `password` | `200 OK` con `token` (JWT), `expiresAt` y los datos de la cuenta. |
+| `/api/v1/auth/google` | Iniciar sesión con Google | POST | `POST /api/v1/auth/google` | Cuerpo: `idToken` (emitido por Google), `role`, `professionalLicenseNumber` (para asesores) | `200 OK` con `token` (JWT), `expiresAt` y los datos de la cuenta. |
 | `/api/v1/auth/password-reset-requests` | Solicitar restablecimiento | POST | `POST /api/v1/auth/password-reset-requests` | Cuerpo: `email` | `202 Accepted`; si la cuenta existe, se envía el enlace por correo. |
 | `/api/v1/auth/password-resets` | Restablecer contraseña | POST | `POST /api/v1/auth/password-resets` | Cuerpo: `token`, `newPassword` (mínimo 8) | `204 No Content`. |
 | `/api/v1/users/me` | Consultar mi cuenta | GET | `GET /api/v1/users/me` | Cabecera `Authorization: Bearer <token>` | `200 OK` con los datos de la cuenta autenticada. |
 | `/api/v1/advisory-links` | Solicitar vínculo de asesoría | POST | `POST /api/v1/advisory-links` | Cabecera con token del asesor; cuerpo: `farmerId` | `201 Created` con `id`, `advisorId`, `farmerId`, `status` (`PENDING`) y `requestedAt`. |
 | `/api/v1/advisory-links/{id}/acceptance` | Aceptar vínculo | POST | `POST /api/v1/advisory-links/12/acceptance` | Ruta: `id`; cabecera con token del productor | `200 OK` con el vínculo en estado `ACCEPTED` y `respondedAt`. |
 | `/api/v1/advisory-links/{id}/revocation` | Revocar vínculo | POST | `POST /api/v1/advisory-links/12/revocation` | Ruta: `id`; cabecera con token de una de las partes | `200 OK` con el vínculo en estado `REVOKED`. |
+
+<div align="center">
+<img src="../assets/swagger/swagger-iam.jpeg" alt="Swagger UI con la definición de Identity and Access Management" width="800">
+<p><em>Figura 6.11. Definición de Identity and Access Management en Swagger UI: autenticación, inicio de sesión con Google, vínculos de asesoría y cuenta del usuario.</em></p>
+</div>
 
 Ejemplo de respuesta de `POST /api/v1/auth/signin` con datos de muestra:
 
@@ -475,9 +493,105 @@ Ejemplo de respuesta de `POST /api/v1/auth/signin` con datos de muestra:
 }
 ```
 
-Repositorio del RESTful API: https://github.com/OsoTerra-IoT/OsoTerra---Backend. Commits de los endpoints documentados: `2c36ac3` (recursos REST de autenticación), `ce592fe` (recursos de cuenta y vínculos de asesoría) y `b2a9ef7` (recursos de restablecimiento de contraseña).
+**Subscription and Billing** (`/v3/api-docs/subscription-billing`)
 
-<!-- TODO(equipo): agregar springdoc-openapi, publicar Swagger UI y reemplazar esta nota por las capturas de la documentación con datos de muestra. -->
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/subscription-plans` | Listar planes | GET | `GET /api/v1/subscription-plans` | — | `200 OK` con los planes activos: `id`, `name`, `priceAmount`, `priceCurrency`, `billingCycle`, `maxPlots`, `free`, `active`. |
+| `/api/v1/subscriptions` | Solicitar suscripción | POST | `POST /api/v1/subscriptions` | Cuerpo: `subscriptionPlanId` | `201 Created` con `id`, `userAccountId`, `subscriptionPlanId`, `status`, `quotaTotal`, `quotaConsumed`, `periodStartDate` y `periodEndDate`. |
+| `/api/v1/subscriptions/mine` | Consultar mis suscripciones | GET | `GET /api/v1/subscriptions/mine` | — | `200 OK` con la lista de suscripciones del usuario autenticado. |
+| `/api/v1/subscriptions/{id}` | Consultar suscripción | GET | `GET /api/v1/subscriptions/5` | Ruta: `id` | `200 OK` con la suscripción. |
+| `/api/v1/subscriptions/{id}/cancellation` | Cancelar suscripción | POST | `POST /api/v1/subscriptions/5/cancellation` | Ruta: `id` | `200 OK` con la suscripción y su nuevo `status`. |
+| `/api/v1/payments/webhook` | Recibir evento de pago de Stripe | POST | `POST /api/v1/payments/webhook` | Cuerpo: evento de Stripe sin transformar; cabecera `Stripe-Signature` | `200 OK` sin cuerpo. Es el punto de integración con el servicio externo de pagos y no requiere JWT. |
+
+<div align="center">
+<img src="../assets/swagger/swagger-subscription-billing.jpeg" alt="Swagger UI con la definición de Subscription and Billing" width="800">
+<p><em>Figura 6.12. Definición de Subscription and Billing en Swagger UI: suscripciones, planes y webhook de pagos.</em></p>
+</div>
+
+**Farm Management** (`/v3/api-docs/farm-management`)
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/farms` | Registrar finca | POST | `POST /api/v1/farms` | Cuerpo: `name`, `department`, `province`, `district` | `201 Created` con `id`, `ownerId`, `name`, `department`, `province`, `district` y `createdAt`. |
+| `/api/v1/farms/mine` | Listar mis fincas | GET | `GET /api/v1/farms/mine` | — | `200 OK` con las fincas del usuario autenticado. |
+| `/api/v1/farms/{id}` | Consultar finca | GET | `GET /api/v1/farms/3` | Ruta: `id` | `200 OK` con la finca. |
+| `/api/v1/plots` | Registrar parcela | POST | `POST /api/v1/plots` | Cuerpo: `farmId`, `name`, `areaHectares`, `latitude`, `longitude` | `201 Created` con `id`, `farmId`, `cropId`, `name`, `areaHectares`, `latitude`, `longitude`, `active` y `createdAt`. |
+| `/api/v1/plots` | Listar parcelas de una finca | GET | `GET /api/v1/plots?farmId=3` | Query: `farmId` | `200 OK` con las parcelas de la finca. |
+| `/api/v1/plots/{id}` | Consultar parcela | GET | `GET /api/v1/plots/7` | Ruta: `id` | `200 OK` con la parcela. |
+| `/api/v1/plots/{id}/crop` | Asignar cultivo | POST | `POST /api/v1/plots/7/crop` | Ruta: `id`; cuerpo: `cropId` | `200 OK` con la parcela y su `cropId` actualizado. |
+| `/api/v1/plots/{id}/deactivation` | Desactivar parcela | POST | `POST /api/v1/plots/7/deactivation` | Ruta: `id` | `200 OK` con la parcela en `active: false`. |
+| `/api/v1/devices` | Registrar dispositivo | POST | `POST /api/v1/devices` | Cuerpo: `activationCode` | `201 Created` con `id`, `plotId`, `activationCode`, `status`, `calibrationFactor`, `batteryLevel`, `firmwareVersion`, `readingIntervalMinutes` y `lastSeenAt`. |
+| `/api/v1/devices/{id}/attachment` | Instalar dispositivo en parcela | POST | `POST /api/v1/devices/4/attachment` | Ruta: `id`; cuerpo: `plotId` | `200 OK` con el dispositivo asociado a la parcela. |
+| `/api/v1/devices/{id}` | Consultar dispositivo | GET | `GET /api/v1/devices/4` | Ruta: `id` | `200 OK` con el dispositivo. |
+| `/api/v1/crops` | Listar cultivos | GET | `GET /api/v1/crops` | — | `200 OK` con `id`, `commonName`, `scientificName`, `salinityThresholdDsM`, `saltToleranceClass` y `sourceReference` de cada cultivo. |
+| `/api/v1/crops/{id}` | Consultar cultivo | GET | `GET /api/v1/crops/1` | Ruta: `id` | `200 OK` con el cultivo y su umbral de salinidad. |
+
+<div align="center">
+<img src="../assets/swagger/swagger-farm-management.jpeg" alt="Swagger UI con la definición de Farm Management" width="800">
+<p><em>Figura 6.13. Definición de Farm Management en Swagger UI: parcelas, fincas, dispositivos y cultivos.</em></p>
+</div>
+
+**Soil Monitoring** (`/v3/api-docs/soil-monitoring`)
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/soil-readings/batches` | Ingerir lote de lecturas | POST | `POST /api/v1/soil-readings/batches` | Cuerpo: `deviceId` y `readings`, una lista con `rawConductivityDsM`, `compensatedConductivityDsM`, `compensationFactor`, `moisturePercentage`, `temperatureCelsius` y `capturedAt` | `201 Created` con `id`, `deviceId`, `status`, `submittedAt`, `acceptedCount` y `discardedCount`. |
+| `/api/v1/soil-readings` | Listar lecturas de una parcela | GET | `GET /api/v1/soil-readings?plotId=7` | Query: `plotId` | `200 OK` con las lecturas: conductividad cruda y compensada, humedad, temperatura y `capturedAt`. |
+| `/api/v1/calibration-records` | Registrar calibración | POST | `POST /api/v1/calibration-records` | Cuerpo: `deviceId`, `labConductivityDsM`, `samplingDate`, `laboratoryName`, `deviceReadingAtSampling` | `201 Created` con el registro y el `resultingFactor` calculado. |
+| `/api/v1/calibration-records` | Listar calibraciones de un dispositivo | GET | `GET /api/v1/calibration-records?deviceId=4` | Query: `deviceId` | `200 OK` con el historial de calibraciones del dispositivo. |
+
+<div align="center">
+<img src="../assets/swagger/swagger-soil-monitoring.jpeg" alt="Swagger UI con la definición de Soil Monitoring" width="800">
+<p><em>Figura 6.14. Definición de Soil Monitoring en Swagger UI: ingesta de telemetría, calibración y consulta de lecturas.</em></p>
+</div>
+
+**Salinity Alerting** (`/v3/api-docs/salinity-alerting`)
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/salinity-alerts` | Listar alertas de una parcela | GET | `GET /api/v1/salinity-alerts?plotId=7` | Query: `plotId` | `200 OK` con `id`, `plotId`, `observedConductivityDsM`, `appliedThresholdDsM`, `excessRatio`, `severity`, `status` y `generatedAt` de cada alerta. |
+| `/api/v1/salinity-alerts/{id}` | Consultar alerta | GET | `GET /api/v1/salinity-alerts/21` | Ruta: `id` | `200 OK` con la alerta. |
+| `/api/v1/salinity-alerts/{id}/acknowledgement` | Confirmar alerta | POST | `POST /api/v1/salinity-alerts/21/acknowledgement` | Ruta: `id` | `200 OK` con la alerta, `acknowledgedBy` y `acknowledgedAt`. |
+| `/api/v1/salinity-alerts/{id}/corrective-actions` | Registrar acción correctiva | POST | `POST /api/v1/salinity-alerts/21/corrective-actions` | Ruta: `id`; cuerpo: `actionType`, `executedAt`, `notes` | `201 Created` con `id`, `salinityAlertId`, `actionType`, `executedAt`, `notes`, `registeredBy` y `registeredAt`. |
+| `/api/v1/notification-preferences/mine` | Consultar mis preferencias de notificación | GET | `GET /api/v1/notification-preferences/mine` | — | `200 OK` con `minimumSeverity`, `channel`, `pushDeviceToken` y `preferredLanguage`. Si el usuario no las configuró, devuelve los valores por defecto. |
+| `/api/v1/notification-preferences/mine` | Actualizar mis preferencias de notificación | PUT | `PUT /api/v1/notification-preferences/mine` | Cuerpo: `minimumSeverity`, `channel`, `pushDeviceToken` | `200 OK` con las preferencias guardadas. |
+
+<div align="center">
+<img src="../assets/swagger/swagger-salinity-alerting.jpeg" alt="Swagger UI con la definición de Salinity Alerting" width="800">
+<p><em>Figura 6.15. Definición de Salinity Alerting en Swagger UI: alertas, acciones correctivas y preferencias de notificación.</em></p>
+</div>
+
+**Analytics and Reporting** (`/v3/api-docs/analytics-reporting`)
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/dashboard/plots/{plotId}` | Consultar tablero de una parcela | GET | `GET /api/v1/dashboard/plots/7` | Ruta: `plotId` | `200 OK` con `plotId`, `plotName`, `areaHectares`, `cropName` y `recentAlerts` (severidad, estado y fecha). |
+| `/api/v1/salinity-trends` | Calcular tendencia de salinidad | POST | `POST /api/v1/salinity-trends` | Cuerpo: `plotId`, `periodStart`, `periodEnd` | `201 Created` con `id`, `plotId`, el periodo, `slopeDsMPerDay`, `direction`, `readingCount` y `computedAt`. |
+| `/api/v1/salinity-trends` | Listar tendencias de una parcela | GET | `GET /api/v1/salinity-trends?plotId=7` | Query: `plotId` | `200 OK` con las tendencias calculadas para la parcela. |
+| `/api/v1/plot-reports` | Generar reporte de parcela | POST | `POST /api/v1/plot-reports` | Cuerpo: `plotId`, `periodStart`, `periodEnd` | `201 Created` con `id`, `plotId`, `generatedBy`, el periodo y `generatedAt`. |
+| `/api/v1/plot-reports` | Listar reportes de una parcela | GET | `GET /api/v1/plot-reports?plotId=7` | Query: `plotId` | `200 OK` con los reportes de la parcela. |
+| `/api/v1/plot-reports/{id}/sections` | Consultar secciones del reporte | GET | `GET /api/v1/plot-reports/9/sections` | Ruta: `id` | `200 OK` con `id`, `title`, `sectionType`, `content` y `displayOrder` de cada sección. |
+| `/api/v1/plot-reports/{id}/export` | Exportar reporte en PDF | GET | `GET /api/v1/plot-reports/9/export` | Ruta: `id` | `200 OK` con el archivo PDF (`application/pdf`). |
+| `/api/v1/plot-comparisons` | Comparar parcelas | GET | `GET /api/v1/plot-comparisons?plotIds=7,8&periodStart=2026-09-01&periodEnd=2026-09-30` | Query: `plotIds` (de 2 a 4), `periodStart`, `periodEnd` | `200 OK` con una serie por parcela: `plotId`, `plotName` y `points` (`capturedAt`, `compensatedConductivityDsM`). |
+
+<div align="center">
+<img src="../assets/swagger/swagger-analytics-reporting.jpeg" alt="Swagger UI con la definición de Analytics and Reporting" width="800">
+<p><em>Figura 6.16. Definición de Analytics and Reporting en Swagger UI: tendencias, reportes, comparación de parcelas y tablero.</em></p>
+</div>
+
+Repositorio del RESTful API: https://github.com/OsoTerra-IoT/OsoTerra---Backend.
+
+Commits relacionados con la documentación de servicios en este sprint, integrados en `develop` mediante el pull request #3 (`5a30a2c`) desde la rama `feature/swagger-openapi-documentation`:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Backend | feature/swagger-openapi-documentation | fea3730 | build: add springdoc OpenAPI dependency | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/swagger-openapi-documentation | e8fc344 | feat: permit Swagger UI and OpenAPI docs routes | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/swagger-openapi-documentation | 43f4740 | feat: add OpenAPI configuration with JWT bearer scheme | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/swagger-openapi-documentation | a28d482 | feat: group OpenAPI documentation by bounded context | — | 30/09/2026 |
+
+Los recursos REST de Identity and Access Management documentados provienen de los commits `2c36ac3` (autenticación), `ce592fe` (cuenta y vínculos de asesoría) y `b2a9ef7` (restablecimiento de contraseña).
 
 #### 6.2.1.8. Software Deployment Evidence for Sprint Review
 
@@ -488,10 +602,10 @@ En el Sprint 1 se publicaron los dos productos que exige el TB1, sin crear cuent
 
 <div align="center">
 <img src="../assets/sprint-1/actions-webapp.png" alt="Ejecuciones de GitHub Actions del repositorio de la Web App" width="800">
-<p><em>Figura 6.10. Ejecución del flujo «Deploy to GitHub Pages» de la Web App.</em></p>
+<p><em>Figura 6.17. Ejecución del flujo «Deploy to GitHub Pages» de la Web App.</em></p>
 </div>
 
-La figura muestra la ejecución del flujo de despliegue sobre `develop`, junto con las revisiones automáticas de código de las ramas de feature. Las Figuras 6.2 y 6.3 muestran los dos productos ya publicados. El RESTful API, la Mobile App con Firebase App Distribution, el Edge Service y la Embedded Application se despliegan desde el Sprint 2, con los pasos de la sección 6.1.4.
+La figura muestra la ejecución del flujo de despliegue sobre `develop`, junto con las revisiones automáticas de código de las ramas de feature. Las Figuras 6.3 y 6.4 muestran los dos productos ya publicados. El RESTful API, la Mobile App con Firebase App Distribution, el Edge Service y la Embedded Application se despliegan desde el Sprint 2, con los pasos de la sección 6.1.4.
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
 
@@ -499,27 +613,27 @@ El trabajo del Sprint 1 se organizó por producto, con un líder por repositorio
 
 <div align="center">
 <img src="../assets/sprint-1/commits-webapp.png" alt="Historial de commits de la Web App" width="800">
-<p><em>Figura 6.11. Commits de la Web App en develop.</em></p>
+<p><em>Figura 6.18. Commits de la Web App en develop.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/network-webapp.png" alt="Network graph de la Web App" width="800">
-<p><em>Figura 6.12. Network graph de la Web App: ramas de feature integradas en develop.</em></p>
+<p><em>Figura 6.19. Network graph de la Web App: ramas de feature integradas en develop.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/commits-landing.png" alt="Historial de commits del Landing Page" width="800">
-<p><em>Figura 6.13. Commits del Landing Page en develop.</em></p>
+<p><em>Figura 6.20. Commits del Landing Page en develop.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/commits-mobile.png" alt="Historial de commits de la Mobile App" width="800">
-<p><em>Figura 6.14. Commits de la Mobile App en develop.</em></p>
+<p><em>Figura 6.21. Commits de la Mobile App en develop.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/contrib-report.png" alt="Contributors del repositorio del informe" width="800">
-<p><em>Figura 6.15. Contribuciones al informe por integrante.</em></p>
+<p><em>Figura 6.22. Contribuciones al informe por integrante.</em></p>
 </div>
 
 | Integrante | Landing Page | Web App | RESTful API | Mobile App | Informe |

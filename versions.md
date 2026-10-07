@@ -107,8 +107,10 @@
 | 0.0.101 | 28/09/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.1.9 Team Collaboration Insights con los analíticos de GitHub y la interpretación del equipo. |
 | 0.0.102 | 29/09/2026 | Andreow Jomark Santiago Peña | Capítulo IV: base de datos de la plataforma corregida a PostgreSQL (la que usa el RESTful API) en el texto de 4.1.3, el Structurizr DSL y los diagramas de contenedores y de despliegue. |
 | 0.0.103 | 29/09/2026 | Andreow Jomark Santiago Peña | Contenido: índice actualizado con el Capítulo VI (6.1 y Sprint 1) y los títulos vigentes de la guía de estilo web. |
-| 0.0.104 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: el contenedor de backend se presenta como Modular Monolith (no como RESTful API) en el Structurizr DSL, los diagramas de contenedores y de despliegue y el texto del capítulo. |
-| 0.0.105 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: Component Diagrams con el contenedor renombrado a Modular Monolith y el sistema a OsoSense; los demás bounded contexts se identifican como módulos y Web App, Mobile App y Edge Service como contenedores, conservando su diseño original. |
+| 0.0.104 | 04/10/2026 | Iker Gabriel Barturen Panez | Actualización del informe para el TB1: Student Outcome con las acciones del TB1 de cada integrante y sus conclusiones; Conclusiones con el contraste de los Hypothesis Statements frente a lo desplegado en el Sprint 1 y recomendaciones para el AV2; sección 6.2.1.7 con la documentación OpenAPI en Swagger UI de los seis bounded contexts (tablas de endpoints, capturas por módulo y commits de documentación); y Project Report Collaboration Insights del TB1 con actividades, integraciones, analíticos y capturas de GitHub Insights. |
+| 0.0.105 | 06/10/2026 | Iker Gabriel Barturen Panez | Evidencias pendientes del TB1: enlace del video de navegación en las secciones 5.5 Applications Prototyping y 6.2.1.6 Execution Evidence, captura del tablero del Sprint 1 en Trello en la sección 6.2.1.3 (con la renumeración de las figuras del Capítulo VI) y enlace del Participant Performance Report del TB1 en el Anexo B. |
+| 0.0.106 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: el contenedor de backend se presenta como Modular Monolith (no como RESTful API) en el Structurizr DSL, los diagramas de contenedores y de despliegue y el texto del capítulo. |
+| 0.0.107 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: Component Diagrams con el contenedor renombrado a Modular Monolith y el sistema a OsoSense; los demás bounded contexts se identifican como módulos y Web App, Mobile App y Edge Service como contenedores, conservando su diseño original. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
@@ -200,4 +202,82 @@ La distribución confirma que los siete integrantes contribuyeron directamente a
 <img src="assets/collaboration-insights/Network4-AV1.png" alt="GitHub Insights - Network graph AV1 parte 4" width="700">
 <img src="assets/collaboration-insights/Network5-AV1.png" alt="GitHub Insights - Network graph AV1 parte 5" width="700">
 <p><em>Figura 3. Network graph del repositorio, en cinco tramos — AV1: ramas `feature/*` abiertas desde `develop` y fusionadas de vuelta mediante pull request.</em></p>
+</div>
+
+## Actividades de elaboración del informe — TB1
+
+Para el TB1 el informe incorporó el Capítulo V (Solution UI/UX Design) y el Capítulo VI (Software Configuration Management y Sprint 1), y corrigió los artefactos observados en el AV1. El trabajo siguió el mismo esquema de GitFlow, con un nivel más de ramas: cada capítulo tiene su rama `feature/chapter-N`, y cada sección se desarrolla en una sub-rama que se integra primero en la rama de su capítulo y luego en `develop`.
+
+- **Contenido nuevo:** `feature/landing-page-design`, `feature/style-guidelines-landing`, `feature/style-guidelines-figma`, `feature/information-architecture` y `feature/applications-ux-ui-design` para el Capítulo V; `feature/software-configuration-management` y `feature/sprint-1` para el Capítulo VI.
+- **Correcciones del AV1:** ramas `fix/*` para el C4 Model como un único sistema (`fix/c4-single-system`), la separación de Technical Stories (`fix/technical-stories`), la tabla del análisis competitivo (`fix/competitive-table-layout`), la base de datos PostgreSQL (`fix/postgresql-database`), la maquetación con saltos de página (`fix/page-layout`) y el índice (`fix/table-of-contents`).
+- **Releases:** la rama `release/0.1.0` cerró la entrega AV1 y se integró de vuelta en `develop` el 19/09/2026. Las secciones Registro de Versiones, Project Report Collaboration Insights, Student Outcome y Conclusiones se actualizaron para el TB1 en la rama `feature/tb1-report-update`, y la rama `release/0.2.0` prepara la entrega TB1.
+
+## Integraciones a develop — TB1
+
+En el TB1 las ramas se integraron con *merge* sin *fast-forward* (`--no-ff`), una de las dos formas que admite el flujo definido en la sección 6.1.2, de modo que el historial conserva qué commits pertenecen a cada rama:
+
+| Rama | Integrada en | Autor de la integración | Fecha |
+|---|---|---|---|
+| `release/0.1.0` | `develop` | Santiago Peña, Andreow Jomark | 19/09/2026 |
+| `feature/landing-page-design` | `feature/chapter-5` | Santiago Peña, Andreow Jomark | 23/09/2026 |
+| `feature/style-guidelines-landing` | `feature/chapter-5` | Santiago Peña, Andreow Jomark | 23/09/2026 |
+| `feature/style-guidelines-figma` | `feature/chapter-5` | Santiago Peña, Andreow Jomark | 23/09/2026 |
+| `feature/information-architecture` | `feature/chapter-5` | Santiago Peña, Andreow Jomark | 23/09/2026 |
+| `fix/style-guidelines-thresholds` | `feature/chapter-5` | Santiago Peña, Andreow Jomark | 25/09/2026 |
+| `fix/c4-single-system` | `feature/chapter-4` | Santiago Peña, Andreow Jomark | 28/09/2026 |
+| `fix/technical-stories` | `feature/chapter-3` | Santiago Peña, Andreow Jomark | 28/09/2026 |
+| `feature/applications-ux-ui-design` | `feature/chapter-5` | Santiago Peña, Andreow Jomark | 28/09/2026 |
+| `fix/competitive-table-layout` | `feature/chapter-2` | Santiago Peña, Andreow Jomark | 28/09/2026 |
+| `feature/software-configuration-management` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 28/09/2026 |
+| `feature/sprint-1` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 28/09/2026 |
+| `fix/postgresql-database` | `feature/chapter-4` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `fix/page-layout` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `feature/chapter-2` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `feature/chapter-3` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `feature/chapter-4` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `feature/chapter-5` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `feature/chapter-6` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `fix/table-of-contents` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+| `chore/hide-language-stats` | `develop` | Santiago Peña, Andreow Jomark | 29/09/2026 |
+
+## Analíticos de colaboración — TB1
+
+Entre la integración de `release/0.1.0` (19/09/2026) y el cierre de las ramas de capítulo (29/09/2026), el repositorio del informe registra 28 commits sin contar merges, con 2 499 líneas añadidas y 567 eliminadas en los archivos Markdown. Para mostrar cómo se distribuyó el trabajo del TB1 entre el informe y los productos, la tabla incluye también los commits de cada integrante en los repositorios de producto durante el Sprint 1 (del 07/09/2026 al 04/10/2026, sin contar merges ni el commit inicial de cada repositorio):
+
+| Integrante | Usuario de GitHub | Informe (TB1) | Landing Page | Web App | RESTful API | Mobile App |
+|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | Rama `feature/tb1-report-update` | — | — | 118 | — |
+| Encalada Salazar, Alexis | Alexiz248 | — | — | 13 | — | — |
+| Goñe Araccata, Esther Abigail | abigoe02 | — | 3 | — | — | — |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | — | — | — | — | — |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | — | — | 1 | — | — |
+| Santiago Peña, Andreow Jomark | andrew65411 | 28 | 4 | 13 | 20 | 11 |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | — | — | — | — | 7 |
+
+**Interpretación del equipo.** En el TB1 el equipo repartió el trabajo por tipo de producto. Santiago Peña consolidó el informe (Capítulos V y VI y las correcciones del AV1), mientras que el resto de integrantes concentró su trabajo en los repositorios de producto del Sprint 1: Barturen Panez en el RESTful API, Encalada Salazar y Salazar Caballero en la Web App, Goñe Araccata en el Landing Page y Tumi Oliden en la Mobile App. El detalle de esos commits está en la sección 6.2.1.9. Con esta distribución se publicaron los productos que exige el TB1, pero no todos los integrantes participaron en la elaboración del informe, como muestra el Registro de Versiones. Para el AV2 cada integrante redactará en su propia rama las secciones de los aspectos que lidera (Validation Interviews, evidencias del Sprint 2 y Video About-the-Product), y otro miembro revisará cada pull request antes de integrarlo en `develop`.
+
+El gráfico de Contributors (Figura 4) acumula los commits a `develop` de los últimos tres meses, por lo que suma el AV1 y el TB1: andrew65411 registra 62 commits, krxxg04 38, Nico1234556 10, abigoe02 6, Alexiz248 5, ManuelTumi2224 5 y DymianUPC 4, y la semana del 14 de septiembre concentra la mayor actividad por el cierre del AV1. El resumen Pulse del último mes (Figura 5), del 04/09/2026 al 04/10/2026, registra 38 pull requests fusionados por seis personas y 129 commits de siete autores, es decir, los siete integrantes aportaron al repositorio del informe en ese periodo, que incluye el cierre del AV1. El Network graph del informe (Figura 6) muestra la estructura de ramas del TB1, y los de los repositorios de producto (Figura 7) muestran cómo se integró el trabajo del Sprint 1 en cada uno.
+
+<div align="center">
+<img src="assets/collaboration-insights/Git-Contributors-TB1.png" alt="GitHub Insights - Contributors TB1" width="700">
+<p><em>Figura 4. Commits por integrante a develop en los últimos tres meses, acumulado del AV1 y el TB1 (GitHub Insights &gt; Contributors).</em></p>
+</div>
+
+<div align="center">
+<img src="assets/collaboration-insights/Git-Pulse-TB1.png" alt="GitHub Insights - Pulse TB1" width="700">
+<p><em>Figura 5. Resumen de actividad del repositorio del informe (Pulse) del 04/09/2026 al 04/10/2026: 38 pull requests fusionados y 129 commits de siete autores.</em></p>
+</div>
+
+<div align="center">
+<img src="assets/collaboration-insights/Network1-Report-TB1.png" alt="GitHub Insights - Network graph del informe TB1 parte 1" width="700">
+<img src="assets/collaboration-insights/Network2-Report-TB1.png" alt="GitHub Insights - Network graph del informe TB1 parte 2" width="700">
+<img src="assets/collaboration-insights/Network3-Report-TB1.png" alt="GitHub Insights - Network graph del informe TB1 parte 3" width="700">
+<p><em>Figura 6. Network graph del repositorio del informe, en tres tramos — TB1: cierre de <code>release/0.1.0</code> el 19/09, sub-ramas de sección integradas en las ramas de capítulo entre el 20 y el 28/09, integración de los capítulos en <code>develop</code> el 29/09 y apertura de <code>release/0.2.0</code>.</em></p>
+</div>
+
+<div align="center">
+<img src="assets/collaboration-insights/Network1-Landing-TB1.png" alt="GitHub Insights - Network graph del Landing Page TB1" width="700">
+<img src="assets/collaboration-insights/Network1-WebApp-TB1.png" alt="GitHub Insights - Network graph de la Web App TB1" width="700">
+<img src="assets/collaboration-insights/Network1-Back-TB1.png" alt="GitHub Insights - Network graph del RESTful API TB1" width="700">
+<p><em>Figura 7. Network graph de los repositorios de producto en el Sprint 1, de arriba abajo: Landing Page, Web App (con la rama <code>feature/fake-api</code> en curso) y RESTful API.</em></p>
 </div>
