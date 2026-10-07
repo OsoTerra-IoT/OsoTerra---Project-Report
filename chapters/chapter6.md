@@ -213,8 +213,12 @@ L: líder del aspecto. C: colaborador.
 
 El objetivo del Sprint 1 es publicar la primera versión del Landing Page y de la Web App, con los endpoints de autenticación del RESTful API como base. Las User Stories se tomaron del inicio del Product Backlog (sección 3.3), respetando su orden por valor, hasta completar la velocidad acordada de 60 Story Points.
 
-<!-- TODO(equipo): agregar la captura del tablero del Sprint 1 en Trello y su URL pública. -->
-Tablero del Product Backlog en Trello: https://trello.com/b/adykOjs5/ososense-backlog
+La figura muestra el tablero de Trello al cierre del sprint, con las User Stories del Sprint 1 en la lista *Done*. Tablero público: https://trello.com/b/adykOjs5/ososense-backlog
+
+<div align="center">
+<img src="../assets/sprint-1/trello-sprint-1.png" alt="Tablero de Trello con las User Stories del Sprint 1 en Done" width="800">
+<p><em>Figura 6.2. Tablero del Sprint 1 en Trello.</em></p>
+</div>
 
 <table>
   <tr><th>Sprint #</th><th colspan="7">Sprint 1</th></tr>
@@ -400,46 +404,45 @@ Al cierre del Sprint 1 están publicados el Landing Page y la Web App. El visita
 
 <div align="center">
 <img src="../assets/sprint-1/landing-desplegada.png" alt="Landing Page publicado en GitHub Pages" width="800">
-<p><em>Figura 6.2. Landing Page publicado.</em></p>
+<p><em>Figura 6.3. Landing Page publicado.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-desplegada.png" alt="Inicio de sesión de la Web App publicada" width="800">
-<p><em>Figura 6.3. Inicio de sesión de la Web App publicada.</em></p>
+<p><em>Figura 6.4. Inicio de sesión de la Web App publicada.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-02-productor-inicio.png" alt="Inicio del productor en la Web App" width="800">
-<p><em>Figura 6.4. Inicio del productor.</em></p>
+<p><em>Figura 6.5. Inicio del productor.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-04-detalle-parcela.png" alt="Detalle de parcela en la Web App" width="800">
-<p><em>Figura 6.5. Detalle de parcela con la lectura y la tendencia.</em></p>
+<p><em>Figura 6.6. Detalle de parcela con la lectura y la tendencia.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-05-alertas.png" alt="Bandeja de alertas del productor" width="800">
-<p><em>Figura 6.6. Bandeja de alertas y registro de acciones.</em></p>
+<p><em>Figura 6.7. Bandeja de alertas y registro de acciones.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-07-asesor-inicio.png" alt="Inicio del asesor con parcelas ordenadas por riesgo" width="800">
-<p><em>Figura 6.7. Inicio del asesor con las parcelas ordenadas por riesgo.</em></p>
+<p><em>Figura 6.8. Inicio del asesor con las parcelas ordenadas por riesgo.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-08-asesor-comparar.png" alt="Comparación de parcelas del asesor" width="800">
-<p><em>Figura 6.8. Comparación de parcelas.</em></p>
+<p><em>Figura 6.9. Comparación de parcelas.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-1/webapp-09-asesor-reportes.png" alt="Reportes del asesor" width="800">
-<p><em>Figura 6.9. Reportes con exportación a PDF.</em></p>
+<p><em>Figura 6.10. Reportes con exportación a PDF.</em></p>
 </div>
 
-<!-- TODO(equipo): subir el video del Sprint 1 a Microsoft Stream o Clipchamp y reemplazar la línea siguiente por su enlace. -->
-Video de la navegación del Sprint 1: enlace de Microsoft Stream (por agregar).
+Video de la navegación del Sprint 1: [ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312629_upc_edu_pe/IQBW9pKD0m2aTYL4WPlSa8bFAei65ipPDVodq3Sx95FNhmE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5SQVcB)
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
@@ -602,7 +605,7 @@ En el Sprint 1 se publicaron los dos productos que exige el TB1, sin crear cuent
 <p><em>Figura 6.17. Ejecución del flujo «Deploy to GitHub Pages» de la Web App.</em></p>
 </div>
 
-La figura muestra la ejecución del flujo de despliegue sobre `develop`, junto con las revisiones automáticas de código de las ramas de feature. Las Figuras 6.2 y 6.3 muestran los dos productos ya publicados. El RESTful API, la Mobile App con Firebase App Distribution, el Edge Service y la Embedded Application se despliegan desde el Sprint 2, con los pasos de la sección 6.1.4.
+La figura muestra la ejecución del flujo de despliegue sobre `develop`, junto con las revisiones automáticas de código de las ramas de feature. Las Figuras 6.3 y 6.4 muestran los dos productos ya publicados. El RESTful API, la Mobile App con Firebase App Distribution, el Edge Service y la Embedded Application se despliegan desde el Sprint 2, con los pasos de la sección 6.1.4.
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
 
