@@ -32,5 +32,5 @@
     <tr><td>u202312629</td><td>Barturen Panez, Iker Gabriel</td></tr>
   </tbody>
 </table>
-<p style="margin-top: 18px;"><strong>Septiembre 2026</strong></p>
+<p style="margin-top: 18px;"><strong>Octubre 2026</strong></p>
 </div>
