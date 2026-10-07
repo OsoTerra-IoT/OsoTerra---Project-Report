@@ -58,6 +58,8 @@ Ver la sección [Student Outcome](../outcome.md#student-outcome).
 
 **Final Project Participant Performance Report — AV1:** [ver documento](https://docs.google.com/document/d/1cFr2_S4dEEv7AGe631bPAs0QlOgPQmGn/edit?usp=drivesdk&ouid=108953082663085846265&rtpof=true&sd=true)
 
+**Final Project Participant Performance Report — TB1:** [ver documento](https://docs.google.com/document/d/1j7n73BWaJEBUy44Y54L45U56YjGOs2wfVQAaF9Tb4f4/edit?usp=sharing)
+
 ### Anexo C. Videos de Exposiciones
 
 **Video de Exposición — AV1:** [ver video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVCrvLYWWkT73bHtQrAT8FAbVIPh1q838lp9DUTX9KrDI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ihMbhP)
