@@ -109,6 +109,8 @@
 | 0.0.103 | 29/09/2026 | Andreow Jomark Santiago Peña | Contenido: índice actualizado con el Capítulo VI (6.1 y Sprint 1) y los títulos vigentes de la guía de estilo web. |
 | 0.0.104 | 04/10/2026 | Iker Gabriel Barturen Panez | Actualización del informe para el TB1: Student Outcome con las acciones del TB1 de cada integrante y sus conclusiones; Conclusiones con el contraste de los Hypothesis Statements frente a lo desplegado en el Sprint 1 y recomendaciones para el AV2; sección 6.2.1.7 con la documentación OpenAPI en Swagger UI de los seis bounded contexts (tablas de endpoints, capturas por módulo y commits de documentación); y Project Report Collaboration Insights del TB1 con actividades, integraciones, analíticos y capturas de GitHub Insights. |
 | 0.0.105 | 06/10/2026 | Iker Gabriel Barturen Panez | Evidencias pendientes del TB1: enlace del video de navegación en las secciones 5.5 Applications Prototyping y 6.2.1.6 Execution Evidence, captura del tablero del Sprint 1 en Trello en la sección 6.2.1.3 (con la renumeración de las figuras del Capítulo VI) y enlace del Participant Performance Report del TB1 en el Anexo B. |
+| 0.0.106 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: el contenedor de backend se presenta como Modular Monolith (no como RESTful API) en el Structurizr DSL, los diagramas de contenedores y de despliegue y el texto del capítulo. |
+| 0.0.107 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: Component Diagrams con el contenedor renombrado a Modular Monolith y el sistema a OsoSense; los demás bounded contexts se identifican como módulos y Web App, Mobile App y Edge Service como contenedores, conservando su diseño original. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 

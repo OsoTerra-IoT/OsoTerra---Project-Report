@@ -18,7 +18,7 @@ workspace "OsoSense" "C4 Model de OsoSense (Oso Terra)" {
             landing = container "Landing Page" "Sitio estático que presenta el modelo de negocio y los planes." "HTML5, CSS3, JavaScript"
             web = container "Web Application" "Interfaz responsive de gestión, tableros y reportes (asesor y productor)." "Angular, TypeScript, Angular Material"
             mobile = container "Mobile Application" "App nativa de consulta en campo y recepción de alertas (productor)." "Kotlin / Android"
-            api = container "RESTful API" "Monolito modular que expone los seis bounded contexts." "Spring Boot, Java, Spring Data JPA"
+            api = container "Modular Monolith" "Backend de negocio: implementa los seis bounded contexts como módulos de un único despliegue y atiende a los clientes y al Edge Service." "Spring Boot, Java, Spring Data JPA"
             db = container "Platform Database" "Cuentas, suscripciones, fincas, parcelas, lecturas y alertas." "PostgreSQL" "Database"
             edge = container "Edge Service" "Valida, compensa a 25 °C y sincroniza las lecturas; reenvía los lotes pendientes al recuperar la conexión." "Flask, Python, Peewee ORM"
             edgeDb = container "Edge Local Database" "Persiste las lecturas pendientes de sincronización." "SQLite" "Database"
