@@ -112,6 +112,7 @@
 | 0.0.106 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: el contenedor de backend se presenta como Modular Monolith (no como RESTful API) en el Structurizr DSL, los diagramas de contenedores y de despliegue y el texto del capítulo. |
 | 0.0.107 | 06/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: Component Diagrams con el contenedor renombrado a Modular Monolith y el sistema a OsoSense; los demás bounded contexts se identifican como módulos y Web App, Mobile App y Edge Service como contenedores, conservando su diseño original. |
 | 0.0.108 | 07/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: enlaces de los videos de navegación del prototipo de la Web App y del prototipo de la Mobile App en la sección 5.5 Applications Prototyping. |
+| 0.0.109 | 07/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: capturas de los videos de navegación de los prototipos Web y Mobile en la sección 5.5, enlazadas a cada video (figuras 5.108 y 5.109), con la renumeración de las figuras de la sección 5.6. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
