@@ -121,7 +121,6 @@
       - [Tone of voice](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#tone-of-voice)
     - [5.1.2. Web, Mobile and IoT Style Guidelines](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#512-web-mobile-and-iot-style-guidelines)
       - [Web: componentes](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#web-componentes)
-      - [Web: componentes](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#web-componentes)
       - [Web: navegación e interfaces responsive](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#web-navegación-e-interfaces-responsive)
       - [Mobile: aplicación Android](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#mobile-aplicación-android)
       - [IoT: interfaz física del dispositivo](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter5.md#iot-interfaz-física-del-dispositivo)
