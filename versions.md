@@ -115,6 +115,7 @@
 | 0.0.109 | 07/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: capturas de los videos de navegación de los prototipos Web y Mobile en la sección 5.5, enlazadas a cada video (figuras 5.108 y 5.109), con la renumeración de las figuras de la sección 5.6. |
 | 0.0.110 | 07/10/2026 | Andreow Jomark Santiago Peña | README.md como archivo principal del informe, con los datos del curso y del equipo y los enlaces a cada sección en orden de lectura. |
 | 0.0.111 | 07/10/2026 | Andreow Jomark Santiago Peña | Anexos: enlace del video de exposición del TB1 en el Anexo C. Carátula: fecha actualizada a octubre de 2026. |
+| 0.0.112 | 16/10/2026 | Andreow Jomark Santiago Peña | Corrección por feedback del TB1: enlaces de la tabla de contenidos, del README y de las Conclusiones con URL completa de GitHub, para que no se rompan al convertir el Markdown. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 

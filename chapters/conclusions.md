@@ -52,7 +52,7 @@ Las siguientes fuentes sustentan las cifras y afirmaciones citadas en los Capít
 
 ### Anexo A. Estructura para la sección Student Outcome
 
-Ver la sección [Student Outcome](../outcome.md#student-outcome).
+Ver la sección [Student Outcome](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/outcome.md#student-outcome).
 
 ### Anexo B. Informe de participación
 
