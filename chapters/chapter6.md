@@ -1101,6 +1101,37 @@ Las capturas muestran la actividad de los repositorios de producto durante el Sp
 
 ### 6.3.1. Diseño de Entrevistas
 
+Las entrevistas de validación comprueban si los dos segmentos objetivo entienden el Landing Page y si pueden completar con la Web App y la Mobile App las tareas que motivaron OsoSense: saber cómo está la parcela, atender una alerta, registrar una parcela con su sensor y, en el caso de los asesores, priorizar visitas. A diferencia de las entrevistas de la sección 2.2, aquí el participante usa los productos publicados y el equipo observa lo que hace, no solo lo que dice.
+
+Cada sesión dura entre 25 y 35 minutos, se graba en video con el consentimiento del participante y sigue el mismo orden: presentación y consentimiento (2 min), recorrido libre del Landing Page (5 min), tareas guiadas en la Web App y la Mobile App con la técnica de pensar en voz alta (15–20 min) y preguntas de cierre (5 min). El moderador lee cada tarea sin indicar dónde está la opción y anota si el participante la completa sin ayuda, con ayuda o no la completa, el tiempo que le toma y los comentarios espontáneos. Se usan cuentas de prueba con datos de una finca de la costa norte para que todos los participantes vean el mismo escenario. Se hacen entre tres y cinco entrevistas por segmento.
+
+**Segmento 1: pequeños y medianos productores agropecuarios**
+
+| Producto | Elementos a validar | Tarea que se pide al participante | Se completa cuando |
+|---|---|---|---|
+| Landing Page | Hero, bloque del problema de salinización, beneficios para el productor, planes y precios | «Cuénteme qué hace este producto y si le serviría en su campo.» Luego: «¿Cuánto le costaría monitorear dos parcelas?» | Explica el propósito con sus palabras e identifica el plan y su precio. |
+| Landing Page → Web App | Botón de plan y registro | «Cree una cuenta de productor.» | Llega al registro de la Web App en dos clics o menos. |
+| Web App (UF1) | Inicio con franjas de salinidad, detalle de parcela | «¿Alguna de sus parcelas necesita atención hoy? ¿Por qué?» | Identifica la parcela sobre el umbral sin abrir otra vista y explica el nivel. |
+| Web App (UF3) | Registro de finca y parcela, cultivo, vincular sensor | «Registre una parcela nueva de uva y conecte el sensor con el código de la etiqueta.» | La parcela queda con su cultivo y el sensor vinculado. |
+| Web App (UF2) | Bandeja de alertas, reconocer, registrar acción | «Le llegó una alerta. Indique que ya la vio y anote lo que hizo en el campo.» | La alerta queda resuelta con la acción registrada. |
+| Mobile App (UF7, UF8) | Inicio, alertas, hoja de acción correctiva, preferencias de notificación | «Revise en el celular la misma alerta y elija recibir avisos solo cuando sea crítica.» | Registra la acción y guarda la preferencia. |
+
+**Segmento 2: ingenieros agrónomos y asesores técnicos agrícolas**
+
+| Producto | Elementos a validar | Tarea que se pide al participante | Se completa cuando |
+|---|---|---|---|
+| Landing Page | Capacidades para asesores, foto del sensor, planes | «¿Qué le ofrece esta plataforma para su trabajo con clientes?» | Nombra al menos dos capacidades (tablero multiparcela, reportes, calibración). |
+| Web App (UF4) | Inicio del asesor por prioridad, comparación de parcelas | «¿Qué parcela visitaría primero esta semana y por qué?» | Elige la parcela con mayor porcentaje del umbral y lo justifica con el dato. |
+| Web App (UF5) | Calibración con el resultado de laboratorio | «Registre el resultado de laboratorio de 2,1 dS/m y aplique la calibración.» | El factor queda aplicado al dispositivo. |
+| Web App (UF6) | Reporte de parcela y exportación a PDF | «Prepare el reporte del último mes para su cliente.» | Exporta el PDF del periodo. |
+| Web App | Mis clientes, cuentas vinculadas | «¿Qué productores le dieron acceso a sus parcelas?» | Encuentra la lista de clientes vinculados. |
+
+**Preguntas de cierre (ambos segmentos).** ¿Qué fue lo más fácil y lo más difícil? ¿Hubo alguna palabra o número que no entendió? ¿Confiaría en la alerta para decidir un riego o una visita? ¿Qué le falta para usarlo cada semana? Del 1 al 5, ¿qué tan probable es que lo recomiende a otro productor o asesor?
+
+Las observaciones de cada sesión se registran en la sección 6.3.2 y los problemas encontrados se clasifican con el formato de evaluación heurística del Anexo D en la sección 6.3.3.
+
+<!-- TODO(equipo): realizar las entrevistas (3 a 5 por segmento), subir el video consolidado upc-pre-202620-1asi0572-8735-OsoTerra-validation-sprint-2 a Microsoft Stream y completar 6.3.2 y 6.3.3. -->
+
 ### 6.3.2. Registro de Entrevistas
 
 ### 6.3.3. Evaluaciones según heurísticas
