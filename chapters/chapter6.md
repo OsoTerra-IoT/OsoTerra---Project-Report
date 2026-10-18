@@ -127,7 +127,7 @@ Todos los nombres de variables, funciones, clases, archivos, ramas y commits se 
 
 ### 6.1.4. Software Deployment Configuration
 
-Cada producto se construye y publica a partir de su repositorio. Para el TB1 están desplegados el Landing Page y la Web App; los demás productos tienen su configuración definida y se despliegan en los sprints siguientes.
+Cada producto se construye y publica a partir de su repositorio. Al TB1 estaban desplegados el Landing Page y la Web App; en el Sprint 2 se desplegó el RESTful API en Railway y la Web App pasó a consumirlo. Los productos que todavía no están publicados tienen su configuración definida y se despliegan en los sprints siguientes.
 
 **Landing Page** — publicado en https://osoterra-iot.github.io/OsoTerra---Landing-Page/
 
@@ -142,13 +142,16 @@ Cada producto se construye y publica a partir de su repositorio. Para el TB1 est
 2. El trabajo *build* instala dependencias con `npm ci`, valida las traducciones con `npm run check:i18n` y construye con `ng build --base-href /OsoTerra---Web-Application/`.
 3. Copia `index.html` como `404.html` para que las rutas internas de Angular funcionen al recargar la página, y sube la carpeta `dist/osoterra-web-app/browser` como artefacto.
 4. El trabajo *deploy* publica el artefacto en el entorno `github-pages`, que solo acepta despliegues desde `main` y `develop`.
+5. Además, el repositorio está conectado a Vercel (https://oso-terra-web-application.vercel.app): cada push a una rama genera un despliegue de vista previa y la rama de producción publica la URL principal.
+6. Desde el Sprint 2 la configuración por defecto (`environment.ts`) apunta al RESTful API en Railway; `ng build --configuration local-api` usa `http://localhost:8080/api/v1` y `--configuration fake-api` mantiene los datos de demostración sin backend.
 
-**Web Services (RESTful API)** — despliegue en la nube en el Sprint 2
+**Web Services (RESTful API)** — publicado en Railway: https://osoterra-backend-production.up.railway.app (Swagger UI en `/swagger-ui.html`)
 
-1. Configurar las variables de entorno de la base de datos PostgreSQL, del correo y de la clave JWT.
-2. Construir con `mvn clean package`, que ejecuta las pruebas y genera el `.jar`.
-3. Las migraciones de Flyway crean o actualizan el esquema al iniciar la aplicación.
-4. Publicar el `.jar` en el servidor de aplicaciones del proveedor cloud y exponer la documentación OpenAPI en `/swagger-ui`.
+1. En Railway, crear el proyecto con dos servicios: el repositorio `OsoTerra---Backend` y una base de datos PostgreSQL gestionada. Railway inyecta las variables `PGHOST`, `PGPORT`, `PGDATABASE`, `PGUSER`, `PGPASSWORD` y `DATABASE_URL`, que `application.yaml` lee sin cambios en el código.
+2. Definir las variables propias del servicio: `JWT_SECRET`, `EDGE_API_KEY` (clave que envía el Edge Service en la cabecera `X-Edge-Api-Key`), `CORS_ALLOWED_ORIGINS` (opcional) y las del correo y de Stripe cuando se habiliten. Railway asigna el puerto en `PORT`.
+3. Railway construye con Maven y Java 17 en cada push a la rama configurada; las pruebas se ejecutan antes en local con `./mvnw test` (PostgreSQL embebido).
+4. Al iniciar, Flyway aplica las migraciones pendientes sobre la base de Railway y springdoc publica la documentación OpenAPI agrupada por bounded context en `/v3/api-docs/{grupo}`.
+5. Railway registra cada despliegue en la pestaña *Deployments* del repositorio de GitHub, con el commit desplegado y su estado.
 
 **Mobile Application** — distribución de prueba en el Sprint 2
 

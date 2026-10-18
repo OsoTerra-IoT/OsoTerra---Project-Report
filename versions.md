@@ -117,6 +117,7 @@
 | 0.0.111 | 07/10/2026 | Andreow Jomark Santiago Peña | Anexos: enlace del video de exposición del TB1 en el Anexo C. Carátula: fecha actualizada a octubre de 2026. |
 | 0.0.112 | 16/10/2026 | Andreow Jomark Santiago Peña | Corrección por feedback del TB1: enlaces de la tabla de contenidos, del README y de las Conclusiones con URL completa de GitHub, para que no se rompan al convertir el Markdown. |
 | 0.0.113 | 16/10/2026 | Andreow Jomark Santiago Peña | Corrección por feedback del TB1: carátula rehecha según el modelo del aula virtual (Modelo de carátula 202620): Equipo y Proyecto, docente León Baca, Marco Antonio, logo del modelo y Período 202620. |
+| 0.0.114 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.1.4 actualizada con el despliegue del RESTful API en Railway (servicios, variables, Flyway y registro de despliegues en GitHub) y la publicación de la Web App en Vercel con la configuración que apunta al API desplegado. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
