@@ -127,7 +127,7 @@ Todos los nombres de variables, funciones, clases, archivos, ramas y commits se 
 
 ### 6.1.4. Software Deployment Configuration
 
-Cada producto se construye y publica a partir de su repositorio. Para el TB1 están desplegados el Landing Page y la Web App; los demás productos tienen su configuración definida y se despliegan en los sprints siguientes.
+Cada producto se construye y publica a partir de su repositorio. Al TB1 estaban desplegados el Landing Page y la Web App; en el Sprint 2 se desplegó el RESTful API en Railway y la Web App pasó a consumirlo. Los productos que todavía no están publicados tienen su configuración definida y se despliegan en los sprints siguientes.
 
 **Landing Page** — publicado en https://osoterra-iot.github.io/OsoTerra---Landing-Page/
 
@@ -142,13 +142,16 @@ Cada producto se construye y publica a partir de su repositorio. Para el TB1 est
 2. El trabajo *build* instala dependencias con `npm ci`, valida las traducciones con `npm run check:i18n` y construye con `ng build --base-href /OsoTerra---Web-Application/`.
 3. Copia `index.html` como `404.html` para que las rutas internas de Angular funcionen al recargar la página, y sube la carpeta `dist/osoterra-web-app/browser` como artefacto.
 4. El trabajo *deploy* publica el artefacto en el entorno `github-pages`, que solo acepta despliegues desde `main` y `develop`.
+5. Además, el repositorio está conectado a Vercel (https://oso-terra-web-application.vercel.app): cada push a una rama genera un despliegue de vista previa y la rama de producción publica la URL principal.
+6. Desde el Sprint 2 la configuración por defecto (`environment.ts`) apunta al RESTful API en Railway; `ng build --configuration local-api` usa `http://localhost:8080/api/v1` y `--configuration fake-api` mantiene los datos de demostración sin backend.
 
-**Web Services (RESTful API)** — despliegue en la nube en el Sprint 2
+**Web Services (RESTful API)** — publicado en Railway: https://osoterra-backend-production.up.railway.app (Swagger UI en `/swagger-ui.html`)
 
-1. Configurar las variables de entorno de la base de datos PostgreSQL, del correo y de la clave JWT.
-2. Construir con `mvn clean package`, que ejecuta las pruebas y genera el `.jar`.
-3. Las migraciones de Flyway crean o actualizan el esquema al iniciar la aplicación.
-4. Publicar el `.jar` en el servidor de aplicaciones del proveedor cloud y exponer la documentación OpenAPI en `/swagger-ui`.
+1. En Railway, crear el proyecto con dos servicios: el repositorio `OsoTerra---Backend` y una base de datos PostgreSQL gestionada. Railway inyecta las variables `PGHOST`, `PGPORT`, `PGDATABASE`, `PGUSER`, `PGPASSWORD` y `DATABASE_URL`, que `application.yaml` lee sin cambios en el código.
+2. Definir las variables propias del servicio: `JWT_SECRET`, `EDGE_API_KEY` (clave que envía el Edge Service en la cabecera `X-Edge-Api-Key`), `CORS_ALLOWED_ORIGINS` (opcional) y las del correo y de Stripe cuando se habiliten. Railway asigna el puerto en `PORT`.
+3. Railway construye con Maven y Java 17 en cada push a la rama configurada; las pruebas se ejecutan antes en local con `./mvnw test` (PostgreSQL embebido).
+4. Al iniciar, Flyway aplica las migraciones pendientes sobre la base de Railway y springdoc publica la documentación OpenAPI agrupada por bounded context en `/v3/api-docs/{grupo}`.
+5. Railway registra cada despliegue en la pestaña *Deployments* del repositorio de GitHub, con el commit desplegado y su estado.
 
 **Mobile Application** — distribución de prueba en el Sprint 2
 
@@ -649,6 +652,450 @@ El trabajo del Sprint 1 se organizó por producto, con un líder por repositorio
 *Número de commits sin contar merges, por repositorio, hasta el 28 de septiembre de 2026.*
 
 **Interpretación del equipo.** Cada producto avanzó con un integrante que concentró la mayoría de los commits: Iker en el RESTful API, Alexis en la Web App, Abigail en el Landing Page y Manuel en la Mobile App. El informe es el repositorio con participación más repartida. La concentración aceleró el primer sprint, pero no cumple todavía con que todos los integrantes participen en cada producto. Para el Sprint 2 el equipo acuerda que los colaboradores de la matriz de liderazgo (sección 6.2.1.2) tomen tareas propias en cada repositorio, integren por pull request y que cada pull request sea revisado por otro integrante antes de entrar a `develop`.
+
+### 6.2.2. Sprint 2
+
+#### 6.2.2.1. Sprint Planning 2
+
+En el Sprint 2 el equipo conectó los productos con el RESTful API real. El API se desplegó en Railway con PostgreSQL, la Web App y la Mobile App dejaron de usar datos de demostración para consumirlo, y se completaron los flujos de gestión de fincas y parcelas, vinculación de sensores, ingesta de lecturas desde el Edge Service, alertas por umbral y acciones correctivas. El sprint empezó el 5 de octubre de 2026, después de la entrega del TB1, y cierra con el AV2 en la semana 12; la evidencia de esta sección corresponde al avance al 18 de octubre de 2026.
+
+El Sprint Planning tomó como base el Product Backlog de la sección 3.3, a partir de la primera User Story que no entró en el Sprint 1, y las conclusiones de la revisión y la retrospectiva del Sprint 1.
+
+| Sprint # | Sprint 2 |
+|---|---|
+| **Sprint Planning Background** | |
+| Date | 2026-10-05 |
+| Time | Por confirmar |
+| Location | Reunión virtual en Google Meet |
+| Prepared By | Santiago Peña, Andreow Jomark |
+| Attendees (to planning meeting) | Por confirmar |
+| Sprint 1 Review Summary | Se publicaron el Landing Page y la Web App en GitHub Pages, con las vistas del productor y del asesor sobre datos de demostración, y el RESTful API expuso los endpoints de los seis bounded contexts en local. El profesor pidió en el TB1 usar el modelo oficial de carátula y enlaces con URL completa en el informe; ambas correcciones se integraron antes de iniciar el sprint. |
+| Sprint 1 Retrospective Summary | La concentración de commits en un integrante por producto aceleró el primer sprint, pero no cumple con que todos participen en cada producto. Se acordó que los colaboradores de la matriz de liderazgo tomen tareas propias en cada repositorio, que todo cambio entre por pull request revisado por otro integrante y que la Web App deje de depender del servicio de demostración. |
+| **Sprint Goal & User Stories** | |
+| Sprint 2 Goal | *Our focus is on* llevar a productores y asesores técnicos de los datos de demostración a datos reales: registrar fincas y parcelas, vincular el sensor con su código de activación y recibir alertas cuando la salinidad supera el umbral del cultivo, con el RESTful API desplegado en la nube. *We believe it delivers* a los productores la certeza de que lo que ven corresponde a su parcela, a los asesores la supervisión de las parcelas de sus clientes y al equipo de desarrollo un contrato de API publicado para integrar el Edge Service. *This will be confirmed when* un productor registra una parcela, vincula su sensor y ve en la Web App y en la Mobile App la alerta generada por una lectura enviada por el Edge Service, registra una acción correctiva que resuelve la alerta, y la documentación OpenAPI del API desplegado responde en una URL pública. |
+| Sprint 2 Velocity | 60 Story Points |
+| Sum of Story Points | 60 Story Points |
+
+#### 6.2.2.2. Aspect Leaders and Collaborators
+
+En el Sprint 2 los aspectos pasan de las vistas de cada rol a las capas que integran la solución: el RESTful API con sus seis bounded contexts, la integración de la Web App con el API, la Mobile App, el despliegue en la nube y el Landing Page, que solo actualiza sus enlaces a la Web App.
+
+| Team Member (Last Name, First Name) | GitHub Username | Web Services · Bounded Contexts | Web App · Integración con el API | Mobile App | Despliegue cloud | Landing Page |
+|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | L | | | C | |
+| Encalada Salazar, Alexis | Alexiz248 | C | C | C | | |
+| Goñe Araccata, Esther Abigail | abigoe02 | | | | | L |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | C | C | | | |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | | C | | | C |
+| Santiago Peña, Andreow Jomark | andrew65411 | C | L | C | L | C |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | | | L | | |
+
+L: líder del aspecto. C: colaborador.
+
+#### 6.2.2.3. Sprint Backlog 2
+
+El objetivo del Sprint 2 es que los productos trabajen con datos reales del RESTful API desplegado. Las User Stories y Technical Stories se tomaron del Product Backlog (sección 3.3) en su orden, desde TS02, hasta completar la velocidad de 60 Story Points. Las User Stories de suscripción, reportes, calibración y notificación móvil quedan para el Sprint 3.
+
+El tablero del sprint está en el mismo tablero público de Trello del Sprint 1: https://trello.com/b/adykOjs5/ososense-backlog
+
+<!-- TODO(equipo): agregar la captura del tablero de Trello con las User Stories del Sprint 2 como assets/sprint-2/trello-sprint-2.png -->
+
+<table>
+  <tr><th>Sprint #</th><th colspan="7">Sprint 2</th></tr>
+  <tr><th colspan="2">User Story</th><th colspan="6">Work-Item / Task</th></tr>
+  <tr><th>Story Id</th><th>Story Title</th><th>Task Id</th><th>Task Title</th><th>Task Description</th><th>Estimation (Hours)</th><th>Assigned To</th><th>Status (To-do / In-Process / To-Review / Done)</th></tr>
+  <tr><td>TS02</td><td>Exponer endpoints de parcelas</td><td>T26</td><td>Shared kernel por capas</td><td>Reorganizar el shared kernel en paquetes domain, application e interfaces y migrar los seis bounded contexts.</td><td>6</td><td>Barturen Panez, Iker Gabriel</td><td>Done</td></tr>
+  <tr><td>TS02</td><td>Exponer endpoints de parcelas</td><td>T27</td><td>Editar fincas y parcelas</td><td>Exponer <code>PUT /farms/{id}</code> y <code>PUT /plots/{id}</code> con validación de propietario.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US19</td><td>Registrar finca</td><td>T28</td><td>Fincas contra el API</td><td>Registrar y editar fincas desde la Web App con el cliente tipado del API.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US20</td><td>Registrar parcela</td><td>T29</td><td>Parcelas contra el API</td><td>Registrar parcelas con área y coordenadas, y listar las de cada finca.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US22</td><td>Consultar catálogo de cultivos</td><td>T30</td><td>Cultivos de la costa norte</td><td>Agregar palta y arándano al catálogo de cultivos con su umbral de ECe.</td><td>1</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US21</td><td>Asignar cultivo a parcela</td><td>T31</td><td>Cultivo de la parcela</td><td>Asignar el cultivo desde el formulario de parcela y mostrar su umbral.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US23</td><td>Editar o dar de baja parcela</td><td>T32</td><td>Edición de parcela</td><td>Editar nombre, área, coordenadas y cultivo de una parcela existente.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>TS06</td><td>Ingerir telemetría desde Edge</td><td>T33</td><td>Clave del Edge Service</td><td>Autenticar la ingesta de lotes de lecturas con la cabecera <code>X-Edge-Api-Key</code>.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>TS06</td><td>Ingerir telemetría desde Edge</td><td>T34</td><td>Ingesta tolerante a fallos</td><td>Mantener la ingesta aunque falle el envío de la notificación de una alerta.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US24</td><td>Vincular dispositivo a parcela</td><td>T35</td><td>Dispositivo de la parcela</td><td>Exponer <code>GET /devices?plotId=</code> para consultar el sensor instalado.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US24</td><td>Vincular dispositivo a parcela</td><td>T36</td><td>Vincular sensor en la Web App</td><td>Formulario con el código de activación que registra el sensor y lo instala en la parcela.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>TS03</td><td>Exponer endpoints de telemetría</td><td>T37</td><td>Clientes tipados del API</td><td>Crear los clientes y mapeadores de la Web App para los seis bounded contexts.</td><td>5</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>TS03</td><td>Exponer endpoints de telemetría</td><td>T38</td><td>Repositorios remotos móviles</td><td>Declarar los DTO y endpoints en Retrofit y consumirlos desde repositorios remotos en la Mobile App.</td><td>5</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US31</td><td>Generar alerta por umbral</td><td>T39</td><td>Endpoints de alertas</td><td>Exponer los endpoints REST de Salinity Alerting.</td><td>4</td><td>Barturen Panez, Iker Gabriel</td><td>Done</td></tr>
+  <tr><td>US31</td><td>Generar alerta por umbral</td><td>T40</td><td>Alertas en la Web App y la Mobile App</td><td>Mostrar las alertas del API con la misma escala de severidad que los niveles de salinidad.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US36</td><td>Reconocer alerta</td><td>T41</td><td>Reconocer alerta</td><td>Reconocer alertas desde ambas aplicaciones contra <code>POST /salinity-alerts/{id}/acknowledgement</code>.</td><td>1</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US13</td><td>Vincular asesor con productor</td><td>T42</td><td>Cuentas vinculadas</td><td>Exponer <code>GET /users/me/linked-accounts</code> y las fincas del productor vinculado para el asesor.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US38</td><td>Configurar preferencias de notificación</td><td>T43</td><td>Preferencias en la Mobile App</td><td>Leer y guardar el nivel mínimo y los canales con <code>/notification-preferences/mine</code>.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>TS04</td><td>Documentar servicios con OpenAPI</td><td>T44</td><td>OpenAPI por bounded context</td><td>Agrupar la documentación OpenAPI por bounded context con el esquema bearer JWT.</td><td>3</td><td>Barturen Panez, Iker Gabriel</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T45</td><td>Despliegue en Railway</td><td>Configurar Railway con PostgreSQL, variables de entorno, Java 17 y CORS para las aplicaciones.</td><td>5</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T46</td><td>Estados de carga y sesión</td><td>Mostrar carga, servidor no disponible y sesión expirada en la Web App y la Mobile App.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T47</td><td>Rediseño de la Mobile App</td><td>Aplicar la guía de estilo al arranque, inicio de sesión, inicio, alertas, detalle y perfil.</td><td>6</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T48</td><td>Enlaces del Landing Page</td><td>Llevar los botones de planes e inicio de sesión a la Web App publicada en Vercel.</td><td>1</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T49</td><td>Integrar ramas en develop</td><td>Revisar por pull request e integrar en <code>develop</code> las ramas del Sprint 2 de cada repositorio.</td><td>3</td><td>Barturen Panez, Iker Gabriel</td><td>To-Review</td></tr>
+</table>
+
+La suma de Story Points del sprint es 60: TS02 (5), US19 (3), US20 (5), US22 (3), US21 (5), US23 (3), TS06 (5), US24 (5), TS03 (5), US31 (8), US36 (2), US13 (5), US38 (3) y TS04 (3).
+
+#### 6.2.2.4. Development Evidence for Sprint Review
+
+En el Sprint 2 el RESTful API reorganizó su shared kernel por capas y agregó los endpoints que necesitaban las aplicaciones; la Web App reemplazó el servicio de demostración por clientes tipados del API; la Mobile App pasó a consumir el API con repositorios remotos y se rediseñó con la guía de estilo; y el Landing Page actualizó sus enlaces a la Web App. El trabajo se hizo en ramas `feature/*` y `fix/*` que se integran en `develop` por pull request.
+
+La tabla reúne los commits de implementación de cada repositorio entre el 29 de septiembre y el 18 de octubre de 2026, sin contar los commits de *merge* ni los de pruebas, que están en la sección 6.2.2.5. Incluye los commits del 29 y 30 de septiembre, posteriores al corte de la sección 6.2.1.4.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | 14216d2 | fix(security): accept plain-text JWT secrets of any length | — | 05/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | cf1dd24 | feat(security): allow CORS for the apps and public catalog reads | — | 05/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | b494100 | fix(deploy): read the platform DATABASE_URL as datasource settings | — | 05/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | 6076ecb | fix(build): target Java 17 so Railway's default JDK compiles it | — | 05/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | e89ffe4 | fix(deploy): read Railway port and PostgreSQL variables | — | 05/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | 68d003c | fix(build): run Flyway migrations with the Boot 4 starter | — | 05/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | a28d482 | feat: group OpenAPI documentation by bounded context | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 43f4740 | feat: add OpenAPI configuration with JWT bearer scheme | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | e8fc344 | feat: permit Swagger UI and OpenAPI docs routes | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | fea3730 | build: add springdoc OpenAPI dependency | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 1b81668 | refactor: remove flat shared kernel classes replaced by layered packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 1ac06fa | refactor: move CurrentUserId resolver and web MVC configuration to layered shared packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 97d31cf | fix: rename Analytics and Reporting exception handler to avoid bean name collision | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | ed972fe | refactor: update Analytics and Reporting REST interfaces to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 9d588d8 | refactor: update Analytics and Reporting application services to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 2c4b2c6 | refactor: update Analytics and Reporting domain model to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 41a4b98 | fix: rename Salinity Alerting exception handler to avoid bean name collision | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | f874cf9 | refactor: update Salinity Alerting REST interfaces to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | c59cf7a | refactor: update Salinity Alerting application services to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | f70d118 | refactor: update Salinity Alerting domain model to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 65acac8 | refactor: update Salinity Alerting domain events to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 8086755 | fix: rename Soil Monitoring exception handler to avoid bean name collision | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | bdc05da | refactor: update Soil Monitoring application services to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | d5f9d8b | refactor: update Soil Monitoring domain model to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 6aa2ef0 | refactor: update Soil Monitoring domain events to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 5a7308f | fix: rename Farm Management exception handler to avoid bean name collision | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 7d7f6ed | refactor: update Farm Management REST interfaces to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 87d27fe | refactor: update Farm Management application services to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 9fd9b52 | refactor: update Farm Management domain model to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 165b184 | refactor: update Farm Management domain events to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 0e1f1c6 | fix: rename Subscription and Billing exception handler to avoid bean name collision | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | af9c904 | refactor: update Subscription and Billing REST interfaces to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 1997fbe | refactor: update Subscription and Billing application services to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 7948040 | refactor: update Subscription and Billing domain model to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 0329f2a | refactor: update Subscription and Billing domain events to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 0811b68 | refactor: update IAM REST interfaces to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | b9fcf36 | refactor: update IAM application services to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 4e81722 | refactor: update IAM domain model to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | b207998 | refactor: update IAM domain events and exceptions to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 37ba5e7 | refactor: add CurrentUserId annotation to shared interfaces rest package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 2bb6e4c | refactor: add AggregateRoot to shared domain model package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 718dac9 | refactor: add Identifier to shared domain model package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 7722903 | refactor: add ValueObject to shared domain model package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 48ba938 | refactor: add EntityNotFoundException to shared domain exceptions package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 2f4cbb2 | refactor: add BusinessRuleViolationException to shared domain exceptions package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 0f4cbe8 | refactor: add DomainException to shared domain exceptions package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | adb6064 | refactor: add DomainEvent to shared domain events package | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 524256d | fix: permit error dispatch through the security filter chain | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | c7edda6 | fix: map report section content as a plain text column | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | f31d9e4 | build: remove spring-dotenv dependency | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 439f3bd | fix: load local .env file manually at application startup | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | 10a4280 | feat(farm-management): let owners update farms and plots | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | 19d8ba4 | feat(api-platform): answer 403 for forbidden domain operations | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | da50638 | feat(iam): list accounts linked by advisory links | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | 1ff8a80 | feat(salinity-alerting): list corrective actions of an alert | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | e6ce405 | feat(farm-management): let linked advisors list a farmer's farms | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | 067cb02 | feat(farm-management): seed avocado and blueberry in crop catalog | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | 1afe282 | docs(api-platform): hide current user id from swagger parameters | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | 31be0d9 | feat(farm-management): list the device installed in a plot | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | 0436f01 | refactor(api-platform): drop remaining duplicate exception handlers | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | 1aa2349 | feat(soil-monitoring): authenticate edge telemetry with api key | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | 3c898dd | fix(salinity-alerting): keep ingestion alive when notification fails | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | 0b2de03 | fix(analytics-reporting): map report section content as text column | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | d13e76b | refactor(api-platform): drop duplicate per-context exception handlers | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/api-platform | 313e968 | refactor(iam): reuse shared error body and answer 401 on bad credentials | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/api-platform | ef3d499 | feat(api-platform): add openapi, cors, json errors and user id resolver | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/api-platform | 91d06af | build(deps): add flyway starter, springdoc and embedded postgres | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | fix/action-date-timezone | a762e04 | fix(i18n): agree home headlines with plot and client counts | — | 18/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | fix/action-date-timezone | e242b8d | fix(i18n): show corrective action dates on their calendar day | — | 18/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/device-activation | d6f3e74 | feat(devices): link a sensor to a plot by its activation code | — | 16/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/device-activation | c3e42cf | feat(fake-api): answer device registration and plot attachment | — | 16/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/railway-api | 96b8cb0 | feat(data): handle loading, offline api and expired sessions | — | 16/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/railway-api | c4835e7 | feat(api): point the default build at the Railway backend | — | 16/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/fake-api | a749db2 | refactor(data): read session and monitoring data from the api | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/fake-api | 5e5a689 | feat(fake-api): answer the api contract in the browser with demo data | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/fake-api | 2bdb735 | feat(api): add typed clients for the OsoSense RESTful API | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/railway-api | 877937e | feat(alertas): registrar acciones y rediseñar alertas, detalle y perfil | — | 16/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/railway-api | a547157 | feat(api): usar el backend de Railway y cerrar la sesión vencida | — | 16/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/rediseno-inicio | 34e7184 | fix(mock): calcular el nivel de salinidad con la regla del backend | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/rediseno-inicio | ee8875c | feat(tablero): rediseñar el inicio del productor con franjas animadas | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/rediseno-inicio | 87a5efe | feat(login): rediseñar el inicio de sesión con panel de marca | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/rediseno-inicio | 0153f7e | feat(inicio): rediseñar la pantalla de arranque con animación de marca | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/rediseno-inicio | af162db | feat(ui): añadir franja de salinidad y corregir insets duplicados | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/rediseno-inicio | fba0bea | style(tema): aplicar la paleta y Plus Jakarta Sans de la guía de estilo | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/backend-api | eadd4b4 | docs(api): documentar el contrato real y el modo backend | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/backend-api | d08d53e | feat(di): alternar entre mock y backend real al compilar | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/backend-api | d45ccd0 | feat(repositorios): consumir el backend con repositorios remotos | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/backend-api | 90ecdd6 | feat(api): declarar DTO y endpoints del RESTful API de OsoSense | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/vercel-web-app-links | 7d0e774 | feat(cta): link buttons and sign-in to the web app on Vercel | — | 05/10/2026 |
+
+#### 6.2.2.5. Testing Suite Evidence for Sprint Review
+
+En el Sprint 2 las pruebas pasan de verificar cada bounded context por separado a recorrer flujos completos contra una base PostgreSQL real. El RESTful API tiene 70 pruebas que pasan con `./mvnw test`, la Web App 37 con `ng test` y la Mobile App 5 con `./gradlew testDebugUnitTest`.
+
+**RESTful API · pruebas unitarias y de integración (JUnit 5, Spring MockMvc y PostgreSQL embebido)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Backend, rama `feature/sprint-2-integration`.
+
+| Clase de prueba | Tipo | Comportamientos verificados |
+|---|---|---|
+| `MainFlowIntegrationTest` | Integración | Recorrido del productor de punta a punta: planes y cultivos públicos, `401` sin token, registro e inicio de sesión, finca, parcela con cultivo, registro e instalación del dispositivo, lote de lecturas del Edge con su clave, alerta generada, reconocimiento y acción correctiva. |
+| `AdvisorFlowIntegrationTest` | Integración | El asesor vinculado solo lee las fincas de su productor; el catálogo incluye los cultivos de exportación de la costa norte. |
+| `OsosenseBackendApplicationTests` | Integración | La aplicación inicia contra PostgreSQL embebido y aplica las migraciones de Flyway. |
+| `PlatformDatabaseUrlTest` | Unitaria | Lectura de la variable `DATABASE_URL` que inyecta Railway. |
+| `JwtTokenServiceKeyTest` | Unitaria | Secretos JWT en texto plano de cualquier longitud. |
+| `UserAccountTest`, `EmailAddressTest`, `AdvisoryLinkTest` | Unitaria | Dominio de Identity and Access Management (17 pruebas). |
+| `FarmTest`, `PlotTest`, `CropTest`, `DeviceTest`, `GeoCoordinatesTest` | Unitaria | Dominio de Farm Management (19 pruebas): coordenadas, cultivo asignado, instalación del dispositivo. |
+| `SoilReadingTest`, `CalibrationRecordTest` | Unitaria | Dominio de Soil Monitoring: lecturas fuera de rango o con fecha futura y factor de calibración. |
+| `SalinityAlertTest`, `NotificationPreferenceTest` | Unitaria | Dominio de Salinity Alerting: severidad por exceso sobre el umbral, reconocimiento y resolución, canal de notificación. |
+| `SubscriptionTest`, `SalinityTrendTest` | Unitaria | Ciclo de la suscripción y cálculo de la tendencia de salinidad. |
+
+**Web App · pruebas unitarias y de navegación (Vitest vía Angular CLI)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Web-Application, rama `fix/action-date-timezone`. Desde el Sprint 2 las pruebas se ejecutan contra el fake API, que responde el mismo contrato del RESTful API.
+
+| Archivo | Relación | Comportamientos verificados |
+|---|---|---|
+| `auth.service.spec.ts` | US09–US12 | Inicio de sesión, registro por rol, recuperación de contraseña y cierre de sesión contra el API. |
+| `monitoring.service.spec.ts` | US19–US24, US36, US37 | Fincas y parcelas del usuario, vinculación del sensor por código de activación (código en uso, parcela que ya tiene sensor), reconocimiento y acciones correctivas. |
+| `salinity-status.spec.ts` | US27 | Nivel de salinidad frente al umbral del cultivo. |
+| `locale.service.spec.ts` | US37 | Una fecha sin hora (`yyyy-MM-dd`) se muestra en el mismo día calendario, sin desplazarse por la zona horaria. |
+| `app.spec.ts` | US11, US39, US43 | Rutas y menú por rol, redirección al inicio de sesión. |
+
+**Mobile App · pruebas unitarias (JUnit en la JVM)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Mobile-Application, rama `feature/railway-api`. `RemoteSupportTest` verifica que la app calcula el nivel de salinidad con la misma regla que las alertas del Backend, la equivalencia de severidades, el formato de las fechas del API, la separación del nombre completo y el mapeo de las preferencias de notificación en ambos sentidos.
+
+**Pruebas de aceptación (BDD).** El escenario de `MainFlowIntegrationTest` automatiza los criterios de aceptación de US24 y US31 de la sección 3.1. Este es su archivo `.feature`:
+
+```gherkin
+Feature: US24 and US31 Link a sensor and raise a salinity alert
+  As a farmer
+  I want to link my sensor to a plot and be alerted when salinity exceeds my crop threshold
+  So that I can act before the harvest is affected
+
+  Scenario: Sensor linked by its activation code
+    Given a farmer with a plot of table grape
+    When the farmer registers the device with activation code "OSO-3H8D-5T2W"
+    And attaches it to the plot
+    Then the device status is "ACTIVE" and it belongs to the plot
+
+  Scenario: Reading above the crop threshold
+    Given the plot has an active device
+    When the Edge Service sends a batch with a compensated conductivity of 2.4 dS/m
+    And the request carries a valid "X-Edge-Api-Key"
+    Then the batch is synchronized
+    And an open salinity alert with severity "CRITICAL" exists for the plot
+
+  Scenario: Batch without the Edge key
+    When a batch is sent without the "X-Edge-Api-Key" header
+    Then the response status is 401
+```
+
+<!-- TODO(equipo): automatizar los .feature con Cucumber y sus Steps en Java en el Sprint 3. -->
+
+Commits relacionados con pruebas en el Sprint 2:
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Backend | develop | 9f06cec | test: update Analytics and Reporting domain tests to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | df035a4 | test: update Salinity Alerting domain tests to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 0d2bed8 | test: update Farm Management domain tests to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | f8ffa67 | test: update Subscription and Billing domain tests to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | develop | 66e1236 | test: update IAM domain tests to layered shared kernel packages | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | 9272ef7 | test(farm-management): cover farm and plot updates | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/web-app-support | 9226b05 | test(api-platform): cover advisor access and corrective actions | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-integration | b3e759b | test(api-platform): cover farmer journey from sign-up to alert | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/api-platform | 4109915 | test(api-platform): load context against embedded postgres | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/fake-api | c87ab95 | test(data): run service and route specs against the fake api | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/backend-api | 744d520 | test(repositorios): cubrir reglas de salinidad y formato de fechas | — | 30/09/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | fix/action-date-timezone | e242b8d | fix(i18n): show corrective action dates on their calendar day | — | 18/10/2026 |
+
+#### 6.2.2.6. Execution Evidence for Sprint Review
+
+Al cierre de esta revisión el productor y el asesor trabajan con datos del RESTful API. Las capturas de la Web App muestran un recorrido completo con el backend en ejecución local y cuentas de prueba: el productor registra su finca y sus parcelas, vincula el sensor con el código de activación, el Edge Service envía las lecturas, aparece la alerta y el productor registra la acción correctiva. La Mobile App se probó con el mismo flujo en el emulador Android (Pixel 7).
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-02-mis-parcelas.png" alt="Fincas y parcelas del productor en la Web App" width="800">
+<p><em>Figura 6.23. Fincas y parcelas del productor registradas en el RESTful API.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-03-vincular-sensor.png" alt="Formulario para vincular un sensor con su código de activación" width="800">
+<p><em>Figura 6.24. Vinculación del sensor con su código de activación (US24).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-04-sensor-vinculado.png" alt="Sensor vinculado a la parcela" width="800">
+<p><em>Figura 6.25. Sensor vinculado y conectado a la parcela.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-05-inicio-con-alerta.png" alt="Inicio del productor con una parcela sobre el umbral" width="800">
+<p><em>Figura 6.26. Inicio del productor después de la sincronización del Edge: Lote Norte al 160 % del umbral de la uva.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-06-estado-parcela.png" alt="Estado actual de la parcela con humedad y temperatura" width="800">
+<p><em>Figura 6.27. Estado actual de la parcela con la última lectura.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-08-alertas.png" alt="Bandeja de alertas con severidad vigilancia, advertencia y crítica" width="800">
+<p><em>Figura 6.28. Alertas generadas por el umbral del cultivo (US31).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-09-accion-correctiva.png" alt="Registro de una acción correctiva" width="800">
+<p><em>Figura 6.29. Registro de la acción correctiva de una alerta (US37).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-10-alerta-resuelta.png" alt="Alerta resuelta con su acción registrada" width="800">
+<p><em>Figura 6.30. Alerta resuelta con la acción registrada en el mismo día calendario.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-11-dispositivos.png" alt="Dispositivos del productor" width="800">
+<p><em>Figura 6.31. Dispositivos del productor y su estado de conexión.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-12-inicio-asesor.png" alt="Inicio del asesor con las parcelas de su cliente por prioridad" width="800">
+<p><em>Figura 6.32. Inicio del asesor vinculado: parcelas de su cliente ordenadas por prioridad (US13, US43).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/mobile-01-detalle-parcela.png" alt="Detalle de parcela en la Mobile App" width="260">
+<img src="../assets/sprint-2/mobile-02-alertas.png" alt="Alertas en la Mobile App" width="260">
+<img src="../assets/sprint-2/mobile-03-accion-correctiva.png" alt="Registro de acción correctiva en la Mobile App" width="260">
+<p><em>Figura 6.33. Mobile App: detalle de parcela, alertas y registro de la acción correctiva.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/mobile-04-preferencias-notificacion.png" alt="Preferencias de notificación en la Mobile App" width="260">
+<img src="../assets/sprint-2/mobile-05-perfil.png" alt="Perfil en la Mobile App" width="260">
+<p><em>Figura 6.34. Mobile App: preferencias de notificación (US38) y perfil con los datos de la sesión.</em></p>
+</div>
+
+<!-- TODO(equipo): grabar el video de navegación del Sprint 2 (Web App y Mobile App contra el API en Railway) y agregar aquí su enlace de Microsoft Stream. -->
+
+#### 6.2.2.7. Services Documentation Evidence for Sprint Review
+
+Desde el Sprint 2 la documentación OpenAPI se publica junto con el API desplegado:
+
+- **Swagger UI:** https://osoterra-backend-production.up.railway.app/swagger-ui.html, con una definición por bounded context en *Select a definition*.
+- **Especificación OpenAPI 3.1:** https://osoterra-backend-production.up.railway.app/v3/api-docs/all (52 operaciones) y `/v3/api-docs/{grupo}` para `iam`, `subscription-billing`, `farm-management`, `soil-monitoring`, `salinity-alerting` y `analytics-reporting`.
+
+Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT en la cabecera `Authorization`. La tabla resume los endpoints que se agregaron o cambiaron en el Sprint 2; los demás siguen igual.
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/farms/{id}` | Editar finca | PUT | `PUT /api/v1/farms/3` | Ruta: `id`; cuerpo: `name`, `department`, `province`, `district` | `200 OK` con la finca actualizada; `403` si no es del usuario. |
+| `/api/v1/plots/{id}` | Editar parcela | PUT | `PUT /api/v1/plots/7` | Ruta: `id`; cuerpo: `name`, `areaHectares`, `latitude`, `longitude` | `200 OK` con la parcela actualizada; `403` si no es del usuario. |
+| `/api/v1/farms` | Listar fincas de un productor vinculado | GET | `GET /api/v1/farms?ownerId=1` | Consulta: `ownerId`; token de un asesor con vínculo aceptado | `200 OK` con la lista de fincas; `403` sin vínculo. |
+| `/api/v1/devices` | Consultar el sensor de una parcela | GET | `GET /api/v1/devices?plotId=7` | Consulta: `plotId` | `200 OK` con la lista de dispositivos instalados en la parcela. |
+| `/api/v1/users/me/linked-accounts` | Listar cuentas vinculadas | GET | `GET /api/v1/users/me/linked-accounts` | Token del productor o del asesor | `200 OK` con las cuentas de la otra parte de cada vínculo aceptado. |
+| `/api/v1/salinity-alerts/{id}/corrective-actions` | Listar acciones de una alerta | GET | `GET /api/v1/salinity-alerts/21/corrective-actions` | Ruta: `id` | `200 OK` con `id`, `salinityAlertId`, `actionType`, `executedAt` y `notes` de cada acción. |
+| `/api/v1/soil-readings/batches` | Ingerir lote de lecturas | POST | `POST /api/v1/soil-readings/batches` | Cabecera `X-Edge-Api-Key`; cuerpo: `deviceId` y `readings` | `201 Created` con `status` (`SYNCHRONIZED`), `acceptedCount` y `discardedCount`; `401` sin la clave del Edge. |
+
+<div align="center">
+<img src="../assets/sprint-2/swagger-railway-iam.png" alt="Swagger UI en Railway: Identity and Access Management" width="800">
+<p><em>Figura 6.35. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/swagger-railway-farm-management.png" alt="Swagger UI en Railway: Farm Management" width="800">
+<p><em>Figura 6.36. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/swagger-railway-soil-monitoring.png" alt="Swagger UI en Railway: Soil Monitoring" width="800">
+<p><em>Figura 6.37. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/swagger-railway-salinity-alerting.png" alt="Swagger UI en Railway: Salinity Alerting" width="800">
+<p><em>Figura 6.38. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
+</div>
+
+Los endpoints nuevos provienen de los commits `10a4280` (edición de fincas y parcelas), `e6ce405` (fincas del productor vinculado), `31be0d9` (dispositivo de la parcela), `da50638` (cuentas vinculadas), `1ff8a80` (acciones de una alerta) y `1aa2349` (clave del Edge).
+
+#### 6.2.2.8. Software Deployment Evidence for Sprint Review
+
+En el Sprint 2 se desplegó el RESTful API, el primer producto que corre en un proveedor cloud. Se creó una cuenta en Railway vinculada a la organización OsoTerra-IoT de GitHub.
+
+1. **Proyecto en Railway.** Se creó el proyecto con el servicio del repositorio `OsoTerra---Backend` y una base PostgreSQL gestionada en el entorno `production`.
+2. **Ajustes para la plataforma.** La rama `fix/railway-deploy` adaptó el API a Railway: arranque de Flyway con Spring Boot 4 (`68d003c`), puerto y variables de PostgreSQL de Railway (`e89ffe4`), compilación con Java 17 (`6076ecb`), lectura de `DATABASE_URL` (`b494100`), CORS para las aplicaciones (`cf1dd24`) y secretos JWT de cualquier longitud (`14216d2`).
+3. **Integración del contrato de las aplicaciones.** La rama `feature/sprint-2-integration` unió esos ajustes con los endpoints que usan la Web App y la Mobile App. Railway la desplegó al recibir el push en la rama configurada.
+4. **Verificación.** Swagger UI responde `200`, el catálogo público devuelve 14 cultivos, `GET /users/me` sin token devuelve `401` en JSON y el origen de la Web App en Vercel pasa el control de CORS.
+
+| Despliegue | Commit | Fecha | Estado |
+|---|---|---|---|
+| exquisite-serenity / production | `5a30a2c` | 05/10/2026 | Fallido: primer intento desde `develop`, antes de los ajustes para Railway |
+| exquisite-serenity / production | `6076ecb` | 05/10/2026 | Reemplazado: compilación con Java 17 |
+| exquisite-serenity / production | `cf1dd24` | 05/10/2026 | Reemplazado: CORS para las aplicaciones |
+| exquisite-serenity / production | `14216d2` | 05/10/2026 | Reemplazado: secreto JWT de Railway |
+| exquisite-serenity / production | `1c76580` | 16/10/2026 | Activo: contrato del Sprint 2 (52 operaciones) |
+
+*Despliegues registrados por Railway en la pestaña Deployments del repositorio del Backend, consultados con la API de GitHub el 18/10/2026.*
+
+<div align="center">
+<img src="../assets/sprint-2/railway-api-crops.png" alt="Respuesta del endpoint público de cultivos en Railway" width="800">
+<p><em>Figura 6.39. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
+</div>
+
+La Web App se publica en GitHub Pages desde `develop` (Figura 6.40) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-github-pages.png" alt="Web App publicada en GitHub Pages" width="800">
+<p><em>Figura 6.40. Web App publicada en GitHub Pages.</em></p>
+</div>
+
+<!-- TODO(equipo): publicar el APK de la Mobile App en Firebase App Distribution y agregar aquí la captura. El Edge Service y la Embedded Application todavía no tienen repositorio. -->
+
+#### 6.2.2.9. Team Collaboration Insights during Sprint
+
+Las capturas muestran la actividad de los repositorios de producto durante el Sprint 2.
+
+<div align="center">
+<img src="../assets/sprint-2/commits-backend.png" alt="Commits del RESTful API en la rama del Sprint 2" width="800">
+<p><em>Figura 6.41. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/network-backend.png" alt="Network graph del RESTful API" width="800">
+<p><em>Figura 6.42. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/commits-webapp.png" alt="Commits de la Web App en la rama del Sprint 2" width="800">
+<p><em>Figura 6.43. Commits de la Web App en las ramas del Sprint 2.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/network-webapp.png" alt="Network graph de la Web App" width="800">
+<p><em>Figura 6.44. Network graph de la Web App.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/commits-mobile.png" alt="Commits de la Mobile App en la rama del Sprint 2" width="800">
+<p><em>Figura 6.45. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/contributors-backend.png" alt="Contributors del RESTful API" width="800">
+<p><em>Figura 6.46. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
+</div>
+
+| Integrante | Landing Page | Web App | RESTful API | Mobile App |
+|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel (krxxg04) | | | 50 | |
+| Encalada Salazar, Alexis (Alexiz248) | | | | |
+| Goñe Araccata, Esther Abigail (abigoe02) | | | | |
+| Ortiz Alarcon, Victor Nicolas (Nico1234556) | | | | |
+| Salazar Caballero, Alvaro Fabrizzio (DymianUPC) | | | | |
+| Santiago Peña, Andreow Jomark (andrew65411) | 1 | 10 | 26 | 13 |
+| Tumi Oliden, Manuel Ignacio (ManuelTumi2224) | | | | |
+
+*Número de commits sin contar merges, por repositorio, del 29 de septiembre al 18 de octubre de 2026.*
+
+**Interpretación del equipo.** Al 18 de octubre el Sprint 2 se apoya en dos integrantes: Iker reorganizó el shared kernel del RESTful API en todos los bounded contexts y Andreow integró las aplicaciones con el API y lo desplegó en Railway. El acuerdo de la retrospectiva del Sprint 1, que cada colaborador de la matriz tome tareas propias en cada repositorio, todavía no se refleja en los commits, y las ramas del sprint aún no pasan por pull request a `develop`. Para cerrar el sprint, el equipo reparte las tareas pendientes del aspecto de cada colaborador (sección 6.2.2.2), revisa por pull request las ramas `feature/sprint-2-integration`, `feature/railway-api` y `fix/action-date-timezone` antes de integrarlas en `develop`, y actualiza esta tabla con los commits de todos los integrantes.
 
 ## 6.3. Validation Interviews
 
