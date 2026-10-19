@@ -117,6 +117,10 @@
 | 0.0.111 | 07/10/2026 | Andreow Jomark Santiago Peña | Anexos: enlace del video de exposición del TB1 en el Anexo C. Carátula: fecha actualizada a octubre de 2026. |
 | 0.0.112 | 16/10/2026 | Andreow Jomark Santiago Peña | Corrección por feedback del TB1: enlaces de la tabla de contenidos, del README y de las Conclusiones con URL completa de GitHub, para que no se rompan al convertir el Markdown. |
 | 0.0.113 | 16/10/2026 | Andreow Jomark Santiago Peña | Corrección por feedback del TB1: carátula rehecha según el modelo del aula virtual (Modelo de carátula 202620): Equipo y Proyecto, docente León Baca, Marco Antonio, logo del modelo y Período 202620. |
+| 0.0.114 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.1.4 actualizada con el despliegue del RESTful API en Railway (servicios, variables, Flyway y registro de despliegues en GitHub) y la publicación de la Web App en Vercel con la configuración que apunta al API desplegado. |
+| 0.0.115 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2 Sprint 2 (Sprint Planning, Aspect Leaders, Sprint Backlog de 60 Story Points, commits del 29/09 al 18/10, pruebas del Backend, la Web App y la Mobile App con su archivo .feature, capturas de ejecución, endpoints nuevos con Swagger UI en Railway, evidencia de despliegue y Collaboration Insights) y tabla de contenidos actualizada. |
+| 0.0.116 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.3.1 Diseño de Entrevistas de validación, con la estructura de la sesión y las tareas del Landing Page, la Web App y la Mobile App por segmento, vinculadas a los user flows de la sección 5.4.3. |
+| 0.0.117 | 18/10/2026 | Andreow Jomark Santiago Peña | Registro de Versiones y Project Report Collaboration Insights actualizados para el AV2: actividades, integraciones de ramas, commits por integrante en el informe y los productos, interpretación del equipo y gráfico de Contributors. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
@@ -286,4 +290,42 @@ El gráfico de Contributors (Figura 4) acumula los commits a `develop` de los ú
 <img src="assets/collaboration-insights/Network1-WebApp-TB1.png" alt="GitHub Insights - Network graph de la Web App TB1" width="700">
 <img src="assets/collaboration-insights/Network1-Back-TB1.png" alt="GitHub Insights - Network graph del RESTful API TB1" width="700">
 <p><em>Figura 7. Network graph de los repositorios de producto en el Sprint 1, de arriba abajo: Landing Page, Web App (con la rama <code>feature/fake-api</code> en curso) y RESTful API.</em></p>
+</div>
+
+## Actividades de elaboración del informe — AV2
+
+Para el AV2 el informe corrigió las dos observaciones del TB1 y agregó el Sprint 2 y el diseño de las entrevistas de validación. Se mantuvo el esquema de ramas del TB1: cada sección nueva se desarrolla en una sub-rama que se integra con `--no-ff` en la rama de su capítulo.
+
+- **Correcciones del TB1:** `feature/full-link-paths` reemplazó los enlaces relativos de la tabla de contenidos, el README y las Conclusiones por URL completas de GitHub, y `feature/cover-template` rehízo la carátula con el modelo del aula virtual. Ambas se integraron en `develop` el 16/10/2026, junto con `release/0.2.0`.
+- **Contenido nuevo:** `feature/sprint-2-review` (secciones 6.1.4 y 6.2.2) y `feature/validation-interviews-design` (sección 6.3.1), integradas en `feature/chapter-6`; esta rama, `feature/av2-report-update`, actualiza el Registro de Versiones y estos analíticos.
+
+## Integraciones — AV2
+
+| Rama | Integrada en | Autor de la integración | Fecha |
+|---|---|---|---|
+| `feature/full-link-paths` | `develop` | Santiago Peña, Andreow Jomark | 16/10/2026 |
+| `release/0.2.0` | `develop` | Santiago Peña, Andreow Jomark | 16/10/2026 |
+| `feature/cover-template` | `develop` | Santiago Peña, Andreow Jomark | 16/10/2026 |
+| `feature/sprint-2-review` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 18/10/2026 |
+| `feature/validation-interviews-design` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 18/10/2026 |
+
+## Analíticos de colaboración — AV2
+
+Del 8 al 18 de octubre de 2026 el repositorio del informe registra 5 commits sin contar merges, con 711 líneas añadidas y 214 eliminadas en los archivos Markdown. La tabla incluye también los commits de cada integrante en los repositorios de producto durante el Sprint 2 (sección 6.2.2.9).
+
+| Integrante | Usuario de GitHub | Informe (AV2) | Landing Page | Web App | RESTful API | Mobile App |
+|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | — | — | — | 50 | — |
+| Encalada Salazar, Alexis | Alexiz248 | — | — | — | — | — |
+| Goñe Araccata, Esther Abigail | abigoe02 | — | — | — | — | — |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | — | — | — | — | — |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | — | — | — | — | — |
+| Santiago Peña, Andreow Jomark | andrew65411 | 5 | 1 | 10 | 26 | 13 |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | — | — | — | — | — |
+
+**Interpretación del equipo.** Al 18 de octubre el avance del AV2 lo concentran dos integrantes, igual que en el TB1: Santiago Peña en el informe y la integración de las aplicaciones, y Barturen Panez en el RESTful API. El gráfico de Contributors (Figura 8) acumula los últimos tres meses y muestra que la semana del 14 de septiembre, cierre del AV1, sigue siendo la de mayor actividad, mientras que desde octubre los commits bajan y vienen de una sola cuenta. Para el cierre del AV2 cada integrante redacta en su propia sub-rama el registro de las entrevistas de validación de su segmento (6.3.2), la evaluación heurística (6.3.3), el video About-the-Product (6.4) y su testimonio para el video About-the-Team, y otro integrante revisa cada pull request antes de integrarlo.
+
+<div align="center">
+<img src="assets/collaboration-insights/Git-Contributors-AV2.png" alt="GitHub Insights - Contributors AV2" width="700">
+<p><em>Figura 8. Commits por integrante a develop en los últimos tres meses, al 18/10/2026 (GitHub Insights &gt; Contributors).</em></p>
 </div>
