@@ -121,6 +121,7 @@
 | 0.0.115 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2 Sprint 2 (Sprint Planning, Aspect Leaders, Sprint Backlog de 60 Story Points, commits del 29/09 al 18/10, pruebas del Backend, la Web App y la Mobile App con su archivo .feature, capturas de ejecución, endpoints nuevos con Swagger UI en Railway, evidencia de despliegue y Collaboration Insights) y tabla de contenidos actualizada. |
 | 0.0.116 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.3.1 Diseño de Entrevistas de validación, con la estructura de la sesión y las tareas del Landing Page, la Web App y la Mobile App por segmento, vinculadas a los user flows de la sección 5.4.3. |
 | 0.0.117 | 18/10/2026 | Andreow Jomark Santiago Peña | Registro de Versiones y Project Report Collaboration Insights actualizados para el AV2: actividades, integraciones de ramas, commits por integrante en el informe y los productos, interpretación del equipo y gráfico de Contributors. |
+| 0.0.118 | 22/10/2026 | Andreow Jomark Santiago Peña | Carátula: Período 202620 ubicado a la misma altura que en el modelo de carátula 202620. README.md: nombre completo del docente (León Baca, Marco Antonio). |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
