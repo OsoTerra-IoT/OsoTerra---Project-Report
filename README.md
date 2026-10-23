@@ -1,7 +1,7 @@
 # Informe de Trabajo Final — Oso Terra (OsoSense)
 
 Universidad Peruana de Ciencias Aplicadas · Carrera de Ingeniería de Software · Ciclo 202620
-Curso 1ASI0572 Desarrollo de Soluciones IoT · NRC 8735 · Docente: Marco Antonio
+Curso 1ASI0572 Desarrollo de Soluciones IoT · NRC 8735 · Docente: León Baca, Marco Antonio
 
 **Startup:** Oso Terra · **Producto:** OsoSense
 
