@@ -1370,6 +1370,6 @@ El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene 
 4. **Pulsación corta:** toma y envía una lectura en el momento, útil durante la instalación.
 5. **Pulsación de 3 s:** parpadeo azul de emparejamiento con la app.
 
-Los archivos del circuito (`diagram.json`, `sketch.ino` y `libraries.txt`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden importar en Wokwi para ejecutar la simulación.
+Los archivos del circuito (`diagram.json` y `libraries.txt`) y la primera versión del firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden importar en Wokwi para ejecutar la simulación.
 
 Diseño físico en Figma: [IoT · Dispositivo](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4).
