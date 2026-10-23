@@ -125,7 +125,7 @@
 | 0.0.119 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: PlatformIO y pytest en 6.1.1, repositorios del Edge Service y de la Embedded Application en 6.1.2 y pasos de compilación con PlatformIO en 6.1.4. Capítulo V: firmware v1 en los archivos de Wokwi de la sección 5.6. |
 | 0.0.120 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2 actualizada con la primera versión del Edge Service y de la Embedded Application (matriz de liderazgo, tareas T50 a T52, commits, pruebas pytest, recorrido del dispositivo al RESTful API con las Figuras 6.35 a 6.38, endpoints del Edge y repositorios publicados), las pruebas de aceptación automatizadas con Cucumber y las contribuciones al 22 de octubre; figuras siguientes renumeradas. |
 | 0.0.121 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2 con la calibración de humedad y la conexión Wi-Fi de la placa real de la Embedded Application (commits y contribuciones). |
-| 0.0.122 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.6 con el circuito de Wokwi rehecho con las piezas compradas (ESP32 DevKit V1, protoboard, sensores de humedad y TDS como *custom chips*, DS18B20, LED RGB, pulsador y cadena de energía solar), imagen nueva y archivos de la simulación. |
+| 0.0.122 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.6 con el circuito de Wokwi rehecho con las piezas compradas (ESP32 DevKit V1, protoboard de 830 puntos, sensores de humedad v2.0 y TDS Meter V1.0, DS18B20, LED RGB, pulsador de dos patas, TP4056, batería 18650 y panel solar como *custom chips* donde Wokwi no los trae), imagen nueva y archivos de la simulación. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 

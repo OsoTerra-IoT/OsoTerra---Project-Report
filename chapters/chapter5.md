@@ -1346,21 +1346,21 @@ El diagrama de bloques muestra los tres caminos del dispositivo: la **energía**
 
 **Diseño del circuito**
 
-El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo físico, sobre una protoboard de 30 columnas: ESP32 DevKit V1 (WROOM-32), sensor capacitivo de humedad v1.2, módulo TDS con sonda BNC para la conductividad (medida en el extracto suelo:agua 1:2), sonda DS18B20 sumergible con su resistencia de 4,7 kΩ, LED RGB de cátodo común con tres resistencias de 220 Ω, pulsador y la cadena de energía (panel solar de 6 V, cargador TP4056 con protección, batería 18650 y regulador HT7333). Wokwi no trae esos sensores ni las piezas de energía, así que se crearon como *custom chips*. Los dos sensores analógicos entregan la misma curva de voltaje que el módulo real y se ajustan con un control deslizante durante la simulación. Las piezas de energía solo se dibujan, porque Wokwi siempre alimenta la placa con 3,3 V.
+El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo físico, sobre una protoboard de 830 puntos: ESP32 DevKit V1 (WROOM-32), sensor capacitivo de humedad v2.0, TDS Meter V1.0 con su sonda para la conductividad (medida en el extracto suelo:agua 1:2), sonda DS18B20 sumergible con su resistencia de 4,7 kΩ, LED RGB de cátodo común con tres resistencias de 220 Ω, pulsador de dos patas y la cadena de energía (panel solar de 6 V de 100 × 60 mm, cargador TP4056 con protección y batería 18650 en su porta-batería). Wokwi no trae esos sensores, el pulsador de dos patas ni las piezas de energía, así que se crearon como *custom chips*. Los dos sensores analógicos entregan la misma curva de voltaje que el módulo real y el pulsador cierra su pin a GND; los tres se manejan con un control deslizante durante la simulación. Las piezas de energía solo se dibujan, porque Wokwi siempre alimenta la placa. Cada cable une dos puntos: las conexiones compartidas se hacen en las filas y los rieles de la protoboard.
 
 <div align="center">
-<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32 DevKit V1, protoboard, sensores de humedad y TDS, DS18B20, LED RGB, pulsador y cadena de energía solar" width="800">
+<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32 DevKit V1, protoboard de 830 puntos, sensores de humedad y TDS, DS18B20, LED RGB, pulsador de dos patas, TP4056, batería 18650 y panel solar" width="800">
 <p><em>Figura 5.113. Circuito del dispositivo en Wokwi.</em></p>
 </div>
 
 | Elemento | Pin del ESP32 | Conexión |
 |---|---|---|
-| Módulo TDS / CE con sonda BNC | GPIO 34 (ADC) | Salida analógica 0–2,3 V; 3,3 V equivale a 3,2 dS/m |
-| Sensor capacitivo de humedad v1.2 | GPIO 35 (ADC) | Salida inversa: 2,58 V en seco y 1,05 V en agua |
+| TDS Meter V1.0 con su sonda | GPIO 34 (ADC) | Salida analógica 0–2,3 V; 3,3 V equivale a 3,2 dS/m |
+| Sensor capacitivo de humedad v2.0 | GPIO 35 (ADC) | Salida inversa: 2,58 V en seco y 1,05 V en agua |
 | Sonda DS18B20 sumergible | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
 | LED RGB de cátodo común | GPIO 25, 26 y 27 | Una resistencia de 220 Ω por color |
-| Botón | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
-| Alimentación | Rieles 3V3 y GND de la protoboard | Panel solar de 6 V → TP4056 con batería 18650 → HT7333 de 3,3 V |
+| Pulsador de dos patas | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
+| Alimentación | VIN y GND; 3V3 a los rieles | Panel solar de 6 V → TP4056 con protección, que carga la batería 18650 → OUT+ y OUT− a VIN y GND; el regulador de la placa entrega 3,3 V a los rieles |
 
 **Flujos de interacción que cubre el prototipo**
 
