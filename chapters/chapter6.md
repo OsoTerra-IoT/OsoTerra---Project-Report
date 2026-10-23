@@ -754,6 +754,9 @@ La tabla reúne los commits de implementación de cada repositorio entre el 29 d
 | OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | b9a179c | feat(iam): register gateway devices and authenticate api keys | — | 22/10/2026 |
 | OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | 25319bc | chore(setup): add project configuration and sqlite database | — | 22/10/2026 |
 | OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | 6b08c51 | chore(repo): initialize edge service repository | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/real-board-calibration | ea10948 | docs(readme): explain real board wifi and moisture calibration | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/real-board-calibration | 6afe489 | feat(sensors): calibrate moisture between dry and wet readings | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/real-board-calibration | e677d12 | fix(wifi): scan every channel to join real routers | — | 22/10/2026 |
 | OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 69939f3 | docs(readme): describe circuit, design and behavior | — | 22/10/2026 |
 | OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | aa777ff | feat(device): add sampling cycle, button events and pairing | — | 22/10/2026 |
 | OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 2bcc103 | feat(edge-client): send readings to the edge service | — | 22/10/2026 |
@@ -1042,7 +1045,7 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 <p><em>Figura 6.38. Alertas generadas por las lecturas del Edge Service: crítica, vigilancia y advertencia.</em></p>
 </div>
 
-La Embedded Application usa el circuito de la sección 5.6: potenciómetros en GPIO 34 y 35 para la conductividad y la humedad (Wokwi no tiene esos sensores), DS18B20 en GPIO 4, LED RGB en GPIO 25, 26 y 27, y botón en GPIO 14. Sigue el estilo ModestIoT del curso: los sensores avisan al dispositivo con eventos y el dispositivo da órdenes al LED con comandos. Con la conductividad compensada que devuelve el Edge, el LED muestra el nivel con las mismas severidades que las alertas del API: verde por debajo del umbral, ámbar hasta 1,2 veces, naranja hasta 1,5 veces y rojo desde 1,5 veces. Una pulsación corta toma una lectura inmediata y una de tres segundos activa el emparejamiento. El firmware se compila con PlatformIO y se simula con `diagram.json` y `wokwi.toml` del repositorio.
+La Embedded Application usa el circuito de la sección 5.6: potenciómetros en GPIO 34 y 35 para la conductividad y la humedad (Wokwi no tiene esos sensores), DS18B20 en GPIO 4, LED RGB en GPIO 25, 26 y 27, y botón en GPIO 14. Sigue el estilo ModestIoT del curso: los sensores avisan al dispositivo con eventos y el dispositivo da órdenes al LED con comandos. Con la conductividad compensada que devuelve el Edge, el LED muestra el nivel con las mismas severidades que las alertas del API: verde por debajo del umbral, ámbar hasta 1,2 veces, naranja hasta 1,5 veces y rojo desde 1,5 veces. Una pulsación corta toma una lectura inmediata y una de tres segundos activa el emparejamiento. Para la placa real, la humedad se calibra con las lecturas del sensor capacitivo en aire seco y en agua (`MOISTURE_RAW_DRY` y `MOISTURE_RAW_WET`), y el Wi-Fi busca en todos los canales para conectarse a cualquier router de 2,4 GHz. El firmware se compila con PlatformIO y se simula con `diagram.json` y `wokwi.toml` del repositorio.
 
 <!-- TODO(equipo): grabar el video de navegación del Sprint 2 (Web App y Mobile App contra el API en Railway) y agregar aquí su enlace de Microsoft Stream. -->
 
@@ -1175,7 +1178,7 @@ Las capturas muestran la actividad de los repositorios de producto durante el Sp
 | Goñe Araccata, Esther Abigail (abigoe02) | | | | | | |
 | Ortiz Alarcon, Victor Nicolas (Nico1234556) | | | | | | |
 | Salazar Caballero, Alvaro Fabrizzio (DymianUPC) | | | | | | |
-| Santiago Peña, Andreow Jomark (andrew65411) | 1 | 10 | 28 | 13 | 8 | 8 |
+| Santiago Peña, Andreow Jomark (andrew65411) | 1 | 10 | 28 | 13 | 8 | 11 |
 | Tumi Oliden, Manuel Ignacio (ManuelTumi2224) | | | | | | |
 
 *Número de commits sin contar merges, por repositorio, del 29 de septiembre al 22 de octubre de 2026.*
