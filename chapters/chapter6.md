@@ -32,7 +32,7 @@ El equipo usa solo las herramientas indicadas en el enunciado. La tabla agrupa c
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
 | Git | Control de versiones local. | https://git-scm.com/downloads |
-| Visual Studio Code | Edición del Landing Page, del informe en Markdown y del Edge Service. | https://code.visualstudio.com/download |
+| Visual Studio Code | Edición del Landing Page, del informe en Markdown, del Edge Service y de la Embedded Application. | https://code.visualstudio.com/download |
 | WebStorm | Desarrollo de la Web App en Angular y TypeScript. | https://www.jetbrains.com/webstorm/download |
 | IntelliJ IDEA | Desarrollo del RESTful API con Java y Spring Boot. | https://www.jetbrains.com/idea/download |
 | Android Studio | Desarrollo de la Mobile App con Kotlin y Jetpack Compose. | https://developer.android.com/studio |
@@ -40,7 +40,7 @@ El equipo usa solo las herramientas indicadas en el enunciado. La tabla agrupa c
 | JDK 25 y Maven | Compilación y ejecución del RESTful API. | https://adoptium.net · https://maven.apache.org/download.cgi |
 | PostgreSQL | Base de datos del RESTful API en el entorno local. | https://www.postgresql.org/download |
 | Python 3 con Flask, Peewee y SQLite | Edge Service (desde el Sprint 2). | https://www.python.org/downloads |
-| Arduino IDE (núcleo ESP32) | Compilación y carga de la Embedded Application en el ESP32 (desde el Sprint 2). | https://www.arduino.cc/en/software |
+| PlatformIO (extensión de VS Code, plataforma `espressif32` y framework Arduino) | Compilación y carga de la Embedded Application en el ESP32 (desde el Sprint 2). | https://platformio.org/install/ide?install=vscode |
 
 **Software Testing**
 
@@ -49,6 +49,7 @@ El equipo usa solo las herramientas indicadas en el enunciado. La tabla agrupa c
 | Vitest (vía Angular CLI) | Pruebas unitarias y de navegación de la Web App (`ng test`). | https://vitest.dev |
 | JUnit 5 y Spring Boot Test | Pruebas unitarias y de integración del RESTful API. | https://junit.org/junit5 |
 | Postman | Pruebas manuales de los endpoints del RESTful API. | https://www.postman.com/downloads |
+| pytest | Pruebas unitarias y de los endpoints del Edge Service. | https://docs.pytest.org |
 | Wokwi | Simulación del firmware antes de cargarlo en el dispositivo. | https://wokwi.com |
 
 **Software Deployment**
@@ -69,7 +70,7 @@ El equipo usa solo las herramientas indicadas en el enunciado. La tabla agrupa c
 
 ### 6.1.2. Source Code Management
 
-El código de cada producto vive en su propio repositorio de GitHub, dentro de la organización OsoTerra-IoT. Los repositorios del Edge Service y de la Embedded Application se crean en el Sprint 2, cuando empieza su implementación.
+El código de cada producto vive en su propio repositorio de GitHub, dentro de la organización OsoTerra-IoT. Los repositorios del Edge Service y de la Embedded Application se crearon en el Sprint 2, con su primera versión.
 
 | Producto | Repositorio | Contenido |
 |---|---|---|
@@ -77,6 +78,8 @@ El código de cada producto vive en su propio repositorio de GitHub, dentro de l
 | Web Services (RESTful API) | https://github.com/OsoTerra-IoT/OsoTerra---Backend | Proyecto Spring Boot con sus pruebas unitarias y de integración en `src/test`. |
 | Frontend Web Application | https://github.com/OsoTerra-IoT/OsoTerra---Web-Application | Proyecto Angular con sus pruebas (`*.spec.ts`) y el flujo de despliegue en `.github/workflows`. |
 | Mobile Application | https://github.com/OsoTerra-IoT/OsoTerra---Mobile-Application | Proyecto Android en Kotlin y Jetpack Compose. |
+| Edge Service | https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service | Servicio Python con Flask, Peewee y SQLite, con sus pruebas en `tests`. |
+| Embedded Application | https://github.com/OsoTerra-IoT/OsoTerra---Embedded-Application | Proyecto PlatformIO para el ESP32 en C++ (framework Arduino), con el circuito de Wokwi (`diagram.json` y `wokwi.toml`). |
 | Informe del proyecto | https://github.com/OsoTerra-IoT/OsoTerra---Project-Report | Capítulos en Markdown, imágenes y archivos fuente de los diagramas (Structurizr DSL y Wokwi). |
 
 **GitFlow.** Todos los repositorios siguen el modelo *A successful Git branching model* de Vincent Driessen:
@@ -162,7 +165,7 @@ Cada producto se construye y publica a partir de su repositorio. Al TB1 estaban 
 **Edge Service y Embedded Application** — Sprint 2
 
 1. El Edge Service se instala en el gateway de la parcela con Python 3, sus dependencias (`flask`, `peewee`) y la base SQLite, y se inicia como servicio del sistema.
-2. La Embedded Application se compila en Arduino IDE con el núcleo ESP32 y se carga por USB; antes se valida en la simulación de Wokwi (`assets/iot-device/wokwi`).
+2. La Embedded Application se compila con PlatformIO (`pio run`) y se carga por USB en el ESP32 (`pio run -t upload`); antes se valida en la simulación de Wokwi con la extensión de VS Code, que usa el `wokwi.toml` y el `diagram.json` del repositorio. Los mismos archivos están en `assets/iot-device/wokwi` del informe.
 
 El Deployment Diagram de la sección 4.1.3.4 muestra cómo se distribuyen estos contenedores entre la parcela, los dispositivos del usuario y el proveedor cloud.
 
@@ -1047,7 +1050,7 @@ La Web App se publica en GitHub Pages desde `develop` (Figura 6.40) y en Vercel;
 <p><em>Figura 6.40. Web App publicada en GitHub Pages.</em></p>
 </div>
 
-<!-- TODO(equipo): publicar el APK de la Mobile App en Firebase App Distribution y agregar aquí la captura. El Edge Service y la Embedded Application todavía no tienen repositorio. -->
+<!-- TODO(equipo): publicar el APK de la Mobile App en Firebase App Distribution y agregar aquí la captura. -->
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
 
