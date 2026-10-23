@@ -394,7 +394,7 @@ Feature: TS01 Authentication endpoints
     And the body contains an error message without internal details
 ```
 
-<!-- TODO(equipo): automatizar los .feature con Cucumber y sus Steps en Java en el Sprint 2 y agregar aquí los commits. -->
+En el Sprint 2 este archivo se automatizó con Cucumber (sección 6.2.2.5).
 
 Commits relacionados con pruebas en el Sprint 1:
 
@@ -660,7 +660,7 @@ El trabajo del Sprint 1 se organizó por producto, con un líder por repositorio
 
 #### 6.2.2.1. Sprint Planning 2
 
-En el Sprint 2 el equipo conectó los productos con el RESTful API real. El API se desplegó en Railway con PostgreSQL, la Web App y la Mobile App dejaron de usar datos de demostración para consumirlo, y se completaron los flujos de gestión de fincas y parcelas, vinculación de sensores, ingesta de lecturas desde el Edge Service, alertas por umbral y acciones correctivas. El sprint empezó el 5 de octubre de 2026, después de la entrega del TB1, y cierra con el AV2 en la semana 12; la evidencia de esta sección corresponde al avance al 18 de octubre de 2026.
+En el Sprint 2 el equipo conectó los productos con el RESTful API real. El API se desplegó en Railway con PostgreSQL, la Web App y la Mobile App dejaron de usar datos de demostración para consumirlo, y se completaron los flujos de gestión de fincas y parcelas, vinculación de sensores, ingesta de lecturas desde el Edge Service, alertas por umbral y acciones correctivas. El sprint empezó el 5 de octubre de 2026, después de la entrega del TB1, y cierra con el AV2 en la semana 12; la evidencia de esta sección corresponde al avance al 18 de octubre de 2026, y al 22 de octubre para la primera versión del Edge Service y de la Embedded Application y para las pruebas de aceptación automatizadas.
 
 El Sprint Planning tomó como base el Product Backlog de la sección 3.3, a partir de la primera User Story que no entró en el Sprint 1, y las conclusiones de la revisión y la retrospectiva del Sprint 1.
 
@@ -681,17 +681,17 @@ El Sprint Planning tomó como base el Product Backlog de la sección 3.3, a part
 
 #### 6.2.2.2. Aspect Leaders and Collaborators
 
-En el Sprint 2 los aspectos pasan de las vistas de cada rol a las capas que integran la solución: el RESTful API con sus seis bounded contexts, la integración de la Web App con el API, la Mobile App, el despliegue en la nube y el Landing Page, que solo actualiza sus enlaces a la Web App.
+En el Sprint 2 los aspectos pasan de las vistas de cada rol a las capas que integran la solución: el RESTful API con sus seis bounded contexts, la integración de la Web App con el API, la Mobile App, el despliegue en la nube, la primera versión del Edge Service y de la Embedded Application, y el Landing Page, que solo actualiza sus enlaces a la Web App.
 
-| Team Member (Last Name, First Name) | GitHub Username | Web Services · Bounded Contexts | Web App · Integración con el API | Mobile App | Despliegue cloud | Landing Page |
-|---|---|---|---|---|---|---|
-| Barturen Panez, Iker Gabriel | krxxg04 | L | | | C | |
-| Encalada Salazar, Alexis | Alexiz248 | C | C | C | | |
-| Goñe Araccata, Esther Abigail | abigoe02 | | | | | L |
-| Ortiz Alarcon, Victor Nicolas | Nico1234556 | C | C | | | |
-| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | | C | | | C |
-| Santiago Peña, Andreow Jomark | andrew65411 | C | L | C | L | C |
-| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | | | L | | |
+| Team Member (Last Name, First Name) | GitHub Username | Web Services · Bounded Contexts | Web App · Integración con el API | Mobile App | Despliegue cloud | Edge Service · Embedded App | Landing Page |
+|---|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | L | | | C | | |
+| Encalada Salazar, Alexis | Alexiz248 | C | C | C | | | |
+| Goñe Araccata, Esther Abigail | abigoe02 | | | | | | L |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | C | C | | | | |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | | C | | | | C |
+| Santiago Peña, Andreow Jomark | andrew65411 | C | L | C | L | L | C |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | | | L | | | |
 
 L: líder del aspecto. C: colaborador.
 
@@ -731,18 +731,37 @@ El tablero del sprint está en el mismo tablero público de Trello del Sprint 1:
   <tr><td>—</td><td>Tarea técnica</td><td>T47</td><td>Rediseño de la Mobile App</td><td>Aplicar la guía de estilo al arranque, inicio de sesión, inicio, alertas, detalle y perfil.</td><td>6</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
   <tr><td>—</td><td>Tarea técnica</td><td>T48</td><td>Enlaces del Landing Page</td><td>Llevar los botones de planes e inicio de sesión a la Web App publicada en Vercel.</td><td>1</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
   <tr><td>—</td><td>Tarea técnica</td><td>T49</td><td>Integrar ramas en develop</td><td>Revisar por pull request e integrar en <code>develop</code> las ramas del Sprint 2 de cada repositorio.</td><td>3</td><td>Barturen Panez, Iker Gabriel</td><td>To-Review</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T50</td><td>Edge Service v1</td><td>Recibir lecturas del dispositivo, validarlas (TS09), compensar la conductividad a 25 °C (TS08), guardarlas en SQLite y sincronizarlas por lotes con el RESTful API, también después de una caída de conexión.</td><td>8</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T51</td><td>Embedded Application v1</td><td>Firmware del ESP32 con ModestIoT: lectura de conductividad, humedad y temperatura, envío al Edge Service y nivel de salinidad en el LED RGB.</td><td>8</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T52</td><td>Pruebas de aceptación con Cucumber</td><td>Automatizar los archivos <code>.feature</code> de TS01, US24 y US31 con Cucumber y Steps en Java.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
 </table>
 
-La suma de Story Points del sprint es 60: TS02 (5), US19 (3), US20 (5), US22 (3), US21 (5), US23 (3), TS06 (5), US24 (5), TS03 (5), US31 (8), US36 (2), US13 (5), US38 (3) y TS04 (3).
+La suma de Story Points del sprint es 60: TS02 (5), US19 (3), US20 (5), US22 (3), US21 (5), US23 (3), TS06 (5), US24 (5), TS03 (5), US31 (8), US36 (2), US13 (5), US38 (3) y TS04 (3). Las tareas técnicas T50 a T52 no suman Story Points: entregan la primera versión del Edge Service y de la Embedded Application que pide esta entrega y automatizan las pruebas de aceptación.
 
 #### 6.2.2.4. Development Evidence for Sprint Review
 
-En el Sprint 2 el RESTful API reorganizó su shared kernel por capas y agregó los endpoints que necesitaban las aplicaciones; la Web App reemplazó el servicio de demostración por clientes tipados del API; la Mobile App pasó a consumir el API con repositorios remotos y se rediseñó con la guía de estilo; y el Landing Page actualizó sus enlaces a la Web App. El trabajo se hizo en ramas `feature/*` y `fix/*` que se integran en `develop` por pull request.
+En el Sprint 2 el RESTful API reorganizó su shared kernel por capas y agregó los endpoints que necesitaban las aplicaciones; la Web App reemplazó el servicio de demostración por clientes tipados del API; la Mobile App pasó a consumir el API con repositorios remotos y se rediseñó con la guía de estilo; el Landing Page actualizó sus enlaces a la Web App; y se crearon los repositorios del Edge Service y de la Embedded Application con su primera versión. El trabajo se hizo en ramas `feature/*` y `fix/*` que se integran en `develop` por pull request.
 
-La tabla reúne los commits de implementación de cada repositorio entre el 29 de septiembre y el 18 de octubre de 2026, sin contar los commits de *merge* ni los de pruebas, que están en la sección 6.2.2.5. Incluye los commits del 29 y 30 de septiembre, posteriores al corte de la sección 6.2.1.4.
+La tabla reúne los commits de implementación de cada repositorio entre el 29 de septiembre y el 18 de octubre de 2026, sin contar los commits de *merge* ni los de pruebas, que están en la sección 6.2.2.5. Incluye los commits del 29 y 30 de septiembre, posteriores al corte de la sección 6.2.1.4, y los del 22 de octubre del Edge Service, la Embedded Application y la configuración de Cucumber en el RESTful API.
 
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
 |---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Backend | feature/cucumber-acceptance-tests | 80298d3 | build(deps): add cucumber 8 with spring and junit platform suite | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | a389362 | docs(readme): describe edge service setup and reading lifecycle | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | a9f3e38 | feat(api): expose capture, sync and health endpoints | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | 3dadf8c | feat(monitoring): buffer readings and sync batches with the platform | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | d7cb159 | feat(monitoring): add reading validation and temperature compensation | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | b9a179c | feat(iam): register gateway devices and authenticate api keys | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | 25319bc | chore(setup): add project configuration and sqlite database | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | 6b08c51 | chore(repo): initialize edge service repository | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 69939f3 | docs(readme): describe circuit, design and behavior | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | aa777ff | feat(device): add sampling cycle, button events and pairing | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 2bcc103 | feat(edge-client): send readings to the edge service | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 97abe35 | feat(status-light): show salinity levels with rgb led patterns | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | b191f27 | feat(sensors): read soil ec, moisture and ds18b20 temperature | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 13e67b3 | feat(modest-iot): add event, command, sensor and actuator framework | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 0b93e41 | chore(setup): add platformio project and wokwi circuit | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/embedded-app-v1 | 06b0320 | chore(repo): initialize embedded application repository | — | 22/10/2026 |
 | OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | 14216d2 | fix(security): accept plain-text JWT secrets of any length | — | 05/10/2026 |
 | OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | cf1dd24 | feat(security): allow CORS for the apps and public catalog reads | — | 05/10/2026 |
 | OsoTerra-IoT/OsoTerra---Backend | feature/sprint-2-integration | b494100 | fix(deploy): read the platform DATABASE_URL as datasource settings | — | 05/10/2026 |
@@ -835,7 +854,7 @@ La tabla reúne los commits de implementación de cada repositorio entre el 29 d
 
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
-En el Sprint 2 las pruebas pasan de verificar cada bounded context por separado a recorrer flujos completos contra una base PostgreSQL real. El RESTful API tiene 70 pruebas que pasan con `./mvnw test`, la Web App 37 con `ng test` y la Mobile App 5 con `./gradlew testDebugUnitTest`.
+En el Sprint 2 las pruebas pasan de verificar cada bounded context por separado a recorrer flujos completos contra una base PostgreSQL real. El RESTful API tiene 75 pruebas que pasan con `./mvnw test` (70 de JUnit y 5 escenarios de Cucumber), la Web App 37 con `ng test`, la Mobile App 5 con `./gradlew testDebugUnitTest` y el Edge Service 39 con `pytest`.
 
 **RESTful API · pruebas unitarias y de integración (JUnit 5, Spring MockMvc y PostgreSQL embebido)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Backend, rama `feature/sprint-2-integration`.
 
@@ -864,7 +883,17 @@ En el Sprint 2 las pruebas pasan de verificar cada bounded context por separado 
 
 **Mobile App · pruebas unitarias (JUnit en la JVM)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Mobile-Application, rama `feature/railway-api`. `RemoteSupportTest` verifica que la app calcula el nivel de salinidad con la misma regla que las alertas del Backend, la equivalencia de severidades, el formato de las fechas del API, la separación del nombre completo y el mapeo de las preferencias de notificación en ambos sentidos.
 
-**Pruebas de aceptación (BDD).** El escenario de `MainFlowIntegrationTest` automatiza los criterios de aceptación de US24 y US31 de la sección 3.1. Este es su archivo `.feature`:
+**Edge Service · pruebas unitarias y de API (pytest)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service, rama `feature/edge-service-v1`. El cliente del RESTful API se prueba con respuestas simuladas, así que las pruebas no necesitan red.
+
+| Archivo | Relación | Comportamientos verificados |
+|---|---|---|
+| `test_domain.py` | TS08, TS09 | Rangos del sensor (conductividad 0–20 dS/m, humedad 0–100 %, temperatura −10 a 60 °C), fecha futura y factor de compensación a 25 °C con la calibración del dispositivo. |
+| `test_platform_sync_client.py` | TS06 | Cuerpo del lote que espera `POST /api/v1/soil-readings/batches`, cabecera `X-Edge-Api-Key`, hora local o UTC y lectura de `2xx`, `400`, `401`, `404`, `5xx` y falta de red. |
+| `test_soil_readings_api.py` | TS06, TS08, TS09 | Clave del dispositivo, lectura repetida, lectura sin temperatura que no se envía, lectura fuera de rango (`422`), envío inmediato, buffer sin conexión, envío en orden cronológico por lotes y descarte después del límite de errores del servidor. |
+
+La Embedded Application se verifica compilando el firmware con PlatformIO para el ESP32 (`pio run`) y con la prueba de punta a punta de la sección 6.2.2.6.
+
+**Pruebas de aceptación (BDD) con Cucumber.** Los archivos `.feature` de la sección 3.1 se automatizaron con Cucumber 8 y Steps en Java en la rama `feature/cucumber-acceptance-tests` del RESTful API. `RunCucumberTest` ejecuta los archivos de `src/test/resources/features` dentro de `./mvnw test`, con el mismo contexto de Spring y la misma base PostgreSQL embebida que las pruebas de integración. Los Steps llaman al API con MockMvc: `AuthenticationSteps` para TS01, `SensorAndAlertSteps` para US24 y US31, y `CommonSteps` para el código de respuesta. Resultado: 5 escenarios y 23 pasos aprobados. El archivo de TS01 es el de la sección 6.2.1.5; este es el de US24 y US31:
 
 ```gherkin
 Feature: US24 and US31 Link a sensor and raise a salinity alert
@@ -879,18 +908,22 @@ Feature: US24 and US31 Link a sensor and raise a salinity alert
     Then the device status is "ACTIVE" and it belongs to the plot
 
   Scenario: Reading above the crop threshold
-    Given the plot has an active device
+    Given a farmer with a plot of table grape
+    And the plot has an active device
     When the Edge Service sends a batch with a compensated conductivity of 2.4 dS/m
     And the request carries a valid "X-Edge-Api-Key"
     Then the batch is synchronized
     And an open salinity alert with severity "CRITICAL" exists for the plot
 
   Scenario: Batch without the Edge key
-    When a batch is sent without the "X-Edge-Api-Key" header
+    Given a farmer with a plot of table grape
+    And the plot has an active device
+    When the Edge Service sends a batch with a compensated conductivity of 2.4 dS/m
+    And the request carries no "X-Edge-Api-Key"
     Then the response status is 401
 ```
 
-<!-- TODO(equipo): automatizar los .feature con Cucumber y sus Steps en Java en el Sprint 3. -->
+Cada escenario crea su propio productor y su propia parcela, así que los escenarios no dependen del orden en que se ejecutan.
 
 Commits relacionados con pruebas en el Sprint 2:
 
@@ -908,6 +941,8 @@ Commits relacionados con pruebas en el Sprint 2:
 | OsoTerra-IoT/OsoTerra---Web-Application | feature/fake-api | c87ab95 | test(data): run service and route specs against the fake api | — | 30/09/2026 |
 | OsoTerra-IoT/OsoTerra---Mobile-Application | feature/backend-api | 744d520 | test(repositorios): cubrir reglas de salinidad y formato de fechas | — | 30/09/2026 |
 | OsoTerra-IoT/OsoTerra---Web-Application | fix/action-date-timezone | e242b8d | fix(i18n): show corrective action dates on their calendar day | — | 18/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/cucumber-acceptance-tests | b853ff4 | test(acceptance): automate ts01 and us24-us31 features with cucumber | — | 22/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | feature/edge-service-v1 | 586b0a7 | test(monitoring): cover domain, sync client and readings api | — | 22/10/2026 |
 
 #### 6.2.2.6. Execution Evidence for Sprint Review
 
@@ -976,6 +1011,39 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 <p><em>Figura 6.34. Mobile App: preferencias de notificación (US38) y perfil con los datos de la sesión.</em></p>
 </div>
 
+**Recorrido del dispositivo al RESTful API.** El 22 de octubre se probó la cadena completa en local: el RESTful API de `develop` con PostgreSQL, el Edge Service en el puerto 5000 y lecturas del dispositivo `OS-014` con el mismo JSON que envía la Embedded Application (`deviceId`, `conductivityDsM`, `moisturePercent`, `temperatureCelsius`, cabecera `X-API-Key`). El sensor estaba vinculado a una parcela de palta, con umbral de 1,1 dS/m, de una cuenta de prueba creada solo en ese entorno.
+
+| Lectura del dispositivo | Respuesta del Edge Service | Resultado en el RESTful API |
+|---|---|---|
+| 0,80 dS/m a 24,1 °C | `201`, conductividad compensada 0,815 dS/m, `SYNCHRONIZED` | Lectura guardada, sin alerta |
+| 2,10 dS/m a 27,5 °C | `201`, conductividad compensada 2,0 dS/m, `SYNCHRONIZED` | Alerta `CRITICAL` (1,82 veces el umbral) |
+| 1,30 dS/m sin temperatura | `201`, `UNCOMPENSATED`, no se envía (TS08) | — |
+| 25 dS/m | `422`, `DISCARDED` por estar fuera de rango (TS09) | — |
+| Clave del dispositivo inválida | `401` | — |
+| 1,25 y 1,40 dS/m con el API detenido | `201`, `PENDING`; el Edge informa `platformReachable: false` | Al volver el API, el Edge envió las dos lecturas en un lote sin intervención: alertas `WATCH` y `WARNING` |
+
+<div align="center">
+<img src="../assets/sprint-2/edge-e2e-edge-readings.png" alt="Lecturas guardadas en el buffer del Edge Service con su estado de sincronización" width="700">
+<p><em>Figura 6.35. Buffer del Edge Service: lecturas sincronizadas, sin compensar y descartadas, con el lote del API en el que llegó cada una.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/edge-e2e-edge-health.png" alt="Estado del Edge Service" width="700">
+<p><em>Figura 6.36. Estado del Edge Service: conexión con el API y lecturas por estado.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/edge-e2e-backend-readings.png" alt="Lecturas recibidas por el RESTful API desde el Edge Service" width="700">
+<p><em>Figura 6.37. Lecturas que el RESTful API recibió del Edge Service para la parcela, con la conductividad compensada.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/edge-e2e-backend-alert.png" alt="Alertas generadas en el RESTful API" width="700">
+<p><em>Figura 6.38. Alertas generadas por las lecturas del Edge Service: crítica, vigilancia y advertencia.</em></p>
+</div>
+
+La Embedded Application usa el circuito de la sección 5.6: potenciómetros en GPIO 34 y 35 para la conductividad y la humedad (Wokwi no tiene esos sensores), DS18B20 en GPIO 4, LED RGB en GPIO 25, 26 y 27, y botón en GPIO 14. Sigue el estilo ModestIoT del curso: los sensores avisan al dispositivo con eventos y el dispositivo da órdenes al LED con comandos. Con la conductividad compensada que devuelve el Edge, el LED muestra el nivel con las mismas severidades que las alertas del API: verde por debajo del umbral, ámbar hasta 1,2 veces, naranja hasta 1,5 veces y rojo desde 1,5 veces. Una pulsación corta toma una lectura inmediata y una de tres segundos activa el emparejamiento. El firmware se compila con PlatformIO y se simula con `diagram.json` y `wokwi.toml` del repositorio.
+
 <!-- TODO(equipo): grabar el video de navegación del Sprint 2 (Web App y Mobile App contra el API en Railway) y agregar aquí su enlace de Microsoft Stream. -->
 
 #### 6.2.2.7. Services Documentation Evidence for Sprint Review
@@ -999,23 +1067,32 @@ Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT 
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-iam.png" alt="Swagger UI en Railway: Identity and Access Management" width="800">
-<p><em>Figura 6.35. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
+<p><em>Figura 6.39. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-farm-management.png" alt="Swagger UI en Railway: Farm Management" width="800">
-<p><em>Figura 6.36. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela.</em></p>
+<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-soil-monitoring.png" alt="Swagger UI en Railway: Soil Monitoring" width="800">
-<p><em>Figura 6.37. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
+<p><em>Figura 6.41. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-salinity-alerting.png" alt="Swagger UI en Railway: Salinity Alerting" width="800">
-<p><em>Figura 6.38. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
+<p><em>Figura 6.42. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
 </div>
+
+El Edge Service expone su propia API REST en el gateway de la parcela, documentada en el README de su repositorio (https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service):
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/soil-readings` | Recibir una lectura del dispositivo | POST | `POST /api/v1/soil-readings` | Cabecera `X-API-Key`; cuerpo: `deviceId`, `conductivityDsM`, `moisturePercent`, `temperatureCelsius` (opcional), `capturedAt` (opcional) | `201 Created` con la lectura compensada y su estado; `200` si se repite; `401` con clave inválida; `422` si está fuera de rango. |
+| `/api/v1/soil-readings` | Consultar el buffer | GET | `GET /api/v1/soil-readings?status=PENDING&limit=50` | Consulta: `status`, `limit` | `200 OK` con las últimas lecturas guardadas. |
+| `/api/v1/soil-readings/synchronizations` | Forzar una sincronización | POST | `POST /api/v1/soil-readings/synchronizations` | — | `200 OK` con lecturas enviadas, rechazadas, pendientes y descartadas. |
+| `/api/v1/health` | Estado del gateway | GET | `GET /api/v1/health` | — | `200 OK` con `status`, `platformReachable` y lecturas por estado. |
 
 Los endpoints nuevos provienen de los commits `10a4280` (edición de fincas y parcelas), `e6ce405` (fincas del productor vinculado), `31be0d9` (dispositivo de la parcela), `da50638` (cuentas vinculadas), `1ff8a80` (acciones de una alerta) y `1aa2349` (clave del Edge).
 
@@ -1040,15 +1117,20 @@ En el Sprint 2 se desplegó el RESTful API, el primer producto que corre en un p
 
 <div align="center">
 <img src="../assets/sprint-2/railway-api-crops.png" alt="Respuesta del endpoint público de cultivos en Railway" width="800">
-<p><em>Figura 6.39. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
+<p><em>Figura 6.43. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
 </div>
 
-La Web App se publica en GitHub Pages desde `develop` (Figura 6.40) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
+La Web App se publica en GitHub Pages desde `develop` (Figura 6.44) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-github-pages.png" alt="Web App publicada en GitHub Pages" width="800">
-<p><em>Figura 6.40. Web App publicada en GitHub Pages.</em></p>
+<p><em>Figura 6.44. Web App publicada en GitHub Pages.</em></p>
 </div>
+
+El Edge Service y la Embedded Application no se despliegan en la nube: el Edge Service corre en el gateway de la parcela (una Raspberry Pi o una PC) y la Embedded Application se carga en el ESP32. Sus repositorios se publicaron en la organización con `develop` como rama principal:
+
+- **Edge Service:** https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service. Se instala con `pip install -r requirements.txt` y se ejecuta con `python app.py`; la URL del API (`PLATFORM_BASE_URL`), la clave del Edge (`EDGE_API_KEY`) y los dispositivos del gateway (`EDGE_DEVICES`) se configuran con variables de entorno.
+- **Embedded Application:** https://github.com/OsoTerra-IoT/OsoTerra---Embedded-Application. Se compila con `pio run` para la placa `esp32dev` (15 % de RAM y 86,7 % de flash) y se carga en el ESP32 o en el simulador Wokwi.
 
 <!-- TODO(equipo): publicar el APK de la Mobile App en Firebase App Distribution y agregar aquí la captura. -->
 
@@ -1058,47 +1140,47 @@ Las capturas muestran la actividad de los repositorios de producto durante el Sp
 
 <div align="center">
 <img src="../assets/sprint-2/commits-backend.png" alt="Commits del RESTful API en la rama del Sprint 2" width="800">
-<p><em>Figura 6.41. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
+<p><em>Figura 6.45. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/network-backend.png" alt="Network graph del RESTful API" width="800">
-<p><em>Figura 6.42. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
+<p><em>Figura 6.46. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/commits-webapp.png" alt="Commits de la Web App en la rama del Sprint 2" width="800">
-<p><em>Figura 6.43. Commits de la Web App en las ramas del Sprint 2.</em></p>
+<p><em>Figura 6.47. Commits de la Web App en las ramas del Sprint 2.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/network-webapp.png" alt="Network graph de la Web App" width="800">
-<p><em>Figura 6.44. Network graph de la Web App.</em></p>
+<p><em>Figura 6.48. Network graph de la Web App.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/commits-mobile.png" alt="Commits de la Mobile App en la rama del Sprint 2" width="800">
-<p><em>Figura 6.45. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
+<p><em>Figura 6.49. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/contributors-backend.png" alt="Contributors del RESTful API" width="800">
-<p><em>Figura 6.46. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
+<p><em>Figura 6.50. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
 </div>
 
-| Integrante | Landing Page | Web App | RESTful API | Mobile App |
-|---|---|---|---|---|
-| Barturen Panez, Iker Gabriel (krxxg04) | | | 50 | |
-| Encalada Salazar, Alexis (Alexiz248) | | | | |
-| Goñe Araccata, Esther Abigail (abigoe02) | | | | |
-| Ortiz Alarcon, Victor Nicolas (Nico1234556) | | | | |
-| Salazar Caballero, Alvaro Fabrizzio (DymianUPC) | | | | |
-| Santiago Peña, Andreow Jomark (andrew65411) | 1 | 10 | 26 | 13 |
-| Tumi Oliden, Manuel Ignacio (ManuelTumi2224) | | | | |
+| Integrante | Landing Page | Web App | RESTful API | Mobile App | Edge Service | Embedded App |
+|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel (krxxg04) | | | 50 | | | |
+| Encalada Salazar, Alexis (Alexiz248) | | | | | | |
+| Goñe Araccata, Esther Abigail (abigoe02) | | | | | | |
+| Ortiz Alarcon, Victor Nicolas (Nico1234556) | | | | | | |
+| Salazar Caballero, Alvaro Fabrizzio (DymianUPC) | | | | | | |
+| Santiago Peña, Andreow Jomark (andrew65411) | 1 | 10 | 28 | 13 | 8 | 8 |
+| Tumi Oliden, Manuel Ignacio (ManuelTumi2224) | | | | | | |
 
-*Número de commits sin contar merges, por repositorio, del 29 de septiembre al 18 de octubre de 2026.*
+*Número de commits sin contar merges, por repositorio, del 29 de septiembre al 22 de octubre de 2026.*
 
-**Interpretación del equipo.** Al 18 de octubre el Sprint 2 se apoya en dos integrantes: Iker reorganizó el shared kernel del RESTful API en todos los bounded contexts y Andreow integró las aplicaciones con el API y lo desplegó en Railway. El acuerdo de la retrospectiva del Sprint 1, que cada colaborador de la matriz tome tareas propias en cada repositorio, todavía no se refleja en los commits, y las ramas del sprint aún no pasan por pull request a `develop`. Para cerrar el sprint, el equipo reparte las tareas pendientes del aspecto de cada colaborador (sección 6.2.2.2), revisa por pull request las ramas `feature/sprint-2-integration`, `feature/railway-api` y `fix/action-date-timezone` antes de integrarlas en `develop`, y actualiza esta tabla con los commits de todos los integrantes.
+**Interpretación del equipo.** Al 18 de octubre el Sprint 2 se apoya en dos integrantes: Iker reorganizó el shared kernel del RESTful API en todos los bounded contexts y Andreow integró las aplicaciones con el API, lo desplegó en Railway y, al 22 de octubre, creó la primera versión del Edge Service y de la Embedded Application y automatizó las pruebas de aceptación con Cucumber. El acuerdo de la retrospectiva del Sprint 1, que cada colaborador de la matriz tome tareas propias en cada repositorio, todavía no se refleja en los commits, y las ramas del sprint aún no pasan por pull request a `develop`. Para cerrar el sprint, el equipo reparte las tareas pendientes del aspecto de cada colaborador (sección 6.2.2.2), revisa por pull request las ramas `feature/sprint-2-integration`, `feature/railway-api` y `fix/action-date-timezone` antes de integrarlas en `develop`, y actualiza esta tabla con los commits de todos los integrantes.
 
 ## 6.3. Validation Interviews
 
