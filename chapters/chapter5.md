@@ -1346,21 +1346,21 @@ El diagrama de bloques muestra los tres caminos del dispositivo: la **energía**
 
 **Diseño del circuito**
 
-El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene sonda de conductividad ni sensor capacitivo de humedad, ambos se simulan con potenciómetros que entregan la misma señal analógica; la temperatura usa el DS18B20 real del simulador.
+El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo físico, sobre una protoboard de 30 columnas: ESP32 DevKit V1 (WROOM-32), sensor capacitivo de humedad v1.2, módulo TDS con sonda BNC para la conductividad (medida en el extracto suelo:agua 1:2), sonda DS18B20 sumergible con su resistencia de 4,7 kΩ, LED RGB de cátodo común con tres resistencias de 220 Ω, pulsador y la cadena de energía (panel solar de 6 V, cargador TP4056 con protección, batería 18650 y regulador HT7333). Wokwi no trae esos sensores ni las piezas de energía, así que se crearon como *custom chips*. Los dos sensores analógicos entregan la misma curva de voltaje que el módulo real y se ajustan con un control deslizante durante la simulación. Las piezas de energía solo se dibujan, porque Wokwi siempre alimenta la placa con 3,3 V.
 
 <div align="center">
-<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32, dos potenciómetros, DS18B20, LED RGB y botón" width="800">
+<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32 DevKit V1, protoboard, sensores de humedad y TDS, DS18B20, LED RGB, pulsador y cadena de energía solar" width="800">
 <p><em>Figura 5.113. Circuito del dispositivo en Wokwi.</em></p>
 </div>
 
 | Elemento | Pin del ESP32 | Conexión |
 |---|---|---|
-| Sonda de CE (potenciómetro en la simulación) | GPIO 34 (ADC) | Salida analógica 0–3,3 V |
-| Humedad capacitiva (potenciómetro en la simulación) | GPIO 35 (ADC) | Salida analógica 0–3,3 V |
-| DS18B20 | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
+| Módulo TDS / CE con sonda BNC | GPIO 34 (ADC) | Salida analógica 0–2,3 V; 3,3 V equivale a 3,2 dS/m |
+| Sensor capacitivo de humedad v1.2 | GPIO 35 (ADC) | Salida inversa: 2,58 V en seco y 1,05 V en agua |
+| Sonda DS18B20 sumergible | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
 | LED RGB de cátodo común | GPIO 25, 26 y 27 | Una resistencia de 220 Ω por color |
 | Botón | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
-| Alimentación | 3V3 y GND | Desde el regulador de 3,3 V |
+| Alimentación | Rieles 3V3 y GND de la protoboard | Panel solar de 6 V → TP4056 con batería 18650 → HT7333 de 3,3 V |
 
 **Flujos de interacción que cubre el prototipo**
 
@@ -1370,6 +1370,6 @@ El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene 
 4. **Pulsación corta:** toma y envía una lectura en el momento, útil durante la instalación.
 5. **Pulsación de 3 s:** parpadeo azul de emparejamiento con la app.
 
-Los archivos del circuito (`diagram.json` y `libraries.txt`) y la primera versión del firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden importar en Wokwi para ejecutar la simulación.
+Los archivos del circuito (`diagram.json`, `libraries.txt` y los *custom chips* `.chip.json` y `.chip.c`) y el firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden subir a un proyecto nuevo de Wokwi para ejecutar la simulación.
 
 Diseño físico en Figma: [IoT · Dispositivo](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4).
