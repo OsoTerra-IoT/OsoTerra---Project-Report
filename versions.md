@@ -122,6 +122,7 @@
 | 0.0.116 | 18/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.3.1 Diseño de Entrevistas de validación, con la estructura de la sesión y las tareas del Landing Page, la Web App y la Mobile App por segmento, vinculadas a los user flows de la sección 5.4.3. |
 | 0.0.117 | 18/10/2026 | Andreow Jomark Santiago Peña | Registro de Versiones y Project Report Collaboration Insights actualizados para el AV2: actividades, integraciones de ramas, commits por integrante en el informe y los productos, interpretación del equipo y gráfico de Contributors. |
 | 0.0.118 | 22/10/2026 | Andreow Jomark Santiago Peña | Carátula: Período 202620 ubicado a la misma altura que en el modelo de carátula 202620. README.md: nombre completo del docente (León Baca, Marco Antonio). |
+| 0.0.119 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: PlatformIO y pytest en 6.1.1, repositorios del Edge Service y de la Embedded Application en 6.1.2 y pasos de compilación con PlatformIO en 6.1.4. Capítulo V: firmware v1 en los archivos de Wokwi de la sección 5.6. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
