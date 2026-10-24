@@ -1074,8 +1074,13 @@ Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT 
 </div>
 
 <div align="center">
-<img src="../assets/sprint-2/swagger-railway-farm-management.png" alt="Swagger UI en Railway: Farm Management" width="800">
-<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela.</em></p>
+<img src="../assets/sprint-2/swagger-railway-farm-management-1.png" alt="Swagger UI en Railway: Farm Management, endpoints de cultivos, dispositivos, fincas y parcelas" width="800">
+<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/swagger-railway-farm-management-2.png" alt="Swagger UI en Railway: Farm Management, esquemas" width="800">
+<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, esquemas de los recursos (2 de 2).</em></p>
 </div>
 
 <div align="center">
