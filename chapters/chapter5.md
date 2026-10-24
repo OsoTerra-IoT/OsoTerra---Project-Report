@@ -810,7 +810,7 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 </div>
 
 <div align="center">
-<img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="800">
+<img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="680">
 <p><em>Figura 5.59. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
 </div>
 
@@ -851,8 +851,18 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 En 390 px la estructura se conserva y solo cambia la disposición: el menú se convierte en un botón de hamburguesa junto a *Probar Gratis*, el selector de idioma pasa al menú desplegable, todas las grillas se apilan en una columna, el titular baja de 58 a 30 px, los pasos del proceso se leen en lista vertical debajo de la foto y los planes, el equipo y el pie de página se muestran uno debajo de otro. Los márgenes laterales se reducen a 16 px para ganar ancho útil.
 
 <div align="center">
-<img src="../assets/landing-page-wireframes/landing-wireframe-mobile.png" alt="Wireframe mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<img src="../assets/landing-page-wireframes/landing-wireframe-mobile-1.png" alt="Wireframe mobile del Landing Page: del encabezado a las capacidades" width="800">
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), del encabezado a las capacidades; cada tramo se lee de arriba abajo y de izquierda a derecha (1 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-wireframes/landing-wireframe-mobile-2.png" alt="Wireframe mobile del Landing Page: del proceso de implementación al llamado final" width="800">
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), del proceso de implementación al llamado final; cada tramo se lee de arriba abajo y de izquierda a derecha (2 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-wireframes/landing-wireframe-mobile-3.png" alt="Wireframe mobile del Landing Page: pie de página" width="282">
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), pie de página; cada tramo se lee de arriba abajo y de izquierda a derecha (3 de 3).</em></p>
 </div>
 
 ### 5.3.2. Landing Page Mock-up
@@ -880,7 +890,7 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 </div>
 
 <div align="center">
-<img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="800">
+<img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="680">
 <p><em>Figura 5.65. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
 </div>
 
@@ -910,8 +920,18 @@ Los contrastes medidos (WCAG 2.1) son: títulos `#111827` sobre blanco 17,74:1; 
 El mock-up móvil aplica los mismos estilos con los ajustes de la sección anterior: encabezado compacto con logo, *Probar Gratis* y menú de hamburguesa; hero con titular de 30 px; tarjetas a ancho completo; y planes apilados, con el plan *Productor* igualmente destacado.
 
 <div align="center">
-<img src="../assets/landing-page-mockups/landing-mockup-mobile.png" alt="Mock-up mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<img src="../assets/landing-page-mockups/landing-mockup-mobile-1.png" alt="Mock-up mobile del Landing Page: del encabezado a las capacidades" width="800">
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), del encabezado a las capacidades; cada tramo se lee de arriba abajo y de izquierda a derecha (1 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-mockups/landing-mockup-mobile-2.png" alt="Mock-up mobile del Landing Page: del proceso de implementación al llamado final" width="800">
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), del proceso de implementación al llamado final; cada tramo se lee de arriba abajo y de izquierda a derecha (2 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-mockups/landing-mockup-mobile-3.png" alt="Mock-up mobile del Landing Page: pie de página" width="282">
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), pie de página; cada tramo se lee de arriba abajo y de izquierda a derecha (3 de 3).</em></p>
 </div>
 
 Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2&t=zv0k9BZ0KNZ8WH8D-1), [mock-ups](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3&t=zv0k9BZ0KNZ8WH8D-1) y [Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1&t=zv0k9BZ0KNZ8WH8D-1) del Landing Page.
