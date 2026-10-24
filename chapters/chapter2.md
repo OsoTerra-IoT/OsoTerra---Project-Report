@@ -630,8 +630,13 @@ Las fichas también recogen lo aprendido en el análisis de competidores de la s
 > "No siempre puedo ir a la parcela; necesito saber rápido si ocurre algún problema."
 
 <div align="center">
-<img src="../assets/user-persona/userpersona1.png" alt="User Persona 1: Diego Ramos" width="800">
-<p><em>Figura. User Persona 1: Diego Ramos.</em></p>
+<img src="../assets/user-persona/userpersona1-a.png" alt="User Persona 1: Diego Ramos (1 de 2)" width="800">
+<p><em>Figura. User Persona 1: Diego Ramos (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/user-persona/userpersona1-b.png" alt="User Persona 1: Diego Ramos (2 de 2)" width="800">
+<p><em>Figura. User Persona 1: Diego Ramos (2 de 2).</em></p>
 </div>
 
 **Persona 2:** Asesora técnica agrícola independiente
@@ -705,8 +710,13 @@ Las fichas también recogen lo aprendido en el análisis de competidores de la s
 > "Necesito ver cómo está evolucionando cada parcela para decidir dónde debo intervenir primero."
 
 <div align="center">
-<img src="../assets/user-persona/userpersona2.png" alt="User Persona 2: María Fernanda Salazar" width="800">
-<p><em>Figura. User Persona 2: María Fernanda Salazar.</em></p>
+<img src="../assets/user-persona/userpersona2-a.png" alt="User Persona 2: María Fernanda Salazar (1 de 2)" width="800">
+<p><em>Figura. User Persona 2: María Fernanda Salazar (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/user-persona/userpersona2-b.png" alt="User Persona 2: María Fernanda Salazar (2 de 2)" width="800">
+<p><em>Figura. User Persona 2: María Fernanda Salazar (2 de 2).</em></p>
 </div>
 
 ### 2.3.2. User Task Matrix
@@ -783,13 +793,23 @@ Los Empathy Maps se elaboraron en UXPressia, vinculados a los User Personas de l
 En el caso de Diego Ramos, el mapa muestra a un familiar joven que depende de llamadas, mensajes y fotos para saber qué pasa en la parcela, que no entiende los términos técnicos y que teme enterarse tarde de un problema. Sus Gains se concentran en recibir alertas claras en el celular y poder compartirlas con su familia o con un asesor. En el caso de María Fernanda Salazar, el mapa muestra a una asesora que siente presión por atender a varios productores, desconfía de mediciones no validadas y pierde tiempo en desplazamientos. Sus Gains se concentran en supervisar varias parcelas desde una plataforma, consultar históricos y tendencias y priorizar dónde intervenir.
 
 <div align="center">
-<img src="../assets/empathy-maps/Empathy%20map%201.png" alt="Empathy Map 1: Diego Ramos" width="900">
-<p><em>Figura. Empathy Map 1: Diego Ramos.</em></p>
+<img src="../assets/empathy-maps/empathy-map-1-a.png" alt="Empathy Map 1: Diego Ramos (1 de 2)" width="900">
+<p><em>Figura. Empathy Map 1: Diego Ramos (1 de 2).</em></p>
 </div>
 
 <div align="center">
-<img src="../assets/empathy-maps/Empathy%20map%202.png" alt="Empathy Map 2: María Fernanda Salazar" width="900">
-<p><em>Figura. Empathy Map 2: María Fernanda Salazar.</em></p>
+<img src="../assets/empathy-maps/empathy-map-1-b.png" alt="Empathy Map 1: Diego Ramos (2 de 2)" width="900">
+<p><em>Figura. Empathy Map 1: Diego Ramos (2 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/empathy-maps/empathy-map-2-a.png" alt="Empathy Map 2: María Fernanda Salazar (1 de 2)" width="900">
+<p><em>Figura. Empathy Map 2: María Fernanda Salazar (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/empathy-maps/empathy-map-2-b.png" alt="Empathy Map 2: María Fernanda Salazar (2 de 2)" width="900">
+<p><em>Figura. Empathy Map 2: María Fernanda Salazar (2 de 2).</em></p>
 </div>
 
 ## 2.4. Big Picture EventStorming
