@@ -131,6 +131,7 @@
 | 0.0.125 | 24/10/2026 | Andreow Jomark Santiago Peña | Capítulo IV: diagramas C4 corregidos según el sistema real (hardware y laboratorio como elementos externos, sin la relación del API al Edge, despliegue en Railway) y diagramas de base de datos reorganizados para que entren en la página. Capítulo V: mock-ups y wireframes largos divididos y circuito de Wokwi con los colores de cable del armado real. |
 | 0.0.126 | 24/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: logos de las herramientas en la sección 6.1.1 y captura de Swagger dividida en dos. Conclusiones y recomendaciones centradas en la entrega del Sprint 2. |
 | 0.0.127 | 24/10/2026 | Andreow Jomark Santiago Peña | Todos los capítulos y anexos: los enlaces muestran la URL completa o recortada en lugar de un texto, para que se lean en la versión impresa y en PDF. |
+| 0.0.128 | 24/10/2026 | Andreow Jomark Santiago Peña | Student Outcome: acciones del AV2 completas para los siete integrantes en los dos criterios. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
