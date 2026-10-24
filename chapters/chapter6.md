@@ -14,58 +14,58 @@ El equipo usa solo las herramientas indicadas en el enunciado. La tabla agrupa c
 
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
-| Trello | Product Backlog, Sprint Backlog y tablero de tareas del sprint. | https://trello.com/b/adykOjs5/ososense-backlog |
-| GitHub (organización y pull requests) | Revisión de cambios, historial y *insights* de colaboración de cada repositorio. | https://github.com/OsoTerra-IoT |
+| Trello<br><img src="../assets/tools/trello.png" alt="Logo de trello" width="44"> | Product Backlog, Sprint Backlog y tablero de tareas del sprint. | https://trello.com/b/adykOjs5/ososense-backlog |
+| GitHub (organización y pull requests)<br><img src="../assets/tools/github.png" alt="Logo de github" width="44"> | Revisión de cambios, historial y *insights* de colaboración de cada repositorio. | https://github.com/OsoTerra-IoT |
 | UXPressia | User Personas, Empathy Maps, Journey Maps e Impact Maps. | https://uxpressia.com |
 
 **Product UX/UI Design**
 
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
-| Figma | Guía de estilo, wireframes, mock-ups, prototipos, arquitectura de información y diseño físico del dispositivo. | https://www.figma.com |
+| Figma<br><img src="../assets/tools/figma.png" alt="Logo de figma" width="44"> | Guía de estilo, wireframes, mock-ups, prototipos, arquitectura de información y diseño físico del dispositivo. | https://www.figma.com |
 | FigJam | EventStorming, wireflows y user flows. | https://www.figma.com/figjam |
-| Structurizr | Diagramas C4 (Landscape, Context, Container y Deployment) a partir de Structurizr DSL. | https://structurizr.com |
-| Wokwi | Diseño y simulación del circuito del dispositivo IoT. | https://wokwi.com |
+| Structurizr<br><img src="../assets/tools/structurizr.png" alt="Logo de structurizr" width="44"> | Diagramas C4 (Landscape, Context, Container y Deployment) a partir de Structurizr DSL. | https://structurizr.com |
+| Wokwi<br><img src="../assets/tools/wokwi.png" alt="Logo de wokwi" width="44"> | Diseño y simulación del circuito del dispositivo IoT. | https://wokwi.com |
 
 **Software Development**
 
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
-| Git | Control de versiones local. | https://git-scm.com/downloads |
-| Visual Studio Code | Edición del Landing Page, del informe en Markdown, del Edge Service y de la Embedded Application. | https://code.visualstudio.com/download |
-| WebStorm | Desarrollo de la Web App en Angular y TypeScript. | https://www.jetbrains.com/webstorm/download |
-| IntelliJ IDEA | Desarrollo del RESTful API con Java y Spring Boot. | https://www.jetbrains.com/idea/download |
-| Android Studio | Desarrollo de la Mobile App con Kotlin y Jetpack Compose. | https://developer.android.com/studio |
-| Node.js 24 y npm | Ejecución y construcción de la Web App (Angular CLI). | https://nodejs.org/en/download |
-| JDK 25 y Maven | Compilación y ejecución del RESTful API. | https://adoptium.net · https://maven.apache.org/download.cgi |
-| PostgreSQL | Base de datos del RESTful API en el entorno local. | https://www.postgresql.org/download |
-| Python 3 con Flask, Peewee y SQLite | Edge Service (desde el Sprint 2). | https://www.python.org/downloads |
-| PlatformIO (extensión de VS Code, plataforma `espressif32` y framework Arduino) | Compilación y carga de la Embedded Application en el ESP32 (desde el Sprint 2). | https://platformio.org/install/ide?install=vscode |
+| Git<br><img src="../assets/tools/git.png" alt="Logo de git" width="44"> | Control de versiones local. | https://git-scm.com/downloads |
+| Visual Studio Code<br><img src="../assets/tools/visual-studio-code.png" alt="Logo de visual-studio-code" width="44"> | Edición del Landing Page, del informe en Markdown, del Edge Service y de la Embedded Application. | https://code.visualstudio.com/download |
+| WebStorm<br><img src="../assets/tools/webstorm.png" alt="Logo de webstorm" width="44"> | Desarrollo de la Web App en Angular y TypeScript. | https://www.jetbrains.com/webstorm/download |
+| IntelliJ IDEA<br><img src="../assets/tools/intellij-idea.png" alt="Logo de intellij-idea" width="44"> | Desarrollo del RESTful API con Java y Spring Boot. | https://www.jetbrains.com/idea/download |
+| Android Studio<br><img src="../assets/tools/android-studio.png" alt="Logo de android-studio" width="44"> | Desarrollo de la Mobile App con Kotlin y Jetpack Compose. | https://developer.android.com/studio |
+| Node.js 24 y npm<br><img src="../assets/tools/nodejs.png" alt="Logo de nodejs" width="44"> <img src="../assets/tools/npm.png" alt="Logo de npm" width="44"> | Ejecución y construcción de la Web App (Angular CLI). | https://nodejs.org/en/download |
+| JDK 25 y Maven<br><img src="../assets/tools/java.png" alt="Logo de java" width="44"> <img src="../assets/tools/maven.png" alt="Logo de maven" width="44"> | Compilación y ejecución del RESTful API. | https://adoptium.net · https://maven.apache.org/download.cgi |
+| PostgreSQL<br><img src="../assets/tools/postgresql.png" alt="Logo de postgresql" width="44"> | Base de datos del RESTful API en el entorno local. | https://www.postgresql.org/download |
+| Python 3 con Flask, Peewee y SQLite<br><img src="../assets/tools/python.png" alt="Logo de python" width="44"> <img src="../assets/tools/flask.png" alt="Logo de flask" width="44"> <img src="../assets/tools/sqlite.png" alt="Logo de sqlite" width="44"> | Edge Service (desde el Sprint 2). | https://www.python.org/downloads |
+| PlatformIO (extensión de VS Code, plataforma `espressif32` y framework Arduino)<br><img src="../assets/tools/platformio.png" alt="Logo de platformio" width="44"> | Compilación y carga de la Embedded Application en el ESP32 (desde el Sprint 2). | https://platformio.org/install/ide?install=vscode |
 
 **Software Testing**
 
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
-| Vitest (vía Angular CLI) | Pruebas unitarias y de navegación de la Web App (`ng test`). | https://vitest.dev |
-| JUnit 5 y Spring Boot Test | Pruebas unitarias y de integración del RESTful API. | https://junit.org/junit5 |
-| Postman | Pruebas manuales de los endpoints del RESTful API. | https://www.postman.com/downloads |
-| pytest | Pruebas unitarias y de los endpoints del Edge Service. | https://docs.pytest.org |
-| Wokwi | Simulación del firmware antes de cargarlo en el dispositivo. | https://wokwi.com |
+| Vitest (vía Angular CLI)<br><img src="../assets/tools/vitest.png" alt="Logo de vitest" width="44"> | Pruebas unitarias y de navegación de la Web App (`ng test`). | https://vitest.dev |
+| JUnit 5 y Spring Boot Test<br><img src="../assets/tools/junit5.png" alt="Logo de junit5" width="44"> <img src="../assets/tools/spring-boot.png" alt="Logo de spring-boot" width="44"> | Pruebas unitarias y de integración del RESTful API. | https://junit.org/junit5 |
+| Postman<br><img src="../assets/tools/postman.png" alt="Logo de postman" width="44"> | Pruebas manuales de los endpoints del RESTful API. | https://www.postman.com/downloads |
+| pytest<br><img src="../assets/tools/pytest.png" alt="Logo de pytest" width="44"> | Pruebas unitarias y de los endpoints del Edge Service. | https://docs.pytest.org |
+| Wokwi<br><img src="../assets/tools/wokwi.png" alt="Logo de wokwi" width="44"> | Simulación del firmware antes de cargarlo en el dispositivo. | https://wokwi.com |
 
 **Software Deployment**
 
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
-| GitHub Pages | Publicación del Landing Page y de la Web App. | https://pages.github.com |
-| GitHub Actions | Construcción y publicación automática de la Web App al integrar cambios en `develop`. | https://github.com/features/actions |
-| Firebase App Distribution | Distribución de la Mobile App a dispositivos físicos de prueba. | https://firebase.google.com/products/app-distribution |
+| GitHub Pages<br><img src="../assets/tools/github.png" alt="Logo de github" width="44"> | Publicación del Landing Page y de la Web App. | https://pages.github.com |
+| GitHub Actions<br><img src="../assets/tools/github-actions.png" alt="Logo de github-actions" width="44"> | Construcción y publicación automática de la Web App al integrar cambios en `develop`. | https://github.com/features/actions |
+| Firebase App Distribution<br><img src="../assets/tools/firebase.png" alt="Logo de firebase" width="44"> | Distribución de la Mobile App a dispositivos físicos de prueba. | https://firebase.google.com/products/app-distribution |
 
 **Software Documentation**
 
 | Producto | Propósito en el proyecto | Ruta |
 |---|---|---|
-| GitHub (Markdown) | Informe del proyecto; `README.md` es el archivo principal. | https://github.com/OsoTerra-IoT/OsoTerra---Project-Report |
-| OpenAPI Specification vía Swagger | Documentación de los endpoints del RESTful API. | https://swagger.io/specification |
+| GitHub (Markdown)<br><img src="../assets/tools/github.png" alt="Logo de github" width="44"> <img src="../assets/tools/markdown.png" alt="Logo de markdown" width="44"> | Informe del proyecto; `README.md` es el archivo principal. | https://github.com/OsoTerra-IoT/OsoTerra---Project-Report |
+| OpenAPI Specification vía Swagger<br><img src="../assets/tools/openapi.png" alt="Logo de openapi" width="44"> <img src="../assets/tools/swagger.png" alt="Logo de swagger" width="44"> | Documentación de los endpoints del RESTful API. | https://swagger.io/specification |
 | Microsoft Stream / Clipchamp | Videos de exposición, del producto y de los prototipos. | https://clipchamp.com |
 
 ### 6.1.2. Source Code Management
@@ -1074,8 +1074,13 @@ Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT 
 </div>
 
 <div align="center">
-<img src="../assets/sprint-2/swagger-railway-farm-management.png" alt="Swagger UI en Railway: Farm Management" width="800">
-<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela.</em></p>
+<img src="../assets/sprint-2/swagger-railway-farm-management-1.png" alt="Swagger UI en Railway: Farm Management, endpoints de cultivos, dispositivos, fincas y parcelas" width="800">
+<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/swagger-railway-farm-management-2.png" alt="Swagger UI en Railway: Farm Management, esquemas" width="800">
+<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, esquemas de los recursos (2 de 2).</em></p>
 </div>
 
 <div align="center">
