@@ -552,6 +552,24 @@ Al cruzar ambos segmentos se encuentran tres necesidades presentes en el 100% de
 
 Las diferencias entre segmentos orientan el diseño para cada tipo de usuario. Para el productor, la robustez en campo (100% frente a 0%) y las indicaciones simples son prioritarias, por lo que la solución debe operar con energía solar, seguir funcionando cuando falle la señal y traducir cada alerta en una acción concreta. Para el asesor, el historial y la evolución de la conductividad eléctrica (100% frente a 33%) son determinantes, junto con la vista de varias parcelas y la prioridad de cada alerta. Estas características son la base de los User Personas de la sección 2.3.1.
 
+**Pains por entrevistado**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g11-pains-por-entrevistado.png" alt="Pains mencionados por cada entrevistado" width="900"/>
+<p><em>Gráfico 11. Pains mencionados por cada entrevistado.</em></p>
+</div>
+
+El Gráfico 11 detalla los pains (dolores, frustraciones u obstáculos) que aparecen en el resumen de cada entrevista de la sección 2.2.2. Cada celda marcada indica que el entrevistado lo menciona; la columna Total muestra cuántos de los seis lo mencionan y cómo se reparten entre productores (P) y asesores (A). El pain más repetido es la distancia: cinco de seis entrevistados viven lejos de la parcela o se trasladan entre parcelas; solo Alex Ávila vive y trabaja en el fundo. Le siguen la espera de resultados del laboratorio y enterarse tarde del daño (4 de 6 cada uno). La lectura principal es que los pains se separan por segmento: los productores deciden sin diagnóstico técnico («al ojo» o por experiencia familiar, 3 de 3) y tienen problemas para entender y llevar los análisis, mientras que los asesores trabajan con información desactualizada por las pocas visitas (3 de 3). Los pains de un solo entrevistado, como el análisis puntual (Alex Ávila) o el doble registro en papel y en digital (Emperatriz Sessarego), no son generales, pero se consideran en el diseño del historial continuo y de los reportes.
+
+**Zonas, cultivos y tamaño de las parcelas**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g12-zonas-cultivos-y-parcelas.png" alt="Zonas, cultivos y tamaño de parcela de los entrevistados" width="900"/>
+<p><em>Gráfico 12. Zonas, cultivos y tamaño de parcela de los entrevistados.</em></p>
+</div>
+
+El Gráfico 12 ubica a cada entrevistado según la región donde está su parcela o donde asesora, ordenadas de norte a sur, e indica su cultivo o cartera. A la derecha se muestran solo los tamaños de parcela que se mencionaron en las entrevistas: 3 hectáreas en la parcela de Mathias Peña, 6 hectáreas en el fundo de Alex Ávila (4 de uva de mesa y 2 de palto) y entre 20 y 30 hectáreas en las parcelas de los productores que asesora Emperatriz Sessarego. Los entrevistados cubren la costa de Lambayeque a Ica, con cultivos distintos (hortalizas, arroz y maíz, uva de mesa y palto), y Germán Villalobos es el único que trabaja en tres regiones a la vez. La lectura principal es que la solución debe servir en parcelas de tamaños y cultivos muy diferentes; por eso el umbral de alerta se define según el cultivo de cada parcela y no con un valor único de conductividad eléctrica.
+
 **Contraste con el perfil estadístico del Capítulo I.** El perfil de los productores entrevistados difiere del perfil censal descrito en la sección 1.3, en el que el productor promedio tiene 54,5 años y educación primaria. Los tres entrevistados son familiares jóvenes que participan en la gestión de una parcela familiar, y dos de ellos lo hacen desde Lima. Este hallazgo muestra que, en muchas familias productoras, la adopción de una herramienta digital pasa por un familiar joven que usa el celular con soltura y que traslada la información al productor. Por esa razón, el User Persona del segmento 1 representa a este familiar joven, y la solución debe permitirle compartir las alertas con la persona que está en la parcela. En el segmento 2, dos de los tres entrevistados son ingenieros agrónomos y uno trabaja de forma independiente; la tercera entrevistada asesora a productores desde una consultora agrícola, lo que confirma que el asesor técnico también opera dentro de empresas de servicios y no solo de forma independiente.
 
 ## 2.3. Needfinding
@@ -630,8 +648,13 @@ Las fichas también recogen lo aprendido en el análisis de competidores de la s
 > "No siempre puedo ir a la parcela; necesito saber rápido si ocurre algún problema."
 
 <div align="center">
-<img src="../assets/user-persona/userpersona1.png" alt="User Persona 1: Diego Ramos" width="800">
-<p><em>Figura. User Persona 1: Diego Ramos.</em></p>
+<img src="../assets/user-persona/userpersona1-a.png" alt="User Persona 1: Diego Ramos (1 de 2)" width="800">
+<p><em>Figura. User Persona 1: Diego Ramos (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/user-persona/userpersona1-b.png" alt="User Persona 1: Diego Ramos (2 de 2)" width="800">
+<p><em>Figura. User Persona 1: Diego Ramos (2 de 2).</em></p>
 </div>
 
 **Persona 2:** Asesora técnica agrícola independiente
@@ -705,8 +728,13 @@ Las fichas también recogen lo aprendido en el análisis de competidores de la s
 > "Necesito ver cómo está evolucionando cada parcela para decidir dónde debo intervenir primero."
 
 <div align="center">
-<img src="../assets/user-persona/userpersona2.png" alt="User Persona 2: María Fernanda Salazar" width="800">
-<p><em>Figura. User Persona 2: María Fernanda Salazar.</em></p>
+<img src="../assets/user-persona/userpersona2-a.png" alt="User Persona 2: María Fernanda Salazar (1 de 2)" width="800">
+<p><em>Figura. User Persona 2: María Fernanda Salazar (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/user-persona/userpersona2-b.png" alt="User Persona 2: María Fernanda Salazar (2 de 2)" width="800">
+<p><em>Figura. User Persona 2: María Fernanda Salazar (2 de 2).</em></p>
 </div>
 
 ### 2.3.2. User Task Matrix
@@ -783,13 +811,23 @@ Los Empathy Maps se elaboraron en UXPressia, vinculados a los User Personas de l
 En el caso de Diego Ramos, el mapa muestra a un familiar joven que depende de llamadas, mensajes y fotos para saber qué pasa en la parcela, que no entiende los términos técnicos y que teme enterarse tarde de un problema. Sus Gains se concentran en recibir alertas claras en el celular y poder compartirlas con su familia o con un asesor. En el caso de María Fernanda Salazar, el mapa muestra a una asesora que siente presión por atender a varios productores, desconfía de mediciones no validadas y pierde tiempo en desplazamientos. Sus Gains se concentran en supervisar varias parcelas desde una plataforma, consultar históricos y tendencias y priorizar dónde intervenir.
 
 <div align="center">
-<img src="../assets/empathy-maps/Empathy%20map%201.png" alt="Empathy Map 1: Diego Ramos" width="900">
-<p><em>Figura. Empathy Map 1: Diego Ramos.</em></p>
+<img src="../assets/empathy-maps/empathy-map-1-a.png" alt="Empathy Map 1: Diego Ramos (1 de 2)" width="900">
+<p><em>Figura. Empathy Map 1: Diego Ramos (1 de 2).</em></p>
 </div>
 
 <div align="center">
-<img src="../assets/empathy-maps/Empathy%20map%202.png" alt="Empathy Map 2: María Fernanda Salazar" width="900">
-<p><em>Figura. Empathy Map 2: María Fernanda Salazar.</em></p>
+<img src="../assets/empathy-maps/empathy-map-1-b.png" alt="Empathy Map 1: Diego Ramos (2 de 2)" width="900">
+<p><em>Figura. Empathy Map 1: Diego Ramos (2 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/empathy-maps/empathy-map-2-a.png" alt="Empathy Map 2: María Fernanda Salazar (1 de 2)" width="900">
+<p><em>Figura. Empathy Map 2: María Fernanda Salazar (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/empathy-maps/empathy-map-2-b.png" alt="Empathy Map 2: María Fernanda Salazar (2 de 2)" width="900">
+<p><em>Figura. Empathy Map 2: María Fernanda Salazar (2 de 2).</em></p>
 </div>
 
 ## 2.4. Big Picture EventStorming
