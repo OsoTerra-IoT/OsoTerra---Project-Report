@@ -525,7 +525,7 @@ El Landing Page ya aplica `aria-label` en la navegación y el menú, `aria-label
 
 El movimiento explica cambios y nunca es decorativo. En el Landing Page, los cambios de color de *hover* y foco duran 150 ms con la curva `cubic-bezier(0.4, 0, 0.2, 1)`; el acordeón se abre en 360 ms; y las tarjetas aparecen al hacer scroll entre 750 y 900 ms con un leve desplazamiento vertical. Con la preferencia «reducir movimiento» del sistema, las apariciones se desactivan y el contenido se muestra directamente.
 
-Diseño en Figma: [Marca](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-17&t=zv0k9BZ0KNZ8WH8D-1), [Color](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-18&t=zv0k9BZ0KNZ8WH8D-1), [Tipografía y espacio](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-19&t=zv0k9BZ0KNZ8WH8D-1), [Íconos y componentes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-20&t=zv0k9BZ0KNZ8WH8D-1), [Mobile e IoT](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-21&t=zv0k9BZ0KNZ8WH8D-1) y [Datos y accesibilidad](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-22&t=zv0k9BZ0KNZ8WH8D-1).
+Diseño en Figma: Marca (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-17>), Color (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-18>), Tipografía y espacio (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-19>), Íconos y componentes (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-20>), Mobile e IoT (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-21>) y Datos y accesibilidad (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-22>).
 
 ## 5.2. Information Architecture
 
@@ -774,7 +774,7 @@ El recorrido principal va de arriba abajo con el scroll; los atajos del menú pe
 | **Contextual** | Botones de acción en cada franja, alerta y formulario (*Registrar acción*, *Comparar parcelas*, *Exportar PDF*). | Hojas inferiores para registrar acciones y compartir. |
 | **Entrada directa** | Enlace de la campana a la bandeja de alertas; enlaces desde el correo al detalle de parcela. | La notificación abre el detalle de la parcela con la alerta. |
 
-Diagramas en Figma: [arquitectura de información del Landing Page](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2&t=zv0k9BZ0KNZ8WH8D-1) y [de las aplicaciones](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=59-2).
+Diagramas en Figma: arquitectura de información del Landing Page (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2>) y de las aplicaciones (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=59-2>).
 
 ## 5.3. Landing Page UI Design
 
@@ -934,7 +934,7 @@ El mock-up móvil aplica los mismos estilos con los ajustes de la sección anter
 <p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), pie de página; cada tramo se lee de arriba abajo y de izquierda a derecha (3 de 3).</em></p>
 </div>
 
-Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2&t=zv0k9BZ0KNZ8WH8D-1), [mock-ups](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3&t=zv0k9BZ0KNZ8WH8D-1) y [Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1&t=zv0k9BZ0KNZ8WH8D-1) del Landing Page.
+Diseño en Figma: wireframes (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2>), mock-ups (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3>) y Design System (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1>) del Landing Page.
 
 ## 5.4. Applications UX/UI Design
 
@@ -1218,7 +1218,7 @@ El color se reserva para el estado del suelo: la franja de Sector Norte pasa de 
 
 Contrastes medidos (WCAG 2.1): tinta `#16211C` sobre el fondo `#F5F7F6`, 15,9:1; texto secundario `#4B5563` sobre blanco, 7,56:1; esmeralda `#047857` con texto blanco, 5,48:1; rojo de texto `#A12426` sobre blanco, 7,9:1. La marca del umbral es una línea de 2 px en tinta, visible sobre cualquier color de franja. En la Mobile App, la notificación usa el mismo texto que la alerta de la Web App para que el mensaje sea reconocible en ambos canales.
 
-Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-3) y [mock-ups y Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-2).
+Diseño en Figma: wireframes (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-3>) y mock-ups y Design System (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-2>).
 
 ### 5.4.3. Applications User Flow Diagrams
 
@@ -1296,7 +1296,7 @@ Los user flows derivan de los wireflows y usan los mock-ups. Además de la ruta 
 
 *Happy path:* desde la notificación abre la parcela, registra la acción y la comparte por WhatsApp. *Unhappy path:* si no hay señal al guardar, la acción queda en el celular con la etiqueta «1 acción pendiente de envío» y se envía sola cuando vuelve la conexión; el mensaje lo explica sin culpar al usuario.
 
-Tablero en FigJam: [OsoSense — Wireflows y User Flows](https://www.figma.com/board/QhrU4aUPvxBQeR1hSyJ3Jn).
+Tablero en FigJam: OsoSense — Wireflows y User Flows (<https://www.figma.com/board/QhrU4aUPvxBQeR1hSyJ3Jn>).
 
 ## 5.5. Applications Prototyping
 
@@ -1314,7 +1314,7 @@ Los prototipos se construyeron en Figma sobre los mock-ups de la sección 5.4.2,
 | Web App (Desktop Web Browser) | Inicio de sesión | UG1 a UG6, con los estados de error de credenciales, validación de parcela, valor de laboratorio fuera de rango y reporte sin datos |
 | Mobile App (Mobile) | Notificación de alerta e inicio de sesión | UG1 y UG2, con los estados sin conexión y sin señal |
 
-Prototipos en Figma: [Web App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=51-2&starting-point-node-id=51%3A2) y [Mobile App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=52-61&starting-point-node-id=52%3A61).
+Prototipos en Figma: Web App (<https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=51-2&starting-point-node-id=51:2>) y Mobile App (<https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=52-61&starting-point-node-id=52:61>).
 
 **Videos de demostración**
 
@@ -1322,12 +1322,12 @@ El recorrido de cada prototipo se presenta en un video en Microsoft Stream. Cada
 
 <div align="center">
 <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN"><img src="../assets/prototypes/video-prototype-web.jpg" alt="Captura del video de navegación del prototipo de la Web App" width="800"></a>
-<p><em>Figura 5.108. Video de navegación del prototipo de la Web App (Desktop Web Browser): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN">ver video en Microsoft Stream</a>.</em></p>
+<p><em>Figura 5.108. Video de navegación del prototipo de la Web App (Desktop Web Browser): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk</a>.</em></p>
 </div>
 
 <div align="center">
 <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS"><img src="../assets/prototypes/video-prototype-mobile.jpg" alt="Captura del video de navegación del prototipo de la Mobile App" width="800"></a>
-<p><em>Figura 5.109. Video de navegación del prototipo de la Mobile App (Mobile): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS">ver video en Microsoft Stream</a>.</em></p>
+<p><em>Figura 5.109. Video de navegación del prototipo de la Mobile App (Mobile): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE</a>.</em></p>
 </div>
 
 ## 5.6. IoT Device Design
@@ -1392,4 +1392,4 @@ El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo 
 
 Los archivos del circuito (`diagram.json`, `libraries.txt` y los *custom chips* `.chip.json` y `.chip.c`) y el firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden subir a un proyecto nuevo de Wokwi para ejecutar la simulación.
 
-Diseño físico en Figma: [IoT · Dispositivo](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4).
+Diseño físico en Figma: IoT · Dispositivo (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4>).
