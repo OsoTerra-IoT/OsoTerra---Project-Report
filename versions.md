@@ -126,6 +126,7 @@
 | 0.0.120 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2 actualizada con la primera versión del Edge Service y de la Embedded Application (matriz de liderazgo, tareas T50 a T52, commits, pruebas pytest, recorrido del dispositivo al RESTful API con las Figuras 6.35 a 6.38, endpoints del Edge y repositorios publicados), las pruebas de aceptación automatizadas con Cucumber y las contribuciones al 22 de octubre; figuras siguientes renumeradas. |
 | 0.0.121 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2 con la calibración de humedad y la conexión Wi-Fi de la placa real de la Embedded Application (commits y contribuciones). |
 | 0.0.122 | 22/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: sección 5.6 con el circuito de Wokwi rehecho con las piezas compradas (ESP32 DevKit V1, protoboard de 830 puntos, sensores de humedad v2.0 y TDS Meter V1.0, DS18B20, LED RGB, pulsador de dos patas, TP4056, batería 18650 y panel solar como *custom chips* donde Wokwi no los trae), imagen nueva y archivos de la simulación. |
+| 0.0.123 | 24/10/2026 | Andreow Jomark Santiago Peña | Student Outcome: acciones y conclusiones del AV2 de los siete integrantes en los dos criterios del ABET – EAC - Student Outcome 5. Capítulo VI: tareas de la sección 6.3.1 actualizadas con la invitación y aceptación del vínculo asesor–productor, la comparación de parcelas y la revisión de alertas del asesor en la Mobile App. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
