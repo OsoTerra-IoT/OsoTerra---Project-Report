@@ -90,7 +90,7 @@ Las Technical Stories describen los features de los productos digitales que no t
 
 En esta sección se presenta el Impact Mapping de OsoSense, elaborado en UXPressia a partir de las User Personas del Capítulo II. Cada Impact Map parte de un Business Goal SMART (por qué) y responde tres preguntas: quiénes ayudarán a lograrlo (User Personas), cómo deben cambiar su comportamiento (Impacts) y qué puede hacer OsoSense como negocio digital para provocar esos cambios (Deliverables). Cada Deliverable se descompone en las User Stories que lo implementan, con el mismo ID y la misma descripción de la sección 3.1, para mantener la trazabilidad con el Product Backlog.
 
-Se desarrollaron tres Impact Maps, uno por cada Business Goal del producto. En cada uno se identificaron varios impactos por User Persona y varios Deliverables por impacto, de modo que el equipo pueda priorizar los caminos con mayor efecto sobre la meta.
+Se desarrollaron tres Impact Maps, uno por cada Business Goal del producto. En cada uno se identificaron varios impactos por User Persona y varios Deliverables por impacto, de modo que el equipo pueda priorizar los caminos con mayor efecto sobre la meta. Cada figura presenta el mismo contenido del Impact Map de UXPressia como un árbol que se lee de izquierda a derecha: Business Goal, User Personas, Impacts, Deliverables y User Stories.
 
 ### Impact Map 1: Adopción tecnológica y monitoreo continuo
 
@@ -108,7 +108,7 @@ Se desarrollaron tres Impact Maps, uno por cada Business Goal del producto. En c
 | María Fernanda Salazar | Recomendar OsoSense a sus productores y supervisar sus parcelas a distancia. | Vinculación con productores. | US13: Como asesor técnico deseo vincularme a la cuenta de un productor que me autoriza para supervisar sus parcelas. |
 
 <div align="center">
-<img src="../assets/impact-map/impact-map-1.png" alt="Impact Map 1: Adopción tecnológica y monitoreo continuo" width="900"/>
+<img src="../assets/impact-map/impact-map-1.png" alt="Impact Map 1: Adopción tecnológica y monitoreo continuo" width="700"/>
 <p><em>Figura. Impact Map 1: Adopción tecnológica y monitoreo continuo.</em></p>
 </div>
 
@@ -129,7 +129,7 @@ Se desarrollaron tres Impact Maps, uno por cada Business Goal del producto. En c
 | María Fernanda Salazar | Validar la alerta con datos confiables antes de recomendar una acción. | Calibración de dispositivos. | US26: Como asesor técnico deseo calibrar un dispositivo con un resultado de laboratorio para mejorar la exactitud de sus lecturas. |
 
 <div align="center">
-<img src="../assets/impact-map/impact-map-2.png" alt="Impact Map 2: Prevención y reacción temprana" width="900"/>
+<img src="../assets/impact-map/impact-map-2.png" alt="Impact Map 2: Prevención y reacción temprana" width="700"/>
 <p><em>Figura. Impact Map 2: Prevención y reacción temprana.</em></p>
 </div>
 
@@ -146,7 +146,7 @@ Se desarrollaron tres Impact Maps, uno por cada Business Goal del producto. En c
 | Diego Ramos | Autorizar a su asesor a supervisar la parcela a distancia. | Vinculación con el asesor técnico. | US13: Como asesor técnico deseo vincularme a la cuenta de un productor que me autoriza para supervisar sus parcelas. |
 
 <div align="center">
-<img src="../assets/impact-map/impact-map-3.png" alt="Impact Map 3: Escalabilidad y eficiencia operativa" width="900"/>
+<img src="../assets/impact-map/impact-map-3.png" alt="Impact Map 3: Escalabilidad y eficiencia operativa" width="700"/>
 <p><em>Figura. Impact Map 3: Escalabilidad y eficiencia operativa.</em></p>
 </div>
 
