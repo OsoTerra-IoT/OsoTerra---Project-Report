@@ -58,16 +58,16 @@ Las siguientes fuentes sustentan las cifras y afirmaciones citadas en los Capít
 
 ### Anexo A. Estructura para la sección Student Outcome
 
-Ver la sección [Student Outcome](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/outcome.md#student-outcome).
+Ver la sección Student Outcome (<https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/outcome.md#student-outcome>).
 
 ### Anexo B. Informe de participación
 
-**Final Project Participant Performance Report — AV1:** [ver documento](https://docs.google.com/document/d/1cFr2_S4dEEv7AGe631bPAs0QlOgPQmGn/edit?usp=drivesdk&ouid=108953082663085846265&rtpof=true&sd=true)
+**Final Project Participant Performance Report — AV1:** <https://docs.google.com/document/d/1cFr2_S4dEEv7AGe631bPAs0QlOgPQmGn/edit>
 
-**Final Project Participant Performance Report — TB1:** [ver documento](https://docs.google.com/document/d/1j7n73BWaJEBUy44Y54L45U56YjGOs2wfVQAaF9Tb4f4/edit?usp=sharing)
+**Final Project Participant Performance Report — TB1:** <https://docs.google.com/document/d/1j7n73BWaJEBUy44Y54L45U56YjGOs2wfVQAaF9Tb4f4/edit>
 
 ### Anexo C. Videos de Exposiciones
 
-**Video de Exposición — AV1:** [ver video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVCrvLYWWkT73bHtQrAT8FAbVIPh1q838lp9DUTX9KrDI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ihMbhP)
+**Video de Exposición — AV1:** <https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVCrvLYWWkT73bHtQrAT8FAbVIPh1q838lp9DUTX9KrDI>
 
-**Video de Exposición — TB1:** [ver video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCuJlB6UOl2Q7WilSEdSIDMAQamml4g5y2GbhekkEvJ1cc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Vaz413)
+**Video de Exposición — TB1:** <https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCuJlB6UOl2Q7WilSEdSIDMAQamml4g5y2GbhekkEvJ1cc>

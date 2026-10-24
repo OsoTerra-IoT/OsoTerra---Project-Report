@@ -157,7 +157,7 @@ Al vencer el periodo se intenta la renovación; si el cobro falla, la suscripci�
 | Reglas de negocio clave | Una suscripción vigente por usuario; como máximo un dispositivo por parcela; toda lectura conserva el valor crudo y el compensado; ingesta idempotente por dispositivo y fecha de captura; severidad por proporción del exceso sobre el umbral del cultivo; tendencia fiable con 30 lecturas o más. |
 | HotSpots para el diseño táctico | Conectividad intermitente en campo, reenvíos duplicados, fatiga por exceso de alertas, interpretación de valores en dS/m, equivalencia entre la conductividad medida en campo y la ECe de laboratorio, y tratamiento de lecturas durante una suspensión. |
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 #### 4.1.1.1. Candidate Context Discovery
 
@@ -229,7 +229,7 @@ En **Subscription and Billing** la suscripción se ramifica según el plan: si r
 | Identity and Access Management | Generic | Identidad, autenticación, roles y vínculo asesor-productor. | Identity and Access Management |
 | Subscription and Billing | Generic | Planes, pagos, cupo de parcelas y renovación. | Subscriptions and Payment Management |
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 #### 4.1.1.2. Domain Message Flows Modeling
 
@@ -348,7 +348,7 @@ Subscription and Billing se integra con Stripe para el cobro y comunica los camb
 - Cada sistema externo tiene un único contexto responsable de integrarlo: Stripe en Subscription and Billing, Google OAuth2 en Identity and Access Management, el Weather Service API en Analytics and Reporting y el proveedor de notificaciones en Salinity Alerting.
 - Estos flujos son la base de las relaciones del Context Mapping de la sección 4.1.2.
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 #### 4.1.1.3. Bounded Context Canvases
 
@@ -437,7 +437,7 @@ Subscription and Billing es un contexto generic orientado a revenue, apoyado en 
 - Los sistemas externos quedan aislados en un solo contexto cada uno, lo que permite reemplazarlos sin afectar al resto del dominio.
 - Se evaluó separar Device Management y Notifications como contextos propios. Estas alternativas se discuten en la sección 4.1.2.
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 ### 4.1.2. Context Mapping
 
@@ -530,7 +530,7 @@ Además, cada integración con terceros se protege con un Anti-corruption Layer 
 - **Colaboración real:** Farm Management y Soil Monitoring se relacionan como Partnership, porque la instalación y el estado del dispositivo requieren decisiones coordinadas entre ambos.
 - **Coherencia con el diseño táctico:** las relaciones de la tabla corresponden a los clientes, consumidores y eventos definidos en la sección 4.2.
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 ### 4.1.3. Software Architecture
 
@@ -588,7 +588,7 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 - Todas las integraciones con terceros se hacen desde OsoSense y, como se verá en el nivel de Container, las concentra el Modular Monolith.
 - Los niveles de Context, Container y Deployment se detallan en las secciones siguientes.
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
