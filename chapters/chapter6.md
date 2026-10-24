@@ -1202,6 +1202,7 @@ Cada sesión dura entre 25 y 35 minutos, se graba en video con el consentimiento
 | Web App (UF1) | Inicio con franjas de salinidad, detalle de parcela | «¿Alguna de sus parcelas necesita atención hoy? ¿Por qué?» | Identifica la parcela sobre el umbral sin abrir otra vista y explica el nivel. |
 | Web App (UF3) | Registro de finca y parcela, cultivo, vincular sensor | «Registre una parcela nueva de uva y conecte el sensor con el código de la etiqueta.» | La parcela queda con su cultivo y el sensor vinculado. |
 | Web App (UF2) | Bandeja de alertas, reconocer, registrar acción | «Le llegó una alerta. Indique que ya la vio y anote lo que hizo en el campo.» | La alerta queda resuelta con la acción registrada. |
+| Web App | Mi asesor, solicitudes de vínculo | «Un ingeniero le pidió acceso a sus parcelas. Acéptelo.» | La solicitud pasa a asesor aceptado. |
 | Mobile App (UF7, UF8) | Inicio, alertas, hoja de acción correctiva, preferencias de notificación | «Revise en el celular la misma alerta y elija recibir avisos solo cuando sea crítica.» | Registra la acción y guarda la preferencia. |
 
 **Segmento 2: ingenieros agrónomos y asesores técnicos agrícolas**
@@ -1212,7 +1213,9 @@ Cada sesión dura entre 25 y 35 minutos, se graba en video con el consentimiento
 | Web App (UF4) | Inicio del asesor por prioridad, comparación de parcelas | «¿Qué parcela visitaría primero esta semana y por qué?» | Elige la parcela con mayor porcentaje del umbral y lo justifica con el dato. |
 | Web App (UF5) | Calibración con el resultado de laboratorio | «Registre el resultado de laboratorio de 2,1 dS/m y aplique la calibración.» | El factor queda aplicado al dispositivo. |
 | Web App (UF6) | Reporte de parcela y exportación a PDF | «Prepare el reporte del último mes para su cliente.» | Exporta el PDF del periodo. |
-| Web App | Mis clientes, cuentas vinculadas | «¿Qué productores le dieron acceso a sus parcelas?» | Encuentra la lista de clientes vinculados. |
+| Web App | Mis clientes, invitación por correo | «Invite a este productor a darle acceso a sus parcelas.» (se le da el correo) | La invitación aparece como pendiente. |
+| Web App (UF4) | Comparación de parcelas | «Compare las dos parcelas de sus clientes y dígame cuál empeora.» | Abre la comparación de ambas parcelas y lee la tendencia. |
+| Mobile App | Alertas del asesor | «En el celular, revise las alertas de sus clientes y reconozca la más grave.» | La alerta crítica queda reconocida. |
 
 **Preguntas de cierre (ambos segmentos).** ¿Qué fue lo más fácil y lo más difícil? ¿Hubo alguna palabra o número que no entendió? ¿Confiaría en la alerta para decidir un riego o una visita? ¿Qué le falta para usarlo cada semana? Del 1 al 5, ¿qué tan probable es que lo recomiende a otro productor o asesor?
 
