@@ -551,7 +551,7 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 1. **Identificación de personas.** Se tomaron los actores del Big Picture EventStorming (2.4) y de los flujos de mensajes (4.1.1.2) que interactúan directamente con la solución: el visitante del Landing Page, el Agricultural Producer y el Agronomist Advisor.
 2. **Identificación del sistema propio.** Todos los productos de software exigidos por el enunciado —Landing Page, Web App, Mobile App, backend de servicios web (implementado como Modular Monolith), Edge Service y Embedded Application— se agruparon en un **único sistema de software, OsoSense**, porque los construye y opera el mismo equipo y solo tienen sentido juntos.
 3. **Identificación del hardware.** El **Soil Sensing Hardware** (placa ESP32 con las sondas de conductividad eléctrica, humedad y temperatura, el LED de estado y el botón) se representa como el único elemento físico fuera del sistema: el software embebido que corre sobre él sí forma parte de OsoSense.
-4. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como sistema externo con el que interactúa el asesor.
+4. **Identificación de sistemas externos.** Se tomaron los sistemas de terceros ya definidos en el Context Mapping (4.1.2): Stripe, Google OAuth2, el proveedor de notificaciones push y correo y el Weather Service API. El laboratorio de suelos se incluyó como organización externa con la que interactúa el asesor; no es un sistema de software, por eso se rotula *External Organization*.
 5. **Relaciones.** Cada relación se rotuló con la acción principal que realiza el emisor sobre el receptor.
 6. **Revisión.** Se verificó que cada persona y cada sistema externo del diagrama aparezca en al menos un escenario de Domain Storytelling.
 
@@ -573,7 +573,7 @@ El System Landscape Diagram es la vista más amplia del C4 Model. Muestra, en un
 | Google OAuth2 | Sistema externo | Permite el inicio de sesión federado. |
 | Push / Email provider | Sistema externo | Entrega las notificaciones de alertas. |
 | Weather Service API | Sistema externo | Provee datos de precipitación y temperatura por coordenadas. |
-| Soil Laboratory | Sistema externo | Laboratorio acreditado que entrega el análisis de ECe usado para calibrar el dispositivo. |
+| Soil Laboratory | Organización externa | Laboratorio acreditado que entrega el análisis de ECe usado para calibrar el dispositivo. |
 
 **Relaciones principales**
 
@@ -656,18 +656,18 @@ El Container Level abre el sistema OsoSense en sus unidades de despliegue indepe
 |---|---|---|
 | Landing Page | HTML5, CSS3, JavaScript | Sitio estático que presenta el modelo de negocio y los planes. |
 | Web Application | Angular, TypeScript, Angular Material | Interfaz responsive de gestión, tableros y reportes (asesor y productor). |
-| Mobile Application | Kotlin / Android | App nativa de consulta en campo y recepción de alertas (productor). |
-| Modular Monolith | Spring Boot, Java, Spring Data JPA | Backend de negocio: implementa los seis bounded contexts como módulos de un único despliegue y atiende a los clientes y al Edge Service. |
+| Mobile Application | Kotlin, Jetpack Compose, Android | App nativa de consulta en campo y recepción de alertas (productor). |
+| Modular Monolith | Spring Boot, Java 17, Spring Data JPA | Backend de negocio: implementa los seis bounded contexts como módulos de un único despliegue y atiende a los clientes y al Edge Service. |
 | Platform Database | PostgreSQL | Persiste cuentas, suscripciones, fincas, parcelas, lecturas y alertas. |
 | Edge Service | Flask, Python, Peewee ORM | Valida, compensa a 25 °C y sincroniza las lecturas; reenvía los lotes pendientes al recuperar la conexión. |
 | Edge Local Database | SQLite | Persiste las lecturas pendientes de sincronización. |
-| Embedded Application | C++ / Arduino Framework | Firmware que muestrea los sensores, controla el LED y el botón y envía las lecturas. |
+| Embedded Application | C++, Arduino Framework, PlatformIO | Firmware que muestrea los sensores, controla el LED y el botón y envía las lecturas. |
 
 **Relaciones principales**
 
 - El **Visitor** visita el Landing Page, que redirige a la Web App mediante un call-to-action (HTTPS).
 - **Web App** y **Mobile App** consumen el mismo **Modular Monolith** (JSON/HTTPS); el Modular Monolith es el único que lee y escribe en la Platform Database (JDBC).
-- El flujo de campo es **Modular Monolith ↔ Edge Service ↔ Embedded Application ↔ hardware**: la **Embedded Application** lee los sensores del **Soil Sensing Hardware** (GPIO/ADC/1-Wire) y envía las lecturas al **Edge Service** (JSON/HTTP sobre WiFi); el Edge las guarda en su base local (SQL), sincroniza los lotes al Modular Monolith (JSON/HTTPS) y recibe de él el factor de calibración y los umbrales.
+- El flujo de campo es **hardware → Embedded Application → Edge Service → Modular Monolith**: la **Embedded Application** lee los sensores del **Soil Sensing Hardware** (GPIO/ADC/1-Wire) y envía las lecturas al **Edge Service** (JSON/HTTP sobre WiFi); el Edge las compensa con el factor de calibración de cada dispositivo, las guarda en su base local (SQL) y sincroniza los lotes al Modular Monolith (JSON/HTTPS, autenticado con la cabecera `X-Edge-Api-Key`). El Modular Monolith no llama al Edge: la respuesta de cada lote informa cuántas lecturas aceptó y cuántas descartó.
 - El **Modular Monolith** concentra las integraciones externas: Stripe, Google OAuth2, Weather Service API y notificaciones push (JSON/HTTPS) y correo (SMTP).
 
 **Decisiones reflejadas en el diagrama**
@@ -679,13 +679,13 @@ El Container Level abre el sistema OsoSense en sus unidades de despliegue indepe
 
 #### 4.1.3.4. Software Architecture Deployment Diagrams
 
-El Deployment Diagram mapea los contenedores del nivel anterior a la infraestructura donde se ejecutan, evidenciando la naturaleza distribuida de la solución en tres ámbitos físicos: la parcela, los dispositivos del usuario y el proveedor cloud.
+El Deployment Diagram mapea los contenedores del nivel anterior a la infraestructura donde se ejecutan, evidenciando la naturaleza distribuida de la solución en tres ámbitos físicos: la parcela, los dispositivos del usuario y la nube (Railway).
 
 **Proceso de elaboración**
 
 1. **Nodos de campo.** La Embedded Application se despliega en el ESP32 del Soil Sensing Hardware y el Edge Service, con su base SQLite, en un gateway local.
 2. **Dispositivos del usuario.** El Landing Page y la Web App se ejecutan en el navegador; la Mobile App, en el dispositivo Android.
-3. **Nodos cloud.** Se separaron el servidor de aplicaciones (Modular Monolith sobre la JVM) y el servidor de base de datos.
+3. **Nodos cloud.** En Railway se separaron el servicio de aplicación (Modular Monolith sobre Java 17) y la base de datos PostgreSQL gestionada.
 4. **Enlaces.** Cada canal de despliegue se rotuló con su protocolo.
 
 <div align="center">
@@ -697,18 +697,18 @@ El Deployment Diagram mapea los contenedores del nivel anterior a la infraestruc
 
 | Deployment Node | Contenedores desplegados | Notas |
 |---|---|---|
-| Parcela agrícola → ESP32 (Soil Sensing Hardware) | Embedded Application (C++ / Arduino Framework) | Opera con conectividad intermitente. |
+| Parcela agrícola → ESP32 (Soil Sensing Hardware) | Embedded Application (C++, Arduino Framework) | Opera con conectividad intermitente. |
 | Parcela agrícola → Gateway local (Raspberry Pi / PC) | Edge Service (Flask/Python) + Edge Local Database (SQLite) | Compensa y bufferiza hasta sincronizar. |
 | Dispositivos del usuario → Navegador web | Landing Page (HTML/CSS/JS) + Web Application (Angular SPA) | Descargados desde el hosting cloud. |
-| Dispositivos del usuario → Dispositivo Android | Mobile Application (Kotlin APK) | Cliente de campo del productor. |
-| Proveedor cloud → Application Server (JVM) | Modular Monolith (Spring Boot JAR) | Backend de negocio con los seis bounded contexts como módulos. |
-| Proveedor cloud → Database Server | Platform Database (PostgreSQL) | Persistencia canónica. |
+| Dispositivos del usuario → Dispositivo Android | Mobile Application (Kotlin, Jetpack Compose) | Cliente de campo del productor. |
+| Railway → Application Service (Java 17 / JVM) | Modular Monolith (Spring Boot JAR) | Backend de negocio con los seis bounded contexts como módulos. |
+| Railway → Railway PostgreSQL | Platform Database (PostgreSQL) | Persistencia canónica. |
 
 **Decisiones reflejadas en el diagrama**
 
-- Los contenedores de campo (Embedded Application, Edge Service y su base local) se despliegan **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; el resto del sistema se despliega **en la nube**. Todos pertenecen al mismo sistema OsoSense.
+- Los contenedores de campo (Embedded Application, Edge Service y su base local) se despliegan **fuera de la nube**, junto a la parcela, para tolerar cortes de conectividad; el backend y su base de datos se despliegan **en la nube** (Railway). Todos pertenecen al mismo sistema OsoSense.
 - El Landing Page y la Web App se sirven como contenido estático/compilado y se ejecutan en el navegador del usuario, separados del servidor de aplicaciones que ejecuta el API sobre la JVM.
-- La base de datos PostgreSQL se despliega en un servidor dedicado, accesible únicamente desde el servidor de aplicaciones.
+- La base de datos PostgreSQL es el servicio gestionado de Railway y solo el Modular Monolith se conecta a ella.
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
@@ -986,7 +986,7 @@ A continuación, el diagrama de clases unificado de la capa de dominio del conte
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
 <div align="center">
-<img src="../assets/architecture-db/IAM.png" alt="Database Diagram Identity and Access Management" width="800">
+<img src="../assets/architecture-db/IAM.png" alt="Database Diagram Identity and Access Management" width="650">
 <p><em>Database Diagram del bounded context Identity and Access Management.</em></p>
 </div>
 
