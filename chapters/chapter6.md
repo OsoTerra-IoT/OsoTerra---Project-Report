@@ -701,7 +701,12 @@ El objetivo del Sprint 2 es que los productos trabajen con datos reales del REST
 
 El tablero del sprint está en el mismo tablero público de Trello del Sprint 1: https://trello.com/b/adykOjs5/ososense-backlog
 
-<!-- TODO(equipo): agregar la captura del tablero de Trello con las User Stories del Sprint 2 como assets/sprint-2/trello-sprint-2.png -->
+La figura muestra el tablero al cierre del sprint: las User Stories y Technical Stories del Sprint 2 encabezan la lista *Done*, seguidas de las del Sprint 1. Las Technical Stories ya usan los IDs TS01 a TS10 de la sección 3.3.
+
+<div align="center">
+<img src="../assets/sprint-2/trello-sprint-2.png" alt="Tablero de Trello con las User Stories del Sprint 2 en Done" width="800">
+<p><em>Figura 6.23. Tablero del Sprint 2 en Trello.</em></p>
+</div>
 
 <table>
   <tr><th>Sprint #</th><th colspan="7">Sprint 2</th></tr>
@@ -953,65 +958,65 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-02-mis-parcelas.png" alt="Fincas y parcelas del productor en la Web App" width="800">
-<p><em>Figura 6.23. Fincas y parcelas del productor registradas en el RESTful API.</em></p>
+<p><em>Figura 6.24. Fincas y parcelas del productor registradas en el RESTful API.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-03-vincular-sensor.png" alt="Formulario para vincular un sensor con su código de activación" width="800">
-<p><em>Figura 6.24. Vinculación del sensor con su código de activación (US24).</em></p>
+<p><em>Figura 6.25. Vinculación del sensor con su código de activación (US24).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-04-sensor-vinculado.png" alt="Sensor vinculado a la parcela" width="800">
-<p><em>Figura 6.25. Sensor vinculado y conectado a la parcela.</em></p>
+<p><em>Figura 6.26. Sensor vinculado y conectado a la parcela.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-05-inicio-con-alerta.png" alt="Inicio del productor con una parcela sobre el umbral" width="800">
-<p><em>Figura 6.26. Inicio del productor después de la sincronización del Edge: Lote Norte al 160 % del umbral de la uva.</em></p>
+<p><em>Figura 6.27. Inicio del productor después de la sincronización del Edge: Lote Norte al 160 % del umbral de la uva.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-06-estado-parcela.png" alt="Estado actual de la parcela con humedad y temperatura" width="800">
-<p><em>Figura 6.27. Estado actual de la parcela con la última lectura.</em></p>
+<p><em>Figura 6.28. Estado actual de la parcela con la última lectura.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-08-alertas.png" alt="Bandeja de alertas con severidad vigilancia, advertencia y crítica" width="800">
-<p><em>Figura 6.28. Alertas generadas por el umbral del cultivo (US31).</em></p>
+<p><em>Figura 6.29. Alertas generadas por el umbral del cultivo (US31).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-09-accion-correctiva.png" alt="Registro de una acción correctiva" width="800">
-<p><em>Figura 6.29. Registro de la acción correctiva de una alerta (US37).</em></p>
+<p><em>Figura 6.30. Registro de la acción correctiva de una alerta (US37).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-10-alerta-resuelta.png" alt="Alerta resuelta con su acción registrada" width="800">
-<p><em>Figura 6.30. Alerta resuelta con la acción registrada en el mismo día calendario.</em></p>
+<p><em>Figura 6.31. Alerta resuelta con la acción registrada en el mismo día calendario.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-11-dispositivos.png" alt="Dispositivos del productor" width="800">
-<p><em>Figura 6.31. Dispositivos del productor y su estado de conexión.</em></p>
+<p><em>Figura 6.32. Dispositivos del productor y su estado de conexión.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-12-inicio-asesor.png" alt="Inicio del asesor con las parcelas de su cliente por prioridad" width="800">
-<p><em>Figura 6.32. Inicio del asesor vinculado: parcelas de su cliente ordenadas por prioridad (US13, US43).</em></p>
+<p><em>Figura 6.33. Inicio del asesor vinculado: parcelas de su cliente ordenadas por prioridad (US13, US43).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/mobile-01-detalle-parcela.png" alt="Detalle de parcela en la Mobile App" width="260">
 <img src="../assets/sprint-2/mobile-02-alertas.png" alt="Alertas en la Mobile App" width="260">
 <img src="../assets/sprint-2/mobile-03-accion-correctiva.png" alt="Registro de acción correctiva en la Mobile App" width="260">
-<p><em>Figura 6.33. Mobile App: detalle de parcela, alertas y registro de la acción correctiva.</em></p>
+<p><em>Figura 6.34. Mobile App: detalle de parcela, alertas y registro de la acción correctiva.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/mobile-04-preferencias-notificacion.png" alt="Preferencias de notificación en la Mobile App" width="260">
 <img src="../assets/sprint-2/mobile-05-perfil.png" alt="Perfil en la Mobile App" width="260">
-<p><em>Figura 6.34. Mobile App: preferencias de notificación (US38) y perfil con los datos de la sesión.</em></p>
+<p><em>Figura 6.35. Mobile App: preferencias de notificación (US38) y perfil con los datos de la sesión.</em></p>
 </div>
 
 **Recorrido del dispositivo al RESTful API.** El 22 de octubre se probó la cadena completa en local: el RESTful API de `develop` con PostgreSQL, el Edge Service en el puerto 5000 y lecturas del dispositivo `OS-014` con el mismo JSON que envía la Embedded Application (`deviceId`, `conductivityDsM`, `moisturePercent`, `temperatureCelsius`, cabecera `X-API-Key`). El sensor estaba vinculado a una parcela de palta, con umbral de 1,1 dS/m, de una cuenta de prueba creada solo en ese entorno.
@@ -1027,22 +1032,22 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-edge-readings.png" alt="Lecturas guardadas en el buffer del Edge Service con su estado de sincronización" width="700">
-<p><em>Figura 6.35. Buffer del Edge Service: lecturas sincronizadas, sin compensar y descartadas, con el lote del API en el que llegó cada una.</em></p>
+<p><em>Figura 6.36. Buffer del Edge Service: lecturas sincronizadas, sin compensar y descartadas, con el lote del API en el que llegó cada una.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-edge-health.png" alt="Estado del Edge Service" width="700">
-<p><em>Figura 6.36. Estado del Edge Service: conexión con el API y lecturas por estado.</em></p>
+<p><em>Figura 6.37. Estado del Edge Service: conexión con el API y lecturas por estado.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-backend-readings.png" alt="Lecturas recibidas por el RESTful API desde el Edge Service" width="700">
-<p><em>Figura 6.37. Lecturas que el RESTful API recibió del Edge Service para la parcela, con la conductividad compensada.</em></p>
+<p><em>Figura 6.38. Lecturas que el RESTful API recibió del Edge Service para la parcela, con la conductividad compensada.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-backend-alert.png" alt="Alertas generadas en el RESTful API" width="700">
-<p><em>Figura 6.38. Alertas generadas por las lecturas del Edge Service: crítica, vigilancia y advertencia.</em></p>
+<p><em>Figura 6.39. Alertas generadas por las lecturas del Edge Service: crítica, vigilancia y advertencia.</em></p>
 </div>
 
 La Embedded Application usa el circuito de la sección 5.6: potenciómetros en GPIO 34 y 35 para la conductividad y la humedad (Wokwi no tiene esos sensores), DS18B20 en GPIO 4, LED RGB en GPIO 25, 26 y 27, y botón en GPIO 14. Sigue el estilo ModestIoT del curso: los sensores avisan al dispositivo con eventos y el dispositivo da órdenes al LED con comandos. Con la conductividad compensada que devuelve el Edge, el LED muestra el nivel con las mismas severidades que las alertas del API: verde por debajo del umbral, ámbar hasta 1,2 veces, naranja hasta 1,5 veces y rojo desde 1,5 veces. Una pulsación corta toma una lectura inmediata y una de tres segundos activa el emparejamiento. Para la placa real, la humedad se calibra con las lecturas del sensor capacitivo en aire seco y en agua (`MOISTURE_RAW_DRY` y `MOISTURE_RAW_WET`), y el Wi-Fi busca en todos los canales para conectarse a cualquier router de 2,4 GHz. El firmware se compila con PlatformIO y se simula con `diagram.json` y `wokwi.toml` del repositorio.
@@ -1070,27 +1075,27 @@ Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT 
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-iam.png" alt="Swagger UI en Railway: Identity and Access Management" width="800">
-<p><em>Figura 6.39. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
+<p><em>Figura 6.40. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-farm-management-1.png" alt="Swagger UI en Railway: Farm Management, endpoints de cultivos, dispositivos, fincas y parcelas" width="800">
-<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela (1 de 2).</em></p>
+<p><em>Figura 6.41. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela (1 de 2).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-farm-management-2.png" alt="Swagger UI en Railway: Farm Management, esquemas" width="800">
-<p><em>Figura 6.40. Swagger UI en Railway: Farm Management, esquemas de los recursos (2 de 2).</em></p>
+<p><em>Figura 6.41. Swagger UI en Railway: Farm Management, esquemas de los recursos (2 de 2).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-soil-monitoring.png" alt="Swagger UI en Railway: Soil Monitoring" width="800">
-<p><em>Figura 6.41. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
+<p><em>Figura 6.42. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-salinity-alerting.png" alt="Swagger UI en Railway: Salinity Alerting" width="800">
-<p><em>Figura 6.42. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
+<p><em>Figura 6.43. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
 </div>
 
 El Edge Service expone su propia API REST en el gateway de la parcela, documentada en el README de su repositorio (https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service):
@@ -1125,14 +1130,14 @@ En el Sprint 2 se desplegó el RESTful API, el primer producto que corre en un p
 
 <div align="center">
 <img src="../assets/sprint-2/railway-api-crops.png" alt="Respuesta del endpoint público de cultivos en Railway" width="800">
-<p><em>Figura 6.43. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
+<p><em>Figura 6.44. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
 </div>
 
-La Web App se publica en GitHub Pages desde `develop` (Figura 6.44) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
+La Web App se publica en GitHub Pages desde `develop` (Figura 6.45) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-github-pages.png" alt="Web App publicada en GitHub Pages" width="800">
-<p><em>Figura 6.44. Web App publicada en GitHub Pages.</em></p>
+<p><em>Figura 6.45. Web App publicada en GitHub Pages.</em></p>
 </div>
 
 El Edge Service y la Embedded Application no se despliegan en la nube: el Edge Service corre en el gateway de la parcela (una Raspberry Pi o una PC) y la Embedded Application se carga en el ESP32. Sus repositorios se publicaron en la organización con `develop` como rama principal:
@@ -1148,32 +1153,32 @@ Las capturas muestran la actividad de los repositorios de producto durante el Sp
 
 <div align="center">
 <img src="../assets/sprint-2/commits-backend.png" alt="Commits del RESTful API en la rama del Sprint 2" width="800">
-<p><em>Figura 6.45. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
+<p><em>Figura 6.46. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/network-backend.png" alt="Network graph del RESTful API" width="800">
-<p><em>Figura 6.46. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
+<p><em>Figura 6.47. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/commits-webapp.png" alt="Commits de la Web App en la rama del Sprint 2" width="800">
-<p><em>Figura 6.47. Commits de la Web App en las ramas del Sprint 2.</em></p>
+<p><em>Figura 6.48. Commits de la Web App en las ramas del Sprint 2.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/network-webapp.png" alt="Network graph de la Web App" width="800">
-<p><em>Figura 6.48. Network graph de la Web App.</em></p>
+<p><em>Figura 6.49. Network graph de la Web App.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/commits-mobile.png" alt="Commits de la Mobile App en la rama del Sprint 2" width="800">
-<p><em>Figura 6.49. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
+<p><em>Figura 6.50. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/contributors-backend.png" alt="Contributors del RESTful API" width="800">
-<p><em>Figura 6.50. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
+<p><em>Figura 6.51. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
 </div>
 
 | Integrante | Landing Page | Web App | RESTful API | Mobile App | Edge Service | Embedded App |
@@ -1232,7 +1237,7 @@ Las observaciones de cada sesión se registran en la sección 6.3.2 y los proble
 
 ### 6.3.3. Evaluaciones según heurísticas
 
-El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas reales del Sprint 2 (Figuras 6.33 y 6.34), porque en esta inspección no se ejecutó en un emulador. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
+El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas reales del Sprint 2 (Figuras 6.34 y 6.35), porque en esta inspección no se ejecutó en un emulador. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
 
 **UX Heuristics & Principles Evaluation**
 
@@ -1312,7 +1317,7 @@ En la tarea P-T1 el titular del inicio del productor dice «2 de tus 2 parcelas 
 
 <div align="center">
 <img src="../assets/validation/heuristica-1.png" alt="Inicio del productor con el titular de dos parcelas que necesitan atención y el Lote Palta en nivel normal" width="700">
-<p><em>Figura 6.51. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
+<p><em>Figura 6.52. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
 </div>
 
 **Recomendación:**
@@ -1329,7 +1334,7 @@ Con la Web App conectada al RESTful API y con cuentas reales, «Mis clientes» (
 
 <div align="center">
 <img src="../assets/validation/heuristica-2.png" alt="Etiqueta Datos de demostración en Mis clientes, términos y condiciones de prototipo y nota del reporte" width="700">
-<p><em>Figura 6.52. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
+<p><em>Figura 6.53. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
 </div>
 
 **Recomendación:**
@@ -1346,7 +1351,7 @@ Los dos segmentos son productores y asesores de la costa norte del Perú, pero e
 
 <div align="center">
 <img src="../assets/validation/heuristica-3.png" alt="Encabezado del Landing Page en inglés con el selector EN ES y el inicio de la Web App en inglés" width="700">
-<p><em>Figura 6.53. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
+<p><em>Figura 6.54. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
 </div>
 
 **Recomendación:**
@@ -1363,7 +1368,7 @@ La Web App clasifica las alertas como «Crítica», «Advertencia» y «Vigilanc
 
 <div align="center">
 <img src="../assets/validation/heuristica-4.png" alt="Alerta Alta y preferencias Media Alta Crítica en la Mobile App frente a las tarjetas Crítica Advertencia Vigilancia de la Web App" width="700">
-<p><em>Figura 6.54. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
+<p><em>Figura 6.55. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
 </div>
 
 **Recomendación:**
@@ -1380,7 +1385,7 @@ En la tarea P-T2, «Agregar parcela» pide «Latitud (-90 a 90)» y «Longitud (
 
 <div align="center">
 <img src="../assets/validation/heuristica-5.png" alt="Formulario Agregar parcela con latitud y longitud en cero y cultivo Cebada elegido por defecto" width="700">
-<p><em>Figura 6.55. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
+<p><em>Figura 6.56. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
 </div>
 
 **Recomendación:**
@@ -1397,7 +1402,7 @@ La salinidad aparece con tres siglas distintas: «CEe 4.0 dS/m» en el Landing P
 
 <div align="center">
 <img src="../assets/validation/heuristica-6.png" alt="Etiqueta CEe 4.0 dS/m del Landing Page, formulario de calibración con ECe de laboratorio y texto CE del inicio" width="700">
-<p><em>Figura 6.56. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
+<p><em>Figura 6.57. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
 </div>
 
 **Recomendación:**
@@ -1414,7 +1419,7 @@ En el Landing Page, «Contact» del menú y «Support» del pie de página lleva
 
 <div align="center">
 <img src="../assets/validation/heuristica-7.png" alt="Pie de página del Landing Page con los enlaces Contact, Installation guides y Support" width="700">
-<p><em>Figura 6.57. Problema 7: pie de página del Landing Page.</em></p>
+<p><em>Figura 6.58. Problema 7: pie de página del Landing Page.</em></p>
 </div>
 
 **Recomendación:**
@@ -1431,7 +1436,7 @@ Con la Web App en un ancho de 390 px (tarea P-T3 desde el navegador del celular)
 
 <div align="center">
 <img src="../assets/validation/heuristica-8.png" alt="Tabla de alertas de la Web App en un ancho de 390 px con las columnas de acciones fuera de la pantalla" width="390">
-<p><em>Figura 6.58. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
+<p><em>Figura 6.59. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
 </div>
 
 **Recomendación:**
@@ -1448,7 +1453,7 @@ En el detalle de parcela de la Mobile App (tareas P-T5 y A-T6), «Conductividad 
 
 <div align="center">
 <img src="../assets/validation/heuristica-9.png" alt="Gráfico Conductividad en el tiempo de la Mobile App sin valores en los ejes" width="540">
-<p><em>Figura 6.59. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
+<p><em>Figura 6.60. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
 </div>
 
 **Recomendación:**
