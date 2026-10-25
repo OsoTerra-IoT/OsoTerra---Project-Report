@@ -1232,4 +1232,229 @@ Las observaciones de cada sesión se registran en la sección 6.3.2 y los proble
 
 ### 6.3.3. Evaluaciones según heurísticas
 
+El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas reales del Sprint 2 (Figuras 6.33 y 6.34), porque en esta inspección no se ejecutó en un emulador. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
+
+**UX Heuristics & Principles Evaluation**
+
+**Usability – Inclusive Design – Information Architecture**
+
+| | |
+|---|---|
+| CARRERA | Ingeniería de Software |
+| CURSO | Desarrollo de Soluciones IoT |
+| SECCIÓN | NRC 8735 |
+| PROFESORES | León Baca, Marco Antonio |
+| AUDITOR | Oso Terra |
+| CLIENTE(S) | Oso Terra (autoevaluación del equipo) |
+
+**SITE o APP A EVALUAR:**
+
+OsoSense Landing Page, Web App y Mobile App
+
+**TAREAS A EVALUAR:**
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
+
+1. P-T1. Entender qué hace OsoSense y cuánto cuesta monitorear dos parcelas (Landing Page).
+2. P-T2. Crear una cuenta de productor desde el Landing Page y registrar una parcela con su cultivo y su sensor (Web App).
+3. P-T3. Saber si alguna parcela necesita atención y atender una alerta: reconocerla y registrar la acción correctiva (Web App).
+4. P-T4. Aceptar la solicitud de un asesor (Web App).
+5. P-T5. Revisar la alerta en el celular y recibir avisos solo cuando sea crítica (Mobile App).
+6. A-T1. Identificar qué ofrece la plataforma al asesor (Landing Page).
+7. A-T2. Invitar a un productor por correo (Web App).
+8. A-T3. Registrar un resultado de laboratorio y calibrar el sensor (Web App).
+9. A-T4. Preparar el reporte del último mes para un cliente (Web App).
+10. A-T5. Decidir qué parcela visitar primero y comparar parcelas (Web App).
+11. A-T6. Revisar y reconocer en el celular la alerta más grave de sus clientes (Mobile App).
+
+No están incluidas en esta versión de la evaluación las siguientes tareas:
+
+1. Suscripción y pago de planes.
+2. Inicio de sesión con Google.
+3. Recepción de notificaciones push en el celular.
+4. Recuperación de contraseña por correo.
+5. Instalación física del dispositivo IoT en campo.
+
+**ESCALA DE SEVERIDAD:**
+
+Los errores serán puntuados tomando en cuenta la siguiente escala de severidad
+
+| Nivel | Descripción |
+|---|---|
+| 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No necesita ser arreglado a no ser que exista disponibilidad de tiempo. |
+| 2 | Problema menor: puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debería asignar una prioridad baja para resolverlo de cara al siguiente release. |
+| 3 | Problema mayor: ocurre frecuentemente o los usuarios no son capaces de resolverlo. Es importante que sea corregido y se le debe asignar una prioridad alta. |
+| 4 | Problema muy grave: un error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento. |
+
+**TABLA RESUMEN:**
+
+| # | Problema | Escala de severidad | Heurística/Principio violada(o) |
+|---|---|---|---|
+| 1 | El inicio dice que todas las parcelas necesitan atención, aunque una aparece en «Nivel normal» (Web App) | 3 | Usability: Visibilidad del estado del sistema |
+| 2 | Datos reales marcados como «Datos de demostración» y términos que dicen que la cuenta se borra al recargar (Web App) | 3 | Information Architecture: Is it credible? |
+| 3 | El Landing Page y la Web App abren en inglés, y el selector de idioma es pequeño y de bajo contraste (Landing Page, Web App) | 3 | Inclusive Design: Considera la situación |
+| 4 | Niveles de severidad con nombres distintos en la Web App y la Mobile App (Web App, Mobile App) | 3 | Usability: Consistencia y estándares |
+| 5 | El formulario de parcela pide latitud y longitud y guarda la parcela en 0, 0 con el cultivo «Cebada» por defecto (Web App) | 3 | Usability: Prevención de errores |
+| 6 | Siglas CE, ECe y CEe y la unidad dS/m sin explicación (Landing Page, Web App, Mobile App) | 2 | Usability: Relación entre el sistema y el mundo real |
+| 7 | «Contact», «Support» e «Installation guides» llevan a secciones sin ese contenido (Landing Page) | 2 | Information Architecture: Is it findable? |
+| 8 | En el ancho de un celular, la tabla de alertas oculta las acciones (Web App) | 2 | Inclusive Design: Prioriza el contenido |
+| 9 | El gráfico «Conductividad en el tiempo» no tiene valores ni fechas en los ejes (Mobile App) | 2 | Inclusive Design: Proporciona experiencias comparables |
+
+**DESCRIPCIÓN DE PROBLEMAS:**
+
+**PROBLEMA #1:** El inicio dice que todas las parcelas necesitan atención, aunque una aparece en «Nivel normal»
+
+**Severidad:** 3
+**Heurística violada:** Usabilidad - Visibilidad del estado del sistema
+**Problema:**
+
+En la tarea P-T1 el titular del inicio del productor dice «2 de tus 2 parcelas necesitan atención», pero debajo el Lote Palta aparece con «Nivel normal» al 82 % de su umbral (0,9 de 1,1 dS/m). El titular cuenta toda parcela que llega al 80 % del umbral, mientras la franja la muestra como normal. Lo mismo ocurre en el inicio del asesor (tarea A-T5): «3 de 3 parcelas de tus 2 clientes necesitan una visita», con una de ellas en «Nivel normal». El mensaje principal de la pantalla contradice el estado que se ve debajo y lleva a revisar o visitar una parcela que no lo necesita.
+
+<div align="center">
+<img src="../assets/validation/heuristica-1.png" alt="Inicio del productor con el titular de dos parcelas que necesitan atención y el Lote Palta en nivel normal" width="700">
+<p><em>Figura 6.51. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
+</div>
+
+**Recomendación:**
+
+Usar la misma regla en el titular y en las franjas. Contar como «necesita atención» solo las parcelas en vigilancia o en un nivel mayor; si se quiere avisar del 80 %, mostrar esa parcela como «cerca del umbral» en la franja y en el titular (por ejemplo, «1 parcela necesita atención y 1 está cerca del umbral»).
+
+**PROBLEMA #2:** Datos reales marcados como «Datos de demostración»
+
+**Severidad:** 3
+**Heurística violada:** Information Architecture - Is it credible?
+**Problema:**
+
+Con la Web App conectada al RESTful API y con cuentas reales, «Mis clientes» (tarea A-T2) muestra la etiqueta «Datos de demostración»; la vista previa de «Reportes» (tarea A-T4) termina con «Datos de demostración.»; y «Calibración» (tarea A-T3) dice «Este prototipo solo registra un desplazamiento de un punto». Los «Términos y condiciones», que el productor acepta al crear su cuenta en la tarea P-T2, dicen que «las cuentas y los cambios existen solo durante esta sesión del navegador y se eliminan al recargar» y piden usar información ficticia. Eso es falso en esta versión, porque los datos se guardan en la base de datos. Un asesor que entrega el reporte a su cliente o un productor que lee los términos no puede confiar en lo que registra.
+
+<div align="center">
+<img src="../assets/validation/heuristica-2.png" alt="Etiqueta Datos de demostración en Mis clientes, términos y condiciones de prototipo y nota del reporte" width="700">
+<p><em>Figura 6.52. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
+</div>
+
+**Recomendación:**
+
+Mostrar las etiquetas y las notas de demostración solo cuando la Web App usa el fake API (la configuración `useFakeApi` ya existe y el inicio del asesor ya la usa). Reemplazar el texto de los términos por términos reales de uso y de tratamiento de datos, y quitar de «Calibración» las palabras «prototipo» y «desplazamiento» en favor de una explicación sencilla de lo que guarda.
+
+**PROBLEMA #3:** El Landing Page y la Web App abren en inglés
+
+**Severidad:** 3
+**Heurística violada:** Inclusive Design - Considera la situación
+**Problema:**
+
+Los dos segmentos son productores y asesores de la costa norte del Perú, pero en la primera visita (tareas P-T1 y A-T1) el Landing Page carga en inglés («Living soil, secure harvest», `lang="en"`) y la Web App también inicia en inglés («2 of your 2 plots need attention»). La elección de idioma del Landing Page no pasa a la Web App, que guarda su propio idioma. En el Landing Page el selector «EN | ES» mide 22 × 28 px por opción y la opción inactiva «ES» tiene un contraste de 2,54:1 (gris `#9CA3AF` sobre blanco, texto de 12 px), por debajo del 4,5:1 que pide WCAG 2.1 AA. Un productor con poca costumbre de usar la web puede no encontrar cómo pasar a español.
+
+<div align="center">
+<img src="../assets/validation/heuristica-3.png" alt="Encabezado del Landing Page en inglés con el selector EN ES y el inicio de la Web App en inglés" width="700">
+<p><em>Figura 6.53. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
+</div>
+
+**Recomendación:**
+
+Abrir ambos productos en español por defecto, o según el idioma del navegador, y dejar el inglés como alternativa. Pasar el idioma elegido en el Landing Page a la Web App (por ejemplo, con un parámetro de idioma en los enlaces de registro e inicio de sesión). Agrandar el selector a un área táctil de al menos 44 × 44 px y oscurecer la opción inactiva hasta un contraste de 4,5:1.
+
+**PROBLEMA #4:** Niveles de severidad con nombres distintos en la Web App y la Mobile App
+
+**Severidad:** 3
+**Heurística violada:** Usabilidad - Consistencia y estándares
+**Problema:**
+
+La Web App clasifica las alertas como «Crítica», «Advertencia» y «Vigilancia», y las parcelas como «Nivel muy alto», «Nivel en vigilancia» y «Nivel normal». La Mobile App usa «Media», «Alta» y «Crítica» en la alerta y en las preferencias de notificación, y en el detalle de la misma parcela muestra «Advertencia». Además, la acción de reconocer se llama «Reconocer» en la Web App y «Marcar como atendida» en la Mobile App. En la tarea P-T5 («recibir avisos solo cuando sea crítica») y en la A-T6 el usuario tiene que traducir entre dos escalas para saber qué alerta es la más grave y qué avisos va a recibir.
+
+<div align="center">
+<img src="../assets/validation/heuristica-4.png" alt="Alerta Alta y preferencias Media Alta Crítica en la Mobile App frente a las tarjetas Crítica Advertencia Vigilancia de la Web App" width="700">
+<p><em>Figura 6.54. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
+</div>
+
+**Recomendación:**
+
+Definir una sola escala de severidad y un solo verbo para reconocer una alerta en la guía de estilo (sección 5.1) y usar las mismas claves de traducción en la Web App y la Mobile App, con el mismo color e icono para cada nivel.
+
+**PROBLEMA #5:** El formulario de parcela pide coordenadas y guarda valores por defecto sin avisar
+
+**Severidad:** 3
+**Heurística violada:** Usabilidad - Prevención de errores
+**Problema:**
+
+En la tarea P-T2, «Agregar parcela» pide «Latitud (-90 a 90)» y «Longitud (-180 a 180)» como números, con 0 escrito en ambos campos, y el cultivo viene elegido como «Cebada». Al escribir solo el nombre y guardar, la parcela se creó sin ningún aviso con «Cebada · 1 ha» y en las coordenadas 0, 0, un punto en el océano Atlántico. Un productor no conoce las coordenadas de su lote y puede quedarse con un cultivo equivocado, lo que cambia el umbral con el que se calculan sus alertas.
+
+<div align="center">
+<img src="../assets/validation/heuristica-5.png" alt="Formulario Agregar parcela con latitud y longitud en cero y cultivo Cebada elegido por defecto" width="700">
+<p><em>Figura 6.55. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
+</div>
+
+**Recomendación:**
+
+Dejar el cultivo sin elegir y obligar a seleccionarlo. Reemplazar los campos de coordenadas por un mapa o por el botón «Usar mi ubicación», y no aceptar 0, 0 como ubicación válida. Mostrar antes de guardar un resumen con el cultivo y su umbral de salinidad.
+
+**PROBLEMA #6:** Siglas y unidad de salinidad sin explicación
+
+**Severidad:** 2
+**Heurística violada:** Usabilidad - Relación entre el sistema y el mundo real
+**Problema:**
+
+La salinidad aparece con tres siglas distintas: «CEe 4.0 dS/m» en el Landing Page, «ECe» en el texto en inglés del mismo Landing Page, «CE» en el inicio de la Web App («Cada franja muestra la CE actual…») y en la Mobile App, y «ECe de laboratorio» en «Calibración». La unidad dS/m aparece en todas las vistas, pero ninguna explica qué significa ni qué valor es alto para un cultivo; el significado de ECe solo está en los términos y condiciones. En las tareas P-T1 y P-T3 el productor ve un número y una unidad que no forman parte de su lenguaje.
+
+<div align="center">
+<img src="../assets/validation/heuristica-6.png" alt="Etiqueta CEe 4.0 dS/m del Landing Page, formulario de calibración con ECe de laboratorio y texto CE del inicio" width="700">
+<p><em>Figura 6.56. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
+</div>
+
+**Recomendación:**
+
+Usar una sola sigla en español, CE (conductividad eléctrica), con un icono de ayuda junto a la unidad que explique en una frase qué mide y desde qué valor afecta al cultivo. Reservar «CEe de laboratorio» para la vista del asesor y explicarla en la misma pantalla.
+
+**PROBLEMA #7:** Enlaces de contacto y ayuda que no llevan a ese contenido
+
+**Severidad:** 2
+**Heurística violada:** Information Architecture - Is it findable?
+**Problema:**
+
+En el Landing Page, «Contact» del menú y «Support» del pie de página llevan a la sección `#contacto`, que solo tiene el botón «Get started» y ningún correo, teléfono ni formulario. «Installation guides» lleva al proceso de implementación, que no tiene guías, e «IoT monitoring», «Soil sensors», «Mobile dashboard» y «Agronomic support» llevan todos a la misma sección `#capacidades`. En el código del Landing Page no hay ningún enlace `mailto:`, `tel:` ni de WhatsApp. Un asesor que quiere preguntar antes de registrarse (tarea A-T1) no encuentra cómo comunicarse con el equipo.
+
+<div align="center">
+<img src="../assets/validation/heuristica-7.png" alt="Pie de página del Landing Page con los enlaces Contact, Installation guides y Support" width="700">
+<p><em>Figura 6.57. Problema 7: pie de página del Landing Page.</em></p>
+</div>
+
+**Recomendación:**
+
+Agregar a la sección de contacto un correo y un número de WhatsApp de OsoTerra, o un formulario, y quitar del pie de página los enlaces que no tienen contenido propio, o hacer que cada uno lleve al bloque exacto que nombra.
+
+**PROBLEMA #8:** En el ancho de un celular, la tabla de alertas oculta las acciones
+
+**Severidad:** 2
+**Heurística violada:** Inclusive Design - Prioriza el contenido
+**Problema:**
+
+Con la Web App en un ancho de 390 px (tarea P-T3 desde el navegador del celular), la «Bandeja de alertas de salinidad» conserva su tabla de seis columnas: la fecha se parte en varias líneas y las columnas de conductividad y de acciones («Reconocer» y «Registrar acción») quedan fuera de la pantalla. Antes de la tabla, los tres filtros ocupan casi toda la primera pantalla. Para atender la alerta hay que descubrir que la tabla se desplaza hacia la derecha.
+
+<div align="center">
+<img src="../assets/validation/heuristica-8.png" alt="Tabla de alertas de la Web App en un ancho de 390 px con las columnas de acciones fuera de la pantalla" width="390">
+<p><em>Figura 6.58. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
+</div>
+
+**Recomendación:**
+
+En anchos menores de 600 px, mostrar cada alerta como una tarjeta con la parcela, la severidad, el valor y los dos botones visibles, como en la Mobile App, y agrupar los filtros en un solo botón «Filtrar».
+
+**PROBLEMA #9:** El gráfico de conductividad no tiene valores ni fechas en los ejes
+
+**Severidad:** 2
+**Heurística violada:** Inclusive Design - Proporciona experiencias comparables
+**Problema:**
+
+En el detalle de parcela de la Mobile App (tareas P-T5 y A-T6), «Conductividad en el tiempo» muestra una línea y el umbral punteado, pero sin valores en el eje vertical, sin fechas en el eje horizontal y sin una tabla o texto con los datos. Solo se entiende si la línea sube o baja, no cuánto ni desde cuándo, y una persona que usa un lector de pantalla no recibe ninguna información del gráfico. La Web App sí ofrece «Ver tabla de datos» en su gráfico de tendencias.
+
+<div align="center">
+<img src="../assets/validation/heuristica-9.png" alt="Gráfico Conductividad en el tiempo de la Mobile App sin valores en los ejes" width="540">
+<p><em>Figura 6.59. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
+</div>
+
+**Recomendación:**
+
+Agregar valores en dS/m en el eje vertical y fechas en el horizontal, marcar el valor del último punto y ofrecer, como en la Web App, una lista de lecturas que el lector de pantalla pueda leer.
+
+**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los de severidad 3 se corrigen en el siguiente sprint, antes de las entrevistas con participantes de los segmentos: unificar la regla de atención y la escala de severidad entre productos, quitar los textos de demostración de la versión conectada al RESTful API, abrir en español y corregir el formulario de parcela. Los hallazgos de las entrevistas de la sección 6.3.2 se agregarán a esta tabla cuando se realicen.
+
 ## 6.4. Video About-the-Product
