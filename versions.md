@@ -132,6 +132,7 @@
 | 0.0.126 | 24/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: logos de las herramientas en la sección 6.1.1 y captura de Swagger dividida en dos. Conclusiones y recomendaciones centradas en la entrega del Sprint 2. |
 | 0.0.127 | 24/10/2026 | Andreow Jomark Santiago Peña | Todos los capítulos y anexos: los enlaces muestran la URL completa o recortada en lugar de un texto, para que se lean en la versión impresa y en PDF. |
 | 0.0.128 | 24/10/2026 | Andreow Jomark Santiago Peña | Student Outcome: acciones del AV2 completas para los siete integrantes en los dos criterios. |
+| 0.0.129 | 24/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.3.3 con la evaluación heurística del equipo en el formato del Anexo D (nueve problemas de usabilidad, arquitectura de información y diseño inclusivo en el Landing Page, la Web App y la Mobile App). |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
