@@ -181,14 +181,14 @@ Los contrastes se calcularon con la fórmula de luminancia relativa de WCAG 2.1 
 <p><em>Figura 5.16. Colores de estado de salinidad.</em></p>
 </div>
 
-Los niveles de salinidad tienen colores propios, independientes del verde de marca, porque comunican riesgo. Se calculan como la relación entre la conductividad eléctrica del extracto de saturación (ECe) y el umbral de tolerancia del cultivo, según Maas y Hoffman (1977), y la Web App ya aplica esta regla.
+Los niveles de salinidad tienen colores propios, independientes del verde de marca, porque comunican riesgo. Se calculan como la relación entre la conductividad eléctrica del extracto de saturación (ECe) y el umbral de tolerancia del cultivo, según Maas y Hoffman (1977), y es la misma regla con la que el RESTful API asigna la severidad de cada alerta (*En vigilancia*, *Alto* y *Muy alto*) y que muestran la Web App y la Mobile App.
 
 | Nivel | Ícono | Texto | Fondo | Cuándo |
 |---|---|---|---|---|
-| Normal | círculo con check | `#1B6234` | `#E1F0E4` | ECe < 0,8 × umbral |
-| En vigilancia | ojo | `#70510B` | `#FFF1C6` | 0,8 × umbral ≤ ECe ≤ 1,0 × umbral |
-| Alto | triángulo | `#85440D` | `#FFF0DD` | 1,0 × umbral < ECe ≤ 1,25 × umbral |
-| Muy alto | círculo con aspa | `#A12426` | `#FFEAEB` | ECe > 1,25 × umbral |
+| Normal | círculo con check | `#1B6234` | `#E1F0E4` | ECe ≤ 1,0 × umbral |
+| En vigilancia | ojo | `#70510B` | `#FFF1C6` | 1,0 × umbral < ECe < 1,2 × umbral |
+| Alto | triángulo | `#85440D` | `#FFF0DD` | 1,2 × umbral ≤ ECe < 1,5 × umbral |
+| Muy alto | círculo con aspa | `#A12426` | `#FFEAEB` | ECe ≥ 1,5 × umbral |
 | Sin lectura | signo de pregunta | `#3E5150` | `#E6EBEA` | El dispositivo aún no reporta |
 
 <div align="center">
@@ -196,7 +196,7 @@ Los niveles de salinidad tienen colores propios, independientes del verde de mar
 <p><em>Figura 5.17. Estados en contexto.</em></p>
 </div>
 
-En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores son los de las parcelas de demostración de la Web App y muestran que el nivel depende del cultivo: la misma lectura de 1,62 dS/m es *muy alto* en el palto de Sector Norte y solo *alto* en la uva de mesa de El Mirador.
+En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores son ilustrativos y muestran que el nivel depende del cultivo: la misma lectura de 1,95 dS/m es *muy alto* en el palto de Sector Norte (1,77 veces su umbral) y solo *alto* en la uva de mesa de El Mirador (1,30 veces).
 
 | Cultivo | Umbral ECe | Pérdida por dS/m sobre el umbral | Fuente |
 |---|---|---|---|
@@ -658,7 +658,7 @@ Dentro de los bloques, los datos se etiquetan con la cifra primero y la explicac
 | Comparar parcelas | Asesora | Ver varias parcelas en la misma escala. |
 | Calibración | Asesora | Ajustar un sensor con el análisis de laboratorio. |
 | Reportes | Asesora | Preparar el PDF para el productor. |
-| Nivel normal · en vigilancia · alto · muy alto | Ambos | Menos de 80 %, 80 a 100 %, 100 a 125 % y más de 125 % del umbral del cultivo. |
+| Nivel normal · en vigilancia · alto · muy alto | Ambos | Hasta 100 %, de 100 a 120 %, de 120 a 150 % y desde 150 % del umbral del cultivo. |
 
 ### 5.2.3. SEO Tags and Meta Tags
 
