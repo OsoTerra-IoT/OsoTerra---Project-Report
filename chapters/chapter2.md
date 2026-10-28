@@ -352,23 +352,23 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
       <td rowspan="3"><strong>Pequeños y medianos productores agropecuarios</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistado:</strong> Diego Ramirez<br><strong>Edad:</strong> 20 años<br><strong>Zona / distrito:</strong> Huaral, Lima; durante sus vacaciones apoya en la parcela o planta familiar<br><br><strong>Perfil:</strong> Alumno universitario que colabora con las actividades agrícolas de su familia durante sus vacaciones<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/int1-Seg1.png" alt="Screenshot entrevista segmento 1" width="180"></td>
       <td><strong>Datos generales:</strong> El entrevistado tiene 20 años, vive en Lima y es alumno universitario. Durante sus vacaciones ayuda a su familia en la parcela o planta familiar, por lo que participa directamente en algunas actividades agrícolas, aunque no se dedica a tiempo completo a la producción.<br><br><strong>Cultivos y cuidado del suelo:</strong> Su familia cultiva principalmente hortalizas, como lechuga, cebolla, zanahoria y hierbas. Para cuidar el suelo procuran mantenerlo limpio, retirar los residuos de los cultivos y controlar el riego. También utilizan compost, estiércol y, en algunas ocasiones, fertilizantes; además, intentan rotar los cultivos para evitar el desgaste del suelo.<br><br><strong>Decisiones y resultados:</strong> Las recomendaciones provienen principalmente de sus padres y familiares con más experiencia. También consultan a otros agricultores de la zona o buscan información en internet. El compost y el estiércol les han funcionado porque ayudan a que las plantas crezcan mejor y mantienen el suelo más suelto, aunque no siempre saben cuál es la cantidad correcta que deben aplicar.<br><br><strong>Problemas de salinidad y apoyo:</strong> Han observado en algunas zonas tierra un poco blanca y plantas que crecen menos, pero no saben con seguridad si se debe a la salinidad o a un problema con el riego. Cuando aparece un problema, primero consultan entre la familia y con otros agricultores conocidos; si parece más serio, buscan orientación de un técnico agrícola.<br><br><strong>Análisis de suelo:</strong> El entrevistado no ha realizado personalmente un análisis de suelo. Su familia hizo uno hace algunos años, pero el proceso fue complicado porque tuvieron que llevar la muestra a un laboratorio y esperar los resultados. Además, no siempre comprendían completamente la información recibida.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avisara antes de que la sal dañara el cultivo, siempre que fuera fácil de instalar y tuviera un costo accesible. Para confiar en él necesitaría mediciones claras, alertas anticipadas e indicaciones sobre qué acción tomar. También consideró importante que funcionara correctamente en el campo y que alguien les enseñara a utilizarlo.</td>
-      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 05:45<br><strong>Duración:</strong> 04:09</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo</a><br><strong>Inicio:</strong> 05:45<br><strong>Duración:</strong> 04:09</td>
     </tr>
     <tr>
       <td><strong>Entrevista 2</strong><br><br><strong>Entrevistado:</strong> Mathias Peña<br><strong>Edad:</strong> 22 años<br><strong>Zona / distrito:</strong> Ferreñafe, Lambayeque; vive y estudia en Lima<br><br><strong>Perfil:</strong> Estudiante universitario cuya familia tiene una parcela de unas 3 hectáreas; apoya en vacaciones y algunos fines de semana largos<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int2-Seg1.png" alt="Screenshot entrevista Mathias Peña" width="180"></td>
       <td><strong>Datos generales:</strong> Mathias tiene 22 años y estudia en Lima. Su familia tiene una parcela de unas 3 hectáreas en Ferreñafe, Lambayeque, que maneja su papá. Él va a la parcela en vacaciones o algunos fines de semana largos, por lo que sigue lo que pasa en el campo principalmente a distancia.<br><br><strong>Cultivos y cuidado del suelo:</strong> Cultivan principalmente arroz y, a veces, entre campañas siembran un poco de maíz. Para cuidar el suelo usan urea y guano, y en ocasiones limpian los canales para que el agua corra mejor.<br><br><strong>Decisiones y recomendaciones:</strong> Las prácticas que aplican las recomienda la tienda de insumos del pueblo y se basan en lo que su papá aprendió de su abuelo, sin un diagnóstico técnico del suelo.<br><br><strong>Problemas de salinidad:</strong> En una esquina de la parcela, donde el agua se queda empozada, aparece una costra blanca cuando se seca. En esa zona el arroz sale más bajo y amarillento. Su papá lo atribuye al salitre, pero no saben cuánto afecta ni cómo solucionarlo bien.<br><br><strong>Análisis de suelo:</strong> Hicieron un análisis hace unos tres años. Tuvieron que llevar la muestra a Chiclayo y el resultado demoró casi dos semanas. Cuando llegó, tenía muchos números y términos que no entendieron, así que terminaron consultando a un ingeniero conocido.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avise antes de que la sal dañe el cultivo, sobre todo porque desde Lima se entera tarde de lo que pasa en la parcela. Le gustaría recibir la alerta en el celular y poder reenviarla por WhatsApp a su papá. Para confiar en él, la herramienta tendría que explicar en palabras simples qué pasa y qué hacer, funcionar aunque la señal en el campo sea mala y no ser muy cara.</td>
-      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 00:00<br><strong>Duración:</strong> 05:45</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo</a><br><strong>Inicio:</strong> 00:00<br><strong>Duración:</strong> 05:45</td>
     </tr>
     <tr>
       <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Alex Ávila<br><strong>Edad:</strong> 23 años<br><strong>Zona / distrito:</strong> Salas Guadalupe, Ica<br><br><strong>Perfil:</strong> Técnico agropecuario que trabaja a tiempo completo en el fundo familiar de unas 6 hectáreas, a cargo del riego y la fertilización junto con su tío<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int3-Seg1.png" alt="Screenshot entrevista Alex Ávila" width="180"></td>
       <td><strong>Datos generales:</strong> Alex tiene 23 años y vive en Salas Guadalupe, Ica. Estudió técnico agropecuario en un instituto y trabaja a tiempo completo en el fundo de su familia, de unas 6 hectáreas. Desde hace dos años se encarga del riego y de la fertilización junto con su tío, por lo que participa directamente en las decisiones de manejo del suelo.<br><br><strong>Cultivos y mercado:</strong> Cultivan uva de mesa en 4 hectáreas y palto en las otras 2. La producción se vende a una agroexportadora, que les exige calidad y calibre, por lo que cualquier pérdida de rendimiento afecta directamente sus ingresos.<br><br><strong>Cuidado del suelo y decisiones:</strong> Cuentan con riego por goteo con fertirriego. Aplican yeso agrícola y ácidos húmicos, y cada cierto tiempo realizan riegos largos para lavar las sales. Estas prácticas las recomendó el técnico de la agroexportadora y se complementan con lo que Alex aprendió en el instituto. Sin embargo, como el técnico visita el fundo una vez al mes, muchas decisiones se toman "al ojo".<br><br><strong>Problemas de salinidad:</strong> El principal problema no es el agua empozada, sino el agua de riego, que se vuelve más salada sobre todo en verano, cuando baja el nivel. En el palto se queman las puntas de las hojas y en algunas hileras de uva el racimo sale más chico. Casi no se observa costra blanca, porque con el goteo la sal se acumula en el borde del bulbo húmedo; por eso, cuando se nota el problema, el cultivo ya presenta daño.<br><br><strong>Análisis de suelo:</strong> Realizan dos análisis al año, uno de suelo y otro de agua, en un laboratorio de Ica. Cada uno cuesta alrededor de S/ 250 y el resultado llega en una semana o diez días. Alex entiende la conductividad eléctrica, pero considera que el análisis es una foto de un solo día: entre un análisis y otro la salinidad cambia y no saben en qué momento ocurrió.<br><br><strong>Expectativas frente a una herramienta:</strong> Sí usaría un dispositivo que avise antes de que la sal dañe el cultivo, siempre que mida de forma continua y guarde el historial para ver cómo sube la salinidad después de cada riego. Le gustaría que sugiera cuándo realizar un lavado de sales y que sus mediciones puedan compararse con las del laboratorio para verificar su precisión. Además, necesita que funcione con panel solar, porque en el fundo no hay enchufes. Sobre el precio, estaría dispuesto a pagarlo si al año le cuesta menos que dos o tres análisis de laboratorio y le ayuda a no perder calibre en la uva.</td>
-      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 09:54<br><strong>Duración:</strong> 05:20</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo</a><br><strong>Inicio:</strong> 09:54<br><strong>Duración:</strong> 05:20</td>
     </tr>
     <tr>
       <td rowspan="3"><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
       <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Distrito:</strong> Pueblo Libre, Lima<br><strong>Zona de trabajo:</strong> Zonas agrícolas de la costa<br><br><strong>Screenshot:</strong><br><img src="../assets/entrevistas/Int1-Seg2.png" alt="Screenshot entrevista Yeira Momán" width="180"></td>
       <td><strong>Datos generales:</strong> Yeira tiene 30 años y vive en el distrito de Pueblo Libre, en Lima. Es ingeniera agrónoma y cuenta con varios años de experiencia en el sector agrícola, brindando asesorías a productores. Trabaja principalmente en zonas agrícolas de la costa y visita diferentes parcelas según las necesidades de los agricultores que asesora.<br><br><strong>Trabajo y responsabilidades:</strong> Su labor se centra en evaluar el estado del suelo, identificar problemas que afectan el desarrollo del cultivo y recomendar acciones de manejo. Entre los problemas más frecuentes mencionó la salinidad, la falta de nutrientes y las dificultades relacionadas con el riego y el drenaje.<br><br><strong>Herramientas y tecnología:</strong> Para sustentar sus recomendaciones utiliza análisis de laboratorio y medidores portátiles de conductividad eléctrica, porque permiten obtener una lectura rápida directamente en campo. También realiza seguimiento comparando resultados de análisis y observando la evolución del cultivo para decidir si el manejo aplicado está funcionando o debe modificarse.<br><br><strong>Necesidades y frustraciones:</strong> Su principal dificultad es el tiempo que demanda revisar varias parcelas y desplazarse entre productores ubicados en diferentes lugares. Esto complica realizar visitas frecuentes, mantener actualizada la información de cada parcela y detectar oportunamente cambios en las condiciones del suelo.<br><br><strong>Expectativas:</strong> Considera que recibir alertas sobre salinidad sería útil porque permitiría anticipar el problema. Para que una alerta aporte valor, debería mostrar el nivel de conductividad eléctrica, la ubicación de la parcela, la fecha de medición, la evolución del valor en el tiempo y un historial de mediciones.</td>
-      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 15:14<br><strong>Duración:</strong> 05:55</td>
+      <td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo</a><br><strong>Inicio:</strong> 15:14<br><strong>Duración:</strong> 05:55</td>
     </tr>
     <tr>
       <td>
@@ -410,7 +410,7 @@ Las entrevistas se realizaron para conocer de primera mano cómo los usuarios ob
   <strong>Necesidades y frustraciones:</strong> Su mayor dificultad es atender a varios productores ubicados en zonas distintas: la distancia le impide visitar las parcelas con la frecuencia que quisiera, por lo que debe priorizar según qué productor reporta un problema o qué cultivo parece más comprometido. Muchas veces, cuando llega al terreno, el daño ya está bastante avanzado. A esto se suma el costo del análisis de laboratorio (una muestra puede ir desde unos 80 dólares hasta miles, según la complejidad y el laboratorio) y los tiempos de espera, que en ocasiones han tomado semanas por temas del propio laboratorio.<br><br>
   <strong>Expectativas:</strong> Considera que recibir alertas de salinidad le ayudaría a anticipar los problemas y, sobre todo, a organizar mejor sus visitas cuando maneja varios clientes, permitiéndole decidir si una parcela requiere atención inmediata o puede esperar. Para que la alerta aporte valor, debería mostrar qué parcela la presenta y su productor dueño, el nivel de conductividad eléctrica y su evolución reciente (si va en aumento o disminución), el nivel de tolerancia del cultivo sembrado en esa parcela, la fecha de la última revisión y un parámetro crítico de prioridad (bajo, medio o alto). Idealmente, también poder comparar varias parcelas en una sola pantalla.
 </td>
-<td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hcWEzS">Ver video</a><br><strong>Inicio:</strong> 26:54<br><strong>Duración:</strong> 05:30</td>
+<td><strong>URL:</strong> <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVaPSLCL-2SIMCIrw5PTZtAfSyDm-40BcSRQXmnhvGVFo</a><br><strong>Inicio:</strong> 26:54<br><strong>Duración:</strong> 05:30</td>
     </tr>
   </tbody>
 </table>
@@ -552,6 +552,24 @@ Al cruzar ambos segmentos se encuentran tres necesidades presentes en el 100% de
 
 Las diferencias entre segmentos orientan el diseño para cada tipo de usuario. Para el productor, la robustez en campo (100% frente a 0%) y las indicaciones simples son prioritarias, por lo que la solución debe operar con energía solar, seguir funcionando cuando falle la señal y traducir cada alerta en una acción concreta. Para el asesor, el historial y la evolución de la conductividad eléctrica (100% frente a 33%) son determinantes, junto con la vista de varias parcelas y la prioridad de cada alerta. Estas características son la base de los User Personas de la sección 2.3.1.
 
+**Pains por entrevistado**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g11-pains-por-entrevistado.png" alt="Pains mencionados por cada entrevistado" width="900"/>
+<p><em>Gráfico 11. Pains mencionados por cada entrevistado.</em></p>
+</div>
+
+El Gráfico 11 detalla los pains (dolores, frustraciones u obstáculos) que aparecen en el resumen de cada entrevista de la sección 2.2.2. Cada celda marcada indica que el entrevistado lo menciona; la columna Total muestra cuántos de los seis lo mencionan y cómo se reparten entre productores (P) y asesores (A). El pain más repetido es la distancia: cinco de seis entrevistados viven lejos de la parcela o se trasladan entre parcelas; solo Alex Ávila vive y trabaja en el fundo. Le siguen la espera de resultados del laboratorio y enterarse tarde del daño (4 de 6 cada uno). La lectura principal es que los pains se separan por segmento: los productores deciden sin diagnóstico técnico («al ojo» o por experiencia familiar, 3 de 3) y tienen problemas para entender y llevar los análisis, mientras que los asesores trabajan con información desactualizada por las pocas visitas (3 de 3). Los pains de un solo entrevistado, como el análisis puntual (Alex Ávila) o el doble registro en papel y en digital (Emperatriz Sessarego), no son generales, pero se consideran en el diseño del historial continuo y de los reportes.
+
+**Zonas, cultivos y tamaño de las parcelas**
+
+<div align="center">
+<img src="../assets/entrevistas/analisis/g12-zonas-cultivos-y-parcelas.png" alt="Zonas, cultivos y tamaño de parcela de los entrevistados" width="900"/>
+<p><em>Gráfico 12. Zonas, cultivos y tamaño de parcela de los entrevistados.</em></p>
+</div>
+
+El Gráfico 12 ubica a cada entrevistado según la región donde está su parcela o donde asesora, ordenadas de norte a sur, e indica su cultivo o cartera. A la derecha se muestran solo los tamaños de parcela que se mencionaron en las entrevistas: 3 hectáreas en la parcela de Mathias Peña, 6 hectáreas en el fundo de Alex Ávila (4 de uva de mesa y 2 de palto) y entre 20 y 30 hectáreas en las parcelas de los productores que asesora Emperatriz Sessarego. Los entrevistados cubren la costa de Lambayeque a Ica, con cultivos distintos (hortalizas, arroz y maíz, uva de mesa y palto), y Germán Villalobos es el único que trabaja en tres regiones a la vez. La lectura principal es que la solución debe servir en parcelas de tamaños y cultivos muy diferentes; por eso el umbral de alerta se define según el cultivo de cada parcela y no con un valor único de conductividad eléctrica.
+
 **Contraste con el perfil estadístico del Capítulo I.** El perfil de los productores entrevistados difiere del perfil censal descrito en la sección 1.3, en el que el productor promedio tiene 54,5 años y educación primaria. Los tres entrevistados son familiares jóvenes que participan en la gestión de una parcela familiar, y dos de ellos lo hacen desde Lima. Este hallazgo muestra que, en muchas familias productoras, la adopción de una herramienta digital pasa por un familiar joven que usa el celular con soltura y que traslada la información al productor. Por esa razón, el User Persona del segmento 1 representa a este familiar joven, y la solución debe permitirle compartir las alertas con la persona que está en la parcela. En el segmento 2, dos de los tres entrevistados son ingenieros agrónomos y uno trabaja de forma independiente; la tercera entrevistada asesora a productores desde una consultora agrícola, lo que confirma que el asesor técnico también opera dentro de empresas de servicios y no solo de forma independiente.
 
 ## 2.3. Needfinding
@@ -630,8 +648,13 @@ Las fichas también recogen lo aprendido en el análisis de competidores de la s
 > "No siempre puedo ir a la parcela; necesito saber rápido si ocurre algún problema."
 
 <div align="center">
-<img src="../assets/user-persona/userpersona1.png" alt="User Persona 1: Diego Ramos" width="800">
-<p><em>Figura. User Persona 1: Diego Ramos.</em></p>
+<img src="../assets/user-persona/userpersona1-a.png" alt="User Persona 1: Diego Ramos (1 de 2)" width="800">
+<p><em>Figura. User Persona 1: Diego Ramos (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/user-persona/userpersona1-b.png" alt="User Persona 1: Diego Ramos (2 de 2)" width="800">
+<p><em>Figura. User Persona 1: Diego Ramos (2 de 2).</em></p>
 </div>
 
 **Persona 2:** Asesora técnica agrícola independiente
@@ -705,8 +728,13 @@ Las fichas también recogen lo aprendido en el análisis de competidores de la s
 > "Necesito ver cómo está evolucionando cada parcela para decidir dónde debo intervenir primero."
 
 <div align="center">
-<img src="../assets/user-persona/userpersona2.png" alt="User Persona 2: María Fernanda Salazar" width="800">
-<p><em>Figura. User Persona 2: María Fernanda Salazar.</em></p>
+<img src="../assets/user-persona/userpersona2-a.png" alt="User Persona 2: María Fernanda Salazar (1 de 2)" width="800">
+<p><em>Figura. User Persona 2: María Fernanda Salazar (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/user-persona/userpersona2-b.png" alt="User Persona 2: María Fernanda Salazar (2 de 2)" width="800">
+<p><em>Figura. User Persona 2: María Fernanda Salazar (2 de 2).</em></p>
 </div>
 
 ### 2.3.2. User Task Matrix
@@ -783,13 +811,23 @@ Los Empathy Maps se elaboraron en UXPressia, vinculados a los User Personas de l
 En el caso de Diego Ramos, el mapa muestra a un familiar joven que depende de llamadas, mensajes y fotos para saber qué pasa en la parcela, que no entiende los términos técnicos y que teme enterarse tarde de un problema. Sus Gains se concentran en recibir alertas claras en el celular y poder compartirlas con su familia o con un asesor. En el caso de María Fernanda Salazar, el mapa muestra a una asesora que siente presión por atender a varios productores, desconfía de mediciones no validadas y pierde tiempo en desplazamientos. Sus Gains se concentran en supervisar varias parcelas desde una plataforma, consultar históricos y tendencias y priorizar dónde intervenir.
 
 <div align="center">
-<img src="../assets/empathy-maps/Empathy%20map%201.png" alt="Empathy Map 1: Diego Ramos" width="900">
-<p><em>Figura. Empathy Map 1: Diego Ramos.</em></p>
+<img src="../assets/empathy-maps/empathy-map-1-a.png" alt="Empathy Map 1: Diego Ramos (1 de 2)" width="900">
+<p><em>Figura. Empathy Map 1: Diego Ramos (1 de 2).</em></p>
 </div>
 
 <div align="center">
-<img src="../assets/empathy-maps/Empathy%20map%202.png" alt="Empathy Map 2: María Fernanda Salazar" width="900">
-<p><em>Figura. Empathy Map 2: María Fernanda Salazar.</em></p>
+<img src="../assets/empathy-maps/empathy-map-1-b.png" alt="Empathy Map 1: Diego Ramos (2 de 2)" width="900">
+<p><em>Figura. Empathy Map 1: Diego Ramos (2 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/empathy-maps/empathy-map-2-a.png" alt="Empathy Map 2: María Fernanda Salazar (1 de 2)" width="900">
+<p><em>Figura. Empathy Map 2: María Fernanda Salazar (1 de 2).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/empathy-maps/empathy-map-2-b.png" alt="Empathy Map 2: María Fernanda Salazar (2 de 2)" width="900">
+<p><em>Figura. Empathy Map 2: María Fernanda Salazar (2 de 2).</em></p>
 </div>
 
 ## 2.4. Big Picture EventStorming
@@ -910,7 +948,7 @@ Las fronteras emergentes identificadas fueron: **Identity and Access** y **Subsc
 - Las principales oportunidades son las alertas en lenguaje simple contextualizadas por cultivo, el buffer local con sincronización diferida, el historial y la tendencia de salinidad, los reportes para asesores y la validación con laboratorio.
 - Los cinco eventos pivote y las seis fronteras emergentes son el insumo del Candidate Context Discovery de la sección 4.1.1.1.
 
-**URL del board en FigJam:** [OsoSense - Strategic DDD (Persona 3)](https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1&t=JmLMs0KXFXlRHfkK-1)
+**URL del board en FigJam:** OsoSense - Strategic DDD (Persona 3) (<https://www.figma.com/board/IKkiZBJVEPP7dJKERzuDQJ/OsoSense---Strategic-DDD--Persona-3-?node-id=0-1>)
 
 ## 2.5. Ubiquitous Language
 

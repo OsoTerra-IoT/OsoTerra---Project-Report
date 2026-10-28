@@ -4,17 +4,23 @@
 
 ## Conclusiones y recomendaciones
 
-Hasta el TB1, el equipo completó el Lean UX Process, el análisis de competidores y las seis primeras entrevistas de needfinding (tres por segmento), diseñó la solución en los Capítulos IV y V, y publicó la primera versión del Landing Page y de la Web App en el Sprint 1. Esto permite un primer contraste, todavía parcial, entre lo asumido en el Capítulo I y lo observado en el Capítulo II.
+Al cierre del Sprint 2 (AV2), OsoSense dejó de ser un conjunto de vistas con datos de demostración y pasó a ser una plataforma que recibe, guarda e interpreta lecturas reales. Las conclusiones de esta entrega son las siguientes:
 
-Las entrevistas confirman varios de los User Assumptions y User Outcome Assumptions planteados: dos de los tres productores entrevistados no comprenden del todo los resultados de un análisis de suelo, y los tres detectan la salinidad tarde o sin certeza de su causa, confundiéndola con problemas de riego o de otro tipo, lo que respalda la necesidad de un motor de umbrales por cultivo y de alertas en lenguaje simple (Feature Assumptions 2 y 3). También surgió un hallazgo no anticipado en los assumptions originales: uno de los tres productores pidió explícitamente recibir la alerta en el celular y reenviarla por WhatsApp a su familia, y dos de ellos siguen la parcela a distancia desde Lima, por lo que dependen de un familiar o encargado para actuar, necesidad que ya se incorporó como User Story en el Capítulo III.
+1. **El RESTful API corre en la nube.** Está desplegado en Railway con una base PostgreSQL gestionada (https://osoterra-backend-production.up.railway.app) y publica su documentación OpenAPI, con 52 operaciones agrupadas por bounded context, en Swagger UI. Es el primer producto de OsoSense que funciona en un proveedor cloud y el contrato contra el que se integran las demás piezas (secciones 6.2.2.7 y 6.2.2.8).
+2. **La Web App y la Mobile App trabajan con datos reales.** Ambas consumen el API: el productor registra su finca y sus parcelas, asigna el cultivo, vincula el sensor con su código de activación, recibe la alerta cuando la salinidad supera el umbral del cultivo y registra la acción correctiva que la resuelve. Con esto se cumple el flujo que el Sprint 2 Goal fijó como prueba de éxito (sección 6.2.2.6).
+3. **Cada usuario ve solo lo que le corresponde.** El API valida al propietario de cada finca y parcela, y el asesor técnico solo lee las fincas de los productores que aceptaron su vínculo; cualquier otro acceso responde `403`. Esto atiende la necesidad del asesor de supervisar a sus clientes sin exponer los datos de otros productores (US13).
+4. **Existe la primera versión de la cadena del dispositivo a la nube.** El Edge Service valida las lecturas, compensa la conductividad a 25 °C, las guarda en SQLite y las sincroniza por lotes con el API, también después de una caída de conexión; la Embedded Application lee conductividad, humedad y temperatura en el ESP32 y muestra el nivel de salinidad en el LED RGB. El circuito se armó en Wokwi con las piezas que el equipo compró para el prototipo físico (sección 5.6).
+5. **La validación con usuarios está diseñada, pero todavía no se ejecuta.** La sección 6.3.1 define las tareas y los criterios de éxito para cada segmento en el Landing Page, la Web App y la Mobile App. Por eso ningún Hypothesis Statement puede darse aún por validado ni refutado: lo construido muestra que las funcionalidades se pueden implementar, pero los criterios de éxito del Lean UX Canvas miden cambios de comportamiento que solo se observan con usuarios reales.
 
-Del lado de los asesores técnicos, las tres entrevistas confirman el Business Outcome Assumption sobre el costo de desplazamiento como principal restricción de su capacidad de atención, y el User Outcome Assumption sobre la necesidad de sustentar recomendaciones con evidencia histórica. Ninguno de los tres asesores entrevistados usa hoy un sensor de bajo costo para monitorear salinidad, lo que deja abierta —y no confirmada— la hipótesis HS-09 sobre la calibración como mecanismo suficiente para generar confianza en el dispositivo.
+Las entrevistas de needfinding del Capítulo II siguen siendo la evidencia sobre los segmentos: confirmaron que los productores detectan la salinidad tarde y no siempre entienden un análisis de suelo, que dependen de un familiar o encargado cuando siguen la parcela desde Lima, y que para el asesor el costo de desplazamiento limita cuántas parcelas puede atender. Las alertas por umbral del cultivo, la Mobile App y el inicio del asesor ordenado por prioridad responden a esos hallazgos; las Validation Interviews dirán si los resuelven.
 
-En el TB1 se implementaron varias de las funcionalidades planteadas en las Feature Assumptions. El Landing Page está publicado en inglés y español (https://osoterra-iot.github.io/OsoTerra---Landing-Page/) y lleva a cada segmento desde los planes hasta el registro en la Web App. La Web App (https://osoterra-iot.github.io/OsoTerra---Web-Application/) muestra a productores y asesores el estado de salinidad de cada parcela frente al umbral de su cultivo (palto, uva de mesa y arándano, con umbrales tomados de fuentes citadas) y permite registrar acciones correctivas; con esto quedan implementados, sobre datos de demostración, el motor de umbrales por cultivo de HS-02 y el tablero por parcela de HS-04. El RESTful API expone los endpoints de los seis bounded contexts, documentados en Swagger UI (sección 6.2.1.7), aunque todavía se ejecuta de forma local.
+**Recomendaciones para el TB2.**
 
-Aun así, ningún Hypothesis Statement puede darse por validado ni refutado todavía. Lo construido muestra que las funcionalidades se pueden implementar, mientras que los criterios de éxito del Lean UX Canvas miden cambios en el comportamiento de los segmentos objetivo, y eso solo puede observarse cuando usuarios reales usan el producto. Esa evidencia se obtendrá en las Validation Interviews del AV2, en las que productores y asesores usarán el Landing Page y la Web App desplegados. Además, la Web App todavía funciona con datos de demostración y no consume el RESTful API, por lo que la experiencia evaluada en el TB1 aún no refleja lecturas reales de un dispositivo.
-
-**Recomendaciones para la siguiente entrega.** Para el AV2 el equipo recomienda: (1) conectar la Web App y la Mobile App con el RESTful API desplegado, para que la validación use datos que pasen por la plataforma; (2) programar con anticipación las entrevistas de validación con al menos tres entrevistados por segmento, dado que el registro de entrevistas de needfinding fue la actividad que más tiempo tomó por depender de la disponibilidad de terceros; (3) grabar los videos de navegación de los prototipos y del Sprint 1, que quedaron pendientes en el TB1; y (4) distribuir de forma más equitativa el trabajo del informe y de los productos, de modo que cada integrante registre commits propios en ambos, tal como se acordó en la sección Student Outcome.
+1. Realizar las Validation Interviews con tres a cinco participantes por segmento, grabarlas en video y completar las secciones 6.3.2 y 6.3.3; con esos resultados, contrastar cada Hypothesis Statement con su criterio de éxito.
+2. Armar el prototipo físico con las piezas del circuito de Wokwi y probarlo en una parcela, para comparar sus lecturas con un análisis de laboratorio y obtener evidencia sobre la hipótesis HS-09 de calibración.
+3. Configurar Railway para que despliegue desde `develop` una vez integradas por pull request las ramas del Sprint 2, de modo que lo publicado coincida con lo revisado.
+4. Generar el APK firmado de la Mobile App y distribuirlo con Firebase App Distribution, para que los participantes de la validación la usen en su propio celular.
+5. En el Sprint 3, implementar las User Stories que quedaron fuera del Sprint 2 (suscripción, reportes, calibración y notificación móvil), publicar las versiones finales de todos los productos y repartir el trabajo para que cada integrante registre commits propios en los repositorios, como se acordó en la retrospectiva.
 
 <div style="page-break-before: always; break-before: page;"></div>
 
@@ -52,16 +58,16 @@ Las siguientes fuentes sustentan las cifras y afirmaciones citadas en los Capít
 
 ### Anexo A. Estructura para la sección Student Outcome
 
-Ver la sección [Student Outcome](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/outcome.md#student-outcome).
+Ver la sección Student Outcome (<https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/outcome.md#student-outcome>).
 
 ### Anexo B. Informe de participación
 
-**Final Project Participant Performance Report — AV1:** [ver documento](https://docs.google.com/document/d/1cFr2_S4dEEv7AGe631bPAs0QlOgPQmGn/edit?usp=drivesdk&ouid=108953082663085846265&rtpof=true&sd=true)
+**Final Project Participant Performance Report — AV1:** <https://docs.google.com/document/d/1cFr2_S4dEEv7AGe631bPAs0QlOgPQmGn/edit>
 
-**Final Project Participant Performance Report — TB1:** [ver documento](https://docs.google.com/document/d/1j7n73BWaJEBUy44Y54L45U56YjGOs2wfVQAaF9Tb4f4/edit?usp=sharing)
+**Final Project Participant Performance Report — TB1:** <https://docs.google.com/document/d/1j7n73BWaJEBUy44Y54L45U56YjGOs2wfVQAaF9Tb4f4/edit>
 
 ### Anexo C. Videos de Exposiciones
 
-**Video de Exposición — AV1:** [ver video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVCrvLYWWkT73bHtQrAT8FAbVIPh1q838lp9DUTX9KrDI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ihMbhP)
+**Video de Exposición — AV1:** <https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQDVCrvLYWWkT73bHtQrAT8FAbVIPh1q838lp9DUTX9KrDI>
 
-**Video de Exposición — TB1:** [ver video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCuJlB6UOl2Q7WilSEdSIDMAQamml4g5y2GbhekkEvJ1cc?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Vaz413)
+**Video de Exposición — TB1:** <https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQCuJlB6UOl2Q7WilSEdSIDMAQamml4g5y2GbhekkEvJ1cc>

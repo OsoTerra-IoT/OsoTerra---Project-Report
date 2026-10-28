@@ -181,14 +181,14 @@ Los contrastes se calcularon con la fórmula de luminancia relativa de WCAG 2.1 
 <p><em>Figura 5.16. Colores de estado de salinidad.</em></p>
 </div>
 
-Los niveles de salinidad tienen colores propios, independientes del verde de marca, porque comunican riesgo. Se calculan como la relación entre la conductividad eléctrica del extracto de saturación (ECe) y el umbral de tolerancia del cultivo, según Maas y Hoffman (1977), y la Web App ya aplica esta regla.
+Los niveles de salinidad tienen colores propios, independientes del verde de marca, porque comunican riesgo. Se calculan como la relación entre la conductividad eléctrica del extracto de saturación (ECe) y el umbral de tolerancia del cultivo, según Maas y Hoffman (1977), y es la misma regla con la que el RESTful API asigna la severidad de cada alerta (*En vigilancia*, *Alto* y *Muy alto*) y que muestran la Web App y la Mobile App.
 
 | Nivel | Ícono | Texto | Fondo | Cuándo |
 |---|---|---|---|---|
-| Normal | círculo con check | `#1B6234` | `#E1F0E4` | ECe < 0,8 × umbral |
-| En vigilancia | ojo | `#70510B` | `#FFF1C6` | 0,8 × umbral ≤ ECe ≤ 1,0 × umbral |
-| Alto | triángulo | `#85440D` | `#FFF0DD` | 1,0 × umbral < ECe ≤ 1,25 × umbral |
-| Muy alto | círculo con aspa | `#A12426` | `#FFEAEB` | ECe > 1,25 × umbral |
+| Normal | círculo con check | `#1B6234` | `#E1F0E4` | ECe ≤ 1,0 × umbral |
+| En vigilancia | ojo | `#70510B` | `#FFF1C6` | 1,0 × umbral < ECe < 1,2 × umbral |
+| Alto | triángulo | `#85440D` | `#FFF0DD` | 1,2 × umbral ≤ ECe < 1,5 × umbral |
+| Muy alto | círculo con aspa | `#A12426` | `#FFEAEB` | ECe ≥ 1,5 × umbral |
 | Sin lectura | signo de pregunta | `#3E5150` | `#E6EBEA` | El dispositivo aún no reporta |
 
 <div align="center">
@@ -196,7 +196,7 @@ Los niveles de salinidad tienen colores propios, independientes del verde de mar
 <p><em>Figura 5.17. Estados en contexto.</em></p>
 </div>
 
-En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores son los de las parcelas de demostración de la Web App y muestran que el nivel depende del cultivo: la misma lectura de 1,62 dS/m es *muy alto* en el palto de Sector Norte y solo *alto* en la uva de mesa de El Mirador.
+En contexto, cada parcela de la lista lleva una barra lateral con el color de su nivel, el valor de ECe en grande y la píldora con ícono y palabra. Los valores son ilustrativos y muestran que el nivel depende del cultivo: la misma lectura de 1,95 dS/m es *muy alto* en el palto de Sector Norte (1,77 veces su umbral) y solo *alto* en la uva de mesa de El Mirador (1,30 veces).
 
 | Cultivo | Umbral ECe | Pérdida por dS/m sobre el umbral | Fuente |
 |---|---|---|---|
@@ -525,7 +525,7 @@ El Landing Page ya aplica `aria-label` en la navegación y el menú, `aria-label
 
 El movimiento explica cambios y nunca es decorativo. En el Landing Page, los cambios de color de *hover* y foco duran 150 ms con la curva `cubic-bezier(0.4, 0, 0.2, 1)`; el acordeón se abre en 360 ms; y las tarjetas aparecen al hacer scroll entre 750 y 900 ms con un leve desplazamiento vertical. Con la preferencia «reducir movimiento» del sistema, las apariciones se desactivan y el contenido se muestra directamente.
 
-Diseño en Figma: [Marca](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-17&t=zv0k9BZ0KNZ8WH8D-1), [Color](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-18&t=zv0k9BZ0KNZ8WH8D-1), [Tipografía y espacio](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-19&t=zv0k9BZ0KNZ8WH8D-1), [Íconos y componentes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-20&t=zv0k9BZ0KNZ8WH8D-1), [Mobile e IoT](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-21&t=zv0k9BZ0KNZ8WH8D-1) y [Datos y accesibilidad](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-22&t=zv0k9BZ0KNZ8WH8D-1).
+Diseño en Figma: Marca (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-17>), Color (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-18>), Tipografía y espacio (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-19>), Íconos y componentes (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-20>), Mobile e IoT (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-21>) y Datos y accesibilidad (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=13-22>).
 
 ## 5.2. Information Architecture
 
@@ -658,7 +658,7 @@ Dentro de los bloques, los datos se etiquetan con la cifra primero y la explicac
 | Comparar parcelas | Asesora | Ver varias parcelas en la misma escala. |
 | Calibración | Asesora | Ajustar un sensor con el análisis de laboratorio. |
 | Reportes | Asesora | Preparar el PDF para el productor. |
-| Nivel normal · en vigilancia · alto · muy alto | Ambos | Menos de 80 %, 80 a 100 %, 100 a 125 % y más de 125 % del umbral del cultivo. |
+| Nivel normal · en vigilancia · alto · muy alto | Ambos | Hasta 100 %, de 100 a 120 %, de 120 a 150 % y desde 150 % del umbral del cultivo. |
 
 ### 5.2.3. SEO Tags and Meta Tags
 
@@ -774,7 +774,7 @@ El recorrido principal va de arriba abajo con el scroll; los atajos del menú pe
 | **Contextual** | Botones de acción en cada franja, alerta y formulario (*Registrar acción*, *Comparar parcelas*, *Exportar PDF*). | Hojas inferiores para registrar acciones y compartir. |
 | **Entrada directa** | Enlace de la campana a la bandeja de alertas; enlaces desde el correo al detalle de parcela. | La notificación abre el detalle de la parcela con la alerta. |
 
-Diagramas en Figma: [arquitectura de información del Landing Page](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2&t=zv0k9BZ0KNZ8WH8D-1) y [de las aplicaciones](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=59-2).
+Diagramas en Figma: arquitectura de información del Landing Page (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=29-2>) y de las aplicaciones (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=59-2>).
 
 ## 5.3. Landing Page UI Design
 
@@ -810,7 +810,7 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 </div>
 
 <div align="center">
-<img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="800">
+<img src="../assets/landing-page-wireframes/landing-wireframe-desktop-2.png" alt="Wireframe desktop del Landing Page: beneficios, capacidades y proceso" width="680">
 <p><em>Figura 5.59. Wireframe Desktop Web Browser (2/4): beneficios, capacidades y proceso de implementación.</em></p>
 </div>
 
@@ -851,8 +851,18 @@ Los wireframes fijan la estructura, la jerarquía y el orden de lectura sin dist
 En 390 px la estructura se conserva y solo cambia la disposición: el menú se convierte en un botón de hamburguesa junto a *Probar Gratis*, el selector de idioma pasa al menú desplegable, todas las grillas se apilan en una columna, el titular baja de 58 a 30 px, los pasos del proceso se leen en lista vertical debajo de la foto y los planes, el equipo y el pie de página se muestran uno debajo de otro. Los márgenes laterales se reducen a 16 px para ganar ancho útil.
 
 <div align="center">
-<img src="../assets/landing-page-wireframes/landing-wireframe-mobile.png" alt="Wireframe mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<img src="../assets/landing-page-wireframes/landing-wireframe-mobile-1.png" alt="Wireframe mobile del Landing Page: del encabezado a las capacidades" width="800">
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), del encabezado a las capacidades; cada tramo se lee de arriba abajo y de izquierda a derecha (1 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-wireframes/landing-wireframe-mobile-2.png" alt="Wireframe mobile del Landing Page: del proceso de implementación al llamado final" width="800">
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), del proceso de implementación al llamado final; cada tramo se lee de arriba abajo y de izquierda a derecha (2 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-wireframes/landing-wireframe-mobile-3.png" alt="Wireframe mobile del Landing Page: pie de página" width="282">
+<p><em>Figura 5.62. Wireframe Mobile Web Browser (390 px), pie de página; cada tramo se lee de arriba abajo y de izquierda a derecha (3 de 3).</em></p>
 </div>
 
 ### 5.3.2. Landing Page Mock-up
@@ -880,7 +890,7 @@ Los mock-ups llevan los wireframes a alta fidelidad con el **Design System** del
 </div>
 
 <div align="center">
-<img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="800">
+<img src="../assets/landing-page-mockups/landing-mockup-desktop-2.png" alt="Mock-up desktop del Landing Page: beneficios, capacidades y proceso" width="680">
 <p><em>Figura 5.65. Mock-up Desktop Web Browser (2/4): beneficios, capacidades con el indicador de CEe y proceso de implementación.</em></p>
 </div>
 
@@ -910,11 +920,21 @@ Los contrastes medidos (WCAG 2.1) son: títulos `#111827` sobre blanco 17,74:1; 
 El mock-up móvil aplica los mismos estilos con los ajustes de la sección anterior: encabezado compacto con logo, *Probar Gratis* y menú de hamburguesa; hero con titular de 30 px; tarjetas a ancho completo; y planes apilados, con el plan *Productor* igualmente destacado.
 
 <div align="center">
-<img src="../assets/landing-page-mockups/landing-mockup-mobile.png" alt="Mock-up mobile del Landing Page en tres tramos" width="800">
-<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), leído de izquierda a derecha en tres tramos.</em></p>
+<img src="../assets/landing-page-mockups/landing-mockup-mobile-1.png" alt="Mock-up mobile del Landing Page: del encabezado a las capacidades" width="800">
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), del encabezado a las capacidades; cada tramo se lee de arriba abajo y de izquierda a derecha (1 de 3).</em></p>
 </div>
 
-Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2&t=zv0k9BZ0KNZ8WH8D-1), [mock-ups](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3&t=zv0k9BZ0KNZ8WH8D-1) y [Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1&t=zv0k9BZ0KNZ8WH8D-1) del Landing Page.
+<div align="center">
+<img src="../assets/landing-page-mockups/landing-mockup-mobile-2.png" alt="Mock-up mobile del Landing Page: del proceso de implementación al llamado final" width="800">
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), del proceso de implementación al llamado final; cada tramo se lee de arriba abajo y de izquierda a derecha (2 de 3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/landing-page-mockups/landing-mockup-mobile-3.png" alt="Mock-up mobile del Landing Page: pie de página" width="282">
+<p><em>Figura 5.68. Mock-up Mobile Web Browser (390 px), pie de página; cada tramo se lee de arriba abajo y de izquierda a derecha (3 de 3).</em></p>
+</div>
+
+Diseño en Figma: wireframes (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-2>), mock-ups (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=1-3>) y Design System (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=0-1>) del Landing Page.
 
 ## 5.4. Applications UX/UI Design
 
@@ -1198,7 +1218,7 @@ El color se reserva para el estado del suelo: la franja de Sector Norte pasa de 
 
 Contrastes medidos (WCAG 2.1): tinta `#16211C` sobre el fondo `#F5F7F6`, 15,9:1; texto secundario `#4B5563` sobre blanco, 7,56:1; esmeralda `#047857` con texto blanco, 5,48:1; rojo de texto `#A12426` sobre blanco, 7,9:1. La marca del umbral es una línea de 2 px en tinta, visible sobre cualquier color de franja. En la Mobile App, la notificación usa el mismo texto que la alerta de la Web App para que el mensaje sea reconocible en ambos canales.
 
-Diseño en Figma: [wireframes](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-3) y [mock-ups y Design System](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-2).
+Diseño en Figma: wireframes (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-3>) y mock-ups y Design System (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-2>).
 
 ### 5.4.3. Applications User Flow Diagrams
 
@@ -1276,7 +1296,7 @@ Los user flows derivan de los wireflows y usan los mock-ups. Además de la ruta 
 
 *Happy path:* desde la notificación abre la parcela, registra la acción y la comparte por WhatsApp. *Unhappy path:* si no hay señal al guardar, la acción queda en el celular con la etiqueta «1 acción pendiente de envío» y se envía sola cuando vuelve la conexión; el mensaje lo explica sin culpar al usuario.
 
-Tablero en FigJam: [OsoSense — Wireflows y User Flows](https://www.figma.com/board/QhrU4aUPvxBQeR1hSyJ3Jn).
+Tablero en FigJam: OsoSense — Wireflows y User Flows (<https://www.figma.com/board/QhrU4aUPvxBQeR1hSyJ3Jn>).
 
 ## 5.5. Applications Prototyping
 
@@ -1294,7 +1314,7 @@ Los prototipos se construyeron en Figma sobre los mock-ups de la sección 5.4.2,
 | Web App (Desktop Web Browser) | Inicio de sesión | UG1 a UG6, con los estados de error de credenciales, validación de parcela, valor de laboratorio fuera de rango y reporte sin datos |
 | Mobile App (Mobile) | Notificación de alerta e inicio de sesión | UG1 y UG2, con los estados sin conexión y sin señal |
 
-Prototipos en Figma: [Web App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=51-2&starting-point-node-id=51%3A2) y [Mobile App](https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=52-61&starting-point-node-id=52%3A61).
+Prototipos en Figma: Web App (<https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=51-2&starting-point-node-id=51:2>) y Mobile App (<https://www.figma.com/proto/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=52-61&starting-point-node-id=52:61>).
 
 **Videos de demostración**
 
@@ -1302,12 +1322,12 @@ El recorrido de cada prototipo se presenta en un video en Microsoft Stream. Cada
 
 <div align="center">
 <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN"><img src="../assets/prototypes/video-prototype-web.jpg" alt="Captura del video de navegación del prototipo de la Web App" width="800"></a>
-<p><em>Figura 5.108. Video de navegación del prototipo de la Web App (Desktop Web Browser): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gX71SN">ver video en Microsoft Stream</a>.</em></p>
+<p><em>Figura 5.108. Video de navegación del prototipo de la Web App (Desktop Web Browser): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQBRtVMvF15cSreeIYSPFFMXAUpJO_1ezQcC-NOQ37J1Evk</a>.</em></p>
 </div>
 
 <div align="center">
 <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS"><img src="../assets/prototypes/video-prototype-mobile.jpg" alt="Captura del video de navegación del prototipo de la Mobile App" width="800"></a>
-<p><em>Figura 5.109. Video de navegación del prototipo de la Mobile App (Mobile): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=45mMS">ver video en Microsoft Stream</a>.</em></p>
+<p><em>Figura 5.109. Video de navegación del prototipo de la Mobile App (Mobile): <a href="https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE">https://upcedupe-my.sharepoint.com/:v:/g/personal/u20211g491_upc_edu_pe/IQAnMj9h9pWzRro4y6p6OMqKAbKEL_nuqe_IcYOIi9OPYOE</a>.</em></p>
 </div>
 
 ## 5.6. IoT Device Design
@@ -1346,21 +1366,21 @@ El diagrama de bloques muestra los tres caminos del dispositivo: la **energía**
 
 **Diseño del circuito**
 
-El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene sonda de conductividad ni sensor capacitivo de humedad, ambos se simulan con potenciómetros que entregan la misma señal analógica; la temperatura usa el DS18B20 real del simulador.
+El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo físico, sobre una protoboard de 830 puntos: ESP32 DevKit V1 (WROOM-32), sensor capacitivo de humedad v2.0, TDS Meter V1.0 con su sonda para la conductividad (medida en el extracto suelo:agua 1:2), sonda DS18B20 sumergible con su resistencia de 4,7 kΩ, LED RGB de cátodo común con tres resistencias de 220 Ω, pulsador de dos patas y la cadena de energía (panel solar de 6 V de 100 × 60 mm, cargador TP4056 con protección y batería 18650 en su porta-batería). Wokwi no trae esos sensores, el pulsador de dos patas ni las piezas de energía, así que se crearon como *custom chips*. Los dos sensores analógicos entregan la misma curva de voltaje que el módulo real y el pulsador cierra su pin a GND; los tres se manejan con un control deslizante durante la simulación. Las piezas de energía solo se dibujan, porque Wokwi siempre alimenta la placa. Cada cable une dos puntos: las conexiones compartidas se hacen en las filas y los rieles de la protoboard. Los cables de señal usan los mismos pines y colores que el armado del prototipo físico: amarillo para la conductividad (GPIO 34), azul para la humedad (GPIO 35), naranja, verde y azul para el LED RGB (GPIO 25, 26 y 27) y morado para el pulsador (GPIO 14).
 
 <div align="center">
-<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32, dos potenciómetros, DS18B20, LED RGB y botón" width="800">
+<img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32 DevKit V1, protoboard de 830 puntos, sensores de humedad y TDS, DS18B20, LED RGB, pulsador de dos patas, TP4056, batería 18650 y panel solar" width="800">
 <p><em>Figura 5.113. Circuito del dispositivo en Wokwi.</em></p>
 </div>
 
 | Elemento | Pin del ESP32 | Conexión |
 |---|---|---|
-| Sonda de CE (potenciómetro en la simulación) | GPIO 34 (ADC) | Salida analógica 0–3,3 V |
-| Humedad capacitiva (potenciómetro en la simulación) | GPIO 35 (ADC) | Salida analógica 0–3,3 V |
-| DS18B20 | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
+| TDS Meter V1.0 con su sonda | GPIO 34 (ADC) | Salida analógica 0–2,3 V; 3,3 V equivale a 3,2 dS/m |
+| Sensor capacitivo de humedad v2.0 | GPIO 35 (ADC) | Salida inversa: 2,58 V en seco y 1,05 V en agua |
+| Sonda DS18B20 sumergible | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
 | LED RGB de cátodo común | GPIO 25, 26 y 27 | Una resistencia de 220 Ω por color |
-| Botón | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
-| Alimentación | 3V3 y GND | Desde el regulador de 3,3 V |
+| Pulsador de dos patas | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
+| Alimentación | VIN y GND; 3V3 a los rieles | Panel solar de 6 V → TP4056 con protección, que carga la batería 18650 → OUT+ y OUT− a VIN y GND; el regulador de la placa entrega 3,3 V a los rieles |
 
 **Flujos de interacción que cubre el prototipo**
 
@@ -1370,6 +1390,6 @@ El circuito se elaboró en **Wokwi** con un ESP32 DevKit C. Como Wokwi no tiene 
 4. **Pulsación corta:** toma y envía una lectura en el momento, útil durante la instalación.
 5. **Pulsación de 3 s:** parpadeo azul de emparejamiento con la app.
 
-Los archivos del circuito (`diagram.json` y `libraries.txt`) y la primera versión del firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden importar en Wokwi para ejecutar la simulación.
+Los archivos del circuito (`diagram.json`, `libraries.txt` y los *custom chips* `.chip.json` y `.chip.c`) y el firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden subir a un proyecto nuevo de Wokwi para ejecutar la simulación.
 
-Diseño físico en Figma: [IoT · Dispositivo](https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4).
+Diseño físico en Figma: IoT · Dispositivo (<https://www.figma.com/design/w8ggl2291TtYEPmhJ70zrq/OsoSense-%E2%80%94-Landing-Page-UI-Design?node-id=37-4>).
