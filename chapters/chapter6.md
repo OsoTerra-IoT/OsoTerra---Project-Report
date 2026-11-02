@@ -956,9 +956,11 @@ Commits relacionados con pruebas en el Sprint 2:
 
 Al cierre de esta revisión el productor y el asesor trabajan con datos del RESTful API. Las capturas de la Web App muestran un recorrido completo con el backend en ejecución local y cuentas de prueba: el productor registra su finca y sus parcelas, vincula el sensor con el código de activación, el Edge Service envía las lecturas, aparece la alerta y el productor registra la acción correctiva. La Mobile App se probó con el mismo flujo en el emulador Android (Pixel 7).
 
+El recorrido se volvió a tomar el 2 de noviembre de 2026 sobre la rama `develop` de los dos productos, de modo que las figuras muestran la versión que está desplegada: ya incluye las correcciones de la evaluación heurística de la sección 6.3.3 (una sola escala de severidad —En vigilancia, Alto y Muy alto—, «Marcar como atendida» en los dos productos, apertura en español y formulario de parcela sin cultivo preseleccionado) y el rediseño del inicio, que encabeza la pantalla con cuántas parcelas necesitan atención y la tendencia de la parcela más crítica. En el escenario de las capturas, el productor tiene tres parcelas: Lote Uva en Muy alto, Lote Palta en Alto y Lote Sur, la parcela a la que se vincula el sensor, que queda En vigilancia con su primera lectura.
+
 <div align="center">
 <img src="../assets/sprint-2/webapp-02-mis-parcelas.png" alt="Fincas y parcelas del productor en la Web App" width="800">
-<p><em>Figura 6.24. Fincas y parcelas del productor registradas en el RESTful API.</em></p>
+<p><em>Figura 6.24. Fincas y parcelas del productor registradas en el RESTful API: Lote Sur todavía sin lectura, porque aún no tiene sensor.</em></p>
 </div>
 
 <div align="center">
@@ -973,7 +975,7 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-05-inicio-con-alerta.png" alt="Inicio del productor con una parcela sobre el umbral" width="800">
-<p><em>Figura 6.27. Inicio del productor después de la sincronización del Edge: Lote Norte al 160 % del umbral de la uva.</em></p>
+<p><em>Figura 6.27. Inicio del productor después de la sincronización del Edge: 2 de sus 3 parcelas necesitan atención y Lote Uva está al 173 % del umbral de la uva.</em></p>
 </div>
 
 <div align="center">
@@ -982,8 +984,8 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 </div>
 
 <div align="center">
-<img src="../assets/sprint-2/webapp-08-alertas.png" alt="Bandeja de alertas con severidad vigilancia, advertencia y crítica" width="800">
-<p><em>Figura 6.29. Alertas generadas por el umbral del cultivo (US31).</em></p>
+<img src="../assets/sprint-2/webapp-08-alertas.png" alt="Bandeja de alertas con los niveles En vigilancia, Alto y Muy alto" width="800">
+<p><em>Figura 6.29. Alertas generadas por el umbral del cultivo, en los tres niveles de severidad (US31).</em></p>
 </div>
 
 <div align="center">
@@ -993,7 +995,7 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-10-alerta-resuelta.png" alt="Alerta resuelta con su acción registrada" width="800">
-<p><em>Figura 6.31. Alerta resuelta con la acción registrada en el mismo día calendario.</em></p>
+<p><em>Figura 6.31. Alerta resuelta con la acción registrada —lavado de sales— en el mismo día calendario.</em></p>
 </div>
 
 <div align="center">
@@ -1237,7 +1239,7 @@ Las observaciones de cada sesión se registran en la sección 6.3.2 y los proble
 
 ### 6.3.3. Evaluaciones según heurísticas
 
-El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas reales del Sprint 2 (Figuras 6.34 y 6.35), porque en esta inspección no se ejecutó en un emulador. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
+El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas que tenía ese día, porque en esta inspección no se ejecutó en un emulador; las figuras de esta sección las conservan, mientras que las Figuras 6.34 y 6.35 de la sección 6.2.2.6 ya muestran la versión corregida. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
 
 **UX Heuristics & Principles Evaluation**
 
@@ -1460,6 +1462,6 @@ En el detalle de parcela de la Mobile App (tareas P-T5 y A-T6), «Conductividad 
 
 Agregar valores en dS/m en el eje vertical y fechas en el horizontal, marcar el valor del último punto y ofrecer, como en la Web App, una lista de lecturas que el lector de pantalla pueda leer.
 
-**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los de severidad 3 se corrigen en el siguiente sprint, antes de las entrevistas con participantes de los segmentos: unificar la regla de atención y la escala de severidad entre productos, quitar los textos de demostración de la versión conectada al RESTful API, abrir en español y corregir el formulario de parcela. Los hallazgos de las entrevistas de la sección 6.3.2 se agregarán a esta tabla cuando se realicen.
+**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los cinco de severidad 3 ya se corrigieron dentro del mismo Sprint 2, antes de las entrevistas con participantes de los segmentos: se unificaron la regla de atención y la escala de severidad entre productos (En vigilancia, Alto y Muy alto, con «Marcar como atendida» en los dos), se quitaron los textos de demostración de la versión conectada al RESTful API, los dos productos abren en español y el formulario de parcela ya no trae un cultivo preseleccionado. Las figuras de la sección 6.2.2.6, tomadas el 2 de noviembre de 2026, muestran los productos con esas correcciones aplicadas; las figuras de esta sección conservan el estado en el que se detectó cada problema. Los hallazgos de las entrevistas de la sección 6.3.2 se agregarán a esta tabla cuando se realicen.
 
 ## 6.4. Video About-the-Product
