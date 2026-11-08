@@ -139,6 +139,8 @@
 | 0.0.133 | 08/11/2026 | Andreow Jomark Santiago Peña | Carátula con el interlineado y los márgenes del modelo oficial del curso, para que ocupe la página como el modelo. |
 | 0.0.134 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo V, sección 5.6: contingencia por salinidad crítica (relé, minibomba y reglas de lavado), circuito de Wokwi actualizado (Figura 5.113) y simulación de la contingencia (Figura 5.114); Capítulo VI: descripción de la Embedded Application actualizada. |
 | 0.0.135 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo V, sección 5.6: los chips de conductividad y humedad de Wokwi reaccionan a la bomba (pin PUMP) y la Figura 5.114 muestra el lazo cerrado: la conductividad baja de 2,0 a 1,52 dS/m tras dos lavados. |
+| 0.0.136 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.2.6: capturas de la Web App con los escenarios de contingencia por salinidad crítica (Figuras 6.36 y 6.37); las figuras siguientes pasan a numerarse desde la 6.38. |
+| 0.0.137 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.2.6: tabla de correcciones y funciones agregadas al cierre del Sprint 2 en el RESTful API, la Web App y la Mobile App (suscripción, límite de parcelas, calibración, errores con reintento). |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
