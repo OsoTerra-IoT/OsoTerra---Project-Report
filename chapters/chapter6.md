@@ -1035,6 +1035,20 @@ El recorrido se volvió a tomar el 2 de noviembre de 2026 sobre la rama `develop
 <p><em>Figura 6.37. Escenario 8 de la Web App: tres lavados automáticos usados, salinidad todavía Muy alta y aviso de que una persona debe actuar.</em></p>
 </div>
 
+**Correcciones y funciones agregadas al cierre del Sprint 2.** Después de la revisión del código se completaron los pendientes que no dependían de servicios externos. Todo está en la rama `develop` de cada repositorio y se verificó con las pruebas automáticas; no se probó contra el RESTful API de Railway ni en un emulador.
+
+| Producto | Cambio | Verificación |
+|---|---|---|
+| RESTful API | El factor de calibración se guarda en el sensor al registrar una calibración. | 91 pruebas, entre unitarias, de integración y Cucumber |
+| RESTful API | `quotaConsumed` es el número real de parcelas activas y crear una parcela por encima del límite del plan activo responde 409. | Incluido en las 91 pruebas |
+| RESTful API | Una alerta reconocida pero sin resolver no genera otra de igual o menor severidad; si la severidad sube, sí. | Incluido en las 91 pruebas |
+| Web App | Si una parcela falla, el tablero muestra las demás con un aviso; reconocer una alerta que falla muestra el error. | 120 pruebas, `ng build` y revisión de idiomas |
+| Web App | Suscripción con planes, parcelas usadas, contratar, cambiar y cancelar; mensaje del límite al recibir el 409; menos peticiones al cargar (de 12 a 10 para el productor y de 18 a 6 al activar un sensor). | Incluido en las 120 pruebas |
+| Mobile App | Los errores de red se ven con «Reintentar» en vez de una lista vacía; el asesor no ve acciones de escritura; el nombre del laboratorio y la lectura del sensor se editan al calibrar. | 51 pruebas y `assembleDebug` |
+| Mobile App | Suscripción con planes, contratar, cambiar y cancelar, y mensaje del límite de parcelas. | Incluido en las 51 pruebas |
+
+Quedan fuera, a propósito, el cobro con Stripe (un plan de pago queda «pendiente de pago» hasta que el RESTful API reciba el pago), la firma de release y Firebase App Distribution de la Mobile App, que necesitan credenciales del equipo y están descritos en su README.
+
 **Recorrido del dispositivo al RESTful API.** El 22 de octubre se probó la cadena completa en local: el RESTful API de `develop` con PostgreSQL, el Edge Service en el puerto 5000 y lecturas del dispositivo `OS-014` con el mismo JSON que envía la Embedded Application (`deviceId`, `conductivityDsM`, `moisturePercent`, `temperatureCelsius`, cabecera `X-API-Key`). El sensor estaba vinculado a una parcela de palta, con umbral de 1,1 dS/m, de una cuenta de prueba creada solo en ese entorno.
 
 | Lectura del dispositivo | Respuesta del Edge Service | Resultado en el RESTful API |
