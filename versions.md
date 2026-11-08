@@ -138,6 +138,7 @@
 | 0.0.132 | 02/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2.6 con el recorrido de la Web App y de la Mobile App vuelto a tomar sobre `develop` (Figuras 6.24 a 6.35), ya con las correcciones de la evaluación heurística y el rediseño del inicio; pies de figura y resultado de la sección 6.3.3 actualizados. |
 | 0.0.133 | 08/11/2026 | Andreow Jomark Santiago Peña | Carátula con el interlineado y los márgenes del modelo oficial del curso, para que ocupe la página como el modelo. |
 | 0.0.134 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo V, sección 5.6: contingencia por salinidad crítica (relé, minibomba y reglas de lavado), circuito de Wokwi actualizado (Figura 5.113) y simulación de la contingencia (Figura 5.114); Capítulo VI: descripción de la Embedded Application actualizada. |
+| 0.0.135 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo V, sección 5.6: los chips de conductividad y humedad de Wokwi reaccionan a la bomba (pin PUMP) y la Figura 5.114 muestra el lazo cerrado: la conductividad baja de 2,0 a 1,52 dS/m tras dos lavados. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
