@@ -1,4 +1,5 @@
-<div style="text-align: center; font-family: Aptos, Calibri, Arial, sans-serif; font-size: 12pt; line-height: 1.5; page-break-inside: avoid; break-inside: avoid; page-break-after: always; break-after: page;">
+<style>@page cover { size: A4; margin: 2.54cm; }</style>
+<div style="text-align: center; font-family: Aptos, Calibri, Arial, sans-serif; font-size: 12pt; line-height: 22pt; page: cover; page-break-inside: avoid; break-inside: avoid; page-break-after: always; break-after: page;">
 <img src="assets/cover/upc-logo.png" alt="UPC-LOGO" width="84"/>
 <p style="margin: 0;">Universidad Peruana de Ciencias Aplicadas</p>
 <p style="margin: 0;">Carrera de Ingeniería de Software</p>
@@ -18,7 +19,7 @@
 <p style="margin: 0; font-size: 14pt;"><strong>OsoSense</strong></p>
 <p style="margin: 0;">&nbsp;</p>
 <p style="margin: 0;"><strong>Integrantes</strong></p>
-<table style="margin: 0 auto; font-size: 11pt; line-height: 1.5; border-collapse: collapse; border: none;">
+<table style="margin: 0 auto; font-size: 11pt; line-height: 20pt; border-collapse: collapse; border: none;">
   <thead>
     <tr><th style="border: none; padding: 0 8px; text-align: center;">Código</th><th style="border: none; padding: 0 8px; text-align: left;">Apellidos y Nombres</th></tr>
   </thead>
@@ -32,8 +33,6 @@
     <tr><td style="border: none; padding: 0 8px; text-align: center;">u202312629</td><td style="border: none; padding: 0 8px; text-align: left;">Barturen Panez, Iker Gabriel</td></tr>
   </tbody>
 </table>
-<p style="margin: 0;">&nbsp;</p>
-<p style="margin: 0;">&nbsp;</p>
 <p style="margin: 0;">&nbsp;</p>
 <p style="margin: 0;"><strong>Período 202620</strong></p>
 </div>
