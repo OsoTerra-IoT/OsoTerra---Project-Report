@@ -1407,9 +1407,11 @@ Si el suelo llega al nivel Crítico, el dispositivo no solo avisa: actúa. Con u
 
 La contingencia funciona con o sin el Edge Service (si este no responde, usa la conductividad sin compensar) y, si el relé no está conectado, solo registra la decisión en el monitor serie. Al agotarse los lavados con la salinidad todavía crítica, el dispositivo lo avisa en el monitor serie y la persona debe revisar el agua de riego o el sustrato.
 
+En la simulación el lazo se cierra: los chips del sensor de conductividad y del sensor de humedad tienen un pin `PUMP` conectado a la señal del relé (GPIO 13). Mientras la bomba funciona, la conductividad simulada baja 0,03 dS/m por segundo y la humedad sube 2,5 puntos por segundo; al mover el control deslizante se parte de un valor nuevo. Así se ve el ciclo completo: medir, lavar, esperar el drenaje y volver a medir hasta que el nivel deja de ser Crítico.
+
 <div align="center">
 <img src="../assets/iot-device/iot-contingencia-serie.png" alt="Simulación en Wokwi con el monitor serie mostrando los lavados de la contingencia" width="800">
-<p><em>Figura 5.114. Simulación de la contingencia: la conductividad se mantiene en 2,0 dS/m (Crítico), la bomba se enciende tres veces y luego el dispositivo pide intervención de una persona.</em></p>
+<p><em>Figura 5.114. Simulación de la contingencia con el circuito completo: con 2,0 dS/m (Crítico) la bomba lava dos veces, la conductividad baja a 1,76 y luego a 1,52 dS/m (Alto) y la humedad sube de 40 % a 80 %, así que el dispositivo deja de lavar.</em></p>
 </div>
 
 Los archivos del circuito (`diagram.json`, `libraries.txt` y los *custom chips* `.chip.json` y `.chip.c`) y el firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden subir a un proyecto nuevo de Wokwi para ejecutar la simulación.
