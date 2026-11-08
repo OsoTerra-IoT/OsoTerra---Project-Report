@@ -136,6 +136,8 @@
 | 0.0.130 | 25/10/2026 | Andreow Jomark Santiago Peña | Capítulo V: umbrales de los niveles de salinidad alineados con el RESTful API, la Web App y la Mobile App (1,0, 1,2 y 1,5 veces el umbral del cultivo) en la sección 5.1 y en el sistema de etiquetas, y valores de la figura de estados en contexto actualizados. |
 | 0.0.131 | 25/10/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2.3 con la captura del tablero de Trello al cierre del Sprint 2 (Figura 6.23), con las Technical Stories renombradas a TS01–TS10; figuras siguientes renumeradas. |
 | 0.0.132 | 02/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI: sección 6.2.2.6 con el recorrido de la Web App y de la Mobile App vuelto a tomar sobre `develop` (Figuras 6.24 a 6.35), ya con las correcciones de la evaluación heurística y el rediseño del inicio; pies de figura y resultado de la sección 6.3.3 actualizados. |
+| 0.0.133 | 08/11/2026 | Andreow Jomark Santiago Peña | Carátula con el interlineado y los márgenes del modelo oficial del curso, para que ocupe la página como el modelo. |
+| 0.0.134 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo V, sección 5.6: contingencia por salinidad crítica (relé, minibomba y reglas de lavado), circuito de Wokwi actualizado (Figura 5.113) y simulación de la contingencia (Figura 5.114); Capítulo VI: descripción de la Embedded Application actualizada. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 

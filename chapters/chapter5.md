@@ -1366,7 +1366,7 @@ El diagrama de bloques muestra los tres caminos del dispositivo: la **energía**
 
 **Diseño del circuito**
 
-El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo físico, sobre una protoboard de 830 puntos: ESP32 DevKit V1 (WROOM-32), sensor capacitivo de humedad v2.0, TDS Meter V1.0 con su sonda para la conductividad (medida en el extracto suelo:agua 1:2), sonda DS18B20 sumergible con su resistencia de 4,7 kΩ, LED RGB de cátodo común con tres resistencias de 220 Ω, pulsador de dos patas y la cadena de energía (panel solar de 6 V de 100 × 60 mm, cargador TP4056 con protección y batería 18650 en su porta-batería). Wokwi no trae esos sensores, el pulsador de dos patas ni las piezas de energía, así que se crearon como *custom chips*. Los dos sensores analógicos entregan la misma curva de voltaje que el módulo real y el pulsador cierra su pin a GND; los tres se manejan con un control deslizante durante la simulación. Las piezas de energía solo se dibujan, porque Wokwi siempre alimenta la placa. Cada cable une dos puntos: las conexiones compartidas se hacen en las filas y los rieles de la protoboard. Los cables de señal usan los mismos pines y colores que el armado del prototipo físico: amarillo para la conductividad (GPIO 34), azul para la humedad (GPIO 35), naranja, verde y azul para el LED RGB (GPIO 25, 26 y 27) y morado para el pulsador (GPIO 14).
+El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo físico, sobre una protoboard de 830 puntos: ESP32 DevKit V1 (WROOM-32), sensor capacitivo de humedad v2.0, TDS Meter V1.0 con su sonda para la conductividad (medida en el extracto suelo:agua 1:2), sonda DS18B20 sumergible con su resistencia de 4,7 kΩ, LED RGB de cátodo común con tres resistencias de 220 Ω, pulsador de dos patas, la cadena de energía (panel solar de 6 V de 100 × 60 mm, cargador TP4056 con protección y batería 18650 en su porta-batería) y la **contingencia por salinidad crítica**: un módulo relé de un canal que enciende una minibomba de agua para lavar el suelo (en la simulación, un LED azul hace de bomba). Wokwi no trae esos sensores, el pulsador de dos patas ni las piezas de energía, así que se crearon como *custom chips*. Los dos sensores analógicos entregan la misma curva de voltaje que el módulo real y el pulsador cierra su pin a GND; los tres se manejan con un control deslizante durante la simulación. Las piezas de energía solo se dibujan, porque Wokwi siempre alimenta la placa. Cada cable une dos puntos: las conexiones compartidas se hacen en las filas y los rieles de la protoboard. Los cables de señal usan los mismos pines y colores que el armado del prototipo físico: amarillo para la conductividad (GPIO 34), azul para la humedad (GPIO 35), naranja, verde y azul para el LED RGB (GPIO 25, 26 y 27) y morado para el pulsador (GPIO 14); el relé usa el GPIO 13, en naranja.
 
 <div align="center">
 <img src="../assets/iot-device/iot-circuito-wokwi.png" alt="Circuito en Wokwi con ESP32 DevKit V1, protoboard de 830 puntos, sensores de humedad y TDS, DS18B20, LED RGB, pulsador de dos patas, TP4056, batería 18650 y panel solar" width="800">
@@ -1380,6 +1380,7 @@ El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo 
 | Sonda DS18B20 sumergible | GPIO 4 | Bus 1-Wire con resistencia de 4,7 kΩ a 3,3 V |
 | LED RGB de cátodo común | GPIO 25, 26 y 27 | Una resistencia de 220 Ω por color |
 | Pulsador de dos patas | GPIO 14 | Entrada con *pull-up* interno, a GND al pulsar |
+| Módulo relé de un canal con minibomba (contingencia) | GPIO 13 | IN al GPIO 13, VCC a 5 V (VIN con USB) y GND a GND. La bomba tiene su propio portapilas de 2 AA en COM y NO, de modo que el ESP32 nunca la alimenta |
 | Alimentación | VIN y GND; 3V3 a los rieles | Panel solar de 6 V → TP4056 con protección, que carga la batería 18650 → OUT+ y OUT− a VIN y GND; el regulador de la placa entrega 3,3 V a los rieles |
 
 **Flujos de interacción que cubre el prototipo**
@@ -1389,6 +1390,27 @@ El circuito se elaboró en **Wokwi** con las piezas compradas para el prototipo 
 3. **Sin conexión:** destello blanco; el Edge Service conserva las lecturas y las reenvía al recuperar la señal.
 4. **Pulsación corta:** toma y envía una lectura en el momento, útil durante la instalación.
 5. **Pulsación de 3 s:** parpadeo azul de emparejamiento con la app.
+6. **Contingencia por salinidad crítica:** si la conductividad llega a nivel Crítico (1,5 veces el umbral del cultivo o más) en dos lecturas seguidas, el LED parpadea dos veces en cian y el relé enciende la minibomba durante un tiempo fijo (60 s en campo, 8 s en la simulación) para lavar las sales con agua dulce.
+
+**Contingencia: bajar la salinidad con piezas simples**
+
+Si el suelo llega al nivel Crítico, el dispositivo no solo avisa: actúa. Con un módulo relé de un canal, una minibomba sumergible de 3 a 6 V, una botella de agua dulce y una manguera, el prototipo aplica un lavado (*leaching*) que arrastra las sales fuera de la maceta. La decisión la toma la clase `FlushPolicy`, que no depende del hardware y se probó por separado, y la ejecuta el actuador `FlushPump` siguiendo el estilo ModestIoT del curso. Las reglas protegen a la planta y al equipo:
+
+| Regla | Valor | Motivo |
+|---|---|---|
+| Lecturas críticas seguidas antes del primer lavado | 2 | Una lectura con ruido no enciende la bomba |
+| Duración de cada lavado | 60 s en campo; 8 s en la simulación | Dosis fija; el actuador también se apaga solo |
+| Espera entre lavados | 30 min en campo; 20 s en la simulación | El agua drena y la siguiente lectura es real |
+| Lavados antes de pedir ayuda | 3 | El agua misma puede ser salina o el sustrato estar mal |
+| Humedad máxima para lavar | 90 % | Evita encharcar el suelo |
+| Salinidad de vuelta a Normal | — | El contador de lavados se reinicia |
+
+La contingencia funciona con o sin el Edge Service (si este no responde, usa la conductividad sin compensar) y, si el relé no está conectado, solo registra la decisión en el monitor serie. Al agotarse los lavados con la salinidad todavía crítica, el dispositivo lo avisa en el monitor serie y la persona debe revisar el agua de riego o el sustrato.
+
+<div align="center">
+<img src="../assets/iot-device/iot-contingencia-serie.png" alt="Simulación en Wokwi con el monitor serie mostrando los lavados de la contingencia" width="800">
+<p><em>Figura 5.114. Simulación de la contingencia: la conductividad se mantiene en 2,0 dS/m (Crítico), la bomba se enciende tres veces y luego el dispositivo pide intervención de una persona.</em></p>
+</div>
 
 Los archivos del circuito (`diagram.json`, `libraries.txt` y los *custom chips* `.chip.json` y `.chip.c`) y el firmware (`sketch.ino` y sus módulos `.h` y `.cpp`) se versionan en `assets/iot-device/wokwi/` del repositorio del informe y se pueden subir a un proyecto nuevo de Wokwi para ejecutar la simulación.
 
