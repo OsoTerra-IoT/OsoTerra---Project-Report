@@ -1265,6 +1265,29 @@ Las observaciones de cada sesión se registran en la sección 6.3.2 y los proble
 
 ### 6.3.2. Registro de Entrevistas
 
+En esta sección se registran las sesiones de validación con los participantes de cada segmento. Cada registro indica los datos del participante, una captura del video, el enlace del video consolidado con el minuto en que inicia la sesión y su duración, y un resumen de sus apreciaciones sobre las tareas de la sección 6.3.1. La primera sesión se hizo con Yeira Momán, asesora técnica del segmento 2 que ya había participado en las entrevistas de la sección 2.2. Se centró en el Landing Page: el entrevistador lo recorrió con ella en pantalla compartida, explicó cada bloque y le hizo la pregunta de la tarea del Landing Page para asesores.
+
+<!-- TODO(equipo): agregar la captura assets/validation/validacion-int1-seg2.png y completar la URL del video consolidado, el minuto de inicio y la duración de la entrevista. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Segmento objetivo</th>
+      <th>Datos</th>
+      <th>Resumen</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Distrito:</strong> Pueblo Libre, Lima<br><br><strong>Perfil:</strong> Ingeniera agrónoma que asesora a productores de las zonas agrícolas de la costa; participó en la entrevista 1 del segmento 2 de la sección 2.2.2<br><br><strong>Producto validado:</strong> Landing Page<br><br><strong>Screenshot:</strong><br><img src="../assets/validation/validacion-int1-seg2.png" alt="Screenshot entrevista de validación Yeira Momán" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> El entrevistador recorrió con Yeira el Landing Page publicado en pantalla compartida. Le explicó que OsoSense es un sensor que se entierra en la parcela, mide la conductividad eléctrica del suelo y envía las lecturas a una plataforma que avisa cuando la salinidad se acerca al umbral del cultivo. Luego mostró los datos del impacto de la salinidad en la costa y las capacidades: telemetría continua, sensores no destructivos, asesoría de especialistas y tablero agronómico móvil. También le presentó los planes Piloto, Productor y Asesor Pro, este último con sensores ilimitados en varias parcelas, historial multianual, exportación de informes en PDF y Excel y sesiones con especialistas en suelos, además de las preguntas frecuentes, el equipo y el pie de página. Por último, le mostró el registro de la cuenta de asesor técnico en la Web App, que pide nombre, apellido, correo, contraseña, departamento, provincia y número de colegiatura.<br><br><strong>Tarea del Landing Page («¿Qué le ofrece esta plataforma para su trabajo con clientes?»):</strong> Yeira dijo que lo principal para ella es ver en un solo tablero todas las parcelas de sus clientes, porque su trabajo sería más organizado y no tendría que ir a cada una. También valoró poder sacar reportes para entregárselos a sus clientes y calibrar el sensor con un análisis de laboratorio. Esto último fue lo que más destacó, porque no confía en un sensor si no lo contrasta. Nombró tres capacidades (tablero de varias parcelas, reportes y calibración), por lo que la tarea se cumple según el criterio de la sección 6.3.1, aunque respondió después de la explicación del entrevistador y no tras un recorrido libre.<br><br><strong>Relación con el needfinding:</strong> Sus apreciaciones coinciden con lo que dijo en la sección 2.2.2: el tablero de varias parcelas responde a su frustración por el tiempo que pierde yendo de un productor a otro, y la calibración responde a su costumbre de contrastar el medidor portátil con el análisis de laboratorio.<br><br><strong>Pendiente:</strong> En esta sesión no se hicieron las tareas de la Web App del segmento 2 (priorizar visitas, calibración, reporte, invitación de clientes y comparación de parcelas) ni las preguntas de cierre.</td>
+      <td><strong>URL:</strong> Pendiente<br><strong>Inicio:</strong> Pendiente<br><strong>Duración:</strong> Pendiente</td>
+    </tr>
+  </tbody>
+</table>
+
 ### 6.3.3. Evaluaciones según heurísticas
 
 El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas que tenía ese día, porque en esta inspección no se ejecutó en un emulador; las figuras de esta sección las conservan, mientras que las Figuras 6.34 y 6.35 de la sección 6.2.2.6 ya muestran la versión corregida. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
