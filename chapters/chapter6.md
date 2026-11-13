@@ -1265,9 +1265,9 @@ Las observaciones de cada sesión se registran en la sección 6.3.2 y los proble
 
 ### 6.3.2. Registro de Entrevistas
 
-En esta sección se registran las sesiones de validación con los participantes de cada segmento. Cada registro indica los datos del participante, una captura del video, el enlace del video consolidado con el minuto en que inicia la sesión y su duración, y un resumen de sus apreciaciones sobre las tareas de la sección 6.3.1. La primera sesión se hizo con Yeira Momán, asesora técnica del segmento 2 que ya había participado en las entrevistas de la sección 2.2. La sesión validó solo el Landing Page: el entrevistador lo recorrió con ella en pantalla compartida, explicó cada bloque y le hizo la pregunta de la tarea del Landing Page para asesores.
+En esta sección se registran las sesiones de validación con los participantes de cada segmento. Cada registro indica los datos del participante, una captura del video, el enlace del video consolidado con el minuto en que inicia la sesión y su duración, y un resumen de sus apreciaciones sobre las tareas de la sección 6.3.1. Se hicieron cuatro sesiones en pantalla compartida: dos con asesoras técnicas del segmento 2, Daniela Gómez y Yeira Momán, que ya había participado en las entrevistas de la sección 2.2, y dos con participantes del segmento 1, Isabel Rodríguez y Carlos Mendoza. En todas el entrevistador recorrió el Landing Page con el participante; en las tres primeras se pasó además a la Web App con una cuenta de demostración, mientras que la sesión con Yeira validó solo el Landing Page.
 
-<!-- TODO(equipo): agregar la captura assets/validation/validacion-int1-seg2.png y completar la URL del video consolidado, el minuto de inicio y la duración de la entrevista. -->
+<!-- TODO(equipo): completar la URL del video consolidado con el minuto de inicio y la duración de cada entrevista. -->
 
 <table>
   <thead>
