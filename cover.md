@@ -26,7 +26,7 @@
   <tbody>
     <tr><td style="border: none; padding: 0 8px; text-align: center;">u202318049</td><td style="border: none; padding: 0 8px; text-align: left;">Goñe Araccata, Esther Abigail</td></tr>
     <tr><td style="border: none; padding: 0 8px; text-align: center;">u202321941</td><td style="border: none; padding: 0 8px; text-align: left;">Salazar Caballero, Alvaro Fabrizzio</td></tr>
-    <tr><td style="border: none; padding: 0 8px; text-align: center;">u20211g481</td><td style="border: none; padding: 0 8px; text-align: left;">Encalada Salazar, Alexis</td></tr>
+    <tr><td style="border: none; padding: 0 8px; text-align: center;">u20211g491</td><td style="border: none; padding: 0 8px; text-align: left;">Encalada Salazar, Alexis</td></tr>
     <tr><td style="border: none; padding: 0 8px; text-align: center;">u202312899</td><td style="border: none; padding: 0 8px; text-align: left;">Ortiz Alarcon, Victor Nicolas</td></tr>
     <tr><td style="border: none; padding: 0 8px; text-align: center;">u202317362</td><td style="border: none; padding: 0 8px; text-align: left;">Santiago Peña, Andreow Jomark</td></tr>
     <tr><td style="border: none; padding: 0 8px; text-align: center;">u20241c134</td><td style="border: none; padding: 0 8px; text-align: left;">Tumi Oliden, Manuel Ignacio</td></tr>
