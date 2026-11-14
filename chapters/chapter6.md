@@ -1269,13 +1269,9 @@ Cada sesión dura entre 25 y 35 minutos, se graba en video con el consentimiento
 
 Las observaciones de cada sesión se registran en la sección 6.3.2 y los problemas encontrados se clasifican con el formato de evaluación heurística del Anexo D en la sección 6.3.3.
 
-<!-- TODO(equipo): realizar las entrevistas (3 a 5 por segmento), subir el video consolidado upc-pre-202620-1asi0572-8735-OsoTerra-validation-sprint-2 a Microsoft Stream y completar 6.3.2 y 6.3.3. -->
-
 ### 6.3.2. Registro de Entrevistas
 
-En esta sección se registran las sesiones de validación con los participantes de cada segmento. Cada registro indica los datos del participante, una captura del video, el enlace del video consolidado con el minuto en que inicia la sesión y su duración, y un resumen de sus apreciaciones sobre las tareas de la sección 6.3.1. Se hicieron seis sesiones en pantalla compartida: tres con asesores técnicos del segmento 2, Daniela Gómez, Yeira Momán, que ya había participado en las entrevistas de la sección 2.2, y Paul Espinoza, y tres con participantes del segmento 1, Isabel Rodríguez, Carlos Mendoza y Andrea Guillén. En cinco de ellas el entrevistador recorrió el Landing Page con el participante y en cuatro se pasó además a la Web App con una cuenta de demostración; la sesión con Yeira validó solo el Landing Page y la de Andrea, solo la Web App.
-
-<!-- TODO(equipo): completar la URL del video consolidado con el minuto de inicio de cada entrevista. -->
+En esta sección se registran las sesiones de validación con los participantes de cada segmento. Cada registro indica los datos del participante, una captura del video, el enlace al video de la sesión con el minuto en que inicia y su duración, y un resumen de sus apreciaciones sobre las tareas de la sección 6.3.1. Se hicieron seis sesiones en pantalla compartida: tres con asesores técnicos del segmento 2, Daniela Gómez, Yeira Momán, que ya había participado en las entrevistas de la sección 2.2, y Paul Espinoza, y tres con participantes del segmento 1, Isabel Rodríguez, Carlos Mendoza y Andrea Guillén. En cinco de ellas el entrevistador recorrió el Landing Page con el participante y en cuatro se pasó además a la Web App con una cuenta de demostración; la sesión con Yeira validó solo el Landing Page y la de Andrea, solo la Web App.
 
 <table>
   <thead>
