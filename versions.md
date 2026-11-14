@@ -142,6 +142,11 @@
 | 0.0.136 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.2.6: capturas de la Web App con los escenarios de contingencia por salinidad crítica (Figuras 6.36 y 6.37); las figuras siguientes pasan a numerarse desde la 6.38. |
 | 0.0.137 | 08/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.2.6: tabla de correcciones y funciones agregadas al cierre del Sprint 2 en el RESTful API, la Web App y la Mobile App (suscripción, límite de parcelas, calibración, errores con reintento). |
 | 0.0.138 | 11/11/2026 | Iker Gabriel Barturen Panez | Capítulo VI: sección 6.3.2 con el registro de la primera entrevista de validación del segmento 2 (Yeira Momán), centrada en el Landing Page y en la tarea «¿Qué le ofrece esta plataforma para su trabajo con clientes?». |
+| 0.0.139 | 13/11/2026 | Goñe Araccata, Esther Abigail | Capítulo VI, sección 6.3.2: registro de las entrevistas de validación con Daniela Gómez, Isabel Rodríguez y Carlos Mendoza, con sus capturas y duraciones, y actualización de la introducción del registro. |
+| 0.0.140 | 13/11/2026 | Alexis Encalada Salazar | Capítulo VI, sección 6.3.2: enlaces clicables a los videos de las entrevistas y registro de las entrevistas de validación con Paul Espinoza (segmento 2) y Andrea Guillén (segmento 1). |
+| 0.0.141 | 13/11/2026 | Alexis Encalada Salazar | Capítulo VI: distribución de la Mobile App con Firebase App Distribution en la sección 6.2.2.8 (Figura 6.48, con renumeración de las figuras siguientes) y secciones 6.4 Video About-the-Product y 6.5 Video About-the-Team. |
+| 0.0.142 | 13/11/2026 | Victor Nicolas Ortiz Alarcon | Conclusiones y Student Outcome: actualización con las seis sesiones de validación, los videos y la distribución del APK. |
+| 0.0.143 | 13/11/2026 | Alexis Encalada Salazar | Capítulo VI, sección 6.3: enlace al video de cada sesión en lugar del video consolidado; índice de contenidos con la sección 6.5. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
