@@ -19,7 +19,7 @@ Las entrevistas de needfinding del Capítulo II siguen siendo la evidencia sobre
 1. Realizar las Validation Interviews con tres a cinco participantes por segmento, grabarlas en video y completar las secciones 6.3.2 y 6.3.3; con esos resultados, contrastar cada Hypothesis Statement con su criterio de éxito.
 2. Armar el prototipo físico con las piezas del circuito de Wokwi y probarlo en una parcela, para comparar sus lecturas con un análisis de laboratorio y obtener evidencia sobre la hipótesis HS-09 de calibración.
 3. Configurar Railway para que despliegue desde `develop` una vez integradas por pull request las ramas del Sprint 2, de modo que lo publicado coincida con lo revisado.
-4. Generar el APK firmado de la Mobile App y distribuirlo con Firebase App Distribution, para que los participantes de la validación la usen en su propio celular.
+4. Firmar el APK de la Mobile App con una clave de release, porque hoy se firma con la clave de depuración, y usar el grupo de verificadores de Firebase App Distribution (sección 6.2.2.8) para que los participantes de la validación la usen en su propio celular.
 5. En el Sprint 3, implementar las User Stories que quedaron fuera del Sprint 2 (suscripción, reportes, calibración y notificación móvil), publicar las versiones finales de todos los productos y repartir el trabajo para que cada integrante registre commits propios en los repositorios, como se acordó en la retrospectiva.
 
 <div style="page-break-before: always; break-before: page;"></div>
