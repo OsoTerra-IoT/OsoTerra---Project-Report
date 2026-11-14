@@ -174,6 +174,7 @@
     - [6.3.2. Registro de Entrevistas](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter6.md#632-registro-de-entrevistas)
     - [6.3.3. Evaluaciones según heurísticas](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter6.md#633-evaluaciones-según-heurísticas)
   - [6.4. Video About-the-Product](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter6.md#64-video-about-the-product)
+  - [6.5. Video About-the-Team](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/chapter6.md#65-video-about-the-team)
 - [Conclusiones](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/conclusions.md#conclusiones)
   - [Conclusiones y recomendaciones](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/conclusions.md#conclusiones-y-recomendaciones)
 - [Bibliografía](https://github.com/OsoTerra-IoT/OsoTerra---Project-Report/blob/develop/chapters/conclusions.md#bibliografía)
