@@ -956,9 +956,11 @@ Commits relacionados con pruebas en el Sprint 2:
 
 Al cierre de esta revisión el productor y el asesor trabajan con datos del RESTful API. Las capturas de la Web App muestran un recorrido completo con el backend en ejecución local y cuentas de prueba: el productor registra su finca y sus parcelas, vincula el sensor con el código de activación, el Edge Service envía las lecturas, aparece la alerta y el productor registra la acción correctiva. La Mobile App se probó con el mismo flujo en el emulador Android (Pixel 7).
 
+El recorrido se volvió a tomar el 2 de noviembre de 2026 sobre la rama `develop` de los dos productos, de modo que las figuras muestran la versión que está desplegada: ya incluye las correcciones de la evaluación heurística de la sección 6.3.3 (una sola escala de severidad —En vigilancia, Alto y Muy alto—, «Marcar como atendida» en los dos productos, apertura en español y formulario de parcela sin cultivo preseleccionado) y el rediseño del inicio, que encabeza la pantalla con cuántas parcelas necesitan atención y la tendencia de la parcela más crítica. En el escenario de las capturas, el productor tiene tres parcelas: Lote Uva en Muy alto, Lote Palta en Alto y Lote Sur, la parcela a la que se vincula el sensor, que queda En vigilancia con su primera lectura.
+
 <div align="center">
 <img src="../assets/sprint-2/webapp-02-mis-parcelas.png" alt="Fincas y parcelas del productor en la Web App" width="800">
-<p><em>Figura 6.24. Fincas y parcelas del productor registradas en el RESTful API.</em></p>
+<p><em>Figura 6.24. Fincas y parcelas del productor registradas en el RESTful API: Lote Sur todavía sin lectura, porque aún no tiene sensor.</em></p>
 </div>
 
 <div align="center">
@@ -973,7 +975,7 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-05-inicio-con-alerta.png" alt="Inicio del productor con una parcela sobre el umbral" width="800">
-<p><em>Figura 6.27. Inicio del productor después de la sincronización del Edge: Lote Norte al 160 % del umbral de la uva.</em></p>
+<p><em>Figura 6.27. Inicio del productor después de la sincronización del Edge: 2 de sus 3 parcelas necesitan atención y Lote Uva está al 173 % del umbral de la uva.</em></p>
 </div>
 
 <div align="center">
@@ -982,8 +984,8 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 </div>
 
 <div align="center">
-<img src="../assets/sprint-2/webapp-08-alertas.png" alt="Bandeja de alertas con severidad vigilancia, advertencia y crítica" width="800">
-<p><em>Figura 6.29. Alertas generadas por el umbral del cultivo (US31).</em></p>
+<img src="../assets/sprint-2/webapp-08-alertas.png" alt="Bandeja de alertas con los niveles En vigilancia, Alto y Muy alto" width="800">
+<p><em>Figura 6.29. Alertas generadas por el umbral del cultivo, en los tres niveles de severidad (US31).</em></p>
 </div>
 
 <div align="center">
@@ -993,7 +995,7 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-10-alerta-resuelta.png" alt="Alerta resuelta con su acción registrada" width="800">
-<p><em>Figura 6.31. Alerta resuelta con la acción registrada en el mismo día calendario.</em></p>
+<p><em>Figura 6.31. Alerta resuelta con la acción registrada —lavado de sales— en el mismo día calendario.</em></p>
 </div>
 
 <div align="center">
@@ -1019,6 +1021,34 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 <p><em>Figura 6.35. Mobile App: preferencias de notificación (US38) y perfil con los datos de la sesión.</em></p>
 </div>
 
+**Contingencia por salinidad crítica en la Web App.** La Web App muestra la contingencia del dispositivo (la minibomba que lava el suelo, sección 5.6) con los escenarios de datos de prueba 7 y 8. En el escenario 7 el dispositivo ya aplicó dos de sus tres lavados: cada uno aparece como acción correctiva «Lavado de sales» con la etiqueta «Lavado automático», que la distingue de las acciones de una persona, y el detalle de la parcela muestra el panel «Contingencia de salinidad · Activa» con los lavados usados (2/3). En el escenario 8 los tres lavados se agotaron y la salinidad sigue en Muy alto, por lo que el panel se pone en rojo y pide que una persona revise la parcela. Son datos de prueba: el dispositivo todavía no envía sus lavados al RESTful API, así que no hay endpoints nuevos.
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-lavado-automatico-alertas.png" alt="Alertas con las acciones de lavado automático" width="330">
+<img src="../assets/sprint-2/webapp-lavado-automatico-parcela.png" alt="Detalle de parcela con la contingencia activa 2 de 3" width="330">
+<p><em>Figura 6.36. Escenario 7 de la Web App: alerta con dos lavados automáticos y detalle de la parcela con la contingencia activa (2/3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-2/webapp-lavados-agotados-alertas.png" alt="Alertas con tres lavados automáticos" width="330">
+<img src="../assets/sprint-2/webapp-lavados-agotados-parcela.png" alt="Detalle de parcela con los lavados agotados" width="330">
+<p><em>Figura 6.37. Escenario 8 de la Web App: tres lavados automáticos usados, salinidad todavía Muy alta y aviso de que una persona debe actuar.</em></p>
+</div>
+
+**Correcciones y funciones agregadas al cierre del Sprint 2.** Después de la revisión del código se completaron los pendientes que no dependían de servicios externos. Todo está en la rama `develop` de cada repositorio y se verificó con las pruebas automáticas; no se probó contra el RESTful API de Railway ni en un emulador.
+
+| Producto | Cambio | Verificación |
+|---|---|---|
+| RESTful API | El factor de calibración se guarda en el sensor al registrar una calibración. | 91 pruebas, entre unitarias, de integración y Cucumber |
+| RESTful API | `quotaConsumed` es el número real de parcelas activas y crear una parcela por encima del límite del plan activo responde 409. | Incluido en las 91 pruebas |
+| RESTful API | Una alerta reconocida pero sin resolver no genera otra de igual o menor severidad; si la severidad sube, sí. | Incluido en las 91 pruebas |
+| Web App | Si una parcela falla, el tablero muestra las demás con un aviso; reconocer una alerta que falla muestra el error. | 120 pruebas, `ng build` y revisión de idiomas |
+| Web App | Suscripción con planes, parcelas usadas, contratar, cambiar y cancelar; mensaje del límite al recibir el 409; menos peticiones al cargar (de 12 a 10 para el productor y de 18 a 6 al activar un sensor). | Incluido en las 120 pruebas |
+| Mobile App | Los errores de red se ven con «Reintentar» en vez de una lista vacía; el asesor no ve acciones de escritura; el nombre del laboratorio y la lectura del sensor se editan al calibrar. | 51 pruebas y `assembleDebug` |
+| Mobile App | Suscripción con planes, contratar, cambiar y cancelar, y mensaje del límite de parcelas. | Incluido en las 51 pruebas |
+
+Quedan fuera, a propósito, el cobro con Stripe (un plan de pago queda «pendiente de pago» hasta que el RESTful API reciba el pago), la firma de release y Firebase App Distribution de la Mobile App, que necesitan credenciales del equipo y están descritos en su README.
+
 **Recorrido del dispositivo al RESTful API.** El 22 de octubre se probó la cadena completa en local: el RESTful API de `develop` con PostgreSQL, el Edge Service en el puerto 5000 y lecturas del dispositivo `OS-014` con el mismo JSON que envía la Embedded Application (`deviceId`, `conductivityDsM`, `moisturePercent`, `temperatureCelsius`, cabecera `X-API-Key`). El sensor estaba vinculado a una parcela de palta, con umbral de 1,1 dS/m, de una cuenta de prueba creada solo en ese entorno.
 
 | Lectura del dispositivo | Respuesta del Edge Service | Resultado en el RESTful API |
@@ -1032,25 +1062,25 @@ Al cierre de esta revisión el productor y el asesor trabajan con datos del REST
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-edge-readings.png" alt="Lecturas guardadas en el buffer del Edge Service con su estado de sincronización" width="700">
-<p><em>Figura 6.36. Buffer del Edge Service: lecturas sincronizadas, sin compensar y descartadas, con el lote del API en el que llegó cada una.</em></p>
+<p><em>Figura 6.38. Buffer del Edge Service: lecturas sincronizadas, sin compensar y descartadas, con el lote del API en el que llegó cada una.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-edge-health.png" alt="Estado del Edge Service" width="700">
-<p><em>Figura 6.37. Estado del Edge Service: conexión con el API y lecturas por estado.</em></p>
+<p><em>Figura 6.39. Estado del Edge Service: conexión con el API y lecturas por estado.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-backend-readings.png" alt="Lecturas recibidas por el RESTful API desde el Edge Service" width="700">
-<p><em>Figura 6.38. Lecturas que el RESTful API recibió del Edge Service para la parcela, con la conductividad compensada.</em></p>
+<p><em>Figura 6.40. Lecturas que el RESTful API recibió del Edge Service para la parcela, con la conductividad compensada.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/edge-e2e-backend-alert.png" alt="Alertas generadas en el RESTful API" width="700">
-<p><em>Figura 6.39. Alertas generadas por las lecturas del Edge Service: crítica, vigilancia y advertencia.</em></p>
+<p><em>Figura 6.41. Alertas generadas por las lecturas del Edge Service: crítica, vigilancia y advertencia.</em></p>
 </div>
 
-La Embedded Application usa el circuito de la sección 5.6: potenciómetros en GPIO 34 y 35 para la conductividad y la humedad (Wokwi no tiene esos sensores), DS18B20 en GPIO 4, LED RGB en GPIO 25, 26 y 27, y botón en GPIO 14. Sigue el estilo ModestIoT del curso: los sensores avisan al dispositivo con eventos y el dispositivo da órdenes al LED con comandos. Con la conductividad compensada que devuelve el Edge, el LED muestra el nivel con las mismas severidades que las alertas del API: verde por debajo del umbral, ámbar hasta 1,2 veces, naranja hasta 1,5 veces y rojo desde 1,5 veces. Una pulsación corta toma una lectura inmediata y una de tres segundos activa el emparejamiento. Para la placa real, la humedad se calibra con las lecturas del sensor capacitivo en aire seco y en agua (`MOISTURE_RAW_DRY` y `MOISTURE_RAW_WET`), y el Wi-Fi busca en todos los canales para conectarse a cualquier router de 2,4 GHz. El firmware se compila con PlatformIO y se simula con `diagram.json` y `wokwi.toml` del repositorio.
+La Embedded Application usa el circuito de la sección 5.6: potenciómetros en GPIO 34 y 35 para la conductividad y la humedad (Wokwi no tiene esos sensores), DS18B20 en GPIO 4, LED RGB en GPIO 25, 26 y 27, botón en GPIO 14 y, como contingencia, un relé en GPIO 13 que enciende una minibomba para lavar el suelo cuando la salinidad sigue en Crítico (dos lecturas seguidas, hasta tres lavados, con espera entre uno y otro y sin lavar un suelo saturado). Sigue el estilo ModestIoT del curso: los sensores avisan al dispositivo con eventos y el dispositivo da órdenes al LED con comandos. Con la conductividad compensada que devuelve el Edge, el LED muestra el nivel con las mismas severidades que las alertas del API: verde por debajo del umbral, ámbar hasta 1,2 veces, naranja hasta 1,5 veces y rojo desde 1,5 veces. Una pulsación corta toma una lectura inmediata y una de tres segundos activa el emparejamiento. Para la placa real, la humedad se calibra con las lecturas del sensor capacitivo en aire seco y en agua (`MOISTURE_RAW_DRY` y `MOISTURE_RAW_WET`), y el Wi-Fi busca en todos los canales para conectarse a cualquier router de 2,4 GHz. El firmware se compila con PlatformIO y se simula con `diagram.json` y `wokwi.toml` del repositorio.
 
 <!-- TODO(equipo): grabar el video de navegación del Sprint 2 (Web App y Mobile App contra el API en Railway) y agregar aquí su enlace de Microsoft Stream. -->
 
@@ -1075,27 +1105,27 @@ Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT 
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-iam.png" alt="Swagger UI en Railway: Identity and Access Management" width="800">
-<p><em>Figura 6.40. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
+<p><em>Figura 6.42. Swagger UI en Railway: Identity and Access Management, con <code>/users/me/linked-accounts</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-farm-management-1.png" alt="Swagger UI en Railway: Farm Management, endpoints de cultivos, dispositivos, fincas y parcelas" width="800">
-<p><em>Figura 6.41. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela (1 de 2).</em></p>
+<p><em>Figura 6.43. Swagger UI en Railway: Farm Management, con la edición de fincas y parcelas y la consulta de dispositivos por parcela (1 de 2).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-farm-management-2.png" alt="Swagger UI en Railway: Farm Management, esquemas" width="800">
-<p><em>Figura 6.41. Swagger UI en Railway: Farm Management, esquemas de los recursos (2 de 2).</em></p>
+<p><em>Figura 6.43. Swagger UI en Railway: Farm Management, esquemas de los recursos (2 de 2).</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-soil-monitoring.png" alt="Swagger UI en Railway: Soil Monitoring" width="800">
-<p><em>Figura 6.42. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
+<p><em>Figura 6.44. Swagger UI en Railway: Soil Monitoring, con la ingesta de lotes del Edge Service.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/swagger-railway-salinity-alerting.png" alt="Swagger UI en Railway: Salinity Alerting" width="800">
-<p><em>Figura 6.43. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
+<p><em>Figura 6.45. Swagger UI en Railway: Salinity Alerting, con la consulta de acciones correctivas.</em></p>
 </div>
 
 El Edge Service expone su propia API REST en el gateway de la parcela, documentada en el README de su repositorio (https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service):
@@ -1130,22 +1160,30 @@ En el Sprint 2 se desplegó el RESTful API, el primer producto que corre en un p
 
 <div align="center">
 <img src="../assets/sprint-2/railway-api-crops.png" alt="Respuesta del endpoint público de cultivos en Railway" width="800">
-<p><em>Figura 6.44. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
+<p><em>Figura 6.46. Respuesta de <code>GET /api/v1/crops</code> en el API desplegado en Railway.</em></p>
 </div>
 
-La Web App se publica en GitHub Pages desde `develop` (Figura 6.45) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
+La Web App se publica en GitHub Pages desde `develop` (Figura 6.47) y en Vercel; cada push a una rama genera además un despliegue de vista previa en Vercel. La versión del Sprint 2, que consume el API de Railway, se publica en ambas URL al integrar su rama en `develop`. El Landing Page sigue en GitHub Pages con los enlaces a la Web App en Vercel (`7d0e774`).
 
 <div align="center">
 <img src="../assets/sprint-2/webapp-github-pages.png" alt="Web App publicada en GitHub Pages" width="800">
-<p><em>Figura 6.45. Web App publicada en GitHub Pages.</em></p>
+<p><em>Figura 6.47. Web App publicada en GitHub Pages.</em></p>
 </div>
 
 El Edge Service y la Embedded Application no se despliegan en la nube: el Edge Service corre en el gateway de la parcela (una Raspberry Pi o una PC) y la Embedded Application se carga en el ESP32. Sus repositorios se publicaron en la organización con `develop` como rama principal:
 
 - **Edge Service:** https://github.com/OsoTerra-IoT/OsoTerra---Edge-Service. Se instala con `pip install -r requirements.txt` y se ejecuta con `python app.py`; la URL del API (`PLATFORM_BASE_URL`), la clave del Edge (`EDGE_API_KEY`) y los dispositivos del gateway (`EDGE_DEVICES`) se configuran con variables de entorno.
-- **Embedded Application:** https://github.com/OsoTerra-IoT/OsoTerra---Embedded-Application. Se compila con `pio run` para la placa `esp32dev` (15 % de RAM y 86,7 % de flash) y se carga en el ESP32 o en el simulador Wokwi.
+- **Embedded Application:** https://github.com/OsoTerra-IoT/OsoTerra---Embedded-Application. Se compila con `pio run` para la placa `esp32dev` (15 % de RAM y 86,9 % de flash, con la contingencia incluida) y se carga en el ESP32 o en el simulador Wokwi.
 
-<!-- TODO(equipo): publicar el APK de la Mobile App en Firebase App Distribution y agregar aquí la captura. -->
+La Mobile App se distribuye con Firebase App Distribution, en el proyecto de Firebase `OsoTerra`, donde se registró la app Android `com.osoterra.mobile`. El workflow `Build APK` de la rama `ci/build-apk` del repositorio de la Mobile App compila en GitHub Actions el APK de release, reducido con R8 y firmado con la clave de depuración, y lo publica en la pre-release `v0.2.0-sprint2`. Ese APK (versión 0.1.0, 2,8 MB) se subió a App Distribution y se distribuyó al grupo de verificadores «Validacion Sprint 2» (Figura 6.48).
+
+- **Vínculo de invitación para verificadores:** https://appdistribution.firebase.dev/i/1a614a42e8cc635c
+- **APK en GitHub:** https://github.com/OsoTerra-IoT/OsoTerra---Mobile-Application/releases/tag/v0.2.0-sprint2
+
+<div align="center">
+<img src="../assets/sprint-2/firebase-app-distribution-osoterra.png" alt="Versión 0.1.0 de la Mobile App en Firebase App Distribution" width="800">
+<p><em>Figura 6.48. Versión 0.1.0 de la Mobile App distribuida con Firebase App Distribution.</em></p>
+</div>
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
 
@@ -1153,32 +1191,32 @@ Las capturas muestran la actividad de los repositorios de producto durante el Sp
 
 <div align="center">
 <img src="../assets/sprint-2/commits-backend.png" alt="Commits del RESTful API en la rama del Sprint 2" width="800">
-<p><em>Figura 6.46. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
+<p><em>Figura 6.49. Commits del RESTful API en <code>feature/sprint-2-integration</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/network-backend.png" alt="Network graph del RESTful API" width="800">
-<p><em>Figura 6.47. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
+<p><em>Figura 6.50. Network graph del RESTful API: ramas de despliegue e integración del Sprint 2.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/commits-webapp.png" alt="Commits de la Web App en la rama del Sprint 2" width="800">
-<p><em>Figura 6.48. Commits de la Web App en las ramas del Sprint 2.</em></p>
+<p><em>Figura 6.51. Commits de la Web App en las ramas del Sprint 2.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/network-webapp.png" alt="Network graph de la Web App" width="800">
-<p><em>Figura 6.49. Network graph de la Web App.</em></p>
+<p><em>Figura 6.52. Network graph de la Web App.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/commits-mobile.png" alt="Commits de la Mobile App en la rama del Sprint 2" width="800">
-<p><em>Figura 6.50. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
+<p><em>Figura 6.53. Commits de la Mobile App en <code>feature/railway-api</code>.</em></p>
 </div>
 
 <div align="center">
 <img src="../assets/sprint-2/contributors-backend.png" alt="Contributors del RESTful API" width="800">
-<p><em>Figura 6.51. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
+<p><em>Figura 6.54. Contribuciones al RESTful API por integrante (GitHub Insights).</em></p>
 </div>
 
 | Integrante | Landing Page | Web App | RESTful API | Mobile App | Edge Service | Embedded App |
@@ -1231,13 +1269,62 @@ Cada sesión dura entre 25 y 35 minutos, se graba en video con el consentimiento
 
 Las observaciones de cada sesión se registran en la sección 6.3.2 y los problemas encontrados se clasifican con el formato de evaluación heurística del Anexo D en la sección 6.3.3.
 
-<!-- TODO(equipo): realizar las entrevistas (3 a 5 por segmento), subir el video consolidado upc-pre-202620-1asi0572-8735-OsoTerra-validation-sprint-2 a Microsoft Stream y completar 6.3.2 y 6.3.3. -->
-
 ### 6.3.2. Registro de Entrevistas
+
+En esta sección se registran las sesiones de validación con los participantes de cada segmento. Cada registro indica los datos del participante, una captura del video, el enlace al video de la sesión con el minuto en que inicia y su duración, y un resumen de sus apreciaciones sobre las tareas de la sección 6.3.1. Se hicieron seis sesiones en pantalla compartida: tres con asesores técnicos del segmento 2, Daniela Gómez, Yeira Momán, que ya había participado en las entrevistas de la sección 2.2, y Paul Espinoza, y tres con participantes del segmento 1, Isabel Rodríguez, Carlos Mendoza y Andrea Guillén. En cinco de ellas el entrevistador recorrió el Landing Page con el participante y en cuatro se pasó además a la Web App con una cuenta de demostración; la sesión con Yeira validó solo el Landing Page y la de Andrea, solo la Web App.
+
+<table>
+  <thead>
+    <tr>
+      <th>Segmento objetivo</th>
+      <th>Datos</th>
+      <th>Resumen</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
+      <td><strong>Entrevista 1</strong><br><br><strong>Entrevistada:</strong> Daniela Araceli Gómez Flores<br><strong>Edad:</strong> 20 años<br><strong>Distrito:</strong> Cercado de Lima, Lima<br><strong>Entrevistadora:</strong> Goñe Araccata, Esther Abigail<br><br><strong>Perfil:</strong> Asesora técnica agrícola que trabaja en Lima y que cada cierto tiempo viaja a provincia para revisar el suelo de las parcelas de su familia<br><br><strong>Productos validados:</strong> Landing Page y Web App<br><br><strong>Screenshot:</strong><br><img src="https://i.imgur.com/KO2RTNP.png" alt="Screenshot entrevista de validación Daniela Gómez" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> La entrevistadora le explicó que OsoSense es un sensor que se entierra en la parcela, mide cuánta sal tiene el suelo y envía las lecturas a una web y a una app que avisan cuando la salinidad se acerca al límite que tolera el cultivo. Luego recorrió con ella el Landing Page en pantalla compartida, pasando por el problema de la salinidad en la costa, las capacidades, el proceso de implementación y los planes, y se detuvo en el plan Asesor Pro, que permite manejar varias parcelas, guardar el historial, exportar reportes en PDF y Excel y tener sesiones con especialistas de suelo. Después entró a la Web App con una cuenta de asesor de demostración con lecturas de un mes, mostró las parcelas de los clientes y envió desde «Mis clientes» una invitación por correo a un productor, que quedó pendiente hasta que él la acepte. También le mostró las opciones de alertas, comparación de parcelas, reportes, suscripción y configuración.<br><br><strong>Tarea del Landing Page («¿Qué le ofrece esta plataforma para su trabajo con clientes?»):</strong> Daniela dijo que lo que más le serviría es el tablero, porque podría ver juntas todas las parcelas de sus clientes y saber cuál revisar sin ir a cada una, y los reportes en PDF, porque podría entregárselos directo a sus clientes. Nombró dos capacidades (tablero de varias parcelas y reportes), por lo que la tarea se cumple según el criterio de la sección 6.3.1, aunque respondió después de la explicación de la entrevistadora.<br><br><strong>Web App:</strong> La invitación a un productor la hizo la entrevistadora como demostración, así que esa tarea no se evaluó con la participante. Sobre la invitación, Daniela comentó que le serviría para que su familia le dé acceso y revisar todo desde Lima.<br><br><strong>Preguntas de cierre:</strong> Lo más fácil para ella fue ver qué parcela necesita atención, porque se nota de inmediato, y lo más difícil al inicio fue entender el porcentaje del límite, aunque con la explicación lo entendió. Dijo que usaría la plataforma para las parcelas de su familia porque le ahorraría muchos viajes, y le puso 4 de 5 a la probabilidad de recomendarla.</td>
+      <td><strong>URL:</strong> <a href="https://drive.google.com/file/d/1lEMf80ey7TfIp927UJLACbmxCZkRZ6OK/view?usp=sharing">https://drive.google.com/file/d/1lEMf80ey7TfIp927UJLACbmxCZkRZ6OK/view?usp=sharing</a><br><strong>Inicio:</strong> 0:00 <br><strong>Duración:</strong> 5:11</td>
+    </tr>
+    <tr>
+      <td><strong>Pequeños y medianos productores agropecuarios</strong></td>
+      <td><strong>Entrevista 2</strong><br><br><strong>Entrevistada:</strong> Isabel Milagros Rodríguez Durand<br><strong>Edad:</strong> 24 años<br><strong>Distrito:</strong> San Miguel, Lima<br><strong>Entrevistador:</strong> Tumi Oliden, Manuel Ignacio<br><br><strong>Perfil:</strong> Trabajadora interesada en iniciarse en el cultivo y en llevar el control de sus propios lotes<br><br><strong>Productos validados:</strong> Landing Page y Web App<br><br><strong>Screenshot:</strong><br><img src="https://i.imgur.com/OvZEVxd.png" alt="Screenshot entrevista de validación Isabel Rodríguez" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> El entrevistador presentó OsoSense como una aplicación para monitorear la salinidad del suelo y seguir los cambios en las parcelas, mostró brevemente el Landing Page y entró a la Web App con una cuenta de productor de demostración. En el inicio le mostró que dos de las cuatro parcelas necesitaban atención, las cinco alertas activas y los dispositivos conectados, y le explicó que la alerta se envía cuando la salinidad pasa el umbral del cultivo e indica en qué lote ocurre. Luego le mostró las alertas por nivel (muy alto, alto y en vigilancia), las opciones de marcar como atendida y registrar una acción como lavado de sales, ajuste de riego o mejora del drenaje, la pantalla de dispositivos con la conductividad, la humedad y la temperatura del suelo, el rol del asesor como especialista vinculado al productor, el cambio de idioma y los planes de suscripción.<br><br><strong>Apreciaciones:</strong> En esta sesión el entrevistador demostró las funciones y no le pidió a la participante que completara las tareas de la sección 6.3.1, así que no se evalúan. Isabel dijo que le gusta cómo se ve la aplicación y que la información le parece completa y acertada. Como mejora propuso un visor tipo Google Maps con la ubicación de todas sus parcelas y la distancia entre ellas, con un color verde o rojo según el estado del suelo. Dijo que una cámara para ver los cultivos no le parece necesaria, porque los gráficos y los avisos ya dan la información. También observó que la ubicación de la parcela en latitud y longitud no es muy amigable. Considera que le resultaría fácil usar la Web App, incluso para alguien que recién empieza a controlar sus lotes o cultivos.</td>
+      <td><strong>URL:</strong> <a href="https://drive.google.com/file/d/19m4aDfCJFDas19-RQ1M87-EyEN5GWdxS/view?usp=sharing">https://drive.google.com/file/d/19m4aDfCJFDas19-RQ1M87-EyEN5GWdxS/view?usp=sharing</a><br><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 6:44</td>
+    </tr>
+    <tr>
+      <td><strong>Pequeños y medianos productores agropecuarios</strong></td>
+      <td><strong>Entrevista 3</strong><br><br><strong>Entrevistado:</strong> Carlos Mendoza<br><strong>Edad:</strong> 27 años<br><strong>Distrito:</strong> Lima<br><strong>Entrevistador:</strong> Ortiz Alarcon, Victor Nicolas<br><br><strong>Perfil:</strong> Productor cuya familia se dedica a la agricultura<br><br><strong>Productos validados:</strong> Landing Page y Web App<br><br><strong>Screenshot:</strong><br><img src="https://i.imgur.com/Pv2Rlkp.png" alt="Screenshot entrevista de validación Carlos Mendoza" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> Antes de empezar, el entrevistador le aclaró que se evaluaba la plataforma y no a él, y Carlos aceptó que se grabaran la pantalla y el audio. El entrevistador recorrió el Landing Page poco a poco, como si Carlos hubiera llegado desde Google, y luego entró a la Web App con una cuenta de productor de demostración, donde le planteó las tareas una por una.<br><br><strong>Tarea del Landing Page («Cuénteme qué hace este producto y si le serviría en su campo» y «¿Cuánto le costaría monitorear dos parcelas?»):</strong> Carlos explicó que es una plataforma con sensores colocados en la tierra que miden la salinidad en tiempo real y avisan antes de que el daño llegue a la raíz, y dijo que le serviría bastante. Para dos parcelas eligió el plan Productor de S/ 99 al mes, así que identificó el plan y su precio. Para empezar a usar el sistema señaló el botón verde «Comenzar ahora». Las dos tareas se cumplen según el criterio de la sección 6.3.1.<br><br><strong>Web App (UF1, «¿Alguna de sus parcelas necesita atención hoy? ¿Por qué?»):</strong> Desde el inicio identificó la parcela Sector Norte porque estaba marcada en rojo y su lectura pasaba el límite del cultivo de uva, sin abrir otra vista. La tarea se cumple.<br><br><strong>Web App (UF3, registrar una parcela de uva y vincular el sensor):</strong> Con la guía del entrevistador registraron la parcela «Lote 3» de uva con su latitud, longitud y superficie, y vincularon el sensor con el código de activación. La parcela quedó con su cultivo y el sensor vinculado, aunque la completó con ayuda.<br><br><strong>Web App (UF2, atender una alerta):</strong> Ante la alerta, Carlos dijo que la marcaría como atendida y registraría como acción un riego de lavado para drenar las sales.<br><br><strong>Web App (aceptar la solicitud de un asesor):</strong> Aceptó la solicitud y Diego Torres quedó vinculado como su asesor técnico. La tarea se cumple.<br><br><strong>Preguntas de cierre:</strong> Lo más sencillo para él fueron los colores, porque el rojo le dice de inmediato si su campo está bien. Lo más difícil fueron las siglas de las unidades de conductividad eléctrica, que le parecen complicadas para quien no conoce de agronomía, aunque con la explicación del umbral las entendió. Para usar la plataforma todas las semanas pidió que las alertas críticas le lleguen como mensaje al celular, porque así estaría más pendiente. Le puso 5 de 5 a la probabilidad de recomendarla, porque considera que la salinidad es un problema importante en la costa y la herramienta es práctica y necesaria.</td>
+      <td><strong>URL:</strong> <a href="https://drive.google.com/file/d/1TqwJD7HG8DM7pwtQsQb5Gbt7e8LqB9is/view?usp=sharing">https://drive.google.com/file/d/1TqwJD7HG8DM7pwtQsQb5Gbt7e8LqB9is/view?usp=sharing</a><br><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 5:24</td>
+    </tr>
+    <tr>
+      <td><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
+      <td><strong>Entrevista 4</strong><br><br><strong>Entrevistada:</strong> Yeira Momán<br><strong>Edad:</strong> 30 años<br><strong>Distrito:</strong> Pueblo Libre, Lima<br><strong>Entrevistador:</strong> Barturen Panez, Iker Gabriel<br><br><strong>Perfil:</strong> Ingeniera agrónoma que asesora a productores de las zonas agrícolas de la costa; participó en la entrevista 1 del segmento 2 de la sección 2.2.2<br><br><strong>Producto validado:</strong> Landing Page<br><br><strong>Screenshot:</strong><br><img src="https://i.imgur.com/frdxNjY.png" alt="Screenshot entrevista de validación Yeira Momán" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> El entrevistador recorrió con Yeira el Landing Page publicado en pantalla compartida. Le explicó que OsoSense es un sensor que se entierra en la parcela, mide la conductividad eléctrica del suelo y envía las lecturas a una plataforma que avisa cuando la salinidad se acerca al umbral del cultivo. Luego mostró los datos del impacto de la salinidad en la costa y las capacidades: telemetría continua, sensores no destructivos, asesoría de especialistas y tablero agronómico móvil. También le presentó los planes Piloto, Productor y Asesor Pro, este último con sensores ilimitados en varias parcelas, historial multianual, exportación de informes en PDF y Excel y sesiones con especialistas en suelos, además de las preguntas frecuentes, el equipo y el pie de página. Por último, desde el llamado final del Landing Page, le mostró el formulario para crear la cuenta de asesor técnico, que pide nombre, apellido, correo, contraseña, departamento, provincia y número de colegiatura.<br><br><strong>Tarea del Landing Page («¿Qué le ofrece esta plataforma para su trabajo con clientes?»):</strong> Yeira dijo que lo principal para ella es ver en un solo tablero todas las parcelas de sus clientes, porque su trabajo sería más organizado y no tendría que ir a cada una. También valoró poder sacar reportes para entregárselos a sus clientes y calibrar el sensor con un análisis de laboratorio. Esto último fue lo que más destacó, porque no confía en un sensor si no lo contrasta. Nombró tres capacidades (tablero de varias parcelas, reportes y calibración), por lo que la tarea se cumple según el criterio de la sección 6.3.1, aunque respondió después de la explicación del entrevistador y no tras un recorrido libre.<br><br><strong>Relación con el needfinding:</strong> Sus apreciaciones coinciden con lo que dijo en la sección 2.2.2: el tablero de varias parcelas responde a su frustración por el tiempo que pierde yendo de un productor a otro, y la calibración responde a su costumbre de contrastar el medidor portátil con el análisis de laboratorio.</td>
+      <td><strong>URL:</strong> <a href="https://drive.google.com/file/d/1c_BWiLS9_wiZU3QShDwSsJmHPCl5EDXR/view?usp=sharing">https://drive.google.com/file/d/1c_BWiLS9_wiZU3QShDwSsJmHPCl5EDXR/view?usp=sharing</a><br><strong>Inicio:</strong> 0:00 <br><strong>Duración:</strong> 4:36</td>
+    </tr>
+    <tr>
+      <td><strong>Ingenieros agrónomos y asesores técnicos agrícolas</strong></td>
+      <td><strong>Entrevista 5</strong><br><br><strong>Entrevistado:</strong> Paul Espinoza<br><strong>Edad:</strong> 34 años<br><strong>Distrito:</strong> Lince, Lima<br><strong>Entrevistador:</strong> Encalada Salazar, Alexis<br><br><strong>Perfil:</strong> Asesor técnico agrícola que atiende a nueve productores, unas 180 hectáreas en el valle del Chira (Piura), con uva de mesa, palto, arándano y limón<br><br><strong>Productos validados:</strong> Landing Page y Web App<br><br><strong>Screenshot:</strong><br><img src="https://i.imgur.com/LEaDBNr.png" alt="Screenshot entrevista de validación Paul Espinoza" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> El entrevistador presentó OsoSense como un sistema de sensores IoT para monitorear la salinidad del suelo, aclaró que se evaluaba el producto y no al participante, y Paul aceptó que se grabara la sesión. Antes de pasar a los productos le preguntó por su trabajo. Paul contó que hace dos meses un productor de uva le mandó por WhatsApp fotos de bordes quemados y de un sector que no brotaba parejo; el laboratorio le devolvió una CE de 3,8 dS/m, el problema llevaba tres o cuatro semanas y lo corrigió subiendo la lámina de lavado y bajando el potasio del fertirriego. Manda análisis de pasta saturada dos veces por campaña, cada uno cuesta entre S/ 80 y S/ 120 y demora de 7 a 10 días. Decide la lámina de lavado con el último análisis, la CE del agua de riego, el tipo de suelo y lo que ve en campo, y reporta a sus clientes por WhatsApp con fotos y audios y con un informe mensual en PDF armado en Word con tablas de Excel, que le toma de dos a tres horas por cliente. Ya había probado sondas de humedad importadas: le gustó tener el dato continuo, pero no el precio, que la plataforma estuviera solo en inglés y que no permitiera calibrar la CE, y el productor nunca la revisó. Luego el entrevistador recorrió el Landing Page (hero, impacto de la salinidad, capacidades, proceso de implementación, planes y preguntas frecuentes) y entró a la Web App con una cuenta de asesor de demostración, donde le planteó las tareas y al final le mostró el resto de pantallas: inicio, parcelas, alertas, dispositivos, Mi Asesor, suscripción y configuración.<br><br><strong>Tarea del Landing Page («¿Qué le ofrece esta plataforma para su trabajo con clientes?»):</strong> Paul explicó que es un sistema de sensores que mide la salinidad del suelo y manda alertas, pensado para productores y para asesores como él. Le dio confianza que las lecturas sean cada 15 minutos y en dos profundidades, porque le deja ver si la sal baja con el lavado, y el respaldo offline de 60 días, porque en varios fundos la señal es mala. Eligió el plan Asesor Pro porque lo que más le importa es tener varias parcelas en un solo lugar y los reportes en PDF. Nombró dos capacidades (tablero de varias parcelas y reportes), por lo que la tarea se cumple según el criterio de la sección 6.3.1. También hizo observaciones: las 300 000 ha afectadas le parecen creíbles porque vio cifras parecidas del INIA y la ANA, pero pondría la fuente; el 40 % de pérdida solo se da en casos graves, así que lo escribiría como «hasta 40 % en casos severos»; del 25 % de ahorro no le queda claro frente a qué se compara ni si lo respalda un piloto; el umbral de 4,0 dS/m es muy alto para palto, uva o arándano, que se afectan desde 1 a 1,5 dS/m, por lo que debería poder configurarse por cultivo; no confiaría en la lectura sin calibrarla con laboratorio y la tomaría como tendencia, no como valor absoluto; y las alertas por WhatsApp le sirven más al productor, mientras que a él le serviría un resumen diario. Sobre el precio, al inicio lo pagaría él y luego lo incluiría en sus honorarios; le parecería barato menos de S/ 150, justo entre S/ 200 y S/ 250 y caro más de S/ 300 a S/ 350, y pidió que los sensores se cobren aparte porque son el costo más grande. La conexión con ERP casi no la usaría.<br><br><strong>Web App (UF4, «¿Qué parcela visitaría primero esta semana y por qué?»):</strong> Eligió la parcela que aparece primero en la lista, la de mayor porcentaje del umbral, y lo justificó con que su tendencia va subiendo. La tarea se cumple. Pidió ver también el valor en dS/m al lado del porcentaje.<br><br><strong>Web App (detalle de la parcela):</strong> Explicó que la conductividad viene subiendo en los últimos días, sobre todo en la capa superficial, y lo atribuyó a falta de lavado o a un agua de riego más salina. Para decidir un lavado le faltaron la CE del agua de riego y la lámina aplicada. La pérdida de rendimiento estimada con Maas y Hoffman le pareció útil como referencia, pero frente al cliente la presentaría como estimación y solo después de calibrar.<br><br><strong>Web App (atender una alerta crítica):</strong> Dijo que las severidades se distinguen bien por color y como acción recomendó aumentar la lámina de lavado en 15 % durante siete días, suspender el potasio y medir la CE del agua de riego. Valoró que la acción quede en el historial del cliente para cuando le pregunten qué se hizo.<br><br><strong>Web App (UF4, comparación de parcelas):</strong> Hubo una confusión con el guion, porque Paul pensó que el entrevistador seguiría mostrando pantallas y no sabía qué pregunta tocaba, y se aclaró después de unos dos minutos. Luego dijo que compararía dos lotes de uva con distintos sistemas de riego o fuentes de agua, por ejemplo pozo contra canal. El límite de dos a cuatro parcelas le pareció suficiente y el cambio en el periodo le resultó claro, aunque le gustaría poder elegir las fechas. La tarea se cumple con ayuda.<br><br><strong>Tareas no evaluadas:</strong> La calibración con el resultado de laboratorio (UF5), la exportación del reporte en PDF (UF6), la invitación a un productor y la revisión de alertas en la Mobile App no se pidieron en esta sesión; en su lugar el entrevistador hizo un recorrido por las pantallas de la Web App.<br><br><strong>Preguntas de cierre:</strong> Le puso 4 de 5 a la facilidad de uso, porque la Web App le pareció clara y rápida, pero le quitó un punto porque no encontró de inmediato la calibración ni la comparación de parcelas. Lo más útil para su trabajo fue la priorización por riesgo y los reportes, y lo menos útil, la API para ERP. Si la aplicación desapareciera, extrañaría saber qué parcela atender primero sin esperar al laboratorio. La recomendaría primero a su cliente productor de uva, porque ya tuvo problemas de salinidad y entiende el valor. Aceptó hacer un piloto de 14 días en la segunda quincena de diciembre en el fundo Santa Rosa, en Sullana, en un lote de uva de cinco hectáreas, y ofreció el contacto de una colega asesora de arándanos.</td>
+      <td><strong>URL:</strong> <a href="https://drive.google.com/file/d/1aDhK6LMAslyAf4FfT2cZEBH9fEUfHSSo/view?usp=sharing">https://drive.google.com/file/d/1aDhK6LMAslyAf4FfT2cZEBH9fEUfHSSo/view?usp=sharing</a><br><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 16:40</td>
+    </tr>
+    <tr>
+      <td><strong>Pequeños y medianos productores agropecuarios</strong></td>
+      <td><strong>Entrevista 6</strong><br><br><strong>Entrevistada:</strong> Andrea Guillén<br><strong>Edad:</strong> 28 años<br><strong>Distrito:</strong> San Miguel, Lima<br><strong>Entrevistador:</strong> Santiago Peña, Andreow Jomark<br><br><strong>Perfil:</strong> Participante del segmento de pequeños y medianos productores agropecuarios; la sesión se hizo con la cuenta de asesor de demostración de la Web App<br><br><strong>Producto validado:</strong> Web App<br><br><strong>Screenshot:</strong><br><img src="https://i.imgur.com/AAGtjgH.png" alt="Screenshot entrevista de validación Andrea Guillén" width="180"></td>
+      <td><strong>Desarrollo de la sesión:</strong> El entrevistador agradeció a Andrea por participar y le mostró en pantalla compartida la Web App con una cuenta de asesor de demostración. En el inicio le explicó que una de las tres parcelas de sus dos clientes necesitaba visita, porque el Lote Uva llegó a 2,60 dS/m, el 173 % de su umbral de 1,50 dS/m, y que la acción sugerida era aumentar el riego para lavar las sales antes de que se pierda el cultivo. Luego le mostró las alertas, la sección «Mis clientes» con los clientes activos, la superficie supervisada y sus alertas, la calibración del dispositivo, que contrasta la conductividad que marca el sensor con la del laboratorio, y los reportes, donde exportó a PDF el reporte del Lote Uva y aclaró que es un reporte simple porque el producto sigue en desarrollo. Por último le mostró las parcelas supervisadas (un lote de palta y uno de uva, con solo el de uva en riesgo, todos los sensores conectados y la ubicación de cada parcela).<br><br><strong>Apreciaciones:</strong> Andrea solo intervino para decir que la aplicación le parecía muy interesante. Todas las acciones las hizo el entrevistador como demostración, así que no se le pidieron las tareas de la sección 6.3.1 para productores (explicar el producto y el precio de dos parcelas en el Landing Page, crear una cuenta, revisar si alguna parcela necesita atención, registrar una parcela con su sensor, atender una alerta y aceptar la solicitud de un asesor) ni las preguntas de cierre. Además, la demostración se hizo con la cuenta de asesor y no con la de productor, que es la que corresponde a su segmento. Por eso esta sesión no permite medir si la participante completa las tareas por su cuenta y sirve solo como evidencia de la reacción inicial a la Web App.</td>
+      <td><strong>URL:</strong> <a href="https://drive.google.com/file/d/1BtiR-Fx1-r49A1-sZF6LRvbvul-5ZJGY/view?usp=sharing">https://drive.google.com/file/d/1BtiR-Fx1-r49A1-sZF6LRvbvul-5ZJGY/view?usp=sharing</a><br><strong>Inicio:</strong> 0:00<br><strong>Duración:</strong> 2:11</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 6.3.3. Evaluaciones según heurísticas
 
-El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas reales del Sprint 2 (Figuras 6.34 y 6.35), porque en esta inspección no se ejecutó en un emulador. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
+El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas que tenía ese día, porque en esta inspección no se ejecutó en un emulador; las figuras de esta sección las conservan, mientras que las Figuras 6.34 y 6.35 de la sección 6.2.2.6 ya muestran la versión corregida. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
 
 **UX Heuristics & Principles Evaluation**
 
@@ -1317,7 +1404,7 @@ En la tarea P-T1 el titular del inicio del productor dice «2 de tus 2 parcelas 
 
 <div align="center">
 <img src="../assets/validation/heuristica-1.png" alt="Inicio del productor con el titular de dos parcelas que necesitan atención y el Lote Palta en nivel normal" width="700">
-<p><em>Figura 6.52. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
+<p><em>Figura 6.55. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
 </div>
 
 **Recomendación:**
@@ -1334,7 +1421,7 @@ Con la Web App conectada al RESTful API y con cuentas reales, «Mis clientes» (
 
 <div align="center">
 <img src="../assets/validation/heuristica-2.png" alt="Etiqueta Datos de demostración en Mis clientes, términos y condiciones de prototipo y nota del reporte" width="700">
-<p><em>Figura 6.53. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
+<p><em>Figura 6.56. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
 </div>
 
 **Recomendación:**
@@ -1351,7 +1438,7 @@ Los dos segmentos son productores y asesores de la costa norte del Perú, pero e
 
 <div align="center">
 <img src="../assets/validation/heuristica-3.png" alt="Encabezado del Landing Page en inglés con el selector EN ES y el inicio de la Web App en inglés" width="700">
-<p><em>Figura 6.54. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
+<p><em>Figura 6.57. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
 </div>
 
 **Recomendación:**
@@ -1368,7 +1455,7 @@ La Web App clasifica las alertas como «Crítica», «Advertencia» y «Vigilanc
 
 <div align="center">
 <img src="../assets/validation/heuristica-4.png" alt="Alerta Alta y preferencias Media Alta Crítica en la Mobile App frente a las tarjetas Crítica Advertencia Vigilancia de la Web App" width="700">
-<p><em>Figura 6.55. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
+<p><em>Figura 6.58. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
 </div>
 
 **Recomendación:**
@@ -1385,7 +1472,7 @@ En la tarea P-T2, «Agregar parcela» pide «Latitud (-90 a 90)» y «Longitud (
 
 <div align="center">
 <img src="../assets/validation/heuristica-5.png" alt="Formulario Agregar parcela con latitud y longitud en cero y cultivo Cebada elegido por defecto" width="700">
-<p><em>Figura 6.56. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
+<p><em>Figura 6.59. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
 </div>
 
 **Recomendación:**
@@ -1402,7 +1489,7 @@ La salinidad aparece con tres siglas distintas: «CEe 4.0 dS/m» en el Landing P
 
 <div align="center">
 <img src="../assets/validation/heuristica-6.png" alt="Etiqueta CEe 4.0 dS/m del Landing Page, formulario de calibración con ECe de laboratorio y texto CE del inicio" width="700">
-<p><em>Figura 6.57. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
+<p><em>Figura 6.60. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
 </div>
 
 **Recomendación:**
@@ -1419,7 +1506,7 @@ En el Landing Page, «Contact» del menú y «Support» del pie de página lleva
 
 <div align="center">
 <img src="../assets/validation/heuristica-7.png" alt="Pie de página del Landing Page con los enlaces Contact, Installation guides y Support" width="700">
-<p><em>Figura 6.58. Problema 7: pie de página del Landing Page.</em></p>
+<p><em>Figura 6.61. Problema 7: pie de página del Landing Page.</em></p>
 </div>
 
 **Recomendación:**
@@ -1436,7 +1523,7 @@ Con la Web App en un ancho de 390 px (tarea P-T3 desde el navegador del celular)
 
 <div align="center">
 <img src="../assets/validation/heuristica-8.png" alt="Tabla de alertas de la Web App en un ancho de 390 px con las columnas de acciones fuera de la pantalla" width="390">
-<p><em>Figura 6.59. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
+<p><em>Figura 6.62. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
 </div>
 
 **Recomendación:**
@@ -1453,13 +1540,27 @@ En el detalle de parcela de la Mobile App (tareas P-T5 y A-T6), «Conductividad 
 
 <div align="center">
 <img src="../assets/validation/heuristica-9.png" alt="Gráfico Conductividad en el tiempo de la Mobile App sin valores en los ejes" width="540">
-<p><em>Figura 6.60. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
+<p><em>Figura 6.63. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
 </div>
 
 **Recomendación:**
 
 Agregar valores en dS/m en el eje vertical y fechas en el horizontal, marcar el valor del último punto y ofrecer, como en la Web App, una lista de lecturas que el lector de pantalla pueda leer.
 
-**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los de severidad 3 se corrigen en el siguiente sprint, antes de las entrevistas con participantes de los segmentos: unificar la regla de atención y la escala de severidad entre productos, quitar los textos de demostración de la versión conectada al RESTful API, abrir en español y corregir el formulario de parcela. Los hallazgos de las entrevistas de la sección 6.3.2 se agregarán a esta tabla cuando se realicen.
+**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los cinco de severidad 3 ya se corrigieron dentro del mismo Sprint 2, antes de las entrevistas con participantes de los segmentos: se unificaron la regla de atención y la escala de severidad entre productos (En vigilancia, Alto y Muy alto, con «Marcar como atendida» en los dos), se quitaron los textos de demostración de la versión conectada al RESTful API, los dos productos abren en español y el formulario de parcela ya no trae un cultivo preseleccionado. Las figuras de la sección 6.2.2.6, tomadas el 2 de noviembre de 2026, muestran los productos con esas correcciones aplicadas; las figuras de esta sección conservan el estado en el que se detectó cada problema. Los hallazgos de las entrevistas de la sección 6.3.2 se agregarán a esta tabla cuando se realicen.
 
 ## 6.4. Video About-the-Product
+
+En este video se presenta OsoSense y sus productos.
+
+[![Video About-the-Product de OsoSense](https://img.youtube.com/vi/ot4PL7q7SNo/hqdefault.jpg)](https://youtu.be/ot4PL7q7SNo)
+
+Enlace: <https://youtu.be/ot4PL7q7SNo>
+
+## 6.5. Video About-the-Team
+
+En este video se presenta al equipo OsoTerra.
+
+[![Video About-the-Team de OsoTerra](https://img.youtube.com/vi/wvEvLPGDAgk/hqdefault.jpg)](https://youtu.be/wvEvLPGDAgk)
+
+Enlace: <https://youtu.be/wvEvLPGDAgk>

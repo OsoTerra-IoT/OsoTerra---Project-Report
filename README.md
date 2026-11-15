@@ -9,7 +9,7 @@ Curso 1ASI0572 Desarrollo de Soluciones IoT · NRC 8735 · Docente: León Baca, 
 |---|---|
 | u202318049 | Goñe Araccata, Esther Abigail |
 | u202321941 | Salazar Caballero, Alvaro Fabrizzio |
-| u20211g481 | Encalada Salazar, Alexis |
+| u20211g491 | Encalada Salazar, Alexis |
 | u202312899 | Ortiz Alarcon, Victor Nicolas |
 | u202317362 | Santiago Peña, Andreow Jomark |
 | u20241c134 | Tumi Oliden, Manuel Ignacio |
