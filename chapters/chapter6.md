@@ -1324,7 +1324,7 @@ En esta sección se registran las sesiones de validación con los participantes 
 
 ### 6.3.3. Evaluaciones según heurísticas
 
-El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 aún no se realizan, esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas que tenía ese día, porque en esta inspección no se ejecutó en un emulador; las figuras de esta sección las conservan, mientras que las Figuras 6.34 y 6.35 de la sección 6.2.2.6 ya muestran la versión corregida. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
+El enunciado pide evaluar las sesiones de validación con heurísticas de usabilidad, arquitectura de información y diseño inclusivo. Como el equipo no cuenta con otro grupo que lo audite y las entrevistas de la sección 6.3.2 todavía no se habían realizado cuando se hizo la inspección, la primera parte de esta evaluación es una inspección interna del propio equipo, sin participantes externos: el equipo recorrió los productos con las tareas P-T1 a P-T5 y A-T1 a A-T6 de la sección 6.3.1 el 24 de octubre de 2026, en el Landing Page publicado (<https://osoterra-iot.github.io/OsoTerra---Landing-Page/>) y en la Web App de `develop` ejecutada en local contra el RESTful API de `develop` con PostgreSQL y datos de prueba de la release 0.3.0 del informe. La Mobile App se revisó con las capturas que tenía ese día, porque en esta inspección no se ejecutó en un emulador; las figuras de esta sección las conservan, mientras que las Figuras 6.34 y 6.35 de la sección 6.2.2.6 ya muestran la versión corregida. El contraste se midió con los estilos calculados del navegador (fórmula de WCAG 2.1) y los tamaños con las dimensiones reales de cada elemento.
 
 **UX Heuristics & Principles Evaluation**
 
@@ -1547,7 +1547,41 @@ En el detalle de parcela de la Mobile App (tareas P-T5 y A-T6), «Conductividad 
 
 Agregar valores en dS/m en el eje vertical y fechas en el horizontal, marcar el valor del último punto y ofrecer, como en la Web App, una lista de lecturas que el lector de pantalla pueda leer.
 
-**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los cinco de severidad 3 ya se corrigieron dentro del mismo Sprint 2, antes de las entrevistas con participantes de los segmentos: se unificaron la regla de atención y la escala de severidad entre productos (En vigilancia, Alto y Muy alto, con «Marcar como atendida» en los dos), se quitaron los textos de demostración de la versión conectada al RESTful API, los dos productos abren en español y el formulario de parcela ya no trae un cultivo preseleccionado. Las figuras de la sección 6.2.2.6, tomadas el 2 de noviembre de 2026, muestran los productos con esas correcciones aplicadas; las figuras de esta sección conservan el estado en el que se detectó cada problema. Los hallazgos de las entrevistas de la sección 6.3.2 se agregarán a esta tabla cuando se realicen.
+**Resultado de la evaluación.** Se encontraron nueve problemas: cinco de severidad 3 y cuatro de severidad 2; ninguno impide terminar las tareas. Los cinco de severidad 3 ya se corrigieron dentro del mismo Sprint 2, antes de las entrevistas con participantes de los segmentos: se unificaron la regla de atención y la escala de severidad entre productos (En vigilancia, Alto y Muy alto, con «Marcar como atendida» en los dos), se quitaron los textos de demostración de la versión conectada al RESTful API, los dos productos abren en español y el formulario de parcela ya no trae un cultivo preseleccionado. Las figuras de la sección 6.2.2.6, tomadas el 2 de noviembre de 2026, muestran los productos con esas correcciones aplicadas; las figuras de esta sección conservan el estado en el que se detectó cada problema. Los hallazgos de las entrevistas de la sección 6.3.2 se presentan a continuación.
+
+**Hallazgos de las entrevistas de validación.** Las seis sesiones de la sección 6.3.2 se revisaron con la misma escala de severidad y las mismas heurísticas. En cuatro sesiones los participantes resolvieron tareas de la sección 6.3.1: las entrevistas 1, 3, 4 y 5. En las entrevistas 2 y 6 el entrevistador hizo una demostración y no pidió las tareas. Por eso, de esas dos sesiones solo se toman los comentarios de los participantes. Las tareas de la Mobile App (P-T5 y A-T6) no se evaluaron en ninguna sesión.
+
+| Tarea | Sesiones | Resultado |
+|---|---|---|
+| P-T1 y A-T1. Entender qué ofrece OsoSense y su precio (Landing Page) | Entrevistas 1, 3, 4 y 5 | Se cumple en las cuatro. En las entrevistas 1 y 4 la respuesta llegó después de la explicación del entrevistador |
+| P-T3. Saber si una parcela necesita atención y atender la alerta (Web App) | Entrevista 3 | Se cumple. El participante reconoce la parcela por el color rojo sin abrir otra vista |
+| P-T2. Registrar una parcela con su cultivo y su sensor (Web App) | Entrevista 3 | Se cumple con ayuda del entrevistador |
+| P-T4. Aceptar la solicitud de un asesor (Web App) | Entrevista 3 | Se cumple |
+| A-T5. Decidir qué parcela visitar primero y comparar parcelas (Web App) | Entrevista 5 | La priorización se cumple. La comparación se cumple con ayuda |
+
+En las preguntas de cierre, los participantes de las entrevistas 1, 3 y 5 le dieron 4, 5 y 4 de 5 a la probabilidad de recomendar la plataforma o a su facilidad de uso. Los diez hallazgos siguientes completan la tabla resumen. Los números 10 a 19 siguen la numeración de los problemas de la inspección interna.
+
+| # | Hallazgo | Sesión | Escala de severidad | Heurística/Principio violada(o) | Relación con la inspección |
+|---|---|---|---|---|---|
+| 10 | El registro de una parcela necesitó ayuda y la ubicación en latitud y longitud no resulta amigable (Web App) | Entrevistas 2 y 3 | 3 | Usability: Prevención de errores | Confirma el problema 5 |
+| 11 | El porcentaje del umbral cuesta al inicio y el participante pide ver el valor en dS/m junto al porcentaje (Web App) | Entrevistas 1 y 5 | 2 | Usability: Relación entre el sistema y el mundo real | Amplía el problema 6 |
+| 12 | Las siglas de conductividad eléctrica resultan complicadas para quien no es agrónomo (Web App) | Entrevista 3 | 2 | Usability: Relación entre el sistema y el mundo real | Confirma el problema 6 |
+| 13 | La calibración y la comparación de parcelas no se encuentran de inmediato (Web App) | Entrevista 5 | 2 | Information Architecture: Is it findable? | Nuevo |
+| 14 | El detalle de la parcela no muestra la CE del agua de riego ni la lámina aplicada, que el asesor usa para decidir un lavado (Web App) | Entrevista 5 | 2 | Information Architecture: Is it useful? | Nuevo |
+| 15 | Las cifras de impacto (300 000 ha, 40 % de pérdida y 25 % de ahorro) no indican su fuente ni su alcance (Landing Page) | Entrevista 5 | 2 | Information Architecture: Is it credible? | Nuevo |
+| 16 | El umbral de 4,0 dS/m del Landing Page es alto para palto, uva y arándano, que se afectan desde 1 a 1,5 dS/m (Landing Page) | Entrevista 5 | 2 | Information Architecture: Is it credible? | Nuevo |
+| 17 | Las alertas críticas no llegan como mensaje al celular del productor, y el asesor no recibe un resumen diario (Web App, Mobile App) | Entrevistas 3 y 5 | 2 | Usability: Flexibilidad y eficiencia de uso | Nuevo |
+| 18 | La comparación de parcelas no permite elegir las fechas del periodo (Web App) | Entrevista 5 | 1 | Usability: Flexibilidad y eficiencia de uso | Nuevo |
+| 19 | No hay un mapa con todas las parcelas y su estado por color (Web App) | Entrevista 2 | 1 | Usability: Reconocimiento antes que recuerdo | Nuevo |
+
+**Recomendaciones para el Sprint 3.**
+- **Problemas 10 y 5:** reemplazar los campos de coordenadas por un mapa o por el botón «Usar mi ubicación», y guiar el registro de la parcela en pasos.
+- **Problemas 11, 12 y 6:** mostrar el valor en dS/m junto al porcentaje del umbral, y explicar CE y dS/m con un icono de ayuda.
+- **Problema 13:** dar acceso a «Calibración» y a «Comparar parcelas» desde el detalle de la parcela.
+- **Problema 14:** agregar al detalle de la parcela la CE del agua de riego y la lámina aplicada como datos opcionales del asesor.
+- **Problemas 15 y 16:** citar la fuente de las cifras del Landing Page (INIA, ANA). Escribir «hasta 40 % en casos severos» y explicar que el umbral se configura por cultivo.
+- **Problema 17:** evaluar avisos de alertas críticas por mensaje para el productor y un resumen diario para el asesor.
+- **Problemas 18 y 19:** se registran como mejoras de baja prioridad.
 
 ## 6.4. Video About-the-Product
 
