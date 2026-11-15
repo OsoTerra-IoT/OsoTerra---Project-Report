@@ -147,6 +147,7 @@
 | 0.0.141 | 13/11/2026 | Alexis Encalada Salazar | Capítulo VI: distribución de la Mobile App con Firebase App Distribution en la sección 6.2.2.8 (Figura 6.48, con renumeración de las figuras siguientes) y secciones 6.4 Video About-the-Product y 6.5 Video About-the-Team. |
 | 0.0.142 | 13/11/2026 | Victor Nicolas Ortiz Alarcon | Conclusiones y Student Outcome: actualización con las seis sesiones de validación, los videos y la distribución del APK. |
 | 0.0.143 | 13/11/2026 | Alexis Encalada Salazar | Capítulo VI, sección 6.3: enlace al video de cada sesión en lugar del video consolidado; índice de contenidos con la sección 6.5. |
+| 0.0.144 | 15/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.3.3: resultado de las tareas en las entrevistas de validación, hallazgos 10 a 19 con su severidad y heurística, y recomendaciones para el Sprint 3. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
