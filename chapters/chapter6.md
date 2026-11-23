@@ -1233,6 +1233,83 @@ Las capturas muestran la actividad de los repositorios de producto durante el Sp
 
 **Interpretación del equipo.** Al 18 de octubre el Sprint 2 se apoya en dos integrantes: Iker reorganizó el shared kernel del RESTful API en todos los bounded contexts y Andreow integró las aplicaciones con el API, lo desplegó en Railway y, al 22 de octubre, creó la primera versión del Edge Service y de la Embedded Application y automatizó las pruebas de aceptación con Cucumber. El acuerdo de la retrospectiva del Sprint 1, que cada colaborador de la matriz tome tareas propias en cada repositorio, todavía no se refleja en los commits, y las ramas del sprint aún no pasan por pull request a `develop`. Para cerrar el sprint, el equipo reparte las tareas pendientes del aspecto de cada colaborador (sección 6.2.2.2), revisa por pull request las ramas `feature/sprint-2-integration`, `feature/railway-api` y `fix/action-date-timezone` antes de integrarlas en `develop`, y actualiza esta tabla con los commits de todos los integrantes.
 
+### 6.2.3. Sprint 3
+
+#### 6.2.3.1. Sprint Planning 3
+
+El Sprint 3 es el último del proyecto y cierra con el TB2 en la semana 15. El equipo completa las User Stories del Product Backlog que quedaron fuera del Sprint 2 (suscripción, calibración con resultado de laboratorio, reportes y comparación de parcelas) y suma dos que salieron de las entrevistas de validación: la acción recomendada ante una alerta y compartir la alerta por WhatsApp. También aplica las recomendaciones de la sección 6.3.3 y publica la versión final de todos los productos.
+
+El Sprint Planning tomó como base el Product Backlog de la sección 3.3, las conclusiones de la revisión y la retrospectiva del Sprint 2 y los hallazgos de las entrevistas de validación (sección 6.3.3).
+
+| Sprint # | Sprint 3 |
+|---|---|
+| **Sprint Planning Background** | |
+| Date | 2026-11-16 |
+| Time | Por confirmar |
+| Location | Reunión virtual en Google Meet |
+| Prepared By | Santiago Peña, Andreow Jomark |
+| Attendees (to planning meeting) | Por confirmar |
+| Sprint 2 Review Summary | El RESTful API quedó desplegado en Railway con PostgreSQL, y la Web App y la Mobile App trabajan con datos reales: registro de fincas y parcelas, vinculación del sensor, alertas por umbral y acciones correctivas. Se publicaron la primera versión del Edge Service y de la Embedded Application, la Mobile App se distribuyó con Firebase App Distribution y se hicieron seis entrevistas de validación con productores y asesores (sección 6.3). |
+| Sprint 2 Retrospective Summary | Los commits del sprint se concentraron en pocos integrantes y varias ramas se integraron en `develop` sin pull request. En la recta final del sprint más integrantes registraron trabajo propio (pruebas y documentación del contexto IAM, distribución del APK, relé de la minibomba y entrevistas de validación). Se acordó que cada integrante tome al menos una tarea del Sprint 3 en un repositorio, que todo cambio entre por pull request revisado por otro integrante y que las recomendaciones de las entrevistas entren al backlog del sprint. |
+| **Sprint Goal & User Stories** | |
+| Sprint 3 Goal | *Our focus is on* que productores y asesores técnicos completen el ciclo de OsoSense: contratar y administrar su plan, calibrar el sensor con un análisis de laboratorio, entender qué hacer ante una alerta y compartirla, y entregar reportes y comparaciones de parcelas. *We believe it delivers* a los productores una guía clara para actuar ante la salinidad sin dominar los términos técnicos, a los asesores las herramientas para respaldar sus recomendaciones con datos y al negocio el modelo de suscripción en funcionamiento. *This will be confirmed when* un productor contrata un plan, recibe una alerta con la acción recomendada y la comparte por WhatsApp, y un asesor calibra el sensor con un resultado de laboratorio y exporta en PDF el reporte de la parcela, todo en las versiones finales desplegadas de la Web App y la Mobile App. |
+| Sprint 3 Velocity | 60 Story Points |
+| Sum of Story Points | 59 Story Points |
+
+#### 6.2.3.2. Aspect Leaders and Collaborators
+
+En el Sprint 3 se mantienen los aspectos del Sprint 2. Los líderes siguen a cargo de su aspecto y cada integrante figura al menos como colaborador de uno, con una tarea propia en el Sprint Backlog (sección 6.2.3.3).
+
+| Team Member (Last Name, First Name) | GitHub Username | Web Services · Bounded Contexts | Web App | Mobile App | Despliegue cloud | Edge Service · Embedded App | Landing Page |
+|---|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | L | | | C | | |
+| Encalada Salazar, Alexis | Alexiz248 | | C | C | | C | |
+| Goñe Araccata, Esther Abigail | abigoe02 | | | | | | L |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | C | C | | | | |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | | C | | | | C |
+| Santiago Peña, Andreow Jomark | andrew65411 | C | L | C | L | L | |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | | | L | | | |
+
+L: líder del aspecto. C: colaborador.
+
+#### 6.2.3.3. Sprint Backlog 3
+
+El objetivo del Sprint 3 es completar el ciclo de uso de OsoSense con las User Stories pendientes del Product Backlog (sección 3.3) y las mejoras de la validación. Se tomaron, en el orden del Product Backlog, las User Stories de suscripción (US15, US17, US16 y US18), estado del dispositivo (US25), reportes (US40 y US41), calibración (US26 y US30) y comparación de parcelas (US45), y se adelantaron US33 y US34 porque las entrevistas de validación mostraron que el productor necesita saber qué hacer ante una alerta y coordinarla con su familia o su asesor (sección 6.3.3). Quedan en el Product Backlog US14, US29, US32, US42, US44 y TS05, además de TS07 a TS10, cuya primera versión se entregó en el Sprint 2 con las tareas T50 y T51.
+
+El tablero del sprint está en el mismo tablero público de Trello de los sprints anteriores: https://trello.com/b/adykOjs5/ososense-backlog
+
+<table>
+  <tr><th>Sprint #</th><th colspan="7">Sprint 3</th></tr>
+  <tr><th colspan="2">User Story</th><th colspan="6">Work-Item / Task</th></tr>
+  <tr><th>Story Id</th><th>Story Title</th><th>Task Id</th><th>Task Title</th><th>Task Description</th><th>Estimation (Hours)</th><th>Assigned To</th><th>Status (To-do / In-Process / To-Review / Done)</th></tr>
+  <tr><td>US15</td><td>Activar plan de suscripción</td><td>T53</td><td>Planes en la Web App</td><td>Mostrar los planes con su precio y número de parcelas, y contratar o cambiar el plan con confirmación.</td><td>5</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US15</td><td>Activar plan de suscripción</td><td>T54</td><td>Planes en la Mobile App</td><td>Contratar y cambiar el plan desde los repositorios remotos de la Mobile App.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US17</td><td>Controlar límite de parcelas</td><td>T55</td><td>Límite del plan en el API</td><td>Rechazar con <code>409 Conflict</code> una parcela nueva que supera el plan y contar las parcelas usadas.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US17</td><td>Controlar límite de parcelas</td><td>T56</td><td>Aviso del límite</td><td>Mostrar en la Web App y la Mobile App el límite del plan cuando el API rechaza la parcela.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US16</td><td>Consultar estado de suscripción</td><td>T57</td><td>Panel de suscripción</td><td>Mostrar el plan vigente, su estado y las parcelas usadas frente al límite.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US18</td><td>Cancelar suscripción</td><td>T58</td><td>Cancelar el plan</td><td>Cancelar la suscripción o la solicitud pendiente con confirmación en ambas aplicaciones.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US25</td><td>Monitorear estado del dispositivo</td><td>T59</td><td>Última conexión del sensor</td><td>Registrar la hora de la última lectura recibida del Edge Service y marcar como inactivo el sensor que deja de reportar.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US40</td><td>Generar reporte de parcela</td><td>T60</td><td>Reportes desde el API</td><td>Generar el reporte por periodo de la Web App con los endpoints de Analytics &amp; Reporting en lugar de calcularlo en el navegador.</td><td>5</td><td>Ortiz Alarcon, Victor Nicolas</td><td>To-do</td></tr>
+  <tr><td>US41</td><td>Exportar reporte en PDF</td><td>T61</td><td>PDF del reporte</td><td>Exportar en PDF el reporte generado por el API, con el umbral del cultivo y la fuente de los datos.</td><td>3</td><td>Ortiz Alarcon, Victor Nicolas</td><td>To-do</td></tr>
+  <tr><td>US26</td><td>Calibrar dispositivo</td><td>T62</td><td>Factor de calibración en el sensor</td><td>Guardar en el dispositivo el factor de calibración calculado para que se aplique a las lecturas siguientes.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US26</td><td>Calibrar dispositivo</td><td>T63</td><td>Lectura más cercana al muestreo</td><td>Sugerir en la Mobile App la lectura del sensor más cercana a la fecha del muestreo de laboratorio.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US30</td><td>Registrar resultado de laboratorio</td><td>T64</td><td>Datos del laboratorio</td><td>Registrar el nombre del laboratorio y el valor de ECe del análisis junto a la calibración.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US45</td><td>Comparar parcelas</td><td>T65</td><td>Comparación desde el detalle</td><td>Abrir «Comparar parcelas» y «Calibración» desde el detalle de la parcela (hallazgo 13 de la sección 6.3.3).</td><td>3</td><td>Salazar Caballero, Alvaro Fabrizzio</td><td>To-do</td></tr>
+  <tr><td>US45</td><td>Comparar parcelas</td><td>T66</td><td>Comparación con el API</td><td>Comparar la evolución de varias parcelas con el endpoint de comparación de Analytics &amp; Reporting.</td><td>4</td><td>Barturen Panez, Iker Gabriel</td><td>To-do</td></tr>
+  <tr><td>US33</td><td>Consultar acción recomendada</td><td>T67</td><td>Acción recomendada en la Web App</td><td>Mostrar en cada alerta abierta la lectura en dS/m junto al umbral del cultivo y qué hacer según el nivel de salinidad.</td><td>3</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US33</td><td>Consultar acción recomendada</td><td>T68</td><td>Acción recomendada en la Mobile App</td><td>Mostrar la misma recomendación por nivel en las alertas de la Mobile App.</td><td>3</td><td>Tumi Oliden, Manuel Ignacio</td><td>To-do</td></tr>
+  <tr><td>US34</td><td>Compartir alerta por WhatsApp</td><td>T69</td><td>Compartir en la Web App</td><td>Enlace que abre WhatsApp con el resumen de la alerta y la acción recomendada, sin guardar números de teléfono.</td><td>2</td><td>Santiago Peña, Andreow Jomark</td><td>Done</td></tr>
+  <tr><td>US34</td><td>Compartir alerta por WhatsApp</td><td>T70</td><td>Compartir en la Mobile App</td><td>Compartir la alerta con el menú nativo de Android, que incluye WhatsApp.</td><td>2</td><td>Tumi Oliden, Manuel Ignacio</td><td>To-do</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T71</td><td>Ubicación de la parcela</td><td>Agregar el botón «Usar mi ubicación» al registro de la parcela (hallazgos 5 y 10 de la sección 6.3.3).</td><td>3</td><td>Encalada Salazar, Alexis</td><td>To-do</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T72</td><td>Fuentes en el Landing Page</td><td>Citar la fuente de las cifras de salinización (INIA, ANA) y aclarar que el umbral se configura por cultivo (hallazgos 15 y 16).</td><td>2</td><td>Goñe Araccata, Esther Abigail</td><td>To-do</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T73</td><td>Relé de la minibomba</td><td>Llevar el relé de la minibomba de lavado al GPIO 18 del prototipo y agregar el modo de banco por USB.</td><td>3</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T74</td><td>Compilación del APK</td><td>Workflow de GitHub Actions que compila el APK firmado y publica un pre-release.</td><td>3</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T75</td><td>Documentación y pruebas de IAM</td><td>README del RESTful API y documentación y pruebas unitarias de los value objects del contexto IAM.</td><td>4</td><td>Ortiz Alarcon, Victor Nicolas</td><td>Done</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T76</td><td>Release final</td><td>Crear <code>release/0.4.0</code> en cada repositorio, integrar por pull request y desplegar las versiones finales.</td><td>4</td><td>Barturen Panez, Iker Gabriel</td><td>To-do</td></tr>
+</table>
+
+La suma de Story Points del sprint es 59: US15 (8), US17 (3), US16 (3), US18 (3), US25 (5), US40 (8), US41 (5), US26 (8), US30 (3), US45 (5), US33 (5) y US34 (3). Las tareas técnicas T71 a T76 no suman Story Points: aplican las recomendaciones de la validación y preparan la versión final de los productos.
+
 ## 6.3. Validation Interviews
 
 ### 6.3.1. Diseño de Entrevistas
