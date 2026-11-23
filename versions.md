@@ -148,6 +148,7 @@
 | 0.0.142 | 13/11/2026 | Victor Nicolas Ortiz Alarcon | Conclusiones y Student Outcome: actualización con las seis sesiones de validación, los videos y la distribución del APK. |
 | 0.0.143 | 13/11/2026 | Alexis Encalada Salazar | Capítulo VI, sección 6.3: enlace al video de cada sesión en lugar del video consolidado; índice de contenidos con la sección 6.5. |
 | 0.0.144 | 15/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.3.3: resultado de las tareas en las entrevistas de validación, hallazgos 10 a 19 con su severidad y heurística, y recomendaciones para el Sprint 3. |
+| 0.0.145 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3: Sprint Planning 3, Aspect Leaders and Collaborators y Sprint Backlog 3 (59 Story Points, tareas T53 a T76); índice de contenidos con la sección 6.2.3. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
