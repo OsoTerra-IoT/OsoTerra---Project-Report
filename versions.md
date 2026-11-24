@@ -150,6 +150,7 @@
 | 0.0.144 | 15/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.3.3: resultado de las tareas en las entrevistas de validación, hallazgos 10 a 19 con su severidad y heurística, y recomendaciones para el Sprint 3. |
 | 0.0.145 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3: Sprint Planning 3, Aspect Leaders and Collaborators y Sprint Backlog 3 (59 Story Points, tareas T53 a T76); índice de contenidos con la sección 6.2.3. |
 | 0.0.146 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: avance del Sprint Backlog 3 (T65 y T72 terminadas; T71 se limita a la Mobile App porque la Web App ya ofrece «Usar mi ubicación»). |
+| 0.0.147 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: avance del Sprint Backlog 3 (T60, T61, T68, T70 y T71 terminadas). |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
