@@ -1305,7 +1305,7 @@ El tablero del sprint está en el mismo tablero público de Trello de los sprint
   <tr><td>—</td><td>Tarea técnica</td><td>T73</td><td>Relé de la minibomba</td><td>Llevar el relé de la minibomba de lavado al GPIO 18 del prototipo y agregar el modo de banco por USB.</td><td>3</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
   <tr><td>—</td><td>Tarea técnica</td><td>T74</td><td>Compilación del APK</td><td>Workflow de GitHub Actions que compila el APK firmado y publica un pre-release.</td><td>3</td><td>Encalada Salazar, Alexis</td><td>Done</td></tr>
   <tr><td>—</td><td>Tarea técnica</td><td>T75</td><td>Documentación y pruebas de IAM</td><td>README del RESTful API y documentación y pruebas unitarias de los value objects del contexto IAM.</td><td>4</td><td>Ortiz Alarcon, Victor Nicolas</td><td>Done</td></tr>
-  <tr><td>—</td><td>Tarea técnica</td><td>T76</td><td>Release final</td><td>Crear <code>release/0.4.0</code> en cada repositorio, integrar por pull request y desplegar las versiones finales.</td><td>4</td><td>Barturen Panez, Iker Gabriel</td><td>To-do</td></tr>
+  <tr><td>—</td><td>Tarea técnica</td><td>T76</td><td>Release final</td><td>Crear <code>release/0.4.0</code> en cada repositorio, subir la versión a 0.4.0, integrarla en <code>develop</code> y desplegar las versiones finales.</td><td>4</td><td>Santiago Peña, Andreow Jomark</td><td>In-Process</td></tr>
 </table>
 
 La suma de Story Points del sprint es 59: US15 (8), US17 (3), US16 (3), US18 (3), US25 (5), US40 (8), US41 (5), US26 (8), US30 (3), US45 (5), US33 (5) y US34 (3). Las tareas técnicas T71 a T76 no suman Story Points: aplican las recomendaciones de la validación y preparan la versión final de los productos.
