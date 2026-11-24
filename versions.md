@@ -153,6 +153,7 @@
 | 0.0.147 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: avance del Sprint Backlog 3 (T60, T61, T68, T70 y T71 terminadas). |
 | 0.0.148 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: T76 en proceso con la release 0.4.0 integrada en `develop` de los seis repositorios de producto. |
 | 0.0.149 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, secciones 6.2.3.4 a 6.2.3.9: evidencias de desarrollo, pruebas, ejecución, documentación de servicios, despliegue y colaboración del Sprint 3 (Figuras 6.55 a 6.67, con renumeración de las figuras de la sección 6.3); índice de contenidos. |
+| 0.0.150 | 23/11/2026 | Andreow Jomark Santiago Peña | Conclusiones con el contraste de Problem Statement, assumptions e Hypothesis Statements frente a la validación y el roadmap; Bibliografía con los marcos de trabajo citados; Student Outcome y Project Report Collaboration Insights del TB2. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
@@ -361,3 +362,40 @@ Del 8 al 18 de octubre de 2026 el repositorio del informe registra 5 commits sin
 <img src="assets/collaboration-insights/Git-Contributors-AV2.png" alt="GitHub Insights - Contributors AV2" width="700">
 <p><em>Figura 8. Commits por integrante a develop en los últimos tres meses, al 18/10/2026 (GitHub Insights &gt; Contributors).</em></p>
 </div>
+
+## Actividades de elaboración del informe — TB2
+
+Para el TB2 el informe cerró el AV2 y agregó el Sprint 3. Entre el 19 de octubre y el 13 de noviembre el equipo completó en `release/0.3.0` las correcciones de los capítulos II a VI, la evaluación heurística, las entrevistas de validación (sección 6.3.2), los videos About-the-Product y About-the-Team y la distribución del APK; esa release se integró en `develop` el 15/11/2026. Desde el 16 de noviembre el trabajo del TB2 se desarrolla en sub-ramas que se integran con `--no-ff` en `feature/chapter-6`:
+
+- **Sprint 3:** `feature/sprint-3-planning` (secciones 6.2.3.1 a 6.2.3.3), `feature/sprint-3-progress` y `feature/sprint-3-progress-2` (avance del Sprint Backlog), `feature/sprint-3-release` (release 0.4.0) y `feature/sprint-3-evidence` (secciones 6.2.3.4 a 6.2.3.9).
+- **Cierre:** `feature/tb2-closing` actualiza las Conclusiones con el contraste del Lean UX y el roadmap, la Bibliografía, el Student Outcome y estos analíticos.
+
+## Integraciones — TB2
+
+| Rama | Integrada en | Autor de la integración | Fecha |
+|---|---|---|---|
+| `feature/chapter-6` | `release/0.3.0` y `develop` | Santiago Peña, Andreow Jomark | 22/10/2026 |
+| 19 ramas `fix/*` y `feature/*` de corrección y avance del AV2 | `release/0.3.0` | Santiago Peña, Andreow Jomark | 22/10/2026 al 08/11/2026 |
+| `feature/validation-findings` | `release/0.3.0` | Santiago Peña, Andreow Jomark | 15/11/2026 |
+| `release/0.3.0` | `develop` | Santiago Peña, Andreow Jomark | 15/11/2026 |
+| `feature/sprint-3-planning` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 23/11/2026 |
+| `feature/sprint-3-progress` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 23/11/2026 |
+| `feature/sprint-3-progress-2` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 23/11/2026 |
+| `feature/sprint-3-release` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 23/11/2026 |
+| `feature/sprint-3-evidence` | `feature/chapter-6` | Santiago Peña, Andreow Jomark | 23/11/2026 |
+
+## Analíticos de colaboración — TB2
+
+Del 19 de octubre al 23 de noviembre de 2026 el repositorio del informe registra 66 commits sin contar merges. La tabla incluye también los commits de cada integrante en los repositorios de producto durante el Sprint 3 (sección 6.2.3.9).
+
+| Integrante | Usuario de GitHub | Informe (TB2) | Landing Page | Web App | RESTful API | Mobile App | Edge Service | Embedded App |
+|---|---|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel | krxxg04 | 2 | — | — | — | — | — | — |
+| Encalada Salazar, Alexis | Alexiz248 | 8 | — | — | — | 3 | — | 3 |
+| Goñe Araccata, Esther Abigail | abigoe02 | 6 | — | — | — | — | — | — |
+| Ortiz Alarcon, Victor Nicolas | Nico1234556 | 3 | — | — | 15 | — | — | — |
+| Salazar Caballero, Alvaro Fabrizzio | DymianUPC | — | — | — | — | — | — | — |
+| Santiago Peña, Andreow Jomark | andrew65411 | 47 | 5 | 54 | 9 | 37 | 1 | 5 |
+| Tumi Oliden, Manuel Ignacio | ManuelTumi2224 | — | — | — | — | — | — | — |
+
+**Interpretación del equipo.** En el TB2 cinco de los siete integrantes registran commits en el informe: Abigail, Alexis, Iker y Victor redactaron las entrevistas de validación, los videos, las Conclusiones del AV2 y la distribución del APK, y Andreow el Sprint 3 y el cierre. El volumen sigue concentrado en un integrante, tanto en el informe como en los productos, y Alvaro y Manuel no registran commits en este periodo. Lo descrito coincide con las versiones 0.0.138 a 0.0.150 del Registro de Versiones.
