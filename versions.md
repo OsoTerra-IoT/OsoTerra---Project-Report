@@ -152,6 +152,7 @@
 | 0.0.146 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: avance del Sprint Backlog 3 (T65 y T72 terminadas; T71 se limita a la Mobile App porque la Web App ya ofrece «Usar mi ubicación»). |
 | 0.0.147 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: avance del Sprint Backlog 3 (T60, T61, T68, T70 y T71 terminadas). |
 | 0.0.148 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, sección 6.2.3.3: T76 en proceso con la release 0.4.0 integrada en `develop` de los seis repositorios de producto. |
+| 0.0.149 | 23/11/2026 | Andreow Jomark Santiago Peña | Capítulo VI, secciones 6.2.3.4 a 6.2.3.9: evidencias de desarrollo, pruebas, ejecución, documentación de servicios, despliegue y colaboración del Sprint 3 (Figuras 6.55 a 6.67, con renumeración de las figuras de la sección 6.3); índice de contenidos. |
 
 <div style="page-break-before: always; break-before: page;"></div>
 
