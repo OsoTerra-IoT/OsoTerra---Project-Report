@@ -1310,6 +1310,320 @@ El tablero del sprint está en el mismo tablero público de Trello de los sprint
 
 La suma de Story Points del sprint es 59: US15 (8), US17 (3), US16 (3), US18 (3), US25 (5), US40 (8), US41 (5), US26 (8), US30 (3), US45 (5), US33 (5) y US34 (3). Las tareas técnicas T71 a T76 no suman Story Points: aplican las recomendaciones de la validación y preparan la versión final de los productos.
 
+#### 6.2.3.4. Development Evidence for Sprint Review
+
+En el Sprint 3 la Web App y la Mobile App completaron la suscripción con planes y límite de parcelas, la calibración con el resultado de laboratorio, la acción recomendada ante cada alerta y el botón para compartirla; la Web App agregó los accesos del asesor desde el detalle de la parcela y los reportes guardados en la plataforma; el RESTful API pasó a controlar el acceso por dueño en todos los endpoints, guardó el factor de calibración en el dispositivo, aplicó el límite de parcelas del plan y documentó el contexto IAM; la Embedded Application llevó el relé de la minibomba al GPIO 18 y agregó el modo de banco por USB; y el Landing Page citó la fuente de sus cifras. Todos los repositorios cerraron el sprint con la rama `release/0.4.0` integrada en `develop`.
+
+La tabla reúne los commits de implementación de cada repositorio entre el 23 de octubre y el 23 de noviembre de 2026, posteriores al corte de la sección 6.2.2.4, sin contar los commits de *merge* ni los de pruebas, que están en la sección 6.2.3.5. La columna *Branch* indica la rama en la que se hizo cada commit antes de integrarse en `develop`.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Backend | release/0.4.0 | 1821054 | chore(release): bump version to 0.4.0 | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | fa6e2a7 | docs(iam): document the lifecycle of AdvisoryLink | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | eed03e3 | docs(iam): document the credential and lifecycle methods of UserAccount | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | da0dcc2 | docs(iam): document the PasswordHash value object | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | 9ed188c | docs(iam): document the ProfessionalLicense value object | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | 6196f3b | docs(iam): document the PersonName value object | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | f659c50 | docs(iam): document the EmailAddress value object | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | 8bd7af3 | docs(readme): describe the test suites, deployment and git workflow | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | dded983 | chore(config): add EDGE_API_KEY and CORS_ALLOWED_ORIGINS to .env.example | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | 56abd99 | docs(readme): document the environment variables | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | 0724314 | docs(readme): explain how to run the API locally | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | e7b6898 | docs(readme): add the technology stack | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | acdc2a7 | docs(readme): list the bounded contexts and their packages | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | 6b6fff2 | docs(readme): describe the purpose of the OsoSense backend | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-pending-fixes | 657b344 | fix(salinity-alerting): keep an unresolved alert covering milder readings | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-pending-fixes | d55f7cb | fix(subscription-billing): enforce the plan plot limit and count quota used | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/backend-pending-fixes | c848e77 | fix(soil-monitoring): store the calibration factor on the device | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/access-control | 0d8dc7d | fix(iam): answer password resets even when the email fails | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/access-control | bfc7e2d | feat(iam): invite farmers by email and list my advisory links | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/access-control | 933d7ae | fix(security): check farm ownership on every plot endpoint | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/access-control | 904cdc1 | fix(transactions): run every command service in a transaction | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | release/0.4.0 | 30c1787 | chore(release): bump version to 0.4.0 | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/reports-api | 0ffb0e2 | feat(reports): keep exported reports in the platform and download their PDF | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/plot-shortcuts-and-location | 179501f | feat(advisor): open compare and calibration from the plot detail | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/alert-guidance | 36f338a | feat(alerts): add recommended action and WhatsApp share to alerts | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/subscription-and-performance | 8be974a | docs(readme): document subscriptions, Stripe scope and request counts | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/subscription-and-performance | 5490fba | feat(plots): show the plan limit when a new plot is refused with 409 | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/subscription-and-performance | 7c704a0 | feat(subscription): add the plans panel to the subscription screens | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/subscription-and-performance | c5cb6b9 | feat(subscription): add plans and subscription service with signals | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/subscription-and-performance | 1b0a3f3 | feat(fake-api): subscribe, cancel and enforce the plot limit with 409 | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/subscription-and-performance | 7ff87e1 | perf(monitoring): load plot data in parallel and skip farmer calibrations | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/contingency-demo | e8007bd | docs(readme): describe the contingency demo scenarios 7 and 8 | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/contingency-demo | 1e9bffc | feat(plots): show the pump contingency status in the plot detail | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/contingency-demo | beb5df0 | feat(alerts): tag automatic washes in the alert actions | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/contingency-demo | c501b5a | feat(demo): add scenarios 7 and 8 for the pump wash contingency | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/contingency-demo | 4716b2c | feat(contingency): detect automatic washes and the contingency state | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/contingency-demo | be754d5 | fix(alerts): load corrective actions of open alerts too | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/web-pending-fixes | aff8aeb | docs(validation): update with the real state of the web app | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/web-pending-fixes | a3a3ad6 | docs(readme): explain how to run, test, build and the fake API users | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/web-pending-fixes | 5b0121b | refactor(routes): drop unreachable advisor branch from the farmer shell | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/web-pending-fixes | 0d8f02c | fix(alerts): keep alert open and show error when acknowledge fails | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/web-pending-fixes | 0e213de | fix(monitoring): load each plot apart so one failure keeps the board | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | 00a1313 | feat(i18n): show conductivity in dS/m with two decimals everywhere | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | d812715 | style(layout): fill grid rows and keep home readable at 200% text | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | a2f3dd0 | feat(home): say there are no alerts to resolve when none are open | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | 790e384 | perf(theme): provide outlined fields from lazy layouts | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | 2adb510 | style(plots): drop the repeated level pill from detail bands | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | a3324ef | style(pages): move page titles into the serene band | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | ee8ba53 | feat(home): show serene band, focus plot card and plot tiles | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/serene-band-design | 7d755bb | style(theme): add Tierra Serena theme with bands and soft cards | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/visual-dashboard-refresh | b9bf0f8 | feat(alerts): count alerts per level and drop page hints | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/visual-dashboard-refresh | fbfbe58 | style(layout): widen pages to 1440 px and show key figures as tiles | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/visual-dashboard-refresh | e6b342c | feat(dashboard): add ECe sparklines and an active alerts card | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/interview-demo-scenarios | 7b6b128 | feat(demo): raise the worsening plot of scenario 5 to high | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/interview-demo-scenarios | 0f28193 | fix(dashboard): invite a farmer without plots to register the first | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/interview-demo-scenarios | 372df4e | feat(demo): add the scenario bar for usability interviews | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/interview-demo-scenarios | 4a179ae | feat(demo): serve six interview scenarios from in-memory data | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/interview-demo-scenarios | 4ddd958 | refactor(fake-api): extract the plan and crop catalog seed | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 646d403 | fix(plot-form): focus the first field to fix when saving fails | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | d545e44 | style(language-switcher): list Spanish first as the default language | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | ff74be2 | fix(calibration): start the paired values empty instead of zero | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 834cff3 | fix(clients): hide the location separator when it is empty | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 669bfa4 | style(motion): reveal cards, show skeletons and guide empty states | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 1c21693 | feat(alerts): show alerts as cards with visible actions on mobile | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 157374d | feat(salinity): explain ECe and dS/m next to the salinity values | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 21f964d | fix(plot-form): require crop and location and offer the device location | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | d84deab | fix(i18n): drop demo labels on api data and rewrite the terms | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | b1c4615 | fix(alerts): name severities with the style guide salinity levels | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | b01deb9 | fix(dashboard): count only high and critical plots in the headline | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/heuristic-fixes | 9caff7e | fix(i18n): open in Spanish and follow the lang link of the Landing | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisory-links | ad15e11 | feat(my-advisor): accept, decline and end advisory links as a farmer | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisory-links | edc6b89 | feat(clients): invite farmers by email and end their supervision | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisory-links | 200f991 | feat(advisory-links): keep the advisory links of the session in signals | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/advisory-links | 4614b2c | feat(fake-api): invite farmers by email and list my advisory links | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | release/0.4.0 | 377ac1b | chore(release): subir la versión a 0.4.0 | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/sprint-3-mobile | e6a7038 | feat(parcela): llenar las coordenadas con la ubicación del teléfono | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/sprint-3-mobile | 87ea41a | feat(alertas): mostrar qué hacer y compartir la alerta | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | ci/build-apk | e69696d | ci: build minified release APK signed with debug key for App Distribution | Updated workflow to build both debug and release APKs, and modified release notes. | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | ci/build-apk | 84f15e2 | ci: use preinstalled Android SDK and JDK 21 in APK build | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | ci/build-apk | 47f85c4 | ci: add workflow to build debug APK and publish pre-release | This workflow builds a debug APK for the OsoTerra Mobile app and publishes it as a pre-release on GitHub. | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | d3d718d | docs(mobile): documentar suscripción, calibración y pasos de release | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | 92c9137 | chore(gitignore): ignorar keystores de firma | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | 2dfbe51 | fix(parcela): avisar cuando se supera el límite de parcelas del plan | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | 430a0a7 | feat(suscripcion): mostrar planes y confirmar contratación o cancelación | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | 8217d92 | feat(suscripcion): contratar, cambiar y cancelar plan en los repositorios | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | 187f7ea | feat(calibracion): sugerir la lectura del sensor más cercana al muestreo | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/contingency-demo | 16e0a9a | docs(mobile): documentar escenarios de contingencia en el README | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/contingency-demo | ce63189 | feat(parcela): mostrar estado de la contingencia en el detalle | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/contingency-demo | cd56aaf | feat(alertas): mostrar contingencia y etiqueta de lavado automático | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/contingency-demo | 9144108 | feat(demo): agregar escenarios de lavado automático y lavados agotados | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/contingency-demo | e176ab5 | feat(contingencia): agregar modelo de contingencia y acciones automáticas | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/mobile-pending-fixes | abd0377 | docs(mobile): actualizar README y contrato del API | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/mobile-pending-fixes | 1bbca74 | feat(calibracion): permitir escribir el nombre del laboratorio | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/mobile-pending-fixes | c70a186 | fix(roles): ocultar acciones de escritura al asesor | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/mobile-pending-fixes | 96b99d0 | fix(listas): mostrar error con reintento en lugar de lista vacía | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/diseno-banda-serena | 8da2f0a | style(pantallas): unificar login, asesor y formularios con el tema | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/diseno-banda-serena | 3585990 | style(perfil): rediseñar perfil, avisos y detalle de parcela | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/diseno-banda-serena | 819940f | feat(alertas): llevar alertas y navegación a la banda serena | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/diseno-banda-serena | 6d9b34d | feat(inicio): rediseñar el inicio con banda serena y tarjeta urgente | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/diseno-banda-serena | e62cf6c | style(tema): aplicar el tema Tierra Serena y las piezas de la banda | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/interfaz-visual-compacta | 1ed4971 | refactor(ui): cambiar párrafos por íconos y números en las pantallas | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/interfaz-visual-compacta | 2d740f8 | feat(ui): agregar mini gráfico de ECe y piezas compactas con íconos | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/escenarios-demo-entrevistas | 1d84d67 | feat(demo): elegir escenarios 1 a 6 desde el login y el chip superior | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/escenarios-demo-entrevistas | ec0f0d5 | feat(demo): agregar escenarios de prueba en memoria sin backend | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/correcciones-heuristicas | bf57ead | style(ui): aplicar movimiento de la guía, shimmer y estados vacíos | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/correcciones-heuristicas | 080f7bf | feat(i18n): abrir en español y agregar los textos en inglés | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/correcciones-heuristicas | 435f88f | feat(salinidad): explicar ECe y dS/m con una ayuda breve | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/correcciones-heuristicas | b75c799 | feat(parcela): mostrar ejes, umbral y tabla en el gráfico de ECe | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/correcciones-heuristicas | e70ef4f | fix(tablero): contar solo parcelas en Alto o Muy alto en el titular | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/correcciones-heuristicas | 661b52e | feat(alertas): unificar severidades y niveles con la guía de estilo | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/android-7-calibration | 67ea049 | fix(dispositivos): evitar el cierre en Android 7 al abrir la calibración | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | fix/wokwi-chip-memory | f76de27 | fix(wokwi): rebuild the custom chips so the simulator can load them | The chips built with zig asked for 257 memory pages (16 MB stack) and the Wokwi simulator refuses more than 64, so the simulation did not start. Rebuilt… | 12/11/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/real-relay-bench | c13b320 | feat(contingency): drive the prototype's relay on GPIO 18 and add a USB bench build | The prototype's 5 V active-low relay stays on with 3.3 V on IN, so FlushPump floats the pin to release it. The relay moves to GPIO 18, where it is wired on… | 12/11/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/salt-leaching-demo | ea5c3f4 | feat(pump): add the salt leaching pump on a relay and a USB bench mode | When the EC stays at the critical level the device drives a relay on GPIO 18 that runs a mini pump for a limited time and number of cycles, with or without… | 12/11/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/wokwi-wash-model | 9850ed2 | feat(wokwi): make the sensor chips react to the wash pump | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/salinity-contingency | 7554360 | feat(contingency): wash the soil with a relay pump when salinity stays critical | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/wokwi-battery-wire | d18e76c | fix(wokwi): lay out the TP4056 pads like the real module | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/wokwi-battery-wire | 5df4b4f | fix(wokwi): match the battery negative wire color to the real assembly | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Embedded-Application | feature/wokwi-video-match | 689f54b | fix(wokwi): match the moisture signal wire color to the real assembly | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Edge-Service | chore/ignore-sqlite-wal | a189795 | chore(gitignore): ignore the SQLite shared-memory and WAL files | — | 15/11/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/landing-sources | caf2e05 | fix(problem): cite the sources of the salinity figures | — | 23/11/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/av2-videos | 8ac3f23 | feat(videos): embed the about-the-product and about-the-team videos | — | 15/11/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/web-app-language | 3f78500 | fix(footer): point help and solution links to their own content | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/web-app-language | 408a2b4 | style(language-switcher): enlarge targets and darken the inactive option | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Landing-Page | feature/web-app-language | 3027fdf | feat(i18n): open in Spanish and pass the language to web app links | — | 24/10/2026 |
+
+#### 6.2.3.5. Testing Suite Evidence for Sprint Review
+
+En el Sprint 3 todas las suites se ejecutan sobre la rama `develop` con la versión 0.4.0. El RESTful API tiene 99 pruebas que pasan con `./mvnw test` (94 de JUnit y 5 escenarios de Cucumber), la Web App 125 en 21 archivos con `ng test`, la Mobile App 53 con `./gradlew testDebugUnitTest` y el Edge Service 39 con `pytest`. La Embedded Application se verifica compilando el firmware con `pio run` para la placa `esp32dev`.
+
+**RESTful API · pruebas nuevas o ampliadas (JUnit 5, Spring MockMvc y PostgreSQL embebido)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Backend, rama `develop`.
+
+| Clase de prueba | Tipo | Comportamientos verificados |
+|---|---|---|
+| `AdvisorFlowIntegrationTest` | Integración | El asesor invita al productor por su correo, el productor acepta y solo entonces el asesor lee sus parcelas; un usuario sin vínculo recibe `403` (4 pruebas). |
+| `PlotQuotaIntegrationTest` | Integración | Una parcela que supera el límite del plan se rechaza con `409` y la suscripción informa las parcelas usadas (US17, US16). |
+| `CalibrationFactorIntegrationTest` | Integración | La calibración con el resultado de laboratorio guarda el factor en el dispositivo y se aplica a las lecturas siguientes (US26, US30). |
+| `AlertRepeatIntegrationTest` | Integración | Una alerta abierta o reconocida cubre las lecturas más leves de la misma parcela y no se duplica. |
+| `PasswordHashTest`, `PersonNameTest` | Unitaria | Value objects del contexto IAM: el hash de la contraseña nunca se imprime y el nombre de la persona se valida (8 pruebas). |
+| `DeviceTest`, `SalinityAlertTest` | Unitaria | Factor de calibración y última conexión del dispositivo; severidad y cierre de la alerta (19 pruebas). |
+
+**Web App · pruebas nuevas (Vitest vía Angular CLI)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Web-Application, rama `develop`. Se ejecutan contra el fake API, que responde el mismo contrato del RESTful API.
+
+| Archivo | Relación | Comportamientos verificados |
+|---|---|---|
+| `alert-guidance.spec.ts` | US33, US34 | La alerta muestra la lectura en dS/m junto al umbral y qué hacer según el nivel; el enlace abre WhatsApp en otra pestaña con el resumen de la alerta y sin número fijo. |
+| `plot-shortcuts.spec.ts` | US45, US26 | El detalle de la parcela lleva a «Comparar parcelas» y a «Calibración» con la parcela y su sensor ya elegidos. |
+| `reports.spec.ts` | US40, US41 | El reporte de cada parcela queda guardado en Analytics &amp; Reporting, se lista en la pantalla y su PDF se descarga del API. |
+| `subscription.spec.ts`, `subscription.service.spec.ts` | US15–US18 | Contratar, cambiar y cancelar el plan, y el aviso del límite cuando el API responde `409`. |
+| `advisory-links.spec.ts`, `advisory-link.service.spec.ts` | US13 | El asesor invita por correo, cancela la invitación y el productor acepta o termina la supervisión. |
+| `plot-form.spec.ts` | US20 | El formulario de parcela pide cultivo y ubicación, y ofrece «Usar mi ubicación». |
+| `alerts-center.spec.ts`, `dashboard.spec.ts`, `plot-detail.spec.ts` | US31, US39 | Errores del API visibles sin perder el tablero y estado de la contingencia de lavado. |
+
+**Mobile App · pruebas nuevas (JUnit en la JVM)** — repositorio https://github.com/OsoTerra-IoT/OsoTerra---Mobile-Application, rama `develop`.
+
+| Clase de prueba | Relación | Comportamientos verificados |
+|---|---|---|
+| `SubscriptionTest` | US15–US18 | Planes, confirmación de la contratación o cancelación y límite de parcelas (10 pruebas). |
+| `AlertGuidanceTest` | US33 | Cada nivel de alerta tiene su propia acción recomendada. |
+| `PlotLocationTest` | T71 | Las coordenadas de «Usar mi ubicación» se guardan con seis decimales y punto decimal en cualquier idioma del teléfono. |
+| `RoleTest`, `ErrorStatesTest`, `HeuristicFixesTest` | Validación | El asesor no ve acciones de escritura, los errores de red se muestran con reintento y las correcciones de la evaluación heurística (11 pruebas). |
+| `DemoScenariosTest`, `BandaSerenaTest` | Entrevistas | Escenarios de datos de prueba para las entrevistas y piezas del diseño de la pantalla de inicio (22 pruebas). |
+
+La tabla reúne los commits de pruebas del sprint.
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | c27a9cb | test(iam): check that PasswordHash never prints the hash | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/iam-docs-and-tests | c6c2ad8 | test(iam): cover the PersonName value object | — | 13/11/2026 |
+| OsoTerra-IoT/OsoTerra---Backend | feature/access-control | a8f4f30 | test(integration): cover advisory invites and plot access | — | 24/10/2026 |
+| OsoTerra-IoT/OsoTerra---Web-Application | feature/interview-demo-scenarios | bec801e | test(demo): cover demo activation and the six scenarios | — | 29/10/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/subscription-and-calibration | edc5629 | test(suscripcion): cubrir planes, confirmación y límite de parcelas | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/contingency-demo | ca61a57 | test(demo): cubrir escenarios de contingencia de salinidad | — | 08/11/2026 |
+| OsoTerra-IoT/OsoTerra---Mobile-Application | feature/escenarios-demo-entrevistas | 0d76448 | test(demo): cubrir el proveedor de escenarios de prueba | — | 29/10/2026 |
+
+#### 6.2.3.6. Execution Evidence for Sprint Review
+
+Al cierre del Sprint 3 el productor contrata y administra su plan, ve qué hacer ante cada alerta y la comparte por WhatsApp, y registra parcelas con la ubicación de su teléfono; el asesor abre la comparación y la calibración desde el detalle de la parcela y guarda en la plataforma los reportes que entrega a su cliente. Las capturas se tomaron en la Web App de `develop` (versión 0.4.0) con las cuentas de demostración del productor y del asesor.
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-alertas-que-hacer.png" alt="Alerta con la lectura, la acción recomendada y el enlace para compartir por WhatsApp" width="800">
+<p><em>Figura 6.55. Alerta Muy alta con la lectura en dS/m junto al umbral, «Qué hacer» y «Compartir por WhatsApp» (US33, US34).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-suscripcion.png" alt="Suscripción con el plan actual, las parcelas usadas y los planes disponibles" width="800">
+<p><em>Figura 6.56. Suscripción del productor: plan vigente, parcelas usadas frente al límite y cambio o cancelación del plan (US15–US18).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-usar-mi-ubicacion.png" alt="Registro de parcela con el botón Usar mi ubicación" width="800">
+<p><em>Figura 6.57. Registro de parcela con «Usar mi ubicación» para llenar la latitud y la longitud (hallazgos 5 y 10 de la sección 6.3.3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-detalle-accesos.png" alt="Detalle de parcela del asesor con los accesos a comparar y calibrar" width="800">
+<p><em>Figura 6.58. Detalle de la parcela para el asesor con los accesos a «Comparar parcelas» y «Calibración» (hallazgo 13 de la sección 6.3.3).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-comparar.png" alt="Comparación de dos parcelas con la parcela de origen ya elegida" width="800">
+<p><em>Figura 6.59. Comparación de parcelas abierta desde el detalle: El Mirador viene elegida y se suma Campo Este (US45).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-calibracion.png" alt="Calibración con el sensor de la parcela ya elegido" width="800">
+<p><em>Figura 6.60. Calibración abierta desde el detalle con el sensor de la parcela ya elegido (US26, US30).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-s3-reportes-guardados.png" alt="Vista previa del reporte con los reportes guardados en la plataforma" width="800">
+<p><em>Figura 6.61. Reporte de la parcela con la lista de reportes guardados en la plataforma y su PDF (US40, US41).</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/landing-s3-fuentes.png" alt="Sección de impacto del Landing Page con las fuentes de las cifras" width="800">
+<p><em>Figura 6.62. Landing Page con la fuente de cada cifra de salinización: ONERN, MIDAGRI y FAO (hallazgos 15 y 16 de la sección 6.3.3).</em></p>
+</div>
+
+La Mobile App de la versión 0.4.0 incluye «Qué hacer», «Compartir alerta» con el menú de Android y «Usar mi ubicación» en el registro de la parcela.
+
+<!-- TODO(equipo): agregar aquí las capturas de la Mobile App 0.4.0 en un teléfono: alerta con «Qué hacer» y «Compartir alerta», menú de compartir con WhatsApp y registro de parcela con «Usar mi ubicación». -->
+
+#### 6.2.3.7. Services Documentation Evidence for Sprint Review
+
+La documentación OpenAPI sigue publicada con el RESTful API (Swagger UI en https://osoterra-backend-production.up.railway.app/swagger-ui.html y especificación en `/v3/api-docs/all`), con una definición por bounded context. Las reglas de la sección 6.2.1.7 se mantienen: JSON, ruta base `/api/v1` y JWT en la cabecera `Authorization`. La tabla resume los endpoints que se agregaron, cambiaron o empezaron a usar las aplicaciones en el Sprint 3.
+
+| Endpoint | Acción | Verbo | Sintaxis de llamada | Parámetros | Respuesta |
+|---|---|---|---|---|---|
+| `/api/v1/advisory-links` | Invitar a un productor | POST | `POST /api/v1/advisory-links` | Cuerpo: `farmerEmail` o `farmerId` | `201 Created` con el vínculo pendiente, los nombres y los correos del asesor y del productor. |
+| `/api/v1/advisory-links/mine` | Consultar mis vínculos | GET | `GET /api/v1/advisory-links/mine` | — | `200 OK` con los vínculos pendientes y aceptados del usuario, del más reciente al más antiguo. |
+| `/api/v1/plots` | Registrar parcela | POST | `POST /api/v1/plots` | Cuerpo: `farmId`, `name`, `areaHectares`, `latitude`, `longitude` | `201 Created`; `409 Conflict` si el productor ya usó todas las parcelas de su plan. |
+| `/api/v1/subscriptions/mine` | Consultar mis suscripciones | GET | `GET /api/v1/subscriptions/mine` | — | `200 OK`; `quotaConsumed` cuenta las parcelas activas del usuario. |
+| `/api/v1/calibration-records` | Registrar calibración | POST | `POST /api/v1/calibration-records` | Cuerpo: `deviceId`, lectura del sensor, ECe y nombre del laboratorio | `201 Created`; el factor de calibración queda guardado en el dispositivo. |
+| `/api/v1/plot-reports` | Guardar reporte de parcela | POST | `POST /api/v1/plot-reports` | Cuerpo: `plotId`, `periodStart`, `periodEnd` | `201 Created` con `id`, `plotId`, `generatedBy`, el periodo y `generatedAt`. |
+| `/api/v1/plot-reports` | Listar reportes de una parcela | GET | `GET /api/v1/plot-reports?plotId=4` | Consulta: `plotId` | `200 OK` con los reportes de la parcela. |
+| `/api/v1/plot-reports/{id}/export` | Descargar el PDF del reporte | GET | `GET /api/v1/plot-reports/12/export` | Ruta: `id` | `200 OK` con el documento `application/pdf`. |
+
+Desde el Sprint 3 todos los endpoints de fincas, parcelas, dispositivos, lecturas, alertas, suscripciones y reportes responden `403 Forbidden` cuando el recurso no es del usuario ni de un productor que aceptó su vínculo de asesoría.
+
+<!-- TODO(equipo): cuando el RESTful API vuelva a estar en línea en Railway con la versión 0.4.0, agregar la captura de Swagger UI con la definición analytics-reporting. -->
+
+#### 6.2.3.8. Software Deployment Evidence for Sprint Review
+
+El Sprint 3 cierra con la versión 0.4.0 de todos los productos, siguiendo GitFlow:
+
+1. **Rama de release.** Se creó `release/0.4.0` desde `develop` en los seis repositorios de producto (Figura 6.63).
+2. **Versión.** El RESTful API (`pom.xml`, commit `1821054`), la Web App (`package.json`, commit `30c1787`) y la Mobile App (`versionName` 0.4.0 y `versionCode` 4, commit `377ac1b`) suben su versión a 0.4.0. El Edge Service, la Embedded Application y el Landing Page no llevan número de versión en su código.
+3. **Verificación.** Antes de integrar se ejecutaron las suites de la sección 6.2.3.5 y se compiló el firmware (15 % de RAM y 86,9 % de flash).
+4. **Integración.** `release/0.4.0` se integró en `develop` con *merge* sin *fast-forward*: RESTful API `7792910`, Web App `e9f7ab9` y Mobile App `58682a0`. En el Edge Service, la Embedded Application y el Landing Page la release coincide con `develop`.
+
+<div align="center">
+<img src="../assets/sprint-3/release-branches-backend.png" alt="Ramas del RESTful API con release/0.4.0 junto a develop" width="800">
+<p><em>Figura 6.63. Ramas del RESTful API en GitHub: <code>release/0.4.0</code> integrada en <code>develop</code>.</em></p>
+</div>
+
+| Producto | Plataforma | Commit | Fecha | Estado |
+|---|---|---|---|---|
+| Web App | Vercel (Production) | `e9f7ab9` | 23/11/2026 | Activo: versión 0.4.0 |
+| Web App | GitHub Pages | `e9f7ab9` | 23/11/2026 | Activo: versión 0.4.0 |
+| Landing Page | GitHub Pages | `a6decb3` | 23/11/2026 | Activo: fuentes de las cifras |
+
+*Despliegues registrados en la pestaña Deployments de cada repositorio, consultados con la API de GitHub el 23/11/2026.*
+
+<div align="center">
+<img src="../assets/sprint-3/webapp-vercel.png" alt="Web App 0.4.0 publicada en Vercel" width="800">
+<p><em>Figura 6.64. Web App 0.4.0 publicada en Vercel: https://oso-terra-web-application.vercel.app/</em></p>
+</div>
+
+<!-- TODO(equipo): agregar el despliegue del RESTful API 0.4.0 en Railway (commit 7792910 o posterior) con su captura, y la versión 0.4.0 de la Mobile App en Firebase App Distribution. -->
+
+El Edge Service y la Embedded Application siguen sin desplegarse en la nube: el Edge Service corre en el gateway de la parcela y la Embedded Application se carga en el ESP32, ambos desde la rama `develop` de su repositorio.
+
+#### 6.2.3.9. Team Collaboration Insights during Sprint
+
+Las capturas muestran los commits de `develop` en los repositorios de producto con más actividad del Sprint 3.
+
+<div align="center">
+<img src="../assets/sprint-3/commits-backend.png" alt="Commits del RESTful API en develop" width="800">
+<p><em>Figura 6.65. Commits del RESTful API en <code>develop</code>, con la integración de <code>release/0.4.0</code>.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/commits-webapp.png" alt="Commits de la Web App en develop" width="800">
+<p><em>Figura 6.66. Commits de la Web App en <code>develop</code>: acción recomendada, accesos del asesor, reportes guardados y release 0.4.0.</em></p>
+</div>
+
+<div align="center">
+<img src="../assets/sprint-3/commits-mobile.png" alt="Commits de la Mobile App en develop" width="800">
+<p><em>Figura 6.67. Commits de la Mobile App en <code>develop</code>.</em></p>
+</div>
+
+| Integrante | Landing Page | Web App | RESTful API | Mobile App | Edge Service | Embedded App |
+|---|---|---|---|---|---|---|
+| Barturen Panez, Iker Gabriel (krxxg04) | | | | | | |
+| Encalada Salazar, Alexis (Alexiz248) | | | | 3 | | 3 |
+| Goñe Araccata, Esther Abigail (abigoe02) | | | | | | |
+| Ortiz Alarcon, Victor Nicolas (Nico1234556) | | | 15 | | | |
+| Salazar Caballero, Alvaro Fabrizzio (DymianUPC) | | | | | | |
+| Santiago Peña, Andreow Jomark (andrew65411) | 5 | 54 | 9 | 37 | 1 | 5 |
+| Tumi Oliden, Manuel Ignacio (ManuelTumi2224) | | | | | | |
+
+*Número de commits sin contar merges, por repositorio, del 23 de octubre al 23 de noviembre de 2026.*
+
+**Interpretación del equipo.** En el Sprint 3 más integrantes registraron trabajo propio en los productos: Victor documentó y probó el contexto IAM del RESTful API y lo integró por pull request (#4), y Alexis llevó el relé de la minibomba al GPIO 18, agregó el modo de banco y creó el workflow que compila el APK. Aun así, la mayor parte de los commits de la Web App y la Mobile App sigue concentrada en un integrante, y Iker, Abigail, Alvaro y Manuel aportaron en el informe, las entrevistas de validación y los videos, pero no en los repositorios de producto en este periodo. La lección para el cierre del proyecto es repartir desde el Sprint Planning tareas pequeñas de código por integrante y revisarlas por pull request, para que la colaboración se refleje en cada repositorio.
+
 ## 6.3. Validation Interviews
 
 ### 6.3.1. Diseño de Entrevistas
@@ -1481,7 +1795,7 @@ En la tarea P-T1 el titular del inicio del productor dice «2 de tus 2 parcelas 
 
 <div align="center">
 <img src="../assets/validation/heuristica-1.png" alt="Inicio del productor con el titular de dos parcelas que necesitan atención y el Lote Palta en nivel normal" width="700">
-<p><em>Figura 6.55. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
+<p><em>Figura 6.68. Problema 1: el titular cuenta como «necesita atención» una parcela en «Nivel normal».</em></p>
 </div>
 
 **Recomendación:**
@@ -1498,7 +1812,7 @@ Con la Web App conectada al RESTful API y con cuentas reales, «Mis clientes» (
 
 <div align="center">
 <img src="../assets/validation/heuristica-2.png" alt="Etiqueta Datos de demostración en Mis clientes, términos y condiciones de prototipo y nota del reporte" width="700">
-<p><em>Figura 6.56. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
+<p><em>Figura 6.69. Problema 2: etiqueta de «Mis clientes», términos y condiciones y nota final de la vista previa del reporte.</em></p>
 </div>
 
 **Recomendación:**
@@ -1515,7 +1829,7 @@ Los dos segmentos son productores y asesores de la costa norte del Perú, pero e
 
 <div align="center">
 <img src="../assets/validation/heuristica-3.png" alt="Encabezado del Landing Page en inglés con el selector EN ES y el inicio de la Web App en inglés" width="700">
-<p><em>Figura 6.57. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
+<p><em>Figura 6.70. Problema 3: Landing Page (arriba) y Web App (abajo) en su primera carga.</em></p>
 </div>
 
 **Recomendación:**
@@ -1532,7 +1846,7 @@ La Web App clasifica las alertas como «Crítica», «Advertencia» y «Vigilanc
 
 <div align="center">
 <img src="../assets/validation/heuristica-4.png" alt="Alerta Alta y preferencias Media Alta Crítica en la Mobile App frente a las tarjetas Crítica Advertencia Vigilancia de la Web App" width="700">
-<p><em>Figura 6.58. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
+<p><em>Figura 6.71. Problema 4: escala de la Mobile App (arriba) y de la Web App (abajo).</em></p>
 </div>
 
 **Recomendación:**
@@ -1549,7 +1863,7 @@ En la tarea P-T2, «Agregar parcela» pide «Latitud (-90 a 90)» y «Longitud (
 
 <div align="center">
 <img src="../assets/validation/heuristica-5.png" alt="Formulario Agregar parcela con latitud y longitud en cero y cultivo Cebada elegido por defecto" width="700">
-<p><em>Figura 6.59. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
+<p><em>Figura 6.72. Problema 5: formulario «Agregar parcela» con sus valores iniciales.</em></p>
 </div>
 
 **Recomendación:**
@@ -1566,7 +1880,7 @@ La salinidad aparece con tres siglas distintas: «CEe 4.0 dS/m» en el Landing P
 
 <div align="center">
 <img src="../assets/validation/heuristica-6.png" alt="Etiqueta CEe 4.0 dS/m del Landing Page, formulario de calibración con ECe de laboratorio y texto CE del inicio" width="700">
-<p><em>Figura 6.60. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
+<p><em>Figura 6.73. Problema 6: siglas de salinidad en el Landing Page, en «Calibración» y en el inicio de la Web App.</em></p>
 </div>
 
 **Recomendación:**
@@ -1583,7 +1897,7 @@ En el Landing Page, «Contact» del menú y «Support» del pie de página lleva
 
 <div align="center">
 <img src="../assets/validation/heuristica-7.png" alt="Pie de página del Landing Page con los enlaces Contact, Installation guides y Support" width="700">
-<p><em>Figura 6.61. Problema 7: pie de página del Landing Page.</em></p>
+<p><em>Figura 6.74. Problema 7: pie de página del Landing Page.</em></p>
 </div>
 
 **Recomendación:**
@@ -1600,7 +1914,7 @@ Con la Web App en un ancho de 390 px (tarea P-T3 desde el navegador del celular)
 
 <div align="center">
 <img src="../assets/validation/heuristica-8.png" alt="Tabla de alertas de la Web App en un ancho de 390 px con las columnas de acciones fuera de la pantalla" width="390">
-<p><em>Figura 6.62. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
+<p><em>Figura 6.75. Problema 8: bandeja de alertas de la Web App en el ancho de un celular.</em></p>
 </div>
 
 **Recomendación:**
@@ -1617,7 +1931,7 @@ En el detalle de parcela de la Mobile App (tareas P-T5 y A-T6), «Conductividad 
 
 <div align="center">
 <img src="../assets/validation/heuristica-9.png" alt="Gráfico Conductividad en el tiempo de la Mobile App sin valores en los ejes" width="540">
-<p><em>Figura 6.63. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
+<p><em>Figura 6.76. Problema 9: gráfico de conductividad del detalle de parcela en la Mobile App.</em></p>
 </div>
 
 **Recomendación:**
